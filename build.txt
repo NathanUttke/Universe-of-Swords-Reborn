@@ -1,0 +1,4 @@
+displayName = [c/6508cf:Universe of Swords Reborn]
+author = 1.4 port and maintenance by TheBlackAbyss, (Original mod by Gnom)
+version = 1.0.0.6
+homepage = https://discord.gg/4XNDrT9

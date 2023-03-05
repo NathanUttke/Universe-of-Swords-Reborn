@@ -1,0 +1,4178 @@
+AllWoodSword :
+{
+	Name :
+	{
+		Origin : All Wood Sword
+		Current : 诸木聚剑
+	}
+	Tooltip :
+	{
+		Origin : 'Smells like world'
+		Current : '闻起来像是这个世界的一部分……'
+	}
+}
+
+AlphaExcalibur :
+{
+	Name :
+	{
+		Origin : Alpha Excalibur
+		Current : 阿尔法神剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+AmberSword :
+{
+	Name :
+	{
+		Origin : Amber Sword
+		Current : 琥珀剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+AmethystSword :
+{
+	Name :
+	{
+		Origin : Amethyst Sword
+		Current : 紫晶剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+AncientKatana :
+{
+	Name :
+	{
+		Origin : Ancient Katana
+		Current : 旧日武士刀
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+AntiInvader :
+{
+	Name :
+	{
+		Origin : Anti-Invader
+		Current : 脉冲神剑
+	}
+	Tooltip :
+	{
+		Origin : 'I'll like to have chicken burger, fried chicken wings, two slices of your chicken pie, no make that three... What do you mean you can't supersize me?!'
+		Current : '我想吃鸡肉汉堡、炸鸡翅、两片鸡肉馅饼，不做三片……你不能做大号是什么意思？！'
+	}
+}
+
+Apocalypse :
+{
+	Name :
+	{
+		Origin : Apocalypse
+		Current : 启示录
+	}
+	Tooltip :
+	{
+		Origin : Weapon that causes apocalypse
+		Current : 可以引发天启的灾难之剑
+	}
+}
+
+BarbarianSword :
+{
+	Name :
+	{
+		Origin : Barbarian Sword
+		Current : 蛮族战剑
+	}
+	Tooltip :
+	{
+		Origin : 'We gonna need more Barbarians'
+		Current : '我们需要更多的野蛮人'
+	}
+}
+
+BatSlayer :
+{
+	Name :
+	{
+		Origin : Bat Slayer
+		Current : 蝙蝠杀手
+	}
+	Tooltip :
+	{
+		Origin : Inflicts Confused debuff on enemies
+		Current : 使敌人混乱
+	}
+}
+
+BeliarClaw :
+{
+	Name :
+	{
+		Origin : Claw of Beliar
+		Current : 恶魔巨剑
+	}
+	Tooltip :
+	{
+		Origin : Pulses with dark energy of Beliar
+		Current : 深渊之怒
+	}
+}
+
+BetterShroomiteBlade :
+{
+	Name :
+	{
+		Origin : Better Shroomite Blade
+		Current : 觉醒-真菌之刃
+	}
+	Tooltip :
+	{
+		Origin : Bigger and better!
+		Current : 更大更强！
+	}
+}
+
+BiggoronSword :
+{
+	Name :
+	{
+		Origin : Biggoron Sword
+		Current : 大型戈隆剑
+	}
+	Tooltip :
+	{
+		Origin : Heavy but strong
+		Current : 沉重……但是也极其强大
+	}
+}
+
+Biter :
+{
+	Name :
+	{
+		Origin : Biter
+		Current : 咬噬
+	}
+	Tooltip :
+	{
+		Origin : It's sharp!
+		Current : 它很锋利！
+	}
+}
+
+BlackOre :
+{
+	Name :
+	{
+		Origin : Black Ore
+		Current : 渊原矿
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+BlackOreTest :
+{
+	Name :
+	{
+		Origin : Black Ore Spawner
+		Current : 深渊波动器
+	}
+	Tooltip :
+	{
+		Origin : Generates Black Ore in the world on use
+		Current : 在此世界刷新渊原矿
+	}
+}
+
+BladesOfBalance :
+{
+	Name :
+	{
+		Origin : Blades of Balance
+		Current : 平衡之刃
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+BlizzardRage :
+{
+	Name :
+	{
+		Origin : Blizzard Rage
+		Current : 暴风雪之怒
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+BlowpipeSword :
+{
+	Name :
+	{
+		Origin : Blowpipe Sword
+		Current : 吹管剑
+	}
+	Tooltip :
+	{
+		Origin : 'Watch out for your wrists'
+		Current : '别伤到手腕'
+	}
+}
+
+BlueDamascusChestplate :
+{
+	Name :
+	{
+		Origin : Blue Damascus Chestplate
+		Current : 蓝骑士胸甲
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Armor for durable warriors'
+			7% increased melee damage
+			10% increased movement speed
+		Current : 
+			'防御者的选择'
+			增加7%近战伤害和10%移动速度
+	}
+}
+
+BlueDamascusHelmet :
+{
+	Name :
+	{
+		Origin : Blue Damascus Helmet
+		Current : 蓝骑士头盔
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Armor for durable warriors'
+			6% increased melee speed
+			6% increased melee critical chance
+		Current : 
+			'防御者的选择'
+			增加6%近战速度和暴击率
+	}
+}
+
+BlueDamascusLeggings :
+{
+	Name :
+	{
+		Origin : Blue Damascus Leggings
+		Current : 蓝骑士战靴
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Armor for durable warriors'
+			6% increased melee critical chance
+			5% increased movement speed
+		Current : 
+			'防御者的选择'
+			增加6%近战暴击率和5%移动速度
+	}
+}
+
+BlueRuneBlade :
+{
+	Name :
+	{
+		Origin : Ice Rune Blade
+		Current : 冰霜符文刃
+	}
+	Tooltip :
+	{
+		Origin : 'Pulses with cold energy of ice'
+		Current : '释放寒霜能量'
+	}
+}
+
+BlueSolutionSpreader :
+{
+	Name :
+	{
+		Origin : Blue Solution Spreader
+		Current : 真菌扩散器
+	}
+	Tooltip :
+	{
+		Origin : Infinite biome spreading? Awesome!
+		Current : 无限的环境扩展？令人惊叹！
+	}
+}
+
+BoneArrowSword :
+{
+	Name :
+	{
+		Origin : Bone Arrow Sword
+		Current : 骨箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Bone arrows
+		Current : 射出骨箭
+	}
+}
+
+BouncyGrenadeBlade :
+{
+	Name :
+	{
+		Origin : Bouncy Grenade Blade
+		Current : 弹性手榴弹之刃
+	}
+	Tooltip :
+	{
+		Origin : 'Nothing like a grenade that bounces back to your when thrown... Wait-'
+		Current : '没有什么比扔出去还能弹回到你手里的的手榴弹更棒了……等等，什么？'
+	}
+}
+
+BowSword :
+{
+	Name :
+	{
+		Origin : Bow Sword
+		Current : 弓剑
+	}
+	Tooltip :
+	{
+		Origin : Uses arrows as ammo
+		Current : 消耗箭进行射击
+	}
+}
+
+BoxOfGrenades :
+{
+	Name :
+	{
+		Origin : Box of Grenades
+		Current : 手榴弹集装箱
+	}
+	Tooltip :
+	{
+		Origin : 'Forget throwing grenades one at a time. Just throw a boxful at your enemies!'
+		Current : '忘记你一次扔一枚手榴弹的时光吧……你现在一次可以扔一箱！'
+	}
+}
+
+Brisingr :
+{
+	Name :
+	{
+		Origin : Brisingr
+		Current : 屠魔
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+BuzzKill :
+{
+	Name :
+	{
+		Origin : Buzz Kill
+		Current : 蜂鸣
+	}
+	Tooltip :
+	{
+		Origin : 'Release the Africanized bees!'
+		Current : '释放非洲杀人蜂！'
+	}
+}
+
+BuzzKillFutureMode :
+{
+	Name :
+	{
+		Origin : Buzz Kill Future Mode
+		Current : 觉醒-蜂鸣
+	}
+	Tooltip :
+	{
+		Origin : 'Release the Gamma ray infused bees!'
+		Current : '释放宇宙杀人蜂！'
+	}
+}
+
+CaesarSword :
+{
+	Name :
+	{
+		Origin : Caesar Sword
+		Current : 凯撒之剑
+	}
+	Tooltip :
+	{
+		Origin : 'Et tu, Brute?'
+		Current : '埃图？布鲁特？'
+	}
+}
+
+Caladbolg :
+{
+	Name :
+	{
+		Origin : Caladbolg
+		Current : 卡拉德波加-最终审判
+	}
+	Tooltip :
+	{
+		Origin : 'Beati diripientes falsa pro veris sunt Messiahs'
+		Current : '在耶稣基督的见证下'
+	}
+}
+
+CalculatorSword :
+{
+	Name :
+	{
+		Origin : Calculator Sword
+		Current : 计算机剑
+	}
+	Tooltip :
+	{
+		Origin : Sprite was made in the calculator. True story.
+		Current : 这把剑的贴图是电脑自动生成的，真实的故事
+	}
+}
+
+ChlorophyteArrowSword :
+{
+	Name :
+	{
+		Origin : Chlorophyte Arrow Sword
+		Current : 叶绿箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Chlorophyte arrows
+		Current : 射出叶绿箭
+	}
+}
+
+ChlorophyteBulletSword :
+{
+	Name :
+	{
+		Origin : Chlorophyte Bullet Sword
+		Current : 叶绿弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Chlorophyte bullets
+		Current : 射出叶绿弹
+	}
+}
+
+ClaySword :
+{
+	Name :
+	{
+		Origin : Clay Sword
+		Current : 粘土剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+ClingerSword :
+{
+	Name :
+	{
+		Origin : Clinger Sword
+		Current : 魔焰剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+ClusterBOOMer :
+{
+	Name :
+	{
+		Origin : Cluster BOOMer
+		Current : 集束炸弹EX
+	}
+	Tooltip :
+	{
+		Origin : 'We do not take any responsibility for destroyed buildings'
+		Current : '我们对毁坏的建筑物不负任何责任'
+	}
+}
+
+CopperCoinSword :
+{
+	Name :
+	{
+		Origin : Copper Coin Sword
+		Current : 铜币剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots copper coins
+		Current : 射出铜币……当然，是无法回收的那种
+	}
+}
+
+CorruptCrystallus :
+{
+	Name :
+	{
+		Origin : Corrupt Crystallus
+		Current : 腐败模具
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+CosmoStorm :
+{
+	Name :
+	{
+		Origin : Cosmo Storm
+		Current : 宙劫虹爆
+	}
+	Tooltip :
+	{
+		Origin : 'Sword that shatters galaxies'
+		Current : '拥有粉碎星系的力量'
+	}
+}
+
+CrimsonCrystallus :
+{
+	Name :
+	{
+		Origin : Crimson Crystallus
+		Current : 血化模具
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+CrystalBulletSword :
+{
+	Name :
+	{
+		Origin : Crystal Bullet Sword
+		Current : 魔晶弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Crystal bullets
+		Current : 射出魔晶弹
+	}
+}
+
+CrystalDartSword :
+{
+	Name :
+	{
+		Origin : Crystal Dart Sword
+		Current : 水晶镖剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+CrystalExcalibur :
+{
+	Name :
+	{
+		Origin : Crystal Excalibur
+		Current : 晶原神剑
+	}
+	Tooltip :
+	{
+		Origin : 'Sword forged in heaven'
+		Current : '来自天堂的神剑'
+	}
+}
+
+Crystallus :
+{
+	Name :
+	{
+		Origin : Crystallus
+		Current : 破碎模具
+	}
+	Tooltip :
+	{
+		Origin : 'This sword can keep being upgraded throughout the game until the Mechanical Bosses'
+		Current : '它以及它的升级将会陪伴你很久的……最终将和你一起击败机械的造物'
+	}
+}
+
+CrystalSword :
+{
+	Name :
+	{
+		Origin : Crystal Sword
+		Current : 魔晶剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+CrystalVineSword :
+{
+	Name :
+	{
+		Origin : Crystal Vile Sword
+		Current : 魔晶碎块剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+CthulhuJudge :
+{
+	Name :
+	{
+		Origin : Cthulhu Judge
+		Current : 克苏鲁凝视
+	}
+	Tooltip :
+	{
+		Origin : I have an eye on you...
+		Current : 祂在看着你……
+	}
+}
+
+CursedArrowSword :
+{
+	Name :
+	{
+		Origin : Cursed Arrow Sword
+		Current : 诅咒箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Cursed arrows
+		Current : 射出诅咒箭
+	}
+}
+
+CursedBulletSword :
+{
+	Name :
+	{
+		Origin : Cursed Bullet Sword
+		Current : 诅咒弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Cursed bullets
+		Current : 射出诅咒弹
+	}
+}
+
+CursedDartSword :
+{
+	Name :
+	{
+		Origin : Cursed Dart Sword
+		Current : 诅咒镖剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DaedricSword :
+{
+	Name :
+	{
+		Origin : Daedric Sword
+		Current : 劈砍恶魔
+	}
+	Tooltip :
+	{
+		Origin : 
+			Left click to shoot red beam projectile
+			Right click to swing weapon and steal life from enemies
+		Current : 
+			左键发射红色光束弹
+			右键不释放弹幕但击中敌人可以回复大量生命值
+	}
+}
+
+DamascusBar :
+{
+	Name :
+	{
+		Origin : Damascus Bar
+		Current : 骑士锭
+	}
+	Tooltip :
+	{
+		Origin : 'Material for creating powerful swords'
+		Current : '用于制作各种强力的装备，尤其是剑'
+	}
+}
+
+DamascusBreastplate :
+{
+	Name :
+	{
+		Origin : Damascus Breastplate
+		Current : 护卫胸甲
+	}
+	Tooltip :
+	{
+		Origin : 4% increased melee damage
+		Current : 增加4%近战伤害
+	}
+}
+
+DamascusHamaxe :
+{
+	Name :
+	{
+		Origin : Damascus Hamaxe
+		Current : 护卫锤斧
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DamascusHelmet :
+{
+	Name :
+	{
+		Origin : Damascus Helmet
+		Current : 护卫头盔
+	}
+	Tooltip :
+	{
+		Origin : 3% increased melee speed
+		Current : 近战速度提高3%
+	}
+}
+
+DamascusLeggings :
+{
+	Name :
+	{
+		Origin : Damascus Leggings
+		Current : 护卫护胫
+	}
+	Tooltip :
+	{
+		Origin : 6% increased movement speed
+		Current : 移动速度提高6%
+	}
+}
+
+DamascusOre :
+{
+	Name :
+	{
+		Origin : Damascus Ore
+		Current : 骑士原矿
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DamascusPickaxe :
+{
+	Name :
+	{
+		Origin : Damascus Pickaxe
+		Current : 护卫镐
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DarkBlade :
+{
+	Name :
+	{
+		Origin : Dark Blade
+		Current : 黑暗之刃
+	}
+	Tooltip :
+	{
+		Origin : Inflicts enemies with Shadowflame
+		Current : 刀身沾满暗影之火…
+	}
+}
+
+DartSword :
+{
+	Name :
+	{
+		Origin : Dart Sword
+		Current : 飞镖剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+Dawn :
+{
+	Name :
+	{
+		Origin : Dawn
+		Current : 黎明
+	}
+	Tooltip :
+	{
+		Origin : 'Sword of the morning'
+		Current : '清晨之剑'
+	}
+}
+
+DeathSword :
+{
+	Name :
+	{
+		Origin : Death Sword
+		Current : 死亡之镰
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DesertSword :
+{
+	Name :
+	{
+		Origin : Desert Sword
+		Current : 沙漠之剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DestroyerSword :
+{
+	Name :
+	{
+		Origin : Destroyer Sword
+		Current : 毁灭之剑
+	}
+	Tooltip :
+	{
+		Origin : Boom, Boom!
+		Current : 爆炸……爆炸……大爆炸！
+	}
+}
+
+Destructor :
+{
+	Name :
+	{
+		Origin : Destructor
+		Current : 施毒者
+	}
+	Tooltip :
+	{
+		Origin : Inflicts Venom debuff on enemies
+		Current : 向敌人体内注射毒液
+	}
+}
+
+DeusExcalibur :
+{
+	Name :
+	{
+		Origin : Deus Excalibur
+		Current : 生命神剑
+	}
+	Tooltip :
+	{
+		Origin : 'The Sword of (My) Life and (Your) Death'
+		Current : '……将迎来生和死，你我各处一侧'
+	}
+}
+
+DevilBlade :
+{
+	Name :
+	{
+		Origin : Devil Blade
+		Current : 恶魔之刃
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DiamondSword :
+{
+	Name :
+	{
+		Origin : Diamond Sword
+		Current : 钻石剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DirtSword :
+{
+	Name :
+	{
+		Origin : Dirt Sword
+		Current : 污垢剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+Doomsday :
+{
+	Name :
+	{
+		Origin : Doomsday
+		Current : 末日
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DoubleBladedLightsaber :
+{
+	Name :
+	{
+		Origin : Double Bladed Lightsaber
+		Current : 双刃光剑
+	}
+	Tooltip :
+	{
+		Origin : 'Watch out to not cut your body in half'
+		Current : '当心别把自己削成两半'
+	}
+}
+
+DraculaSword :
+{
+	Name :
+	{
+		Origin : Dracula Sword
+		Current : 德古拉剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+DragonsDeath :
+{
+	Name :
+	{
+		Origin : Dragon's Death
+		Current : 龙之终路
+	}
+	Tooltip :
+	{
+		Origin : 'Great for impersonating Dragon hunters'
+		Current : '据说曾经杀死了世界上最后一条龙'
+	}
+}
+
+Dragrael :
+{
+	Name :
+	{
+		Origin : Dragrael
+		Current : 泰拉融合巨刃
+	}
+	Tooltip :
+	{
+		Origin : 'Fused from all blades of dragon riders'
+		Current : '融合了所有灵魂……释放出无与伦比的力量'
+	}
+}
+
+DranBody :
+{
+	Name :
+	{
+		Origin : Epidermis of the Death Emperor
+		Current : 梦魇之神骸骨龙甲
+	}
+	Tooltip :
+	{
+		Origin : 
+			'These hands have taken so many lives...'
+			Maximum life increased by 1000
+			50% increased damage
+			100% increased melee damage
+			Increased minion capacity by 8
+			Increased sentries capacity by 6
+			Armor piercing increased to 300
+			Grants immunity to most debuffs
+			Immunity to lava
+		Current : 
+			'席卷世界的梦魇之力汇于双手……灭绝一切！'
+			最大生命值提高1000
+			增加100%近战伤害和50%全职业伤害
+			增加8仆从槽和6哨兵槽
+			增加300点护甲穿透
+			免疫大多数debuff和熔岩
+	}
+}
+
+DranHelmet :
+{
+	Name :
+	{
+		Origin : Maw of the Monster King
+		Current : 梦魇之神骸骨龙盔
+	}
+	Tooltip :
+	{
+		Origin : 
+			'These jaws know only hunger for the next soul'
+			50% increased critical chance
+			Maximum life increased by 1000
+			50% increased damage
+			Reduces mana usage by 90%
+			Reduces ammo usage by 20%
+			Reduces throwing usage by 50%
+			Increased mana regeneration
+			Grants Night Owl and Gills buffs
+		Current : 
+			'下颌注满梦魇之力……你的灵魂将是我的盛宴！'
+			最大生命值提高1000
+			暴击率和伤害提高50%
+			减少90%魔法消耗，增加法术恢复速度
+			减少20%弹药消耗
+			减少50%投掷物消耗
+			拥有夜视和水下呼吸的能力
+			
+	}
+}
+
+DranLeggings :
+{
+	Name :
+	{
+		Origin : Overalls of the Demon Overlord
+		Current : 梦魇之神骸骨龙靴
+	}
+	Tooltip :
+	{
+		Origin : 
+			'These feet travel down the path of absolute carnage'
+			Maximum life increased by 1000
+			50% increased damage
+			100% increased movement speed
+			Immunity to knockback
+			Grants water walking
+			Grants immunity to most debuffs
+			Immunity to lava
+		Current : 
+			'走过的每一步都踏在血泊中……无尽的征服！'
+			最大生命值提高1000
+			伤害提高50%
+			移动速度增加100%
+			免疫击退并可以在水上行走
+			免疫大多数debuff和熔岩
+	}
+}
+
+DranWings :
+{
+	Name :
+	{
+		Origin : Dran Wings
+		Current : 梦魇之神骸骨龙翼
+	}
+	Tooltip :
+	{
+		Origin : 
+			10 seconds fly time
+			Ultimate acceleration
+			Great speed
+			Allows ability to dash
+			20% increased movement speed
+			Increases maximum life by 250
+			20% increased damage
+			Grants gravitation effect
+		Current : 
+			'用死亡之翼给这个混乱的世界盖上无际的夜幕……'
+			10秒飞行时间
+			极致的速度和加速度！
+			可以奔跑并提高20%移动速度
+			最大生命值提高250
+			伤害提高20%
+			可以反转重力
+	}
+}
+
+DranWingsSecond :
+{
+	Name :
+	{
+		Origin : Dran Wings
+		Current : 梦魇之神骸骨龙翼
+	}
+	Tooltip :
+	{
+		Origin : 
+			10 seconds fly time
+			Ultimate acceleration
+			Great speed
+			Allows ability to dash
+			20% increased movement speed
+			Increases maximum life by 250
+			20% increased damage
+			Grants gravitation effect
+		Current : 
+			'用死亡之翼给这个混乱的世界盖上无际的夜幕……'
+			10秒飞行时间
+			极致的速度和加速度！
+			可以奔跑并提高20%移动速度
+			最大生命值提高250
+			伤害提高20%
+			可以反转重力
+	}
+}
+
+DutchmanSword :
+{
+	Name :
+	{
+		Origin : Dutchman Sword
+		Current : 海盗炮剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+EctoplasmicRipper :
+{
+	Name :
+	{
+		Origin : Ectoplasmic Ripper
+		Current : 魔力汲取镰
+	}
+	Tooltip :
+	{
+		Origin : Steals mana points upon hit
+		Current : 击中敌人回复魔力
+	}
+}
+
+EdgeLord :
+{
+	Name :
+	{
+		Origin : Edge Lord
+		Current : 灾难领主
+	Tooltip :
+	{
+		Origin : 'Blood for the Blood God! Skulls for the skull throne! Milk for the Khorne flakes!'
+		Current : '血神终将登上骨之王座……将敌人削为薄片！'
+	}
+}
+
+ElBastardo :
+{
+	Name :
+	{
+		Origin : El Bastardo
+		Current : 厄尔-巴斯塔多
+	}
+	Tooltip :
+	{
+		Origin : 'The legendary El Bastardo'
+		Current : '传说中的厄尔-巴斯塔多'
+	}
+}
+
+EmeraldSword :
+{
+	Name :
+	{
+		Origin : Emerald Sword
+		Current : 翡翠剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+Executioner :
+{
+	Name :
+	{
+		Origin : Executioner
+		Current : 行刑者
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+ExplosiveBulletSword :
+{
+	Name :
+	{
+		Origin : Explosive Bullet Sword
+		Current : 爆破弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Explosive bullets
+		Current : 射出爆破弹
+	}
+}
+
+Extase :
+{
+	Name :
+	{
+		Origin : Extase
+		Current : 厚重剪刃
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+FeatherDuster :
+{
+	Name :
+	{
+		Origin : Feather Duster
+		Current : 羽之剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+FingerOfDoom :
+{
+	Name :
+	{
+		Origin : Finger Of Doom
+		Current : 破碎手指
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+Fireball :
+{
+	Name :
+	{
+		Origin : Fireball
+		Current : 火球之剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+FireBlade :
+{
+	Name :
+	{
+		Origin : Fire Blade
+		Current : 火之剑
+	}
+	Tooltip :
+	{
+		Origin : Inflicts enemies with On Fire!
+		Current : 点燃敌人！
+	}
+}
+
+FixedSwordOfPower :
+{
+	Name :
+	{
+		Origin : Fixed Sword Of Power
+		Current : 强硬之剑
+	}
+	Tooltip :
+	{
+		Origin : Inflicts Midas debuff on enemies
+		Current : 射出骨头
+	}
+}
+
+FlamingArrowSword :
+{
+	Name :
+	{
+		Origin : Flaming Arrow Sword
+		Current : 烈焰箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Flaming arrows
+		Current : 射出烈焰箭
+	}
+}
+
+ForceBlade :
+{
+	Name :
+	{
+		Origin : Force Blade
+		Current : 力量战剑
+	}
+	Tooltip :
+	{
+		Origin : 'Sword with a very strong knockback'
+		Current : '将那些你讨厌的人和怪物打飞！'
+	}
+}
+
+FreezeFireClaw :
+{
+	Name :
+	{
+		Origin : FreezeFire Claw
+		Current : 霜火之刃
+	}
+	Tooltip :
+	{
+		Origin : 'Burns and freezes your enemies to death'
+		Current : '刀刃曾经在两种火焰中打磨了很久……'
+	}
+}
+
+FrostburnArrowSword :
+{
+	Name :
+	{
+		Origin : Frostburn Arrow Sword
+		Current : 霜冻箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Frostburn arrows
+		Current : 射出霜冻箭
+	}
+}
+
+FrozenShard :
+{
+	Name :
+	{
+		Origin : Frozen Shard
+		Current : 急冻霜剑
+	}
+	Tooltip :
+	{
+		Origin : Inflicts Frostburn debuff
+		Current : 射出冰霜能量波
+	}
+}
+
+GelBlade :
+{
+	Name :
+	{
+		Origin : Gel Blade
+		Current : 凝胶战刃
+	}
+	Tooltip :
+	{
+		Origin : Slows down enemies
+		Current : 减速敌人
+	}
+}
+
+GemSlayer :
+{
+	Name :
+	{
+		Origin : Gem Slayer
+		Current : 宝石圣剑
+	}
+	Tooltip :
+	{
+		Origin : Inflicts Midas debuff on enemies
+		Current : 标记你击中的敌人
+	}
+}
+
+GiantUnicornHorn :
+{
+	Name :
+	{
+		Origin : Giant Unicorn Horn
+		Current : 巨型独角兽角
+	}
+	Tooltip :
+	{
+		Origin : Fabolous!
+		Current : 冲锋！
+	}
+}
+
+GlacialCracker :
+{
+	Name :
+	{
+		Origin : Glacial Cracker
+		Current : 宙隙苦寒
+	}
+	Tooltip :
+	{
+		Origin : 'How did you manage to already break it?'
+		Current : '真不敢相信你没有把自己的手冻掉'
+	}
+}
+
+Glamdring :
+{
+	Name :
+	{
+		Origin : Glamdring
+		Current : 精灵之剑
+	}
+	Tooltip :
+	{
+		Origin : 'Sword forged by Elves'
+		Current : '像是小精灵打造的'
+	}
+}
+
+GnomBlade :
+{
+	Name :
+	{
+		Origin : Gnom Blade
+		Current : Gnom之刃-四行星斩
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+GoblinKnife :
+{
+	Name :
+	{
+		Origin : Goblin Knife
+		Current : 哥布林小刀
+	}
+	Tooltip :
+	{
+		Origin : Fast and small knife of Goblins
+		Current : 哥布林的快速小刀
+	}
+}
+
+GoldCoinSword :
+{
+	Name :
+	{
+		Origin : Gold Coin Sword
+		Current : 金币剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots gold coins
+		Current : 射出金币……当然，是无法回收的那种
+	}
+}
+
+GoldenBulletSword :
+{
+	Name :
+	{
+		Origin : Golden Bullet Sword
+		Current : 金子弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Golden bullets
+		Current : 射出金子弹
+	}
+}
+
+Golem :
+{
+	Name :
+	{
+		Origin : Golem
+		Current : 热能喷发剑
+	}
+	Tooltip :
+	{
+		Origin : Ancient sword that was inside Golems body
+		Current : 掉落自蜥蜴人祭祀的巨大魔像……
+	}
+}
+
+GrandPiano :
+{
+	Name :
+	{
+		Origin : Grand Piano
+		Current : 魔琴
+	}
+	Tooltip :
+	{
+		Origin : 'Rage Quit - Horrior'
+		Current : '我想那些演奏者不会高兴的……'
+	}
+}
+
+GreatswordOfTheCosmos :
+{
+	Name :
+	{
+		Origin : Greatsword of the Cosmos
+		Current : 灭界魔剑
+	}
+	Tooltip :
+	{
+		Origin : 'Look, up in the sky! Is it a bird?! Is it a plane?! No, it's-- HOLY S***!'
+		Current : '天上是什么？鸟？不是 飞机？也不是 等等那是——卧槽'
+	}
+}
+
+GreenDamascusChestplate :
+{
+	Name :
+	{
+		Origin : Green Damascus Chestplate
+		Current : 绿骑士胸甲
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Armor for fast warriors'
+			15% increased melee damage
+			10% increased melee speed
+		Current : 
+			'迅捷者的选择'
+			增加15%近战伤害和10%近战速度
+	}
+}
+
+GreenDamascusHelmet :
+{
+	Name :
+	{
+		Origin : Green Damascus Helmet
+		Current : 绿骑士头盔
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Armor for fast warriors'
+			20% increased melee speed
+			14% increased melee critical chance
+		Current : 
+			'迅捷者的选择'
+			增加20%近战速度和14%近战暴击率
+	}
+}
+
+GreenDamascusLeggings :
+{
+	Name :
+	{
+		Origin : Green Damascus Leggings
+		Current : 绿骑士护胫
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Armor for fast warriors'
+			10% increased melee critical chance
+			35% increased movement speed
+		Current : 
+			'迅捷者的选择'
+			增加10%近战暴击率和35%移动速度
+	}
+}
+
+GreenRuneBlade :
+{
+	Name :
+	{
+		Origin : Cursed Rune Blade
+		Current : 诅咒符文刃
+	}
+	Tooltip :
+	{
+		Origin : 'Pulses with corrupted energy of cursed flames'
+		Current : '释放诅咒能量'
+	}
+}
+
+GreenSolutionSpreader :
+{
+	Name :
+	{
+		Origin : Green Solution Spreader
+		Current : 森林扩散器
+	}
+	Tooltip :
+	{
+		Origin : Infinite biome spreading? Awesome!
+		Current : 无限的环境扩展？令人惊叹！
+	}
+}
+
+GrenadeBlade :
+{
+	Name :
+	{
+		Origin : Grenade Blade
+		Current : 手榴弹之刃
+	}
+	Tooltip :
+	{
+		Origin : 'Some madman strapped a grenade to a sword to increase its damage. And now someone even crazier is wielding it as a weapon!'
+		Current : '一些疯子把手榴弹绑在刀上充当配重……现在有一些更疯狂的人要用剑发射手榴弹！'
+	}
+}
+
+HallowSolutionSpreader :
+{
+	Name :
+	{
+		Origin : Hallow Solution Spreader
+		Current : 神圣扩散器
+	}
+	Tooltip :
+	{
+		Origin : Infinite biome spreading? Awesome!
+		Current : 无限的环境扩展？令人惊叹！
+	}
+}
+
+HaloOfHorrors :
+{
+	Name :
+	{
+		Origin : Halo of Horrors
+		Current : 恐惧光环
+	}
+	Tooltip :
+	{
+		Origin : 
+			'The fearsome power of the Dungeon Guardian is now yours!'
+			100 defense
+			100% increased armor penetration
+			Maximum life increased by 2000
+			Provides ultimate health regeneration
+			15% increased damage
+			Curses the wearer with infinite Potion Sickness debuff
+			30% decreased melee speed
+		Current : 
+			'地牢守卫那令人恐惧的力量现在属于你！'
+			'然而地牢的诅咒也将使你付出代价'
+			100 防御
+			护甲穿透提高100%
+			提供极快速的生命回复并使最大生命值提高2000
+			提高15%全职业伤害
+			减少30%近战速度并获得永久药水疾病	
+	}
+}
+
+HeisenbergsFlask :
+{
+	Name :
+	{
+		Origin : Heisenberg's Flask
+		Current : 海森堡烧瓶
+	}
+	Tooltip :
+	{
+		Origin : 'Hablan de un tal Heisenberg que ahora controla el mercado'
+		Current : '我想我们谈论的是控制市场的海森堡人而不是那些疯狂的化学家'
+	}
+}
+
+HellfireArrowSword :
+{
+	Name :
+	{
+		Origin : Hellfire Arrow Sword
+		Current : 狱炎箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Hellfire arrows
+		Current : 射出狱炎箭
+	}
+}
+
+HighVelocityBulletSword :
+{
+	Name :
+	{
+		Origin : High Velocity Bullet Sword
+		Current : 高射速子弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots High Velocity bullets
+		Current : 射出高射速子弹
+	}
+}
+
+HolyArrowSword :
+{
+	Name :
+	{
+		Origin : Holy Arrow Sword
+		Current : 圣箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Holy arrows
+		Current : 射出圣箭
+	}
+}
+
+Horrormageddon :
+{
+	Name :
+	{
+		Origin : Horrormageddon
+		Current : 灾劫前兆
+	}
+	Tooltip :
+	{
+		Origin : 'Where you see an army, I see a graveyard'
+		Current : '为什么你会看到一支军队？我只看到满地的坟墓'
+	}
+}
+
+HumanBuzzSaw :
+{
+	Name :
+	{
+		Origin : Human Buzz Saw
+		Current : 千旋刃舞
+	}
+	Tooltip :
+	{
+		Origin : 'Cuts through hordes of Terraria like butter'
+		Current : '像切黄油那样切碎你的敌人'
+	}
+}
+
+Ice :
+{
+	Name :
+	{
+		Origin : Ice
+		Current : 冰剑
+	}
+	Tooltip :
+	{
+		Origin : 'Winter is coming'
+		Current : '冬天快到了……'
+	}
+}
+
+IceBlade :
+{
+	Name :
+	{
+		Origin : Ice Blade
+		Current : 冰刀
+	}
+	Tooltip :
+	{
+		Origin : Inflicts enemies with Frostburn
+		Current : 刀刃上燃着霜火
+	}
+}
+
+IceBreaker :
+{
+	Name :
+	{
+		Origin : Ice Breaker
+		Current : 冰霜巨剑
+	}
+	Tooltip :
+	{
+		Origin : 'Freezing to the touch'
+		Current : '轻轻触摸也会受伤'
+	}
+}
+
+IceSword :
+{
+	Name :
+	{
+		Origin : Ice Sword
+		Current : 冰剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+IchorArrowSword :
+{
+	Name :
+	{
+		Origin : Ichor Arrow Sword
+		Current : 灵液箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Ichor arrows
+		Current : 射出灵液箭
+	}
+}
+
+IchorBulletSword :
+{
+	Name :
+	{
+		Origin : Ichor Bullet Sword
+		Current : 灵液弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Ichor bullets
+		Current : 射出灵液弹
+	}
+}
+
+IchorDartSword :
+{
+	Name :
+	{
+		Origin : Ichor Dart Sword
+		Current : 灵液镖剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+Inflation :
+{
+	Name :
+	{
+		Origin : Inflation
+		Current : 贪婪
+	}
+	Tooltip :
+	{
+		Origin : 'Your greed knows no bounds, does it?'
+		Current : '你的欲望没有结束的时候吗？！'
+	}
+}
+
+InnosWrath :
+{
+	Name :
+	{
+		Origin : Innos Wrath
+		Current : Ioons之刃
+	}
+	Tooltip :
+	{
+		Origin : Pulses with light energy of Innos
+		Current : 愿Innos的力量助你更好的前行…
+	}
+}
+
+JesterArrowSword :
+{
+	Name :
+	{
+		Origin : Jester Arrow Sword
+		Current : 小丑箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Jester's arrows
+		Current : 射出小丑箭
+	}
+}
+
+KokiriSword :
+{
+	Name :
+	{
+		Origin : Kokiri Sword
+		Current : 克里克之剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+LavaSword :
+{
+	Name :
+	{
+		Origin : Lava Sword
+		Current : 狱火魔剑
+	}
+	Tooltip :
+	{
+		Origin : Inflicts On Fire! debuff on enemies
+		Current : 剑身燃着火焰
+	}
+}
+
+LegendaryWarriorGauntlet :
+{
+	Name :
+	{
+		Origin : Legendary Warrior's Gauntlet
+		Current : 战斗大师手套
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Legendary gauntlet that grants wearer ultimate melee skills'
+			30 defense
+			Highly increased melee damage
+			30% increased melee critical chance
+			Greatly increased life regeneration
+			Increases maximum life by 200
+			20% increased endurance
+			Grants immunity to most debuffs
+			Grants Spelunker, Thorns and Titan potion effects
+		Current : 
+			'赋予佩戴者终极近战技能的传奇饰品'
+			30 防御
+			近战伤害大幅提升并显著提高你的战斗能力
+			近战暴击率提升30%
+			显著提升生命再生速度并提高最大生命值200
+			伤害减免提升20%
+			免疫大多数debuff
+	}
+}
+
+LesserMeleePowerPotion :
+{
+	Name :
+	{
+		Origin : Lesser Melee Power Potion
+		Current : 战士饮品
+	}
+	Tooltip :
+	{
+		Origin : Increases melee stats by small amount
+		Current : 饮用可以让你更加英勇
+	}
+}
+
+Longclaw :
+{
+	Name :
+	{
+		Origin : Longclaw
+		Current : 龙爪
+	}
+	Tooltip :
+	{
+		Origin : 'You know nothing, Jon Snow'
+		Current : '你什么都不知道——琼-斯诺'
+	}
+}
+
+LuminiteArrowSword :
+{
+	Name :
+	{
+		Origin : Luminite Arrow Sword
+		Current : 夜明箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Luminite arrows
+		Current : 射出夜明箭
+	}
+}
+
+LuminiteBulletSword :
+{
+	Name :
+	{
+		Origin : Luminite Bullet Sword
+		Current : 夜明弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Luminite bullets
+		Current : 射出夜明弹
+	}
+}
+
+LunarOrb :
+{
+	Name :
+	{
+		Origin : Lunar Orb
+		Current : 月之心
+	}
+	Tooltip :
+	{
+		Origin : Essence of Lunar Towers
+		Current : 月球的本源
+	}
+}
+
+Machine :
+{
+	Name :
+	{
+		Origin : Machine
+		Current : 星旋剑
+	}
+	Tooltip :
+	{
+		Origin : Pew, pew! Boom, boom!
+		Current : 砰砰，嘭嘭！
+	}
+}
+
+MagicMirrorBlade :
+{
+	Name :
+	{
+		Origin : Magic Mirror Blade
+		Current : 魔镜剑
+	}
+	Tooltip :
+	{
+		Origin : 'Magic Mirror and sword fused together'
+		Current : '魔镜和剑融合……真是多此一举'
+	}
+}
+
+MagicSword :
+{
+	Name :
+	{
+		Origin : Magic Sword
+		Current : 魔法剑
+	}
+	Tooltip :
+	{
+		Origin : You're wizard!
+		Current : 你是个魔法师！
+	}
+}
+
+MagnetSword :
+{
+	Name :
+	{
+		Origin : Magnet Sword
+		Current : 磁球剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Magnet spheres
+		Current : 射出磁球
+	}
+}
+
+MartianSaucerCore :
+{
+	Name :
+	{
+		Origin : Martian Saucer Core
+		Current : 火星能量核心
+	}
+	Tooltip :
+	{
+		Origin : Pulses with space energy
+		Current : 具有超高的外星能量
+	}
+}
+
+MasterSword :
+{
+	Name :
+	{
+		Origin : Master Sword
+		Current : 专业阔剑
+	}
+	Tooltip :
+	{
+		Origin : 'Great for impersonating pot smashers'
+		Current : '战斗还是交给专业人士比较好'
+	}
+}
+
+MechanicalSoul :
+{
+	Name :
+	{
+		Origin : Mechanical Soul
+		Current : 魂械连斩
+	}
+	Tooltip :
+	{
+		Origin : 
+			Left click to shoot multiple projectiles that deal lower damage
+			Right click to shoot big projectile that deals higher damage
+		Current : 
+			左键散射三枚灵魂碎片
+			右键释放穿透敌人的巨大灵魂碎片
+	}
+}
+
+MegaMagicSword :
+{
+	Name :
+	{
+		Origin : Mega Magic Sword
+		Current : 奥术大师
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+MeteorBulletSword :
+{
+	Name :
+	{
+		Origin : Meteor Bullet Sword
+		Current : 流星弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Meteor bullets
+		Current : 射出流星弹
+	}
+}
+
+MolotovSword :
+{
+	Name :
+	{
+		Origin : Molotov Sword
+		Current : 莫洛托夫燃烧剑
+	}
+	Tooltip :
+	{
+		Origin : 'The bottle cracked under the pressure and the flames came out of the wrong end. Though it seems to have improved it...'
+		Current : '现在你终于可以像专业的使用者那样扔到远处了……不……或许更好'
+	}
+}
+
+MoltenShard :
+{
+	Name :
+	{
+		Origin : Molten Shard
+		Current : 燃火之刃
+	}
+	Tooltip :
+	{
+		Origin : Inflicts On Fire! debuff
+		Current : 射出火焰能量波
+	}
+}
+
+MudSword :
+{
+	Name :
+	{
+		Origin : Mud Sword
+		Current : 泥剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+MusketBulletSword :
+{
+	Name :
+	{
+		Origin : Musket Bullet Sword
+		Current : 子弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Musket bullets
+		Current : 射出子弹
+	}
+}
+
+NanoBulletSword :
+{
+	Name :
+	{
+		Origin : Nano Bullet Sword
+		Current : 纳米弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Nano bullets
+		Current : 射出纳米弹
+	}
+}
+
+Narsil :
+{
+	Name :
+	{
+		Origin : Narsil
+		Current : 纳西尔圣剑
+	}
+	Tooltip :
+	{
+		Origin : 'Bane of Sauron'
+		Current : '索伦之鞭'
+	}
+}
+
+NatureSword :
+{
+	Name :
+	{
+		Origin : Nature Sword
+		Current : 自然刺剑
+	}
+	Tooltip :
+	{
+		Origin : 'Sword made out of only pure ingredients given from Mother Nature'
+		Current : '剑只由大自然赐予的纯净成分制成'
+	}
+}
+
+Nightlight :
+{
+	Name :
+	{
+		Origin : Nightlight
+		Current : 魂梭双间
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+NordMead :
+{
+	Name :
+	{
+		Origin : Nord Mead
+		Current : 米德蜜酒
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+OceanRoar :
+{
+	Name :
+	{
+		Origin : Ocean Roar
+		Current : 潮汐
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+OldMansBlade :
+{
+	Name :
+	{
+		Origin : Old Mans Blade
+		Current : 旧日辉光
+	}
+	Tooltip :
+	{
+		Origin : Shoots Golden Shower
+		Current : 射出浓密的灵液
+	}
+}
+
+OmegaExcalibur :
+{
+	Name :
+	{
+		Origin : Omega Excalibur
+		Current : 欧米伽神剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+OnyxSword :
+{
+	Name :
+	{
+		Origin : Onyx Sword
+		Current : 玛瑙爆破剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Onyx
+		Current : 射出玛瑙爆破弹
+	}
+}
+
+OrangeRuneSword :
+{
+	Name :
+	{
+		Origin : Fire Rune Blade
+		Current : 燃烧符文刃
+	}
+	Tooltip :
+	{
+		Origin : 'Pulses with burning heat of fire'
+		Current : '释放燃烧能量'
+	}
+}
+
+Orcrist :
+{
+	Name :
+	{
+		Origin : Orcrist
+		Current : 精铸战剑
+	}
+	Tooltip :
+	{
+		Origin : 'Sword forged by Elves'
+		Current : '用心和汗水打造的剑'
+	}
+}
+
+OrcWarSword :
+{
+	Name :
+	{
+		Origin : Orc War Sword
+		Current : 大型战争剑
+	}
+	Tooltip :
+	{
+		Origin : Big and heavy sword of orcs that requires a lot of strenght to wield
+		Current : 用于战争的巨剑，需要拼尽全力才能挥动
+	}
+}
+
+Orichalcon :
+{
+	Name :
+	{
+		Origin : Orihalcon
+		Current : 剑圣锭
+	}
+	Tooltip :
+	{
+		Origin : Most powerful and rarest ore for making swords
+		Current : 最稀有而又最强大的铸剑用物
+	}
+}
+
+PaladinSword :
+{
+	Name :
+	{
+		Origin : Paladin Sword
+		Current : 圣骑士锤剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+PartyBulletSword :
+{
+	Name :
+	{
+		Origin : Party Bullet Sword
+		Current : 派对弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Party bullets
+		Current : 射出派对弹
+	}
+}
+
+PekkaSword :
+{
+	Name :
+	{
+		Origin : Pekka Sword
+		Current : 精铸佩剑
+	}
+	Tooltip :
+	{
+		Origin : 'DESTROY'
+		Current : '贵族用'
+	}
+}
+
+PhantomScimitar :
+{
+	Name :
+	{
+		Origin : Phantom Scimitar
+		Current : 幻影弯刀
+	}
+	Tooltip :
+	{
+		Origin : Inflicts Shadowflame on hit
+		Current : 刀身……整把刀都是暗影焰造的！
+	}
+}
+
+PianoSword1 :
+{
+	Name :
+	{
+		Origin : Beethoven Beater
+		Current : 月光奏鸣曲
+	}
+	Tooltip :
+	{
+		Origin : 'Moonlight Sonata - Beethoven'
+		Current : '究竟是贝多芬使用这把剑还是这把剑杀死了贝多芬？
+	}
+}
+
+PianoSword2 :
+{
+	Name :
+	{
+		Origin : Gershwin Gasher
+		Current : 蓝色狂想曲
+	}
+	Tooltip :
+	{
+		Origin : 'Rhapsody in Blue - Gershwin'
+		Current : '等等，格什温真的会用剑吗？'
+	}
+}
+
+PianoSword3 :
+{
+	Name :
+	{
+		Origin : Mozart Mauler
+		Current : 20号钢琴协奏曲
+	}
+	Tooltip :
+	{
+		Origin : 'Piano Concerto No.20 - Mozart'
+		Current : '我想知道莫扎特看见这把剑的反应'
+	}
+}
+
+PianoSword4 :
+{
+	Name :
+	{
+		Origin : Liszt Lasher
+		Current : B小调钢琴奏鸣曲
+	}
+	Tooltip :
+	{
+		Origin : 'Piano sonata in B minor - Liszt'
+		Current : '用音乐作为武器！李斯特-拉舍尔！'
+	}
+}
+
+PinkIceSword :
+{
+	Name :
+	{
+		Origin : Pink Ice Sword
+		Current : 神圣冰剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+PoisonBlade :
+{
+	Name :
+	{
+		Origin : Poison Blade
+		Current : 施毒之剑
+	}
+	Tooltip :
+	{
+		Origin : Inflicts enemies with Poison
+		Current : 用毒液攻击敌人
+	}
+}
+
+PoisonCrystallus :
+{
+	Name :
+	{
+		Origin : Poison Crystallus
+		Current : 融毒模具
+	}
+	Tooltip :
+	{
+		Origin : Inflicts Poisoned debuff
+		Current : 射出毒刺
+	}
+}
+
+PoisonSword :
+{
+	Name :
+	{
+		Origin : Poison Sword
+		Current : 毒素剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+PossessedSword :
+{
+	Name :
+	{
+		Origin : Possessed Sword
+		Current : 着魔的剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+PowerOfTheGalactic :
+{
+	Name :
+	{
+		Origin : Power Of The Galactic
+		Current : 星河诸聚
+	}
+	Tooltip :
+	{
+		Origin : Sword made from all galactic elements
+		Current : 银河系全部元素铸造的剑
+	}
+}
+
+PrimeSword :
+{
+	Name :
+	{
+		Origin : Prime Sword
+		Current : 激光之剑
+	}
+	Tooltip :
+	{
+		Origin : Pew, pew!
+		Current : 就像那样，piupiu的射出去！
+	}
+}
+
+PrismSword :
+{
+	Name :
+	{
+		Origin : Prism Sword
+		Current : 棱镜剑
+	}
+	Tooltip :
+	{
+		Origin : 'There is no pot of gold at the end of this rainbow. Only death'
+		Current : '彩虹的尽头不是宝藏……是死亡'
+	}
+}
+
+PumpkinBoom :
+{
+	Name :
+	{
+		Origin : Pumpkin Boom
+		Current : 杰克南瓜灯剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Jack O' Lantern
+		Current : 射出杰克南瓜灯
+	}
+}
+
+PumpkinSword :
+{
+	Name :
+	{
+		Origin : Pumpkin Sword
+		Current : 南瓜剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+PurpleIceSword :
+{
+	Name :
+	{
+		Origin : Purple Ice Sword
+		Current : 腐化冰剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+PurpleRuneBlade :
+{
+	Name :
+	{
+		Origin : Shadow Rune Blade
+		Current : 暗影焰符文剑
+	}
+	Tooltip :
+	{
+		Origin : 'Pulses with dark energy of shadowflame'
+		Current : '释放暗影焰能量'
+	}
+}
+
+PurpleSolutionSpreader :
+{
+	Name :
+	{
+		Origin : Purple Solution Spreader
+		Current : 腐化扩散器
+	}
+	Tooltip :
+	{
+		Origin : Infinite biome spreading? Awesome!
+		Current : 无限的环境扩展？令人惊叹！
+	}
+}
+
+RazorKiller :
+{
+	Name :
+	{
+		Origin : Razor Killer
+		Current : 剃刀松剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Razorpines
+		Current : 射出锋利的松针
+	}
+}
+
+RedDamascusChestplate :
+{
+	Name :
+	{
+		Origin : Red Damascus Chestplate
+		Current : 红骑士头盔
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Armor for agressive warriors'
+			10% increased melee damage
+			10% increased melee critical chance
+		Current : 
+			'战斗者的选择'
+			增加10%近战伤害和暴击率
+	}
+}
+
+RedDamascusHelmet :
+{
+	Name :
+	{
+		Origin : Red Damascus Helmet
+		Current : 红骑士头盔
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Armor for agressive warriors'
+			10% increased melee damage
+			14% increased melee critical chance
+		Current : 
+			'战斗者的选择'
+			增加10%近战伤害和14%暴击率
+	}
+}
+
+RedDamascusLeggings :
+{
+	Name :
+	{
+		Origin : Red Damascus Leggings
+		Current : 红骑士护胫
+	}
+	Tooltip :
+	{
+		Origin : 
+			'Armor for agressive warriors'
+			10% increased melee critical chance
+			10% increased melee damage
+		Current : 
+			'战斗者的选择'
+			增加10%近战伤害和暴击率
+	}
+}
+
+RedFlareLongsword :
+{
+	Name :
+	{
+		Origin : Scarlet Flare Longsword
+		Current : 血液魔剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			Fires scarlet flare waves and ignites enemies with Scarlet flames
+			'Ignite your foes in scarlet flames'
+		Current : 
+			射出燃烧的血液能量波
+			'猩红的火焰点燃前行的路'
+	}
+}
+
+RedIceSword :
+{
+	Name :
+	{
+		Origin : Red Ice Sword
+		Current : 血腥冰剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+RedRuneBlade :
+{
+	Name :
+	{
+		Origin : Life Rune Blade
+		Current : 生命符文剑
+	}
+	Tooltip :
+	{
+		Origin : 'Pulses with red energy of blood'
+		Current : '吸收生命能量'
+	}
+}
+
+RedSolutionSpreader :
+{
+	Name :
+	{
+		Origin : Red Solution Spreader
+		Current : 血腥扩散器
+	}
+	Tooltip :
+	{
+		Origin : Infinite biome spreading? Awesome!
+		Current : 无限的环境扩展？令人惊叹！
+	}
+}
+
+RefinedIronSword :
+{
+	Name :
+	{
+		Origin : Refined Iron Sword
+		Current : 精锻铁剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+RestoredHeroSword :
+{
+	Name :
+	{
+		Origin : Restored Hero Sword
+		Current : 修复英雄剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+Revenant :
+{
+	Name :
+	{
+		Origin : Revenant
+		Current : 宙魂新星
+	}
+	Tooltip :
+	{
+		Origin : 'Point this sword to the sky and unleash spirits of the dead'
+		Current : '剑指天际，释放无穷无尽的灵魂'
+	}
+}
+
+RevenantBag :
+{
+	Name :
+	{
+		Origin : Revenant Bag
+		Current : 灵魂袋
+	}
+	Tooltip :
+	{
+		Origin : 'Something terrible is hidden inside this bag'
+		Current : '直觉告诉你这袋子里装着不得了的宝贝'
+	}
+}
+
+RottenSword :
+{
+	Name :
+	{
+		Origin : Rotten Sword
+		Current : 爆裂藤剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+RubySword :
+{
+	Name :
+	{
+		Origin : Ruby Sword
+		Current : 红玉剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+RustySword :
+{
+	Name :
+	{
+		Origin : Rusty Sword
+		Current : 裂骨锈剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+SandSword :
+{
+	Name :
+	{
+		Origin : Sand Sword
+		Current : 沙剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+Saphira :
+{
+	Name :
+	{
+		Origin : Saphira
+		Current : 降灭蓝剑
+	}
+	Tooltip :
+	{
+		Origin : 'Sword with many shining sapphires attached to it'
+		Current : '天空落下许多美丽的蓝宝石……还有剑'
+	}
+}
+
+SapphireSword :
+{
+	Name :
+	{
+		Origin : Sapphire Sword
+		Current : 蓝玉剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+ScarledFlareGreatsword :
+{
+	Name :
+	{
+		Origin : Scarlet Flare Greatsword
+		Current : 宙血祭奉
+	}
+	Tooltip :
+	{
+		Origin : Fires scarlet flare waves and ignites enemies with flames
+		Current : 燃起猩红之火……献祭你的灵魂……焚烧敌人！
+	}
+}
+
+ScarletFlareCore :
+{
+	Name :
+	{
+		Origin : Scarlet Flare Core
+		Current : 罪焰核心
+	}
+	Tooltip :
+	{
+		Origin : 'Core from depths of hell'
+		Current : '来自地狱深处……'
+	}
+}
+
+ShadowbeamSword :
+{
+	Name :
+	{
+		Origin : Shadowbeam Sword
+		Current : 暗影束剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+Sharkron :
+{
+	Name :
+	{
+		Origin : Sharkron
+		Current : 猪龙鱼佩剑
+	}
+	Tooltip :
+	{
+		Origin : Shaaark!
+		Current : 鲨鱼鲨鱼鲨鱼！
+	}
+}
+
+ShroomiteBlade :
+{
+	Name :
+	{
+		Origin : Shroomite Blade
+		Current : 真菌之刃
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+SilverBulletSword :
+{
+	Name :
+	{
+		Origin : Silver Bullet Sword
+		Current : 银子弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Silver bullets
+		Current : 射出银子弹
+	}
+}
+
+SilverCoinSword :
+{
+	Name :
+	{
+		Origin : Silver Coin Sword
+		Current : 银币剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots silver coins
+		Current : 射出银币……当然，是无法回收的那种
+	}
+}
+
+Skooma :
+{
+	Name :
+	{
+		Origin : Skooma
+		Current : 超人软糖
+	}
+	Tooltip :
+	{
+		Origin : Increases movement speed and jump height
+		Current : 极大幅度提升移动速度和跳跃高度
+	}
+}
+
+SkyPower :
+{
+	Name :
+	{
+		Origin : Sky Power
+		Current : 裂天剑剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : 什么剑？
+	}
+}
+
+SlimeKiller :
+{
+	Name :
+	{
+		Origin : Slime Killer
+		Current : 粘液杀手
+	}
+	Tooltip :
+	{
+		Origin : Sword that killed many slimes
+		Current : 这把剑杀死过许多史莱姆
+	}
+}
+
+SmolderBlade :
+{
+	Name :
+	{
+		Origin : Smolder Blade
+		Current : 炽焰短刀
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+SnowballShooter :
+{
+	Name :
+	{
+		Origin : Snowball Shooter
+		Current : 雪人大剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+SnowSword :
+{
+	Name :
+	{
+		Origin : Snow Sword
+		Current : 雪剑
+	}
+	Tooltip :
+	{
+		Origin : 'Let it snow, let it snow...'
+		Current : '你怎么做到的？'
+	}
+}
+
+SolBlade :
+{
+	Name :
+	{
+		Origin : Sol Blade
+		Current : 彗星魔剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			Unleashes small spread of meteors
+			Melee attacks chance have chance to spawn inferno explosion
+		Current : 
+			释放剧烈爆炸的陨石群
+	}
+}
+
+StakeBlade :
+{
+	Name :
+	{
+		Origin : Stake Blade
+		Current : 尖桩剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+StarDestroyer :
+{
+	Name :
+	{
+		Origin : Star Destroyer
+		Current : 月曜魔剑
+	}
+	Tooltip :
+	{
+		Origin : 'Each time you swing this sword stars are being shattered to pieces'
+		Current : '每次你挥舞这把剑……都会有星星被粉碎'
+	}
+}
+
+StarMaelstorm :
+{
+	Name :
+	{
+		Origin : Star Maelstrom
+		Current : 星海之征
+	}
+	Tooltip :
+	{
+		Origin : 'Todays forecast: shooting stars and hurricanes'
+		Current : '今日天气预报：飓风和流星……大量流星！'
+	}
+}
+
+StarSword :
+{
+	Name :
+	{
+		Origin : Star Sword
+		Current : 星星炮剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Fallen Stars
+		Current : 射出大量星星
+	}
+}
+
+StickyGlowstickSword :
+{
+	Name :
+	{
+		Origin : Sticky Glowstick Sword
+		Current : 粘性荧光棒之刃
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+StickyGrenadeBlade :
+{
+	Name :
+	{
+		Origin : Sticky Grenade Blade
+		Current : 粘性手榴弹之刃
+	}
+	Tooltip :
+	{
+		Origin : 'Nice going Einstein! Now the grenade is stuck to the sword!'
+		Current : '爱因斯坦棒极了！现在手榴弹粘在剑上了！'
+	}
+}
+
+Sting :
+{
+	Name :
+	{
+		Origin : Sting
+		Current : 妖精尖刺
+	}
+	Tooltip :
+	{
+		Origin : Sword forged by Elves
+		Current : 像是小妖精铸造的剑
+	}
+}
+
+StoneShortsword :
+{
+	Name :
+	{
+		Origin : Stone Shortsword
+		Current : 石短剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+StoneSword :
+{
+	Name :
+	{
+		Origin : Stone Sword
+		Current : 石剑
+	}
+	Tooltip :
+	{
+		Origin : 'You Rock!'
+		Current : '你这石头！'
+	}
+}
+
+SuperInflation :
+{
+	Name :
+	{
+		Origin : Super Inflation
+		Current : 觉醒-无尽贪婪
+	}
+	Tooltip :
+	{
+		Origin : 'Throw money at ALL your problems'
+		Current : '用钱来解决你的问题……但形式和通常有些区别'
+	}
+}
+
+SweetCornSword :
+{
+	Name :
+	{
+		Origin : Sweet Corn Sword
+		Current : 玉米糖剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Candy Corn
+		Current : 从来没听说过竹笋也能产玉米
+	}
+}
+
+SwordMatter :
+{
+	Name :
+	{
+		Origin : Sword Matter
+		Current : 剑魂
+	}
+	Tooltip :
+	{
+		Origin : 'Matter of all swords'
+		Current : '刀剑的灵魂'
+	}
+}
+
+SwordOfFlames :
+{
+	Name :
+	{
+		Origin : Sword Of Flames
+		Current : 爆焰魔剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+SwordOfPower :
+{
+	Name :
+	{
+		Origin : Sword Of Power
+		Current : 力量钝剑
+	}
+	Tooltip :
+	{
+		Origin : You need to fix this sword if you want to use it
+		Current : 不建议用它去战斗，你最好修好它
+	}
+}
+
+SwordOfTheEmperor :
+{
+	Name :
+	{
+		Origin : Sword of The Emperor
+		Current : 帝王巨剑
+	}
+	Tooltip :
+	{
+		Origin : 'Grant them the Emperor's mercy. Let the heretics burn!'
+		Current : '皇帝的恩赐……让那些异教徒焚烧吧！'
+	}
+}
+
+SwordOfTheMultiverse :
+{
+	Name :
+	{
+		Origin : Sword of the Multiverse
+		Current : 多元宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 'WARNING! Do NOT craft this Sword! Crafting it will break the game AND your sanity!'
+		Current : '【警告：请不要制作它，祂的强度和配方复杂程度可能会损伤你的理智】'
+	}
+}
+
+SwordOfTheUniverse :
+{
+	Name :
+	{
+		Origin : Sword of the Universe
+		Current : 宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			'This sword doesn't swing. It lifts the Universe towards the blade'
+			Has changeable forms
+		Current : 
+			'宇宙的力量汇聚于此'
+			具有多个相同效果的异形体
+	}
+}
+
+SwordOfTheUniverseV2 :
+{
+	Name :
+	{
+		Origin : Sword of the Universe
+		Current : 宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			'This sword doesn't swing. It lifts the Universe towards the blade'
+			Has changeable forms
+		Current : 
+			'宇宙的力量汇聚于此'
+			具有多个相同效果的异形体
+	}
+}
+
+SwordOfTheUniverseV3 :
+{
+	Name :
+	{
+		Origin : Sword of the Universe
+		Current : 宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			'This sword doesn't swing. It lifts the Universe towards the blade'
+			Has changeable forms
+		Current : 
+			'宇宙的力量汇聚于此'
+			具有多个相同效果的异形体
+	}
+}
+
+SwordOfTheUniverseV4 :
+{
+	Name :
+	{
+		Origin : Sword of the Universe
+		Current : 宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			'This sword doesn't swing. It lifts the Universe towards the blade'
+			Has changeable forms
+		Current : 
+			'宇宙的力量汇聚于此'
+			具有多个相同效果的异形体
+	}
+}
+
+SwordOfTheUniverseV5 :
+{
+	Name :
+	{
+		Origin : Sword of the Universe
+		Current : 宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			'This sword doesn't swing. It lifts the Universe towards the blade'
+			Has changeable forms
+		Current : 
+			'宇宙的力量汇聚于此'
+			具有多个相同效果的异形体
+	}
+}
+
+SwordOfTheUniverseV6 :
+{
+	Name :
+	{
+		Origin : Sword of the Universe
+		Current : 宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			'This sword doesn't swing. It lifts the Universe towards the blade'
+			Has changeable forms
+		Current : 
+			'宇宙的力量汇聚于此'
+			具有多个相同效果的异形体
+	}
+}
+
+SwordOfTheUniverseV7 :
+{
+	Name :
+	{
+		Origin : Sword of the Universe
+		Current : 宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			'This sword doesn't swing. It lifts the Universe towards the blade'
+			Has changeable forms
+		Current : 
+			'宇宙的力量汇聚于此'
+			具有多个相同效果的异形体
+	}
+}
+
+SwordOfTheUniverseV8 :
+{
+	Name :
+	{
+		Origin : Sword of the Universe
+		Current : 宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			'This sword doesn't swing. It lifts the Universe towards the blade'
+			Has changeable forms
+		Current : 
+			'宇宙的力量汇聚于此'
+			具有多个相同效果的异形体
+	}
+}
+
+SwordOfTheUniverseV9 :
+{
+	Name :
+	{
+		Origin : Sword of the Universe
+		Current : 宇宙之剑
+	}
+	Tooltip :
+	{
+		Origin : 
+			'This sword doesn't swing. It lifts the Universe towards the blade'
+			Has changeable forms
+		Current : 
+			'宇宙的力量汇聚于此'
+			具有多个相同效果的异形体
+	}
+}
+
+SwordShard :
+{
+	Name :
+	{
+		Origin : Sword Shard
+		Current : 剑源质
+	}
+	Tooltip :
+	{
+		Origin : Shard of lost sword
+		Current : 那些无比强大的剑的构成支柱
+	}
+}
+
+Tamerlein :
+{
+	Name :
+	{
+		Origin : Tamerlein
+		Current : 视界
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+TheBrain :
+{
+	Name :
+	{
+		Origin : The Brain
+		Current : 髓鞘
+	}
+	Tooltip :
+	{
+		Origin : 'Sword of Crimson'
+		Current : '深红之剑'
+	}
+}
+
+TheEater :
+{
+	Name :
+	{
+		Origin : The Eater
+		Current : 噬者
+	}
+	Tooltip :
+	{
+		Origin : 'Sword of Corruption'
+		Current : '腐烂之剑'
+	}
+}
+
+TheForce :
+{
+	Name :
+	{
+		Origin : The Force
+		Current : 星辰魔剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+TheMasterOfCoin :
+{
+	Name :
+	{
+		Origin : The Master of Coin
+		Current : 财富密码
+	}
+	Tooltip :
+	{
+		Origin : 'End your financial problems with this sword'
+		Current : '这下你再也不用担心财务问题了'
+	}
+}
+
+TheNightmareAmalgamation :
+{
+	Name :
+	{
+		Origin : The Nightmare Amalgamation
+		Current : 梦魇融合
+	}
+	Tooltip :
+	{
+		Origin : 'The source of your nightmares'
+		Current : '一切噩梦的来源……'
+	}
+}
+
+TheStinger :
+{
+	Name :
+	{
+		Origin : The Stinger
+		Current : 毒刺剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots deadly Stingers
+		Current : 射出毒刺
+	}
+}
+
+TheSwarm :
+{
+	Name :
+	{
+		Origin : The Swarm
+		Current : 蜂剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots swarm of bees
+		Current : 释放成群的蜜蜂
+	}
+}
+
+ThunderBlade :
+{
+	Name :
+	{
+		Origin : Thunder Blade
+		Current : 耀光霹雳
+	}
+	Tooltip :
+	{
+		Origin : Zaps enemies with electric bolt
+		Current : 好像是什么的仿制品……
+	}
+}
+
+ThunderOathSword :
+{
+	Name :
+	{
+		Origin : Thunder Oath Sword
+		Current : 雷电誓言
+	}
+	Tooltip :
+	{
+		Origin : 'Most electrifying experience yet'
+		Current : '迄今为止最激动人心的体验'
+	}
+}
+
+TopazSword :
+{
+	Name :
+	{
+		Origin : Topaz Sword
+		Current : 黄玉剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+TrueGemSword :
+{
+	Name :
+	{
+		Origin : True Gem Sword
+		Current : 光明圣剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : 周围有敌人时释放净化之光
+	}
+}
+
+TrueHorrormageddon :
+{
+	Name :
+	{
+		Origin : True Horrormageddon
+		Current : 觉醒-灾劫前兆
+	}
+	Tooltip :
+	{
+		Origin : 'There used to be a graveyard, now it is a crater'
+		Current : '过去这里曾是墓地，现在则是咆哮的火山'
+	}
+}
+
+TrueRuneBlade :
+{
+	Name :
+	{
+		Origin : True Rune Blade
+		Current : 符文操纵者
+	}
+	Tooltip :
+	{
+		Origin : 'Pulses with strong energy of all rune elements'
+		Current : '释放所有符文汇聚的洪流……'
+	}
+}
+
+TrueTerrablade :
+{
+	Name :
+	{
+		Origin : True Terrablade
+		Current : 觉醒泰拉刃
+	}
+	Tooltip :
+	{
+		Origin : Shoots big projectile that explodes into smaller beams after hitting an enemy
+		Current : 释放可以爆炸为无数泰拉剑气的巨大泰拉灵魂
+	}
+}
+
+TwinsSword :
+{
+	Name :
+	{
+		Origin : Twins Sword
+		Current : 魔焰眼之剑
+	}
+	Tooltip :
+	{
+		Origin : Whoosh, whoosh!
+		Current : 就像那样，嗖嗖的射出魔焰！
+	}
+}
+
+UltraMachine :
+{
+	Name :
+	{
+		Origin : Ultra Machine
+		Current : 撼世神械-毁灭圣剑
+	}
+	Tooltip :
+	{
+		Origin : 'Insert Hollywood computer generated special effects here'
+		Current : '融合了所有机械造物的思维和破坏力……'
+	}
+}
+
+UnholyArrowSword :
+{
+	Name :
+	{
+		Origin : Unholy Arrow Sword
+		Current : 邪箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Unholy arrows
+		Current : 射出邪箭
+	}
+}
+
+UpgradeMatter :
+{
+	Name :
+	{
+		Origin : Upgrade Matter
+		Current : 纯粹剑魂
+	}
+	Tooltip :
+	{
+		Origin : 'Source for upgrading swords'
+		Current : '用于锻造最强的剑……'
+	}
+}
+
+Uriziel :
+{
+	Name :
+	{
+		Origin : Uriziel
+		Current : 乌里齐尔战剑
+	}
+	Tooltip :
+	{
+		Origin : Sword of great warrior called Uriziel
+		Current : 名为乌里齐尔的伟大战士之剑
+	}
+}
+
+UselessWeapon :
+{
+	Name :
+	{
+		Origin : Useless Weapon
+		Current : 拐杖
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+VenomArrowSword :
+{
+	Name :
+	{
+		Origin : Venom Arrow Sword
+		Current : 毒液箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Venom arrows
+		Current : 射出毒液箭
+	}
+}
+
+VenomBulletSword :
+{
+	Name :
+	{
+		Origin : Venom Bullet Sword
+		Current : 毒液弹剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Venom bullets
+		Current : 射出毒液弹
+	}
+}
+
+VenomShard :
+{
+	Name :
+	{
+		Origin : Venom Shard
+		Current : 纯毒蛛刃
+	}
+	Tooltip :
+	{
+		Origin : Inflicts Venom debuff
+		Current : 射出毒液矢
+	}
+}
+
+VenomSword :
+{
+	Name :
+	{
+		Origin : Venom Sword
+		Current : 毒液大师之剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+VugarMutater :
+{
+	Name :
+	{
+		Origin : Vugar Mutater
+		Current : 武神突变体
+	}
+	Tooltip :
+	{
+		Origin : 'Gleams with an otherwordly light'
+		Current : '别样的光芒同样可以照亮你前行的方向……'
+	}
+}
+
+WaterBoltSword :
+{
+	Name :
+	{
+		Origin : Water Bolt Sword
+		Current : 水箭剑
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+WeirdSword :
+{
+	Name :
+	{
+		Origin : Weird Sword
+		Current : 奇怪钝剑
+	}
+	Tooltip :
+	{
+		Origin : This sword is weird..
+		Current : 这把剑看上去很奇怪……如果修好的话或许是不错的武器？
+	}
+}
+
+WitchKingsDaughter :
+{
+	Name :
+	{
+		Origin : The Witch King's Daughter
+		Current : 巫妖魔剑
+	}
+	Tooltip :
+	{
+		Origin : Inflicts enemies with Cursed Flames
+		Current : 剑刃上燃着魔焰
+	}
+}
+
+WitherBane :
+{
+	Name :
+	{
+		Origin : Wither Bane
+		Current : 岩层之刃
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+WolfDestroyer :
+{
+	Name :
+	{
+		Origin : Wolf Destroyer
+		Current : 狼人屠戮者
+	}
+	Tooltip :
+	{
+		Origin : 'Great for impersonating Werewolf hunters'
+		Current : '非常适合用于扮演狼人猎手'
+	}
+}
+
+WoodenArrowSword :
+{
+	Name :
+	{
+		Origin : Wooden Arrow Sword
+		Current : 木箭剑
+	}
+	Tooltip :
+	{
+		Origin : Shoots Wooden Arrows
+		Current : 射出木箭
+	}
+}
+
+WraithBlade :
+{
+	Name :
+	{
+		Origin : Wraith Blade
+		Current : 阴影之刃
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+YellowRuneBlade :
+{
+	Name :
+	{
+		Origin : Ichor Rune Blade
+		Current : 灵液符文剑
+	}
+	Tooltip :
+	{
+		Origin : 'Pulses with light energy of ichor'
+		Current : '释放灵液能量'
+	}
+}
+
+ZarRoc :
+{
+	Name :
+	{
+		Origin : Zar Roc
+		Current : 血涌
+	}
+	Tooltip :
+	{
+		Origin : __EMPTY__
+		Current : __EMPTY__
+	}
+}
+
+ZombieKnife :
+{
+	Name :
+	{
+		Origin : Zombie Knife
+		Current : 僵尸之剑
+	}
+	Tooltip :
+	{
+		Origin : 'Great for impersonating Zombie hunters'
+		Current : '适合用来模仿僵尸猎手'
+	}
+}
+

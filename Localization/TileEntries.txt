@@ -1,0 +1,36 @@
+BlackOreTile :
+{
+	0 :
+	{
+		Origin : Black Ore
+		Current : 渊原矿
+	}
+}
+
+DamascusBarTile :
+{
+	0 :
+	{
+		Origin : Damascus Bar
+		Current : 骑士锭
+	}
+}
+
+DamascusOreTile :
+{
+	0 :
+	{
+		Origin : Damascus Ore
+		Current : 骑士原矿
+	}
+}
+
+HaloOfHorrors :
+{
+	0 :
+	{
+		Origin : Trophy
+		Current : 纪念品
+	}
+}
+
