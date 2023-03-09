@@ -55,7 +55,7 @@ public class HumanBuzzSaw : ModProjectile
             Projectile.Kill();
         }
 
-        Projectile.Center = player.MountedCenter;
+        Projectile.Center = player.MountedCenter + new Vector2(45f * player.direction, 0f);
         Projectile.position.X += player.width / 2 * player.direction;
         Projectile.spriteDirection = player.direction;
 
