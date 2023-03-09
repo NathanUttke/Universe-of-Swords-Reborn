@@ -19,8 +19,8 @@ public class HumanBuzzSaw : ModItem
         Item.damage = 24;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
 
-		Item.width = 106;
-		Item.height = 106;
+		Item.width = 102;
+		Item.height = 102;
 		Item.crit = 8;
 		Item.scale = 2f;
 
@@ -30,7 +30,7 @@ public class HumanBuzzSaw : ModItem
 		Item.useAnimation = 4;		
 		Item.UseSound = SoundID.Item1;
 
-		Item.knockBack = 5f;
+		Item.knockBack = 3.5f;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.rare = ItemRarityID.LightRed;
 		Item.shoot = Mod.Find<ModProjectile>("HumanBuzzSaw").Type;

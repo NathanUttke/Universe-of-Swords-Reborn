@@ -31,7 +31,7 @@ public class HumanBuzzSaw : ModProjectile
         Projectile.hide = true;
 
         Projectile.usesLocalNPCImmunity = true;
-        Projectile.localNPCHitCooldown = 15;
+        Projectile.localNPCHitCooldown = 7;
 
         Projectile.aiStyle = -1;
     }
@@ -55,7 +55,7 @@ public class HumanBuzzSaw : ModProjectile
             Projectile.Kill();
         }
 
-        Projectile.Center = player.MountedCenter + new Vector2(45f * player.direction, 0f);
+        Projectile.Center = player.MountedCenter;
         Projectile.position.X += player.width / 2 * player.direction;
         Projectile.spriteDirection = player.direction;
 
