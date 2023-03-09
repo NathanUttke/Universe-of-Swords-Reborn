@@ -7,7 +7,6 @@ using Terraria.Chat;
 using Terraria.Localization;
 using Terraria.GameContent.ItemDropRules;
 using UniverseOfSwordsMod.Items.Weapons;
-using System.Security.Cryptography.X509Certificates;
 
 namespace UniverseOfSwordsMod.NPCs;
 
