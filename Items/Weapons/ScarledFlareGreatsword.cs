@@ -61,8 +61,7 @@ public class ScarledFlareGreatsword : ModItem
 	public override void AddRecipes()
 	{
 		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "SwordShard", 1);
-		val.AddIngredient(Mod, "UpgradeMatter", 4);
+		val.AddIngredient(Mod, "UpgradeMatter", 5);
 		val.AddIngredient(Mod, "RedFlareLongsword", 1);
 		val.AddIngredient(Mod, "ScarletFlareCore", 1);
 		val.AddIngredient(Mod, "TheNightmareAmalgamation", 1);

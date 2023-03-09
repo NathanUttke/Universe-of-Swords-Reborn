@@ -31,11 +31,9 @@ public class Uriziel : ModItem
 
 	public override void AddRecipes()
 	{
-		
-														Recipe val = CreateRecipe(1);
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddIngredient(Mod, "UpgradeMatter", 3);
-		val.AddIngredient(Mod, "SwordShard", 1);
+		val.AddIngredient(Mod, "UpgradeMatter", 4);
 		val.AddIngredient(Mod, "WeirdSword", 1);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();

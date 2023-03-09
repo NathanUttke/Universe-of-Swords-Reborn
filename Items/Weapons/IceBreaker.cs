@@ -38,13 +38,12 @@ public class IceBreaker : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.IceBlade, 1);
 		val.AddIngredient(ItemID.SnowBlock, 999);
 		val.AddIngredient(Mod, "Orichalcon", 1);
-		val.AddIngredient(Mod, "SwordShard", 1);
+		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1);
 		val.AddIngredient(Mod, "SwordMatter", 150);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();

@@ -35,11 +35,9 @@ public class Ice : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																														Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "UpgradeMatter", 3);
-		val.AddIngredient(Mod, "SwordShard", 1);
+	{		
+		Recipe val = CreateRecipe(1);
+		val.AddIngredient(Mod, "UpgradeMatter", 4);
 		val.AddIngredient(Mod, "Orichalcon", 1);
 		val.AddIngredient(Mod, "Orcrist", 1);
 		val.AddIngredient(Mod, "Glamdring", 1);

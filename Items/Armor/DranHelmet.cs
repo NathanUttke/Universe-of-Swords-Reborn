@@ -39,7 +39,7 @@ public class DranHelmet : ModItem
 		val.AddIngredient(ItemID.BossMaskBetsy, 1);
 		val.AddIngredient(Mod, "BlackOre", 50);
 		val.AddIngredient(Mod, "HaloOfHorrors", 1);
-		val.AddIngredient(Mod, "SwordShard", 5);
+		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 5);
 		val.AddIngredient(Mod, "BlueDamascusHelmet", 1);
 		val.AddIngredient(Mod, "GreenDamascusHelmet", 1);
 		val.AddIngredient(Mod, "RedDamascusHelmet", 1);

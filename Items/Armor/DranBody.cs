@@ -39,7 +39,7 @@ public class DranBody : ModItem
 		val.AddIngredient(Mod, "LegendaryWarriorGauntlet", 2);
 		val.AddIngredient(Mod, "BlackOre", 50);
 		val.AddIngredient(Mod, "HaloOfHorrors", 1);
-		val.AddIngredient(Mod, "SwordShard", 2);
+		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2);
 		val.AddIngredient(Mod, "BlueDamascusChestplate", 1);
 		val.AddIngredient(Mod, "GreenDamascusChestplate", 1);
 		val.AddIngredient(Mod, "RedDamascusChestplate", 1);

@@ -47,8 +47,7 @@ public class EdgeLord : ModItem
 		val.AddIngredient(ItemID.VampireBanner, 1);
 		val.AddIngredient(ItemID.HellstoneBar, 80);
 		val.AddIngredient(ItemID.LunarBar, 40);
-		val.AddIngredient(Mod, "SwordShard", 3);
-		val.AddIngredient(Mod, "SwordMatter", 66);
+		val.AddIngredient(Mod, "SwordMatter", 69);
 		val.AddIngredient(ItemID.TrueNightsEdge, 1);
 		val.AddTile(TileID.LunarCraftingStation);
 		val.Register();
@@ -58,8 +57,7 @@ public class EdgeLord : ModItem
 		val2.AddIngredient(ItemID.VampireBanner, 1);
 		val2.AddIngredient(ItemID.HellstoneBar, 80);
 		val2.AddIngredient(ItemID.LunarBar, 40);
-		val2.AddIngredient(Mod, "SwordShard", 3);
-		val2.AddIngredient(Mod, "SwordMatter", 66);
+		val2.AddIngredient(Mod, "SwordMatter", 69);
 		val2.AddIngredient(ItemID.TrueNightsEdge, 1);
 		val2.AddTile(TileID.LunarCraftingStation);
 		val2.Register();
