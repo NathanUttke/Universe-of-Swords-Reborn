@@ -3657,21 +3657,6 @@ SwordOfTheUniverseV9 :
 			具有多个相同效果的异形体
 	}
 }
-
-SwordShard :
-{
-	Name :
-	{
-		Origin : Sword Shard
-		Current : 剑源质
-	}
-	Tooltip :
-	{
-		Origin : Shard of lost sword
-		Current : 那些无比强大的剑的构成支柱
-	}
-}
-
 Tamerlein :
 {
 	Name :

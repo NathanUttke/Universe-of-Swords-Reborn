@@ -148,10 +148,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         {
             npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<GiantUnicornHorn>(), 5, 1));
         }
-        if (npc.type == NPCID.BigMimicHallow)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordShard>(), 3, 1));
-        }
         if (npc.type == NPCID.BigMimicCrimson)
         {
             npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DartSword>(), 3, 1));
