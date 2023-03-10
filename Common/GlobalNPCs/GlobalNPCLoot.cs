@@ -59,16 +59,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         }
         Lighting.AddLight(((Entity)npc).position, 0.1f, 0.2f, 0.7f);
     }
-
-    public override void SetupShop(int type, Chest shop, ref int nextSlot)
-    {
-        if (Main.rand.NextBool(2) && type == 368)
-        {
-            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("Skooma").Type, false);
-            nextSlot++;
-        }
-    }
-
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
         PlayerNameCondition playerNameCondition = new();
