@@ -36,7 +36,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             }
         }
     }
-
     public override void DrawEffects(NPC npc, ref Color drawColor)
     {
         if (!eBlaze)
@@ -59,6 +58,7 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         }
         Lighting.AddLight(((Entity)npc).position, 0.1f, 0.2f, 0.7f);
     }
+
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
         PlayerNameCondition playerNameCondition = new();
@@ -295,6 +295,10 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         if (npc.type == NPCID.Golem)
         {
             npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SolBlade>(), 100, 1));
+        }
+        if (npc.type == NPCID.WallofFlesh)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<BiggoronSword>()));
         }
         if (npc.type == NPCID.MoonLordCore && npc.boss)
         {
