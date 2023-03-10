@@ -16,7 +16,6 @@ public class Uriziel : ModItem
 	{
 		Item.width = 110;
 		Item.height = 110;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 13;

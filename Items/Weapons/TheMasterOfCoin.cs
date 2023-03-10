@@ -19,7 +19,6 @@ public class TheMasterOfCoin : ModItem
     {
         Item.width = 48;
         Item.height = 48;
-        Item.scale = 1.2f;
         Item.rare = ItemRarityID.Purple;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;

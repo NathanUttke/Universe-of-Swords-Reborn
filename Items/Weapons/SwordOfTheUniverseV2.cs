@@ -19,7 +19,6 @@ public class SwordOfTheUniverseV2 : ModItem
 	{
 		Item.width = 140;
 		Item.height = 140;
-		Item.scale = 2f;
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 16;
 		Item.useStyle = ItemUseStyleID.Swing;
@@ -44,11 +43,9 @@ public class SwordOfTheUniverseV2 : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																																																																				Recipe val = CreateRecipe(1);
+	{																																																																				Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "TrueHorrormageddon", 1);
-		val.AddIngredient(Mod, "PrismSword", 1);
+		val.AddIngredient(ModContent.ItemType<PrismSword>(), 1);
 		val.AddIngredient(Mod, "EdgeLord", 1);
 		val.AddIngredient(Mod, "SuperInflation", 1);
 		val.AddIngredient(Mod, "CosmoStorm", 1);

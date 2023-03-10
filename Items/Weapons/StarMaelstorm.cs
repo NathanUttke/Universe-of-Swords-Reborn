@@ -18,7 +18,6 @@ public class StarMaelstorm : ModItem
 	{
 		Item.width = 58;
 		Item.height = 66;
-		Item.scale = 1.2f;
 		Item.rare = ItemRarityID.Purple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;

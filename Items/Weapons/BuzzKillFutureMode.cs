@@ -17,9 +17,8 @@ public class BuzzKillFutureMode : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.3f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Red;
 		Item.crit = 4;
 		Item.useStyle = ItemUseStyleID.Swing;
@@ -55,9 +54,8 @@ public class BuzzKillFutureMode : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-														Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "LunarOrb", 1);
 		val.AddIngredient(ItemID.HiveBackpack, 1);
 		val.AddIngredient(ItemID.LunarBar, 20);

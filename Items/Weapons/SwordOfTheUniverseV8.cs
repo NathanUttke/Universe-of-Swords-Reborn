@@ -19,7 +19,6 @@ public class SwordOfTheUniverseV8 : ModItem
 	{
 		Item.width = 140;
 		Item.height = 140;
-		Item.scale = 2f;
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 16;
 		Item.useStyle = ItemUseStyleID.Swing;

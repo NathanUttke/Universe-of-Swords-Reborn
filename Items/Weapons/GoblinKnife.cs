@@ -14,9 +14,8 @@ public class GoblinKnife : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 20;
-		Item.height = 20;
-		Item.scale = 1.5f;
+		Item.width = 40;
+		Item.height = 40;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 9;
@@ -26,7 +25,8 @@ public class GoblinKnife : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 10, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

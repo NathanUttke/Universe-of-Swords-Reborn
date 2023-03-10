@@ -16,7 +16,6 @@ public class FrozenShard : ModItem
 	{
 		Item.width = 48;
 		Item.height = 56;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.Cyan;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
@@ -32,13 +31,8 @@ public class FrozenShard : ModItem
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-		
-		
-		
-		
-					
-		if (Main.rand.Next(2) == 0)
+	{				
+		if (Main.rand.NextBool(2))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.Frost, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;
@@ -46,9 +40,8 @@ public class FrozenShard : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-										Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "VenomShard", 1);
 		val.AddIngredient(ItemID.FrostCore, 2);
 		val.AddTile(TileID.MythrilAnvil);

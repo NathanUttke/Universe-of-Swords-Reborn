@@ -13,8 +13,8 @@ public class ElBastardo : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 44;
-		Item.height = 44;
+		Item.width = 88;
+		Item.height = 88;
 		Item.scale = 1.3f;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
@@ -25,6 +25,7 @@ public class ElBastardo : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 }

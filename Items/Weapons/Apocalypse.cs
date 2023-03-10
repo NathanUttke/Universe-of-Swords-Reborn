@@ -18,7 +18,6 @@ public class Apocalypse : ModItem
     {
         Item.width = 64;
         Item.height = 68;
-        Item.scale = 1.3f;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 15;

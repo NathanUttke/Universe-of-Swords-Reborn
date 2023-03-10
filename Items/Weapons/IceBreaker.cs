@@ -17,7 +17,6 @@ public class IceBreaker : ModItem
 	{
 		Item.width = 64;
 		Item.height = 64;
-		Item.scale = 1.3f;
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;

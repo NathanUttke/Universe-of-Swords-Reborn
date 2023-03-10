@@ -16,7 +16,7 @@ public class TrueTerrablade : ModItem
     {
         Item.damage = 125;
         Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-        Item.width = 108;
+        Item.width = 92;
         Item.height = 108;
         Item.useTime = 15;
         Item.useAnimation = 15;
@@ -26,7 +26,6 @@ public class TrueTerrablade : ModItem
         Item.shoot = Mod.Find<ModProjectile>("TrueTerrablade").Type;
         Item.shootSpeed = 30f;
         Item.rare = ItemRarityID.Purple;
-        Item.scale = 1f;
         Item.UseSound = SoundID.Item60;
         Item.autoReuse = true;
         Item.useTurn = true;
@@ -34,7 +33,7 @@ public class TrueTerrablade : ModItem
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.Next(1) == 0)
+        if (Main.rand.NextBool(1))
         {
             int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade, 0f, 0f, 100, default(Color), 2f);
             Main.dust[dust].noGravity = true;

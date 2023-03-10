@@ -14,9 +14,8 @@ public class CursedBulletSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 2f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
@@ -37,10 +36,8 @@ public class CursedBulletSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-				
-						Recipe val = CreateRecipe(1);
+	{				
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.CursedBullet, 999);
 		val.AddIngredient(Mod, "SwordMatter", 100);
 		val.AddTile(TileID.Anvils);

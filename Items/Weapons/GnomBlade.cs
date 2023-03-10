@@ -12,7 +12,6 @@ public class GnomBlade : ModItem
 	{
 		Item.width = 64;
 		Item.height = 64;
-		Item.scale = 1.2f;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 9;
@@ -24,7 +23,8 @@ public class GnomBlade : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(1, 0, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -33,9 +33,8 @@ public class GnomBlade : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.FragmentSolar, 10);
 		val.AddIngredient(ItemID.FragmentVortex, 10);
 		val.AddIngredient(ItemID.FragmentNebula, 10);

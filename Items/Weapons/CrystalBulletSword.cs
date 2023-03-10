@@ -14,9 +14,8 @@ public class CrystalBulletSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 1.8f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
@@ -28,7 +27,8 @@ public class CrystalBulletSword : ModItem
 		Item.shoot = ProjectileID.CrystalBullet;
 		Item.shootSpeed = 20f;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -37,10 +37,8 @@ public class CrystalBulletSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-				
-						Recipe val = CreateRecipe(1);
+	{				
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.CrystalBullet, 999);
 		val.AddIngredient(Mod, "SwordMatter", 100);
 		val.AddTile(TileID.Anvils);

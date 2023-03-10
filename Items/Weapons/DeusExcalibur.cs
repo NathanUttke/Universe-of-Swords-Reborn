@@ -17,8 +17,8 @@ public class DeusExcalibur : ModItem
 		Item.damage = 200;
 		Item.crit = 10;
 		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-		Item.width = 44;
-		Item.height = 44;
+		Item.width = 88;
+		Item.height = 88;
 		Item.useTime = 10;
 		Item.useAnimation = 10;
 		Item.useStyle = ItemUseStyleID.Swing;
@@ -32,9 +32,8 @@ public class DeusExcalibur : ModItem
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-											
-																		if (Main.rand.Next(2) == 0)
+	{											
+		if (Main.rand.NextBool(2))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;
@@ -48,9 +47,8 @@ public class DeusExcalibur : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.TrueExcalibur, 1);
 		val.AddIngredient(Mod, "CrystalExcalibur", 1);
 		val.AddIngredient(Mod, "LunarOrb", 1);

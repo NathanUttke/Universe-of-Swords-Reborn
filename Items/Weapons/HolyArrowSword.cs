@@ -14,9 +14,8 @@ public class HolyArrowSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.6f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
@@ -37,10 +36,8 @@ public class HolyArrowSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-				
-						Recipe val = CreateRecipe(1);
+	{				
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.HolyArrow, 999);
 		val.AddIngredient(Mod, "SwordMatter", 120);
 		val.AddTile(TileID.Anvils);

@@ -11,7 +11,6 @@ public class SmolderBlade : ModItem
 	{
 		Item.width = 36;
 		Item.height = 42;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Thrust;
 		Item.useTime = 15;

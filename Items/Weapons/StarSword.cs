@@ -14,9 +14,8 @@ public class StarSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.7f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
@@ -28,13 +27,13 @@ public class StarSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 48500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void AddRecipes()
-	{
-		
-												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordMatter", 100);
 		val.AddIngredient(ItemID.StarCannon, 1);
 		val.AddIngredient(ItemID.FallenStar, 15);

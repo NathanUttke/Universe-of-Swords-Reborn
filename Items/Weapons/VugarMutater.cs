@@ -14,9 +14,8 @@ public class VugarMutater : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 35;
-        Item.height = 35;
-        Item.scale = 1.2f;
+        Item.width = 80;
+        Item.height = 80;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 13;

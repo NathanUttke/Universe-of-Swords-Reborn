@@ -14,9 +14,8 @@ public class WolfDestroyer : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.9f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 13;
@@ -26,7 +25,8 @@ public class WolfDestroyer : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 71800;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

@@ -14,9 +14,8 @@ public class ZombieKnife : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.6f;
+		Item.width = 46;
+		Item.height = 46;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;

@@ -15,9 +15,8 @@ public class Horrormageddon : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 2.4f;
+		Item.width = 128;
+		Item.height = 128;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
@@ -39,9 +38,8 @@ public class Horrormageddon : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "Doomsday", 1);
 		val.AddIngredient(Mod, "Apocalypse", 1);
 		val.AddIngredient(ItemID.Meowmere, 1);

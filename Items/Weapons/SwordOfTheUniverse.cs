@@ -17,9 +17,9 @@ public class SwordOfTheUniverse : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 100;
-		Item.height = 100;
-		Item.scale = 2.1f;
+		Item.width = 137;
+		Item.height = 137;
+		Item.scale = 2f;
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 16;
 		Item.useStyle = ItemUseStyleID.Swing;

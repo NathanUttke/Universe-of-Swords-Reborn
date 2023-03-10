@@ -16,9 +16,8 @@ public class BoxOfGrenades : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 40;
-		Item.height = 40;
-		Item.scale = 1.5f;
+		Item.width = 80;
+		Item.height = 80;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 55;
@@ -35,14 +34,13 @@ public class BoxOfGrenades : ModItem
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
 	{
-		player.itemLocation.X -= 1f * (float)player.direction;
-		player.itemLocation.Y -= 1f * (float)player.direction;
+		player.itemLocation.X -= 1f * player.direction;
+		player.itemLocation.Y -= 1f * player.direction;
 	}
 
 	public override void AddRecipes()
-	{
-		
-																								Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.FireworksLauncher, 1);
 		val.AddIngredient(ItemID.AmmoBox, 1);
 		val.AddIngredient(ItemID.WoodenCrate, 1);

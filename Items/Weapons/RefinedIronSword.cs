@@ -15,7 +15,6 @@ public class RefinedIronSword : ModItem
 	{
 		Item.width = 58;
 		Item.height = 60;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;

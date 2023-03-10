@@ -16,7 +16,6 @@ public class BlowpipeSword : ModItem
 	{
 		Item.width = 38;
 		Item.height = 36;
-		Item.scale = 1.2f;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 23;
@@ -37,9 +36,8 @@ public class BlowpipeSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.Blowpipe, 1);
 		val.AddIngredient(Mod, "DamascusBar", 10);
 		val.AddIngredient(Mod, "SwordMatter", 40);

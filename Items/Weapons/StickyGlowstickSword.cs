@@ -11,7 +11,6 @@ public class StickyGlowstickSword : ModItem
 	{
 		Item.width = 46;
 		Item.height = 46;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;

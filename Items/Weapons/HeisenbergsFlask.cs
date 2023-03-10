@@ -27,7 +27,8 @@ public class HeisenbergsFlask : ModItem
 		Item.UseSound = SoundID.Item107;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

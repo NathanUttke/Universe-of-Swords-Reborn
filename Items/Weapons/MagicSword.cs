@@ -15,9 +15,8 @@ public class MagicSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 1.7f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;

@@ -14,9 +14,9 @@ public class Inflation : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 64;
-        Item.height = 64;
-        Item.scale = 2.5f;
+        Item.width = 128;
+        Item.height = 128;
+        Item.scale = 0.5f;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 10f;

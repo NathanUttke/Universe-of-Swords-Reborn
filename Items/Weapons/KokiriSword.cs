@@ -9,9 +9,8 @@ public class KokiriSword : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.6f;
+		Item.width = 44;
+		Item.height = 44;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
@@ -30,9 +29,8 @@ public class KokiriSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.Wood, 30);
 		val.AddIngredient(ItemID.Ruby, 1);
 		val.AddIngredient(Mod, "SwordMatter", 20);

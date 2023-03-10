@@ -8,9 +8,8 @@ public class FingerOfDoom : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 2f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 13;
@@ -20,6 +19,7 @@ public class FingerOfDoom : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 470100;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee;
+		SacrificeTotal = 1;
 	}
 }

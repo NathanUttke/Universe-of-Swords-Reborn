@@ -14,9 +14,8 @@ public class FixedSwordOfPower : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 1.7f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
@@ -28,7 +27,8 @@ public class FixedSwordOfPower : ModItem
 		Item.shoot = ProjectileID.Bone;
 		Item.shootSpeed = 20f;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -37,9 +37,8 @@ public class FixedSwordOfPower : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-														Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordOfPower", 1);
 		val.AddIngredient(ItemID.Bone, 20);
 		val.AddIngredient(Mod, "UpgradeMatter", 1);

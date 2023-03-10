@@ -15,9 +15,8 @@ public class SwordOfTheEmperor : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 35;
-        Item.height = 35;
-        Item.scale = 1.9f;
+        Item.width = 170;
+        Item.height = 170;        
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 11;

@@ -9,9 +9,8 @@ public class UselessWeapon : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.9f;
+		Item.width = 62;
+		Item.height = 56;
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 14;

@@ -20,25 +20,23 @@ public class SwordOfTheMultiverse : ModItem
 		Item.width = 555;
 		Item.height = 555;
 		Item.scale = 1f;
-		Item.rare = ItemRarityID.Purple;
+		Item.rare = ItemRarityID.Expert;
 		Item.crit = 65;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.axe = 1000;
 		Item.useTime = 15;
 		Item.useAnimation = 15;
-		Item.damage = 80085;
+		Item.damage = 200;
 		Item.knockBack = 2f;
 		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/SOTM");
-
-		Item.shoot = Mod.Find<ModProjectile>("SOTM").Type;
-		Item.shootSpeed = 30f;
-		Item.expert = true;
+		//Item.shoot = Mod.Find<ModProjectile>("SOTM").Type;
+		//Item.shootSpeed = 30f;		
 		Item.value = Item.sellPrice(90, 0, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
 	}
 
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 10f, velocity.Y + 10f, Mod.Find<ModProjectile>("SOTM").Type, damage, knockback, player.whoAmI, 0f, 0f);
 		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 10f, velocity.Y - 10f, Mod.Find<ModProjectile>("SOTM").Type, damage, knockback, player.whoAmI, 0f, 0f);
@@ -52,9 +50,9 @@ public class SwordOfTheMultiverse : ModItem
 		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 12f, velocity.Y + 12f, Mod.Find<ModProjectile>("SOTU8").Type, damage, knockback, player.whoAmI, 0f, 0f);
 		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 10f, velocity.Y - 10f, Mod.Find<ModProjectile>("SOTUV9Projectile").Type, damage, knockback, player.whoAmI, 0f, 0f);
 		return true;
-	}
+	}*/
 
-	public override void AddRecipes()
+    public override void AddRecipes()
 	{
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordOfTheUniverse", 1);

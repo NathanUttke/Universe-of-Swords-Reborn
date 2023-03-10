@@ -9,9 +9,8 @@ public class DartSword : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 2f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
@@ -23,7 +22,8 @@ public class DartSword : ModItem
 		Item.shootSpeed = 20f;
 		Item.value = 304200;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

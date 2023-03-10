@@ -11,7 +11,6 @@ public class TopazSword : ModItem
     {
         Item.width = 32;
         Item.height = 32;
-        Item.scale = 1.2f;
         Item.rare = ItemRarityID.Yellow;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;
@@ -26,7 +25,7 @@ public class TopazSword : ModItem
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.Next(2) == 0)
+        if (Main.rand.NextBool(2))
         {
             int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.HeatRay, 0f, 0f, 100, default(Color), 2f);
             Main.dust[dust].noGravity = true;

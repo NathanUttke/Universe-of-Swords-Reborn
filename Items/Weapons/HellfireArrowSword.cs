@@ -14,9 +14,8 @@ public class HellfireArrowSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.3f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
@@ -28,7 +27,8 @@ public class HellfireArrowSword : ModItem
 		Item.shootSpeed = 10f;
 		Item.value = 14500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee;
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -37,10 +37,8 @@ public class HellfireArrowSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-				
-						Recipe val = CreateRecipe(1);
+	{				
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.HellfireArrow, 999);
 		val.AddIngredient(Mod, "SwordMatter", 110);
 		val.AddTile(TileID.Anvils);

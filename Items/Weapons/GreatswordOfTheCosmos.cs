@@ -19,7 +19,6 @@ public class GreatswordOfTheCosmos : ModItem
 	{
 		Item.width = 100;
 		Item.height = 100;
-		Item.scale = 1.3f;
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 6;
 		Item.useStyle = ItemUseStyleID.Swing;

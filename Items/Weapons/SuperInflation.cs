@@ -15,9 +15,9 @@ public class SuperInflation : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 3f;
+		Item.width = 64;
+		Item.height = 64;
+		Item.scale = 2f;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 10f;

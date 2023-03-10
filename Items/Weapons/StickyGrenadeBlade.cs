@@ -16,7 +16,6 @@ public class StickyGrenadeBlade : ModItem
 	{
 		Item.width = 56;
 		Item.height = 56;
-		Item.scale = 1.3f;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;

@@ -16,7 +16,6 @@ public class InnosWrath : ModItem
 	{
 		Item.width = 124;
 		Item.height = 124;
-		Item.scale = 1.5f;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
