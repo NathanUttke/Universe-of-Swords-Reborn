@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace UniverseOfSwordsMod.Buffs;
 
-public class LesserMeleePower : ModBuff
+public class MeleePower : ModBuff
 {
 	public override void SetStaticDefaults()
 	{

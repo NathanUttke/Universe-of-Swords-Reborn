@@ -2070,11 +2070,11 @@ LegendaryWarriorGauntlet :
 	}
 }
 
-LesserMeleePowerPotion :
+MeleePowerPotion :
 {
 	Name :
 	{
-		Origin : Lesser Melee Power Potion
+		Origin : Melee Power Potion
 		Current : 战士饮品
 	}
 	Tooltip :
