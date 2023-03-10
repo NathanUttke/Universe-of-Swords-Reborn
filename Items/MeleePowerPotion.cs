@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace UniverseOfSwordsMod.Items;
 
-public class LesserMeleePowerPotion : ModItem
+public class MeleePowerPotion : ModItem
 {
 	public override void SetStaticDefaults()
 	{
@@ -24,7 +24,7 @@ public class LesserMeleePowerPotion : ModItem
 		Item.height = 26;
 		Item.value = Item.sellPrice(0, 0, 5, 0);
 		Item.rare = ItemRarityID.Orange;
-		Item.buffType = Mod.Find<ModBuff>("LesserMeleePower").Type;
+		Item.buffType = Mod.Find<ModBuff>("MeleePower").Type;
 		Item.buffTime = 10000;
 		SacrificeTotal = 20;
 	}

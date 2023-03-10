@@ -7,7 +7,7 @@ public class LesserMeleePower : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Lesser Melee Power");
+		DisplayName.SetDefault("Melee Power");
 		Description.SetDefault("Increased melee stats: 4% increased melee crit, 10% increased melee damage and 10% increased melee speed");
 	}
 
