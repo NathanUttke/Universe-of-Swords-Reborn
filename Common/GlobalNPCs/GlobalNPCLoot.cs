@@ -18,244 +18,209 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         LeadingConditionRule leadingConditionRule = new(playerNameCondition);
         Conditions.NotExpert condition = new();
 
-        if (npc.type == NPCID.EnchantedSword)
+        if (npc.lifeMax > 5 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue)
         {
-            npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 10, 20), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 15, 25)));
-        }
-        if (npc.lifeMax > 5 && !NPCID.Sets.CountsAsCritter[npc.type])
-        {
-            npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 3, 1, 1, 5));
-        }
-        if (npc.boss && npc.type == NPCID.EyeofCthulhu)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<CthulhuJudge>()));
-        }
-        if (npc.type == NPCID.KingSlime)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<StickyGlowstickSword>()));
+            npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 3, 1, 1, 2));
         }
         if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
         {
             npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TheEater>()));
         }
-        if (npc.type == NPCID.BrainofCthulhu)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TheBrain>()));
-        }
-        if (npc.type == NPCID.SkeletronHead)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<SwordOfPower>()));
-        }
-        if (npc.type == NPCID.SkeletronPrime)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<PrimeSword>()));
-        }
-        if (npc.type == NPCID.Spazmatism)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TwinsSword>()));
-        }
-        if (npc.type == NPCID.TheDestroyer)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<DestroyerSword>()));
-        }
-        if (npc.type == NPCID.Plantera)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Executioner>()));
-        }
-        if (npc.type == NPCID.Golem)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Golem>()));
-        }
-        if (npc.type == NPCID.CultistBoss)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Doomsday>()));
-        }
-        if (npc.type == NPCID.DukeFishron)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Sharkron>()));
-        }
-        if (npc.type == NPCID.Paladin)
-        {            
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PaladinSword>(), 7, 1));
-        }
-        if (npc.type == NPCID.Vampire)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DraculaSword>(), 40, 2));
-        }
-        if (npc.type == NPCID.VampireBat)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DraculaSword>(), 50, 2));
-        }
-        if (npc.type == NPCID.MartianSaucerCore)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<MartianSaucerCore>(), 2, 1));
-        }
-        if (npc.type == NPCID.Frankenstein)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<FingerOfDoom>(), 40, 2));
-        }
-        if (npc.type == NPCID.Unicorn)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<GiantUnicornHorn>(), 15, 1));
-        }
-        if (npc.type == NPCID.GreekSkeleton)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<CaesarSword>(), 15, 1));
-        }
-        if (npc.type == NPCID.PirateShip)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DutchmanSword>(), 5, 1));
-        }
-        if (npc.type == NPCID.BigMimicCrimson)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DartSword>(), 3, 1));
-        }
-        if (npc.type == NPCID.BigMimicCorruption)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ClingerSword>(), 3, 1));
-        }
-        if (npc.type == NPCID.BigMimicJungle)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<RottenSword>(), 3, 1));
-        }
-        if (npc.type == NPCID.Demon)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));
-        }
-        if (npc.type == NPCID.GoblinWarrior)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Sting>(), 30, 1));
-        }
-        if (npc.type == NPCID.LunarTowerNebula || npc.type == NPCID.LunarTowerStardust || npc.type == NPCID.LunarTowerSolar || npc.type == NPCID.LunarTowerVortex || npc.type == NPCID.LunarTowerStardust)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<InnosWrath>(), 5, 1));
-        }
-        if (npc.type == NPCID.GoblinPeon)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<GoblinKnife>(), 20, 1));
-        }
-        if (npc.type == NPCID.FireImp)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Fireball>(), 30, 1));
-        }
-        if (npc.type == NPCID.GiantBat)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BatSlayer>(), 50, 1));
-        }
-        if (npc.type == NPCID.Piranha)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Biter>(), 80, 1));
-        }
-        if (npc.type == NPCID.DungeonSlime)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SlimeKiller>(), 10, 1));
-        }
-        if (npc.type == NPCID.TheGroom)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<UselessWeapon>()));
-        }
-        if (npc.type == NPCID.Werewolf)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WolfDestroyer>(), 30, 1));
-        }
-        if (npc.type == NPCID.Wraith)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WraithBlade>(), 50, 1));
-        }
-        if (npc.type == NPCID.Zombie || npc.type == NPCID.ArmedZombie || npc.type == NPCID.BaldZombie || npc.type == NPCID.PincushionZombie || npc.type == NPCID.SlimedZombie || npc.type == NPCID.SwampZombie || npc.type == NPCID.TwiggyZombie || npc.type == NPCID.FemaleZombie)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ZombieKnife>(), 50, 1));
-        }
-        if (npc.type == NPCID.Mimic)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ElBastardo>(), 4, 1));
-        }
-        if (npc.type == NPCID.GiantCursedSkull)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WeirdSword>(), 30, 1));
-        }
-        if (npc.type == NPCID.DarkCaster)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WaterBoltSword>(), 40, 1));
-        }
-        if (npc.type == NPCID.Harpy)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<FeatherDuster>(), 30, 1));
-        }
+
         if (System.Array.IndexOf(new int[] { NPCID.WyvernBody, NPCID.WyvernHead, NPCID.WyvernTail }, npc.type) > -1)
         {
             npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SkyPower>(), 10, 1));
-        }
-        if (npc.type == NPCID.RustyArmoredBonesAxe || npc.type == NPCID.RustyArmoredBonesFlail || npc.type == NPCID.RustyArmoredBonesSword || npc.type == NPCID.RustyArmoredBonesSwordNoArmor)
+        }   
+
+        switch (npc.type)
         {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<RustySword>(), 150, 1));
+            case NPCID.EnchantedSword:
+                npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 4, 8), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 8, 12)));
+                break;
+            case NPCID.EyeofCthulhu:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<CthulhuJudge>()));
+                break;
+            case NPCID.KingSlime:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<StickyGlowstickSword>()));
+                break;
+            case NPCID.BrainofCthulhu:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TheBrain>()));
+                break;
+            case NPCID.SkeletronHead:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<SwordOfPower>()));
+                break;
+            case NPCID.SkeletronPrime:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<PrimeSword>()));
+                break;
+            case NPCID.Spazmatism:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TwinsSword>()));
+                break;
+            case NPCID.TheDestroyer:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<DestroyerSword>()));
+                break;
+            case NPCID.Plantera:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Executioner>()));
+                break;                
+            case NPCID.CultistBoss:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Doomsday>()));
+                break;
+            case NPCID.DukeFishron:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Sharkron>()));
+                break;
+            case NPCID.Paladin:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PaladinSword>(), 7, 1));
+                break;
+            case NPCID.Vampire:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DraculaSword>(), 40, 2));
+                break;
+            case NPCID.VampireBat:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DraculaSword>(), 50, 2));
+                break;
+            case NPCID.MartianSaucerCore:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<MartianSaucerCore>(), 2, 1));
+                break;
+            case NPCID.Frankenstein:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<FingerOfDoom>(), 40, 2));
+                break;
+            case NPCID.Unicorn:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<GiantUnicornHorn>(), 15, 1));
+                break;
+            case NPCID.GreekSkeleton:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<CaesarSword>(), 15, 1));
+                break;
+            case NPCID.PirateShip:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DutchmanSword>(), 5, 1));
+                break;
+            case NPCID.BigMimicCrimson:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DartSword>(), 3, 1));
+                break;
+            case NPCID.BigMimicCorruption:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ClingerSword>(), 3, 1));
+                break;
+            case NPCID.BigMimicJungle:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<RottenSword>(), 3, 1));
+                break;
+            case NPCID.GoblinWarrior:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Sting>(), 30, 1));
+                break;
+            case NPCID.LunarTowerNebula:
+            case NPCID.LunarTowerStardust:
+            case NPCID.LunarTowerSolar:
+            case NPCID.LunarTowerVortex:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<InnosWrath>(), 5, 1));
+                break;
+            case NPCID.GoblinPeon:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<GoblinKnife>(), 20, 1));
+                break;
+            case NPCID.FireImp:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Fireball>(), 30, 1));
+                break;
+            case NPCID.GiantBat:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BatSlayer>(), 50, 1));
+                break;
+            case NPCID.Piranha:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Biter>(), 80, 1));
+                break;
+            case NPCID.DungeonSlime:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SlimeKiller>(), 10, 1));
+                break;
+            case NPCID.TheGroom:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<UselessWeapon>()));
+                break;
+            case NPCID.Werewolf:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WolfDestroyer>(), 30, 1));
+                break;
+            case NPCID.Wraith:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WraithBlade>(), 50, 1));
+                break;
+            case NPCID.Zombie:
+            case NPCID.ArmedZombie:
+            case NPCID.BaldZombie:
+            case NPCID.PincushionZombie:
+            case NPCID.SlimedZombie:
+            case NPCID.SwampZombie:
+            case NPCID.TwiggyZombie:
+            case NPCID.FemaleZombie:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ZombieKnife>(), 50, 1));
+                break;
+            case NPCID.Mimic:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ElBastardo>(), 4, 1));
+                break;
+            case NPCID.GiantCursedSkull:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WeirdSword>(), 30, 1));
+                break;
+            case NPCID.DarkCaster:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WaterBoltSword>(), 40, 1));
+                break;
+            case NPCID.Harpy:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<FeatherDuster>(), 30, 1));
+                break;
+            case NPCID.RustyArmoredBonesAxe:
+            case NPCID.RustyArmoredBonesFlail:
+            case NPCID.RustyArmoredBonesSword:
+            case NPCID.RustyArmoredBonesSwordNoArmor:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<RustySword>(), 150, 1));
+                break;
+            case NPCID.BlueArmoredBones:
+            case NPCID.BlueArmoredBonesMace:
+            case NPCID.BlueArmoredBonesNoPants:
+            case NPCID.BlueArmoredBonesSword:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<MagnetSword>(), 150, 1));
+                break;
+            case NPCID.HellArmoredBones:
+            case NPCID.HellArmoredBonesMace:
+            case NPCID.HellArmoredBonesSword:
+            case NPCID.HellArmoredBonesSpikeShield:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfFlames>(), 150, 1));
+                break;
+            case NPCID.MossHornet:
+            case NPCID.FlyingSnake:
+            case NPCID.Arapaima:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DragonsDeath>(), 1250, 1));
+                break;
+            case NPCID.Crab:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<OceanRoar>(), 50, 1));
+                break;
+            case NPCID.BlackRecluse:
+            case NPCID.BlackRecluseWall:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PoisonSword>(), 70, 1));
+                break;
+            case NPCID.GoblinSummoner:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PhantomScimitar>(), 6, 1));
+                break;
+            case NPCID.GraniteGolem:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WitherBane>(), 30, 1));
+                break;
+            case NPCID.DungeonGuardian:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HaloOfHorrors>(), 100, 1));
+                break;
+            case NPCID.DrManFly:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HeisenbergsFlask>(), 30, 1));
+                break;
+            case NPCID.Stylist:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Extase>(), 4, 1));
+                break;
+            case NPCID.RedDevil:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ScarletFlareCore>(), 100, 1));
+                break;
+            case NPCID.Demon:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DaedricSword>(), 60, 1));
+                break;
+            case NPCID.Golem:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Golem>()));
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SolBlade>(), 100, 1));
+                break;
+            case NPCID.WallofFlesh:
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<BiggoronSword>()));
+                break;
+            case NPCID.MoonLordCore:
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<StarMaelstorm>(), 100, 1));
+                IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverse>(), 100, 1);
+                leadingConditionRule.OnSuccess(rule);
+                npcLoot.Add(leadingConditionRule);
+                break;
         }
-        if (npc.type == NPCID.BlueArmoredBones || npc.type == NPCID.BlueArmoredBonesMace || npc.type == NPCID.BlueArmoredBonesNoPants || npc.type == NPCID.BlueArmoredBonesSword)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<MagnetSword>(), 150, 1));
-        }
-        if (npc.type == NPCID.HellArmoredBones || npc.type == NPCID.HellArmoredBonesMace || npc.type == NPCID.HellArmoredBonesSword || npc.type == NPCID.HellArmoredBonesSpikeShield)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfFlames>(), 150, 1));
-        }
-        if (npc.type == NPCID.MossHornet || npc.type == NPCID.Arapaima || npc.type == NPCID.FlyingSnake)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DragonsDeath>(), 1250, 1));
-        }
-        if (npc.type == NPCID.Crab)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<OceanRoar>(), 50, 1));
-        }
-        if (npc.type == NPCID.BlackRecluse || npc.type == NPCID.BlackRecluseWall)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PoisonSword>(), 70, 1));
-        }
-        if (npc.type == NPCID.GoblinSummoner)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PhantomScimitar>(), 6, 1));
-        }
-        if (npc.type == NPCID.GraniteGolem)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WitherBane>(), 30, 1));
-        }
-        if (npc.type == NPCID.DungeonGuardian)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HaloOfHorrors>(), 100, 1));
-        }
-        if (npc.type == NPCID.DrManFly)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HeisenbergsFlask>(), 30, 1));
-        }
-        if (npc.type == NPCID.Stylist)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Extase>(), 4, 1));
-        }
-        if (npc.type == NPCID.MoonLordCore)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<StarMaelstorm>(), 100, 1));
-        }
-        if (npc.type == NPCID.RedDevil)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ScarletFlareCore>(), 100, 1));
-        }
-        if (npc.type == NPCID.Demon)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DaedricSword>(), 60, 1));
-        }
-        if (npc.type == NPCID.Golem)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SolBlade>(), 100, 1));
-        }
-        if (npc.type == NPCID.WallofFlesh)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<BiggoronSword>()));
-        }
-        if (npc.type == NPCID.MoonLordCore && npc.boss)
-        {
-            IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverse>(), 100, 1);
-            leadingConditionRule.OnSuccess(rule);
-            npcLoot.Add(leadingConditionRule);
-        }        
     }
     public override bool PreKill(NPC npc)
     {
