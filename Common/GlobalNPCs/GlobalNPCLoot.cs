@@ -12,61 +12,19 @@ namespace UniverseOfSwordsMod.NPCs;
 
 public class UniverseOfSwordsModGlobalNPC : GlobalNPC
 {
-    public bool eBlaze;
-
-    public override bool InstancePerEntity => true;
-
-    public override void ResetEffects(NPC npc)
-    {
-        eBlaze = false;
-    }
-
-    public override void UpdateLifeRegen(NPC npc, ref int damage)
-    {
-        if (eBlaze)
-        {
-            if (npc.lifeRegen > 0)
-            {
-                npc.lifeRegen = 0;
-            }
-            npc.lifeRegen -= 50;
-            if (damage < 2)
-            {
-                damage = 40;
-            }
-        }
-    }
-    public override void DrawEffects(NPC npc, ref Color drawColor)
-    {
-        if (!eBlaze)
-        {
-            return;
-        }
-        if (Main.rand.Next(8) < 6)
-        {
-            int dust = Dust.NewDust(((Entity)npc).position - new Vector2(2f, 2f), ((Entity)npc).width + 4, ((Entity)npc).height + 4, ((GlobalNPC)this).Mod.Find<ModDust>("EmperorBlaze").Type, ((Entity)npc).velocity.X * 0.4f, ((Entity)npc).velocity.Y * 0.4f, 100, default(Color), 3.5f);
-            Main.dust[dust].noGravity = true;
-            Dust obj = Main.dust[dust];
-            obj.velocity *= 0.5f;
-            Main.dust[dust].velocity.Y -= 0.5f;
-            if (Main.rand.NextBool(8))
-            {
-                Main.dust[dust].noGravity = false;
-                Dust obj2 = Main.dust[dust];
-                obj2.scale *= 0.7f;
-            }
-        }
-        Lighting.AddLight(((Entity)npc).position, 0.1f, 0.2f, 0.7f);
-    }
-
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
         PlayerNameCondition playerNameCondition = new();
         LeadingConditionRule leadingConditionRule = new(playerNameCondition);
         Conditions.NotExpert condition = new();
+
+        if (npc.type == NPCID.EnchantedSword)
+        {
+            npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 10, 20), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 15, 25)));
+        }
         if (npc.lifeMax > 5 && !NPCID.Sets.CountsAsCritter[npc.type])
         {
-            npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 3, 1));
+            npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 3, 1, 1, 5));
         }
         if (npc.boss && npc.type == NPCID.EyeofCthulhu)
         {
@@ -117,7 +75,7 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Sharkron>()));
         }
         if (npc.type == NPCID.Paladin)
-        {
+        {            
             npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PaladinSword>(), 7, 1));
         }
         if (npc.type == NPCID.Vampire)
@@ -297,8 +255,7 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverse>(), 100, 1);
             leadingConditionRule.OnSuccess(rule);
             npcLoot.Add(leadingConditionRule);
-        }
-        
+        }        
     }
     public override bool PreKill(NPC npc)
     {
