@@ -160,10 +160,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         {
             npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<RottenSword>(), 3, 1));
         }
-        if (npc.type == NPCID.RedDevil)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DevilBlade>(), 15, 1));
-        }
         if (npc.type == NPCID.Demon)
         {
             npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));

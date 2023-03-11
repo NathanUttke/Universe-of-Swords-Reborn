@@ -955,20 +955,6 @@ DeusExcalibur :
 	}
 }
 
-DevilBlade :
-{
-	Name :
-	{
-		Origin : Devil Blade
-		Current : 恶魔之刃
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
 DiamondSword :
 {
 	Name :
