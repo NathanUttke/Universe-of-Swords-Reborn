@@ -671,20 +671,6 @@ CrystalSword :
 	}
 }
 
-CrystalVineSword :
-{
-	Name :
-	{
-		Origin : Crystal Vile Sword
-		Current : 魔晶碎块剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
 CthulhuJudge :
 {
 	Name :
@@ -3766,20 +3752,6 @@ TheSwarm :
 	{
 		Origin : Shoots swarm of bees
 		Current : 释放成群的蜜蜂
-	}
-}
-
-ThunderBlade :
-{
-	Name :
-	{
-		Origin : Thunder Blade
-		Current : 耀光霹雳
-	}
-	Tooltip :
-	{
-		Origin : Zaps enemies with electric bolt
-		Current : 好像是什么的仿制品……
 	}
 }
 
