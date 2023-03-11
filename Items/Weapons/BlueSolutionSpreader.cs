@@ -7,28 +7,36 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class BlueSolutionSpreader : ModItem
 {
-	public override void SetStaticDefaults()
+    public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Infinite biome spreading? Awesome!");
+		Tooltip.SetDefault("Infinite biome spreading? Awesome!\nRight click to change to Green Solution Spreader");
 	}
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
-		Item.rare = ItemRarityID.Lime;
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
-		Item.useAnimation = 20;
-		Item.UseSound = SoundID.Item34;
-		Item.shoot = ProjectileID.MushroomSpray;
-		Item.shootSpeed = 10f;
-		Item.value = 830000;
-		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
+        Item.CloneDefaults(ModContent.ItemType<HallowSolutionSpreader>());
+    }
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
+    public override bool AltFunctionUse(Player player)
+    {
+		return true;
+    }
+
+    public override bool? UseItem(Player player)
+    {
+		if (player.altFunctionUse == 2 && player.inventory[player.selectedItem].type == ModContent.ItemType<BlueSolutionSpreader>())
+		{
+			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.SetDefaults(ModContent.ItemType<GreenSolutionSpreader>());
+        }
+		else
+		{            
+            Item.shoot = ProjectileID.MushroomSpray;
+			Item.shootSpeed = 15f;			
+		}
+		return true;
+    }
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
 	{
 		player.itemLocation.Y -= 1f * player.gravDir;
 	}

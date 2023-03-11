@@ -14,19 +14,29 @@ public class GreenSolutionSpreader : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 58;
-		Item.height = 58;
-		Item.rare = ItemRarityID.Lime;
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
-		Item.useAnimation = 20;
-		Item.UseSound = SoundID.Item34;
-		Item.shoot = ProjectileID.PureSpray;
-		Item.shootSpeed = 10f;
-		Item.value = 830000;
-		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
+        Item.CloneDefaults(ModContent.ItemType<HallowSolutionSpreader>());
+    }
+	
+	public override bool AltFunctionUse(Player player)
+    {
+		return true;
+    }
+
+    public override bool? UseItem(Player player)
+    {
+		if (player.altFunctionUse == 2 && player.inventory[player.selectedItem].type == ModContent.ItemType<GreenSolutionSpreader>())
+		{
+			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.SetDefaults(ModContent.ItemType<PurpleSolutionSpreader>());
+        }
+		else
+		{
+			Item.shoot = ProjectileID.PureSpray;
+			Item.shootSpeed = 10f;			
+		}
+		
+		return true;
+    }	
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
 	{
