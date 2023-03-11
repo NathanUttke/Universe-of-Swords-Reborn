@@ -146,7 +146,7 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         }
         if (npc.type == NPCID.PirateShip)
         {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<GiantUnicornHorn>(), 5, 1));
+            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DutchmanSword>(), 5, 1));
         }
         if (npc.type == NPCID.BigMimicCrimson)
         {
@@ -211,10 +211,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         if (npc.type == NPCID.Zombie || npc.type == NPCID.ArmedZombie || npc.type == NPCID.BaldZombie || npc.type == NPCID.PincushionZombie || npc.type == NPCID.SlimedZombie || npc.type == NPCID.SwampZombie || npc.type == NPCID.TwiggyZombie || npc.type == NPCID.FemaleZombie)
         {
             npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ZombieKnife>(), 50, 1));
-        }
-        if (npc.type == NPCID.PossessedArmor)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PossessedSword>(), 40, 1));
         }
         if (npc.type == NPCID.Mimic)
         {
