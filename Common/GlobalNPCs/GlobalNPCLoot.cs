@@ -29,10 +29,10 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             {
                 npc.lifeRegen = 0;
             }
-            npc.lifeRegen -= 120000;
+            npc.lifeRegen -= 50;
             if (damage < 2)
             {
-                damage = 40000;
+                damage = 40;
             }
         }
     }
