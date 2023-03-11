@@ -531,20 +531,6 @@ ClingerSword :
 	}
 }
 
-ClusterBOOMer :
-{
-	Name :
-	{
-		Origin : Cluster BOOMer
-		Current : 集束炸弹EX
-	}
-	Tooltip :
-	{
-		Origin : 'We do not take any responsibility for destroyed buildings'
-		Current : '我们对毁坏的建筑物不负任何责任'
-	}
-}
-
 CopperCoinSword :
 {
 	Name :
