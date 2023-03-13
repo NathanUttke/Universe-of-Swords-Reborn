@@ -3410,24 +3410,6 @@ SwordOfTheUniverseV3 :
 	}
 }
 
-SwordOfTheUniverseV4 :
-{
-	Name :
-	{
-		Origin : Sword of the Universe
-		Current : 宇宙之剑
-	}
-	Tooltip :
-	{
-		Origin : 
-			'This sword doesn't swing. It lifts the Universe towards the blade'
-			Has changeable forms
-		Current : 
-			'宇宙的力量汇聚于此'
-			具有多个相同效果的异形体
-	}
-}
-
 SwordOfTheUniverseV5 :
 {
 	Name :
