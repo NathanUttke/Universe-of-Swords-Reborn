@@ -36,7 +36,7 @@ public class GnomBlade : ModItem
 	{
 		CreateRecipe()	
 			.AddIngredient(ItemID.LunarBar, 15)
-			.AddIngredient(Mod, "Dragrael", 1)
+			.AddIngredient(ItemID.GardenGnome, 1)
 			.AddIngredient(Mod, "Doomsday", 1)
 			.AddIngredient(ItemID.TerraBlade, 1)
 			.AddIngredient(Mod, "LunarOrb", 1)
