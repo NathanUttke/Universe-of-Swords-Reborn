@@ -109,9 +109,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             case NPCID.LunarTowerVortex:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<InnosWrath>(), 5, 1));
                 break;
-            case NPCID.GoblinPeon:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<GoblinKnife>(), 20, 1));
-                break;
             case NPCID.FireImp:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Fireball>(), 30, 1));
                 break;
@@ -132,16 +129,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
                 break;
             case NPCID.Wraith:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WraithBlade>(), 50, 1));
-                break;
-            case NPCID.Zombie:
-            case NPCID.ArmedZombie:
-            case NPCID.BaldZombie:
-            case NPCID.PincushionZombie:
-            case NPCID.SlimedZombie:
-            case NPCID.SwampZombie:
-            case NPCID.TwiggyZombie:
-            case NPCID.FemaleZombie:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ZombieKnife>(), 50, 1));
                 break;
             case NPCID.Mimic:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ElBastardo>(), 4, 1));
