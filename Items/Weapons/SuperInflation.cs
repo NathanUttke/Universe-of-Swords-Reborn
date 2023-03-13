@@ -40,14 +40,10 @@ public class SuperInflation : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																		Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "Inflation", 1);
-		val.AddIngredient(Mod, "CopperCoinSword", 1);
-		val.AddIngredient(Mod, "SilverCoinSword", 1);
-		val.AddIngredient(Mod, "GoldCoinSword", 1);
-		val.AddIngredient(Mod, "UpgradeMatter", 2);
+		val.AddIngredient(Mod, "UpgradeMatter", 4);
 		val.AddIngredient(ItemID.LunarOre, 1);
 		val.AddTile(TileID.LunarCraftingStation);
 		val.Register();
@@ -55,12 +51,12 @@ public class SuperInflation : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-																														float numberProjectiles = 10 + Main.rand.Next(10);
+		float numberProjectiles = 10 + Main.rand.Next(10);
 		float rotation = MathHelper.ToRadians(10f);
 		position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 10f;
 		for (int i = 0; (float)i < numberProjectiles; i++)
 		{
-			Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, (float)i / (numberProjectiles - 1f)), default(Vector2)) * 0.2f;
+			Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
 			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;

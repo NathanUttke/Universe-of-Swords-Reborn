@@ -19,18 +19,18 @@ public class RefinedIronSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 15;
-		Item.knockBack = 6f;
+		Item.damage = 14;
+		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.buyPrice(0, 0, 30, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void AddRecipes()
-	{
-		
-																								Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddRecipeGroup("IronBar", 5);
 		val.AddIngredient(ItemID.IronBroadsword, 1);
 		val.AddIngredient(Mod, "SwordMatter", 20);

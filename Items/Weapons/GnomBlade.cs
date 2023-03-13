@@ -33,21 +33,17 @@ public class GnomBlade : ModItem
 	}
 
 	public override void AddRecipes()
-	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.FragmentSolar, 10);
-		val.AddIngredient(ItemID.FragmentVortex, 10);
-		val.AddIngredient(ItemID.FragmentNebula, 10);
-		val.AddIngredient(ItemID.FragmentStardust, 10);
-		val.AddIngredient(ItemID.LunarBar, 14);
-		val.AddIngredient(Mod, "Dragrael", 1);
-		val.AddIngredient(Mod, "Doomsday", 1);
-		val.AddIngredient(ItemID.TerraBlade, 1);
-		val.AddIngredient(Mod, "LunarOrb", 1);
-		val.AddIngredient(Mod, "Orichalcon", 3);
-		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddTile(TileID.LunarCraftingStation);
-		val.Register();
+	{
+		CreateRecipe()	
+			.AddIngredient(ItemID.LunarBar, 15)
+			.AddIngredient(Mod, "Dragrael", 1)
+			.AddIngredient(Mod, "Doomsday", 1)
+			.AddIngredient(ItemID.TerraBlade, 1)
+			.AddIngredient(Mod, "LunarOrb", 1)
+			.AddIngredient(Mod, "Orichalcon", 3)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -23,10 +23,10 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 {
                     npc.lifeRegen = 0;
                 }
-                npc.lifeRegen -= 50;
+                npc.lifeRegen -= 80;
                 if (damage < 2)
                 {
-                    damage = 40;
+                    damage = 100;
                 }
             }
         }

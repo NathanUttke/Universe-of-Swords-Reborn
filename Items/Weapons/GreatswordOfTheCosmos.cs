@@ -24,7 +24,7 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 10;
 		Item.useAnimation = 10;
-		Item.damage = 440;
+		Item.damage = 200;
 		Item.knockBack = 9f;
 		Item.UseSound = SoundID.Item46;
 		Item.shoot = ProjectileID.Meteor1;
@@ -43,10 +43,9 @@ public class GreatswordOfTheCosmos : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		int numberProjectiles = 30 + Main.rand.Next(30);
-		Vector2 vector2_1 = default(Vector2);
+		Vector2 vector2_1 = default;
 		for (int index = 0; index < numberProjectiles; index++)
 		{
-			//((Vector2)(ref vector2_1))._002Ector((float)(player.position.X + player.width * 1.0 + (double)(Main.rand.Next(100) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X)), (float)(player.position.Y + player.height * 0.5 - 600.0));
 
 			vector2_1.X = (float)(player.position.X + player.width * 1.0 + (double)(Main.rand.Next(100) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X));
 			vector2_1.Y = (float)(player.position.Y + player.height * 0.5 - 600.0);
@@ -67,8 +66,8 @@ public class GreatswordOfTheCosmos : ModItem
 			float num15 = Item.shootSpeed / num14;
 			float num17 = num12 * num15;
 			float num16 = num13 * num15;
-			float SpeedX = num17 + (float)Main.rand.Next(-12, 10) * 0.2f;
-			float SpeedY = num16 + (float)Main.rand.Next(-12, 10) * 0.2f;
+			float SpeedX = num17 + Main.rand.Next(-12, 10) * 0.2f;
+			float SpeedY = num16 + Main.rand.Next(-12, 10) * 0.2f;
 			Projectile.NewProjectile(source, vector2_1.X, vector2_1.Y, SpeedX, SpeedY, type, damage, knockback, Main.myPlayer, 0f, (float)Main.rand.Next(5));
 		}
 		return false;
@@ -76,21 +75,35 @@ public class GreatswordOfTheCosmos : ModItem
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.StarWrath, 1);
-		val.AddIngredient(Mod, "Saphira", 1);
-		val.AddIngredient(ItemID.FragmentSolar, 30);
-		val.AddIngredient(ItemID.FragmentVortex, 30);
-		val.AddIngredient(ItemID.FragmentNebula, 30);
-		val.AddIngredient(ItemID.FragmentStardust, 30);
-		val.AddIngredient(Mod, "PowerOfTheGalactic", 1);
-		val.AddIngredient(ItemID.MeteorStaff, 1);
-		val.AddIngredient(ItemID.MeteoriteBar, 100);
-		val.AddIngredient(ItemID.HellstoneBar, 100);
-		val.AddIngredient(Mod, "Orichalcon", 10);
-		val.AddIngredient(ItemID.LunarBar, 50);
-		val.AddIngredient(Mod, "SwordMatter", 2000);
-		val.AddTile(TileID.LunarCraftingStation);
-		val.Register();
-	}
+		CreateRecipe()
+			.AddIngredient(ItemID.StarWrath, 1)
+			.AddIngredient(Mod, "Saphira", 1)
+			.AddIngredient(ItemID.FragmentSolar, 30)
+			.AddIngredient(ItemID.FragmentVortex, 30)
+			.AddIngredient(ItemID.FragmentNebula, 30)
+			.AddIngredient(ItemID.FragmentStardust, 30)
+			.AddIngredient(ModContent.ItemType<PowerOfTheGalactic>(), 1)
+			.AddIngredient(ItemID.MeteoriteBar, 100)
+			.AddIngredient(ItemID.HellstoneBar, 100)
+			.AddIngredient(ModContent.ItemType<Orichalcon>(), 10)
+			.AddIngredient(ItemID.LunarBar, 50)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 10)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
+        CreateRecipe()
+			.AddIngredient(ModContent.ItemType<StarMaelstorm>(), 1)
+			.AddIngredient(Mod, "Saphira", 1)
+			.AddIngredient(ItemID.FragmentSolar, 30)
+			.AddIngredient(ItemID.FragmentVortex, 30)
+			.AddIngredient(ItemID.FragmentNebula, 30)
+			.AddIngredient(ItemID.FragmentStardust, 30)
+			.AddIngredient(ModContent.ItemType<PowerOfTheGalactic>(), 1)
+			.AddIngredient(ItemID.MeteoriteBar, 100)
+			.AddIngredient(ItemID.HellstoneBar, 100)
+			.AddIngredient(ModContent.ItemType<Orichalcon>(), 10)
+			.AddIngredient(ItemID.LunarBar, 50)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 10)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
+    }
 }

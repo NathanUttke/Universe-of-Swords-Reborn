@@ -25,7 +25,8 @@ public class CaesarSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 45900;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
