@@ -3891,20 +3891,6 @@ WitchKingsDaughter :
 	}
 }
 
-WitherBane :
-{
-	Name :
-	{
-		Origin : Wither Bane
-		Current : 岩层之刃
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
 WolfDestroyer :
 {
 	Name :
