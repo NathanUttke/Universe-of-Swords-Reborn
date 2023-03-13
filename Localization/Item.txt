@@ -587,19 +587,6 @@ CrystalBulletSword :
 	}
 }
 
-CrystalDartSword :
-{
-	Name :
-	{
-		Origin : Crystal Dart Sword
-		Current : 水晶镖剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
 
 Crystallus :
 {
@@ -668,20 +655,6 @@ CursedBulletSword :
 	{
 		Origin : Shoots Cursed bullets
 		Current : 射出诅咒弹
-	}
-}
-
-CursedDartSword :
-{
-	Name :
-	{
-		Origin : Cursed Dart Sword
-		Current : 诅咒镖剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
 	}
 }
 
@@ -812,20 +785,6 @@ DarkBlade :
 	{
 		Origin : Inflicts enemies with Shadowflame
 		Current : 刀身沾满暗影之火…
-	}
-}
-
-DartSword :
-{
-	Name :
-	{
-		Origin : Dart Sword
-		Current : 飞镖剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
 	}
 }
 
@@ -1855,20 +1814,6 @@ IchorBulletSword :
 	{
 		Origin : Shoots Ichor bullets
 		Current : 射出灵液弹
-	}
-}
-
-IchorDartSword :
-{
-	Name :
-	{
-		Origin : Ichor Dart Sword
-		Current : 灵液镖剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
 	}
 }
 
