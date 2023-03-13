@@ -181,9 +181,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             case NPCID.DungeonGuardian:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HaloOfHorrors>(), 100, 1));
                 break;
-            case NPCID.DrManFly:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HeisenbergsFlask>(), 30, 1));
-                break;
             case NPCID.Stylist:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Extase>(), 4, 1));
                 break;

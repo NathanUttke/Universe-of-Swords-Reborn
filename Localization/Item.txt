@@ -1704,20 +1704,6 @@ HaloOfHorrors :
 	}
 }
 
-HeisenbergsFlask :
-{
-	Name :
-	{
-		Origin : Heisenberg's Flask
-		Current : 海森堡烧瓶
-	}
-	Tooltip :
-	{
-		Origin : 'Hablan de un tal Heisenberg que ahora controla el mercado'
-		Current : '我想我们谈论的是控制市场的海森堡人而不是那些疯狂的化学家'
-	}
-}
-
 HellfireArrowSword :
 {
 	Name :
