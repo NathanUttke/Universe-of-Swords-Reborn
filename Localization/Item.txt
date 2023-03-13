@@ -12,20 +12,6 @@ AllWoodSword :
 	}
 }
 
-AlphaExcalibur :
-{
-	Name :
-	{
-		Origin : Alpha Excalibur
-		Current : 阿尔法神剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
 AmberSword :
 {
 	Name :
@@ -615,20 +601,6 @@ CrystalDartSword :
 	}
 }
 
-CrystalExcalibur :
-{
-	Name :
-	{
-		Origin : Crystal Excalibur
-		Current : 晶原神剑
-	}
-	Tooltip :
-	{
-		Origin : 'Sword forged in heaven'
-		Current : '来自天堂的神剑'
-	}
-}
-
 Crystallus :
 {
 	Name :
@@ -924,20 +896,6 @@ Destructor :
 	{
 		Origin : Inflicts Venom debuff on enemies
 		Current : 向敌人体内注射毒液
-	}
-}
-
-DeusExcalibur :
-{
-	Name :
-	{
-		Origin : Deus Excalibur
-		Current : 生命神剑
-	}
-	Tooltip :
-	{
-		Origin : 'The Sword of (My) Life and (Your) Death'
-		Current : '……将迎来生和死，你我各处一侧'
 	}
 }
 
@@ -2379,20 +2337,6 @@ OldMansBlade :
 	{
 		Origin : Shoots Golden Shower
 		Current : 射出浓密的灵液
-	}
-}
-
-OmegaExcalibur :
-{
-	Name :
-	{
-		Origin : Omega Excalibur
-		Current : 欧米伽神剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
 	}
 }
 
