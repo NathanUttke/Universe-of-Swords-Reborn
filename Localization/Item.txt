@@ -1478,6 +1478,20 @@ GnomBlade :
 	}
 }
 
+GoblinKnife :
+{
+	Name :
+	{
+		Origin : Goblin Knife
+		Current : 哥布林小刀
+	}
+	Tooltip :
+	{
+		Origin : Fast and small knife of Goblins
+		Current : 哥布林的快速小刀
+	}
+}
+
 GoldCoinSword :
 {
 	Name :
@@ -1914,20 +1928,6 @@ JesterArrowSword :
 	}
 }
 
-KokiriSword :
-{
-	Name :
-	{
-		Origin : Kokiri Sword
-		Current : 克里克之剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
 LavaSword :
 {
 	Name :
@@ -1983,20 +1983,6 @@ MeleePowerPotion :
 	{
 		Origin : Increases melee stats by small amount
 		Current : 饮用可以让你更加英勇
-	}
-}
-
-Longclaw :
-{
-	Name :
-	{
-		Origin : Longclaw
-		Current : 龙爪
-	}
-	Tooltip :
-	{
-		Origin : 'You know nothing, Jon Snow'
-		Current : '你什么都不知道——琼-斯诺'
 	}
 }
 
@@ -4021,4 +4007,17 @@ ZarRoc :
 	}
 }
 
+ZombieKnife :
+{
+	Name :
+	{
+		Origin : Zombie Knife
+		Current : 僵尸之剑
+	}
+	Tooltip :
+	{
+		Origin : 'Great for impersonating Zombie hunters'
+		Current : '适合用来模仿僵尸猎手'
+	}
+}
 
