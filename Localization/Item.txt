@@ -1478,20 +1478,6 @@ GnomBlade :
 	}
 }
 
-GoblinKnife :
-{
-	Name :
-	{
-		Origin : Goblin Knife
-		Current : 哥布林小刀
-	}
-	Tooltip :
-	{
-		Origin : Fast and small knife of Goblins
-		Current : 哥布林的快速小刀
-	}
-}
-
 GoldCoinSword :
 {
 	Name :
@@ -4035,17 +4021,4 @@ ZarRoc :
 	}
 }
 
-ZombieKnife :
-{
-	Name :
-	{
-		Origin : Zombie Knife
-		Current : 僵尸之剑
-	}
-	Tooltip :
-	{
-		Origin : 'Great for impersonating Zombie hunters'
-		Current : '适合用来模仿僵尸猎手'
-	}
-}
 
