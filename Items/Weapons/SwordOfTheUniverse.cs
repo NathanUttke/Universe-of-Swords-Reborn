@@ -25,7 +25,7 @@ public class SwordOfTheUniverse : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
 		Item.useAnimation = 15;
-		Item.damage = 1337;
+		Item.damage = 100;
 		Item.knockBack = 20f;
 		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/GiantExplosion");
 		Item.shoot = Mod.Find<ModProjectile>("SOTUProjectile1").Type;
@@ -38,8 +38,8 @@ public class SwordOfTheUniverse : ModItem
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
 	{
-		player.itemLocation.X -= 1f * (float)player.direction;
-		player.itemLocation.Y -= 1f * (float)player.direction;
+		player.itemLocation.X -= 1f * player.direction;
+		player.itemLocation.Y -= 1f * player.direction;
 	}
 
 	public override void AddRecipes()
@@ -54,7 +54,7 @@ public class SwordOfTheUniverse : ModItem
 		val3.AddIngredient(Mod, "SwordOfTheUniverseV3", 1);
 		val3.Register();
 		Recipe val4 = CreateRecipe(1);
-		val4.AddIngredient(Mod, "SwordOfTheUniverseV4", 1);
+		val4.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1);
 		val4.Register();
 		Recipe val5 = CreateRecipe(1);
 		val5.AddIngredient(Mod, "SwordOfTheUniverseV5", 1);
