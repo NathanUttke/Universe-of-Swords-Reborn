@@ -335,20 +335,6 @@ BoneArrowSword :
 	}
 }
 
-BouncyGrenadeBlade :
-{
-	Name :
-	{
-		Origin : Bouncy Grenade Blade
-		Current : 弹性手榴弹之刃
-	}
-	Tooltip :
-	{
-		Origin : 'Nothing like a grenade that bounces back to your when thrown... Wait-'
-		Current : '没有什么比扔出去还能弹回到你手里的的手榴弹更棒了……等等，什么？'
-	}
-}
-
 BowSword :
 {
 	Name :
@@ -363,19 +349,6 @@ BowSword :
 	}
 }
 
-BoxOfGrenades :
-{
-	Name :
-	{
-		Origin : Box of Grenades
-		Current : 手榴弹集装箱
-	}
-	Tooltip :
-	{
-		Origin : 'Forget throwing grenades one at a time. Just throw a boxful at your enemies!'
-		Current : '忘记你一次扔一枚手榴弹的时光吧……你现在一次可以扔一箱！'
-	}
-}
 
 Brisingr :
 {
@@ -899,152 +872,6 @@ Dragrael :
 	}
 }
 
-DranBody :
-{
-	Name :
-	{
-		Origin : Epidermis of the Death Emperor
-		Current : 梦魇之神骸骨龙甲
-	}
-	Tooltip :
-	{
-		Origin : 
-			'These hands have taken so many lives...'
-			Maximum life increased by 1000
-			50% increased damage
-			100% increased melee damage
-			Increased minion capacity by 8
-			Increased sentries capacity by 6
-			Armor piercing increased to 300
-			Grants immunity to most debuffs
-			Immunity to lava
-		Current : 
-			'席卷世界的梦魇之力汇于双手……灭绝一切！'
-			最大生命值提高1000
-			增加100%近战伤害和50%全职业伤害
-			增加8仆从槽和6哨兵槽
-			增加300点护甲穿透
-			免疫大多数debuff和熔岩
-	}
-}
-
-DranHelmet :
-{
-	Name :
-	{
-		Origin : Maw of the Monster King
-		Current : 梦魇之神骸骨龙盔
-	}
-	Tooltip :
-	{
-		Origin : 
-			'These jaws know only hunger for the next soul'
-			50% increased critical chance
-			Maximum life increased by 1000
-			50% increased damage
-			Reduces mana usage by 90%
-			Reduces ammo usage by 20%
-			Reduces throwing usage by 50%
-			Increased mana regeneration
-			Grants Night Owl and Gills buffs
-		Current : 
-			'下颌注满梦魇之力……你的灵魂将是我的盛宴！'
-			最大生命值提高1000
-			暴击率和伤害提高50%
-			减少90%魔法消耗，增加法术恢复速度
-			减少20%弹药消耗
-			减少50%投掷物消耗
-			拥有夜视和水下呼吸的能力
-			
-	}
-}
-
-DranLeggings :
-{
-	Name :
-	{
-		Origin : Overalls of the Demon Overlord
-		Current : 梦魇之神骸骨龙靴
-	}
-	Tooltip :
-	{
-		Origin : 
-			'These feet travel down the path of absolute carnage'
-			Maximum life increased by 1000
-			50% increased damage
-			100% increased movement speed
-			Immunity to knockback
-			Grants water walking
-			Grants immunity to most debuffs
-			Immunity to lava
-		Current : 
-			'走过的每一步都踏在血泊中……无尽的征服！'
-			最大生命值提高1000
-			伤害提高50%
-			移动速度增加100%
-			免疫击退并可以在水上行走
-			免疫大多数debuff和熔岩
-	}
-}
-
-DranWings :
-{
-	Name :
-	{
-		Origin : Dran Wings
-		Current : 梦魇之神骸骨龙翼
-	}
-	Tooltip :
-	{
-		Origin : 
-			10 seconds fly time
-			Ultimate acceleration
-			Great speed
-			Allows ability to dash
-			20% increased movement speed
-			Increases maximum life by 250
-			20% increased damage
-			Grants gravitation effect
-		Current : 
-			'用死亡之翼给这个混乱的世界盖上无际的夜幕……'
-			10秒飞行时间
-			极致的速度和加速度！
-			可以奔跑并提高20%移动速度
-			最大生命值提高250
-			伤害提高20%
-			可以反转重力
-	}
-}
-
-DranWingsSecond :
-{
-	Name :
-	{
-		Origin : Dran Wings
-		Current : 梦魇之神骸骨龙翼
-	}
-	Tooltip :
-	{
-		Origin : 
-			10 seconds fly time
-			Ultimate acceleration
-			Great speed
-			Allows ability to dash
-			20% increased movement speed
-			Increases maximum life by 250
-			20% increased damage
-			Grants gravitation effect
-		Current : 
-			'用死亡之翼给这个混乱的世界盖上无际的夜幕……'
-			10秒飞行时间
-			极致的速度和加速度！
-			可以奔跑并提高20%移动速度
-			最大生命值提高250
-			伤害提高20%
-			可以反转重力
-	}
-}
-
 DutchmanSword :
 {
 	Name :
@@ -1504,20 +1331,6 @@ GreenSolutionSpreader :
 	{
 		Origin : Infinite biome spreading? Awesome!
 		Current : 无限的环境扩展？令人惊叹！
-	}
-}
-
-GrenadeBlade :
-{
-	Name :
-	{
-		Origin : Grenade Blade
-		Current : 手榴弹之刃
-	}
-	Tooltip :
-	{
-		Origin : 'Some madman strapped a grenade to a sword to increase its damage. And now someone even crazier is wielding it as a weapon!'
-		Current : '一些疯子把手榴弹绑在刀上充当配重……现在有一些更疯狂的人要用剑发射手榴弹！'
 	}
 }
 
@@ -2919,20 +2732,6 @@ StickyGlowstickSword :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-StickyGrenadeBlade :
-{
-	Name :
-	{
-		Origin : Sticky Grenade Blade
-		Current : 粘性手榴弹之刃
-	}
-	Tooltip :
-	{
-		Origin : 'Nice going Einstein! Now the grenade is stuck to the sword!'
-		Current : '爱因斯坦棒极了！现在手榴弹粘在剑上了！'
 	}
 }
 

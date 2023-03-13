@@ -10,28 +10,29 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class Caladbolg : ModItem
 {
-	public override void SetStaticDefaults()
+    public override string Texture => $"Terraria/Images/Item_{ItemID.Zenith}";
+    public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Caladbolg");
-		Tooltip.SetDefault("'Beati diripientes falsa pro veris sunt Messiahs'");
+		Tooltip.SetDefault("'Beati diripientes falsa pro veris sunt Messiahs'\nJust a Butcher...");
 	}
 
 	public override void SetDefaults()
 	{
 		Item.width = 535;
 		Item.height = 534;
-		Item.scale = 0.5f;
+		Item.scale = 1f;
 		Item.rare = ItemRarityID.Lime;
 		Item.crit = 96;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
 		Item.useAnimation = 25;
-		Item.damage = 10000;
+		Item.damage = 200;
 		Item.knockBack = 50f;
-		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/Ghost");
+		Item.UseSound = SoundID.Item1;
 		Item.shoot = Mod.Find<ModProjectile>("GreenSaw").Type;
 		Item.shootSpeed = 30f;
-		Item.value = Item.sellPrice(0, 30, 0, 0);
+		Item.value = Item.sellPrice(20, 0, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
