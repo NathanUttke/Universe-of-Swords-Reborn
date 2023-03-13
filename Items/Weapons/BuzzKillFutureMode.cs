@@ -27,11 +27,12 @@ public class BuzzKillFutureMode : ModItem
 		Item.damage = 50;
 		Item.knockBack = 1f;
 		Item.UseSound = SoundID.Item1;
-		Item.shoot = ProjectileID.Beenade;
+		Item.shoot = ProjectileID.Bee;
 		Item.shootSpeed = 9f;
 		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -41,16 +42,18 @@ public class BuzzKillFutureMode : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		float spread = 0.174f;
-		float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-		double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
-		double deltaAngle = spread / 2f;
-		for (int i = 0; i < 7; i++)
+		int[] projectileArray = {ProjectileID.BeeHive, ProjectileID.Beenade}; 
+
+		if (Main.rand.NextBool(5))
 		{
-			double offsetAngle = startAngle + deltaAngle * (double)i;
-			Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
-		}
-		return false;
+            float spread = 0.174f;
+            float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
+            double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
+            double deltaAngle = spread / 2f;
+            double offsetAngle = startAngle + deltaAngle;
+            Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projectileArray[Main.rand.Next(0, projectileArray.Length)], damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);         
+        }
+		return true;
 	}
 
 	public override void AddRecipes()

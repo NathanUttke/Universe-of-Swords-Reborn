@@ -23,10 +23,10 @@ public class BuzzKill : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 30;
+		Item.damage = 25;
 		Item.knockBack = 1f;
 		Item.UseSound = SoundID.Item1;
-		Item.shoot = ProjectileID.Beenade;
+		Item.shoot = ProjectileID.Bee;
 		Item.shootSpeed = 8f;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
