@@ -7,47 +7,70 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class AncientKatana : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+		Tooltip.SetDefault("Better if used with a ninja set.");
+    }
+    public override void SetDefaults()
 	{
 		Item.width = 64;
-		Item.height = 68;
+		Item.height = 72;
 		Item.rare = ItemRarityID.LightPurple;
-		Item.scale = 1.4f;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 9;
-		Item.useAnimation = 9;
-		Item.damage = 70;
-		Item.knockBack = 5f;
+		Item.useTime = 10;
+		Item.useAnimation = 10;
+		Item.damage = 65;
+		Item.knockBack = 4f;
+		Item.crit = 15;
 		Item.UseSound = SoundID.Item1;
-		Item.value = 600000;
+		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
-	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-
-		
-		
-		
-								if (Main.rand.Next(3) == 0)
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (player.head == ItemID.NinjaHood && player.body == ItemID.NinjaShirt && player.legs == ItemID.NinjaPants)
 		{
-			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.PortalBoltTrail, 0f, 0f, 100, default(Color), 2f);
+			damage *= 1.04f;
+		}
+    }
+
+    public override void ModifyWeaponCrit(Player player, ref float crit)
+    {
+        if (player.head == ItemID.NinjaHood && player.body == ItemID.NinjaShirt && player.legs == ItemID.NinjaPants)
+        {
+            crit += 1f;
+        }
+    }
+
+    public override void ModifyItemScale(Player player, ref float scale)
+    {
+        if (player.head == ItemID.NinjaHood && player.body == ItemID.NinjaShirt && player.legs == ItemID.NinjaPants)
+        {
+			scale += 0.5f;
+        }
+    }
+
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+	{		
+		if (Main.rand.NextBool(3))
+		{
+			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.PortalBoltTrail, 0f, 0f, 100, default, 2f);
 			Main.dust[dust].noGravity = true;
 		}
 	}
 
 	public override void AddRecipes()
-	{
-		
-																						Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "SwordMatter", 250);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "Orichalcon", 1);
 		val.AddIngredient(ItemID.SoulofFright, 15);
-		val.AddIngredient(ItemID.SoulofMight, 10);
-		val.AddIngredient(ItemID.SoulofLight, 10);
-		val.AddIngredient(ItemID.ChlorophyteBar, 20);
-		val.AddIngredient(Mod, "UpgradeMatter", 1);
+		val.AddIngredient(ItemID.SoulofMight, 15);
+		val.AddIngredient(ItemID.SoulofSight, 15);
+		val.AddIngredient(ItemID.ChlorophyteBar, 15);
+		val.AddIngredient(Mod, "UpgradeMatter", 2);
 		val.AddIngredient(ItemID.Katana, 1);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();
