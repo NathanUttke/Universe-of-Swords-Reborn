@@ -91,9 +91,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             case NPCID.PirateShip:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DutchmanSword>(), 5, 1));
                 break;
-            case NPCID.BigMimicCrimson:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DartSword>(), 3, 1));
-                break;
             case NPCID.BigMimicCorruption:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ClingerSword>(), 3, 1));
                 break;
@@ -174,9 +171,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
                 break;
             case NPCID.GoblinSummoner:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PhantomScimitar>(), 6, 1));
-                break;
-            case NPCID.GraniteGolem:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WitherBane>(), 30, 1));
                 break;
             case NPCID.DungeonGuardian:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HaloOfHorrors>(), 100, 1));
