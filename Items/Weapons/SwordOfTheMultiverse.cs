@@ -41,7 +41,7 @@ public class SwordOfTheMultiverse : ModItem
         Item.autoReuse = true;
 
         Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
-        Item.shootSpeed = 10f;
+        Item.shootSpeed = 12f;
 
 		SacrificeTotal = 1;
 	}
@@ -63,18 +63,10 @@ public class SwordOfTheMultiverse : ModItem
 
     public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "SwordOfTheUniverse", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV2", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV3", 1);
-		val.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV5", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV6", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV7", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV8", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV9", 1);
-		val.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1)
+			.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1)
+			.Register();
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
