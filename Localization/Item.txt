@@ -475,20 +475,6 @@ ChlorophyteArrowSword :
 	}
 }
 
-ChlorophyteBulletSword :
-{
-	Name :
-	{
-		Origin : Chlorophyte Bullet Sword
-		Current : 叶绿弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Chlorophyte bullets
-		Current : 射出叶绿弹
-	}
-}
-
 ClaySword :
 {
 	Name :
@@ -514,20 +500,6 @@ ClingerSword :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-CopperCoinSword :
-{
-	Name :
-	{
-		Origin : Copper Coin Sword
-		Current : 铜币剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots copper coins
-		Current : 射出铜币……当然，是无法回收的那种
 	}
 }
 
@@ -572,21 +544,6 @@ CrimsonCrystallus :
 		Current : __EMPTY__
 	}
 }
-
-CrystalBulletSword :
-{
-	Name :
-	{
-		Origin : Crystal Bullet Sword
-		Current : 魔晶弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Crystal bullets
-		Current : 射出魔晶弹
-	}
-}
-
 
 Crystallus :
 {
@@ -641,20 +598,6 @@ CursedArrowSword :
 	{
 		Origin : Shoots Cursed arrows
 		Current : 射出诅咒箭
-	}
-}
-
-CursedBulletSword :
-{
-	Name :
-	{
-		Origin : Cursed Bullet Sword
-		Current : 诅咒弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Cursed bullets
-		Current : 射出诅咒弹
 	}
 }
 
@@ -1185,20 +1128,6 @@ Executioner :
 	}
 }
 
-ExplosiveBulletSword :
-{
-	Name :
-	{
-		Origin : Explosive Bullet Sword
-		Current : 爆破弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Explosive bullets
-		Current : 射出爆破弹
-	}
-}
-
 Extase :
 {
 	Name :
@@ -1451,34 +1380,6 @@ GoblinKnife :
 	}
 }
 
-GoldCoinSword :
-{
-	Name :
-	{
-		Origin : Gold Coin Sword
-		Current : 金币剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots gold coins
-		Current : 射出金币……当然，是无法回收的那种
-	}
-}
-
-GoldenBulletSword :
-{
-	Name :
-	{
-		Origin : Golden Bullet Sword
-		Current : 金子弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Golden bullets
-		Current : 射出金子弹
-	}
-}
-
 Golem :
 {
 	Name :
@@ -1677,20 +1578,6 @@ HellfireArrowSword :
 	}
 }
 
-HighVelocityBulletSword :
-{
-	Name :
-	{
-		Origin : High Velocity Bullet Sword
-		Current : 高射速子弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots High Velocity bullets
-		Current : 射出高射速子弹
-	}
-}
-
 HolyArrowSword :
 {
 	Name :
@@ -1800,20 +1687,6 @@ IchorArrowSword :
 	{
 		Origin : Shoots Ichor arrows
 		Current : 射出灵液箭
-	}
-}
-
-IchorBulletSword :
-{
-	Name :
-	{
-		Origin : Ichor Bullet Sword
-		Current : 灵液弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Ichor bullets
-		Current : 射出灵液弹
 	}
 }
 
@@ -1928,20 +1801,6 @@ LuminiteArrowSword :
 	{
 		Origin : Shoots Luminite arrows
 		Current : 射出夜明箭
-	}
-}
-
-LuminiteBulletSword :
-{
-	Name :
-	{
-		Origin : Luminite Bullet Sword
-		Current : 夜明弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Luminite bullets
-		Current : 射出夜明弹
 	}
 }
 
@@ -2075,20 +1934,6 @@ MegaMagicSword :
 	}
 }
 
-MeteorBulletSword :
-{
-	Name :
-	{
-		Origin : Meteor Bullet Sword
-		Current : 流星弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Meteor bullets
-		Current : 射出流星弹
-	}
-}
-
 MolotovSword :
 {
 	Name :
@@ -2128,34 +1973,6 @@ MudSword :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-MusketBulletSword :
-{
-	Name :
-	{
-		Origin : Musket Bullet Sword
-		Current : 子弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Musket bullets
-		Current : 射出子弹
-	}
-}
-
-NanoBulletSword :
-{
-	Name :
-	{
-		Origin : Nano Bullet Sword
-		Current : 纳米弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Nano bullets
-		Current : 射出纳米弹
 	}
 }
 
@@ -2324,20 +2141,6 @@ PaladinSword :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-PartyBulletSword :
-{
-	Name :
-	{
-		Origin : Party Bullet Sword
-		Current : 派对弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Party bullets
-		Current : 射出派对弹
 	}
 }
 
@@ -2945,34 +2748,6 @@ ShroomiteBlade :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-SilverBulletSword :
-{
-	Name :
-	{
-		Origin : Silver Bullet Sword
-		Current : 银子弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Silver bullets
-		Current : 射出银子弹
-	}
-}
-
-SilverCoinSword :
-{
-	Name :
-	{
-		Origin : Silver Coin Sword
-		Current : 银币剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots silver coins
-		Current : 射出银币……当然，是无法回收的那种
 	}
 }
 
@@ -3735,20 +3510,6 @@ VenomArrowSword :
 	{
 		Origin : Shoots Venom arrows
 		Current : 射出毒液箭
-	}
-}
-
-VenomBulletSword :
-{
-	Name :
-	{
-		Origin : Venom Bullet Sword
-		Current : 毒液弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Venom bullets
-		Current : 射出毒液弹
 	}
 }
 
