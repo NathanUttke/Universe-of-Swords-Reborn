@@ -20,20 +20,21 @@ public class Caladbolg : ModItem
 	{
 		Item.width = 535;
 		Item.height = 534;
-		Item.scale = 1f;
+		Item.scale = 0.5f;
 		Item.rare = ItemRarityID.Lime;
 		Item.crit = 96;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
 		Item.useAnimation = 25;
-		Item.damage = 666666;
+		Item.damage = 10000;
 		Item.knockBack = 50f;
 		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/Ghost");
 		Item.shoot = Mod.Find<ModProjectile>("GreenSaw").Type;
 		Item.shootSpeed = 30f;
-		Item.value = Item.sellPrice(1000000, 0, 0, 0);
+		Item.value = Item.sellPrice(0, 30, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
