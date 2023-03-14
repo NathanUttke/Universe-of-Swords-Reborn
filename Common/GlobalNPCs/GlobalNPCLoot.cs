@@ -18,7 +18,7 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         LeadingConditionRule leadingConditionRule = new(playerNameCondition);
         Conditions.NotExpert condition = new();
 
-        if (npc.lifeMax > 5 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue)
+        if (npc.lifeMax > 10 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly)
         {
             npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 3, 1, 1, 2));
         }
