@@ -9,6 +9,7 @@ public class BiggoronSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
+		DisplayName.SetDefault("Sword of The Legend");
 		Tooltip.SetDefault("Heavy but strong");
 	}
 
@@ -21,7 +22,7 @@ public class BiggoronSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 40;
 		Item.useAnimation = 40;
-		Item.damage = 30;
+		Item.damage = 40;
 		Item.knockBack = 2f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 19000;
