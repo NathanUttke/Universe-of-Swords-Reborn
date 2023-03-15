@@ -41,7 +41,9 @@ public class GnomBlade : ModItem
 			.AddIngredient(ItemID.TerraBlade, 1)
 			.AddIngredient(Mod, "LunarOrb", 1)
 			.AddIngredient(Mod, "Orichalcon", 3)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+			.AddIngredient(ModContent.ItemType<TrueTerrablade>(), 1)
+			.AddIngredient(ItemID.DD2SquireBetsySword, 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();
 	}

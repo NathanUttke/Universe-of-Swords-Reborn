@@ -15,9 +15,8 @@ public class TheEater : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 58;
+        Item.width = 54;
         Item.height = 58;
-        Item.scale = 1f;
         Item.rare = ItemRarityID.LightPurple;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 32;
@@ -25,7 +24,7 @@ public class TheEater : ModItem
         Item.damage = 15;
         Item.knockBack = 3f;
         Item.UseSound = SoundID.Item1;
-        Item.value = Item.sellPrice(0, 0, 50, 0);
+        Item.value = Item.sellPrice(0, 0, 60, 0);
         Item.shoot = ProjectileID.EatersBite;
         Item.shootSpeed = 8f;
         Item.autoReuse = false;
@@ -35,7 +34,10 @@ public class TheEater : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectile(source, position, velocity * 0.75f, Item.shoot, 3, 4f, player.whoAmI);
+        if (Main.rand.NextBool(3))
+		{
+			Projectile.NewProjectile(source, position, velocity * 0.75f, Item.shoot, 3, 4f, player.whoAmI);
+		}
         return false;
     }
 

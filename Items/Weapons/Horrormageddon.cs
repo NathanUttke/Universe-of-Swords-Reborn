@@ -26,7 +26,7 @@ public class Horrormageddon : ModItem
 		Item.UseSound = SoundID.Item71;
 		Item.shoot = ProjectileID.DeathSickle;
 		Item.shootSpeed = 10f;
-		Item.value = 666666;
+		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
 	}
@@ -42,9 +42,6 @@ public class Horrormageddon : ModItem
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "Doomsday", 1);
 		val.AddIngredient(Mod, "Apocalypse", 1);
-		val.AddIngredient(ItemID.Meowmere, 1);
-		val.AddIngredient(ItemID.TheHorsemansBlade, 1);
-		val.AddIngredient(ItemID.StarWrath, 1);
 		val.AddIngredient(Mod, "Machine", 1);
 		val.AddIngredient(Mod, "InnosWrath", 1);
 		val.AddIngredient(Mod, "BeliarClaw", 1);

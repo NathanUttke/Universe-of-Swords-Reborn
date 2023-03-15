@@ -90,4 +90,15 @@ public class StarMaelstorm : ModItem
 		}
 		return false;
 	}
+
+    public override void AddRecipes()
+    {
+		CreateRecipe()
+			.AddIngredient(ModContent.ItemType<StarSword>(), 1)
+			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
+			.AddIngredient(ItemID.StarWrath, 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
+    }
 }

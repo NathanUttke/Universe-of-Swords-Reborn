@@ -28,7 +28,7 @@ public class BuzzKillFutureMode : ModItem
 		Item.knockBack = 1f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ProjectileID.Bee;
-		Item.shootSpeed = 9f;
+		Item.shootSpeed = 10f;
 		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -42,28 +42,31 @@ public class BuzzKillFutureMode : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int[] projectileArray = {ProjectileID.BeeHive, ProjectileID.Beenade}; 
+        float spread = 0.174f;
+        float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
+        double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
+        double deltaAngle = spread / 2f;
+        double offsetAngle = startAngle + deltaAngle;
 
-		if (Main.rand.NextBool(5))
+        if (Main.rand.NextBool(7))
 		{
-            float spread = 0.174f;
-            float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-            double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
-            double deltaAngle = spread / 2f;
-            double offsetAngle = startAngle + deltaAngle;
-            Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projectileArray[Main.rand.Next(0, projectileArray.Length)], damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);         
+            Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ProjectileID.Beenade, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);         
         }
-		return true;
+        for (int i = 0; i < 2; i++)
+        {
+			offsetAngle *= i;
+            Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
+        }
+        return false;
 	}
 
 	public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "LunarOrb", 1);
-		val.AddIngredient(ItemID.HiveBackpack, 1);
-		val.AddIngredient(ItemID.LunarBar, 20);
-		val.AddIngredient(Mod, "BuzzKill", 1);
-		val.AddTile(TileID.LunarCraftingStation);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
+			.AddIngredient(ModContent.ItemType<BuzzKill>(), 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
 	}
 }

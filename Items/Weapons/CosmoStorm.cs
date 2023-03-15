@@ -51,7 +51,7 @@ public class CosmoStorm : ModItem
         val.AddIngredient(ItemID.NebulaArcanum, 1);
         val.AddIngredient(ItemID.TrueExcalibur, 1);
         val.AddIngredient(ItemID.LargeAmethyst, 4);
-        val.AddIngredient(Mod, "UpgradeMatter", 10);
+        val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4);
         val.AddTile(TileID.LunarCraftingStation);
         val.Register();
     }

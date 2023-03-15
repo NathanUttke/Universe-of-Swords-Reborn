@@ -43,7 +43,7 @@ public class TrueTerrablade : ModItem
     public override void AddRecipes()
     {
         Recipe val = CreateRecipe(1);
-        val.AddIngredient(ItemID.TerraBlade, 3);
+        val.AddIngredient(ItemID.TerraBlade, 1);
         val.AddIngredient(Mod, "TheNightmareAmalgamation", 1);
         val.AddTile(TileID.LunarCraftingStation);
         val.Register();

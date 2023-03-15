@@ -7,6 +7,7 @@ using Terraria.ID;
 using UniverseOfSwordsMod.Projectiles;
 using System.Diagnostics.Tracing;
 using UniverseOfSwordsMod.Buffs;
+using UniverseOfSwordsMod.Items.Placeable;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -29,7 +30,7 @@ public class SwordOfTheMultiverse : ModItem
 
         Item.damage = 190;
         Item.DamageType = DamageClass.Melee;
-        Item.crit = 95;
+        Item.crit = 70;
         Item.knockBack = 2f;
 
 		Item.value = Item.sellPrice(22, 0, 0, 0);
@@ -65,7 +66,11 @@ public class SwordOfTheMultiverse : ModItem
 	{
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1)
-			.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1)
+            .AddIngredient(ModContent.ItemType<SwordOfTheUniverseV2>(), 1)
+			.AddIngredient(ModContent.ItemType<DamascusBar>(), 50)
+            .AddIngredient(ModContent.ItemType<Orichalcon>(), 30)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)
+            .AddIngredient(ModContent.ItemType<UselessWeapon>(), 1)
 			.Register();
 	}
 
