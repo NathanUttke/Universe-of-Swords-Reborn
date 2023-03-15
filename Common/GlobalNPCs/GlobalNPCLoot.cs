@@ -116,9 +116,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             case NPCID.TheGroom:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<UselessWeapon>(), 30, 1));
                 break;
-            case NPCID.Werewolf:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WolfDestroyer>(), 30, 1));
-                break;
             case NPCID.Wraith:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WraithBlade>(), 50, 1));
                 break;

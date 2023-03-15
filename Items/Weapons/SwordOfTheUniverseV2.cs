@@ -4,6 +4,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ID;
+using System;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
