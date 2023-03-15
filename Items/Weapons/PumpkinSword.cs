@@ -20,18 +20,12 @@ public class PumpkinSword : ModItem
         Item.UseSound = SoundID.Item1;
         Item.value = 1888;
         Item.autoReuse = false;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-    }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.Y -= 1f * player.gravDir;
+        Item.DamageType = DamageClass.Melee; 
+        SacrificeTotal = 1;
     }
 
     public override void AddRecipes()
     {
-
-
         Recipe val = CreateRecipe(1);
         val.AddIngredient(ItemID.Pumpkin, 15);
         val.AddTile(TileID.WorkBenches);
