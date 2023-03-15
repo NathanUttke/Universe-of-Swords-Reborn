@@ -29,7 +29,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.aiStyle = -1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 15;
-            Projectile.scale = 1.5f;
+            Projectile.scale = 1.25f;
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -42,16 +42,15 @@ namespace UniverseOfSwordsMod.Projectiles
             Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
             Vector2 origin = sourceRectangle.Size() / 2f;
 
-
             float offsetX = 20f;
             origin.X = Projectile.spriteDirection == -1 ? sourceRectangle.Width - offsetX : offsetX;
-            Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
+
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {     
                 Color drawColor2 = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
                 drawColor2 *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-                Main.EntitySpriteDraw(texture, (Projectile.oldPos[i] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY), null, drawColor2, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, (float)i / 15f), SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, drawColor2, Projectile.rotation, new Vector2((float)(texture.Width / 2), (float)(texture.Height / 2)), 1f, (SpriteEffects)(Projectile.spriteDirection /*!*/= -1), 0f);
             }            
             return true;
         }
@@ -65,7 +64,7 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 if (Projectile.ai[0] < 100f)
                 {
-                    Projectile.velocity *= 1.05f;
+                    Projectile.velocity *= 1.07f;
                 }
                 else
                 {
@@ -74,7 +73,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
             if (Main.rand.NextBool(3))
             {
-                Dust swordDust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DemonTorch, Projectile.velocity.X, Projectile.velocity.Y, 0, default, 1.1f)];
+                Dust swordDust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DemonTorch, Projectile.velocity.X, Projectile.velocity.Y, 0, default, 1.5f)];
                 swordDust.noGravity = true;
             }
         }

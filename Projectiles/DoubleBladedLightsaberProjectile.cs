@@ -24,7 +24,7 @@ public class DoubleBladedLightsaberProjectile : ModProjectile
     {
         Projectile.width = 207;
         Projectile.height = 207;
-        Projectile.scale = 1.5f;
+        Projectile.scale = 2f;
         Projectile.alpha = 0;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
@@ -73,19 +73,7 @@ public class DoubleBladedLightsaberProjectile : ModProjectile
     {
 
         Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-
-        for (int i = 0; i < 8; i++)        
-        {
-
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
-            Color drawColor = Projectile.GetAlpha(lightColor);
-            drawColor *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, drawColor, Projectile.rotation * .99f, new Vector2(texture.Width / 2, texture.Height / 2), MathHelper.Lerp(Projectile.scale, 1f, (float)i / 15f), SpriteEffects.None, 0);
-        }
-        Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
-        Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0);
+        Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), Projectile.scale, SpriteEffects.None, 0);
         return false;
     }
 

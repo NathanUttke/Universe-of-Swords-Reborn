@@ -31,7 +31,7 @@ public class HumanBuzzSaw : ModProjectile
         Projectile.hide = true;
 
         Projectile.usesLocalNPCImmunity = true;
-        Projectile.localNPCHitCooldown = 7;
+        Projectile.localNPCHitCooldown = 15;
 
         Projectile.aiStyle = -1;
     }

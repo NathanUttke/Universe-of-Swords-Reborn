@@ -12,7 +12,7 @@ public class GreenSaw : ModProjectile
     {
         Projectile.width = 100;
         Projectile.height = 150;
-        Projectile.scale = 1.5f;
+        Projectile.scale = 0.5f;
         Projectile.friendly = true;
         Projectile.hostile = false;
         Projectile.DamageType = DamageClass.Ranged;
@@ -25,16 +25,13 @@ public class GreenSaw : ModProjectile
     }
 
     public override void PostAI()
-    {
-        if (Main.rand.Next(1) == 0)
-        {
-            Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, 0f, 0f, 0, default(Color), 1f);
-            obj.noGravity = true;
-            obj.scale = 1f;
-            Dust obj2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, 0f, 0f, 0, default(Color), 1f);
-            obj2.noGravity = true;
-            obj2.scale = 3f;
-        }
+    {    
+        Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, 0f, 0f, 0, default(Color), 1f);
+        obj.noGravity = true;
+        obj.scale = 1f;
+        Dust obj2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, 0f, 0f, 0, default(Color), 1f);
+        obj2.noGravity = true;
+        obj2.scale = 3f;        
     }
 
     public override bool PreDraw(ref Color lightColor)
