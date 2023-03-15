@@ -2382,34 +2382,6 @@ RestoredHeroSword :
 	}
 }
 
-Revenant :
-{
-	Name :
-	{
-		Origin : Revenant
-		Current : 宙魂新星
-	}
-	Tooltip :
-	{
-		Origin : 'Point this sword to the sky and unleash spirits of the dead'
-		Current : '剑指天际，释放无穷无尽的灵魂'
-	}
-}
-
-RevenantBag :
-{
-	Name :
-	{
-		Origin : Revenant Bag
-		Current : 灵魂袋
-	}
-	Tooltip :
-	{
-		Origin : 'Something terrible is hidden inside this bag'
-		Current : '直觉告诉你这袋子里装着不得了的宝贝'
-	}
-}
-
 RottenSword :
 {
 	Name :
