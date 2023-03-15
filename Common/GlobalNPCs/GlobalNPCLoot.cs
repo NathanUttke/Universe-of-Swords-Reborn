@@ -25,12 +25,7 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
         if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
         {
             npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TheEater>()));
-        }
-
-        if (System.Array.IndexOf(new int[] { NPCID.WyvernBody, NPCID.WyvernHead, NPCID.WyvernTail }, npc.type) > -1)
-        {
-            npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SkyPower>(), 10, 1));
-        }   
+        }  
 
         switch (npc.type)
         {
@@ -119,7 +114,7 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SlimeKiller>(), 10, 1));
                 break;
             case NPCID.TheGroom:
-                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<UselessWeapon>()));
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<UselessWeapon>(), 30, 1));
                 break;
             case NPCID.Werewolf:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WolfDestroyer>(), 30, 1));
