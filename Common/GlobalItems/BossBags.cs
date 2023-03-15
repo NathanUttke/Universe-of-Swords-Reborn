@@ -41,9 +41,6 @@ public class BossBags : GlobalItem
 				case 3328:
                     player.QuickSpawnItem(entitySource, ModContent.ItemType<Executioner>(), 1);
                     break;
-				case 3329:
-                    player.QuickSpawnItem(entitySource, ModContent.ItemType<Golem>(), 1);
-					break;
 				case 3330:
                     player.QuickSpawnItem(entitySource, ModContent.ItemType<Sharkron>(), 1);
                     break;

@@ -179,9 +179,8 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             case NPCID.Demon:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));
                 break;
-            case NPCID.Golem:
-                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Golem>()));
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SolBlade>(), 100, 1));
+            case NPCID.Golem:                
+                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SolBlade>(), 90, 1));
                 break;
             case NPCID.WallofFlesh:
                 npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<BiggoronSword>()));

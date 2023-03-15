@@ -15,38 +15,32 @@ public class SuperInflation : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
-		Item.scale = 2f;
+		Item.width = 128;
+		Item.height = 128;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 10f;
 		Item.useTime = 12;
 		Item.useAnimation = 12;
-		Item.damage = 240;
+		Item.damage = 110;
 		Item.shoot = ProjectileID.GoldCoin;
 		Item.shootSpeed = 40f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 999999;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.X -= 3f * (float)player.direction;
-		player.itemLocation.Y -= 3f * (float)player.direction;
-		player.itemLocation.Y -= -3f * player.gravDir;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "Inflation", 1);
-		val.AddIngredient(Mod, "UpgradeMatter", 4);
-		val.AddIngredient(ItemID.LunarOre, 1);
-		val.AddTile(TileID.LunarCraftingStation);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ModContent.ItemType<Inflation>(), 1)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+		.AddIngredient(ModContent.ItemType<Orichalcon>(), 8)
+		.AddIngredient(ItemID.LunarBar, 5)
+		.AddTile(TileID.LunarCraftingStation)
+		.Register();
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

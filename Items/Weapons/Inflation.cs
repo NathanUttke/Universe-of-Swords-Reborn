@@ -16,7 +16,6 @@ public class Inflation : ModItem
     {
         Item.width = 128;
         Item.height = 128;
-        Item.scale = 0.5f;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 10f;
@@ -26,13 +25,6 @@ public class Inflation : ModItem
         Item.UseSound = SoundID.Item1;
         Item.value = 999999;
         Item.autoReuse = true;
-    }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.X -= 3f * (float)player.direction;
-        player.itemLocation.Y -= 3f * (float)player.direction;
-        player.itemLocation.Y -= -3f * player.gravDir;
     }
 
     public override void AddRecipes()
