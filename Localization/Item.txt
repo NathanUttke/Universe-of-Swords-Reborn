@@ -1207,20 +1207,6 @@ GoblinKnife :
 	}
 }
 
-Golem :
-{
-	Name :
-	{
-		Origin : Golem
-		Current : 热能喷发剑
-	}
-	Tooltip :
-	{
-		Origin : Ancient sword that was inside Golems body
-		Current : 掉落自蜥蜴人祭祀的巨大魔像……
-	}
-}
-
 GrandPiano :
 {
 	Name :
@@ -2379,6 +2365,34 @@ RestoredHeroSword :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
+	}
+}
+
+Revenant :
+{
+	Name :
+	{
+		Origin : Revenant
+		Current : 宙魂新星
+	}
+	Tooltip :
+	{
+		Origin : 'Point this sword to the sky and unleash spirits of the dead'
+		Current : '剑指天际，释放无穷无尽的灵魂'
+	}
+}
+
+RevenantBag :
+{
+	Name :
+	{
+		Origin : Revenant Bag
+		Current : 灵魂袋
+	}
+	Tooltip :
+	{
+		Origin : 'Something terrible is hidden inside this bag'
+		Current : '直觉告诉你这袋子里装着不得了的宝贝'
 	}
 }
 
