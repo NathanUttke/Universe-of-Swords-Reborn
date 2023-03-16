@@ -183,7 +183,7 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
                 npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<BiggoronSword>()));
                 break;
             case NPCID.MoonLordCore:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<StarMaelstorm>(), 100, 1));
+                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<StarMaelstorm>(), 100, 1, 1, 1));
                 IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverse>(), 100, 1);
                 leadingConditionRule.OnSuccess(rule);
                 npcLoot.Add(leadingConditionRule);

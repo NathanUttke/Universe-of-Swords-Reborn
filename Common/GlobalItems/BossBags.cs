@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Weapons;
 
@@ -46,6 +47,12 @@ public class BossBags : GlobalItem
                     break;
                 case 3331:
                     player.QuickSpawnItem(entitySource, ModContent.ItemType<Doomsday>(), 1);
+                    break;
+                case ItemID.MoonLordBossBag:
+                    if (Main.rand.NextBool(100))
+                    {
+                        player.QuickSpawnItem(entitySource, ModContent.ItemType<StarMaelstorm>(), 1);
+                    }
                     break;
 
             }
