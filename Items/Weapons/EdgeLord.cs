@@ -33,30 +33,27 @@ public class EdgeLord : ModItem
 		SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.X -= 0f * (float)player.direction;
-		player.itemLocation.Y -= 0f * (float)player.direction;
-	}
 
 	public override void AddRecipes()
 	{
 		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "DraculaSword", 1);
+		val.AddIngredient(Mod, "DraculaSword", 2);
 		val.AddIngredient(ItemID.VampireKnives, 1);
 		val.AddIngredient(ItemID.VampireBanner, 1);
-		val.AddIngredient(ModContent.ItemType<Orichalcon>(), 10);
-		val.AddIngredient(ItemID.LunarBar, 10);
-		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2);
+		val.AddIngredient(ItemID.HellstoneBar, 80);
+		val.AddIngredient(ItemID.LunarBar, 40);
+		val.AddIngredient(Mod, "SwordMatter", 66);
+		val.AddIngredient(ItemID.TrueNightsEdge, 1);
 		val.AddTile(TileID.LunarCraftingStation);
 		val.Register();
 		Recipe val2 = CreateRecipe(1);
-		val2.AddIngredient(Mod, "DraculaSword", 1);
+		val2.AddIngredient(Mod, "DraculaSword", 2);
 		val2.AddIngredient(ItemID.ScourgeoftheCorruptor, 1);
 		val2.AddIngredient(ItemID.VampireBanner, 1);
-		val2.AddIngredient(ModContent.ItemType<Orichalcon>(), 10);
-		val2.AddIngredient(ItemID.LunarBar, 10);
-		val2.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2);
+		val2.AddIngredient(ItemID.HellstoneBar, 80);
+		val2.AddIngredient(ItemID.LunarBar, 40);
+		val2.AddIngredient(Mod, "SwordMatter", 66);
+		val2.AddIngredient(ItemID.TrueNightsEdge, 1);
 		val2.AddTile(TileID.LunarCraftingStation);
 		val2.Register();
 	}
@@ -67,10 +64,11 @@ public class EdgeLord : ModItem
 		float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
 		double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
 		double deltaAngle = spread / 2f;
-		for (int i = 0; i < 65; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			double offsetAngle = startAngle + deltaAngle * (double)i;
-			Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
+			Projectile proj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor);
+			proj.DamageType = DamageClass.Melee;
 		}
 		return false;
 	}
