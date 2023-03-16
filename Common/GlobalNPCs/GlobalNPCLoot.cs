@@ -20,7 +20,7 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
 
         if (npc.lifeMax > 10 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly)
         {
-            npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 3, 1, 1, 2));
+            npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, 3, 1, 2));
         }
         if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
         {
