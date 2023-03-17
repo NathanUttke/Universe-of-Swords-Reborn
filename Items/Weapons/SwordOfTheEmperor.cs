@@ -32,7 +32,6 @@ public class SwordOfTheEmperor : ModItem
     }
     public override void AddRecipes()
     {
-
         CreateRecipe()
             .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 18)
             .AddIngredient(ItemID.HallowedBar, 2000)
