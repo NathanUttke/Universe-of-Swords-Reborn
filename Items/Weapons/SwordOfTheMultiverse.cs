@@ -41,16 +41,41 @@ public class SwordOfTheMultiverse : ModItem
         Item.channel = true;
         Item.autoReuse = true;
 
-        Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
-        Item.shootSpeed = 12f;
+        Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
+        Item.shootSpeed = 30f;
 
 		SacrificeTotal = 1;
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {
-		Projectile.NewProjectile(source, position, velocity / 2, Item.shoot, (int)(Item.damage * 1.25f), 3f, player.whoAmI);
-		return true;
+    {       
+
+        Vector2 targetPos = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
+        float heightLimit = targetPos.Y;
+        if (heightLimit > player.Center.Y - 200f)
+        {
+            heightLimit = player.Center.Y - 200f;
+        }
+        for (int j = 0; j < 6; j++)
+        {
+            position = player.Center + new Vector2(-Main.rand.Next(0, 401) * (float)player.direction, -600f);
+            position.Y -= 100 * j;
+            Vector2 heading = targetPos - position;
+            if (heading.Y < 0f)
+            {
+                heading.Y *= -1f;
+            }
+            if (heading.Y < 20f)
+            {
+                heading.Y = 20f;
+            }
+            heading.Normalize();
+            heading *= velocity.Length();
+            velocity.X = heading.X;
+            velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.025f;
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, Item.shoot, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, heightLimit);
+        }
+        return false;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

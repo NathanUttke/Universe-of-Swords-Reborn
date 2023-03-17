@@ -19,13 +19,13 @@ public class TheEater : ModItem
         Item.height = 58;
         Item.rare = ItemRarityID.LightPurple;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 32;
-        Item.useAnimation = 32;
+        Item.useTime = 40;
+        Item.useAnimation = 20;
         Item.damage = 15;
         Item.knockBack = 3f;
         Item.UseSound = SoundID.Item1;
         Item.value = Item.sellPrice(0, 0, 60, 0);
-        Item.shoot = ProjectileID.EatersBite;
+        Item.shoot = ProjectileID.TinyEater;
         Item.shootSpeed = 8f;
         Item.autoReuse = false;
         Item.DamageType = DamageClass.Melee; 
@@ -34,10 +34,7 @@ public class TheEater : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        if (Main.rand.NextBool(3))
-		{
-			Projectile.NewProjectile(source, position, velocity * 0.75f, Item.shoot, 3, 4f, player.whoAmI);
-		}
+        Projectile.NewProjectile(source, position, velocity, Item.shoot, 3, 4f, player.whoAmI);
         return false;
     }
 
@@ -45,7 +42,7 @@ public class TheEater : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.CorruptPlants, 0f, 0f, 100, default(Color), 2f);
+            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.CorruptPlants, 0f, 0f, 100, default, 2f);
             Main.dust[dust].noGravity = true;
         }
     }

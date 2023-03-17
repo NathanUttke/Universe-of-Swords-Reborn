@@ -44,6 +44,11 @@ public class DoubleBladedLightsaberProjectile : ModProjectile
         player.itemTime = player.itemAnimation = 2;
         player.itemRotation = Projectile.rotation;
 
+        double rad = Projectile.ai[0] * (Math.PI / 180.0);
+        double distance = 48.0;
+
+        Projectile.position = new Vector2(player.Center.X - (int)(Math.Cos(rad) * distance) - Projectile.width / 2, player.Center.Y - (int)(Math.Sin(rad) * distance) - Projectile.height / 2);
+
         if (Projectile.soundDelay <= 0)
         {
             Projectile.soundDelay = 30;

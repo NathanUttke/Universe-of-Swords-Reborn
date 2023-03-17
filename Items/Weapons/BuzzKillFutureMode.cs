@@ -12,7 +12,6 @@ public class BuzzKillFutureMode : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Buzz Kill Future Mode");
-		Tooltip.SetDefault("'Release the Gamma ray infused bees!'");
 	}
 
 	public override void SetDefaults()
@@ -34,12 +33,6 @@ public class BuzzKillFutureMode : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
         float spread = 0.174f;
@@ -50,7 +43,7 @@ public class BuzzKillFutureMode : ModItem
 
         if (Main.rand.NextBool(7))
 		{
-            Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ProjectileID.Beenade, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);         
+            Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ProjectileID.GiantBee, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);         
         }
         for (int i = 0; i < 2; i++)
         {
@@ -60,7 +53,15 @@ public class BuzzKillFutureMode : ModItem
         return false;
 	}
 
-	public override void AddRecipes()
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (player.strongBees)
+		{
+			damage *= 1.15f;
+		}
+    }
+	
+    public override void AddRecipes()
 	{		
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)

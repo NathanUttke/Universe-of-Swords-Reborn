@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -26,10 +27,17 @@ public class TrueGemSword : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
+	
+	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, Item.shoot, damage, knockback, player.whoAmI);
+		proj.DamageType = DamageClass.Melee;
+        return false;
+    }
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
-		if (Main.rand.Next(2) == 0)
+		if (Main.rand.NextBool(2))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.YellowTorch, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;

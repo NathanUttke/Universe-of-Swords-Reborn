@@ -18,7 +18,7 @@ public class TwinsSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
+		Item.useTime = 30;
 		Item.useAnimation = 20;
 		Item.damage = 62;
 		Item.knockBack = 6f;
@@ -27,7 +27,8 @@ public class TwinsSword : ModItem
 		Item.shoot = ProjectileID.CursedFlameFriendly;
 		Item.shootSpeed = 10f;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

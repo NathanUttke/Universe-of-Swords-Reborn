@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace UniverseOfSwordsMod.Items.Weapons;
+namespace UniverseOfSwordsMod.Items;
 
 public class SwordOfPower : ModItem
 {

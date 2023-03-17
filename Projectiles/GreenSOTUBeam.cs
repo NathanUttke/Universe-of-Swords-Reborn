@@ -164,7 +164,7 @@ public class GreenSOTUBeam : ModProjectile
 		Vector2 dustVel = default(Vector2);
 		for (int i = 0; i < 2; i++)
 		{
-			float num1 = Utils.ToRotation(Projectile.velocity) + ((Main.rand.Next(2) == 1) ? (-1f) : 1f) * 1.57f;
+			float num1 = Utils.ToRotation(Projectile.velocity) + ((Main.rand.NextBool(2)) ? (-1f) : 1f) * 1.57f;
 			float num2 = (float)(Main.rand.NextDouble() * 0.800000011920929 + 1.0);
 			//dustVel = (float)Math.Cos(num1) * num2, (float)Math.Sin(num1) * num2;
 			dustVel.X = (float)Math.Cos(num1) * num2;
@@ -177,7 +177,7 @@ public class GreenSOTUBeam : ModProjectile
 			obj3.noGravity = true;
 			obj3.scale = 1f;
 		}
-		if (Main.rand.Next(5) == 0)
+		if (Main.rand.NextBool(5))
 		{
 			Vector2 offset2 = Utils.RotatedBy(Projectile.velocity, 1.5700000524520874, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * (float)Projectile.width;
 			Dust dust = Main.dust[Dust.NewDust(dustPos + offset2 - Vector2.One * 4f, 8, 8, DustID.GreenFairy, 0f, 0f, 100, default(Color), 1.5f)];

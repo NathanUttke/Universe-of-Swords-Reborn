@@ -27,16 +27,13 @@ public class FireBlade : ModItem
 		Item.UseSound = SoundID.Item20;
 		Item.value = Item.sellPrice(0, 0, 25, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-		
-		
-		
-		
-								if (Main.rand.Next(2) == 0)
+	{	
+		if (Main.rand.NextBool(2))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;

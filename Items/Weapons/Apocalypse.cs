@@ -20,21 +20,22 @@ public class Apocalypse : ModItem
         Item.height = 68;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 15;
+        Item.useTime = 45;
         Item.useAnimation = 15;
-        Item.damage = 150;
+        Item.damage = 120;
         Item.knockBack = 12f;
         Item.UseSound = SoundID.Item116;
         Item.shoot = ProjectileID.ApprenticeStaffT3Shot;
         Item.shootSpeed = 10f;
         Item.value = Item.sellPrice(0, 30, 0, 0);
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+        Item.DamageType = DamageClass.Melee; 
+        SacrificeTotal = 1;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.Next(2) == 0)
+        if (Main.rand.NextBool(2))
         {
             int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.InfernoFork, 0f, 0f, 100, default(Color), 2f);
             Main.dust[dust].noGravity = true;

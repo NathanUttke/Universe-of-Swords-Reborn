@@ -12,7 +12,6 @@ public class BuzzKill : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Buzz Kill");
-		Tooltip.SetDefault("'Release the Africanized bees!'");
 	}
 
 	public override void SetDefaults()
@@ -30,7 +29,8 @@ public class BuzzKill : ModItem
 		Item.shootSpeed = 8f;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -55,7 +55,15 @@ public class BuzzKill : ModItem
 		return false;
 	}
 
-	public override void AddRecipes()
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (player.strongBees)
+        {
+            damage *= 1.05f;
+        }
+    }
+
+    public override void AddRecipes()
 	{
 		CreateRecipe(1)
 		.AddIngredient(ItemID.BeeKeeper, 1)

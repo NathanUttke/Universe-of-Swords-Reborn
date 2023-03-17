@@ -27,7 +27,7 @@ public class Soul2 : ModProjectile
 	public override void PostAI()
 	{
 
-		if (Main.rand.Next(1) == 0)
+		if (Main.rand.NextBool(1))
 		{
 			Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.BlueTorch, 0f, 0f, 0, default(Color), 1f);
 			obj.noGravity = true;

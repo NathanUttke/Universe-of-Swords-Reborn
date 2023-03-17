@@ -13,7 +13,7 @@ public class SwordOfFlames : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
+		Item.useTime = 40;
 		Item.useAnimation = 20;
 		Item.damage = 78;
 		Item.knockBack = 10.9f;
@@ -22,11 +22,7 @@ public class SwordOfFlames : ModItem
 		Item.shootSpeed = 10f;
 		Item.value = 650999;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 }

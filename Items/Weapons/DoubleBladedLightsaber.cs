@@ -1,6 +1,9 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using UniverseOfSwordsMod.Projectiles;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -17,7 +20,6 @@ public class DoubleBladedLightsaber : ModItem
 		Item.damage = 70;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
 		SacrificeTotal = 1;
-		Item.scale = 2f;
 		Item.width = 138;
 		Item.height = 138;
 		Item.useTime = 10;
@@ -30,10 +32,16 @@ public class DoubleBladedLightsaber : ModItem
 		Item.knockBack = 8f;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.rare = ItemRarityID.Lime;
-		Item.shoot = Mod.Find<ModProjectile>("DoubleBladedLightsaberProjectile").Type;
-		Item.noUseGraphic = true;
+        //Item.shoot = ModContent.ProjectileType<DoubleBladedLightsaberProjectile>();
+        Item.shoot = ModContent.ProjectileType<UltimateSaberProjectile>();
+        Item.noUseGraphic = true;
 	}
-	public override void AddRecipes()
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		return player.ownedProjectileCounts[Item.shoot] < 6;
+    }
+    public override void AddRecipes()
 	{
 		CreateRecipe()
 		.AddIngredient(ItemID.YellowPhasesaber, 1)

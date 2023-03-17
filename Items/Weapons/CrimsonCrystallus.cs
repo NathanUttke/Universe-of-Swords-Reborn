@@ -27,13 +27,8 @@ public class CrimsonCrystallus : ModItem
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-
-		
-		
-		
-					
-		if (Main.rand.Next(2) == 0)
+	{					
+		if (Main.rand.NextBool(2))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.Adamantite, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;
@@ -41,9 +36,8 @@ public class CrimsonCrystallus : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "Crystallus", 1);
 		val.AddIngredient(ItemID.CrimtaneBar, 12);
 		val.AddIngredient(ItemID.TissueSample, 8);

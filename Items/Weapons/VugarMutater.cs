@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -17,17 +18,19 @@ public class VugarMutater : ModItem
         Item.width = 80;
         Item.height = 80;
         Item.rare = ItemRarityID.Red;
+        Item.crit = 8;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 13;
-        Item.useAnimation = 13;
-        Item.damage = 214;
-        Item.knockBack = 6f;
+        Item.useTime = 30;
+        Item.useAnimation = 15;
+        Item.damage = 110;
+        Item.knockBack = 4f;
         Item.UseSound = SoundID.Item1;
-        Item.shoot = Mod.Find<ModProjectile>("VugarMutater").Type;
+        Item.shoot = ModContent.ProjectileType<VugarMutaterProjectile>();
         Item.shootSpeed = 40f;
         Item.value = 750000;
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+        Item.DamageType = DamageClass.Melee; 
+        SacrificeTotal = 1;
     }
 
     public override Vector2? HoldoutOffset()
@@ -40,8 +43,7 @@ public class VugarMutater : ModItem
 
         Recipe val = CreateRecipe(1);
         val.AddIngredient(ItemID.TrueNightsEdge, 1);
-        val.AddIngredient(Mod, "SwordMatter", 150);
-        val.AddIngredient(Mod, "UpgradeMatter", 2);
+        val.AddIngredient(Mod, "UpgradeMatter", 3);
         val.AddIngredient(ItemID.TerraBlade, 1);
         val.AddIngredient(ItemID.IceTorch, 50);
         val.AddTile(TileID.LunarCraftingStation);

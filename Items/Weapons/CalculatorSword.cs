@@ -31,7 +31,7 @@ public class CalculatorSword : ModItem
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{					
-		if (Main.rand.Next(4) == 0)
+		if (Main.rand.NextBool(4))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.WhiteTorch, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;

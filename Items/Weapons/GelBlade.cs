@@ -25,12 +25,8 @@ public class GelBlade : ModItem
         Item.UseSound = SoundID.Item1;
         Item.value = 1500;
         Item.autoReuse = false;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-    }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.Y -= 1f * player.gravDir;
+        Item.DamageType = DamageClass.Melee; 
+        SacrificeTotal = 1;
     }
 
     public override void AddRecipes()

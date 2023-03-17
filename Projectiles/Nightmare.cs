@@ -95,7 +95,7 @@ internal class Nightmare : ModProjectile
     public override void OnHitNPC(NPC n, int damage, float knockback, bool crit)
     {
         Player owner = Main.player[Projectile.owner];
-        if (Main.rand.Next(2) == 0)
+        if (Main.rand.NextBool(2))
         {
             n.AddBuff(153, 800, false);
             owner.statLife += 2;

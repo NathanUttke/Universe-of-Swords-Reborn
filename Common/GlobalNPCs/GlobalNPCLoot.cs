@@ -89,9 +89,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             case NPCID.BigMimicCorruption:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ClingerSword>(), 3, 1));
                 break;
-            case NPCID.BigMimicJungle:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<RottenSword>(), 3, 1));
-                break;
             case NPCID.GoblinWarrior:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Sting>(), 30, 1));
                 break;

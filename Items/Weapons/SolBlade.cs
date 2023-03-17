@@ -34,7 +34,7 @@ public class SolBlade : ModItem
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
-		if (Main.rand.Next(3) == 0)
+		if (Main.rand.NextBool(3))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.InfernoFork, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;
@@ -56,7 +56,7 @@ public class SolBlade : ModItem
 	{
 		IEntitySource source = Item.GetSource_OnHit(target);
 
-		if (Main.rand.Next(3) == 0)
+		if (Main.rand.NextBool(3))
 		{
 			Projectile.NewProjectile(source, target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.InfernoFriendlyBlast, damage, knockback, player.whoAmI, 0f, 0f);
 		}

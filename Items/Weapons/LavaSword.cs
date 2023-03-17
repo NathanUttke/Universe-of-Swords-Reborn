@@ -25,13 +25,8 @@ public class LavaSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 10800;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= -3f * player.gravDir;
-		player.itemLocation.X -= 3f * player.gravDir;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void AddRecipes()

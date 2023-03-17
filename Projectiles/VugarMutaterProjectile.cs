@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace UniverseOfSwordsMod.Projectiles;
 
-public class VugarMutater : ModProjectile
+public class VugarMutaterProjectile : ModProjectile
 {
 	public override void SetStaticDefaults()
 	{
@@ -15,13 +15,12 @@ public class VugarMutater : ModProjectile
 
 	public override void SetDefaults()
 	{
-		Projectile.width = 8;
-		Projectile.height = 8;
-		Projectile.scale = 2f;
+		Projectile.width = 20;
+		Projectile.height = 25;
 		Projectile.aiStyle = 1;
 		Projectile.friendly = true;
 		Projectile.hostile = false;
-		Projectile.DamageType = DamageClass.Ranged;
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.penetrate = 999;
 		Projectile.alpha = 255;
 		Projectile.light = 0f;

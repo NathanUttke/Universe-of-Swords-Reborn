@@ -20,12 +20,12 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.width = 100;
 		Item.height = 100;
 		Item.rare = ItemRarityID.Purple;
-		Item.crit = 6;
+		Item.crit = 10;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 10;
-		Item.useAnimation = 10;
-		Item.damage = 200;
-		Item.knockBack = 9f;
+		Item.useTime = 20;
+		Item.useAnimation = 20;
+		Item.damage = 150;
+		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item46;
 		Item.shoot = ProjectileID.Meteor1;
 		Item.shootSpeed = 10f;

@@ -38,7 +38,7 @@ public class EctoplasmicRipper : ModItem
 		
 		
 					
-		if (Main.rand.Next(1) == 0)
+		if (Main.rand.NextBool(1))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.MagicMirror, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;

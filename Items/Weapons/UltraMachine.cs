@@ -18,11 +18,10 @@ public class UltraMachine : ModItem
 	{
 		Item.width = 132;
 		Item.height = 132;
-		Item.scale = 1.4f;
 		Item.rare = ItemRarityID.Red;
 		Item.crit = 6;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 15;
+		Item.useTime = 30;
 		Item.useAnimation = 15;
 		Item.damage = 120;
 		Item.knockBack = 10f;
