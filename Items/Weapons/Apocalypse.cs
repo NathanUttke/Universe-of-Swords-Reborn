@@ -65,7 +65,6 @@ public class Apocalypse : ModItem
         val.AddIngredient(ItemID.MeteoriteBar, 20);
         val.AddIngredient(Mod, "MartianSaucerCore", 1);
         val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3);
-        val.AddIngredient(Mod, "SwordMatter", 500);
         val.AddTile(TileID.LunarCraftingStation);
         val.Register();
     }

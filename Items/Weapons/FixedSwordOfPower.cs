@@ -19,7 +19,7 @@ public class FixedSwordOfPower : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
+		Item.useTime = 60;
 		Item.useAnimation = 30;
 		Item.damage = 37;
 		Item.knockBack = 4f;
@@ -37,7 +37,7 @@ public class FixedSwordOfPower : ModItem
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordOfPower", 1);
 		val.AddIngredient(ItemID.Bone, 20);
-		val.AddIngredient(Mod, "UpgradeMatter", 2);
+		val.AddIngredient(Mod, "UpgradeMatter", 1);
 		val.AddTile(TileID.Anvils);
 		val.Register();
 	}

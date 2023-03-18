@@ -27,7 +27,7 @@ public class StarMaelstorm : ModItem
 		Item.UseSound = SoundID.Item105;
 		Item.shoot = ProjectileID.StarWrath;
 		Item.shootSpeed = 20f;
-		Item.value = Item.sellPrice(0, 50, 0, 0);
+		Item.value = Item.buyPrice(0, 50, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -56,12 +56,12 @@ public class StarMaelstorm : ModItem
 			Item.damage = 200;
 			Item.shoot = ProjectileID.StarWrath;
 		}
-		return base.CanUseItem(player);
+		return true;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Vector2 target = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY);
+		Vector2 target = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
 		float ceilingLimit = target.Y;
 		if (ceilingLimit > player.Center.Y - 200f)
 		{
@@ -69,7 +69,7 @@ public class StarMaelstorm : ModItem
 		}
 		for (int i = 0; i < 15; i++)
 		{
-			position = player.Center + new Vector2((0f - (float)Main.rand.Next(0, 901)) * (float)player.direction, -600f);
+			position = player.Center + new Vector2((0f - Main.rand.Next(0, 901)) * player.direction, -600f);
 			position.Y -= 100 * i;
 			Vector2 heading = target - position;
 			if (heading.Y < 0f)
@@ -82,10 +82,10 @@ public class StarMaelstorm : ModItem
 			}
 			heading.Normalize();
 			Vector2 val = heading;
-			Vector2 val2 = new Vector2(velocity.X, velocity.Y);
+			Vector2 val2 = new(velocity.X, velocity.Y);
 			heading = val * val2.Length();
 			velocity.X = heading.X;
-			velocity.Y = heading.Y + (float)Main.rand.Next(-800, 800) * 0.02f;
+			velocity.Y = heading.Y + Main.rand.Next(-800, 800) * 0.02f;
 			Projectile.NewProjectile(source, position.X, position.Y, velocity.X / 2f, velocity.Y / 2f, type, damage * 2, knockback, player.whoAmI, 0f, ceilingLimit);
 		}
 		return false;

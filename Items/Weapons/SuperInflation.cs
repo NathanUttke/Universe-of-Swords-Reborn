@@ -20,13 +20,13 @@ public class SuperInflation : ModItem
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 10f;
-		Item.useTime = 12;
+		Item.useTime = 48;
 		Item.useAnimation = 12;
 		Item.damage = 110;
 		Item.shoot = ProjectileID.GoldCoin;
-		Item.shootSpeed = 40f;
+		Item.shootSpeed = 20f;
 		Item.UseSound = SoundID.Item1;
-		Item.value = 999999;
+		Item.value = 0;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -48,7 +48,7 @@ public class SuperInflation : ModItem
 		float numberProjectiles = 10 + Main.rand.Next(10);
 		float rotation = MathHelper.ToRadians(10f);
 		position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 10f;
-		for (int i = 0; (float)i < numberProjectiles; i++)
+		for (int i = 0; i < numberProjectiles; i++)
 		{
 			Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
 			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
@@ -58,6 +58,9 @@ public class SuperInflation : ModItem
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
-		target.AddBuff(72, 360, false);
-	}
+        if (!target.HasBuff(BuffID.Midas))
+        {
+            target.AddBuff(BuffID.Midas, 500);
+        }
+    }
 }

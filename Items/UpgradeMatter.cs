@@ -9,9 +9,9 @@ public class UpgradeMatter : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-						DisplayName.SetDefault("Upgrade Matter");
+		DisplayName.SetDefault("Upgrade Matter");
 		Tooltip.SetDefault("'Source for upgrading swords'");
-		Main.RegisterItemAnimation(Item.type, (DrawAnimation)new DrawAnimationVertical(5, 4));
+		Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
 		ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 		ItemID.Sets.ItemIconPulse[Item.type] = true;
 		ItemID.Sets.ItemNoGravity[Item.type] = false;
@@ -29,10 +29,22 @@ public class UpgradeMatter : ModItem
 
 	public override void AddRecipes()
 	{
-		
-								Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+		if (Main.hardMode)
+		{
+            CreateRecipe()
+				.AddIngredient(Mod, "SwordMatter", 200)
+                .AddIngredient(ItemID.SoulofLight, 20)
+                .AddIngredient(ItemID.SoulofNight, 20)
+                .AddTile(TileID.Anvils)
+				.Register();
+        }
+		else
+		{
+			CreateRecipe()
+				.AddIngredient(Mod, "SwordMatter", 200)
+                .AddTile(TileID.Anvils)
+				.Register();
+		}
+
 	}
 }

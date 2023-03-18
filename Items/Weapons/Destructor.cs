@@ -25,14 +25,9 @@ public class Destructor : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 290000;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
 	public override void AddRecipes()
 	{		
 		Recipe val = CreateRecipe(1);

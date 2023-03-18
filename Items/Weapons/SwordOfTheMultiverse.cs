@@ -25,56 +25,79 @@ public class SwordOfTheMultiverse : ModItem
 		Item.height = 112;
 		Item.rare = ItemRarityID.Expert;
 		
-		Item.useTime = 18;
+		Item.useTime = 9;
 		Item.useAnimation = 18;        
 
         Item.damage = 190;
         Item.DamageType = DamageClass.Melee;
-        Item.crit = 70;
+        Item.crit = 15;
         Item.knockBack = 2f;
 
-		Item.value = Item.sellPrice(22, 0, 0, 0);
+		Item.value = Item.buyPrice(5, 0, 0, 0);
 
         Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item169;
 
-        Item.channel = true;
         Item.autoReuse = true;
 
         Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
         Item.shootSpeed = 30f;
 
 		SacrificeTotal = 1;
+        ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 	}
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {       
+    public override bool CanUseItem(Player player)
+    {
+        if (player.altFunctionUse == 2)
+        {
+            Item.shoot = ProjectileID.Daybreak;
+        }
+        else
+        {
+            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();      
+        }
+        return true;
+    }
 
-        Vector2 targetPos = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
-        float heightLimit = targetPos.Y;
-        if (heightLimit > player.Center.Y - 200f)
+    public override bool AltFunctionUse(Player player) => true;
+
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {  
+        if (player.altFunctionUse != 2)
         {
-            heightLimit = player.Center.Y - 200f;
+            Vector2 targetPos = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
+            float heightLimit = targetPos.Y;
+            if (heightLimit > player.Center.Y - 200f)
+            {
+                heightLimit = player.Center.Y - 200f;
+            }
+            for (int j = 0; j < 6; j++)
+            {
+                position = player.Center + new Vector2(-Main.rand.Next(0, 401) * (float)player.direction, -600f);
+                position.Y -= 100 * j;
+                Vector2 heading = targetPos - position;
+                if (heading.Y < 0f)
+                {
+                    heading.Y *= -1f;
+                }
+                if (heading.Y < 20f)
+                {
+                    heading.Y = 20f;
+                }
+                heading.Normalize();
+                heading *= velocity.Length();
+                velocity.X = heading.X;
+                velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.025f;
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, Item.shoot, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, heightLimit);
+            }
         }
-        for (int j = 0; j < 6; j++)
+        else
         {
-            position = player.Center + new Vector2(-Main.rand.Next(0, 401) * (float)player.direction, -600f);
-            position.Y -= 100 * j;
-            Vector2 heading = targetPos - position;
-            if (heading.Y < 0f)
-            {
-                heading.Y *= -1f;
-            }
-            if (heading.Y < 20f)
-            {
-                heading.Y = 20f;
-            }
-            heading.Normalize();
-            heading *= velocity.Length();
-            velocity.X = heading.X;
-            velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.025f;
-            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, Item.shoot, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, heightLimit);
+            Projectile.NewProjectile(source, position, velocity, Item.shoot, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, 0f);
         }
+
         return false;
     }
 

@@ -34,20 +34,21 @@ public class SwordOfTheUniverseV2 : ModItem
 		Item.expert = true;
 		Item.value = Item.sellPrice(8, 0, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void AddRecipes()
-	{																																																																				Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "TrueHorrormageddon", 1);
-		val.AddIngredient(ModContent.ItemType<PrismSword>(), 1);
-		val.AddIngredient(Mod, "EdgeLord", 1);
-		val.AddIngredient(Mod, "SuperInflation", 1);
-		val.AddIngredient(Mod, "CosmoStorm", 1);
-		val.AddIngredient(Mod, "GlacialCracker", 1);
-		val.AddIngredient(ItemID.Terragrim, 1);
-		val.AddTile(TileID.DemonAltar);
-		val.Register();
+	{																																																														
+		CreateRecipe()		
+		.AddIngredient(Mod, "EdgeLord", 1)
+		.AddIngredient(Mod, "SuperInflation", 1)
+		.AddIngredient(Mod, "CosmoStorm", 1)
+		.AddIngredient(Mod, "GlacialCracker", 1)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+		.AddIngredient(ItemID.Terragrim, 1)
+		.AddTile(TileID.DemonAltar)
+		.Register();
     }
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

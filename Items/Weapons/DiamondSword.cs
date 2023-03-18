@@ -34,11 +34,11 @@ public class DiamondSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-								Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.Diamond, 5);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+	{		
+		CreateRecipe()
+		.AddIngredient(ItemID.Diamond, 5)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 5)
+		.AddTile(TileID.Anvils)
+		.Register();
 	}
 }

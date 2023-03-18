@@ -26,32 +26,29 @@ public class VugarMutater : ModItem
         Item.knockBack = 4f;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ModContent.ProjectileType<VugarMutaterProjectile>();
-        Item.shootSpeed = 40f;
-        Item.value = 750000;
+        Item.shootSpeed = 30f;
+        Item.value = Item.buyPrice(0, 1, 40, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
         SacrificeTotal = 1;
     }
-
-    public override Vector2? HoldoutOffset()
-    {
-        return new Vector2(12f, 0f);
-    }
-
     public override void AddRecipes()
     {
-
-        Recipe val = CreateRecipe(1);
-        val.AddIngredient(ItemID.TrueNightsEdge, 1);
-        val.AddIngredient(Mod, "UpgradeMatter", 3);
-        val.AddIngredient(ItemID.TerraBlade, 1);
-        val.AddIngredient(ItemID.IceTorch, 50);
-        val.AddTile(TileID.LunarCraftingStation);
-        val.Register();
+        CreateRecipe()
+        .AddIngredient(ItemID.TrueNightsEdge, 1)
+        .AddIngredient(Mod, "UpgradeMatter", 2)
+        .AddIngredient(ItemID.TerraBlade, 1)
+        .AddIngredient(ItemID.IceTorch, 50)
+        .AddTile(TileID.LunarCraftingStation)
+        .Register();
     }
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-        target.AddBuff(44, 360, false);
+        if (!target.HasBuff(BuffID.Frostburn))
+        {
+            target.AddBuff(BuffID.Frostburn, 400);
+        }
+        
     }
 }

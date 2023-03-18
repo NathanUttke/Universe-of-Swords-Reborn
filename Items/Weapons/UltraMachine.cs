@@ -23,42 +23,36 @@ public class UltraMachine : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 15;
-		Item.damage = 120;
+		Item.damage = 130;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item62;
 		Item.shoot = ProjectileID.VortexBeaterRocket;
 		Item.shootSpeed = 30f;
-		Item.value = Item.sellPrice(1, 0, 0, 0);
+		Item.value = Item.buyPrice(0, 30, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.X -= 1f * (float)player.direction;
-		player.itemLocation.Y -= 1f * (float)player.direction;
-	}
 
 	public override void AddRecipes()
-	{
-		
-																																		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "Machine", 1);
-		val.AddIngredient(Mod, "SwordMatter", 1000);
-		val.AddIngredient(Mod, "DamascusBar", 20);
-		val.AddIngredient(ItemID.SkeletronPrimeTrophy, 1);
-		val.AddIngredient(ItemID.DestroyerTrophy, 1);
-		val.AddIngredient(ItemID.RetinazerTrophy, 1);
-		val.AddIngredient(ItemID.SpazmatismTrophy, 1);
-		val.AddIngredient(ItemID.SpectreBar, 20);
-		val.AddIngredient(Mod, "PrimeSword", 1);
-		val.AddIngredient(Mod, "DestroyerSword", 1);
-		val.AddIngredient(Mod, "TwinsSword", 1);
-		val.AddIngredient(Mod, "MartianSaucerCore", 1);
-		val.AddIngredient(ItemID.ShroomiteBar, 10);
-		val.AddIngredient(ItemID.LihzahrdPowerCell, 5);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+	{		
+		CreateRecipe()
+			.AddIngredient(Mod, "Machine", 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 5)
+			.AddIngredient(Mod, "DamascusBar", 20)
+			.AddIngredient(ItemID.SoulofFright, 15)
+			.AddIngredient(ItemID.SoulofMight, 15)
+			.AddIngredient(ItemID.SoulofSight, 15)
+			.AddIngredient(ItemID.SpectreBar, 20)
+			.AddIngredient(Mod, "PrimeSword", 1)
+			.AddIngredient(Mod, "DestroyerSword", 1)
+			.AddIngredient(Mod, "TwinsSword", 1)
+			.AddIngredient(Mod, "MartianSaucerCore", 1)
+			.AddIngredient(ItemID.ShroomiteBar, 10)
+			.AddIngredient(ItemID.LihzahrdPowerCell, 5)
+			.AddTile(TileID.MythrilAnvil)
+			.Register();
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

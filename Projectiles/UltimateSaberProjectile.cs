@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using rail;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -37,10 +38,6 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Projectile.ignoreWater = true;
             Projectile.DamageType = DamageClass.Melee;
         }
-        public override void OnSpawn(IEntitySource source)
-        {
-            count++;
-        }
         public override void AI()
         {
             base.AI();
@@ -51,7 +48,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             double distance = 90;
             Projectile.ai[0] += 1f;
             //Projectile.Center = player.Center + Vector2.One.RotatedBy(Projectile.ai[0]) * (int)rad;
-            Projectile.rotation = Projectile.AngleTo(player.MountedCenter);
+            Projectile.rotation = Projectile.AngleFrom(player.MountedCenter);
             float posX = player.Center.X - (int)(Math.Cos(rad) * distance) - Projectile.width / 2;
             float posY = player.Center.Y - (int)(Math.Sin(rad) * distance) - Projectile.height / 2;
             Projectile.position = new Vector2(posX, posY);
@@ -62,12 +59,19 @@ namespace UniverseOfSwordsMod.Items.Weapons
             }
         }
 
+        private bool _initialized;
+
         public override bool PreDraw(ref Color lightColor)
         {
             Color defaultColor = Projectile.GetAlpha(lightColor);
             Player player = Main.player[Projectile.owner];
-            int projectileCount = player.ownedProjectileCounts[ModContent.ProjectileType<UltimateSaberProjectile>()];
-            Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(textureArray[count]);
+            Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(textureArray[0]);
+            if (!_initialized)
+            {
+                int projectileCount = player.ownedProjectileCounts[ModContent.ProjectileType<UltimateSaberProjectile>()];
+                texture = (Texture2D)ModContent.Request<Texture2D>(textureArray[count]);
+            }
+
               
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor, Projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), Projectile.scale, SpriteEffects.None, 0);
             return false;

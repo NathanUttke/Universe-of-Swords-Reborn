@@ -16,23 +16,19 @@ public class DirtSword : ModItem
 		Item.useTime = 30;
 		Item.useAnimation = 30;
 		Item.damage = 6;
-		Item.knockBack = 4.5f;
+		Item.knockBack = 4f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 15;
 		Item.autoReuse = false;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
 	public override void AddRecipes()
 	{				
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.DirtBlock, 25);
-		val.AddTile(TileID.WorkBenches);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ItemID.DirtBlock, 25)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 5)
+		.AddTile(TileID.WorkBenches)
+		.Register();
 	}
 }

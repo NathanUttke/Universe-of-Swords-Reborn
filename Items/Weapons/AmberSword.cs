@@ -19,9 +19,10 @@ public class AmberSword : ModItem
         Item.damage = 16;
         Item.knockBack = 3.8f;
         Item.UseSound = SoundID.Item1;
-        Item.value = 15000;
+        Item.value = Item.buyPrice(0, 3, 40, 0);
         Item.autoReuse = false;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+        Item.DamageType = DamageClass.Melee; 
+        SacrificeTotal = 1;
     }
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -31,9 +32,10 @@ public class AmberSword : ModItem
 
     public override void AddRecipes()
     {
-        Recipe val = CreateRecipe(1);
-        val.AddIngredient(ItemID.Amber, 10);
-        val.AddTile(TileID.Anvils);
-        val.Register();
+        CreateRecipe()
+        .AddIngredient(ItemID.Amber, 10)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 10)
+        .AddTile(TileID.Anvils)
+        .Register();
     }
 }

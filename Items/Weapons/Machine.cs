@@ -28,26 +28,21 @@ public class Machine : ModItem
 		Item.shoot = ProjectileID.VortexBeaterRocket;
 		Item.shootSpeed = 10f;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
 
 	public override void AddRecipes()
-	{
-		
-																						Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.BrokenHeroSword, 1);
 		val.AddIngredient(Mod, "Orichalcon", 1);
-		val.AddIngredient(Mod, "UpgradeMatter", 1);
+		val.AddIngredient(Mod, "UpgradeMatter", 2);
 		val.AddIngredient(ItemID.LaserRifle, 1);
 		val.AddIngredient(Mod, "PrimeSword", 1);
 		val.AddIngredient(Mod, "DestroyerSword", 1);
 		val.AddIngredient(Mod, "TwinsSword", 1);
-		val.AddIngredient(Mod, "SwordMatter", 200);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();
 	}

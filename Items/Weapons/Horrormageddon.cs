@@ -28,28 +28,8 @@ public class Horrormageddon : ModItem
 		Item.shootSpeed = 10f;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.X -= 1f * (float)player.direction;
-		player.itemLocation.Y -= 1f * (float)player.direction;
-	}
-
-	public override void AddRecipes()
-	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "Doomsday", 1);
-		val.AddIngredient(Mod, "Apocalypse", 1);
-		val.AddIngredient(Mod, "Machine", 1);
-		val.AddIngredient(Mod, "InnosWrath", 1);
-		val.AddIngredient(Mod, "BeliarClaw", 1);
-		val.AddIngredient(ItemID.LargeEmerald, 1);
-		val.AddIngredient(Mod, "UpgradeMatter", 10);
-		val.AddIngredient(Mod, "LunarOrb", 1);
-		val.AddTile(TileID.LunarCraftingStation);
-		val.Register();
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

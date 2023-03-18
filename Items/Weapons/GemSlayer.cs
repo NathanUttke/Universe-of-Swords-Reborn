@@ -25,28 +25,24 @@ public class GemSlayer : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 20000;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "TopazSword", 1);
-		val.AddIngredient(Mod, "SapphireSword", 1);
-		val.AddIngredient(Mod, "EmeraldSword", 1);
-		val.AddIngredient(Mod, "AmethystSword", 1);
-		val.AddIngredient(Mod, "EmeraldSword", 1);
-		val.AddIngredient(Mod, "AmberSword", 1);
-		val.AddIngredient(Mod, "DiamondSword", 1);
-		val.AddIngredient(Mod, "RubySword", 1);
-		val.AddIngredient(Mod, "SwordMatter", 60);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(Mod, "TopazSword", 1)
+		.AddIngredient(Mod, "SapphireSword", 1)
+		.AddIngredient(Mod, "EmeraldSword", 1)
+		.AddIngredient(Mod, "AmethystSword", 1)
+		.AddIngredient(Mod, "EmeraldSword", 1)
+		.AddIngredient(Mod, "AmberSword", 1)
+		.AddIngredient(Mod, "DiamondSword", 1)
+		.AddIngredient(Mod, "RubySword", 1)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+		.AddTile(TileID.Anvils)
+		.Register();
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
