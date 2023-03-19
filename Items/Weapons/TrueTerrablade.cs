@@ -16,7 +16,7 @@ public class TrueTerrablade : ModItem
         Item.width = 92;
         Item.height = 108;
         Item.useTime = 15;
-        Item.useAnimation = 30;
+        Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 10f;
         Item.value = Item.buyPrice(0, 12, 0, 0);

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Terraria.Audio;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -59,6 +60,8 @@ namespace UniverseOfSwordsMod.Projectiles
                 _initialized = true;
             }
         }
+
+
 
         public override bool PreDraw(ref Color lightColor)
         {

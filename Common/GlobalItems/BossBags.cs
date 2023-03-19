@@ -18,9 +18,6 @@ public class BossBags : GlobalItem
 				case 3319:
                     player.QuickSpawnItem(entitySource, ModContent.ItemType<CthulhuJudge>(), 1);
 					break;
-				case 3318:
-                    player.QuickSpawnItem(entitySource, ModContent.ItemType<StickyGlowstickSword>(), 1);
-					break;
 				case 3320:
                     player.QuickSpawnItem(entitySource, ModContent.ItemType<TheEater>(), 1);
                     break;

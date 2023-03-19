@@ -35,9 +35,6 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             case NPCID.EyeofCthulhu:
                 npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<CthulhuJudge>()));
                 break;
-            case NPCID.KingSlime:
-                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<StickyGlowstickSword>()));
-                break;
             case NPCID.BrainofCthulhu:
                 npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TheBrain>()));
                 break;
@@ -113,14 +110,8 @@ public class UniverseOfSwordsModGlobalNPC : GlobalNPC
             case NPCID.TheGroom:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<UselessWeapon>(), 30, 1));
                 break;
-            case NPCID.Wraith:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WraithBlade>(), 50, 1));
-                break;
             case NPCID.Mimic:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ElBastardo>(), 4, 1));
-                break;
-            case NPCID.GiantCursedSkull:
-                npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WeirdSword>(), 30, 1));
                 break;
             case NPCID.DarkCaster:
                 npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WaterBoltSword>(), 40, 1));

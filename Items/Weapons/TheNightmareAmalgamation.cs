@@ -61,8 +61,7 @@ public class TheNightmareAmalgamation : ModItem
 	public override void AddRecipes()
 	{	
 																																																																Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "CthulhuJudge", 1);
-		val.AddIngredient(Mod, "StickyGlowstickSword", 1);
+		val.AddIngredient(Mod, "CthulhuJudge", 1);		
 		val.AddIngredient(Mod, "TheEater", 1);
 		val.AddIngredient(ItemID.BeeKeeper, 1);
 		val.AddIngredient(Mod, "SwordOfPower", 1);
@@ -76,8 +75,7 @@ public class TheNightmareAmalgamation : ModItem
 		val.AddTile(TileID.LunarCraftingStation);
 		val.Register();
 		Recipe val2 = CreateRecipe(1);
-		val2.AddIngredient(Mod, "CthulhuJudge", 1);
-		val2.AddIngredient(Mod, "StickyGlowstickSword", 1);
+		val2.AddIngredient(Mod, "CthulhuJudge", 1);		
 		val2.AddIngredient(Mod, "TheBrain", 1);
 		val2.AddIngredient(ItemID.BeeKeeper, 1);
 		val2.AddIngredient(Mod, "SwordOfPower", 1);

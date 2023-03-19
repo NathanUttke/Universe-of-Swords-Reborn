@@ -15,12 +15,13 @@ public class SandSword : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;
         Item.useAnimation = 30;
-        Item.damage = 7;
+        Item.damage = 6;
         Item.knockBack = 2.4f;
         Item.UseSound = SoundID.Item1;
         Item.value = 150;
         Item.autoReuse = false;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+        Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
