@@ -2,12 +2,12 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TrueTerrablade : ModItem
 {
-
     public override void SetDefaults()
     {
         Item.damage = 125;
@@ -15,13 +15,13 @@ public class TrueTerrablade : ModItem
         SacrificeTotal = 1;
         Item.width = 92;
         Item.height = 108;
-        Item.useTime = 25;
-        Item.useAnimation = 20;
+        Item.useTime = 15;
+        Item.useAnimation = 30;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 10f;
         Item.value = Item.buyPrice(0, 12, 0, 0);
-        Item.shoot = Mod.Find<ModProjectile>("TrueTerrablade").Type;
-        Item.shootSpeed = 20f;
+        Item.shoot = ModContent.ProjectileType<TrueTerrabladeProjectile>();
+        Item.shootSpeed = 18f;
         Item.rare = ItemRarityID.Purple;
         Item.UseSound = SoundID.Item60;
         Item.autoReuse = true;

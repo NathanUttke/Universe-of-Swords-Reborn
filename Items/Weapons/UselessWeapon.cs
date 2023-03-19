@@ -13,17 +13,15 @@ public class UselessWeapon : ModItem
 		Item.height = 56;
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
+		Item.damage = 15;
 		Item.useTime = 14;
 		Item.useAnimation = 14;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 50999;
 		Item.autoReuse = false;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
 }

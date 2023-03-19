@@ -29,7 +29,8 @@ public class SolBlade : ModItem
 		Item.shoot = Mod.Find<ModProjectile>("Armageddon").Type;
 		Item.value = Item.sellPrice(0, 50, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)

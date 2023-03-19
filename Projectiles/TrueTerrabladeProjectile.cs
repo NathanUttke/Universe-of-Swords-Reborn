@@ -6,7 +6,7 @@ using Terraria.ID;
 
 namespace UniverseOfSwordsMod.Projectiles;
 
-internal class TrueTerrablade : ModProjectile
+internal class TrueTerrabladeProjectile : ModProjectile
 {
 	public override void SetDefaults()
 	{

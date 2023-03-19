@@ -51,7 +51,7 @@ public class SwordOfTheMultiverse : ModItem
     {
         if (player.altFunctionUse == 2)
         {
-            Item.shoot = ProjectileID.Daybreak;
+            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>(); //Placeholder
         }
         else
         {

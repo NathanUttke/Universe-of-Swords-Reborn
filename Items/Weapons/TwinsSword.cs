@@ -30,9 +30,4 @@ public class TwinsSword : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
 }
