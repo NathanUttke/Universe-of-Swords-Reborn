@@ -57,12 +57,14 @@ public class TwinsSword : ModItem
             Projectile retinProj = Projectile.NewProjectileDirect(source, position, velocity * Utils.SelectRandom(Main.rand, 1, -1, 1, -1, 1), ProjectileID.DeathLaser, 45, knockback, player.whoAmI);
             retinProj.hostile = false;
             retinProj.friendly = true;
+			retinProj.DamageType = DamageClass.MeleeNoSpeed;
         }
 		else
 		{
             Projectile spazmProj = Projectile.NewProjectileDirect(source, position, velocity, ProjectileID.EyeFire, 40, knockback, player.whoAmI);
             spazmProj.hostile = false;
             spazmProj.friendly = true;
+            spazmProj.DamageType = DamageClass.MeleeNoSpeed;
         }
 
 		return false;
