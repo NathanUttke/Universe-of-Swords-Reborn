@@ -30,27 +30,20 @@ public class IceBreaker : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= -1f * player.gravDir;
-	}
-
 	public override void AddRecipes()
 	{		
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.IceBlade, 1);
-		val.AddIngredient(ItemID.SnowBlock, 999);
+		val.AddIngredient(ItemID.SnowBlock, 800);
 		val.AddIngredient(Mod, "Orichalcon", 1);
 		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1);
-		val.AddIngredient(Mod, "SwordMatter", 150);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-																														float numberProjectiles = 2 + Main.rand.Next(3);
+		float numberProjectiles = Main.rand.Next(1, 3);
 		float rotation = MathHelper.ToRadians(10f);
 		position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 5f;
 		for (int i = 0; (float)i < numberProjectiles; i++)

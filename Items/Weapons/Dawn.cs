@@ -18,8 +18,8 @@ public class Dawn : ModItem
 		Item.height = 68;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
-		Item.useAnimation = 20;
+		Item.useTime = 19;
+		Item.useAnimation = 19;
 		Item.damage = 18;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
@@ -28,18 +28,12 @@ public class Dawn : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
 	public override void AddRecipes()
 	{
 		CreateRecipe()
 		.AddIngredient(ItemID.Feather, 30)
-		.AddIngredient(ItemID.IronBroadsword, 1)
-		.AddIngredient(ModContent.ItemType<RefinedIronSword>(), 2)
+		.AddIngredient(ModContent.ItemType<RefinedIronSword>(), 1)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

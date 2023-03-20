@@ -1,11 +1,9 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ID;
 using UniverseOfSwordsMod.Projectiles;
-using System.Diagnostics.Tracing;
 using UniverseOfSwordsMod.Buffs;
 using UniverseOfSwordsMod.Items.Placeable;
 
@@ -33,7 +31,7 @@ public class SwordOfTheMultiverse : ModItem
         Item.crit = 15;
         Item.knockBack = 2f;
 
-		Item.value = Item.buyPrice(5, 0, 0, 0);
+		Item.value = Item.buyPrice(0, 20, 0, 0);
 
         Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item169;
@@ -115,6 +113,9 @@ public class SwordOfTheMultiverse : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1)
             .AddIngredient(ModContent.ItemType<SwordOfTheUniverseV2>(), 1)
+            .AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1)
+            .AddIngredient(ModContent.ItemType<ScarledFlareGreatsword>(), 1)
+            .AddIngredient(ModContent.ItemType<UltraMachine>(), 1)
 			.AddIngredient(ModContent.ItemType<DamascusBar>(), 50)
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 30)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)

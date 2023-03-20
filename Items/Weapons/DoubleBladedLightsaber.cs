@@ -59,9 +59,8 @@ public class DoubleBladedLightsaber : ModItem
 		.AddIngredient(ItemID.GreenPhasesaber, 1)
 		.AddIngredient(ItemID.BluePhasesaber, 1)
 		.AddIngredient(ItemID.RedPhasesaber, 1)
-		.AddIngredient(ItemID.ChlorophyteBar, 12)
+		.AddIngredient(ItemID.ChlorophyteBar, 15)
 		.AddIngredient(Mod, "UpgradeMatter", 3)
-		.AddIngredient(ItemID.CrystalShard, 25)
 		.AddIngredient(ModContent.ItemType<HumanBuzzSaw>(), 1)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();

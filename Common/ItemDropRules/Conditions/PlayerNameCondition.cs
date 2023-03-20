@@ -1,6 +1,6 @@
 ﻿using Terraria.GameContent.ItemDropRules;
 
-namespace UniverseOfSwordsMod.NPCs
+namespace UniverseOfSwordsMod.Common.ItemDropRules.Conditions
 {
     public class PlayerNameCondition : IItemDropRuleCondition
     {

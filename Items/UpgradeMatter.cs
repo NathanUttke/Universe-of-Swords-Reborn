@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -28,23 +29,15 @@ public class UpgradeMatter : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		if (Main.hardMode)
-		{
-            CreateRecipe()
-				.AddIngredient(Mod, "SwordMatter", 200)
-                .AddIngredient(ItemID.SoulofLight, 20)
-                .AddIngredient(ItemID.SoulofNight, 20)
-                .AddTile(TileID.Anvils)
-				.Register();
+	{ 
+		var recipe = CreateRecipe(1);		
+        if (Main.hardMode)
+        {
+            recipe.AddIngredient(ItemID.SoulofLight, 20);
+            recipe.AddIngredient(ItemID.SoulofNight, 20);
         }
-		else
-		{
-			CreateRecipe()
-				.AddIngredient(Mod, "SwordMatter", 200)
-                .AddTile(TileID.Anvils)
-				.Register();
-		}
-
-	}
+        recipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 200);
+        recipe.AddTile(TileID.Anvils);
+        recipe.Register();    
+    }
 }

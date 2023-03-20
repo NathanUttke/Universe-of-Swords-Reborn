@@ -18,8 +18,8 @@ public class HumanBuzzSaw : ModProjectile
 
     public override void SetDefaults()
     {
-        Projectile.width = 30;
-        Projectile.height = 30;
+        Projectile.width = 128;
+        Projectile.height = 128;
         Projectile.scale = 4f;
         Projectile.penetrate = -1;
         Projectile.tileCollide = false;
@@ -61,11 +61,10 @@ public class HumanBuzzSaw : ModProjectile
 
         Projectile.rotation += 0.3f * player.direction;
     }
-
     public override bool PreDraw(ref Color lightColor)
     {
         Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-        Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, new Vector2((float)(texture.Width / 2), (float)(texture.Height / 2)), 1f, (SpriteEffects)(Projectile.spriteDirection /*!*/= -1), 0f);
+        Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
         return false;
     }
 }

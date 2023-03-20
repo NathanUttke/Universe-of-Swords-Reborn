@@ -12,7 +12,6 @@ public class BlueRuneBlade : ModItem
 		DisplayName.SetDefault("Ice Rune Blade");
 		Tooltip.SetDefault("'Pulses with cold energy of ice'");
 	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 48;
@@ -31,12 +30,10 @@ public class BlueRuneBlade : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
 	}
-
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
 	{
 		player.itemLocation.Y -= 1f * player.gravDir;
 	}
-
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
 											

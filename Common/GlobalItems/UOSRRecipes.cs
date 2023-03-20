@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace UniverseOfSwordsMod
+namespace UniverseOfSwordsMod.Common.GlobalItems
 {
     public class UOSRRecipes : ModSystem
     {

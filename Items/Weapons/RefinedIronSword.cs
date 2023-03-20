@@ -30,17 +30,17 @@ public class RefinedIronSword : ModItem
 
 	public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddRecipeGroup("IronBar", 5);
-		val.AddIngredient(ItemID.IronBroadsword, 1);
-		val.AddIngredient(Mod, "SwordMatter", 20);
-		val.AddTile(TileID.Anvils);
-		val.Register();
-		Recipe val2 = CreateRecipe(1);
-		val2.AddRecipeGroup("IronBar", 5);
-		val2.AddIngredient(ItemID.LeadBroadsword, 1);
-		val2.AddIngredient(Mod, "SwordMatter", 20);
-		val2.AddTile(TileID.Anvils);
-		val2.Register();
+		CreateRecipe()
+		.AddRecipeGroup("IronBar", 5)
+		.AddIngredient(ItemID.IronBroadsword, 1)
+		.AddIngredient(Mod, "SwordMatter", 20)
+		.AddTile(TileID.Anvils)
+		.Register();
+		CreateRecipe()
+		.AddRecipeGroup("IronBar", 5)
+		.AddIngredient(ItemID.LeadBroadsword, 1)
+		.AddIngredient(Mod, "SwordMatter", 20)
+		.AddTile(TileID.Anvils)
+		.Register();
 	}
 }
