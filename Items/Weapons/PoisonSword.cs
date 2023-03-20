@@ -18,13 +18,14 @@ public class PoisonSword : ModItem
 		Item.useTime = 30;
 		Item.useAnimation = 30;
 		Item.knockBack = 5.6f;
-		Item.damage = 48;
+		Item.damage = 45;
 		Item.shoot = ProjectileID.PoisonFang;
 		Item.shootSpeed = 5f;
 		Item.UseSound = SoundID.Item43;
 		Item.value = 100000;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
