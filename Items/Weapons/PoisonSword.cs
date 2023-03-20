@@ -15,9 +15,9 @@ public class PoisonSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
+		Item.useTime = 60;
 		Item.useAnimation = 30;
-		Item.knockBack = 5.6f;
+		Item.knockBack = 5f;
 		Item.damage = 45;
 		Item.shoot = ProjectileID.PoisonFang;
 		Item.shootSpeed = 5f;
@@ -30,7 +30,7 @@ public class PoisonSword : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		float spread = 0.174f;
+		float spread = 0.175f;
 		float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
 		double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
 		double deltaAngle = spread / 2f;
@@ -40,10 +40,5 @@ public class PoisonSword : ModItem
 			Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
 		}
 		return false;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
 	}
 }

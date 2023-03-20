@@ -17,9 +17,8 @@ public class PianoSword3 : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
-		Item.scale = 2.5f;
+		Item.width = 128;
+		Item.height = 128;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
@@ -32,7 +31,8 @@ public class PianoSword3 : ModItem
 		Item.shootSpeed = 15f;
 		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

@@ -71,6 +71,8 @@ namespace UniverseOfSwordsMod.Projectiles
             int frameHeight = texture.Height / Main.projFrames[Projectile.type];
             int startY = frameHeight * Projectile.frame;            
             Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, null, null, Main.Rasterizer);
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             //Main.EntitySpriteDraw(texture, Projectile.Center, sourceRectangle, defaultColor, Projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), Projectile.scale, SpriteEffects.None, 0);
             return false;

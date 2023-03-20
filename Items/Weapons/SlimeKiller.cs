@@ -20,21 +20,19 @@ public class SlimeKiller : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 14;
 		Item.useAnimation = 14;
-		Item.damage = 38;
+		Item.damage = 30;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 51800;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
-		target.AddBuff(137, 360, false);
+		if (!target.HasBuff(BuffID.Slimed))
+		{
+			target.AddBuff(BuffID.Slimed, 400);
+		}
 	}
 }

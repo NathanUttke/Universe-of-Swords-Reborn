@@ -62,10 +62,18 @@ public class AncientKatana : ModItem
 		}
 	}
 
-	public override void AddRecipes()
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    {
+        if (target.type != NPCID.TargetDummy && !NPCID.Sets.CountsAsCritter[target.type] )//&& target.immune[player.whoAmI] == 0)
+		{			
+            UniverseUtils.SummonSuperStarSlash(target.Center, target.GetSource_OnHit(target), player.whoAmI, 30, ProjectileID.SuperStarSlash);
+        }
+    }
+
+    public override void AddRecipes()
 	{		
 		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "Orichalcon", 1);
+		val.AddIngredient(Mod, "Orichalcon", 5);
 		val.AddIngredient(ItemID.SoulofFright, 15);
 		val.AddIngredient(ItemID.SoulofMight, 15);
 		val.AddIngredient(ItemID.SoulofSight, 15);

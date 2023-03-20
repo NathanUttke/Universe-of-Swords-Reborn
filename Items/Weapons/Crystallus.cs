@@ -10,7 +10,6 @@ public class Crystallus : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Crystallus");
-		Tooltip.SetDefault("'This sword can keep being upgraded throughout the game until the Mechanical Bosses'");
 	}
 
 	public override void SetDefaults()

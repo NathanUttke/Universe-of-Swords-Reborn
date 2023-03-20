@@ -17,9 +17,8 @@ public class PianoSword2 : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 64;
-        Item.height = 64;
-        Item.scale = 2.5f;
+        Item.width = 128;
+        Item.height = 128;
         Item.rare = ItemRarityID.Cyan;
         Item.crit = 6;
         Item.useStyle = ItemUseStyleID.Swing;

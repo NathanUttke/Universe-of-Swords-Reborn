@@ -38,10 +38,8 @@ public class TheForce : ModItem
 	public override void AddRecipes()
 	{
 		
-				
-														Recipe val = CreateRecipe(1);
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.Starfury, 1);
-		val.AddIngredient(Mod, "MasterSword", 1);
 		val.AddIngredient(Mod, "LavaSword", 1);
 		val.AddIngredient(ItemID.HellstoneBar, 15);
 		val.AddIngredient(Mod, "UpgradeMatter", 1);
