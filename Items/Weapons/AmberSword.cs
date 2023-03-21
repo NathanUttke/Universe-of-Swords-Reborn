@@ -19,7 +19,7 @@ public class AmberSword : ModItem
         Item.damage = 16;
         Item.knockBack = 3.8f;
         Item.UseSound = SoundID.Item1;
-        Item.value = Item.buyPrice(0, 3, 40, 0);
+        Item.value = Item.sellPrice(0, 3, 40, 0);
         Item.autoReuse = false;
         Item.DamageType = DamageClass.Melee; 
         SacrificeTotal = 1;

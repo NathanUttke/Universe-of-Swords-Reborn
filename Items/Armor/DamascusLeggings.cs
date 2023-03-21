@@ -18,7 +18,7 @@ public class DamascusLeggings : ModItem
 	{
 		Item.width = 22;
 		Item.height = 18;
-		Item.value = Item.buyPrice(0, 1, 0, 0);
+		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 4;
 		SacrificeTotal = 1;

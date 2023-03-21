@@ -22,11 +22,11 @@ public class TwinsSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 20;
-		Item.damage = 62;
+		Item.damage = 60;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 160000;
-		Item.shoot = ProjectileID.CursedFlameFriendly;
+		Item.shoot = ModContent.ProjectileType<TwinsProjectile>();
 		Item.shootSpeed = 5f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -44,7 +44,7 @@ public class TwinsSword : ModItem
         }
         else
         {
-            Item.shoot = ProjectileID.EyeFire;
+            Item.shoot = ModContent.ProjectileType<TwinsProjectile>();
         }
         return true;
     }
@@ -61,10 +61,7 @@ public class TwinsSword : ModItem
         }
 		else
 		{
-            Projectile spazmProj = Projectile.NewProjectileDirect(source, position, velocity, ProjectileID.EyeFire, 40, knockback, player.whoAmI);
-            spazmProj.hostile = false;
-            spazmProj.friendly = true;
-            spazmProj.DamageType = DamageClass.MeleeNoSpeed;
+            Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<TwinsProjectile>(), 40, knockback, player.whoAmI);
         }
 
 		return false;

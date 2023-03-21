@@ -26,7 +26,7 @@ public class NatureSword : ModItem
 		Item.shoot = ProjectileID.VilethornBase;
 		Item.shootSpeed = 20f;
 		Item.UseSound = SoundID.Item1;
-		Item.value = Item.buyPrice(0, 0, 50, 0);
+		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
 	}

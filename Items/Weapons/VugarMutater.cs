@@ -27,7 +27,7 @@ public class VugarMutater : ModItem
         Item.UseSound = SoundID.Item1;
         Item.shoot = ModContent.ProjectileType<VugarMutaterProjectile>();
         Item.shootSpeed = 30f;
-        Item.value = Item.buyPrice(0, 1, 40, 0);
+        Item.value = Item.sellPrice(0, 1, 40, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
         SacrificeTotal = 1;

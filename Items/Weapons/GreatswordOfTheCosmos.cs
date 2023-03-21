@@ -29,7 +29,7 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.UseSound = SoundID.Item46;
 		Item.shoot = ProjectileID.Meteor1;
 		Item.shootSpeed = 10f;
-		Item.value = Item.buyPrice(0, 10, 0, 0);
+		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

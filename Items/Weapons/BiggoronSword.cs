@@ -28,7 +28,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.knockBack = 2f;
             Item.UseSound = SoundID.Item1;
 
-            Item.value = Item.buyPrice(0, 0, 60, 0);
+            Item.value = Item.sellPrice(0, 0, 60, 0);
             Item.rare = ItemRarityID.LightRed;
 
             SacrificeTotal = 1;

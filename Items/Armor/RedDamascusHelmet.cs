@@ -18,7 +18,7 @@ public class RedDamascusHelmet : ModItem
 	{
 		Item.width = 16;
 		Item.height = 18;
-		Item.value = Item.buyPrice(0, 7, 0, 0);
+		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Orange;
 		Item.defense = 20;
 		SacrificeTotal = 1;

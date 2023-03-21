@@ -29,7 +29,8 @@ public class OrangeRuneSword : ModItem
 		Item.shootSpeed = 10f;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -38,9 +39,8 @@ public class OrangeRuneSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.LivingFireBlock, 100);
 		val.AddIngredient(Mod, "DamascusBar", 10);
 		val.AddIngredient(Mod, "UpgradeMatter", 1);
@@ -50,7 +50,7 @@ public class OrangeRuneSword : ModItem
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
-																if (Main.rand.NextBool(2))
+		if (Main.rand.NextBool(2))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;

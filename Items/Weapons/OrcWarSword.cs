@@ -18,35 +18,30 @@ public class OrcWarSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 55;
-		Item.useAnimation = 55;
-		Item.damage = 45;
+		Item.useTime = 40;
+		Item.useAnimation = 40;
+		Item.damage = 50;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 29000;
 		Item.autoReuse = false;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void AddRecipes()
-	{
-		
-																								Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.IronBar, 25);
-		val.AddIngredient(Mod, "BiggoronSword", 1);
-		val.AddIngredient(Mod, "SwordMatter", 70);
-		val.AddTile(TileID.Anvils);
-		val.Register();
-		Recipe val2 = CreateRecipe(1);
-		val2.AddIngredient(ItemID.LeadBar, 25);
-		val2.AddIngredient(Mod, "BiggoronSword", 1);
-		val2.AddIngredient(Mod, "SwordMatter", 70);
-		val2.AddTile(TileID.Anvils);
-		val2.Register();
+	{		
+		CreateRecipe()
+			.AddIngredient(ItemID.IronBar, 25)
+			.AddIngredient(Mod, "BiggoronSword", 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+			.AddTile(TileID.Anvils)
+			.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.LeadBar, 25)
+			.AddIngredient(Mod, "BiggoronSword", 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 }

@@ -38,9 +38,8 @@ public class YellowRuneBlade : ModItem
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-											
-				if (Main.rand.NextBool(2))
+	{											
+		if (Main.rand.NextBool(2))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.IchorTorch, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;
@@ -50,9 +49,8 @@ public class YellowRuneBlade : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.Ichor, 30);
 		val.AddIngredient(Mod, "DamascusBar", 10);
 		val.AddIngredient(Mod, "UpgradeMatter", 1);

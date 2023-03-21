@@ -19,7 +19,7 @@ public class AmethystSword : ModItem
 		Item.damage = 15;
 		Item.knockBack = 3f;
 		Item.UseSound = SoundID.Item1;
-		Item.value = Item.buyPrice(0, 0, 50, 0);
+		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

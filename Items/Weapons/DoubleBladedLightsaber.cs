@@ -28,7 +28,7 @@ public class DoubleBladedLightsaber : ModItem
 		Item.height = 138;
 
 		Item.useTime = 10;
-		Item.useAnimation = 10;
+		Item.useAnimation = 30;
 
 		Item.channel = true;
         Item.autoReuse = true;
@@ -37,7 +37,7 @@ public class DoubleBladedLightsaber : ModItem
 
 		Item.UseSound = SoundID.Item15;
 
-		Item.useStyle = ItemUseStyleID.Swing;
+		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.knockBack = 8f;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.rare = ItemRarityID.Lime;
@@ -60,7 +60,7 @@ public class DoubleBladedLightsaber : ModItem
 		.AddIngredient(ItemID.BluePhasesaber, 1)
 		.AddIngredient(ItemID.RedPhasesaber, 1)
 		.AddIngredient(ItemID.ChlorophyteBar, 15)
-		.AddIngredient(Mod, "UpgradeMatter", 3)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
 		.AddIngredient(ModContent.ItemType<HumanBuzzSaw>(), 1)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();

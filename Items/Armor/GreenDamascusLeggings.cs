@@ -18,7 +18,7 @@ public class GreenDamascusLeggings : ModItem
 	{
 		Item.width = 22;
 		Item.height = 18;
-		Item.value = Item.buyPrice(0, 7, 0, 0);
+		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 10;
 		SacrificeTotal = 1;

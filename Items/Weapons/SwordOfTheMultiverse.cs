@@ -31,7 +31,7 @@ public class SwordOfTheMultiverse : ModItem
         Item.crit = 15;
         Item.knockBack = 2f;
 
-		Item.value = Item.buyPrice(0, 20, 0, 0);
+		Item.value = Item.sellPrice(0, 20, 0, 0);
 
         Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item169;

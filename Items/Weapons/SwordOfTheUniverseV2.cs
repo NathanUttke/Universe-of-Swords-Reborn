@@ -32,7 +32,7 @@ public class SwordOfTheUniverseV2 : ModItem
 		Item.shoot = ProjectileID.InfluxWaver;
 		Item.shootSpeed = 30f;
 		Item.expert = true;
-		Item.value = Item.sellPrice(8, 0, 0, 0);
+		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

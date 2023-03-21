@@ -41,11 +41,12 @@ public class Crystallus : ModItem
 	}
 
 	public override void AddRecipes()
-	{				
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.ManaCrystal, 5);
-		val.AddIngredient(ItemID.FallenStar, 3);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+	{
+		CreateRecipe()
+		.AddIngredient(ItemID.ManaCrystal, 5)
+		.AddIngredient(ItemID.FallenStar, 5)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 5)
+		.AddTile(TileID.Anvils)
+		.Register();
 	}
 }

@@ -20,9 +20,9 @@ public class RefinedIronSword : ModItem
 		Item.useTime = 20;
 		Item.useAnimation = 20;
 		Item.damage = 14;
-		Item.knockBack = 5f;
+		Item.knockBack = 5f;	
 		Item.UseSound = SoundID.Item1;
-		Item.value = Item.buyPrice(0, 0, 30, 0);
+		Item.value = Item.sellPrice(0, 0, 30, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

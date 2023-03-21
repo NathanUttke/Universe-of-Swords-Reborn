@@ -9,7 +9,7 @@ public class HaloOfHorrors : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Skull of Insanity");
-		Tooltip.SetDefault("'The fearsome power of the Dungeon Guardian is now yours!'\n20 defense\n100% increased armor penetration\nIncreased health regeneration\nProvides ultimate health regeneration\n15% increased damage\nCurses the wearer with infinite Potion Sickness debuff\n30% decreased melee speed");
+		Tooltip.SetDefault("15 defense\n25% increased armor penetration\nIncreased health regeneration\n15% increased damage\nCurses the wearer with infinite Potion Sickness debuff\n30% decreased melee speed");
 	}
 
 	public override void SetDefaults()
@@ -25,12 +25,12 @@ public class HaloOfHorrors : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.statDefense += 20;
+		player.statDefense += 15;
 		player.GetArmorPenetration(DamageClass.Generic) += 25;
-		player.lifeRegen += 35;
+		player.lifeRegen += 25;
 		player.GetAttackSpeed(DamageClass.Melee) -= 0.25f;
-		player.statLifeMax2 += 100;
+		player.statLifeMax2 += 25;
 		player.GetDamage(DamageClass.Generic) += 0.15f;
-		player.AddBuff(21, 2, true);
+		player.AddBuff(BuffID.Rabies, 300, true);
 	}
 }

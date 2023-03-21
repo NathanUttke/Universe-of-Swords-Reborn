@@ -11,16 +11,19 @@ public class CorruptCrystallus : ModItem
 	{
 		Item.width = 44;
 		Item.height = 54;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.Green;
+
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 25;
+		Item.useTime = 50;
 		Item.useAnimation = 25;
-		Item.damage = 19;
+        Item.UseSound = SoundID.Item1;
+
+        Item.damage = 19;
 		Item.knockBack = 5f;
+
 		Item.shoot = Mod.Find<ModProjectile>("Corrupt").Type;
-		Item.shootSpeed = 10f;
-		Item.UseSound = SoundID.Item1;
+		Item.shootSpeed = 5f;
+		
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -31,18 +34,26 @@ public class CorruptCrystallus : ModItem
 	{	
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.Demonite, 0f, 0f, 100, default(Color), 2f);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Demonite, 0f, 0f, 100, default, 2f);
 			Main.dust[dust].noGravity = true;
 		}
 	}
 
-	public override void AddRecipes()
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+    {
+		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(25f));
+    }
+    public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "Crystallus", 1);
-		val.AddIngredient(ItemID.DemoniteBar, 12);
-		val.AddIngredient(ItemID.ShadowScale, 8);
-		val.AddTile(TileID.Anvils);
-		val.Register();
-	}
+		CreateRecipe()
+			.AddIngredient(Mod, "Crystallus", 1)
+			.AddIngredient(ItemID.DemoniteBar, 12)
+			.AddIngredient(ItemID.ShadowScale, 8)
+			.AddTile(TileID.Anvils)
+			.Register();
+        CreateRecipe()
+			 .AddIngredient(ModContent.ItemType<CrimsonCrystallus>(), 1)
+			 .AddTile(TileID.DemonAltar)
+			 .Register();
+    }
 }

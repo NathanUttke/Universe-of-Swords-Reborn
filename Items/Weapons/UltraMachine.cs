@@ -23,12 +23,12 @@ public class UltraMachine : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 15;
-		Item.damage = 130;
+		Item.damage = 125;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item62;
 		Item.shoot = ProjectileID.VortexBeaterRocket;
 		Item.shootSpeed = 30f;
-		Item.value = Item.buyPrice(0, 30, 0, 0);
+		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

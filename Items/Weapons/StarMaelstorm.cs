@@ -27,7 +27,7 @@ public class StarMaelstorm : ModItem
 		Item.UseSound = SoundID.Item105;
 		Item.shoot = ProjectileID.StarWrath;
 		Item.shootSpeed = 20f;
-		Item.value = Item.buyPrice(0, 50, 0, 0);
+		Item.value = Item.sellPrice(0, 50, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

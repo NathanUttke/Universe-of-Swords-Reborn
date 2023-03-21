@@ -18,7 +18,7 @@ public class DamascusBreastplate : ModItem
 	{
 		Item.width = 26;
 		Item.height = 20;
-		Item.value = Item.buyPrice(0, 2, 0, 0);
+		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 6;
 		SacrificeTotal = 1;

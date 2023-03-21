@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -17,8 +18,8 @@ public class AncientKatana : ModItem
 		Item.height = 72;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 10;
-		Item.useAnimation = 10;
+		Item.useTime = 20;
+		Item.useAnimation = 20;
 		Item.damage = 65;
 		Item.knockBack = 4f;
 		Item.crit = 15;
@@ -49,7 +50,7 @@ public class AncientKatana : ModItem
     {
         if (player.head == ItemID.NinjaHood && player.body == ItemID.NinjaShirt && player.legs == ItemID.NinjaPants)
         {
-			scale += 0.5f;
+			scale += 0.25f;
         }
     }
 
@@ -57,30 +58,21 @@ public class AncientKatana : ModItem
 	{		
 		if (Main.rand.NextBool(3))
 		{
-			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.PortalBoltTrail, 0f, 0f, 100, default, 2f);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PortalBoltTrail, 0f, 0f, 100, default, 1.3f);
 			Main.dust[dust].noGravity = true;
 		}
 	}
-
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-    {
-        if (target.type != NPCID.TargetDummy && !NPCID.Sets.CountsAsCritter[target.type] )//&& target.immune[player.whoAmI] == 0)
-		{			
-            UniverseUtils.SummonSuperStarSlash(target.Center, target.GetSource_OnHit(target), player.whoAmI, 30, ProjectileID.SuperStarSlash);
-        }
-    }
-
     public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "Orichalcon", 5);
-		val.AddIngredient(ItemID.SoulofFright, 15);
-		val.AddIngredient(ItemID.SoulofMight, 15);
-		val.AddIngredient(ItemID.SoulofSight, 15);
-		val.AddIngredient(ItemID.ChlorophyteBar, 15);
-		val.AddIngredient(Mod, "UpgradeMatter", 2);
-		val.AddIngredient(ItemID.Katana, 1);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
+		.AddIngredient(ItemID.SoulofFright, 15)
+		.AddIngredient(ItemID.SoulofMight, 15)
+		.AddIngredient(ItemID.SoulofSight, 15)
+		.AddIngredient(ItemID.ChlorophyteBar, 15)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+		.AddIngredient(ItemID.Katana, 1)
+		.AddTile(TileID.MythrilAnvil)
+		.Register();
 	}
 }
