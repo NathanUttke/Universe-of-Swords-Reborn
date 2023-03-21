@@ -14,7 +14,7 @@ public class SwordOfTheMultiverse : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Sword of the Multiverse");
-		Tooltip.SetDefault("'WARNING! Do NOT craft this Sword! Crafting it will break the game AND your sanity!'");
+		Tooltip.SetDefault("'You only get what you give'");
 	}
 
 	public override void SetDefaults()
