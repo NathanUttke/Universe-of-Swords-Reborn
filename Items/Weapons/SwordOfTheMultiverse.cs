@@ -116,6 +116,7 @@ public class SwordOfTheMultiverse : ModItem
             .AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1)
             .AddIngredient(ModContent.ItemType<ScarledFlareGreatsword>(), 1)
             .AddIngredient(ModContent.ItemType<UltraMachine>(), 1)
+			.AddIngredient(ModContent.ItemType<GnomBlade>(), 1)
 			.AddIngredient(ModContent.ItemType<DamascusBar>(), 50)
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 30)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)

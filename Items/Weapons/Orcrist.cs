@@ -35,10 +35,9 @@ public class Orcrist : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
+	{		
 									
-										Recipe val = CreateRecipe(1);
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "UpgradeMatter", 1);
 		val.AddIngredient(ItemID.TitaniumSword, 1);
 		val.AddTile(TileID.MythrilAnvil);

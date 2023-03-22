@@ -13,7 +13,7 @@ public class SwordOfTheUniverseV2 : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Sword of the Universe");
-		Tooltip.SetDefault("'This sword doesn't swing. It lifts the Universe towards the blade'\nHas changeable forms");
+		Tooltip.SetDefault("'This sword doesn't swing. It lifts the Universe towards the blade'");
 	}
 
 	public override void SetDefaults()
@@ -21,11 +21,11 @@ public class SwordOfTheUniverseV2 : ModItem
 		Item.width = 140;
 		Item.height = 140;
 		Item.rare = ItemRarityID.Purple;
-		Item.crit = 16;
+		Item.crit = 20;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 15;
-		Item.useAnimation = 15;
-		Item.damage = 100;
+		Item.useTime = 40;
+		Item.useAnimation = 20;
+		Item.damage = 120;
 		Item.knockBack = 20f;
 		Item.UseSound = SoundID.Item169;
 
@@ -53,7 +53,7 @@ public class SwordOfTheUniverseV2 : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		float spread = 0.5f;
+		float spread = 0.25f;
 		float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
 		double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
 		double deltaAngle = spread / 2f;
