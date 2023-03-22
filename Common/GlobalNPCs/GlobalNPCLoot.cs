@@ -93,9 +93,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.GiantBat:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BatSlayer>(), 50, 1));
                     break;
-                case NPCID.Piranha:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Biter>(), 80, 1));
-                    break;
                 case NPCID.DungeonSlime:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SlimeKiller>(), 10, 1));
                     break;
