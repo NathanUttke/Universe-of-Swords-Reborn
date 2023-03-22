@@ -21,9 +21,9 @@ public class EdgeLord : ModItem
 		Item.height = 128;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
-		Item.useAnimation = 20;
-		Item.damage = 110;
+		Item.useTime = 21;
+		Item.useAnimation = 21;
+		Item.damage = 100;
 		Item.knockBack = 11f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ModContent.ProjectileType<EdgeLordProjectile>();
@@ -40,19 +40,19 @@ public class EdgeLord : ModItem
 			.AddIngredient(ModContent.ItemType<TheBrain>(), 1)
 			.AddIngredient(ItemID.MoonStone, 1)
 			.AddIngredient(ItemID.HellstoneBar, 50)
-			.AddIngredient(ItemID.LunarBar, 25)
+			.AddIngredient(ItemID.SunStone, 1)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
 			.AddIngredient(ItemID.DeathSickle, 1)
-			.AddTile(TileID.LunarCraftingStation)
+			.AddTile(TileID.MythrilAnvil)
 			.Register();
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<TheEater>(), 1)
 			.AddIngredient(ItemID.MoonStone, 1)
 			.AddIngredient(ItemID.HellstoneBar, 50)
-			.AddIngredient(ItemID.LunarBar, 25)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+            .AddIngredient(ItemID.SunStone, 1)
+            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
 			.AddIngredient(ItemID.DeathSickle, 1)
-			.AddTile(TileID.LunarCraftingStation)
+			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
