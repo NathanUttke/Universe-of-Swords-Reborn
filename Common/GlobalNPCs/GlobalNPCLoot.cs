@@ -114,12 +114,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.RustyArmoredBonesSwordNoArmor:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<RustySword>(), 150, 1));
                     break;
-                case NPCID.BlueArmoredBones:
-                case NPCID.BlueArmoredBonesMace:
-                case NPCID.BlueArmoredBonesNoPants:
-                case NPCID.BlueArmoredBonesSword:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<MagnetSword>(), 150, 1));
-                    break;
                 case NPCID.HellArmoredBones:
                 case NPCID.HellArmoredBonesMace:
                 case NPCID.HellArmoredBonesSword:
