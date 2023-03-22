@@ -23,13 +23,7 @@ public class AmberSword : ModItem
         Item.autoReuse = false;
         Item.DamageType = DamageClass.Melee; 
         SacrificeTotal = 1;
-    }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.Y -= 1f * player.gravDir;
-    }
-
+    } 
     public override void AddRecipes()
     {
         CreateRecipe()

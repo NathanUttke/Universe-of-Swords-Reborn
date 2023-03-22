@@ -9,20 +9,15 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TheSwarm : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		Tooltip.SetDefault("Shoots swarm of bees");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 64;
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 17;
-		Item.useAnimation = 17;
-		Item.damage = 15;
+		Item.useTime = 30;
+		Item.useAnimation = 15;
+		Item.damage = 19;
 		Item.knockBack = 5f;
 		Item.shoot = ProjectileID.Bee;
 		Item.shootSpeed = 10f;
@@ -30,7 +25,7 @@ public class TheSwarm : ModItem
 		Item.value = 38500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
-		Item.scale = 1.1f;
+		Item.scale = 1.15f;
 		SacrificeTotal = 1;
 	}
 
