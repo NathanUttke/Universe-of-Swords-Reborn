@@ -15,27 +15,19 @@ public class GlacialCracker : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 81;
-        Item.height = 81;
-        Item.scale = 2f;
+        Item.width = 162;
+        Item.height = 162;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 23;
-        Item.useAnimation = 23;
-        Item.damage = 180;
-        Item.knockBack = 10f;
+        Item.useTime = 60;
+        Item.useAnimation = 30;
+        Item.damage = 110;
+        Item.knockBack = 8f;
         Item.UseSound = SoundID.Item28;
-        Item.shoot = ProjectileID.NorthPoleSpear;
-        Item.shootSpeed = 70f;
-        Item.value = Item.sellPrice(0, 50, 0, 0);
+        Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-    }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.X -= 3f * (float)player.direction;
-        player.itemLocation.Y -= 3f * (float)player.direction;
+        Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
     }
 
     public override void AddRecipes()
@@ -43,18 +35,17 @@ public class GlacialCracker : ModItem
 
         Recipe val = CreateRecipe(1);
         val.AddIngredient(ItemID.IceBlade, 1);
-        val.AddIngredient(ItemID.Amarok, 1);
-        val.AddIngredient(ItemID.Frostbrand, 2);
+        val.AddIngredient(ItemID.Frostbrand, 1);
         val.AddIngredient(ItemID.NorthPole, 1);
-        val.AddIngredient(ItemID.FrostCore, 10);
-        val.AddIngredient(ItemID.IceFeather, 2);
+        val.AddIngredient(ItemID.FrostCore, 1);
+        val.AddIngredient(ItemID.IceFeather, 1);
         val.AddIngredient(ItemID.BrokenHeroSword, 1);
-        val.AddIngredient(ItemID.IceBlock, 999);
+        val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4);
         val.AddTile(TileID.LunarCraftingStation);
         val.Register();
     }
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         float numberProjectiles = 3 + Main.rand.Next(4);
         float rotation = MathHelper.ToRadians(10f);
@@ -65,7 +56,7 @@ public class GlacialCracker : ModItem
             Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
         }
         return false;
-    }
+    }*/
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {

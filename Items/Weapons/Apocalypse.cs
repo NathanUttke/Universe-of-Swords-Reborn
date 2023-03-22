@@ -37,7 +37,7 @@ public class Apocalypse : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.InfernoFork, 0f, 0f, 100, default(Color), 2f);
+            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.InfernoFork, 0f, 0f, 100, default, 2f);
             Main.dust[dust].noGravity = true;
         }
     }
@@ -48,10 +48,11 @@ public class Apocalypse : ModItem
         float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
         double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
         double deltaAngle = spread / 4f;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
-            double offsetAngle = startAngle + deltaAngle * (double)i;
-            Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
+            double offsetAngle = startAngle + deltaAngle * i;
+            Projectile newProj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
+            newProj.DamageType = DamageClass.MeleeNoSpeed;
         }
         return false;
     }
@@ -64,7 +65,7 @@ public class Apocalypse : ModItem
         val.AddIngredient(ItemID.HellstoneBar, 20);
         val.AddIngredient(ItemID.MeteoriteBar, 20);
         val.AddIngredient(Mod, "MartianSaucerCore", 1);
-        val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3);
+        val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2);
         val.AddTile(TileID.LunarCraftingStation);
         val.Register();
     }

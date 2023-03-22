@@ -16,7 +16,7 @@ public class Armageddon : ModProjectile
         Projectile.aiStyle = 1;
         Projectile.friendly = true;
         Projectile.hostile = false;
-        Projectile.DamageType = DamageClass.Ranged;
+        Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.penetrate = 1;
         Projectile.ignoreWater = true;
         Projectile.tileCollide = true;

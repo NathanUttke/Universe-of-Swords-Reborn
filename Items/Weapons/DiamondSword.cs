@@ -11,17 +11,17 @@ public class DiamondSword : ModItem
 	{
 		Item.width = 42;
 		Item.height = 42;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 30;
-		Item.damage = 19;
+		Item.damage = 16;
 		Item.knockBack = 3.5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 25, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)

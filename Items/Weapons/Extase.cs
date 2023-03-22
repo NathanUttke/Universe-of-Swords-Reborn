@@ -20,6 +20,7 @@ public class Extase : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 60, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 }

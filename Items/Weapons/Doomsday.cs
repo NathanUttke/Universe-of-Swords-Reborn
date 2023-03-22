@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -23,10 +24,18 @@ public class Doomsday : ModItem
 		Item.shoot = ProjectileID.InfernoFriendlyBlast;
 		Item.shootSpeed = 10f;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        proj.DamageType = DamageClass.MeleeNoSpeed;
+        return false;
+    }
+
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
 	{
 		player.itemLocation.Y -= 1f * player.gravDir;
 	}

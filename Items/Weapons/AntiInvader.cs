@@ -42,8 +42,9 @@ public class AntiInvader : ModItem
 		for (int i = 0; i < 3; i++)
 		{
 			double offsetAngle = startAngle + deltaAngle * (double)i;
-			Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
-		}
+            Projectile newProj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
+            newProj.DamageType = DamageClass.MeleeNoSpeed;
+        }
 		return false;
 	}
 

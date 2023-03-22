@@ -41,9 +41,8 @@ public class FireBlade : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.AshBlock, 100);
 		val.AddIngredient(ItemID.Torch, 50);
 		val.AddIngredient(Mod, "SwordMatter", 20);

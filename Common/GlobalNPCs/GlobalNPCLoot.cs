@@ -90,9 +90,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.LunarTowerVortex:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<InnosWrath>(), 5, 1));
                     break;
-                case NPCID.FireImp:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Fireball>(), 30, 1));
-                    break;
                 case NPCID.GiantBat:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BatSlayer>(), 50, 1));
                     break;
@@ -164,6 +161,9 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     break;
                 case NPCID.WallofFlesh:
                     npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<BiggoronSword>()));
+                    break;
+                case NPCID.IceQueen:
+                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BlizzardRage>(), 4, 1));
                     break;
                 case NPCID.MoonLordCore:                    
                     IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverse>(), 100, 1);

@@ -13,10 +13,10 @@ public class BlizzardRage : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.scale = 1f;
+		Item.scale = 1.1f;
 		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 10;
+		Item.useTime = 30;
 		Item.useAnimation = 10;
 		Item.damage = 50;
 		Item.knockBack = 5f;
@@ -32,7 +32,7 @@ public class BlizzardRage : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		int numberProjectiles = Main.rand.Next(2, 4);
-		Vector2 vector2_1 = new Vector2();
+		Vector2 vector2_1 = new();
 		for (int index = 0; index < numberProjectiles; index++)
 		{
 			//vector2_1 = ((float)(player.position.X + player.width * 0.5 + (double)(Main.rand.Next(100) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X)), (float)(player.position.Y + player.height * 0.5 - 600.0));
@@ -62,15 +62,5 @@ public class BlizzardRage : ModItem
 			Projectile.NewProjectile(source, vector2_1.X, vector2_1.Y, velocity.X, velocity.Y, type, damage, knockback, Main.myPlayer, 0f, (float)Main.rand.Next(5));
 		}
 		return false;
-	}
-
-	public override void AddRecipes()
-	{
-		CreateRecipe()
-		.AddIngredient(ItemID.NorthPole, 1)
-		.AddIngredient(Mod, "Orichalcon", 1)
-		.AddIngredient(Mod, "SwordMatter", 100)
-		.AddTile(TileID.MythrilAnvil)
-		.Register();
-	}
+	}	
 }

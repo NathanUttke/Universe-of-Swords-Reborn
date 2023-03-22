@@ -26,7 +26,8 @@ public class ForceBlade : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = false;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -35,9 +36,8 @@ public class ForceBlade : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																												Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.BreakerBlade, 1);
 		val.AddIngredient(Mod, "OrcWarSword", 1);
 		val.AddIngredient(ItemID.CobaltBar, 11);

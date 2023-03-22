@@ -16,7 +16,7 @@ public class Venom : ModProjectile
         Projectile.aiStyle = 1;
         Projectile.friendly = true;
         Projectile.hostile = false;
-        Projectile.DamageType = DamageClass.Ranged;/* tModPorter Suggestion: Remove. See Item.DamageType */;
+        Projectile.DamageType = DamageClass.MeleeNoSpeed;/* tModPorter Suggestion: Remove. See Item.DamageType */;
         Projectile.penetrate = -1;
         Projectile.alpha = 255;
         Projectile.ignoreWater = true;

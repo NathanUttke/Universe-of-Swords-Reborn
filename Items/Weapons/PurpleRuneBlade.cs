@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -20,20 +21,20 @@ public class PurpleRuneBlade : ModItem
 		Item.height = 52;
 		Item.rare = ItemRarityID.Purple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 25;
-		Item.useAnimation = 25;
+		Item.useTime = 54;
+		Item.useAnimation = 27;
 		Item.damage = 38;
-		Item.knockBack = 5f;
+
+		Item.shoot = ModContent.ProjectileType<PurpleRuneProjectile>();
+		Item.shootSpeed = 2.5f;
+
+		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
-		Item.shoot = ProjectileID.ShadowFlameKnife;
-		Item.shootSpeed = 20f;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
-
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => Main.rand.NextBool(10);
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
 	{											
@@ -48,7 +49,7 @@ public class PurpleRuneBlade : ModItem
 	{		
 		CreateRecipe()
 		.AddIngredient(ItemID.ShadowFlameKnife, 1)
-		.AddIngredient(Mod, "DamascusBar", 10)
+		.AddIngredient(Mod, "DamascusBar", 15)
 		.AddIngredient(Mod, "UpgradeMatter", 1)
 		.AddTile(TileID.Anvils)
 		.Register();

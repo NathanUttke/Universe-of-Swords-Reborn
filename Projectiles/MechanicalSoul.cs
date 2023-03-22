@@ -17,7 +17,7 @@ public class MechanicalSoul : ModProjectile
 		Projectile.aiStyle = 1;
 		Projectile.friendly = true;
 		Projectile.hostile = false;
-		Projectile.DamageType = DamageClass.Ranged;
+		Projectile.DamageType = DamageClass.MeleeNoSpeed;
 		Main.projFrames[Projectile.type] = 3;
 		Projectile.penetrate = -1;
 		Projectile.alpha = 255;

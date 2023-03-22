@@ -13,10 +13,10 @@ public class DirtSword : ModItem
 		Item.height = 36;
 		Item.rare = ItemRarityID.White;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
-		Item.useAnimation = 30;
+		Item.useTime = 32;
+		Item.useAnimation = 32;
 		Item.damage = 6;
-		Item.knockBack = 4f;
+		Item.knockBack = 3f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 15;
 		Item.autoReuse = false;
@@ -26,7 +26,7 @@ public class DirtSword : ModItem
 	public override void AddRecipes()
 	{				
 		CreateRecipe()
-		.AddIngredient(ItemID.DirtBlock, 25)
+		.AddIngredient(ItemID.DirtBlock, 30)
 		.AddIngredient(ModContent.ItemType<SwordMatter>(), 5)
 		.AddTile(TileID.WorkBenches)
 		.Register();
