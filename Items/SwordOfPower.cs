@@ -18,9 +18,7 @@ public class SwordOfPower : ModItem
 		Item.width = 60;
 		Item.height = 62;
 		Item.rare = ItemRarityID.Orange;
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.damage = 1;
-		Item.knockBack = 4f;
+		Item.useStyle = ItemUseStyleID.None;
 		Item.value = 0;
 		Item.autoReuse = false;	
 		SacrificeTotal = 1;

@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,20 +15,30 @@ public class WaterBoltSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 32;
-		Item.useAnimation = 32;
-		Item.damage = 15;
+		Item.useTime = 66;
+		Item.useAnimation = 33;
+		Item.damage = 14;
 		Item.knockBack = 6f;
 		Item.shoot = ProjectileID.WaterBolt;
 		Item.shootSpeed = 10f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 48500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee;
+		SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage*0.25f), knockback, player.whoAmI);
+		proj.tileCollide = false;
+		proj.timeLeft = 200;
+        proj.DamageType = DamageClass.MeleeNoSpeed;
+        return false;
+    }
+
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+    {
+		velocity = velocity.RotatedBy(MathHelper.ToRadians(MathF.Sin(20f)));
+    }
 }

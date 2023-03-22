@@ -44,7 +44,7 @@ public class SolBlade : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int numberProjectiles = 8 + Main.rand.Next(2);
+		int numberProjectiles =  Main.rand.Next(2, 6);
 		for (int i = 0; i < numberProjectiles; i++)
 		{
 			Vector2 perturbedSpeed = Utils.RotatedByRandom(new Vector2(velocity.X, velocity.Y), (double)MathHelper.ToRadians(40f));
@@ -55,11 +55,9 @@ public class SolBlade : ModItem
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 	{
-		IEntitySource source = Item.GetSource_OnHit(target);
-
 		if (Main.rand.NextBool(3))
 		{
-			Projectile.NewProjectile(source, target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.InfernoFriendlyBlast, damage, knockback, player.whoAmI, 0f, 0f);
+			Projectile.NewProjectile(Item.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.InfernoFriendlyBlast, damage, knockback, player.whoAmI, 0f, 0f);
 		}
 	}
 }

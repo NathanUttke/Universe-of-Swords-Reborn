@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Placeable;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -20,14 +21,14 @@ public class StarSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 50;
+		Item.useTime = 55;
 		Item.useAnimation = 25;
 		Item.damage = 26;
 		Item.knockBack = 5f;
 		Item.shoot = ModContent.ProjectileType<StarSwordProjectile>();
-		Item.shootSpeed = 10f;
+		Item.shootSpeed = 9f;
 		Item.UseSound = SoundID.Item1;
-		Item.value = Item.sellPrice(0, 1, 40, 0);
+		Item.value = Item.sellPrice(0, 1, 20, 0);
 		Item.autoReuse = false;
 		Item.DamageType = DamageClass.Melee; 		
 		SacrificeTotal = 1;

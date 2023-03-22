@@ -30,9 +30,9 @@ public class MagicMirrorBlade : ModItem
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
 	{
-		if (Utils.NextBool(Main.rand, 2))
+		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default(Color), 1.1f);
+			Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default, 1.1f);
 		}
 		if (player.itemTime == 0)
 		{

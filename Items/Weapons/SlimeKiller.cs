@@ -18,10 +18,10 @@ public class SlimeKiller : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 14;
-		Item.useAnimation = 14;
-		Item.damage = 30;
-		Item.knockBack = 6f;
+		Item.useTime = 18;
+		Item.useAnimation = 18;
+		Item.damage = 28;
+		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 51800;
 		Item.autoReuse = true;
