@@ -19,7 +19,7 @@ public class TrueTerrablade : ModItem
         Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 10f;
-        Item.value = Item.sellPrice(0, 12, 0, 0);
+        Item.value = Item.sellPrice(0, 8, 0, 0);
         Item.shoot = ModContent.ProjectileType<TrueTerrabladeProjectile>();
         Item.shootSpeed = 18f;
         Item.rare = ItemRarityID.Purple;

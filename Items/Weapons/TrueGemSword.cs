@@ -22,7 +22,7 @@ public class TrueGemSword : ModItem
 		Item.expert = true;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
-		Item.value = Item.sellPrice(0, 0, 20, 0);
+		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -39,9 +39,9 @@ public class TrueGemSword : ModItem
 	{
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.YellowTorch, 0f, 0f, 100, default(Color), 2f);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.YellowTorch, 0f, 0f, 100, default, 2f);
 			Main.dust[dust].noGravity = true;
-			dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.TintableDustLighted, 0f, 0f, 100, default(Color), 2f);
+			dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.TintableDustLighted, 0f, 0f, 100, default, 2f);
 			Main.dust[dust].noGravity = true;
 		}
 	}

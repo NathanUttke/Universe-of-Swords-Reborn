@@ -19,15 +19,15 @@ public class UltraMachine : ModItem
 		Item.width = 132;
 		Item.height = 132;
 		Item.rare = ItemRarityID.Red;
-		Item.crit = 6;
+		Item.crit = 10;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
+		Item.useTime = 25;
 		Item.useAnimation = 15;
-		Item.damage = 125;
-		Item.knockBack = 10f;
-		Item.UseSound = SoundID.Item62;
-		Item.shoot = ProjectileID.VortexBeaterRocket;
-		Item.shootSpeed = 30f;
+		Item.damage = 139;
+		Item.knockBack = 8f;
+		Item.UseSound = SoundID.Item1;
+		Item.shoot = ProjectileID.DeathLaser;
+		Item.shootSpeed = 28f;
 		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -57,14 +57,17 @@ public class UltraMachine : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.LaserMachinegunLaser, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.RocketI, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y + 2f, velocity.X, velocity.Y + 2f, ProjectileID.RocketI, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y + 2f, velocity.X, velocity.Y + 2f, ProjectileID.LaserMachinegunLaser, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y + 2f, velocity.X, velocity.Y + 2f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y - 2f, velocity.X, velocity.Y - 2f, ProjectileID.RocketI, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y - 2f, velocity.X, velocity.Y - 2f, ProjectileID.LaserMachinegunLaser, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y - 2f, velocity.X, velocity.Y - 2f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		return true;
+        float numberProjectiles = 3;
+        float rotation = MathHelper.ToRadians(10f);
+        position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 4f;
+        for (int i = 0; (float)i < numberProjectiles; i++)
+        {
+            Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
+            Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, Item.shoot, damage, knockback, player.whoAmI);
+            proj.DamageType = DamageClass.Melee;
+			proj.hostile = false;
+			proj.friendly = true;
+        }
+        return false;
 	}
 }

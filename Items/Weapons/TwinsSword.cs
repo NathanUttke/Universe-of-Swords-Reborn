@@ -31,39 +31,11 @@ public class TwinsSword : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
-		ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 	}
-
-	public override bool AltFunctionUse(Player player) => true;
-
-    public override bool CanUseItem(Player player)
-    {
-        if (player.altFunctionUse == 2)
-        {
-            Item.shoot = ProjectileID.DeathLaser;
-        }
-        else
-        {
-            Item.shoot = ModContent.ProjectileType<TwinsProjectile>();
-        }
-        return true;
-    }
-
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		if (player.altFunctionUse == 2)
-		{
-            Projectile retinProj = Projectile.NewProjectileDirect(source, position, velocity * Utils.SelectRandom(Main.rand, 1, -1, 1, -1, 1), ProjectileID.DeathLaser, 45, knockback, player.whoAmI);
-            retinProj.hostile = false;
-            retinProj.friendly = true;
-			retinProj.DamageType = DamageClass.MeleeNoSpeed;
-        }
-		else
-		{
-            Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<TwinsProjectile>(), 40, knockback, player.whoAmI);
-        }
-
+        Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<TwinsProjectile>(), 40, knockback, player.whoAmI);  
 		return false;
     }
 }
