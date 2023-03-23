@@ -47,7 +47,7 @@ public class BuzzKillFutureMode : ModItem
         }
         for (int i = 0; i < 2; i++)
         {
-			offsetAngle *= i;
+			offsetAngle = startAngle + deltaAngle * i;
             Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
         }
         return false;
