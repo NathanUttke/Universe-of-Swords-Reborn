@@ -20,7 +20,7 @@ public class WaterBoltSword : ModItem
 		Item.damage = 14;
 		Item.knockBack = 6f;
 		Item.shoot = ProjectileID.WaterBolt;
-		Item.shootSpeed = 10f;
+		Item.shootSpeed = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 48500;
 		Item.autoReuse = true;
@@ -32,7 +32,7 @@ public class WaterBoltSword : ModItem
     {
         Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage*0.25f), knockback, player.whoAmI);
 		proj.tileCollide = false;
-		proj.timeLeft = 200;
+		proj.timeLeft = 160;
         proj.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }
