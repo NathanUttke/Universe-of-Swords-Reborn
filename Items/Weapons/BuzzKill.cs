@@ -22,20 +22,15 @@ public class BuzzKill : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 25;
+		Item.damage = 30;
 		Item.knockBack = 1f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ProjectileID.Bee;
 		Item.shootSpeed = 8f;
-		Item.value = Item.sellPrice(0, 5, 0, 0);
+		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -66,10 +61,9 @@ public class BuzzKill : ModItem
     public override void AddRecipes()
 	{
 		CreateRecipe(1)
-		.AddIngredient(ItemID.BeeKeeper, 1)
 		.AddIngredient(ItemID.HallowedBar, 10)
 		.AddIngredient(ItemID.BeeWax, 35)
-		.AddIngredient(ModContent.ItemType<TheStinger>(), 1)
+		.AddIngredient(ModContent.ItemType<TheSwarm>(), 1)
 		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
 		.AddTile(TileID.HoneyDispenser)
 		.Register();
