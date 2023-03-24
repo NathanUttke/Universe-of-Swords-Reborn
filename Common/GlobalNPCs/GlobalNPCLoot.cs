@@ -8,6 +8,9 @@ using Terraria.Localization;
 using Terraria.GameContent.ItemDropRules;
 using UniverseOfSwordsMod.Items.Weapons;
 using UniverseOfSwordsMod.Common.ItemDropRules.Conditions;
+using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Items.Accessories;
+using UniverseOfSwordsMod.Items.Misc;
 
 namespace UniverseOfSwordsMod.Common.GlobalNPCs
 {
@@ -81,9 +84,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.BigMimicCorruption:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ClingerSword>(), 3, 1));
                     break;
-                case NPCID.GoblinWarrior:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Sting>(), 30, 1));
-                    break;
                 case NPCID.LunarTowerNebula:
                 case NPCID.LunarTowerStardust:
                 case NPCID.LunarTowerSolar:
@@ -92,9 +92,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     break;
                 case NPCID.GiantBat:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BatSlayer>(), 50, 1));
-                    break;
-                case NPCID.DungeonSlime:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SlimeKiller>(), 10, 1));
                     break;
                 case NPCID.TheGroom:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<UselessWeapon>(), 30, 1));
