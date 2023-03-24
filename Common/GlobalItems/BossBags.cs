@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items;
+using UniverseOfSwordsMod.Items.Misc;
 using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Common.GlobalItems
