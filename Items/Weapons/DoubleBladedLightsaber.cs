@@ -4,6 +4,7 @@ using Terraria.ID;
 using UniverseOfSwordsMod.Projectiles;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 

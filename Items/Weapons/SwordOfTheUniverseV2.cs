@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ID;
 using System;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 

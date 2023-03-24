@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace UniverseOfSwordsMod.Items;
+namespace UniverseOfSwordsMod.Items.Consumables;
 
 public class NordMead : ModItem
 {

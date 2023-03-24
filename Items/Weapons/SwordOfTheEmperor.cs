@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Buffs;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -35,7 +36,8 @@ public class SwordOfTheEmperor : ModItem
 
         CreateRecipe()
             .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 18)
-            .AddIngredient(ItemID.HallowedBar, 2000)
+            .AddIngredient(ItemID.HallowedBar, 100)
+            .AddIngredient(ModContent.ItemType<Orichalcon>(), 25)
             .AddIngredient(ItemID.BrokenHeroSword, 16)
             .AddIngredient(ItemID.EnchantedSword, 4)
             .AddIngredient(ItemID.Terragrim, 1)

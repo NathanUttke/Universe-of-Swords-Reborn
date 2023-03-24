@@ -18,7 +18,6 @@ public class ScarledFlareGreatsword : ModItem
 	{
 		Item.width = 120;
 		Item.height = 120;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
@@ -28,9 +27,10 @@ public class ScarledFlareGreatsword : ModItem
 		Item.shootSpeed = 30f;
 		Item.shoot = Mod.Find<ModProjectile>("FlareCore").Type;
 		Item.UseSound = SoundID.Item45;
-		Item.value = Item.sellPrice(0, 50, 0, 0);
+		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -48,7 +48,7 @@ public class ScarledFlareGreatsword : ModItem
 	{
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.LifeDrain, 0f, 0f, 100, default(Color), 2f);
+			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.LifeDrain, 0f, 0f, 100, default, 2f);
 			Main.dust[dust].noGravity = true;
 		}
 	}

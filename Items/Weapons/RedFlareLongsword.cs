@@ -2,6 +2,8 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -21,43 +23,40 @@ public class RedFlareLongsword : ModItem
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
-		Item.useAnimation = 30;
-		Item.damage = 74;
+		Item.useAnimation = 20;
+		Item.damage = 75;
 		Item.knockBack = 5f;
-		Item.shoot = ProjectileID.DD2SquireSonicBoom;
-		Item.shootSpeed = 30f;
+		Item.shoot = ModContent.ProjectileType<RedFlareLongswordProjectile>();
+		Item.shootSpeed = 20f;
 		Item.UseSound = SoundID.Item45;
-		Item.value = Item.sellPrice(0, 10, 0, 0);
+		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-		
-		
-		
-		
-								if (Main.rand.NextBool(2))
+	{	
+		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.LifeDrain, 0f, 0f, 100, default(Color), 2f);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.RedTorch, 0f, 0f, 100, default, 2f);
 			Main.dust[dust].noGravity = true;
 		}
 	}
 
 	public override void AddRecipes()
-	{
-		
-																				Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.HellstoneBar, 25);
-		val.AddIngredient(ItemID.RedTorch, 25);
-		val.AddIngredient(ItemID.Ruby, 50);
-		val.AddIngredient(ItemID.SoulofFright, 20);
-		val.AddIngredient(ItemID.BrokenHeroSword, 1);
-		val.AddIngredient(Mod, "DeathSword", 1);
-		val.AddIngredient(Mod, "DamascusBar", 20);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+	{		
+		CreateRecipe()
+			.AddIngredient(ItemID.HellstoneBar, 25)
+			.AddIngredient(ItemID.RedTorch, 25)
+			.AddIngredient(ItemID.Ruby, 15)
+			.AddIngredient(ItemID.SoulofFright, 20)
+			.AddIngredient(ItemID.BrokenHeroSword, 1)
+			.AddIngredient(ItemID.BeamSword, 1)
+			.AddIngredient(ModContent.ItemType<Orichalcon>(), 20)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+			.AddTile(TileID.MythrilAnvil)
+			.Register();
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

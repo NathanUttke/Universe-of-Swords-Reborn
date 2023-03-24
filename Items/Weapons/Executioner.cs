@@ -17,7 +17,7 @@ public class Executioner : ModItem
     {
         Item.width = 78;
         Item.height = 78;
-        Item.scale = 1.2f;
+        Item.scale = 1.1f;
         Item.rare = ItemRarityID.Lime;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 20;
@@ -45,11 +45,5 @@ public class Executioner : ModItem
 			proj.DamageType = DamageClass.Melee;
         }
         return false;
-    }
-
-    public override void HoldStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.X -= 5f * (float)player.direction;
-        player.itemLocation.Y -= 5f * player.gravDir;
     }
 }

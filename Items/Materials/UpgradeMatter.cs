@@ -1,10 +1,9 @@
-using System.Security.Cryptography.X509Certificates;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace UniverseOfSwordsMod.Items;
+namespace UniverseOfSwordsMod.Items.Materials;
 
 public class UpgradeMatter : ModItem
 {

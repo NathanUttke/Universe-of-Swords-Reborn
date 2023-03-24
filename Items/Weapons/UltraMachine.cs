@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -10,7 +11,7 @@ public class UltraMachine : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Ultra Machine");
+		DisplayName.SetDefault("Life Removal Machine");
 		Tooltip.SetDefault("'Insert Hollywood computer generated special effects here'");
 	}
 
@@ -23,12 +24,12 @@ public class UltraMachine : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
 		Item.useAnimation = 15;
-		Item.damage = 139;
+		Item.damage = 135;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ProjectileID.DeathLaser;
 		Item.shootSpeed = 28f;
-		Item.value = Item.sellPrice(0, 10, 0, 0);
+		Item.value = Item.sellPrice(0, 9, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

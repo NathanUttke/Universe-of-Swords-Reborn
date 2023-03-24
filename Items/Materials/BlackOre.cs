@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace UniverseOfSwordsMod.Items.Placeable;
+namespace UniverseOfSwordsMod.Items.Materials;
 
 public class BlackOre : ModItem
 {

@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -11,8 +12,7 @@ public class GreatswordOfTheCosmos : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Greatsword of the Cosmos");
-		Tooltip.SetDefault("'Look, up in the sky! Is it a bird?! Is it a plane?! No, it's-- HOLY S***!'");
+		DisplayName.SetDefault("Greatsword of the Cosmos");		
 	}
 
 	public override void SetDefaults()
@@ -33,11 +33,6 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -77,7 +72,6 @@ public class GreatswordOfTheCosmos : ModItem
 	{
 		CreateRecipe()
 			.AddIngredient(ItemID.StarWrath, 1)
-			.AddIngredient(Mod, "Saphira", 1)
 			.AddIngredient(ItemID.FragmentSolar, 30)
 			.AddIngredient(ItemID.FragmentVortex, 30)
 			.AddIngredient(ItemID.FragmentNebula, 30)

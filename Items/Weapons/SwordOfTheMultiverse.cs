@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using UniverseOfSwordsMod.Projectiles;
 using UniverseOfSwordsMod.Buffs;
-using UniverseOfSwordsMod.Items.Placeable;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -110,15 +110,16 @@ public class SwordOfTheMultiverse : ModItem
 
     public override void AddRecipes()
 	{
-		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1)
+        CreateRecipe()
+            .AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1)
             .AddIngredient(ModContent.ItemType<SwordOfTheUniverseV2>(), 1)
             .AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1)
             .AddIngredient(ModContent.ItemType<ScarledFlareGreatsword>(), 1)
             .AddIngredient(ModContent.ItemType<UltraMachine>(), 1)
-			.AddIngredient(ModContent.ItemType<GnomBlade>(), 1)
-			.AddIngredient(ModContent.ItemType<DamascusBar>(), 50)
-            .AddIngredient(ModContent.ItemType<Orichalcon>(), 30)
+            .AddIngredient(ModContent.ItemType<GnomBlade>(), 1)
+            .AddIngredient(ModContent.ItemType<DamascusBar>(), 50)
+            .AddIngredient(ModContent.ItemType<Orichalcon>(), 50)
+            .AddIngredient(ItemID.LunarBar, 25)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)
             .AddIngredient(ModContent.ItemType<UselessWeapon>(), 1)
 			.Register();
@@ -129,6 +130,10 @@ public class SwordOfTheMultiverse : ModItem
 		if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
 		{
             target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 800, true);
-        }		
-	}
+        }
+        if (!target.HasBuff(BuffID.Weak) && Main.rand.NextBool(2))
+        {
+            target.AddBuff(BuffID.Weak, 400, true);
+        }
+    }
 }

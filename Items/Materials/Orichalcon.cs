@@ -1,9 +1,8 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using UniverseOfSwordsMod.Items.Placeable;
 
-namespace UniverseOfSwordsMod.Items;
+namespace UniverseOfSwordsMod.Items.Materials;
 
 public class Orichalcon : ModItem
 {

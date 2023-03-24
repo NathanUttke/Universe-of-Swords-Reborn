@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace UniverseOfSwordsMod.Items.Placeable;
+namespace UniverseOfSwordsMod.Items.Materials;
 
 public class DamascusBar : ModItem
 {

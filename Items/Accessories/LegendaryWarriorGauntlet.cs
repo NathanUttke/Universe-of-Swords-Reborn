@@ -1,8 +1,9 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using UniverseOfSwordsMod.Items.Materials;
 
-namespace UniverseOfSwordsMod.Items;
+namespace UniverseOfSwordsMod.Items.Accessories;
 
 public class LegendaryWarriorGauntlet : ModItem
 {
@@ -60,8 +61,8 @@ public class LegendaryWarriorGauntlet : ModItem
 		val.AddIngredient(ItemID.CelestialShell, 1);
 		val.AddIngredient(ItemID.AnkhShield, 1);
 		val.AddIngredient(ItemID.LifeFruit, 10);
-		val.AddIngredient(ItemID.LunarBar, 99);
-		val.AddIngredient(Mod, "SwordMatter", 5000);
+		val.AddIngredient(ItemID.LunarBar, 25);
+		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 20);
 		val.AddIngredient(Mod, "LunarOrb", 4);
 		val.AddTile(TileID.DemonAltar);
 		val.Register();

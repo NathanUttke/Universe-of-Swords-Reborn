@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace UniverseOfSwordsMod.Items;
+namespace UniverseOfSwordsMod.Items.Materials;
 
 public class ScarletFlareCore : ModItem
 {
