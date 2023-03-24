@@ -8,7 +8,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace UniverseOfSwordsMod.Items
+namespace UniverseOfSwordsMod.Items.Misc
 {
     public class BlackOreTest : ModItem
     {
