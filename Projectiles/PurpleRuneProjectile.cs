@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,8 +12,8 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void SetDefaults()
         {
-            Projectile.width = 64;
-            Projectile.height = 64;
+            Projectile.width = 40;
+            Projectile.height = 40;
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
@@ -24,17 +25,21 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void AI()
         {
             base.AI();
+
             Projectile.velocity *= 0.95f;
             Projectile.ai[0] += 1f;
+
             if (Projectile.ai[0] > 200f) 
             { 
                 Projectile.Kill();
             }
+
             if (Projectile.ai[0] % 30f == 0)
             {                
                 for (int i = 0; i < 20; i++)
                 {
-                    Dust.NewDust(Projectile.oldPosition, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, Projectile.velocity.X, Projectile.velocity.Y);
+                    Dust newDust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, Projectile.velocity.X, Projectile.velocity.Y)];
+                    newDust.velocity = newDust.velocity.RotatedByRandom(MathHelper.ToRadians(Projectile.ai[0]));
                 }
             }   
         }

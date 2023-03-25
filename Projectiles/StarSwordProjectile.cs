@@ -59,13 +59,15 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            Color projColor = Projectile.GetAlpha(lightColor);
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;            
+
+            Color projColor = Projectile.GetAlpha(lightColor);            
             Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
+
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 Vector2 drawPos = (Projectile.oldPos[i] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-                projColor *= (8 - i) / ((float)ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
+                projColor *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
                 projColor.B = Utils.SelectRandom<byte>(Main.rand, 14, 20, 120, 0);
                 Main.EntitySpriteDraw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, (float)i / 15f), SpriteEffects.None, 0);
             }

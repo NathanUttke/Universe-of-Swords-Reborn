@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using static Humanizer.In;
 using static Terraria.ModLoader.PlayerDrawLayer;
 using log4net.Util;
+using Terraria.Graphics;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -67,13 +68,21 @@ namespace UniverseOfSwordsMod.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+
+            Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
+            Color drawColorGlow = Color.Red;
+
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 2f, SpriteEffects.None, 0);
 
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
             Vector2 origin = sourceRectangle.Size() / 2f;            
             
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), sourceRectangle, Color.White, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
+
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
             return false;
         }
     }

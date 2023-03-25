@@ -22,7 +22,7 @@ public class TheEater : ModItem
         Item.useTime = 50;
         Item.useAnimation = 20;
         Item.damage = 15;
-        Item.knockBack = 3.25f;
+        Item.knockBack = 4f;
         Item.UseSound = SoundID.Item1;
         Item.value = Item.sellPrice(0, 0, 75, 0);
         Item.shoot = ProjectileID.TinyEater;

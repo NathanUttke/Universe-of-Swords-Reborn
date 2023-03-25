@@ -52,7 +52,12 @@ public class SwordOfTheUniverseV2 : ModItem
 		.Register();
     }
 
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		float spread = 0.25f;
 		float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);

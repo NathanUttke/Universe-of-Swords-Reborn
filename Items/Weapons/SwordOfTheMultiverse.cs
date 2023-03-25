@@ -31,7 +31,7 @@ public class SwordOfTheMultiverse : ModItem
         Item.crit = 15;
         Item.knockBack = 2f;
 
-		Item.value = Item.sellPrice(0, 20, 0, 0);
+		Item.value = Item.sellPrice(0, 18, 0, 0);
 
         Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item169;
@@ -41,19 +41,26 @@ public class SwordOfTheMultiverse : ModItem
         Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
         Item.shootSpeed = 30f;
 
-		SacrificeTotal = 1;
-        ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+        Item.noUseGraphic = false;
+        Item.noMelee = true;
+
+        SacrificeTotal = 1;
+        //ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 	}
 
     public override bool CanUseItem(Player player)
     {
         if (player.altFunctionUse == 2)
         {
-            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>(); //Placeholder
+            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>(); 
+            Item.noUseGraphic = true;
+            Item.useStyle = ItemUseStyleID.Shoot;
         }
         else
         {
-            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();      
+            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
+            Item.noUseGraphic = false;
+            Item.useStyle = ItemUseStyleID.Swing;
         }
         return true;
     }

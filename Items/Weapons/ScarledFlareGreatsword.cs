@@ -52,8 +52,12 @@ public class ScarledFlareGreatsword : ModItem
 			Main.dust[dust].noGravity = true;
 		}
 	}
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
 		target.AddBuff(24, 700, false);
 	}

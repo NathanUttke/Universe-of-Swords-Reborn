@@ -55,8 +55,12 @@ public class UltraMachine : ModItem
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
 
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
         float numberProjectiles = 3;
         float rotation = MathHelper.ToRadians(10f);
@@ -64,7 +68,7 @@ public class UltraMachine : ModItem
         for (int i = 0; (float)i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
-            Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, Item.shoot, damage, knockback, player.whoAmI);
+            Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, ProjectileID.PhantasmalEye, damage, knockback, player.whoAmI);
             proj.DamageType = DamageClass.Melee;
 			proj.hostile = false;
 			proj.friendly = true;

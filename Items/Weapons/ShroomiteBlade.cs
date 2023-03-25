@@ -20,19 +20,15 @@ public class ShroomiteBlade : ModItem
         Item.UseSound = SoundID.Item1;
         Item.value = 280000;
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-    }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.Y -= 1f * player.gravDir;
+        Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
     }
 
     public override void AddRecipes()
     {
 
         Recipe val = CreateRecipe(1);
-        val.AddIngredient(ItemID.ShroomiteBar, 10);
+        val.AddIngredient(ItemID.ShroomiteBar, 15);
         val.AddTile(TileID.MythrilAnvil);
         val.Register();
     }

@@ -1,54 +1,78 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Buffs;
 
 namespace UniverseOfSwordsMod.Projectiles
-{
-    public class SwordOfTheMultiverseProjectileSmall : ModProjectile
+{    
+    public class SwordOfTheMultiverseProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 4;
         }
         public override void SetDefaults()
         {
-            Projectile.width = 22;
-            Projectile.height = 30;
-            Projectile.scale = 1.25f;
-            Projectile.aiStyle = 1;
-            Projectile.friendly = true;
-            Projectile.hostile = false;
-            Projectile.DamageType = DamageClass.Melee;
-            Projectile.penetrate = -1;
+            Projectile.width = 94;
+            Projectile.height = 94;
             Projectile.alpha = 0;
-            Projectile.light = 0.5f;
-            Projectile.ignoreWater = true;
+            Projectile.penetrate = -1;
+            Projectile.friendly = true;
             Projectile.tileCollide = false;
-            Projectile.extraUpdates = 1;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 6;
-            AIType = ProjectileID.Bullet;
+            Projectile.aiStyle = -1;
+            Projectile.light = 0.5f;
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(205, 143, 255, 0) * Projectile.Opacity;
+        public override void AI()
+        {
+            base.AI();
+            Player player = Main.player[Projectile.owner];
+
+            if (Projectile.owner == Main.myPlayer && (player.altFunctionUse != 2 || !player.controlUseTile))
+            {
+                Projectile.Kill();
+                return;
+            }
+
+            if (player.dead || !player.active)
+            {
+                Projectile.Kill();
+                return;
+            }
+
+            player.heldProj = Projectile.whoAmI;
+            player.itemTime = player.itemAnimation = 2;
+            Projectile.position = Projectile.Center;
+            Projectile.velocity = Vector2.Zero;
+            Projectile.Center = Main.MouseWorld;
+            Projectile.rotation += MathHelper.PiOver4 * 0.4f;
+        }       
+        public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
+        {
+            if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
+            {
+                target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 800, true);
+            }
+        }
 
         public override bool PreDraw(ref Color lightColor)
-        {            
+        {
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);           
-            
+            Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);
+
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
             Color drawColorGlow = Color.Purple;
 
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1f, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 2f, SpriteEffects.None, 0);
 
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
@@ -64,18 +88,9 @@ namespace UniverseOfSwordsMod.Projectiles
 
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, j / 15f), SpriteEffects.None, 0);
 
-            }
+            }           
+
             return true;
         }
-
-        public override void PostAI()
-        {
-            if (Main.rand.NextBool(2))
-            {
-                Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch, 0f, 0f, 0, default, 1f);
-                obj.noGravity = true;
-                obj.scale = 1f;
-            }
-        }      
     }
 }

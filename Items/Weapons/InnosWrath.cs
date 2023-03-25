@@ -25,16 +25,15 @@ public class InnosWrath : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 611500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.X -= 0f * (float)player.direction;
-		player.itemLocation.Y -= 0f * (float)player.direction;
-	}
-
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
 		target.AddBuff(72, 360, false);
 		target.AddBuff(69, 360, false);

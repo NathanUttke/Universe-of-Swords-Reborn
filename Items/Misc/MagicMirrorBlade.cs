@@ -47,7 +47,7 @@ public class MagicMirrorBlade : ModItem
 			}
 			for (int d = 0; d < 70; d++)
 			{
-				Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 150, default(Color), 1.5f);
+				Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 150, default, 1.5f);
 			}
 			player.grappling[0] = -1;
 			player.grapCount = 0;
