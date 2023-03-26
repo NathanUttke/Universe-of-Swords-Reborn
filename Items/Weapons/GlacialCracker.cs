@@ -22,10 +22,10 @@ public class GlacialCracker : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 60;
         Item.useAnimation = 30;
-        Item.damage = 110;
+        Item.damage = 100;
         Item.knockBack = 8f;
         Item.UseSound = SoundID.Item28;
-        Item.value = Item.sellPrice(0, 10, 0, 0);
+        Item.value = Item.sellPrice(0, 3, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
