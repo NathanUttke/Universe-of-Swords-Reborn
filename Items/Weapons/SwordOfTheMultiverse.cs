@@ -42,7 +42,6 @@ public class SwordOfTheMultiverse : ModItem
         Item.shootSpeed = 28f;
 
         Item.noUseGraphic = false;
-        Item.noMelee = true;
 
         SacrificeTotal = 1;
         //ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
@@ -60,7 +59,7 @@ public class SwordOfTheMultiverse : ModItem
         {
             Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
             Item.noUseGraphic = false;
-            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useStyle = ItemUseStyleID.Swing; 
         }
         return true;
     }
