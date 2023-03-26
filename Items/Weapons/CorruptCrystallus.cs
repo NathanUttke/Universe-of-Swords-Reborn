@@ -18,7 +18,7 @@ public class CorruptCrystallus : ModItem
 		Item.useAnimation = 25;
         Item.UseSound = SoundID.Item1;
 
-        Item.damage = 19;
+        Item.damage = 18;
 		Item.knockBack = 5f;
 
 		Item.shoot = Mod.Find<ModProjectile>("Corrupt").Type;
