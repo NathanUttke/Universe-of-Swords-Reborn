@@ -47,7 +47,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < 4; i++)
             {
-                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.GemEmerald, 0f, 0f, 100);
+                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Cyan, 0f, 0f, 100, default, 0.75f);
                 newDust.rotation += 0.05f;
                 newDust.noGravity = true;
             }
