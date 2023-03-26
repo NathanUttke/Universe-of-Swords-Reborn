@@ -23,12 +23,12 @@ public class SwordOfTheMultiverse : ModItem
 		Item.height = 112;
 		Item.rare = ItemRarityID.Expert;
 		
-		Item.useTime = 9;
+		Item.useTime = 8;
 		Item.useAnimation = 18;        
 
         Item.damage = 190;
         Item.DamageType = DamageClass.Melee;
-        Item.crit = 25;
+        Item.crit = 26;
         Item.knockBack = 2.5f;
 
 		Item.value = Item.sellPrice(0, 15, 0, 0);
@@ -39,7 +39,7 @@ public class SwordOfTheMultiverse : ModItem
         Item.autoReuse = true;
 
         Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
-        Item.shootSpeed = 30f;
+        Item.shootSpeed = 28f;
 
         Item.noUseGraphic = false;
         Item.noMelee = true;

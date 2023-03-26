@@ -32,23 +32,17 @@ public class GreenSolutionSpreader : ModItem
 		else
 		{
 			Item.shoot = ProjectileID.PureSpray;
-			Item.shootSpeed = 10f;			
+			Item.shootSpeed = 20f;			
 		}
 		
 		return true;
-    }	
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
+    }
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddIngredient(ItemID.GreenSolution, 100);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ItemID.GreenSolution, 300)
+			.AddTile(TileID.MythrilAnvil)
+			.Register();
 	}
 }

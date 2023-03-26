@@ -32,20 +32,16 @@ public class BlueSolutionSpreader : ModItem
 		else
 		{            
             Item.shoot = ProjectileID.MushroomSpray;
-			Item.shootSpeed = 15f;			
+			Item.shootSpeed = 20f;			
 		}
 		return true;
     }
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
 
 	public override void AddRecipes()
 	{		
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddIngredient(ItemID.DarkBlueSolution, 100);
+		val.AddIngredient(ItemID.DarkBlueSolution, 300);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();
 	}

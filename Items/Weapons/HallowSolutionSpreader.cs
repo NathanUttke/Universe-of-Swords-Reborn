@@ -19,8 +19,8 @@ public class HallowSolutionSpreader : ModItem
 		Item.scale = 1.3f;
 		Item.rare = ItemRarityID.Lime;	
 		
-		Item.useTime = 14;
-		Item.useAnimation = 14;
+		Item.useTime = 7;
+		Item.useAnimation = 30;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item34;	
 		
@@ -45,21 +45,16 @@ public class HallowSolutionSpreader : ModItem
 		else
 		{
 			Item.shoot = ProjectileID.HallowSpray;
-			Item.shootSpeed = 10f;			
+			Item.shootSpeed = 20f;			
 		}
 		return true;
-    }	
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
+    }
 
 	public override void AddRecipes()
 	{		
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddIngredient(ItemID.BlueSolution, 100);
+		val.AddIngredient(ItemID.BlueSolution, 300);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();
 	}

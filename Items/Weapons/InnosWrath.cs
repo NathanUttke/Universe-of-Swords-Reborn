@@ -20,10 +20,11 @@ public class InnosWrath : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 100;
-		Item.knockBack = 12f;
+		Item.damage = 90;
+		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 611500;
+		Item.crit = 8;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -35,9 +36,9 @@ public class InnosWrath : ModItem
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
-		target.AddBuff(72, 360, false);
-		target.AddBuff(69, 360, false);
-		target.AddBuff(44, 360, false);
-		target.AddBuff(24, 360, false);
+		if (!target.HasBuff(BuffID.Bleeding))
+		{
+			target.AddBuff(BuffID.Bleeding, 400, false);
+		}
 	}
 }

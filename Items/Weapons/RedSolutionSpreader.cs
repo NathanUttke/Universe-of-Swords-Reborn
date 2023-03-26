@@ -31,7 +31,7 @@ public class RedSolutionSpreader : ModItem
 		else
 		{
 			Item.shoot = ProjectileID.CrimsonSpray;
-			Item.shootSpeed = 10f;				
+			Item.shootSpeed = 20f;				
 		}
 		return true;
     }	
@@ -40,7 +40,7 @@ public class RedSolutionSpreader : ModItem
 	{		
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddIngredient(ItemID.RedSolution, 100);
+		val.AddIngredient(ItemID.RedSolution, 300);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();
 	}
