@@ -17,7 +17,7 @@ public class LegendaryWarriorGauntlet : ModItem
 	{
 		Item.width = 24;
 		Item.height = 28;
-		Item.value = Item.sellPrice(0, 4, 0, 0);
+		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.rare = ItemRarityID.Red;
 		Item.accessory = true; 
 		SacrificeTotal = 1;
@@ -25,11 +25,11 @@ public class LegendaryWarriorGauntlet : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.statDefense += 30;
-		player.GetDamage(DamageClass.Melee) *= 1.25f;
+		player.statDefense += 20;
+		player.GetDamage(DamageClass.Melee) *= 1.15f;
 		player.lifeRegen += 15;
-		player.GetCritChance(DamageClass.Generic) += 30;
-		player.statLifeMax2 += 40;
+		player.GetCritChance(DamageClass.Generic) += 25;
+		player.statLifeMax2 += 20;
 		player.endurance += 0.2f;
 		player.AddBuff(9, 2, true);
 		player.AddBuff(108, 2, true);

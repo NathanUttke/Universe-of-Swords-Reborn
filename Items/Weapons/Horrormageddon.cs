@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -24,9 +25,9 @@ public class Horrormageddon : ModItem
 		Item.useTime = 30;
 		Item.useAnimation = 15;
 		Item.damage = 105;
-		Item.knockBack = 4f;
-		Item.UseSound = SoundID.Item71;
-		Item.shoot = ProjectileID.DeathSickle;
+		Item.knockBack = 4.5f;
+		Item.UseSound = SoundID.Item1;
+		Item.shoot = ModContent.ProjectileType<DemonScytheClone>();
 		Item.shootSpeed = 12f;
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
@@ -38,6 +39,7 @@ public class Horrormageddon : ModItem
     {
         CreateRecipe()
         .AddIngredient(ItemID.TheHorsemansBlade, 1)
+		.AddIngredient(ModContent.ItemType<DeathSword>(), 1)
         .AddIngredient(ModContent.ItemType<ElBastardo>(), 1)
         .AddIngredient(ModContent.ItemType<InnosWrath>(), 1)
         .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 6)
@@ -47,8 +49,9 @@ public class Horrormageddon : ModItem
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.InfernoFriendlyBlast, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, 0f);
-		return false;
-	}
+    {
+        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        proj.DamageType = DamageClass.MeleeNoSpeed;
+        return false;
+    }
 }

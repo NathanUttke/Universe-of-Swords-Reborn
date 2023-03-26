@@ -14,16 +14,17 @@ public class DeathSword : ModItem
         Item.scale = 1f;
         Item.rare = ItemRarityID.LightRed;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 30;
+        Item.useTime = 60;
         Item.useAnimation = 30;
-        Item.damage = 25;
+        Item.damage = 23;
         Item.knockBack = 4f;
         Item.UseSound = SoundID.Item8;
         Item.shoot = ProjectileID.DemonScythe;
         Item.shootSpeed = 10f;
         Item.value = 160200;
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+        Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -35,10 +36,5 @@ public class DeathSword : ModItem
             Main.dust[dust].velocity.X -= (float)player.direction * 0f;
             Main.dust[dust].velocity.Y -= 0f;
         }
-    }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.Y -= 1f * player.gravDir;
     }
 }
