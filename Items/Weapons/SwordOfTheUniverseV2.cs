@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using System;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -24,16 +25,16 @@ public class SwordOfTheUniverseV2 : ModItem
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 20;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 40;
+		Item.useTime = 10;
 		Item.useAnimation = 20;
 		Item.damage = 120;
 		Item.knockBack = 20f;
 		Item.UseSound = SoundID.Item169;
 
-		Item.shoot = ProjectileID.InfluxWaver;
-		Item.shootSpeed = 30f;
+		Item.shoot = ModContent.ProjectileType<SwordOfTheUniverseV2Projectile>();
+		Item.shootSpeed = 10f;
 		Item.expert = true;
-		Item.value = Item.sellPrice(0, 10, 0, 0);
+		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -59,19 +60,16 @@ public class SwordOfTheUniverseV2 : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		float spread = 0.25f;
-		float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-		double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
-		double deltaAngle = spread / 2f;
-		for (int i = 0; i < 5; i++)
-		{
-			double offsetAngle = startAngle + deltaAngle * (double)i;
-			Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
-		}
-		return false;
+        Projectile.NewProjectileDirect(source, position, velocity, Item.shoot, (int)(damage * 1.25f), knockback, player.whoAmI);
+        return false;
 	}
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+    {
+		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
+    }
+
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
 		target.AddBuff(72, 360, false);
 		target.AddBuff(69, 360, false);

@@ -88,7 +88,13 @@ namespace UniverseOfSwordsMod.Projectiles
 
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, j / 15f), SpriteEffects.None, 0);
 
-            }           
+            }            
+            AlternateFinalFractalHelper empressBladeDrawer = default;
+            empressBladeDrawer.ColorStart = Color.HotPink;
+            empressBladeDrawer.Draw(Projectile, "EmpressBlade");
+
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
             return true;
         }

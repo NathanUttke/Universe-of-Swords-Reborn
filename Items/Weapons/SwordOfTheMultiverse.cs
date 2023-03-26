@@ -28,10 +28,10 @@ public class SwordOfTheMultiverse : ModItem
 
         Item.damage = 190;
         Item.DamageType = DamageClass.Melee;
-        Item.crit = 15;
-        Item.knockBack = 2f;
+        Item.crit = 25;
+        Item.knockBack = 2.5f;
 
-		Item.value = Item.sellPrice(0, 18, 0, 0);
+		Item.value = Item.sellPrice(0, 15, 0, 0);
 
         Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item169;
@@ -95,12 +95,12 @@ public class SwordOfTheMultiverse : ModItem
                 heading *= velocity.Length();
                 velocity.X = heading.X;
                 velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.025f;
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, Item.shoot, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, heightLimit);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, Item.shoot, (int)(damage * 1.33f), knockback, player.whoAmI, 0f, heightLimit);
             }
         }
         else
         {
-            Projectile.NewProjectile(source, position, velocity, Item.shoot, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, Item.shoot, (int)(damage * 1.33f), knockback, player.whoAmI, 0f, 0f);
         }
 
         return false;

@@ -60,9 +60,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 _initialized = true;
             }
         }
-
-
-
         public override bool PreDraw(ref Color lightColor)
         {
             Color defaultColor = Projectile.GetAlpha(lightColor);
