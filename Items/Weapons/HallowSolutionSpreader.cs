@@ -19,8 +19,8 @@ public class HallowSolutionSpreader : ModItem
 		Item.scale = 1.3f;
 		Item.rare = ItemRarityID.Lime;	
 		
-		Item.useTime = 7;
-		Item.useAnimation = 30;
+		Item.useTime = 20;
+		Item.useAnimation = 20;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item34;	
 		
