@@ -16,13 +16,12 @@ public class DutchmanSword : ModItem
 		Item.useTime = 25;
 		Item.useAnimation = 25;
 		Item.damage = 40;
-		Item.knockBack = 7.77f;
+		Item.knockBack = 7f;
 		Item.UseSound = SoundID.Item1;
-		Item.shoot = ProjectileID.CannonballFriendly;
-		Item.shootSpeed = 20f;
-		Item.value = Item.sellPrice(0, 10, 0, 0);
+		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
