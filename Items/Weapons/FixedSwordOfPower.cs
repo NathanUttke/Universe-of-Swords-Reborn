@@ -1,7 +1,8 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Items.Misc;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -10,7 +11,7 @@ public class FixedSwordOfPower : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Sword Of Power");
-		Tooltip.SetDefault("Has a chance to inflict Midas debuff on enemies");
+		Tooltip.SetDefault("20% chance of inflicting midas on enemies");
 	}
 
 	public override void SetDefaults()
@@ -21,7 +22,7 @@ public class FixedSwordOfPower : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 60;
 		Item.useAnimation = 30;
-		Item.damage = 37;
+		Item.damage = 35;
 		Item.knockBack = 4f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 18000;
@@ -30,16 +31,16 @@ public class FixedSwordOfPower : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
-	} 
-	
-	public override void AddRecipes()
+	}
+
+    public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "SwordOfPower", 1);
-		val.AddIngredient(ItemID.Bone, 20);
-		val.AddIngredient(Mod, "UpgradeMatter", 1);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ModContent.ItemType<SwordOfPower>(), 1)
+            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+            .AddIngredient(ItemID.Bone, 50)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
@@ -48,7 +49,7 @@ public class FixedSwordOfPower : ModItem
 		{
 			if (!target.HasBuff(BuffID.Midas))
 			{
-                target.AddBuff(BuffID.Midas, 360, false);
+                target.AddBuff(BuffID.Midas, 400, false);
             }
         }
 	}

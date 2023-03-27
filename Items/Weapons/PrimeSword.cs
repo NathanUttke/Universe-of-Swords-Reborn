@@ -14,7 +14,7 @@ public class PrimeSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
+		Item.width = 62;
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;

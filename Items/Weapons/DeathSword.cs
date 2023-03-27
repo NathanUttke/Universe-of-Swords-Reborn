@@ -14,9 +14,9 @@ public class DeathSword : ModItem
         Item.scale = 1f;
         Item.rare = ItemRarityID.LightRed;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 60;
+        Item.useTime = 80;
         Item.useAnimation = 30;
-        Item.damage = 23;
+        Item.damage = 20;
         Item.knockBack = 4f;
         Item.UseSound = SoundID.Item8;
         Item.shoot = ProjectileID.DemonScythe;

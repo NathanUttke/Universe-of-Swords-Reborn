@@ -46,7 +46,7 @@ public class SwordOfTheUniverseV2 : ModItem
 		.AddIngredient(Mod, "EdgeLord", 1)
 		.AddIngredient(Mod, "SuperInflation", 1)
 		.AddIngredient(Mod, "CosmoStorm", 1)
-		.AddIngredient(Mod, "GlacialCracker", 1)
+		.AddIngredient(Mod, "DragonsDeath", 1)
 		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
 		.AddIngredient(ItemID.Terragrim, 1)
 		.AddTile(TileID.DemonAltar)

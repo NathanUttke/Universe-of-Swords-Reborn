@@ -15,8 +15,8 @@ public class DestroyerSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 62;
+		Item.width = 62;
+		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;

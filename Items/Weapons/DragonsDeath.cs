@@ -26,6 +26,7 @@ public class DragonsDeath : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 490500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 }
