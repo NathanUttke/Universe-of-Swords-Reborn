@@ -71,7 +71,7 @@ public class TheNightmareAmalgamation : ModItem
 		.AddIngredient(Mod, "TwinsSword", 1)
 		.AddIngredient(Mod, "Executioner", 1)
 		.AddIngredient(Mod, "Doomsday", 1)
-		.AddIngredient(Mod, "Sharkron", 1)
+		.AddIngredient(ModContent.ItemType<DragonsDeath>(), 1)
 		.AddTile(TileID.LunarCraftingStation)
 		.Register();
 		CreateRecipe()
@@ -85,7 +85,7 @@ public class TheNightmareAmalgamation : ModItem
 		.AddIngredient(Mod, "TwinsSword", 1)
 		.AddIngredient(Mod, "Executioner", 1)
 		.AddIngredient(Mod, "Doomsday", 1)
-		.AddIngredient(Mod, "Sharkron", 1)
+		.AddIngredient(ModContent.ItemType<DragonsDeath>(), 1)
 		.AddTile(TileID.LunarCraftingStation)
 		.Register();
 	}

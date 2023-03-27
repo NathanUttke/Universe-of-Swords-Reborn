@@ -60,9 +60,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.CultistBoss:
                     npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Doomsday>()));
                     break;
-                case NPCID.DukeFishron:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Sharkron>()));
-                    break;
                 case NPCID.Paladin:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PaladinSword>(), 7, 1));
                     break;
@@ -111,16 +108,8 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.RustyArmoredBonesSwordNoArmor:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<RustySword>(), 150, 1));
                     break;
-                case NPCID.HellArmoredBones:
-                case NPCID.HellArmoredBonesMace:
-                case NPCID.HellArmoredBonesSword:
-                case NPCID.HellArmoredBonesSpikeShield:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfFlames>(), 150, 1));
-                    break;
-                case NPCID.MossHornet:
-                case NPCID.FlyingSnake:
-                case NPCID.Arapaima:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DragonsDeath>(), 1250, 1));
+                case NPCID.DukeFishron:
+                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DragonsDeath>(), 4, 1));
                     break;
                 case NPCID.Crab:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<OceanRoar>(), 50, 1));

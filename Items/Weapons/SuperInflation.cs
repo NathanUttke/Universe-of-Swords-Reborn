@@ -9,7 +9,8 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class SuperInflation : ModItem
 {
-	public override void SetStaticDefaults()
+    public override string Texture => "UniverseofSwordsMod/Items/Weapons/Inflation";
+    public override void SetStaticDefaults()
 	{
 		Tooltip.SetDefault("'Throw money at ALL your problems'");
 	}
