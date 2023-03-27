@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Tiles;
 
@@ -15,7 +16,7 @@ public class BlackOreTile : ModTile
 		Main.tileBlockLight[Type] = true;
 		HitSound = SoundID.Tink;
 		DustType = ModContent.DustType<Dusts.BlackOre>();
-		ItemDrop = ModContent.ItemType<Items.Placeable.BlackOre>();
+		ItemDrop = ModContent.ItemType<BlackOre>();
 		ModTranslation name = CreateMapEntryName();
 		name.SetDefault("Black Ore");
 		AddMapEntry(new Color(0, 0, 0), name);
