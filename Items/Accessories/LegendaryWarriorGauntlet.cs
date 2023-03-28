@@ -10,14 +10,14 @@ public class LegendaryWarriorGauntlet : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Legendary Warrior's Gauntlet");
-		Tooltip.SetDefault("'Legendary gauntlet that grants wearer ultimate melee skills'\n30 defense\nHighly increased melee damage\n30% increased melee critical chance\nGreatly increased life regeneration\nIncreases maximum life by 200\n20% increased endurance\nGrants immunity to most debuffs\nGrants Spelunker, Thorns and Titan potion effects");
+		Tooltip.SetDefault("'Legendary gauntlet that grants wearer ultimate melee skills'\n15 defense\nHighly increased melee damage\n30% increased melee critical chance\nGreatly increased life regeneration\nIncreases maximum life by 20\n20% increased endurance\nGrants immunity to most debuffs\nGrants Spelunker, Thorns and Titan potion effects");
 	}
 
 	public override void SetDefaults()
 	{
 		Item.width = 24;
 		Item.height = 28;
-		Item.value = Item.sellPrice(0, 10, 0, 0);
+		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.rare = ItemRarityID.Red;
 		Item.accessory = true; 
 		SacrificeTotal = 1;
@@ -25,7 +25,7 @@ public class LegendaryWarriorGauntlet : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.statDefense += 20;
+		player.statDefense += 15;
 		player.GetDamage(DamageClass.Melee) *= 1.15f;
 		player.lifeRegen += 15;
 		player.GetCritChance(DamageClass.Generic) += 25;
@@ -62,7 +62,7 @@ public class LegendaryWarriorGauntlet : ModItem
 		val.AddIngredient(ItemID.AnkhShield, 1);
 		val.AddIngredient(ItemID.LifeFruit, 10);
 		val.AddIngredient(ItemID.LunarBar, 25);
-		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 20);
+		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 18);
 		val.AddIngredient(Mod, "LunarOrb", 4);
 		val.AddTile(TileID.DemonAltar);
 		val.Register();

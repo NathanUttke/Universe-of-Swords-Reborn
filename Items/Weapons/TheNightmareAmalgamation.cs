@@ -21,7 +21,7 @@ public class TheNightmareAmalgamation : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 25;
-		Item.damage = 140;
+		Item.damage = 115;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item71;
 		Item.shoot = Mod.Find<ModProjectile>("Nightmare").Type;

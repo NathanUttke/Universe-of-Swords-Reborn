@@ -11,14 +11,14 @@ public class HaloOfHorrorsLevel3 : ModItem
     public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Skull of Insanity");
-		Tooltip.SetDefault("Level 3\n15 defense\n25% increased armor penetration\nIncreased health regeneration\n15% increased damage\nCurses the wearer with infinite Potion Sickness debuff\n20% decreased melee speed");
+		Tooltip.SetDefault("Level 3\n15 defense\n25% increased armor penetration\nIncreased health regeneration\n15% increased damage\nCurses the wearer with infinite Potion Sickness debuff\n10% decreased melee speed");
 	}
 
 	public override void SetDefaults()
 	{
 		Item.width = 62;
 		Item.height = 60;
-		Item.value = Item.sellPrice(0, 13, 40, 0);
+		Item.value = Item.sellPrice(0, 8, 40, 0);
 		Item.rare = ItemRarityID.Purple;
 		Item.expert = true;
 		Item.accessory = true; 
@@ -29,11 +29,11 @@ public class HaloOfHorrorsLevel3 : ModItem
 	{
 		player.boneGloveItem = Item;
 		player.boneGloveTimer = 25;
-		player.statDefense += 15;
+		player.statDefense += 10;
 		player.GetArmorPenetration(DamageClass.Generic) += 15;
-		player.GetAttackSpeed(DamageClass.Melee) -= 0.15f;
+		player.GetAttackSpeed(DamageClass.Melee) -= 0.10f;
 		player.statLifeMax2 += 20;
-		player.GetDamage(DamageClass.Generic) += 0.16f;
+		player.GetDamage(DamageClass.Generic) += 0.15f;
 		player.AddBuff(BuffID.RapidHealing, 300, true);
 		player.AddBuff(BuffID.Honey, 300, true);   
 	}

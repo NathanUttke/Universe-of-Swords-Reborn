@@ -18,7 +18,7 @@ public class HaloOfHorrorsLevel2 : ModItem
 	{
 		Item.width = 62;
 		Item.height = 60;
-		Item.value = Item.sellPrice(0, 13, 0, 0);
+		Item.value = Item.sellPrice(0, 8, 20, 0);
 		Item.rare = ItemRarityID.Purple;
 		Item.expert = true;
 		Item.accessory = true; 
@@ -32,8 +32,8 @@ public class HaloOfHorrorsLevel2 : ModItem
 		player.statDefense += 10;
 		player.GetArmorPenetration(DamageClass.Generic) += 10;
 		player.GetAttackSpeed(DamageClass.Melee) -= 0.20f;
-		player.statLifeMax2 += 15;
-		player.GetDamage(DamageClass.Generic) += 0.15f;
+		player.statLifeMax2 += 10;
+		player.GetDamage(DamageClass.Generic) += 0.10f;
 		player.AddBuff(BuffID.RapidHealing, 100, true);
         if (Main.rand.NextBool(3))
 		{
