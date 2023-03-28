@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,20 +19,24 @@ public class PrimeSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 15;
-		Item.useAnimation = 15;
-		Item.damage = 65;
-		Item.knockBack = 6f;
+		Item.useTime = 30;
+		Item.useAnimation = 20;
+		Item.damage = 60;
+		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item33;
 		Item.value = 160000;
-		Item.shoot = ProjectileID.LaserMachinegunLaser;
+		Item.shoot = ProjectileID.BombSkeletronPrime;
 		Item.shootSpeed = 20f;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		Projectile bombProj = Projectile.NewProjectileDirect(source, position, velocity, Item.shoot, Item.damage / 2, knockback, player.whoAmI);
+		bombProj.hostile = false;
+		bombProj.friendly = true;
+		return false;
+    }
 }

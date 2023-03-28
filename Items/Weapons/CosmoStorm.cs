@@ -17,8 +17,8 @@ public class CosmoStorm : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 174;
-        Item.height = 174;
+        Item.width = 86;
+        Item.height = 86;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 3f;
@@ -32,12 +32,6 @@ public class CosmoStorm : ModItem
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee;
         SacrificeTotal = 1;
-    }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.X -= 3f * (float)player.direction;
-        player.itemLocation.Y -= -3f * (float)player.direction;
     }
 
     public override void AddRecipes()

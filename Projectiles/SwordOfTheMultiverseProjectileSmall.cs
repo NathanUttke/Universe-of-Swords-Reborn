@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Buffs;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -33,6 +34,14 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 6;
             AIType = ProjectileID.Bullet;
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
+        {
+            if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
+            {
+                target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 800, true);
+            }
         }
 
         public override Color? GetAlpha(Color lightColor) => new Color(205, 143, 255, 0) * Projectile.Opacity;
