@@ -12,7 +12,7 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.FallingStar}";
 
-        public readonly int numOfBounces = 6;
+        public readonly int numOfBounces = 8;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 5;

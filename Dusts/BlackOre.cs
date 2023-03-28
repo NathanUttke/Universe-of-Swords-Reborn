@@ -4,15 +4,13 @@ using Terraria.ModLoader;
 namespace UniverseOfSwordsMod.Dusts;
 
 public class BlackOre : ModDust
-{
-	public override void OnSpawn(Dust dust)
+{	public override void OnSpawn(Dust dust)
 	{
 		dust.velocity *= 0.2f;
 		dust.noGravity = true;
 		dust.noLight = true;
 		dust.scale *= 3f;
 	}
-
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;

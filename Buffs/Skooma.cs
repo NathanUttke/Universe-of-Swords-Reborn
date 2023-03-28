@@ -13,10 +13,10 @@ public class Skooma : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.moveSpeed += 0.5f;
-		player.maxRunSpeed += 13.37f;
+		player.moveSpeed += 0.25f;
+		player.maxRunSpeed += 1.37f;
 		player.jumpBoost = true;
-		player.jumpSpeedBoost += 13.37f;
-		player.extraFall += 45;
+		player.jumpSpeedBoost += 1.37f;
+		player.extraFall += 10;
 	}
 }

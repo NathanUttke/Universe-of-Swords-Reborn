@@ -6,6 +6,8 @@ using Terraria.ID;
 using UniverseOfSwordsMod.Projectiles;
 using UniverseOfSwordsMod.Buffs;
 using UniverseOfSwordsMod.Items.Materials;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -44,8 +46,28 @@ public class SwordOfTheMultiverse : ModItem
         Item.noUseGraphic = false;
 
         SacrificeTotal = 1;
-        //ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 	}
+
+    /*public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+    {
+        float itemTime = (float)Item.timeSinceItemSpawned / 240f + Main.GlobalTimeWrappedHourly * 0.04f;
+        float globalTimeWrapped = Main.GlobalTimeWrappedHourly;
+        Texture2D texture = TextureAssets.Item[Item.type].Value;
+
+
+        globalTimeWrapped %= 4f;
+        globalTimeWrapped /= 2f;
+        if (globalTimeWrapped >= 1f)
+        {
+            globalTimeWrapped = 2f - globalTimeWrapped;
+        }
+        globalTimeWrapped = globalTimeWrapped / 2f + 0.5f;
+        for (float i = 0f; i < 1f; i += 0.25f)
+        {
+            spriteBatch.Draw(texture, )
+        }
+        return false;
+    }*/
 
     public override bool CanUseItem(Player player)
     {
@@ -107,9 +129,9 @@ public class SwordOfTheMultiverse : ModItem
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.NextBool(2))
+        if (Main.rand.NextBool(2) && player.altFunctionUse != 2)
         {
-            Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.DemonTorch, 0f, 0f, 100, default, 2f)];
+            Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PinkTorch, 0f, 0f, 100, Color.Red, 2f)];
             dust.noGravity = true;
         }
     }

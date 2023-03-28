@@ -22,8 +22,9 @@ public class UltraMachine : ModItem
 		Item.rare = ItemRarityID.Red;
 		Item.crit = 10;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 25;
-		Item.useAnimation = 15;
+		Item.useTime = 18;
+		Item.useAnimation = 30;
+		Item.reuseDelay = 40;
 		Item.damage = 135;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item1;

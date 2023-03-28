@@ -12,7 +12,7 @@ public class SwordOfTheUniverseOG : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Sword of the Universe");
-		Tooltip.SetDefault("'This sword doesn't swing. It lifts the Universe towards the blade'\nThe Overpowered original sword as you remember it, before we nerfed the hell out of it!");
+		Tooltip.SetDefault("'This sword doesn't swing. It lifts the Universe towards the blade'\nThe Overpowered original sword as you remember it, before we nerfed the hell out of it!\nLegacy Item");
 	}
 
 	public override void SetDefaults()

@@ -21,7 +21,7 @@ public struct AlternateFinalFractalHelper
         int num = 1;
         int num2 = 0;
         int num3 = 0;
-        float w = 0.6f;
+        float w = 6.6f;
         miscShaderData.UseShaderSpecificData(new Vector4(num, num2, num3, w));
         miscShaderData.Apply();
         _vertexStrip.PrepareStrip(proj.oldPos, proj.oldRot, StripColors, StripWidth, -Main.screenPosition + proj.Size / 2f, proj.oldPos.Length, includeBacksides: false);

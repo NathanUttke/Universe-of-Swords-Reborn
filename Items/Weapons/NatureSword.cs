@@ -44,7 +44,7 @@ public class NatureSword : ModItem
 	{	
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Grass, 0f, 0f, 100, default, 1f);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<NatureBlade>(), 0f, 0f, 100, default, 1f);
 			Main.dust[dust].noGravity = true;
 		}
 	}

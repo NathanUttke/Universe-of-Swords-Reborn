@@ -64,6 +64,15 @@ public class SwordOfTheUniverseV2 : ModItem
         return false;
 	}
 
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        if (Main.rand.NextBool(2) && player.altFunctionUse != 2)
+        {
+            Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PortalBoltTrail, 0f, 0f, 100, Utils.SelectRandom(Main.rand, Color.Aqua, Color.Red, Color.Pink, Color.Yellow, Color.Blue), 1.5f)];
+            dust.noGravity = true;
+        }
+    }
+
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
 		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));

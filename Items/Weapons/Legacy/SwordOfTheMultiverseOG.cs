@@ -12,7 +12,7 @@ public class SwordOfTheMultiverseOG : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Sword of the Multiverse");
-		Tooltip.SetDefault("'\nThe Overpowered original sword as you remember it, before we nerfed the hell out of it!");
+		Tooltip.SetDefault("'\nThe Overpowered original sword as you remember it, before we nerfed the hell out of it!\nLegacy Item");
 	}
 
 	public override void SetDefaults()

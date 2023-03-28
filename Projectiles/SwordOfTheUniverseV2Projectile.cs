@@ -1,10 +1,8 @@
 ﻿using Terraria;
-using System;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using static Humanizer.In;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.Graphics;
+using Terraria.ID;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -81,14 +79,16 @@ namespace UniverseOfSwordsMod.Projectiles
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), Projectile.scale * 2f, SpriteEffects.None, 0);
 
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 
-            return true;
+   
+
+            return false;
         }
     }
 }
