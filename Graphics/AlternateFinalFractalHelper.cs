@@ -9,7 +9,7 @@ public struct AlternateFinalFractalHelper
 
     public const int FramesPerImportantTrail = 60;
 
-    private static VertexStrip _vertexStrip = new();
+    private static readonly VertexStrip _vertexStrip = new();
 
     public Color ColorStart;
 
@@ -18,11 +18,7 @@ public struct AlternateFinalFractalHelper
     public void Draw(Projectile proj, string shaderName)
     {
         MiscShaderData miscShaderData = GameShaders.Misc[shaderName];
-        int num = 1;
-        int num2 = 0;
-        int num3 = 0;
-        float w = 6.6f;
-        miscShaderData.UseShaderSpecificData(new Vector4(num, num2, num3, w));
+        miscShaderData.UseShaderSpecificData(new Vector4(1, 0, 0, 0.6f));
         miscShaderData.Apply();
         _vertexStrip.PrepareStrip(proj.oldPos, proj.oldRot, StripColors, StripWidth, -Main.screenPosition + proj.Size / 2f, proj.oldPos.Length, includeBacksides: false);
         _vertexStrip.DrawTrail();
