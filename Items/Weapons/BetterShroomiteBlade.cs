@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -14,27 +15,29 @@ public class BetterShroomiteBlade : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
+		Item.width = 68;
+		Item.height = 68;
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 10;
-		Item.useAnimation = 10;
-		Item.damage = 78;
-		Item.knockBack = 7.2f;
+		Item.useTime = 15;
+		Item.useAnimation = 15;
+		Item.damage = 75;
+		Item.knockBack = 7f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 380000;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; 
+		Item.DamageType = DamageClass.Melee;
+		Item.scale = 1.20f;
 		SacrificeTotal = 1;
 	}
 
-	public override void AddRecipes()
+    public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "ShroomiteBlade", 1);
-		val.AddIngredient(Mod, "UpgradeMatter", 1);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ModContent.ItemType<ShroomiteBlade>(), 1)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
+		.AddIngredient(ItemID.ChlorophyteBar, 12)
+		.AddTile(TileID.MythrilAnvil)
+		.Register();
 	}
 }
