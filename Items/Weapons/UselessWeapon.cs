@@ -16,7 +16,7 @@ public class UselessWeapon : ModItem
 		Item.damage = 15;
 		Item.useTime = 14;
 		Item.useAnimation = 14;
-		Item.knockBack = 6f;
+		Item.knockBack = 4f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 50999;
 		Item.autoReuse = false;

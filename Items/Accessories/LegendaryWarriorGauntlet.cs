@@ -49,22 +49,22 @@ public class LegendaryWarriorGauntlet : ModItem
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.WarriorEmblem, 1);
-		val.AddIngredient(ItemID.DestroyerEmblem, 1);
-		val.AddIngredient(ItemID.AvengerEmblem, 1);
-		val.AddIngredient(ItemID.FireGauntlet, 1);
-		val.AddIngredient(ItemID.PowerGlove, 1);
-		val.AddIngredient(ItemID.TitanGlove, 1);
-		val.AddIngredient(ItemID.MechanicalGlove, 1);
-		val.AddIngredient(ItemID.EyeoftheGolem, 1);
-		val.AddIngredient(ItemID.CelestialShell, 1);
-		val.AddIngredient(ItemID.AnkhShield, 1);
-		val.AddIngredient(ItemID.LifeFruit, 10);
-		val.AddIngredient(ItemID.LunarBar, 25);
-		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 18);
-		val.AddIngredient(Mod, "LunarOrb", 4);
-		val.AddTile(TileID.DemonAltar);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ItemID.WarriorEmblem, 1)
+		.AddIngredient(ItemID.DestroyerEmblem, 1)
+		.AddIngredient(ItemID.AvengerEmblem, 1)
+		.AddIngredient(ItemID.FireGauntlet, 1)
+		.AddIngredient(ItemID.PowerGlove, 1)
+		.AddIngredient(ItemID.TitanGlove, 1)
+		.AddIngredient(ItemID.MechanicalGlove, 1)
+		.AddIngredient(ItemID.EyeoftheGolem, 1)
+		.AddIngredient(ItemID.CelestialShell, 1)
+		.AddIngredient(ItemID.AnkhShield, 1)
+		.AddIngredient(ItemID.LifeFruit, 10)
+		.AddIngredient(ItemID.LunarBar, 25)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 18)
+		.AddIngredient(Mod, "LunarOrb", 4)
+		.AddTile(TileID.DemonAltar)
+		.Register();
 	}
 }

@@ -16,7 +16,7 @@ public class HaloOfHorrors : ModItem
 	{
 		Item.width = 62;
 		Item.height = 60;
-		Item.value = Item.sellPrice(0, 8, 0, 0);
+		Item.value = Item.sellPrice(0, 6, 0, 0);
 		Item.rare = ItemRarityID.Purple;
 		Item.expert = true;
 		Item.accessory = true; 

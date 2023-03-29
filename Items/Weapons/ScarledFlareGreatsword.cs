@@ -35,7 +35,7 @@ public class ScarledFlareGreatsword : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int numberProjectiles = 3 + Main.rand.Next(2);
+		int numberProjectiles = 4;
 		for (int i = 0; i < numberProjectiles; i++)
 		{
 			Vector2 perturbedSpeed = Utils.RotatedByRandom(new Vector2(velocity.X, velocity.Y), (double)MathHelper.ToRadians(30f));

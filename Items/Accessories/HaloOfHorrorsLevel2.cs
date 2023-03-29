@@ -18,7 +18,7 @@ public class HaloOfHorrorsLevel2 : ModItem
 	{
 		Item.width = 62;
 		Item.height = 60;
-		Item.value = Item.sellPrice(0, 8, 20, 0);
+		Item.value = Item.sellPrice(0, 7, 20, 0);
 		Item.rare = ItemRarityID.Purple;
 		Item.expert = true;
 		Item.accessory = true; 
@@ -28,7 +28,6 @@ public class HaloOfHorrorsLevel2 : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.boneGloveItem = Item;
-		player.boneGloveTimer = 30;
 		player.statDefense += 10;
 		player.GetArmorPenetration(DamageClass.Generic) += 10;
 		player.GetAttackSpeed(DamageClass.Melee) -= 0.20f;

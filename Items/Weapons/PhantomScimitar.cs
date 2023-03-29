@@ -25,9 +25,10 @@ public class PhantomScimitar : ModItem
 		Item.damage = 40;
 		Item.knockBack = 7f;
 		Item.UseSound = SoundID.Item104;
-		Item.value = Item.sellPrice(0, 3, 0, 0);
+		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

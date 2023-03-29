@@ -12,7 +12,7 @@ public class SuperInflation : ModItem
     public override string Texture => "UniverseofSwordsMod/Items/Weapons/Inflation";
     public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'Throw money at ALL your problems'");
+		Tooltip.SetDefault("'Throw money at ALL your problems'\n15% more damage if the player has a gold coin.");
 	}
 
 	public override void SetDefaults()
@@ -25,8 +25,6 @@ public class SuperInflation : ModItem
 		Item.useTime = 48;
 		Item.useAnimation = 12;
 		Item.damage = 110;
-		Item.shoot = ProjectileID.GoldCoin;
-		Item.shootSpeed = 20f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 0;
 		Item.autoReuse = true;
@@ -45,18 +43,18 @@ public class SuperInflation : ModItem
 		.Register();
 	}
 
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-		float numberProjectiles = 10 + Main.rand.Next(10);
-		float rotation = MathHelper.ToRadians(10f);
-		position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 10f;
-		for (int i = 0; i < numberProjectiles; i++)
-		{
-			Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
-			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
-		}
-		return false;
-	}
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+		player.itemLocation = player.Center;
+    }
+
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (player.HasItem(ItemID.GoldCoin))
+        {
+            damage *= 1.15f;
+        }
+    }
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{

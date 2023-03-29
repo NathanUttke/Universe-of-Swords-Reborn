@@ -27,17 +27,17 @@ public class Skooma : ModItem
 		Item.rare = ItemRarityID.Purple;
 		Item.buffType = Mod.Find<ModBuff>("Skooma").Type;
 		Item.buffTime = 8000;
-		SacrificeTotal = 20;
+		SacrificeTotal = 30;
 
 	}
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.PurpleMucos, 1);
-		val.AddIngredient(ItemID.CandyCorn, 10);
-		val.AddIngredient(ItemID.Moonglow, 1);
-		val.AddTile(TileID.AlchemyTable);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.PurpleMucos, 1)
+			.AddIngredient(ItemID.CandyCorn, 15)
+			.AddIngredient(ItemID.Moonglow, 1)
+			.AddTile(TileID.AlchemyTable)
+			.Register();
 	}
 }

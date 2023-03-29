@@ -8,6 +8,7 @@ using UniverseOfSwordsMod.Buffs;
 using UniverseOfSwordsMod.Items.Materials;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using System;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -48,12 +49,17 @@ public class SwordOfTheMultiverse : ModItem
         SacrificeTotal = 1;
 	}
 
-    /*public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
-    {
-        float itemTime = (float)Item.timeSinceItemSpawned / 240f + Main.GlobalTimeWrappedHourly * 0.04f;
+    public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+    {        
         float globalTimeWrapped = Main.GlobalTimeWrappedHourly;
+        float itemTime = Item.timeSinceItemSpawned / 240f + globalTimeWrapped * 0.04f;
         Texture2D texture = TextureAssets.Item[Item.type].Value;
 
+        var frame = texture.Frame();
+
+        Vector2 origin = frame.Size() / 2f;
+        Vector2 vector2 = new(Item.width / 2 - origin.X, Item.height - frame.Height);
+        Vector2 vectorPosition = Item.position - Main.screenPosition + origin + vector2;
 
         globalTimeWrapped %= 4f;
         globalTimeWrapped /= 2f;
@@ -64,10 +70,14 @@ public class SwordOfTheMultiverse : ModItem
         globalTimeWrapped = globalTimeWrapped / 2f + 0.5f;
         for (float i = 0f; i < 1f; i += 0.25f)
         {
-            spriteBatch.Draw(texture, )
+            spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 8f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(90, 70, 255, 50), Item.velocity.X * 0.2f, origin, Item.scale, SpriteEffects.None, 0f);
         }
-        return false;
-    }*/
+        for (float i = 0f; i < 1f; i += 0.34f)
+        {
+            spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 4f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(140, 120, 255, 77), Item.velocity.X * 0.2f, origin, Item.scale, SpriteEffects.None, 0f);
+        }
+        return true;
+    }
 
     public override bool CanUseItem(Player player)
     {
