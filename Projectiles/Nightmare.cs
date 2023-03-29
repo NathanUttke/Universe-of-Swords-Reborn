@@ -105,11 +105,6 @@ internal class Nightmare : ModProjectile
         Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
         Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, spriteEffects, 0);
-
-        default(AlternateFinalFractalHelper).Draw(Projectile, "MagicMissile");
-
-        Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
         return false;
     }
 
@@ -124,14 +119,14 @@ internal class Nightmare : ModProjectile
         SoundEngine.PlaySound(SoundID.Dig, new Vector2(Projectile.position.X, Projectile.position.Y));
     }
 
-    public override void OnHitNPC(NPC n, int damage, float knockback, bool crit)
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
         Player owner = Main.player[Projectile.owner];
-        if (Main.rand.NextBool(2))
+        if (Main.rand.NextBool(3))
         {
-            n.AddBuff(153, 800, false);
-            owner.statLife += 2;
-            owner.HealEffect(2, true);
+            target.AddBuff(153, 800, false);
+            owner.statLife += 1;
+            owner.HealEffect(1, true);
         }
     }
 }

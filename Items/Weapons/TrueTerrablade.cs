@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -20,13 +21,25 @@ public class TrueTerrablade : ModItem
         Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 10f;
-        Item.value = Item.sellPrice(0, 8, 0, 0);
+        Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.shoot = ModContent.ProjectileType<TrueTerrabladeProjectile>();
         Item.shootSpeed = 18f;
         Item.rare = ItemRarityID.Purple;
         Item.UseSound = SoundID.Item60;
         Item.autoReuse = true;
         Item.useTurn = true;
+    }
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile terraProj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, 0);
+        terraProj.scale = Main.rand.NextFloat(1f, 2f);
+        return false;
+    }
+
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+    {
+        velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

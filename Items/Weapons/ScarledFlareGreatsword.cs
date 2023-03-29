@@ -22,12 +22,12 @@ public class ScarledFlareGreatsword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
 		Item.useAnimation = 25;
-		Item.damage = 124;
+		Item.damage = 120;
 		Item.knockBack = 8f;
 		Item.shootSpeed = 30f;
 		Item.shoot = Mod.Find<ModProjectile>("FlareCore").Type;
 		Item.UseSound = SoundID.Item45;
-		Item.value = Item.sellPrice(0, 5, 0, 0);
+		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -39,7 +39,7 @@ public class ScarledFlareGreatsword : ModItem
 		for (int i = 0; i < numberProjectiles; i++)
 		{
 			Vector2 perturbedSpeed = Utils.RotatedByRandom(new Vector2(velocity.X, velocity.Y), (double)MathHelper.ToRadians(30f));
-			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
+			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.15f), knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;
 	}
@@ -64,12 +64,12 @@ public class ScarledFlareGreatsword : ModItem
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "UpgradeMatter", 5);
-		val.AddIngredient(Mod, "RedFlareLongsword", 1);
-		val.AddIngredient(Mod, "ScarletFlareCore", 1);
-		val.AddIngredient(Mod, "TheNightmareAmalgamation", 1);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(Mod, "UpgradeMatter", 5)
+		.AddIngredient(Mod, "RedFlareLongsword", 1)
+		.AddIngredient(Mod, "ScarletFlareCore", 1)
+		.AddIngredient(Mod, "TheNightmareAmalgamation", 1)
+		.AddTile(TileID.LunarCraftingStation)
+		.Register();
 	}
 }

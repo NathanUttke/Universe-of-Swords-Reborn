@@ -23,20 +23,20 @@ public class LunarOrb : ModItem
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.FragmentSolar, 10);
-		val.AddIngredient(ItemID.FragmentVortex, 10);
-		val.AddIngredient(ItemID.FragmentNebula, 10);
-		val.AddIngredient(ItemID.FragmentStardust, 10);
-		val.AddIngredient(ItemID.SoulofLight, 15);
-		val.AddIngredient(ItemID.SoulofNight, 15);
-		val.AddIngredient(ItemID.SoulofFlight, 15);
-		val.AddIngredient(ItemID.SoulofMight, 20);
-		val.AddIngredient(ItemID.SoulofFright, 20);
-		val.AddIngredient(ItemID.SoulofSight, 20);
-		val.AddIngredient(Mod, "MartianSaucerCore", 1);
-		val.AddIngredient(ItemID.CelestialSigil, 1);
-		val.AddTile(TileID.LunarCraftingStation);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.FragmentSolar, 10)
+			.AddIngredient(ItemID.FragmentVortex, 10)
+			.AddIngredient(ItemID.FragmentNebula, 10)
+			.AddIngredient(ItemID.FragmentStardust, 10)
+			.AddIngredient(ItemID.SoulofLight, 15)
+			.AddIngredient(ItemID.SoulofNight, 15)
+			.AddIngredient(ItemID.SoulofFlight, 15)
+			.AddIngredient(ItemID.SoulofMight, 15)
+			.AddIngredient(ItemID.SoulofFright, 15)
+			.AddIngredient(ItemID.SoulofSight, 15)
+			.AddIngredient(Mod, "MartianSaucerCore", 1)
+			.AddIngredient(ItemID.CelestialSigil, 1)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
 	}
 }

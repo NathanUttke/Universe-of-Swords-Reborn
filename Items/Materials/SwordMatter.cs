@@ -11,7 +11,7 @@ public class SwordMatter : ModItem
 	{
 		DisplayName.SetDefault("Sword Matter");
 		Tooltip.SetDefault("'Matter of all swords'");
-		Main.RegisterItemAnimation(Item.type, (DrawAnimation)new DrawAnimationVertical(5, 4));
+		Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
 		ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 		ItemID.Sets.ItemIconPulse[Item.type] = true;
 		ItemID.Sets.ItemNoGravity[Item.type] = false;

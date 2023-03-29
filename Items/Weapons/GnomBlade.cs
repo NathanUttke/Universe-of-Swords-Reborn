@@ -15,14 +15,14 @@ public class GnomBlade : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 9;
-		Item.useAnimation = 9;
-		Item.damage = 375;
-		Item.knockBack = 15f;
+		Item.useTime = 37;
+		Item.useAnimation = 18;
+		Item.damage = 125;
+		Item.knockBack = 10f;
 		Item.shoot = ProjectileID.DD2PhoenixBowShot;
-		Item.shootSpeed = 40f;
+		Item.shootSpeed = 30f;
 		Item.UseSound = SoundID.Item1;
-		Item.value = Item.sellPrice(1, 0, 0, 0);
+		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -41,7 +41,7 @@ public class GnomBlade : ModItem
 			.AddIngredient(Mod, "Doomsday", 1)
 			.AddIngredient(ItemID.TerraBlade, 1)
 			.AddIngredient(Mod, "LunarOrb", 1)
-			.AddIngredient(Mod, "Orichalcon", 3)
+			.AddIngredient(Mod, "Orichalcon", 5)
 			.AddIngredient(ModContent.ItemType<TrueTerrablade>(), 1)
 			.AddIngredient(ItemID.DD2SquireBetsySword, 1)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
@@ -51,10 +51,8 @@ public class GnomBlade : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.TerraBeam, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.NightBeam, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.InfernoFriendlyBlast, damage, knockback, player.whoAmI, 0f, 0f);
-		return true;
+		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
+		return false;
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

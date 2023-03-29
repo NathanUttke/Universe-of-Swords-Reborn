@@ -43,7 +43,7 @@ public class BowSword : ModItem
 		CreateRecipe()
 		.AddIngredient(ItemID.WoodenBow, 1)
 		.AddRecipeGroup("IronBar", 15)
-		.AddIngredient(Mod, "SwordMatter", 60)
+		.AddIngredient(Mod, "SwordMatter", 100)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

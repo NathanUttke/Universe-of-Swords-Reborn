@@ -19,9 +19,8 @@ public class VugarMutaterProjectile : ModProjectile
 		Projectile.height = 25;
 		Projectile.aiStyle = 1;
 		Projectile.friendly = true;
-		Projectile.hostile = false;
 		Projectile.DamageType = DamageClass.Melee;
-		Projectile.penetrate = 999;
+		Projectile.penetrate = -1;
 		Projectile.alpha = 255;
 		Projectile.light = 0f;
 		Projectile.ignoreWater = true;

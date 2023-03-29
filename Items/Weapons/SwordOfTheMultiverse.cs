@@ -29,7 +29,7 @@ public class SwordOfTheMultiverse : ModItem
 		Item.useTime = 8;
 		Item.useAnimation = 18;        
 
-        Item.damage = 190;
+        Item.damage = 150;
         Item.DamageType = DamageClass.Melee;
         Item.crit = 26;
         Item.knockBack = 2.5f;
@@ -152,12 +152,12 @@ public class SwordOfTheMultiverse : ModItem
             .AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1)
             .AddIngredient(ModContent.ItemType<SwordOfTheUniverseV2>(), 1)
             .AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1)
-            .AddIngredient(ModContent.ItemType<ScarledFlareGreatsword>(), 1)
             .AddIngredient(ModContent.ItemType<UltraMachine>(), 1)
             .AddIngredient(ModContent.ItemType<GnomBlade>(), 1)
             .AddIngredient(ModContent.ItemType<DamascusBar>(), 50)
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 50)
             .AddIngredient(ItemID.LunarBar, 25)
+            .AddIngredient(ModContent.ItemType<LunarOrb>(), 2)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)
             .AddIngredient(ModContent.ItemType<UselessWeapon>(), 1)
 			.Register();
