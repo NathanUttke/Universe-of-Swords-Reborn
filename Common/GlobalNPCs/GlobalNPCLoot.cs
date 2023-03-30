@@ -99,9 +99,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.DarkCaster:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WaterBoltSword>(), 40, 1));
                     break;
-                case NPCID.Harpy:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<FeatherDuster>(), 30, 1));
-                    break;
                 case NPCID.RustyArmoredBonesAxe:
                 case NPCID.RustyArmoredBonesFlail:
                 case NPCID.RustyArmoredBonesSword:

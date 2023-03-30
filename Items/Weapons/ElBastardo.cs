@@ -18,8 +18,8 @@ public class ElBastardo : ModItem
 		Item.scale = 1.1f;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 16;
-		Item.useAnimation = 16;
+		Item.useTime = 18;
+		Item.useAnimation = 18;
 		Item.damage = 50;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item1;

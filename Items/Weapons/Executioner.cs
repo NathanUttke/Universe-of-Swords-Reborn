@@ -17,13 +17,13 @@ public class Executioner : ModItem
     {
         Item.width = 78;
         Item.height = 78;
-        Item.scale = 1.1f;
+        Item.scale = 1.15f;
         Item.rare = ItemRarityID.Lime;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;
         Item.useAnimation = 20;
-        Item.damage = 70;
-        Item.knockBack = 7f;
+        Item.damage = 65;
+        Item.knockBack = 6.5f;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ProjectileID.CrystalLeafShot;
         Item.shootSpeed = 30f;
@@ -35,7 +35,7 @@ public class Executioner : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        float numberProjectiles = Main.rand.Next(2, 4);
+        float numberProjectiles = 3;
         float rotation = MathHelper.ToRadians(10f);
         position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 5f;
         for (int i = 0; i < numberProjectiles; i++)

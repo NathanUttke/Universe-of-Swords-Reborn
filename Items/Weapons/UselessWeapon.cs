@@ -19,7 +19,7 @@ public class UselessWeapon : ModItem
 		Item.rare = ItemRarityID.Pink;
 
         Item.DamageType = DamageClass.MeleeNoSpeed;
-        Item.damage = 10; 
+        Item.damage = 8; 
 
         Item.useTime = 14;
         Item.useAnimation = 42;
