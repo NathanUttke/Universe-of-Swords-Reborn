@@ -82,20 +82,6 @@ Apocalypse :
 	}
 }
 
-BarbarianSword :
-{
-	Name :
-	{
-		Origin : Barbarian Sword
-		Current : 蛮族战剑
-	}
-	Tooltip :
-	{
-		Origin : 'We gonna need more Barbarians'
-		Current : '我们需要更多的野蛮人'
-	}
-}
-
 BatSlayer :
 {
 	Name :
@@ -417,20 +403,6 @@ Caladbolg :
 	{
 		Origin : 'Beati diripientes falsa pro veris sunt Messiahs'
 		Current : '在耶稣基督的见证下'
-	}
-}
-
-CalculatorSword :
-{
-	Name :
-	{
-		Origin : Calculator Sword
-		Current : 计算机剑
-	}
-	Tooltip :
-	{
-		Origin : Sprite was made in the calculator. True story.
-		Current : 这把剑的贴图是电脑自动生成的，真实的故事
 	}
 }
 
@@ -1345,19 +1317,19 @@ HaloOfHorrors :
 	{
 		Origin : 
 			'The fearsome power of the Dungeon Guardian is now yours!'
-			100 defense
-			100% increased armor penetration
-			Maximum life increased by 2000
-			Provides ultimate health regeneration
-			15% increased damage
+			5 defense
+			5% increased armor penetration
+			Maximum life increased by 10
+			Increased health regeneration
+			5% increased damage
 			Curses the wearer with infinite Potion Sickness debuff
 			30% decreased melee speed
 		Current : 
 			'地牢守卫那令人恐惧的力量现在属于你！'
 			'然而地牢的诅咒也将使你付出代价'
-			100 防御
-			护甲穿透提高100%
-			提供极快速的生命回复并使最大生命值提高2000
+			5 防御
+			护甲穿透提高5%
+			提供极快速的生命回复并使最大生命值提高10
 			提高15%全职业伤害
 			减少30%近战速度并获得永久药水疾病	
 	}
@@ -1531,20 +1503,6 @@ JesterArrowSword :
 	}
 }
 
-LavaSword :
-{
-	Name :
-	{
-		Origin : Lava Sword
-		Current : 狱火魔剑
-	}
-	Tooltip :
-	{
-		Origin : Inflicts On Fire! debuff on enemies
-		Current : 剑身燃着火焰
-	}
-}
-
 LegendaryWarriorGauntlet :
 {
 	Name :
@@ -1556,20 +1514,20 @@ LegendaryWarriorGauntlet :
 	{
 		Origin : 
 			'Legendary gauntlet that grants wearer ultimate melee skills'
-			30 defense
+			15 defense
 			Highly increased melee damage
-			30% increased melee critical chance
+			25% increased melee critical chance
 			Greatly increased life regeneration
-			Increases maximum life by 200
+			Increases maximum life by 20
 			20% increased endurance
 			Grants immunity to most debuffs
 			Grants Spelunker, Thorns and Titan potion effects
 		Current : 
 			'赋予佩戴者终极近战技能的传奇饰品'
-			30 防御
+			15 防御
 			近战伤害大幅提升并显著提高你的战斗能力
-			近战暴击率提升30%
-			显著提升生命再生速度并提高最大生命值200
+			近战暴击率提升25%
+			显著提升生命再生速度并提高最大生命值20
 			伤害减免提升20%
 			免疫大多数debuff
 	}
