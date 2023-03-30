@@ -47,10 +47,5 @@ Skooma :
 		Origin : Skooma
 		Current : 荣耀加持
 	}
-	Description :
-	{
-		Origin : 'S stands for Skooma man!'
-		Current : 'S代表超人！'
-	}
 }
 
