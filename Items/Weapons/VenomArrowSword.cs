@@ -16,19 +16,20 @@ public class VenomArrowSword : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.scale = 1.7f;
+		Item.scale = 1.5f;
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 22;
+		Item.useTime = 44;
 		Item.useAnimation = 22;
-		Item.damage = 51;
+		Item.damage = 45;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.VenomArrow;
 		Item.shootSpeed = 10f;
 		Item.value = 36500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -37,13 +38,11 @@ public class VenomArrowSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-				
-						Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.VenomArrow, 999);
-		val.AddIngredient(Mod, "SwordMatter", 110);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+	{				
+		CreateRecipe()
+			.AddIngredient(ItemID.VenomArrow, 500)
+			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddTile(TileID.MythrilAnvil)
+			.Register();
 	}
 }

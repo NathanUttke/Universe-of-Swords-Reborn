@@ -41,10 +41,10 @@ public class ChlorophyteArrowSword : ModItem
 
     public override void AddRecipes()
 	{				
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.ChlorophyteArrow, 999);
-		val.AddIngredient(Mod, "SwordMatter", 110);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.ChlorophyteArrow, 500)
+			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddTile(TileID.MythrilAnvil)
+			.Register();
 	}
 }

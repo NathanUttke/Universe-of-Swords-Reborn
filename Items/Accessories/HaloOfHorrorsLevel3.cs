@@ -11,7 +11,7 @@ public class HaloOfHorrorsLevel3 : ModItem
     public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Skull of Insanity");
-		Tooltip.SetDefault("Level 3\n10 defense\n25% increased armor penetration\nIncreased health regeneration\n15% increased damage\nCurses the wearer with infinite Potion Sickness debuff\n10% decreased melee speed");
+		Tooltip.SetDefault("Level 3\n10 defense\n25% increased armor penetration\nIncreased health regeneration\n15% increased damage\n10% decreased melee speed");
 	}
 
 	public override void SetDefaults()

@@ -14,20 +14,21 @@ public class WoodenArrowSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 76;
-		Item.height = 76;
+		Item.width = 38;
+		Item.height = 38;
 		Item.rare = ItemRarityID.White;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
+		Item.useTime = 60;
 		Item.useAnimation = 30;
-		Item.damage = 10;
+		Item.damage = 8;
 		Item.knockBack = 2f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.WoodenArrowFriendly;
 		Item.shootSpeed = 10f;
 		Item.value = 3500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee;
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -37,10 +38,10 @@ public class WoodenArrowSword : ModItem
 
 	public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.WoodenArrow, 999);
-		val.AddIngredient(Mod, "SwordMatter", 80);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.WoodenArrow, 500)
+			.AddIngredient(Mod, "SwordMatter", 100)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 }

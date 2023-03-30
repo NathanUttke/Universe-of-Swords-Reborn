@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -18,7 +19,7 @@ public class LuminiteArrowSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 13;
+		Item.useTime = 26;
 		Item.useAnimation = 13;
 		Item.damage = 100;
 		Item.knockBack = 9f;
@@ -27,20 +28,23 @@ public class LuminiteArrowSword : ModItem
 		Item.shootSpeed = 20f;
 		Item.value = 220500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
+	
+	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        proj.DamageType = DamageClass.MeleeNoSpeed;
+        return false;
+    }
 
 	public override void AddRecipes()
 	{				
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.MoonlordArrow, 999);
-		val.AddIngredient(Mod, "SwordMatter", 99);
-		val.AddTile(TileID.LunarCraftingStation);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.MoonlordArrow, 500)
+			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
 	}
 }

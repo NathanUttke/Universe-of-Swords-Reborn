@@ -16,11 +16,11 @@ public class BowSword : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.scale = 1.15f;
+		Item.scale = 1.1f;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
-		Item.useAnimation = 30;
+		Item.useTime = 35;
+		Item.useAnimation = 35;
 		Item.damage = 12;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item5;
@@ -33,17 +33,12 @@ public class BowSword : ModItem
 		Item.useAmmo = AmmoID.Arrow;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
 	public override void AddRecipes()
 	{				
 		CreateRecipe()
 		.AddIngredient(ItemID.WoodenBow, 1)
 		.AddRecipeGroup("IronBar", 15)
-		.AddIngredient(Mod, "SwordMatter", 100)
+		.AddIngredient(Mod, "SwordMatter", 150)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

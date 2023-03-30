@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,9 +19,9 @@ public class HellfireArrowSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 25;
+		Item.useTime = 50;
 		Item.useAnimation = 25;
-		Item.damage = 25;
+		Item.damage = 20;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.HellfireArrow;
@@ -30,18 +31,20 @@ public class HellfireArrowSword : ModItem
 		Item.DamageType = DamageClass.Melee;
 		SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
+	
+	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        proj.DamageType = DamageClass.MeleeNoSpeed;
+        return false;
+    }
 
 	public override void AddRecipes()
 	{				
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.HellfireArrow, 999);
-		val.AddIngredient(Mod, "SwordMatter", 110);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.HellfireArrow, 500)
+			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 }

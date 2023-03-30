@@ -27,20 +27,23 @@ public class HolyArrowSword : ModItem
 		Item.shootSpeed = 10f;
 		Item.value = 30700;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
+	
+	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        proj.DamageType = DamageClass.MeleeNoSpeed;
+        return false;
+    }
 
 	public override void AddRecipes()
 	{				
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.HolyArrow, 999);
-		val.AddIngredient(Mod, "SwordMatter", 120);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.HolyArrow, 500)
+			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 }

@@ -19,9 +19,9 @@ public class FrostburnArrowSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 22;
+		Item.useTime = 44;
 		Item.useAnimation = 22;
-		Item.damage = 55;
+		Item.damage = 40;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.FrostburnArrow;
@@ -41,10 +41,10 @@ public class FrostburnArrowSword : ModItem
 
     public override void AddRecipes()
 	{				
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.FrostburnArrow, 999);
-		val.AddIngredient(Mod, "SwordMatter", 110);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.FrostburnArrow, 999)
+			.AddIngredient(Mod, "SwordMatter", 110)
+			.AddTile(TileID.MythrilAnvil)
+			.Register();
 	}
 }

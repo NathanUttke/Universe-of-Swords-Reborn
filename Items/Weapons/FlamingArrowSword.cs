@@ -41,10 +41,10 @@ public class FlamingArrowSword : ModItem
 
     public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.FlamingArrow, 999);
-		val.AddIngredient(Mod, "SwordMatter", 90);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.FlamingArrow, 500)
+			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 }
