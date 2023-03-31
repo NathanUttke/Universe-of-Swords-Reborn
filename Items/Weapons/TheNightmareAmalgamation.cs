@@ -36,8 +36,8 @@ public class TheNightmareAmalgamation : ModItem
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			Vector2 perturbedSpeed = Utils.RotatedByRandom(new Vector2(velocity.X, velocity.Y), (double)MathHelper.ToRadians(12f));
-			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, Item.shoot, damage, knockback, player.whoAmI, 0f, 0f);
+			Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
+			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, Item.shoot, (int)(damage * 1.05f), knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;
 	}
@@ -49,7 +49,7 @@ public class TheNightmareAmalgamation : ModItem
 			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PurpleTorch, 0f, 0f, 100, default, 2f);
 			Main.dust[dust].noGravity = true;
 			Dust dust2 = Main.dust[dust];
-			Main.dust[dust].noGravity = true;
+			dust2.noGravity = true;
 		}
 	}
 

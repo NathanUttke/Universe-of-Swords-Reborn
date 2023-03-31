@@ -33,7 +33,7 @@ public class TrueTerrablade : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile terraProj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, 0);
-        terraProj.scale = Main.rand.NextFloat(1f, 2f);
+        terraProj.scale = Main.rand.NextFloat(1.25f, 1.75f);
         return false;
     }
 
@@ -44,7 +44,7 @@ public class TrueTerrablade : ModItem
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {            
-        int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade, 0f, 0f, 100, default(Color), 2f);
+        int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade, 0f, 0f, 100, default, 2f);
         Main.dust[dust].noGravity = true;    
     }
 

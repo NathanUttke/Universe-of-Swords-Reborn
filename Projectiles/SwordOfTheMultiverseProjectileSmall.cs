@@ -68,7 +68,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
                 Color color = Lighting.GetColor((int)(Projectile.position.X + (double)Projectile.width / 2) / 16, (int)((Projectile.position.Y + Projectile.height * 0.5) / 16.0));
                 color = Projectile.GetAlpha(color);
-                float multValue = 3 - j;
+                float multValue = 5 - j;
                 color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
 
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, j / 15f), SpriteEffects.None, 0);

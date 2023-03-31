@@ -13,7 +13,7 @@ public class FlareCore : ModProjectile
     {
         Projectile.width = 25;
         Projectile.height = 50;
-        Projectile.scale = 1f;
+        Projectile.scale = 1.1f;
         Projectile.aiStyle = 1;
         Projectile.friendly = true;
         Projectile.hostile = false;

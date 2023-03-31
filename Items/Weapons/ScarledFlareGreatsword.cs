@@ -35,11 +35,11 @@ public class ScarledFlareGreatsword : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int numberProjectiles = 4;
+		int numberProjectiles = 3;
 		for (int i = 0; i < numberProjectiles; i++)
 		{
-			Vector2 perturbedSpeed = Utils.RotatedByRandom(new Vector2(velocity.X, velocity.Y), (double)MathHelper.ToRadians(30f));
-			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.15f), knockback, player.whoAmI, 0f, 0f);
+			Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(30f));
+			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;
 	}
@@ -48,7 +48,7 @@ public class ScarledFlareGreatsword : ModItem
 	{
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.LifeDrain, 0f, 0f, 100, default, 2f);
+			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.RedTorch, 0f, 0f, 100, default, 2f);
 			Main.dust[dust].noGravity = true;
 		}
 	}

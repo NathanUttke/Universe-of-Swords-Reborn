@@ -12,6 +12,11 @@ namespace UniverseOfSwordsMod.Projectiles;
 
 internal class Nightmare : ModProjectile
 {
+    public override void SetStaticDefaults()
+    {
+        ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
+        ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+    }
     public override void SetDefaults()
     {
         Projectile.width = 80;

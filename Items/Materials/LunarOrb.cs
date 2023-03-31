@@ -34,7 +34,7 @@ public class LunarOrb : ModItem
 			.AddIngredient(ItemID.SoulofMight, 15)
 			.AddIngredient(ItemID.SoulofFright, 15)
 			.AddIngredient(ItemID.SoulofSight, 15)
-			.AddIngredient(Mod, "MartianSaucerCore", 1)
+			.AddIngredient(ModContent.ItemType<MartianSaucerCore>(), 1)
 			.AddIngredient(ItemID.CelestialSigil, 1)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();
