@@ -28,11 +28,6 @@ public class GnomBlade : ModItem
 		SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
 	public override void AddRecipes()
 	{
 		CreateRecipe()	

@@ -27,7 +27,7 @@ public class TwinsSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 160000;
 		Item.shoot = ModContent.ProjectileType<TwinsProjectile>();
-		Item.shootSpeed = 5f;
+		Item.shootSpeed = 5.2f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -35,7 +35,7 @@ public class TwinsSword : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<TwinsProjectile>(), 40, knockback, player.whoAmI);  
+        Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<TwinsProjectile>(), (int)(Item.damage * 0.75f), knockback, player.whoAmI);  
 		return false;
     }
 }

@@ -23,10 +23,10 @@ public class StarSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 55;
 		Item.useAnimation = 25;
-		Item.damage = 26;
+		Item.damage = 25;
 		Item.knockBack = 5f;
 		Item.shoot = ModContent.ProjectileType<StarSwordProjectile>();
-		Item.shootSpeed = 9f;
+		Item.shootSpeed = 9.25f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 1, 20, 0);
 		Item.autoReuse = false;
