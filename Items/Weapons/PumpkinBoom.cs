@@ -26,11 +26,11 @@ public class PumpkinBoom : ModItem
 	}
 	public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ModContent.ItemType<PumpkinSword>(), 1);
-		val.AddIngredient(Mod, "Orichalcon", 1);
-		val.AddIngredient(Mod, "SwordMatter", 100);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ModContent.ItemType<PumpkinSword>(), 1)
+			.AddIngredient(Mod, "Orichalcon", 1)
+			.AddIngredient(Mod, "SwordMatter", 100)
+			.AddTile(TileID.MythrilAnvil)
+			.Register();
 	}
 }
