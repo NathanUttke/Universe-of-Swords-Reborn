@@ -19,10 +19,11 @@ public class GemSlayer : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 24;
-		Item.useAnimation = 24;
-		Item.damage = 29;
-		Item.knockBack = 5.7f;
+		Item.useTime = 30;
+		Item.useAnimation = 30;
+		Item.damage = 25;
+		Item.scale = 1.1f;
+		Item.knockBack = 5.5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 20000;
 		Item.autoReuse = true;
@@ -41,8 +42,8 @@ public class GemSlayer : ModItem
 		.AddIngredient(Mod, "AmberSword", 1)
 		.AddIngredient(Mod, "DiamondSword", 1)
 		.AddIngredient(Mod, "RubySword", 1)
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
-		.AddTile(TileID.Anvils)
+		.AddIngredient(ItemID.ShadowScale, 15)
+		.AddTile(TileID.TinkerersWorkbench)
 		.Register();
 	}
 

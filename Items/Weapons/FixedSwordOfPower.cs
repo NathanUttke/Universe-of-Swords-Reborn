@@ -38,7 +38,7 @@ public class FixedSwordOfPower : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<SwordOfPower>(), 1)
             .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
-            .AddIngredient(ItemID.Bone, 50)
+            .AddIngredient(ItemID.Bone, 100)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

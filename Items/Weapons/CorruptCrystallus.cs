@@ -52,8 +52,8 @@ public class CorruptCrystallus : ModItem
 			.AddTile(TileID.Anvils)
 			.Register();
         CreateRecipe()
-			 .AddIngredient(ModContent.ItemType<CrimsonCrystallus>(), 1)
-			 .AddTile(TileID.DemonAltar)
-			 .Register();
+			.AddIngredient(ModContent.ItemType<CrimsonCrystallus>(), 1)
+			.AddTile(TileID.DemonAltar)
+			.Register();
     }
 }

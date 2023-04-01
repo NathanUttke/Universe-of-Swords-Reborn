@@ -38,7 +38,7 @@ public class ScarledFlareGreatsword : ModItem
 		int numberProjectiles = 3;
 		for (int i = 0; i < numberProjectiles; i++)
 		{
-			Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(30f));
+			Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(30f * i));
 			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;

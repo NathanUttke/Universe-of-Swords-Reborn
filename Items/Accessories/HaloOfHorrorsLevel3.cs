@@ -50,7 +50,6 @@ public class HaloOfHorrorsLevel3 : ModItem
 			.AddIngredient(ItemID.SpectreBar, 25)
 			.AddIngredient(ItemID.HoneyComb, 1)
 			.AddIngredient(ItemID.BeeWax, 100)
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
             .AddTile(TileID.TinkerersWorkbench)
 			.Register();
     }

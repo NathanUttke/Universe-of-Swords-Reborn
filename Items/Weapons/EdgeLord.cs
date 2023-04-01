@@ -22,13 +22,13 @@ public class EdgeLord : ModItem
 		Item.height = 128;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 21;
-		Item.useAnimation = 21;
+		Item.useTime = 40;
+		Item.useAnimation = 20;
 		Item.damage = 100;
-		Item.knockBack = 11f;
+		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ModContent.ProjectileType<EdgeLordProjectile>();
-		Item.shootSpeed = 22f;
+		Item.shootSpeed = 20f;
 		Item.value = 800000;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -42,7 +42,7 @@ public class EdgeLord : ModItem
 			.AddIngredient(ItemID.MoonStone, 1)
 			.AddIngredient(ItemID.HellstoneBar, 50)
 			.AddIngredient(ItemID.SunStone, 1)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
 			.AddIngredient(ItemID.DeathSickle, 1)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
@@ -51,7 +51,7 @@ public class EdgeLord : ModItem
 			.AddIngredient(ItemID.MoonStone, 1)
 			.AddIngredient(ItemID.HellstoneBar, 50)
             .AddIngredient(ItemID.SunStone, 1)
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
 			.AddIngredient(ItemID.DeathSickle, 1)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();

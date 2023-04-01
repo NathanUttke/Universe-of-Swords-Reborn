@@ -16,17 +16,16 @@ internal class Nightmare : ModProjectile
     {
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        Main.projFrames[Projectile.type] = 4;
     }
     public override void SetDefaults()
     {
         Projectile.width = 80;
-        Projectile.height = 100;
+        Projectile.height = 112;
         Projectile.scale = 0.5f;
         Projectile.friendly = true;
-        Projectile.penetrate = 1;
-        Main.projFrames[Projectile.type] = 4;
-        Projectile.hostile = false;
-        Projectile.DamageType = DamageClass.Melee;
+        Projectile.penetrate = -1;
+        Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
     }

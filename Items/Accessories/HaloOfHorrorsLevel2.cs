@@ -11,7 +11,7 @@ public class HaloOfHorrorsLevel2 : ModItem
     public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Skull of Insanity");
-		Tooltip.SetDefault("Level 2\n15 defense\n5% Increased armor penetration\nIncreased health regeneration\n15% increased damage\n20% decreased melee speed\nCurses the wearer with a 33% Feral bite chance");
+		Tooltip.SetDefault("Level 2\n10 defense\n5% Increased armor penetration\nIncreased health regeneration\n15% increased damage\n20% decreased melee speed\nCurses the wearer with a 33% Feral bite chance");
 	}
 
 	public override void SetDefaults()
@@ -47,7 +47,6 @@ public class HaloOfHorrorsLevel2 : ModItem
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 15)
             .AddIngredient(ItemID.BoneGlove, 1)
 			.AddIngredient(ItemID.Bone, 125)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
 			.AddTile(TileID.TinkerersWorkbench)
 			.Register();
     }

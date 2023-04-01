@@ -21,7 +21,7 @@ public class Orcrist : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
 		Item.useAnimation = 15;
-		Item.damage = 73;
+		Item.damage = 70;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 100900;

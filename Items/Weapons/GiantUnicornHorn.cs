@@ -18,18 +18,14 @@ public class GiantUnicornHorn : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 15;
-		Item.useAnimation = 15;
-		Item.damage = 61;
+		Item.useTime = 20;
+		Item.useAnimation = 20;
+		Item.damage = 57;
 		Item.knockBack = 7f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 153000;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 }

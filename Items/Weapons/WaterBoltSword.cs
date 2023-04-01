@@ -17,7 +17,7 @@ public class WaterBoltSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 66;
 		Item.useAnimation = 33;
-		Item.damage = 14;
+		Item.damage = 13;
 		Item.knockBack = 6f;
 		Item.shoot = ProjectileID.WaterBolt;
 		Item.shootSpeed = 6f;
@@ -30,7 +30,7 @@ public class WaterBoltSword : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage*0.25f), knockback, player.whoAmI);
+        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage*0.5f), knockback, player.whoAmI);
 		proj.tileCollide = false;
 		proj.timeLeft = 100;
         proj.DamageType = DamageClass.MeleeNoSpeed;

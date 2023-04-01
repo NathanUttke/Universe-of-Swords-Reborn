@@ -52,8 +52,8 @@ public class TrueTerrablade : ModItem
     {
         CreateRecipe()
         .AddIngredient(ItemID.TerraBlade, 1)
-        .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
-        .AddIngredient(Mod, "TheNightmareAmalgamation", 1)
+        .AddIngredient(ItemID.SpectreBar, 20)
+        .AddIngredient(ModContent.ItemType<TheNightmareAmalgamation>(), 1)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }

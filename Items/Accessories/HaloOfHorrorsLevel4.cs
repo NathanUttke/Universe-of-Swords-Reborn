@@ -47,7 +47,6 @@ public class HaloOfHorrorsLevel4 : ModItem
 			.AddIngredient(ItemID.RegenerationPotion, 30)
 			.AddIngredient(ItemID.BandofRegeneration, 1)
 			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
             .AddTile(TileID.LunarCraftingStation)
 			.Register();
     }

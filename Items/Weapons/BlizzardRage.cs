@@ -31,7 +31,7 @@ public class BlizzardRage : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int numberProjectiles = Main.rand.Next(2, 4);
+		int numberProjectiles = Main.rand.Next(1, 3);
 		Vector2 vector2_1 = new();
 		for (int index = 0; index < numberProjectiles; index++)
 		{

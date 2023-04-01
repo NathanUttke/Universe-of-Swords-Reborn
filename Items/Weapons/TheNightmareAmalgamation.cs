@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -19,13 +20,13 @@ public class TheNightmareAmalgamation : ModItem
 		Item.height = 110;
 		Item.rare = ItemRarityID.Purple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
+		Item.useTime = 25;
 		Item.useAnimation = 25;
 		Item.damage = 115;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item71;
-		Item.shoot = Mod.Find<ModProjectile>("Nightmare").Type;
-		Item.shootSpeed = 15f;
+		Item.shoot = ModContent.ProjectileType<Nightmare>();
+		Item.shootSpeed = 20f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -34,11 +35,7 @@ public class TheNightmareAmalgamation : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		for (int i = 0; i < 3; i++)
-		{
-			Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
-			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, Item.shoot, (int)(damage * 1.05f), knockback, player.whoAmI, 0f, 0f);
-		}
+		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, (int)(damage * 1.15f), knockback, player.whoAmI, 0f, 0f);	
 		return false;
 	}
 

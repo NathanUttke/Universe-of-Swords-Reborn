@@ -24,34 +24,36 @@ public class SwordOfTheUniverseV2 : ModItem
 		Item.height = 140;
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 20;
+
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 10;
 		Item.useAnimation = 20;
-		Item.damage = 120;
+
+		Item.damage = 130;
 		Item.knockBack = 20f;
 		Item.UseSound = SoundID.Item169;
 
 		Item.shoot = ModContent.ProjectileType<SwordOfTheUniverseV2Projectile>();
 		Item.shootSpeed = 10f;
-		Item.expert = true;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
-		Item.autoReuse = true;
+
+        Item.rare = ItemRarityID.Red;
+        Item.autoReuse = true;
+
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
 
 	public override void AddRecipes()
 	{																																																														
-		CreateRecipe()		
-		.AddIngredient(Mod, "EdgeLord", 1)
-		.AddIngredient(Mod, "SuperInflation", 1)
+		CreateRecipe()
         .AddIngredient(ModContent.ItemType<CosmoStorm>(), 1)
+        .AddIngredient(ModContent.ItemType<SuperInflation>(), 1)
+        .AddIngredient(ModContent.ItemType<EdgeLord>(), 1)
         .AddIngredient(ModContent.ItemType<TheNightmareAmalgamation>(), 1)
-        .AddIngredient(ModContent.ItemType<AntiInvader>(), 1)
         .AddIngredient(ModContent.ItemType<SolBlade>(), 1)
         .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
-		.AddIngredient(ItemID.Terragrim, 1)
-		.AddTile(TileID.DemonAltar)
+		.AddTile(TileID.LunarCraftingStation)
 		.Register();
     }
 

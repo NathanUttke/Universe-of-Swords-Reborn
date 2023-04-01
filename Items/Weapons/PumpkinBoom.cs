@@ -7,11 +7,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class PumpkinBoom : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		Tooltip.SetDefault("Shoots Jack O' Lantern");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 64;

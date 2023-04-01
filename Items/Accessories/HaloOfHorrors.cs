@@ -9,7 +9,7 @@ public class HaloOfHorrors : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Skull of Insanity");
-		Tooltip.SetDefault("Level 1\n5 defense\n5% increased armor penetration\nIncreased health regeneration\n5% increased damage\n30% decreased melee speed\nCurses the wearer with Feral bite");
+		Tooltip.SetDefault("Level 1 \n5 defense\n5% increased armor penetration\nIncreased health regeneration\n5% increased damage\nCurses the wearer with Feral bite\n30% decreased melee speed");
 	}
 
 	public override void SetDefaults()

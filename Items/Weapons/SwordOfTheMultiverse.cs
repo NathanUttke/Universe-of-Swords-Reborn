@@ -26,15 +26,17 @@ public class SwordOfTheMultiverse : ModItem
 		Item.height = 112;
 		Item.rare = ItemRarityID.Expert;
 		
-		Item.useTime = 8;
-		Item.useAnimation = 18;        
+		Item.useTime = 7;
+		Item.useAnimation = 27;        
 
-        Item.damage = 150;
+        Item.damage = 175;
         Item.DamageType = DamageClass.Melee;
-        Item.crit = 26;
+        Item.crit = 30;
         Item.knockBack = 2.5f;
 
-		Item.value = Item.sellPrice(0, 15, 0, 0);
+        Item.scale = 1.20f;
+
+		Item.value = Item.sellPrice(0, 13, 0, 0);
 
         Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item169;
@@ -42,7 +44,7 @@ public class SwordOfTheMultiverse : ModItem
         Item.autoReuse = true;
 
         Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
-        Item.shootSpeed = 28f;
+        Item.shootSpeed = 30f;
 
         Item.noUseGraphic = false;
 
@@ -83,7 +85,7 @@ public class SwordOfTheMultiverse : ModItem
     {
         if (player.altFunctionUse == 2)
         {
-            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>(); 
+            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
             Item.noUseGraphic = true;
             Item.useStyle = ItemUseStyleID.Shoot;
         }
@@ -160,6 +162,7 @@ public class SwordOfTheMultiverse : ModItem
             .AddIngredient(ModContent.ItemType<LunarOrb>(), 2)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)
             .AddIngredient(ModContent.ItemType<UselessWeapon>(), 1)
+            .AddTile(TileID.LunarCraftingStation)
 			.Register();
 	}
 
@@ -167,7 +170,7 @@ public class SwordOfTheMultiverse : ModItem
 	{
 		if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
 		{
-            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 800, true);
+            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 700, true);
         }
         if (!target.HasBuff(BuffID.Weak) && Main.rand.NextBool(2))
         {

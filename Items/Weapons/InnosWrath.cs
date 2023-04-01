@@ -24,7 +24,7 @@ public class InnosWrath : ModItem
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 611500;
-		Item.crit = 8;
+		Item.crit = 12;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

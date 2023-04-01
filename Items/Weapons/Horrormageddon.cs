@@ -25,10 +25,10 @@ public class Horrormageddon : ModItem
 		Item.useTime = 30;
 		Item.useAnimation = 15;
 		Item.damage = 105;
-		Item.knockBack = 4.5f;
+		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ModContent.ProjectileType<DemonScytheClone>();
-		Item.shootSpeed = 12f;
+		Item.shootSpeed = 13f;
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -50,8 +50,15 @@ public class Horrormageddon : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        proj.DamageType = DamageClass.MeleeNoSpeed;
+		float angleSpread = 0.5f;
+		float baseSpeed = MathF.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
+		double startingAngle = MathF.Atan2(velocity.X, velocity.Y) - (double)(angleSpread / 2f);
+		double deltaAngle = angleSpread / 2f;
+		for (int numOfProjectiles = 0; numOfProjectiles < 3; numOfProjectiles++)
+		{
+            double offsetAngle = startingAngle + deltaAngle * numOfProjectiles;
+			Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, (int)(damage * 1.15f), knockback / 2f, player.whoAmI);
+        }
         return false;
     }
 }

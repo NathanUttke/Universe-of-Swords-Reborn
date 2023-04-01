@@ -10,6 +10,7 @@ namespace UniverseOfSwordsMod.Projectiles;
 
 internal class TrueTerrabladeProjectile : ModProjectile
 {
+	public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.TerraBeam}";
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("True Terra Blade");

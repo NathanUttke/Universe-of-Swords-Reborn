@@ -27,16 +27,10 @@ public class UpgradeMatter : ModItem
 		SacrificeTotal = 25;
 	}
 
-	public override void AddRecipes()
-	{ 
-		var recipe = CreateRecipe(1);		
-        if (Main.hardMode)
-        {
-            recipe.AddIngredient(ItemID.SoulofLight, 20);
-            recipe.AddIngredient(ItemID.SoulofNight, 20);
-        }
-        recipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 200);
-        recipe.AddTile(TileID.Anvils);
-        recipe.Register();    
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 200)
+			.Register();
     }
 }
