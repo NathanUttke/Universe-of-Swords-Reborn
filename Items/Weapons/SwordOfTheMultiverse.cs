@@ -49,6 +49,7 @@ public class SwordOfTheMultiverse : ModItem
         Item.noUseGraphic = false;
 
         SacrificeTotal = 1;
+        ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 	}
 
     public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
