@@ -85,15 +85,30 @@ public class SwordOfTheMultiverse : ModItem
     {
         if (player.altFunctionUse == 2)
         {
-            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
-            Item.noUseGraphic = true;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            if (player.controlUp && !player.controlDown)
+            {
+                Item.shoot = ProjectileID.None;
+                Item.noUseGraphic = false;
+                Item.useStyle = ItemUseStyleID.Swing;
+                Item.scale = 4.5f;
+                Item.useAnimation = 17;
+            }
+            else
+            {
+                Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
+                Item.noUseGraphic = true;
+                Item.useStyle = ItemUseStyleID.Shoot;
+                Item.scale = 1.20f;
+                Item.useAnimation = 27;
+            }
         }
         else
         {
             Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
             Item.noUseGraphic = false;
-            Item.useStyle = ItemUseStyleID.Swing; 
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.scale = 1.20f;
+            Item.useAnimation = 27;
         }
         return true;
     }
@@ -128,12 +143,12 @@ public class SwordOfTheMultiverse : ModItem
                 heading *= velocity.Length();
                 velocity.X = heading.X;
                 velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.025f;
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, Item.shoot, (int)(damage * 1.33f), knockback, player.whoAmI, 0f, heightLimit);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, (int)(damage * 1.5f), knockback, player.whoAmI, 0f, heightLimit);
             }
         }
         else
         {
-            Projectile.NewProjectile(source, position, velocity, Item.shoot, (int)(damage * 1.33f), knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f);
         }
 
         return false;

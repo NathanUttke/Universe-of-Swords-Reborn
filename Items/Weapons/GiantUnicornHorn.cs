@@ -21,6 +21,7 @@ public class GiantUnicornHorn : ModItem
 		Item.useTime = 20;
 		Item.useAnimation = 20;
 		Item.damage = 57;
+		Item.scale = 1.25f;
 		Item.knockBack = 7f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 153000;

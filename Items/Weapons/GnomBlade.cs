@@ -19,8 +19,6 @@ public class GnomBlade : ModItem
 		Item.useAnimation = 18;
 		Item.damage = 125;
 		Item.knockBack = 10f;
-		Item.shoot = ProjectileID.DD2PhoenixBowShot;
-		Item.shootSpeed = 30f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
@@ -38,7 +36,6 @@ public class GnomBlade : ModItem
 			.AddIngredient(Mod, "LunarOrb", 1)
 			.AddIngredient(Mod, "Orichalcon", 5)
 			.AddIngredient(ModContent.ItemType<TrueTerrablade>(), 1)
-			.AddIngredient(ItemID.DD2SquireBetsySword, 1)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();

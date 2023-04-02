@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -26,7 +27,7 @@ public class VugarMutater : ModItem
         Item.knockBack = 4f;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ModContent.ProjectileType<VugarMutaterProjectile>();
-        Item.shootSpeed = 30f;
+        Item.shootSpeed = 8f;
         Item.value = Item.sellPrice(0, 1, 40, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
@@ -35,11 +36,10 @@ public class VugarMutater : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-        .AddIngredient(ItemID.TrueNightsEdge, 1)
-        .AddIngredient(Mod, "UpgradeMatter", 2)
-        .AddIngredient(ItemID.TerraBlade, 1)
-        .AddIngredient(ItemID.IceTorch, 50)
-        .AddTile(TileID.LunarCraftingStation)
+        .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+        .AddIngredient(ItemID.ChlorophyteBar, 15)
+        .AddIngredient(ItemID.Frostbrand, 1)
+        .AddTile(TileID.MythrilAnvil)
         .Register();
     }
 
