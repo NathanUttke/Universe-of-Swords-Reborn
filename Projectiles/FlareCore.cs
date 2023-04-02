@@ -21,6 +21,8 @@ public class FlareCore : ModProjectile
         Projectile.penetrate = -1;
         Projectile.ignoreWater = true;
         Projectile.tileCollide = false;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 15;
         base.AIType = 14;
     }
 

@@ -51,7 +51,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.position = Projectile.Center;
             Projectile.velocity = Vector2.Zero;
             Projectile.Center = Main.MouseWorld;
-            Projectile.rotation += MathHelper.PiOver4 * 0.4f;
+            Projectile.rotation += MathHelper.PiOver4 * 0.4f;            
         }       
         public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
         {

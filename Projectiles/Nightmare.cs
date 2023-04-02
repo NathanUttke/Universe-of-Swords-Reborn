@@ -32,6 +32,8 @@ internal class Nightmare : ModProjectile
 
     public override void AI()
     {
+        float maxDetectRadius = 300f; 
+        float projSpeed = 20f; 
         Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch, 0f, 0f, 0, default, 1f);
         obj.noGravity = true;
         obj.scale = 1f;
@@ -62,24 +64,35 @@ internal class Nightmare : ModProjectile
         Projectile.direction = Projectile.spriteDirection = (Projectile.velocity.X > 0f) ? 1 : -1;
         Projectile.alpha = (int)Projectile.localAI[0] * 2;
 
-        for (int i = 0; i < 200; i++)
+
+        NPC closestNPC = FindClosestNPC(maxDetectRadius);
+        if (closestNPC == null) 
+        {
+            return;
+        }
+
+        Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+    }
+
+    public NPC FindClosestNPC(float maxDetectDistance)
+    {
+        NPC closestNPC = null;
+        float sqrMaxDetectDistance = maxDetectDistance * maxDetectDistance;
+
+        for (int i = 0; i < Main.maxNPCs; i++)
         {
             NPC target = Main.npc[i];
-            if (!target.friendly)
+            if (target.CanBeChasedBy())
             {
-                float shootToX = target.position.X + (float)target.width * 1f - Projectile.Center.X;
-                float shootToY = target.position.Y - Projectile.Center.Y;
-                float distance = (float)Math.Sqrt(shootToX * shootToX + shootToY * shootToY);
-                if (distance < 480f && !target.friendly && target.active)
+                float sqrDistanceToTarget = Vector2.DistanceSquared(target.Center, Projectile.Center);
+                if (sqrDistanceToTarget < sqrMaxDetectDistance)
                 {
-                    distance = 3f / distance;
-                    shootToX *= distance * 5f;
-                    shootToY *= distance * 5f;
-                    Projectile.velocity.X = shootToX;
-                    Projectile.velocity.Y = shootToY;
+                    sqrMaxDetectDistance = sqrDistanceToTarget;
+                    closestNPC = target;
                 }
             }
         }
+        return closestNPC;
     }
 
     public override bool PreDraw(ref Color lightColor)

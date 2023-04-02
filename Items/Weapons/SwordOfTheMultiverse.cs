@@ -49,7 +49,7 @@ public class SwordOfTheMultiverse : ModItem
         Item.noUseGraphic = false;
 
         SacrificeTotal = 1;
-        ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+        ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true; 
 	}
 
     public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
@@ -88,10 +88,10 @@ public class SwordOfTheMultiverse : ModItem
         {
             if (player.controlUp && !player.controlDown)
             {
+                Item.scale = 4.5f;
                 Item.shoot = ProjectileID.None;
                 Item.noUseGraphic = false;
                 Item.useStyle = ItemUseStyleID.Swing;
-                Item.scale = 4.5f;
                 Item.useAnimation = 17;
             }
             else
@@ -99,7 +99,6 @@ public class SwordOfTheMultiverse : ModItem
                 Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
                 Item.noUseGraphic = true;
                 Item.useStyle = ItemUseStyleID.Shoot;
-                Item.scale = 1.20f;
                 Item.useAnimation = 27;
             }
         }
@@ -115,7 +114,6 @@ public class SwordOfTheMultiverse : ModItem
     }
 
     public override bool AltFunctionUse(Player player) => true;
-
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {  

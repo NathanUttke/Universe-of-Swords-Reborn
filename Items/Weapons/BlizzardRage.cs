@@ -17,12 +17,12 @@ public class BlizzardRage : ModItem
 		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
-		Item.useAnimation = 10;
+		Item.useAnimation = 20;
 		Item.damage = 50;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ProjectileID.NorthPoleSnowflake;
-		Item.shootSpeed = 10f;
+		Item.shootSpeed = 25f;
 		Item.value = 450500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
@@ -43,8 +43,8 @@ public class BlizzardRage : ModItem
 
 		    vector2_1.X = (float)(((double)vector2_1.X + player.Center.X) / 2.0) + (float)Main.rand.Next(-100, 100);
 			vector2_1.Y -= 100 * index;
-			float num12 = (float)Main.mouseX + Main.screenPosition.X - vector2_1.X;
-			float num13 = (float)Main.mouseY + Main.screenPosition.Y - vector2_1.Y;
+			float num12 = Main.mouseX + Main.screenPosition.X - vector2_1.X;
+			float num13 = Main.mouseY + Main.screenPosition.Y - vector2_1.Y;
 			if ((double)num13 < 0.0)
 			{
 				num13 *= -1f;
@@ -57,9 +57,9 @@ public class BlizzardRage : ModItem
 			float num15 = Item.shootSpeed / num14;
 			float num17 = num12 * num15;
 			float num16 = num13 * num15;
-			velocity.X = num17 + (float)Main.rand.Next(-12, 10) * 0.16f;
-			velocity.Y = num16 + (float)Main.rand.Next(-12, 10) * 0.16f;
-			Projectile.NewProjectile(source, vector2_1.X, vector2_1.Y, velocity.X, velocity.Y, type, damage, knockback, Main.myPlayer, 0f, (float)Main.rand.Next(5));
+			velocity.X = num17 + Main.rand.Next(-12, 10) * 0.16f;
+			velocity.Y = num16 + Main.rand.Next(-12, 10) * 0.16f;
+			Projectile.NewProjectile(source, vector2_1.X, vector2_1.Y, velocity.X, velocity.Y, type, (int)(damage * 0.5f), knockback, Main.myPlayer, 0f, Main.rand.Next(5));
 		}
 		return false;
 	}	

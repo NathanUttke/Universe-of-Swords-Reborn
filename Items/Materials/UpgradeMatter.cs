@@ -16,7 +16,6 @@ public class UpgradeMatter : ModItem
 		ItemID.Sets.ItemIconPulse[Item.type] = true;
 		ItemID.Sets.ItemNoGravity[Item.type] = false;
 	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 32;
@@ -26,7 +25,6 @@ public class UpgradeMatter : ModItem
 		Item.rare = ItemRarityID.Green;
 		SacrificeTotal = 25;
 	}
-
     public override void AddRecipes()
     {
         CreateRecipe()
