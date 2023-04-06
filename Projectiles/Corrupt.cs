@@ -32,10 +32,10 @@ public class Corrupt : ModProjectile
         AIType = 14;
 	}
 
-	public override void PostAI()
+	public override void AI()
 	{
-
-		if (Main.rand.NextBool(1))
+		base.AI();
+		if (Main.rand.NextBool(2))
 		{
 			Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Demonite, 0f, 0f, 0, default, 1f);
 			obj.noGravity = true;
