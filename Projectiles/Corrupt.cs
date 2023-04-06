@@ -29,7 +29,7 @@ public class Corrupt : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = true;
 		Projectile.extraUpdates = 1;
-		base.AIType = 14;
+        AIType = 14;
 	}
 
 	public override void PostAI()
@@ -37,7 +37,7 @@ public class Corrupt : ModProjectile
 
 		if (Main.rand.NextBool(1))
 		{
-			Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Demonite, 0f, 0f, 0, default(Color), 1f);
+			Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Demonite, 0f, 0f, 0, default, 1f);
 			obj.noGravity = true;
 			obj.scale = 1f;
 		}
@@ -48,7 +48,7 @@ public class Corrupt : ModProjectile
 
 		for (int i = 0; i < 10; i++)
 		{
-			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Demonite, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default(Color), 1f);
+			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Demonite, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default, 1f);
 		}
 		SoundEngine.PlaySound(SoundID.Dig, new Vector2(Projectile.position.X, Projectile.position.Y));
 	}
