@@ -42,7 +42,7 @@ public class TheSwarm : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int newDamage = player.strongBees ? (int)(damage * 1.15f) : (int)(damage * 0.75f);
+		int newDamage = player.strongBees ? (int)(damage * 0.90f) : (int)(damage * 0.75f);
 		if(Main.rand.NextBool(3))
 		{
             float spread = 0.174f;
