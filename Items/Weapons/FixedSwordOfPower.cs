@@ -1,4 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -22,12 +24,12 @@ public class FixedSwordOfPower : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 60;
 		Item.useAnimation = 30;
-		Item.damage = 35;
+		Item.damage = 34;
 		Item.knockBack = 4f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 18000;
 		Item.shoot = ProjectileID.Bone;
-		Item.shootSpeed = 20f;
+		Item.shootSpeed = 17f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -38,12 +40,18 @@ public class FixedSwordOfPower : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<SwordOfPower>(), 1)
             .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
-            .AddIngredient(ItemID.Bone, 100)
+            .AddIngredient(ItemID.Bone, 150)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 0.5f + Main.rand.Next(0, 5)), knockback, player.whoAmI);
+		return false;
+    }
+
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
 		if (Main.rand.NextBool(5)) 
 		{
