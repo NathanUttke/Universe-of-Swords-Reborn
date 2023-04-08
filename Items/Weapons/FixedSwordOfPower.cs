@@ -13,7 +13,6 @@ public class FixedSwordOfPower : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Sword Of Power");
-		Tooltip.SetDefault("20% chance of inflicting midas on enemies");
 	}
 
 	public override void SetDefaults()
@@ -22,14 +21,14 @@ public class FixedSwordOfPower : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 60;
-		Item.useAnimation = 30;
-		Item.damage = 34;
-		Item.knockBack = 4f;
+		Item.useTime = 40;
+		Item.useAnimation = 20;
+		Item.damage = 35;
+		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 18000;
 		Item.shoot = ProjectileID.Bone;
-		Item.shootSpeed = 17f;
+		Item.shootSpeed = 16f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -47,18 +46,7 @@ public class FixedSwordOfPower : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 0.5f + Main.rand.Next(0, 5)), knockback, player.whoAmI);
+		Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 0.5f + Main.rand.Next(0, 10)), knockback, player.whoAmI);
 		return false;
     }
-
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-	{
-		if (Main.rand.NextBool(5)) 
-		{
-			if (!target.HasBuff(BuffID.Midas))
-			{
-                target.AddBuff(BuffID.Midas, 400, false);
-            }
-        }
-	}
 }
