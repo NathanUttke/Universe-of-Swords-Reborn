@@ -16,10 +16,10 @@ public class TheSwarm : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
-		Item.useAnimation = 18;
-		Item.damage = 21;
-		Item.knockBack = 6f;
+		Item.useTime = 40;
+		Item.useAnimation = 20;
+		Item.damage = 20;
+		Item.knockBack = 5f;
 		Item.shoot = ProjectileID.Bee;
 		Item.shootSpeed = 6f;
 		Item.UseSound = SoundID.Item1;
