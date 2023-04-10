@@ -166,7 +166,7 @@ public class SwordOfTheMultiverse : ModItem
 	{
         CreateRecipe()
             .AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1)
-            .AddIngredient(ModContent.ItemType<SwordOfTheUniverseV2>(), 1)
+            .AddIngredient(ModContent.ItemType<SwordOfTheUniverseNew>(), 1)
             .AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1)
             .AddIngredient(ModContent.ItemType<UltraMachine>(), 1)
             .AddIngredient(ModContent.ItemType<GnomBlade>(), 1)
