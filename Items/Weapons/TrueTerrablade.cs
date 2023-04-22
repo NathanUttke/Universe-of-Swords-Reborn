@@ -37,11 +37,6 @@ public class TrueTerrablade : ModItem
         return false;
     }
 
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-    {
-        velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
-    }
-
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {            
         int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade, 0f, 0f, 100, default, 2f);
