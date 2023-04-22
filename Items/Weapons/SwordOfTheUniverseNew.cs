@@ -10,7 +10,7 @@ using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-public class SwordOfTheUniverseV2 : ModItem
+public class SwordOfTheUniverseNew : ModItem
 {
 	public override void SetStaticDefaults()
 	{

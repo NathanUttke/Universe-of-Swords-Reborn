@@ -7,7 +7,7 @@ using Terraria.ID;
 
 namespace UniverseOfSwordsMod.Items.Weapons.Legacy;
 
-public class SwordOfTheUniverseOG : ModItem
+public class SwordOfTheUniverse : ModItem
 {
 	public override void SetStaticDefaults()
 	{
