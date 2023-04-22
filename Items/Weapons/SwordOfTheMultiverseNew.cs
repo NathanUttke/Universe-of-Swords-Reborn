@@ -12,7 +12,7 @@ using System;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-public class SwordOfTheMultiverse : ModItem
+public class SwordOfTheMultiverseNew : ModItem
 {
 	public override void SetStaticDefaults()
 	{
