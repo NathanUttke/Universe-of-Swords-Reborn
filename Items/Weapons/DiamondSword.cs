@@ -16,7 +16,7 @@ public class DiamondSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 30;
-		Item.damage = 16;
+		Item.damage = 12;
 		Item.knockBack = 3.5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 25, 0);
