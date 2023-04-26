@@ -9,9 +9,8 @@ public class DirtSword : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 1f;
+		Item.width = 36;
+		Item.height = 36;
 		Item.rare = ItemRarityID.White;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
@@ -30,10 +29,8 @@ public class DirtSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-				
-				Recipe val = CreateRecipe(1);
+	{				
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.DirtBlock, 25);
 		val.AddTile(TileID.WorkBenches);
 		val.Register();

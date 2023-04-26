@@ -14,9 +14,8 @@ public class BetterShroomiteBlade : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 2.5f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 10;
@@ -35,9 +34,8 @@ public class BetterShroomiteBlade : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-										Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "ShroomiteBlade", 1);
 		val.AddIngredient(Mod, "UpgradeMatter", 1);
 		val.AddTile(TileID.MythrilAnvil);

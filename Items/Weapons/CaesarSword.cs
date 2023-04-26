@@ -14,9 +14,8 @@ public class CaesarSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 1.5f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
@@ -26,7 +25,8 @@ public class CaesarSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 45900;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

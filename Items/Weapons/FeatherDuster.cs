@@ -9,9 +9,8 @@ public class FeatherDuster : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 36;
-		Item.height = 36;
-		Item.scale = 1.2f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Blue;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;

@@ -14,23 +14,32 @@ public class HumanBuzzSaw : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 24;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-		Item.width = 106;
-		Item.height = 106;
+        SacrificeTotal = 1;
+
+        Item.damage = 24;
+		Item.DamageType = DamageClass.MeleeNoSpeed; 
+
+		Item.width = 102;
+		Item.height = 102;
 		Item.crit = 8;
 		Item.scale = 2f;
+
+		Item.useStyle = ItemUseStyleID.Shoot;
+
 		Item.useTime = 4;
-		Item.useAnimation = 4;
-		Item.channel = true;
+		Item.useAnimation = 4;		
 		Item.UseSound = SoundID.Item1;
-		Item.useStyle = 100;
-		Item.knockBack = 5f;
+
+		Item.knockBack = 3.5f;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.rare = ItemRarityID.LightRed;
 		Item.shoot = Mod.Find<ModProjectile>("HumanBuzzSaw").Type;
-		Item.noUseGraphic = true;
-	}
+
+        Item.channel = true;
+        Item.autoReuse = true;
+        Item.noUseGraphic = true;
+        Item.noMelee = true;
+    }
 
 	//public override bool UseItemFrame(Player player)
 	//{

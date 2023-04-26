@@ -9,9 +9,8 @@ public class DesertSword : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.6f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;

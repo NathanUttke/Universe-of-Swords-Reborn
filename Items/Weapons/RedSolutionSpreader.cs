@@ -14,30 +14,31 @@ public class RedSolutionSpreader : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.3f;
-		Item.rare = ItemRarityID.Lime;
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
-		Item.useAnimation = 20;
-		Item.UseSound = SoundID.Item34;
-		Item.shoot = ProjectileID.CrimsonSpray;
-		Item.shootSpeed = 10f;
-		Item.value = 830000;
-		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
+		Item.CloneDefaults(ModContent.ItemType<HallowSolutionSpreader>());
+	}	
+	public override bool AltFunctionUse(Player player)
+    {
+		return true;
+    }
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
+    public override bool? UseItem(Player player)
+    {
+		if (player.altFunctionUse == 2 && player.inventory[player.selectedItem].type == ModContent.ItemType<RedSolutionSpreader>())
+		{
+			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.SetDefaults(ModContent.ItemType<HallowSolutionSpreader>());
+        }
+		else
+		{
+			Item.shoot = ProjectileID.CrimsonSpray;
+			Item.shootSpeed = 10f;				
+		}
+		return true;
+    }	
 
 	public override void AddRecipes()
-	{
-		
-										Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordMatter", 200);
 		val.AddIngredient(ItemID.RedSolution, 100);
 		val.AddTile(TileID.MythrilAnvil);

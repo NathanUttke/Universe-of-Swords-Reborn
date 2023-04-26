@@ -25,13 +25,8 @@ public class DiamondSword : ModItem
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-		
-		
-		
-		
-					
-		if (Main.rand.Next(5) == 0)
+	{					
+		if (Main.rand.NextBool(5))
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.WhiteTorch, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;

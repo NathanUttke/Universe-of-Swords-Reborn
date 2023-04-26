@@ -9,8 +9,8 @@ public class AmberSword : ModItem
 {
     public override void SetDefaults()
     {
-        Item.width = 32;
-        Item.height = 32;
+        Item.width = 64;
+        Item.height = 64;
         Item.scale = 1.5f;
         Item.rare = ItemRarityID.Green;
         Item.useStyle = ItemUseStyleID.Swing;

@@ -12,11 +12,11 @@ EmperorBlaze :
 	}
 }
 
-LesserMeleePower :
+MeleePower :
 {
 	Name :
 	{
-		Origin : Lesser Melee Power
+		Origin : Melee Power
 		Current : 战士之力
 	}
 	Description :

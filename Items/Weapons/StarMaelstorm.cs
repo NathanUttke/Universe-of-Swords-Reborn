@@ -18,7 +18,6 @@ public class StarMaelstorm : ModItem
 	{
 		Item.width = 58;
 		Item.height = 66;
-		Item.scale = 1.2f;
 		Item.rare = ItemRarityID.Purple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
@@ -91,4 +90,15 @@ public class StarMaelstorm : ModItem
 		}
 		return false;
 	}
+
+    public override void AddRecipes()
+    {
+		CreateRecipe()
+			.AddIngredient(ModContent.ItemType<StarSword>(), 1)
+			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
+			.AddIngredient(ItemID.StarWrath, 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
+    }
 }

@@ -19,7 +19,7 @@ public class UniversePlayer : ModPlayer
 		if (eBlaze)
 		{
 			Player player = ((ModPlayer)this).Player;
-			player.lifeRegen -= 40000;
+			player.lifeRegen -= 50;
 		}
 	}
 	public override void PostUpdateMiscEffects()

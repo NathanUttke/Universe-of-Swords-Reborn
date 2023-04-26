@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using UniverseOfSwordsMod.NPCs;
+using UniverseOfSwordsMod.Common.GlobalNPCs;
 
 namespace UniverseOfSwordsMod.Buffs;
 
@@ -24,6 +24,6 @@ public class EmperorBlaze : ModBuff
 
 	public override void Update(NPC npc, ref int buffIndex)
 	{
-		npc.GetGlobalNPC<UniverseOfSwordsModGlobalNPC>().eBlaze = true;
+		npc.GetGlobalNPC<GlobalNPCBuff>().eBlaze = true;
 	}
 }

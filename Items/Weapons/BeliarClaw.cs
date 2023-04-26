@@ -16,7 +16,6 @@ public class BeliarClaw : ModItem
 	{
 		Item.width = 128;
 		Item.height = 128;
-		Item.scale = 1.5f;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
@@ -26,6 +25,7 @@ public class BeliarClaw : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 611500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 }

@@ -1,9 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Peripherals.RGB;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,60 +16,66 @@ public class DoubleBladedLightsaberProjectile : ModProjectile
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Double Bladed Lightsaber");
+        ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
+        ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
     }
 
     public override void SetDefaults()
     {
-        Projectile.width = 52;
-        Projectile.height = 52;
-        Projectile.scale = 4f;
+        Projectile.width = 207;
+        Projectile.height = 207;
+        Projectile.scale = 2f;
+        Projectile.alpha = 0;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
         Projectile.DamageType = DamageClass.Melee;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 8;
+        Projectile.aiStyle = -1;
     }
 
     public override void AI()
     {
-        Projectile projectile = Projectile;
-        projectile.soundDelay--;
+        Player player = Main.player[Projectile.owner];
+
+        player.heldProj = Projectile.whoAmI;
+        player.itemTime = player.itemAnimation = 2;
+        player.itemRotation = Projectile.rotation;
+
         if (Projectile.soundDelay <= 0)
         {
-            SoundEngine.PlaySound(SoundID.Item15, new Vector2(Projectile.Center.X, Projectile.Center.Y));
-            Projectile.soundDelay = 45;
+            Projectile.soundDelay = 30;
+            SoundEngine.PlaySound(SoundID.Item15, Projectile.Center);
         }
-        Player player = Main.player[Projectile.owner];
-        if (Main.myPlayer == Projectile.owner && (!player.channel || player.noItems || player.CCed))
+
+        if (Main.myPlayer == Projectile.owner && (!player.channel || !player.controlUseItem || player.noItems || player.CCed))
         {
             Projectile.Kill();
         }
-        Lighting.AddLight(Projectile.Center, 1f, 0f, 0f);
+ 
+
+        Dust newDust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch, Projectile.velocity.X, Projectile.velocity.Y, 0, default, 1.5f)];
+        newDust.fadeIn = 1.5f;
+        Lighting.AddLight(Projectile.Center, 1.1f, 0.3f, 0.4f);
+
         Projectile.Center = player.MountedCenter;
         Projectile.position.X += player.width / 2 * player.direction;
         Projectile.spriteDirection = player.direction;
-        Projectile projectile2 = Projectile;
-        projectile2.rotation += 0.3f * (float)player.direction;
-        if (Projectile.rotation > (float)Math.PI * 2f)
-        {
-            Projectile projectile3 = Projectile;
-            projectile3.rotation -= (float)Math.PI * 2f;
-        }
-        else if (Projectile.rotation < 0f)
-        {
-            Projectile projectile4 = Projectile;
-            projectile4.rotation += (float)Math.PI * 2f;
-        }
-        player.heldProj = Projectile.whoAmI;
-        player.itemTime = 2;
-        player.itemAnimation = 2;
-        player.itemRotation = Projectile.rotation;
+
+        Projectile.rotation += 0.3f * player.direction;
     }
+    // Color(220, 40, 30, 200)
+    public override Color? GetAlpha(Color lightColor) => new Color(220, 40, 30, 0) * Projectile.Opacity;
 
     public override bool PreDraw(ref Color lightColor)
     {
+
         Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-        Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, (Rectangle?)null, Color.White, Projectile.rotation, new Vector2((float)(texture.Width / 2), (float)(texture.Height / 2)), 1f, (SpriteEffects)(Projectile.spriteDirection /*!*/= -1), 0f);
+        Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), Projectile.scale, SpriteEffects.None, 0);
         return false;
     }
+
+
 }

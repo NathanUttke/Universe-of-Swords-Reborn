@@ -22,7 +22,8 @@ public class OceanRoar : ModItem
 		Item.UseSound = SoundID.Item84;
 		Item.value = 5000;
 		Item.autoReuse = false;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

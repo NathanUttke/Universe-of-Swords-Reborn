@@ -14,9 +14,8 @@ public class WoodenArrowSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 38;
-		Item.height = 38;
-		Item.scale = 1.1f;
+		Item.width = 76;
+		Item.height = 76;
 		Item.rare = ItemRarityID.White;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
@@ -37,9 +36,8 @@ public class WoodenArrowSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-										Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.WoodenArrow, 999);
 		val.AddIngredient(Mod, "SwordMatter", 80);
 		val.AddTile(TileID.Anvils);

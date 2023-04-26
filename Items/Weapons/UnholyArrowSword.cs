@@ -14,9 +14,8 @@ public class UnholyArrowSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.3f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Blue;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;

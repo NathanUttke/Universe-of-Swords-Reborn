@@ -10,9 +10,8 @@ public class VenomSword : ModItem
 {
     public override void SetDefaults()
     {
-        Item.width = 32;
-        Item.height = 32;
-        Item.scale = 1.9f;
+        Item.width = 64;
+        Item.height = 64;
         Item.rare = ItemRarityID.Lime;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;

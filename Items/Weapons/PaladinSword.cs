@@ -19,11 +19,10 @@ public class PaladinSword : ModItem
 		Item.damage = 85;
 		Item.knockBack = 7f;
 		Item.UseSound = SoundID.Item1;
-		Item.shoot = ProjectileID.PaladinsHammerFriendly;
-		Item.shootSpeed = 20f;
 		Item.value = 540500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

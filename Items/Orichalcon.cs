@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using UniverseOfSwordsMod.Items.Placeable;
 
 namespace UniverseOfSwordsMod.Items;
 
@@ -8,7 +9,7 @@ public class Orichalcon : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Orihalcon");
+		DisplayName.SetDefault("Scintillo Bar");
 		Tooltip.SetDefault("Most powerful and rarest ore for making swords");
 	}
 
@@ -24,14 +25,14 @@ public class Orichalcon : ModItem
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.HallowedBar, 1);
-		val.AddIngredient(ItemID.SoulofLight, 1);
-		val.AddIngredient(ItemID.SoulofNight, 1);
-		val.AddIngredient(ItemID.PixieDust, 10);
-		val.AddIngredient(Mod, "SwordMatter", 80);
-		val.AddIngredient(ItemID.FrostCore, 1);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe(5)
+		.AddIngredient(ItemID.HallowedBar, 5)
+		.AddIngredient(ItemID.SoulofLight, 25)
+		.AddIngredient(ItemID.SoulofNight, 25)
+		.AddIngredient(ItemID.PixieDust, 10)
+		.AddIngredient(ModContent.ItemType<DamascusBar>(), 5)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+		.AddTile(TileID.MythrilAnvil)
+		.Register();
 	}
 }

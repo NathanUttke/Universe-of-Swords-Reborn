@@ -14,9 +14,8 @@ public class WeirdSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 2.3f;
+		Item.width = 88;
+		Item.height = 88;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 13;
@@ -24,7 +23,8 @@ public class WeirdSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 500;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

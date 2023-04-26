@@ -24,13 +24,3 @@ DamascusOreTile :
 		Current : 骑士原矿
 	}
 }
-
-HaloOfHorrors :
-{
-	0 :
-	{
-		Origin : Trophy
-		Current : 纪念品
-	}
-}
-

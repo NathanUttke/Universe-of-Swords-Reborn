@@ -12,20 +12,6 @@ AllWoodSword :
 	}
 }
 
-AlphaExcalibur :
-{
-	Name :
-	{
-		Origin : Alpha Excalibur
-		Current : 阿尔法神剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
 AmberSword :
 {
 	Name :
@@ -349,20 +335,6 @@ BoneArrowSword :
 	}
 }
 
-BouncyGrenadeBlade :
-{
-	Name :
-	{
-		Origin : Bouncy Grenade Blade
-		Current : 弹性手榴弹之刃
-	}
-	Tooltip :
-	{
-		Origin : 'Nothing like a grenade that bounces back to your when thrown... Wait-'
-		Current : '没有什么比扔出去还能弹回到你手里的的手榴弹更棒了……等等，什么？'
-	}
-}
-
 BowSword :
 {
 	Name :
@@ -377,19 +349,6 @@ BowSword :
 	}
 }
 
-BoxOfGrenades :
-{
-	Name :
-	{
-		Origin : Box of Grenades
-		Current : 手榴弹集装箱
-	}
-	Tooltip :
-	{
-		Origin : 'Forget throwing grenades one at a time. Just throw a boxful at your enemies!'
-		Current : '忘记你一次扔一枚手榴弹的时光吧……你现在一次可以扔一箱！'
-	}
-}
 
 Brisingr :
 {
@@ -489,20 +448,6 @@ ChlorophyteArrowSword :
 	}
 }
 
-ChlorophyteBulletSword :
-{
-	Name :
-	{
-		Origin : Chlorophyte Bullet Sword
-		Current : 叶绿弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Chlorophyte bullets
-		Current : 射出叶绿弹
-	}
-}
-
 ClaySword :
 {
 	Name :
@@ -528,34 +473,6 @@ ClingerSword :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-ClusterBOOMer :
-{
-	Name :
-	{
-		Origin : Cluster BOOMer
-		Current : 集束炸弹EX
-	}
-	Tooltip :
-	{
-		Origin : 'We do not take any responsibility for destroyed buildings'
-		Current : '我们对毁坏的建筑物不负任何责任'
-	}
-}
-
-CopperCoinSword :
-{
-	Name :
-	{
-		Origin : Copper Coin Sword
-		Current : 铜币剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots copper coins
-		Current : 射出铜币……当然，是无法回收的那种
 	}
 }
 
@@ -601,48 +518,6 @@ CrimsonCrystallus :
 	}
 }
 
-CrystalBulletSword :
-{
-	Name :
-	{
-		Origin : Crystal Bullet Sword
-		Current : 魔晶弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Crystal bullets
-		Current : 射出魔晶弹
-	}
-}
-
-CrystalDartSword :
-{
-	Name :
-	{
-		Origin : Crystal Dart Sword
-		Current : 水晶镖剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
-CrystalExcalibur :
-{
-	Name :
-	{
-		Origin : Crystal Excalibur
-		Current : 晶原神剑
-	}
-	Tooltip :
-	{
-		Origin : 'Sword forged in heaven'
-		Current : '来自天堂的神剑'
-	}
-}
-
 Crystallus :
 {
 	Name :
@@ -663,20 +538,6 @@ CrystalSword :
 	{
 		Origin : Crystal Sword
 		Current : 魔晶剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
-CrystalVineSword :
-{
-	Name :
-	{
-		Origin : Crystal Vile Sword
-		Current : 魔晶碎块剑
 	}
 	Tooltip :
 	{
@@ -710,34 +571,6 @@ CursedArrowSword :
 	{
 		Origin : Shoots Cursed arrows
 		Current : 射出诅咒箭
-	}
-}
-
-CursedBulletSword :
-{
-	Name :
-	{
-		Origin : Cursed Bullet Sword
-		Current : 诅咒弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Cursed bullets
-		Current : 射出诅咒弹
-	}
-}
-
-CursedDartSword :
-{
-	Name :
-	{
-		Origin : Cursed Dart Sword
-		Current : 诅咒镖剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
 	}
 }
 
@@ -871,20 +704,6 @@ DarkBlade :
 	}
 }
 
-DartSword :
-{
-	Name :
-	{
-		Origin : Dart Sword
-		Current : 飞镖剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
 Dawn :
 {
 	Name :
@@ -952,34 +771,6 @@ Destructor :
 	{
 		Origin : Inflicts Venom debuff on enemies
 		Current : 向敌人体内注射毒液
-	}
-}
-
-DeusExcalibur :
-{
-	Name :
-	{
-		Origin : Deus Excalibur
-		Current : 生命神剑
-	}
-	Tooltip :
-	{
-		Origin : 'The Sword of (My) Life and (Your) Death'
-		Current : '……将迎来生和死，你我各处一侧'
-	}
-}
-
-DevilBlade :
-{
-	Name :
-	{
-		Origin : Devil Blade
-		Current : 恶魔之刃
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
 	}
 }
 
@@ -1081,152 +872,6 @@ Dragrael :
 	}
 }
 
-DranBody :
-{
-	Name :
-	{
-		Origin : Epidermis of the Death Emperor
-		Current : 梦魇之神骸骨龙甲
-	}
-	Tooltip :
-	{
-		Origin : 
-			'These hands have taken so many lives...'
-			Maximum life increased by 1000
-			50% increased damage
-			100% increased melee damage
-			Increased minion capacity by 8
-			Increased sentries capacity by 6
-			Armor piercing increased to 300
-			Grants immunity to most debuffs
-			Immunity to lava
-		Current : 
-			'席卷世界的梦魇之力汇于双手……灭绝一切！'
-			最大生命值提高1000
-			增加100%近战伤害和50%全职业伤害
-			增加8仆从槽和6哨兵槽
-			增加300点护甲穿透
-			免疫大多数debuff和熔岩
-	}
-}
-
-DranHelmet :
-{
-	Name :
-	{
-		Origin : Maw of the Monster King
-		Current : 梦魇之神骸骨龙盔
-	}
-	Tooltip :
-	{
-		Origin : 
-			'These jaws know only hunger for the next soul'
-			50% increased critical chance
-			Maximum life increased by 1000
-			50% increased damage
-			Reduces mana usage by 90%
-			Reduces ammo usage by 20%
-			Reduces throwing usage by 50%
-			Increased mana regeneration
-			Grants Night Owl and Gills buffs
-		Current : 
-			'下颌注满梦魇之力……你的灵魂将是我的盛宴！'
-			最大生命值提高1000
-			暴击率和伤害提高50%
-			减少90%魔法消耗，增加法术恢复速度
-			减少20%弹药消耗
-			减少50%投掷物消耗
-			拥有夜视和水下呼吸的能力
-			
-	}
-}
-
-DranLeggings :
-{
-	Name :
-	{
-		Origin : Overalls of the Demon Overlord
-		Current : 梦魇之神骸骨龙靴
-	}
-	Tooltip :
-	{
-		Origin : 
-			'These feet travel down the path of absolute carnage'
-			Maximum life increased by 1000
-			50% increased damage
-			100% increased movement speed
-			Immunity to knockback
-			Grants water walking
-			Grants immunity to most debuffs
-			Immunity to lava
-		Current : 
-			'走过的每一步都踏在血泊中……无尽的征服！'
-			最大生命值提高1000
-			伤害提高50%
-			移动速度增加100%
-			免疫击退并可以在水上行走
-			免疫大多数debuff和熔岩
-	}
-}
-
-DranWings :
-{
-	Name :
-	{
-		Origin : Dran Wings
-		Current : 梦魇之神骸骨龙翼
-	}
-	Tooltip :
-	{
-		Origin : 
-			10 seconds fly time
-			Ultimate acceleration
-			Great speed
-			Allows ability to dash
-			20% increased movement speed
-			Increases maximum life by 250
-			20% increased damage
-			Grants gravitation effect
-		Current : 
-			'用死亡之翼给这个混乱的世界盖上无际的夜幕……'
-			10秒飞行时间
-			极致的速度和加速度！
-			可以奔跑并提高20%移动速度
-			最大生命值提高250
-			伤害提高20%
-			可以反转重力
-	}
-}
-
-DranWingsSecond :
-{
-	Name :
-	{
-		Origin : Dran Wings
-		Current : 梦魇之神骸骨龙翼
-	}
-	Tooltip :
-	{
-		Origin : 
-			10 seconds fly time
-			Ultimate acceleration
-			Great speed
-			Allows ability to dash
-			20% increased movement speed
-			Increases maximum life by 250
-			20% increased damage
-			Grants gravitation effect
-		Current : 
-			'用死亡之翼给这个混乱的世界盖上无际的夜幕……'
-			10秒飞行时间
-			极致的速度和加速度！
-			可以奔跑并提高20%移动速度
-			最大生命值提高250
-			伤害提高20%
-			可以反转重力
-	}
-}
-
 DutchmanSword :
 {
 	Name :
@@ -1307,20 +952,6 @@ Executioner :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-ExplosiveBulletSword :
-{
-	Name :
-	{
-		Origin : Explosive Bullet Sword
-		Current : 爆破弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Explosive bullets
-		Current : 射出爆破弹
 	}
 }
 
@@ -1576,48 +1207,6 @@ GoblinKnife :
 	}
 }
 
-GoldCoinSword :
-{
-	Name :
-	{
-		Origin : Gold Coin Sword
-		Current : 金币剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots gold coins
-		Current : 射出金币……当然，是无法回收的那种
-	}
-}
-
-GoldenBulletSword :
-{
-	Name :
-	{
-		Origin : Golden Bullet Sword
-		Current : 金子弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Golden bullets
-		Current : 射出金子弹
-	}
-}
-
-Golem :
-{
-	Name :
-	{
-		Origin : Golem
-		Current : 热能喷发剑
-	}
-	Tooltip :
-	{
-		Origin : Ancient sword that was inside Golems body
-		Current : 掉落自蜥蜴人祭祀的巨大魔像……
-	}
-}
-
 GrandPiano :
 {
 	Name :
@@ -1731,20 +1320,6 @@ GreenSolutionSpreader :
 	}
 }
 
-GrenadeBlade :
-{
-	Name :
-	{
-		Origin : Grenade Blade
-		Current : 手榴弹之刃
-	}
-	Tooltip :
-	{
-		Origin : 'Some madman strapped a grenade to a sword to increase its damage. And now someone even crazier is wielding it as a weapon!'
-		Current : '一些疯子把手榴弹绑在刀上充当配重……现在有一些更疯狂的人要用剑发射手榴弹！'
-	}
-}
-
 HallowSolutionSpreader :
 {
 	Name :
@@ -1788,20 +1363,6 @@ HaloOfHorrors :
 	}
 }
 
-HeisenbergsFlask :
-{
-	Name :
-	{
-		Origin : Heisenberg's Flask
-		Current : 海森堡烧瓶
-	}
-	Tooltip :
-	{
-		Origin : 'Hablan de un tal Heisenberg que ahora controla el mercado'
-		Current : '我想我们谈论的是控制市场的海森堡人而不是那些疯狂的化学家'
-	}
-}
-
 HellfireArrowSword :
 {
 	Name :
@@ -1813,20 +1374,6 @@ HellfireArrowSword :
 	{
 		Origin : Shoots Hellfire arrows
 		Current : 射出狱炎箭
-	}
-}
-
-HighVelocityBulletSword :
-{
-	Name :
-	{
-		Origin : High Velocity Bullet Sword
-		Current : 高射速子弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots High Velocity bullets
-		Current : 射出高射速子弹
 	}
 }
 
@@ -1942,34 +1489,6 @@ IchorArrowSword :
 	}
 }
 
-IchorBulletSword :
-{
-	Name :
-	{
-		Origin : Ichor Bullet Sword
-		Current : 灵液弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Ichor bullets
-		Current : 射出灵液弹
-	}
-}
-
-IchorDartSword :
-{
-	Name :
-	{
-		Origin : Ichor Dart Sword
-		Current : 灵液镖剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
 Inflation :
 {
 	Name :
@@ -2009,20 +1528,6 @@ JesterArrowSword :
 	{
 		Origin : Shoots Jester's arrows
 		Current : 射出小丑箭
-	}
-}
-
-KokiriSword :
-{
-	Name :
-	{
-		Origin : Kokiri Sword
-		Current : 克里克之剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
 	}
 }
 
@@ -2070,31 +1575,17 @@ LegendaryWarriorGauntlet :
 	}
 }
 
-LesserMeleePowerPotion :
+MeleePowerPotion :
 {
 	Name :
 	{
-		Origin : Lesser Melee Power Potion
+		Origin : Melee Power Potion
 		Current : 战士饮品
 	}
 	Tooltip :
 	{
 		Origin : Increases melee stats by small amount
 		Current : 饮用可以让你更加英勇
-	}
-}
-
-Longclaw :
-{
-	Name :
-	{
-		Origin : Longclaw
-		Current : 龙爪
-	}
-	Tooltip :
-	{
-		Origin : 'You know nothing, Jon Snow'
-		Current : '你什么都不知道——琼-斯诺'
 	}
 }
 
@@ -2109,20 +1600,6 @@ LuminiteArrowSword :
 	{
 		Origin : Shoots Luminite arrows
 		Current : 射出夜明箭
-	}
-}
-
-LuminiteBulletSword :
-{
-	Name :
-	{
-		Origin : Luminite Bullet Sword
-		Current : 夜明弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Luminite bullets
-		Current : 射出夜明弹
 	}
 }
 
@@ -2256,20 +1733,6 @@ MegaMagicSword :
 	}
 }
 
-MeteorBulletSword :
-{
-	Name :
-	{
-		Origin : Meteor Bullet Sword
-		Current : 流星弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Meteor bullets
-		Current : 射出流星弹
-	}
-}
-
 MolotovSword :
 {
 	Name :
@@ -2309,34 +1772,6 @@ MudSword :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-MusketBulletSword :
-{
-	Name :
-	{
-		Origin : Musket Bullet Sword
-		Current : 子弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Musket bullets
-		Current : 射出子弹
-	}
-}
-
-NanoBulletSword :
-{
-	Name :
-	{
-		Origin : Nano Bullet Sword
-		Current : 纳米弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Nano bullets
-		Current : 射出纳米弹
 	}
 }
 
@@ -2424,20 +1859,6 @@ OldMansBlade :
 	}
 }
 
-OmegaExcalibur :
-{
-	Name :
-	{
-		Origin : Omega Excalibur
-		Current : 欧米伽神剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
-	}
-}
-
 OnyxSword :
 {
 	Name :
@@ -2519,20 +1940,6 @@ PaladinSword :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-PartyBulletSword :
-{
-	Name :
-	{
-		Origin : Party Bullet Sword
-		Current : 派对弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Party bullets
-		Current : 射出派对弹
 	}
 }
 
@@ -3143,34 +2550,6 @@ ShroomiteBlade :
 	}
 }
 
-SilverBulletSword :
-{
-	Name :
-	{
-		Origin : Silver Bullet Sword
-		Current : 银子弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Silver bullets
-		Current : 射出银子弹
-	}
-}
-
-SilverCoinSword :
-{
-	Name :
-	{
-		Origin : Silver Coin Sword
-		Current : 银币剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots silver coins
-		Current : 射出银币……当然，是无法回收的那种
-	}
-}
-
 Skooma :
 {
 	Name :
@@ -3182,20 +2561,6 @@ Skooma :
 	{
 		Origin : Increases movement speed and jump height
 		Current : 极大幅度提升移动速度和跳跃高度
-	}
-}
-
-SkyPower :
-{
-	Name :
-	{
-		Origin : Sky Power
-		Current : 裂天剑剑
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : 什么剑？
 	}
 }
 
@@ -3339,20 +2704,6 @@ StickyGlowstickSword :
 	{
 		Origin : __EMPTY__
 		Current : __EMPTY__
-	}
-}
-
-StickyGrenadeBlade :
-{
-	Name :
-	{
-		Origin : Sticky Grenade Blade
-		Current : 粘性手榴弹之刃
-	}
-	Tooltip :
-	{
-		Origin : 'Nice going Einstein! Now the grenade is stuck to the sword!'
-		Current : '爱因斯坦棒极了！现在手榴弹粘在剑上了！'
 	}
 }
 
@@ -3550,24 +2901,6 @@ SwordOfTheUniverseV3 :
 	}
 }
 
-SwordOfTheUniverseV4 :
-{
-	Name :
-	{
-		Origin : Sword of the Universe
-		Current : 宇宙之剑
-	}
-	Tooltip :
-	{
-		Origin : 
-			'This sword doesn't swing. It lifts the Universe towards the blade'
-			Has changeable forms
-		Current : 
-			'宇宙的力量汇聚于此'
-			具有多个相同效果的异形体
-	}
-}
-
 SwordOfTheUniverseV5 :
 {
 	Name :
@@ -3657,21 +2990,6 @@ SwordOfTheUniverseV9 :
 			具有多个相同效果的异形体
 	}
 }
-
-SwordShard :
-{
-	Name :
-	{
-		Origin : Sword Shard
-		Current : 剑源质
-	}
-	Tooltip :
-	{
-		Origin : Shard of lost sword
-		Current : 那些无比强大的剑的构成支柱
-	}
-}
-
 Tamerlein :
 {
 	Name :
@@ -3781,20 +3099,6 @@ TheSwarm :
 	{
 		Origin : Shoots swarm of bees
 		Current : 释放成群的蜜蜂
-	}
-}
-
-ThunderBlade :
-{
-	Name :
-	{
-		Origin : Thunder Blade
-		Current : 耀光霹雳
-	}
-	Tooltip :
-	{
-		Origin : Zaps enemies with electric bolt
-		Current : 好像是什么的仿制品……
 	}
 }
 
@@ -3980,20 +3284,6 @@ VenomArrowSword :
 	}
 }
 
-VenomBulletSword :
-{
-	Name :
-	{
-		Origin : Venom Bullet Sword
-		Current : 毒液弹剑
-	}
-	Tooltip :
-	{
-		Origin : Shoots Venom bullets
-		Current : 射出毒液弹
-	}
-}
-
 VenomShard :
 {
 	Name :
@@ -4075,20 +3365,6 @@ WitchKingsDaughter :
 	{
 		Origin : Inflicts enemies with Cursed Flames
 		Current : 剑刃上燃着魔焰
-	}
-}
-
-WitherBane :
-{
-	Name :
-	{
-		Origin : Wither Bane
-		Current : 岩层之刃
-	}
-	Tooltip :
-	{
-		Origin : __EMPTY__
-		Current : __EMPTY__
 	}
 }
 

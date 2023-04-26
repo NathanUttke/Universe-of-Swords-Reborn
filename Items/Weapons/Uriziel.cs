@@ -16,7 +16,6 @@ public class Uriziel : ModItem
 	{
 		Item.width = 110;
 		Item.height = 110;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 13;
@@ -31,11 +30,9 @@ public class Uriziel : ModItem
 
 	public override void AddRecipes()
 	{
-		
-														Recipe val = CreateRecipe(1);
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddIngredient(Mod, "UpgradeMatter", 3);
-		val.AddIngredient(Mod, "SwordShard", 1);
+		val.AddIngredient(Mod, "UpgradeMatter", 4);
 		val.AddIngredient(Mod, "WeirdSword", 1);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();

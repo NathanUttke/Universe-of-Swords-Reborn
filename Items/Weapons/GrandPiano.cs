@@ -17,9 +17,8 @@ public class GrandPiano : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
-		Item.scale = 2.5f;
+		Item.width = 142;
+		Item.height = 142;
 		Item.rare = ItemRarityID.Orange;
 		Item.crit = 10;
 		Item.useStyle = ItemUseStyleID.Swing;
@@ -42,9 +41,8 @@ public class GrandPiano : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-														Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "PianoSword1", 1);
 		val.AddIngredient(Mod, "PianoSword2", 1);
 		val.AddIngredient(Mod, "PianoSword3", 1);

@@ -9,14 +9,14 @@ public class FixedSwordOfPower : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Inflicts Midas debuff on enemies");
+		DisplayName.SetDefault("Sword Of Power");
+		Tooltip.SetDefault("Has a chance to inflict Midas debuff on enemies");
 	}
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 1.7f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
@@ -28,28 +28,28 @@ public class FixedSwordOfPower : ModItem
 		Item.shoot = ProjectileID.Bone;
 		Item.shootSpeed = 20f;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
-	}
-
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
+	} 
+	
 	public override void AddRecipes()
-	{
-		
-														Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordOfPower", 1);
 		val.AddIngredient(ItemID.Bone, 20);
-		val.AddIngredient(Mod, "UpgradeMatter", 1);
-		val.AddIngredient(Mod, "SwordMatter", 110);
+		val.AddIngredient(Mod, "UpgradeMatter", 2);
 		val.AddTile(TileID.Anvils);
 		val.Register();
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
-		target.AddBuff(72, 360, false);
+		if (Main.rand.NextBool(5)) 
+		{
+			if (!target.HasBuff(BuffID.Midas))
+			{
+                target.AddBuff(BuffID.Midas, 360, false);
+            }
+        }
 	}
 }

@@ -14,9 +14,8 @@ public class GemSlayer : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 1.5f;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 24;
@@ -35,9 +34,8 @@ public class GemSlayer : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																								Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "TopazSword", 1);
 		val.AddIngredient(Mod, "SapphireSword", 1);
 		val.AddIngredient(Mod, "EmeraldSword", 1);

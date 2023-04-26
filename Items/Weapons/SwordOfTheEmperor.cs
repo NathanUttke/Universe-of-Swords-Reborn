@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Buffs;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -15,46 +16,45 @@ public class SwordOfTheEmperor : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 35;
-        Item.height = 35;
-        Item.scale = 1.9f;
+        Item.width = 100;
+        Item.height = 100;        
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 11;
-        Item.useAnimation = 11;
-        Item.damage = 100;
+        Item.useTime = 20;
+        Item.useAnimation = 20;
+        Item.damage = 90;
         Item.knockBack = 3f;
-        Item.UseSound = SoundID.Item74;
-        Item.value = 999999;
+        Item.UseSound = SoundID.Item1;
+        Item.value = Item.sellPrice(0, 20, 0, 0);
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+        Item.DamageType = DamageClass.Melee; 
+        SacrificeTotal = 1;
     }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.X -= 1f * (float)player.direction;
-        player.itemLocation.Y -= 1f * (float)player.direction;
-    }
-
     public override void AddRecipes()
     {
 
-        Recipe val = CreateRecipe(1);
-        val.AddIngredient(Mod, "SwordMatter", 4000);
-        val.AddIngredient(ItemID.HallowedBar, 4000);
-        val.AddIngredient(ItemID.BrokenHeroSword, 16);
-        val.AddIngredient(ItemID.EnchantedSword, 4);
-        val.AddIngredient(ItemID.Terragrim, 1);
-        val.AddTile(TileID.MythrilAnvil);
-        val.Register();
+        CreateRecipe()
+            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 18)
+            .AddIngredient(ItemID.HallowedBar, 2000)
+            .AddIngredient(ItemID.BrokenHeroSword, 16)
+            .AddIngredient(ItemID.EnchantedSword, 4)
+            .AddIngredient(ItemID.Terragrim, 1)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
     }
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-        target.AddBuff(Mod.Find<ModBuff>("EmperorBlaze").Type, 999, true);
+        if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
+        {
+            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 200, true);
+        }
     }
     public override void OnHitPvp(Player player, Player target, int damage, bool crit)
     {
-        target.AddBuff(Mod.Find<ModBuff>("EmperorBlaze").Type, 999, true);
+        if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
+        {
+            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 200, true);
+        }
     }
 }

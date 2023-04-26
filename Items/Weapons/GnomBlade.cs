@@ -12,7 +12,6 @@ public class GnomBlade : ModItem
 	{
 		Item.width = 64;
 		Item.height = 64;
-		Item.scale = 1.2f;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 9;
@@ -24,7 +23,8 @@ public class GnomBlade : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(1, 0, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -34,21 +34,18 @@ public class GnomBlade : ModItem
 
 	public override void AddRecipes()
 	{
-		
-																												Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.FragmentSolar, 10);
-		val.AddIngredient(ItemID.FragmentVortex, 10);
-		val.AddIngredient(ItemID.FragmentNebula, 10);
-		val.AddIngredient(ItemID.FragmentStardust, 10);
-		val.AddIngredient(ItemID.LunarBar, 14);
-		val.AddIngredient(Mod, "Dragrael", 1);
-		val.AddIngredient(Mod, "Doomsday", 1);
-		val.AddIngredient(ItemID.TerraBlade, 1);
-		val.AddIngredient(Mod, "LunarOrb", 1);
-		val.AddIngredient(Mod, "Orichalcon", 3);
-		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddTile(TileID.LunarCraftingStation);
-		val.Register();
+		CreateRecipe()	
+			.AddIngredient(ItemID.LunarBar, 15)
+			.AddIngredient(ItemID.GardenGnome, 1)
+			.AddIngredient(Mod, "Doomsday", 1)
+			.AddIngredient(ItemID.TerraBlade, 1)
+			.AddIngredient(Mod, "LunarOrb", 1)
+			.AddIngredient(Mod, "Orichalcon", 3)
+			.AddIngredient(ModContent.ItemType<TrueTerrablade>(), 1)
+			.AddIngredient(ItemID.DD2SquireBetsySword, 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

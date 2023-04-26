@@ -16,9 +16,8 @@ public class EdgeLord : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 35;
-		Item.height = 35;
-		Item.scale = 1.6f;
+		Item.width = 128;
+		Item.height = 128;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 12;
@@ -30,7 +29,8 @@ public class EdgeLord : ModItem
 		Item.shootSpeed = 30f;
 		Item.value = 800000;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -42,25 +42,21 @@ public class EdgeLord : ModItem
 	public override void AddRecipes()
 	{
 		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "DraculaSword", 2);
+		val.AddIngredient(Mod, "DraculaSword", 1);
 		val.AddIngredient(ItemID.VampireKnives, 1);
 		val.AddIngredient(ItemID.VampireBanner, 1);
-		val.AddIngredient(ItemID.HellstoneBar, 80);
-		val.AddIngredient(ItemID.LunarBar, 40);
-		val.AddIngredient(Mod, "SwordShard", 3);
-		val.AddIngredient(Mod, "SwordMatter", 66);
-		val.AddIngredient(ItemID.TrueNightsEdge, 1);
+		val.AddIngredient(ModContent.ItemType<Orichalcon>(), 10);
+		val.AddIngredient(ItemID.LunarBar, 10);
+		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2);
 		val.AddTile(TileID.LunarCraftingStation);
 		val.Register();
 		Recipe val2 = CreateRecipe(1);
-		val2.AddIngredient(Mod, "DraculaSword", 2);
+		val2.AddIngredient(Mod, "DraculaSword", 1);
 		val2.AddIngredient(ItemID.ScourgeoftheCorruptor, 1);
 		val2.AddIngredient(ItemID.VampireBanner, 1);
-		val2.AddIngredient(ItemID.HellstoneBar, 80);
-		val2.AddIngredient(ItemID.LunarBar, 40);
-		val2.AddIngredient(Mod, "SwordShard", 3);
-		val2.AddIngredient(Mod, "SwordMatter", 66);
-		val2.AddIngredient(ItemID.TrueNightsEdge, 1);
+		val2.AddIngredient(ModContent.ItemType<Orichalcon>(), 10);
+		val2.AddIngredient(ItemID.LunarBar, 10);
+		val2.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2);
 		val2.AddTile(TileID.LunarCraftingStation);
 		val2.Register();
 	}

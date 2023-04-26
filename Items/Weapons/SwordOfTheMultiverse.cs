@@ -4,6 +4,10 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ID;
+using UniverseOfSwordsMod.Projectiles;
+using System.Diagnostics.Tracing;
+using UniverseOfSwordsMod.Buffs;
+using UniverseOfSwordsMod.Items.Placeable;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -17,60 +21,64 @@ public class SwordOfTheMultiverse : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 555;
-		Item.height = 555;
-		Item.scale = 1f;
-		Item.rare = ItemRarityID.Purple;
-		Item.crit = 65;
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.axe = 1000;
-		Item.useTime = 15;
-		Item.useAnimation = 15;
-		Item.damage = 80085;
-		Item.knockBack = 2f;
-		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/SOTM");
+		Item.width = 94;
+		Item.height = 112;
+		Item.rare = ItemRarityID.Expert;
+		
+		Item.useTime = 18;
+		Item.useAnimation = 18;        
 
-		Item.shoot = Mod.Find<ModProjectile>("SOTM").Type;
-		Item.shootSpeed = 30f;
-		Item.expert = true;
-		Item.value = Item.sellPrice(90, 0, 0, 0);
-		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+        Item.damage = 190;
+        Item.DamageType = DamageClass.Melee;
+        Item.crit = 70;
+        Item.knockBack = 2f;
+
+		Item.value = Item.sellPrice(22, 0, 0, 0);
+
+        Item.useStyle = ItemUseStyleID.Swing;
+		Item.UseSound = SoundID.Item169;
+
+        Item.channel = true;
+        Item.autoReuse = true;
+
+        Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
+        Item.shootSpeed = 12f;
+
+		SacrificeTotal = 1;
 	}
 
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 10f, velocity.Y + 10f, Mod.Find<ModProjectile>("SOTM").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 10f, velocity.Y - 10f, Mod.Find<ModProjectile>("SOTM").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, Mod.Find<ModProjectile>("SOTUProjectile1").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 5f, velocity.Y + 5f, Mod.Find<ModProjectile>("SOTUProjectile2").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 5f, velocity.Y - 5f, Mod.Find<ModProjectile>("SOTUProjectile3").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 8f, velocity.Y + 8f, Mod.Find<ModProjectile>("SOTUV4Projectile").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 8f, velocity.Y - 8f, Mod.Find<ModProjectile>("SOTUV5Projectile").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 12f, velocity.Y + 12f, Mod.Find<ModProjectile>("SOTUV6Projectile").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 13f, velocity.Y - 13f, Mod.Find<ModProjectile>("SOTU7").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 12f, velocity.Y + 12f, Mod.Find<ModProjectile>("SOTU8").Type, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 10f, velocity.Y - 10f, Mod.Find<ModProjectile>("SOTUV9Projectile").Type, damage, knockback, player.whoAmI, 0f, 0f);
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		Projectile.NewProjectile(source, position, velocity / 2, Item.shoot, (int)(Item.damage * 1.25f), 3f, player.whoAmI);
 		return true;
-	}
+    }
 
-	public override void AddRecipes()
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        if (Main.rand.NextBool(2))
+        {
+            Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.DemonTorch, 0f, 0f, 100, default, 2f)];
+            dust.noGravity = true;
+        }
+    }
+
+    public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "SwordOfTheUniverse", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV2", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV3", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV4", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV5", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV6", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV7", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV8", 1);
-		val.AddIngredient(Mod, "SwordOfTheUniverseV9", 1);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1)
+            .AddIngredient(ModContent.ItemType<SwordOfTheUniverseV2>(), 1)
+			.AddIngredient(ModContent.ItemType<DamascusBar>(), 50)
+            .AddIngredient(ModContent.ItemType<Orichalcon>(), 30)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)
+            .AddIngredient(ModContent.ItemType<UselessWeapon>(), 1)
+			.Register();
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
-		target.AddBuff(Mod.Find<ModBuff>("EmperorBlaze").Type, 1000, true);
+		if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
+		{
+            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 800, true);
+        }		
 	}
 }

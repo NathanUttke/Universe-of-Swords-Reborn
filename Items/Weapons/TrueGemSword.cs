@@ -23,12 +23,13 @@ public class TrueGemSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 20, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
-																														if (Main.rand.Next(2) == 0)
+		if (Main.rand.Next(2) == 0)
 		{
 			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.YellowTorch, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dust].noGravity = true;
@@ -38,9 +39,8 @@ public class TrueGemSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-										Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "GemSlayer", 1);
 		val.AddIngredient(ItemID.BrokenHeroSword, 1);
 		val.AddTile(TileID.MythrilAnvil);

@@ -19,36 +19,27 @@ public class SwordOfTheUniverseV2 : ModItem
 	{
 		Item.width = 140;
 		Item.height = 140;
-		Item.scale = 2f;
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 16;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
 		Item.useAnimation = 15;
-		Item.damage = 1337;
+		Item.damage = 100;
 		Item.knockBack = 20f;
-		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/GiantExplosion");
+		Item.UseSound = SoundID.Item169;
 
-		Item.shoot = Mod.Find<ModProjectile>("SOTUProjectile2").Type;
+		Item.shoot = ProjectileID.InfluxWaver;
 		Item.shootSpeed = 30f;
 		Item.expert = true;
-		Item.value = Item.sellPrice(10, 0, 0, 0);
+		Item.value = Item.sellPrice(8, 0, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.X -= 1f * (float)player.direction;
-		player.itemLocation.Y -= 1f * (float)player.direction;
-	}
-
 	public override void AddRecipes()
-	{
-		
-																																																																				Recipe val = CreateRecipe(1);
+	{																																																																				Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "TrueHorrormageddon", 1);
-		val.AddIngredient(Mod, "PrismSword", 1);
+		val.AddIngredient(ModContent.ItemType<PrismSword>(), 1);
 		val.AddIngredient(Mod, "EdgeLord", 1);
 		val.AddIngredient(Mod, "SuperInflation", 1);
 		val.AddIngredient(Mod, "CosmoStorm", 1);
@@ -56,55 +47,20 @@ public class SwordOfTheUniverseV2 : ModItem
 		val.AddIngredient(ItemID.Terragrim, 1);
 		val.AddTile(TileID.DemonAltar);
 		val.Register();
-		Recipe val2 = CreateRecipe(1);
-		val2.AddIngredient(Mod, "SwordOfTheUniverse", 1);
-		val2.Register();
-		Recipe val3 = CreateRecipe(1);
-		val3.AddIngredient(Mod, "SwordOfTheUniverseV9", 1);
-		val3.Register();
-		Recipe val4 = CreateRecipe(1);
-		val4.AddIngredient(Mod, "SwordOfTheUniverseV3", 1);
-		val4.Register();
-		Recipe val5 = CreateRecipe(1);
-		val5.AddIngredient(Mod, "SwordOfTheUniverseV4", 1);
-		val5.Register();
-		Recipe val6 = CreateRecipe(1);
-		val6.AddIngredient(Mod, "SwordOfTheUniverseV5", 1);
-		val6.Register();
-		Recipe val7 = CreateRecipe(1);
-		val7.AddIngredient(Mod, "SwordOfTheUniverseV6", 1);
-		val7.Register();
-		Recipe val8 = CreateRecipe(1);
-		val8.AddIngredient(Mod, "SwordOfTheUniverseV7", 1);
-		val8.Register();
-		Recipe val9 = CreateRecipe(1);
-		val9.AddIngredient(Mod, "SwordOfTheUniverseV8", 1);
-		val9.Register();
-	}
+    }
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 2f, velocity.Y + 2f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 2f, velocity.Y - 2f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 4f, velocity.Y + 4f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 4f, velocity.Y - 4f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 6f, velocity.Y + 6f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 6f, velocity.Y - 6f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 8f, velocity.Y + 8f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 8f, velocity.Y - 8f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 10f, velocity.Y + 10f, ProjectileID.VortexBeaterRocket, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 1f, velocity.Y + 1f, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 1f, velocity.Y - 1f, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 2f, velocity.Y + 2f, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 2f, velocity.Y - 2f, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 3f, velocity.Y + 3f, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 3f, velocity.Y - 3f, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 4f, velocity.Y + 4f, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X - 4f, velocity.Y - 4f, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X + 5f, velocity.Y + 5f, ProjectileID.InfluxWaver, damage, knockback, player.whoAmI, 0f, 0f);
-		return true;
+		float spread = 0.5f;
+		float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
+		double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
+		double deltaAngle = spread / 2f;
+		for (int i = 0; i < 5; i++)
+		{
+			double offsetAngle = startAngle + deltaAngle * (double)i;
+			Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
+		}
+		return false;
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

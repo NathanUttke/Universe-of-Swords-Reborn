@@ -17,7 +17,6 @@ public class IceBreaker : ModItem
 	{
 		Item.width = 64;
 		Item.height = 64;
-		Item.scale = 1.3f;
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
@@ -38,13 +37,12 @@ public class IceBreaker : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-																Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.IceBlade, 1);
 		val.AddIngredient(ItemID.SnowBlock, 999);
 		val.AddIngredient(Mod, "Orichalcon", 1);
-		val.AddIngredient(Mod, "SwordShard", 1);
+		val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1);
 		val.AddIngredient(Mod, "SwordMatter", 150);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();
