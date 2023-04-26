@@ -25,7 +25,7 @@ public class UltraMachine : ModItem
 		Item.useTime = 18;
 		Item.useAnimation = 30;
 		Item.reuseDelay = 40;
-		Item.damage = 135;
+		Item.damage = 130;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ProjectileID.DeathLaser;
