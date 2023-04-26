@@ -15,7 +15,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 1;
             Projectile.alpha = 0;
             Projectile.scale = Main.rand.NextFloat(0.75f, 1.35f);
             Projectile.Opacity = 0.5f;
