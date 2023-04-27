@@ -23,7 +23,7 @@ public class SwordOfTheMultiverseNew : ModItem
 	public override void SetDefaults()
 	{
 		Item.width = 94;
-		Item.height = 112;
+		Item.height = 104;
 		Item.rare = ItemRarityID.Expert;
 		
 		Item.useTime = 7;
