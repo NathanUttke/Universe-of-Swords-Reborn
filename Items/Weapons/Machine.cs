@@ -53,7 +53,7 @@ public class Machine : ModItem
 			.AddIngredient(Mod, "PrimeSword", 1)
 			.AddIngredient(Mod, "DestroyerSword", 1)
 			.AddIngredient(Mod, "TwinsSword", 1)
-			.AddTile(TileID.MythrilAnvil);
+			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}
 }
