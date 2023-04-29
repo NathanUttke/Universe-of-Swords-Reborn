@@ -140,7 +140,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BlizzardRage>(), 4, 1));
                     break;
                 case NPCID.MoonLordCore:                    
-                    IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverse>(), 100, 1);
+                    IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverseNew>(), 100, 1);
                     leadingConditionRule.OnSuccess(rule);
                     npcLoot.Add(leadingConditionRule);
                     break;
