@@ -32,7 +32,6 @@ internal class TrueTerrabladeProjectile : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.timeLeft = 250;
 		Projectile.aiStyle = ProjAIStyleID.Beam;
-		AIType = ProjectileID.TerraBeam;
 	}
 
     public override Color? GetAlpha(Color lightColor)
@@ -41,7 +40,9 @@ internal class TrueTerrabladeProjectile : ModProjectile
     }
 
     public override void AI()
-	{  
+	{
+		int newTerraDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.TerraBlade, 0f, 0f, 127, default, 1.1f);
+        Main.dust[newTerraDust].noGravity = true;       
 		Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
 	}
 
