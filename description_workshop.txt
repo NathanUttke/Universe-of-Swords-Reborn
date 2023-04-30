@@ -1,0 +1,4 @@
+Universe of Swords Mod Reborn is a port of the Universe of Swords Mod from tModLoader 1.3, but rebalanced, resprited and aiming for quality over quantity.
+This includes removing and reworking many boring swords, balancing many weapons throughout progression and reworking a lot of material and weapon recipes for the better.
+The original mod creator, Gnom and Horrior, abandoned the mod but has endoesed this port and gave us creative freedom going forward.
+Credit for all the original mod code and sprites go to the original creators.
