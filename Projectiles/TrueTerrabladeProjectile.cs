@@ -5,6 +5,8 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using static Terraria.ModLoader.PlayerDrawLayer;
+using Terraria.Audio;
 
 namespace UniverseOfSwordsMod.Projectiles;
 
@@ -30,7 +32,7 @@ internal class TrueTerrabladeProjectile : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.timeLeft = 250;
 		Projectile.aiStyle = ProjAIStyleID.Beam;
-		AIType = ProjectileID.SwordBeam;
+		AIType = ProjectileID.TerraBeam;
 	}
 
     public override Color? GetAlpha(Color lightColor)
@@ -39,13 +41,26 @@ internal class TrueTerrabladeProjectile : ModProjectile
     }
 
     public override void AI()
-	{
-		//Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Green, 0f, 0f, 127, default, 1.1f).noGravity = true;
+	{  
 		Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
 	}
 
     public override void Kill(int timeLeft)
     {
-        Projectile.alpha++;
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
+        for (int i = 4; i < 31; i++)
+        {
+            float oldVelocityX = Projectile.oldVelocity.X * (30f / i);
+            float oldVelocityY = Projectile.oldVelocity.Y * (30f / i);
+
+            int terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.8f);
+            Main.dust[terraDust].noGravity = true;
+            Dust dust = Main.dust[terraDust];
+            dust.velocity *= 0.5f;
+
+            terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.4f);
+            dust = Main.dust[terraDust];
+            dust.velocity *= 0.05f;
+        }
     }
 }
