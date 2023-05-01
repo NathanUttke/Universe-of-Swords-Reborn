@@ -18,7 +18,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void SetDefaults()
         {
             Projectile.width = 40;
-            Projectile.height = 14;
+            Projectile.height = 24;
 
             Projectile.scale = 1f;
             Projectile.aiStyle = 1;
@@ -42,7 +42,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
-        public override Color? GetAlpha(Color lightColor) => Color.Cyan * Projectile.Opacity;
+        public override Color? GetAlpha(Color lightColor) => new Color(0, 162, 232, 40) * Projectile.Opacity;
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -57,7 +57,9 @@ namespace UniverseOfSwordsMod.Projectiles
                 projColor *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
                 Main.EntitySpriteDraw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, (float)i / 15f), SpriteEffects.None, 0);
             }
-            return true;
+
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            return false;
         }
 
         public override void Kill(int timeLeft)
