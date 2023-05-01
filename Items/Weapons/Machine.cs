@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -20,12 +21,12 @@ public class Machine : ModItem
 		Item.scale = 1.1f;
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
+		Item.useTime = 30;
 		Item.useAnimation = 20;
 		Item.damage = 62;
 		Item.knockBack = 3.5f;
 		Item.UseSound = SoundID.Item1;
-		Item.value = Item.sellPrice(0, 2, 0, 0);
+		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.shoot = ProjectileID.DeathLaser;
 		Item.shootSpeed = 8f;
 		Item.autoReuse = true;
@@ -47,12 +48,12 @@ public class Machine : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.BrokenHeroSword, 1)
-			.AddIngredient(Mod, "Orichalcon", 1)
-			.AddIngredient(Mod, "UpgradeMatter", 2)
+			.AddIngredient(ModContent.ItemType<Orichalcon>(), 1)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
 			.AddIngredient(ItemID.LaserRifle, 1)
-			.AddIngredient(Mod, "PrimeSword", 1)
-			.AddIngredient(Mod, "DestroyerSword", 1)
-			.AddIngredient(Mod, "TwinsSword", 1)
+			.AddIngredient(ModContent.ItemType<PrimeSword>(), 1)
+			.AddIngredient(ModContent.ItemType<DestroyerSword>(), 1)
+			.AddIngredient(ModContent.ItemType<TwinsSword>(), 1)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}

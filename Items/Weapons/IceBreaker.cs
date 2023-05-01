@@ -38,7 +38,7 @@ public class IceBreaker : ModItem
 		CreateRecipe()
 		.AddIngredient(ItemID.Frostbrand, 1)
 		.AddIngredient(ItemID.SnowBlock, 400)
-		.AddIngredient(Mod, "Orichalcon", 1)
+		.AddIngredient(ModContent.ItemType<Orichalcon>(), 1)
 		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();
