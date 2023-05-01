@@ -12,7 +12,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.width = 40;
             Projectile.height = 14;
 
-            Projectile.scale = 1f;
+            Projectile.scale = 1.25f;
             Projectile.aiStyle = 1;
             Projectile.penetrate = 2;
             Projectile.alpha = 255;
