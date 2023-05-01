@@ -29,7 +29,7 @@ public class SwordOfTheUniverseNew : ModItem
 		Item.useTime = 10;
 		Item.useAnimation = 20;
 
-		Item.damage = 130;
+		Item.damage = 150;
 		Item.knockBack = 20f;
 		Item.UseSound = SoundID.Item169;
 
