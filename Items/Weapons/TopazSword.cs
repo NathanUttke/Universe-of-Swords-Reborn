@@ -9,8 +9,8 @@ public class TopazSword : ModItem
 {
     public override void SetDefaults()
     {
-        Item.width = 32;
-        Item.height = 32;
+        Item.width = 36;
+        Item.height = 36;
         Item.rare = ItemRarityID.Yellow;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;
