@@ -10,9 +10,9 @@ public class AmethystSword : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
-		Item.scale = 1.2f;
+		Item.width = 36;
+		Item.height = 36;
+		Item.scale = 1f;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
