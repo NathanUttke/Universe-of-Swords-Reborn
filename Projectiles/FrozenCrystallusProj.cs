@@ -2,17 +2,25 @@ using Terraria.Audio;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Terraria.GameContent;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
     public class FrozenCrystallusProj : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Type] = 8;
+            ProjectileID.Sets.TrailingMode[Type] = 0;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 40;
             Projectile.height = 14;
 
-            Projectile.scale = 1.25f;
+            Projectile.scale = 1f;
             Projectile.aiStyle = 1;
             Projectile.penetrate = 2;
             Projectile.alpha = 255;
@@ -28,10 +36,28 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Main.rand.NextBool(2))
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Frost);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Frost, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.1f);
                 dust.noGravity = true;
                 dust.scale = 1.1f;
             }
+        }
+
+        public override Color? GetAlpha(Color lightColor) => Color.Cyan * Projectile.Opacity;
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+
+            Color projColor = Projectile.GetAlpha(lightColor);
+            Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
+
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                Vector2 drawPos = (Projectile.oldPos[i] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+                projColor *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
+                Main.EntitySpriteDraw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, (float)i / 15f), SpriteEffects.None, 0);
+            }
+            return true;
         }
 
         public override void Kill(int timeLeft)
