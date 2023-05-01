@@ -13,7 +13,6 @@ public class ScarledFlareGreatsword : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Scarlet Flare Greatsword");
-		Tooltip.SetDefault("Fires scarlet flare waves and ignites enemies with flames");
 	}
 
 	public override void SetDefaults()
@@ -34,8 +33,11 @@ public class ScarledFlareGreatsword : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
-
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
         float numberProjectiles = 3;
         float rotation = MathHelper.ToRadians(10f);
@@ -61,11 +63,6 @@ public class ScarledFlareGreatsword : ModItem
 			Main.dust[dust].noGravity = true;
 		}
 	}
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation = player.Center;
-    }
-
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
 		if (!target.HasBuff(BuffID.OnFire))
@@ -73,7 +70,6 @@ public class ScarledFlareGreatsword : ModItem
             target.AddBuff(BuffID.OnFire, 600, false);
         }
 	}
-
 	public override void AddRecipes()
 	{
 		CreateRecipe()
