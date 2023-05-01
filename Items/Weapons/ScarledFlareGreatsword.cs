@@ -24,7 +24,7 @@ public class ScarledFlareGreatsword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
 		Item.useAnimation = 25;
-		Item.damage = 120;
+		Item.damage = 125;
 		Item.knockBack = 8f;
 		Item.shootSpeed = 60f;
 		Item.shoot = ProjectileType<FlareCore>();
