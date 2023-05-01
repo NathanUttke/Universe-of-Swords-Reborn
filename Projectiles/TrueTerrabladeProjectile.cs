@@ -3,9 +3,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
-using static Terraria.ModLoader.PlayerDrawLayer;
 using Terraria.Audio;
 
 namespace UniverseOfSwordsMod.Projectiles;
