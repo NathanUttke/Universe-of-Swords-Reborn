@@ -29,7 +29,7 @@ public class SwordOfTheMultiverseNew : ModItem
 		Item.useTime = 7;
 		Item.useAnimation = 27;        
 
-        Item.damage = 175;
+        Item.damage = 190;
         Item.DamageType = DamageClass.Melee;
         Item.crit = 30;
         Item.knockBack = 2.5f;
