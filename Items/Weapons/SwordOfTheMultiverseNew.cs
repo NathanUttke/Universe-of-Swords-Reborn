@@ -27,7 +27,9 @@ public class SwordOfTheMultiverseNew : ModItem
 		Item.rare = ItemRarityID.Expert;
 		
 		Item.useTime = 7;
-		Item.useAnimation = 25;        
+		Item.useAnimation = 25;
+        Item.useStyle = ItemUseStyleID.Swing;
+        Item.UseSound = SoundID.Item169;
 
         Item.damage = 190;
         Item.DamageType = DamageClass.Melee;
@@ -35,18 +37,13 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.crit = 30;
 
         Item.scale = 1.20f;
-
 		Item.value = Item.sellPrice(0, 13, 0, 0);
 
-        Item.useStyle = ItemUseStyleID.Swing;
-		Item.UseSound = SoundID.Item169;
-
         Item.autoReuse = true;
+        Item.noUseGraphic = false;
 
         Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
         Item.shootSpeed = 30f;
-
-        Item.noUseGraphic = false;
 
         SacrificeTotal = 1;
         ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true; 
