@@ -29,7 +29,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.rare = ItemRarityID.Pink;
 
             Item.UseSound = SoundID.Item1;
-            Item.value = Item.sellPrice(0, 5, 0, 0);
+            Item.value = Item.sellPrice(0, 6, 0, 0);
             Item.autoReuse = true;
 
         }	

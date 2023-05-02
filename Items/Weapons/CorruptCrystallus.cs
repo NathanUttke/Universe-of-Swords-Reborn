@@ -41,12 +41,12 @@ public class CorruptCrystallus : ModItem
 
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
-		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(25f));
+		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(10f));
     }
     public override void AddRecipes()
 	{		
 		CreateRecipe()
-			.AddIngredient(Mod, "Crystallus", 1)
+			.AddIngredient(ModContent.ItemType<Crystallus>(), 1)
 			.AddIngredient(ItemID.DemoniteBar, 12)
 			.AddIngredient(ItemID.ShadowScale, 8)
 			.AddTile(TileID.Anvils)

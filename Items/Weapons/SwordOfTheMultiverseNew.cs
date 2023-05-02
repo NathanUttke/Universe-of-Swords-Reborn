@@ -27,11 +27,10 @@ public class SwordOfTheMultiverseNew : ModItem
 		Item.rare = ItemRarityID.Expert;
 		
 		Item.useTime = 7;
-		Item.useAnimation = 27;        
+		Item.useAnimation = 25;        
 
         Item.damage = 190;
         Item.DamageType = DamageClass.Melee;
-        Item.crit = 30;
         Item.knockBack = 2.5f;
 
         Item.scale = 1.20f;
@@ -66,11 +65,14 @@ public class SwordOfTheMultiverseNew : ModItem
 
         globalTimeWrapped %= 4f;
         globalTimeWrapped /= 2f;
+		
         if (globalTimeWrapped >= 1f)
         {
             globalTimeWrapped = 2f - globalTimeWrapped;
         }
+		
         globalTimeWrapped = globalTimeWrapped / 2f + 0.5f;
+		
         for (float i = 0f; i < 1f; i += 0.25f)
         {
             spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 8f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(90, 70, 255, 50), Item.velocity.X * 0.2f, origin, Item.scale, SpriteEffects.None, 0f);
@@ -93,6 +95,7 @@ public class SwordOfTheMultiverseNew : ModItem
                 Item.noUseGraphic = false;
                 Item.useStyle = ItemUseStyleID.Swing;
                 Item.useAnimation = 17;
+				Item.crit = 40;
             }
             else
             {
@@ -100,6 +103,7 @@ public class SwordOfTheMultiverseNew : ModItem
                 Item.noUseGraphic = true;
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.useAnimation = 27;
+				Item.crit = 30;
             }
         }
         else
@@ -107,8 +111,9 @@ public class SwordOfTheMultiverseNew : ModItem
             Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
             Item.noUseGraphic = false;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.scale = 1.20f;
+            Item.scale = 1.25f;
             Item.useAnimation = 27;
+			Item.crit = 30;
         }
         return true;
     }
@@ -186,7 +191,7 @@ public class SwordOfTheMultiverseNew : ModItem
 		{
             target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 700, true);
         }
-        if (!target.HasBuff(BuffID.Weak) && Main.rand.NextBool(2))
+        if (!target.HasBuff(BuffID.Weak))
         {
             target.AddBuff(BuffID.Weak, 400, true);
         }

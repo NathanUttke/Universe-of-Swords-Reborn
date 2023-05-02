@@ -20,7 +20,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
         {
             Item.width = 48;
             Item.height = 56;
-            Item.scale = 1.0f;
+            Item.scale = 1f;
 
             Item.rare = ItemRarityID.Cyan;
 
@@ -29,15 +29,16 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.useAnimation = 20;
             Item.UseSound = SoundID.Item1;
 
-            Item.damage = 66;
+            Item.damage = 65;
             Item.DamageType = DamageClass.Melee;
-            Item.knockBack = 8.0f;
+            Item.knockBack = 8f;
 
             Item.shoot = ModContent.ProjectileType<FrozenCrystallusProj>();
             Item.shootSpeed = 6f;
 
             Item.value = Item.sellPrice(0, 4, 0, 0);
             Item.autoReuse = true;
+            SacrificeTotal = 1;
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -54,7 +55,8 @@ namespace UniverseOfSwordsMod.Items.Weapons
             CreateRecipe()
             .AddIngredient(ModContent.ItemType<CorruptCrystallus>(), 1)
             .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
-            .AddIngredient(ItemID.FrostCore, 2)
+            .AddIngredient(ModContent.ItemType<Orichalcon>(), 1)
+            .AddIngredient(ItemID.IceBlock, 400)
             .AddTile(TileID.MythrilAnvil)
 			.Register();
         }

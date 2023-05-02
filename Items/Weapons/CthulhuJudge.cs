@@ -15,12 +15,12 @@ public class CthulhuJudge : ModItem
 	{
 		Item.width = 58;
 		Item.height = 60;
-		Item.scale = 1.1f;
+		Item.scale = 1.25f;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 30;
-		Item.damage = 24;
+		Item.damage = 23;
 		Item.knockBack = 6.5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 40, 0);

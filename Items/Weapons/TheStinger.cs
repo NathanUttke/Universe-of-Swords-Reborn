@@ -36,7 +36,7 @@ public class TheStinger : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		if (Main.rand.NextBool(3))
+		if (Main.rand.NextBool(2))
 		{
             Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(5f)), ProjectileID.HornetStinger, 10, knockback * 0.75f, player.whoAmI);
         }
@@ -45,12 +45,12 @@ public class TheStinger : ModItem
 
     public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ModContent.ItemType<SwordMatter>(), 50);
-		val.AddIngredient(ItemID.Vine, 4);
-		val.AddIngredient(ItemID.Stinger, 20);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+		CreateRecipe()
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)
+			.AddIngredient(ItemID.Vine, 4)
+			.AddIngredient(ItemID.Stinger, 20)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
