@@ -8,17 +8,16 @@ using UniverseOfSwordsMod.Buffs;
 using UniverseOfSwordsMod.Items.Materials;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using System;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class SwordOfTheMultiverseNew : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		DisplayName.SetDefault("Sword of the Multiverse");
-		Tooltip.SetDefault("'You only get what you give'");
-	}
+    public override void SetStaticDefaults()
+    {
+        DisplayName.SetDefault("Sword of the Multiverse");
+        Tooltip.SetDefault("'You only get what you give'");
+    }
 
     public override void SetDefaults()
     {
