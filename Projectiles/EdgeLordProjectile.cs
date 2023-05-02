@@ -4,10 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Humanizer.In;
-using static Terraria.ModLoader.PlayerDrawLayer;
-using log4net.Util;
-using Terraria.Graphics;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -23,8 +19,11 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.light = 0.5f;
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
+            Projectile.ArmorPenetration = 20;
+
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 10;
+
             Projectile.alpha = 100;
         }
         public override void AI()

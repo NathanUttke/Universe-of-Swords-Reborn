@@ -21,8 +21,8 @@ public class ScarledFlareGreatsword : ModItem
 		Item.height = 120;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 25;
-		Item.useAnimation = 25;
+		Item.useTime = 20;
+		Item.useAnimation = 20;
 		Item.damage = 125;
 		Item.knockBack = 8f;
 		Item.shootSpeed = 60f;

@@ -14,27 +14,24 @@ public class TrueTerrablade : ModItem
     {
         Item.damage = 125;
         Item.DamageType = DamageClass.Melee; 
-        SacrificeTotal = 1;
         Item.width = 92;
         Item.height = 108;
+
         Item.useTime = 15;
-        Item.useAnimation = 20;
+        Item.useAnimation = 15;
         Item.useStyle = ItemUseStyleID.Swing;
+
         Item.knockBack = 10f;
         Item.value = Item.sellPrice(0, 5, 0, 0);
+
         Item.shoot = ModContent.ProjectileType<TrueTerrabladeProjectile>();
         Item.shootSpeed = 18f;
+
         Item.rare = ItemRarityID.Purple;
         Item.UseSound = SoundID.Item60;
         Item.autoReuse = true;
         Item.useTurn = true;
-    }
-
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {
-        Projectile terraProj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, 0);
-        terraProj.scale = Main.rand.NextFloat(1.25f, 1.75f);
-        return false;
+        SacrificeTotal = 1;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

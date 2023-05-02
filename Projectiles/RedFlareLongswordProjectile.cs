@@ -7,7 +7,6 @@ using Terraria.GameContent;
 using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -23,6 +22,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.aiStyle = -1;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 300;
+            Projectile.ArmorPenetration = 10;
         }
 
         public override void AI()

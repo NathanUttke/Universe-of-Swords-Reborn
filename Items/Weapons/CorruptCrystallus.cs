@@ -9,26 +9,27 @@ public class CorruptCrystallus : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 44;
-		Item.height = 54;
-		Item.rare = ItemRarityID.Green;
+        Item.width = 44;
+        Item.height = 54;
+        Item.rare = ItemRarityID.Green;
 
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 50;
-		Item.useAnimation = 25;
+        Item.useStyle = ItemUseStyleID.Swing;
+        Item.useTime = 50;
+        Item.useAnimation = 25;
         Item.UseSound = SoundID.Item1;
 
         Item.damage = 18;
-		Item.knockBack = 5f;
+        Item.knockBack = 5f;
 
-		Item.shoot = Mod.Find<ModProjectile>("Corrupt").Type;
-		Item.shootSpeed = 5f;
-		
-		Item.value = Item.sellPrice(0, 1, 0, 0);
-		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
-	}
+        Item.shoot = Mod.Find<ModProjectile>("Corrupt").Type;
+        Item.shootSpeed = 5f;
+
+        Item.value = Item.sellPrice(0, 1, 0, 0);
+        Item.autoReuse = true;
+        Item.DamageType = DamageClass.Melee;
+        SacrificeTotal = 1;
+
+    }
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{	

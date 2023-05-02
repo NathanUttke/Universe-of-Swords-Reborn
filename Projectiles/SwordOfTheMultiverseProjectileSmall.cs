@@ -33,6 +33,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 6;
+            Projectile.ArmorPenetration = 40;
             AIType = ProjectileID.Bullet;
         }
 

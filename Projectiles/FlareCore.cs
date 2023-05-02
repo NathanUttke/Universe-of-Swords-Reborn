@@ -24,8 +24,10 @@ public class FlareCore : ModProjectile
         Projectile.tileCollide = false;
 
         Projectile.DamageType = DamageClass.Ranged;
+        Projectile.ArmorPenetration = 30;
+
         Projectile.usesLocalNPCImmunity = true;
-        Projectile.localNPCHitCooldown = 14;
+        Projectile.localNPCHitCooldown = 13;
         AIType = ProjectileID.Bullet;
     }
     public override void AI()

@@ -15,7 +15,6 @@ public class Poison : ModProjectile
         Projectile.scale = 1f;
         Projectile.aiStyle = 1;
         Projectile.friendly = true;
-        Projectile.hostile = false;
         Projectile.DamageType = DamageClass.Melee;
         Projectile.penetrate = 1;
         Projectile.alpha = 255;
@@ -23,12 +22,12 @@ public class Poison : ModProjectile
         Projectile.ignoreWater = true;
         Projectile.tileCollide = true;
         Projectile.extraUpdates = 1;
-        base.AIType = 14;
+        AIType = 14;
     }
 
-    public override void PostAI()
+    public override void AI()
     {
-        if (Main.rand.NextBool(1))
+        if (Main.rand.NextBool(2))
         {
             Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.JungleGrass, 0f, 0f, 0, default(Color), 1f);
             obj.noGravity = true;

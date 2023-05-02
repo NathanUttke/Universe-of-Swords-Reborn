@@ -30,12 +30,12 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item169;
 
-        Item.damage = 190;
+        Item.damage = 200;
         Item.DamageType = DamageClass.Melee;
         Item.knockBack = 2.5f;
         Item.crit = 30;
 
-        Item.scale = 1.20f;
+        Item.scale = 1.25f;
         Item.value = Item.sellPrice(0, 13, 0, 0);
 
         Item.autoReuse = true;

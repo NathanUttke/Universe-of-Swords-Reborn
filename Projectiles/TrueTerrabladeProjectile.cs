@@ -24,7 +24,7 @@ internal class TrueTerrabladeProjectile : ModProjectile
 		Projectile.penetrate = 1;		
 		Projectile.hostile = false;
 		Projectile.DamageType = DamageClass.Melee;
-		Projectile.scale = 1f;
+		Projectile.scale = 1.75f;
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
 		Projectile.timeLeft = 250;
@@ -35,14 +35,12 @@ internal class TrueTerrabladeProjectile : ModProjectile
     {
         return new Color(44, 217, 0, 0) * Projectile.Opacity;
     }
-
     public override void AI()
 	{
 		int newTerraDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.TerraBlade, 0f, 0f, 127, default, 1.1f);
         Main.dust[newTerraDust].noGravity = true;       
 		Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
 	}
-
     public override void Kill(int timeLeft)
     {
         SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
