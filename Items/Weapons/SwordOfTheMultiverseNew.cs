@@ -22,12 +22,12 @@ public class SwordOfTheMultiverseNew : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 94;
-		Item.height = 104;
-		Item.rare = ItemRarityID.Expert;
-		
-		Item.useTime = 7;
-		Item.useAnimation = 25;
+        Item.width = 94;
+        Item.height = 104;
+        Item.rare = ItemRarityID.Expert;
+
+        Item.useTime = 7;
+        Item.useAnimation = 25;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item169;
 
@@ -37,7 +37,7 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.crit = 30;
 
         Item.scale = 1.20f;
-		Item.value = Item.sellPrice(0, 13, 0, 0);
+        Item.value = Item.sellPrice(0, 13, 0, 0);
 
         Item.autoReuse = true;
         Item.noUseGraphic = false;
