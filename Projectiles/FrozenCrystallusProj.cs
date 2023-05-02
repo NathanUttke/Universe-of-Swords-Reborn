@@ -60,7 +60,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                Vector2 drawPos = Projectile.Size / 2f + Projectile.oldPos[i] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+                Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
                 projColor *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
                 Main.EntitySpriteDraw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, (float)i / 15f), spriteEffects, 0);
             }
