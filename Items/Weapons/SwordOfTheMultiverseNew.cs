@@ -20,8 +20,8 @@ public class SwordOfTheMultiverseNew : ModItem
 		Tooltip.SetDefault("'You only get what you give'");
 	}
 
-	public override void SetDefaults()
-	{
+    public override void SetDefaults()
+    {
         Item.width = 94;
         Item.height = 104;
         Item.rare = ItemRarityID.Expert;
@@ -47,7 +47,7 @@ public class SwordOfTheMultiverseNew : ModItem
 
         SacrificeTotal = 1;
         ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
-    }
+    }    
 
     public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
     {        
