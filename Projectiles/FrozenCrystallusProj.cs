@@ -17,7 +17,7 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void SetDefaults()
         {
-            Projectile.width = 40;
+            Projectile.width = 48;
             Projectile.height = 24;
 
             Projectile.scale = 1f;
