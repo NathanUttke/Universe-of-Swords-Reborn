@@ -21,11 +21,14 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.shoot = ModContent.ProjectileType<MechanicalProj>();
             Item.shootSpeed = 10f;
 
-            Item.damage = 95;
+            Item.damage = 90;
+            Item.DamageType = DamageClass.Melee;
+
+            Item.crit = 6;
             Item.knockBack = 8f;
 
             Item.UseSound = SoundID.Item1;
-            Item.value = Item.sellPrice(gold: 5);
+            Item.value = Item.sellPrice(0, 5, 0, 0);
             Item.autoReuse = true;
 
         }	
