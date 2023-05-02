@@ -25,7 +25,8 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.DamageType = DamageClass.Melee;
 
             Item.crit = 6;
-            Item.knockBack = 8f;
+            Item.knockBack = 6.5f;
+            Item.rare = ItemRarityID.Pink;
 
             Item.UseSound = SoundID.Item1;
             Item.value = Item.sellPrice(0, 5, 0, 0);
