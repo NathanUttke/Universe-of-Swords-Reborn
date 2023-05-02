@@ -32,6 +32,7 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.damage = 190;
         Item.DamageType = DamageClass.Melee;
         Item.knockBack = 2.5f;
+        Item.crit = 30;
 
         Item.scale = 1.20f;
 
