@@ -52,13 +52,13 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TwinsSword>()));
                     break;
                 case NPCID.TheDestroyer:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<DestroyerSword>()));
+                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<DestroyerSword>(), 1, 1, 1));
                     break;
                 case NPCID.Plantera:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Executioner>()));
+                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Executioner>(), 1, 1, 1));
                     break;
                 case NPCID.CultistBoss:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Doomsday>()));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Doomsday>(), 2, 1, 1));
                     break;
                 case NPCID.Paladin:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PaladinSword>(), 7, 1));
