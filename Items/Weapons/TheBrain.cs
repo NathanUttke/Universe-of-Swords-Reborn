@@ -25,7 +25,7 @@ public class TheBrain : ModItem
 		
 		Item.damage = 15;
 		Item.knockBack = 3f;
-		Item.scale = 1.1f;
+		Item.scale = 1.25f;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
