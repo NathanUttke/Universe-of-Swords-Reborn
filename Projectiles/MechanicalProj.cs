@@ -19,7 +19,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.width = 80;
             Projectile.height = 36;
 
-            Projectile.scale = 1.8f;
+            Projectile.scale = 2f;
             Projectile.aiStyle = 1;
             Projectile.penetrate = 8;
             Projectile.alpha = 255;
@@ -41,7 +41,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Projectile.scale > 0f)
             {
-                Projectile.scale -= 0.01f;
+                Projectile.scale -= 0.0075f;
             }
             else
             {
