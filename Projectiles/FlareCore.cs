@@ -13,25 +13,28 @@ public class FlareCore : ModProjectile
     {
         Projectile.width = 25;
         Projectile.height = 50;
-        Projectile.scale = 1.1f;
-        Projectile.aiStyle = 1;
-        Projectile.friendly = true;
-        Projectile.hostile = false;
-        Projectile.DamageType = DamageClass.Ranged;
+
+        Projectile.scale = 1.15f;
+        Projectile.aiStyle = ProjAIStyleID.Arrow;
+        Projectile.timeLeft = 300;
+
         Projectile.penetrate = -1;
+        Projectile.friendly = true;
         Projectile.ignoreWater = true;
         Projectile.tileCollide = false;
+
+        Projectile.DamageType = DamageClass.Ranged;
         Projectile.usesLocalNPCImmunity = true;
-        Projectile.localNPCHitCooldown = 15;
-        base.AIType = 14;
+        Projectile.localNPCHitCooldown = 14;
+        AIType = ProjectileID.Bullet;
+    }
+    public override void AI()
+    {
+        Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch, 0f, 0f, 100, default, 1f);
+        obj.noGravity = true;
+        obj.scale = 1.15f;
     }
 
-    public override void PostAI()
-    {      
-        Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.LifeDrain, 0f, 0f, 0, default, 1f);
-        obj.noGravity = true;
-        obj.scale = 1f;        
-    }
     public override bool PreDraw(ref Color lightColor)
     {
         Main.spriteBatch.End();

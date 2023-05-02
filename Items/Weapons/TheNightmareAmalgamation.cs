@@ -23,10 +23,10 @@ public class TheNightmareAmalgamation : ModItem
 		Item.useTime = 25;
 		Item.useAnimation = 25;
 		Item.damage = 115;
-		Item.knockBack = 10f;
+		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item71;
 		Item.shoot = ModContent.ProjectileType<Nightmare>();
-		Item.shootSpeed = 20f;
+		Item.shootSpeed = 30f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -35,7 +35,7 @@ public class TheNightmareAmalgamation : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, (int)(damage * 1.15f), knockback, player.whoAmI, 0f, 0f);	
+		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, (int)(damage * 1.20f), knockback, player.whoAmI, 0f, 0f);	
 		return false;
 	}
 

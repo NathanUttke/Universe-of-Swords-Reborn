@@ -18,11 +18,14 @@ public class TheBrain : ModItem
 		Item.height = 58;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
+		
 		Item.useTime = 40;
 		Item.useAnimation = 20;
+		Item.UseSound = SoundID.Item1;
+		
 		Item.damage = 15;
 		Item.knockBack = 3f;
-		Item.UseSound = SoundID.Item1;
+		Item.scale = 1.1f;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 

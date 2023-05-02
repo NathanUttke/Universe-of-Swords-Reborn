@@ -16,7 +16,7 @@ public class BowSword : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.scale = 1.1f;
+		Item.scale = 1.25f;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 35;
@@ -38,7 +38,7 @@ public class BowSword : ModItem
 		CreateRecipe()
 		.AddIngredient(ItemID.WoodenBow, 1)
 		.AddRecipeGroup("IronBar", 15)
-		.AddIngredient(Mod, "SwordMatter", 150)
+		.AddIngredient(Mod, "SwordMatter", 200)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

@@ -24,12 +24,12 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.light = 0.5f;
         }
-
         public override void AI()
         {
             base.AI();
             Vector2 vector9 = new(8f, 10f);
             float dustScale = 1.25f;
+
             Projectile.alpha -= 40;
             if (Projectile.alpha < 0)
             {
@@ -75,16 +75,17 @@ namespace UniverseOfSwordsMod.Projectiles
             else if (Projectile.alpha == 0)
             {            
                 
-                Vector2 vector11 = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * ((float)Math.PI / 24f) + 1 * (float)Math.PI) * vector9 - Projectile.rotation.ToRotationVector2() * 10f;
+                Vector2 dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * ((float)Math.PI / 24f) + 1 * (float)Math.PI) * vector9 - Projectile.rotation.ToRotationVector2() * 10f;
                 Dust redDust = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.Clentaminator_Green, 0f, 0f, 160)];
                 redDust.scale = dustScale;
                 redDust.noGravity = true;
-                redDust.position = Projectile.Center + vector11 + Projectile.velocity * 2f;
+                redDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
                 redDust.velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 2f * 8f - redDust.position) * 2f + Projectile.velocity * 2f;
+
                 Dust greenDust = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.Clentaminator_Red, 0f, 0f, 160, default, dustScale)];
-                vector11 = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * ((float)Math.PI / 24f) + 2 * (float)Math.PI) * vector9 - Projectile.rotation.ToRotationVector2() * 10f;
+                dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * ((float)Math.PI / 24f) + 2 * (float)Math.PI) * vector9 - Projectile.rotation.ToRotationVector2() * 10f;
                 greenDust.noGravity = true;
-                greenDust.position = Projectile.Center + vector11 + Projectile.velocity * 2f;
+                greenDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
                 greenDust.velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 2f * 8f - greenDust.position) * 2f + Projectile.velocity * 2f;
 
             }                       
@@ -92,6 +93,20 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void Kill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
+            for (int i = 4; i < 31; i++)
+            {
+                float oldVelocityX = Projectile.oldVelocity.X * (30f / i);
+                float oldVelocityY = Projectile.oldVelocity.Y * (30f / i);
+
+                int terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.Clentaminator_Green, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.25f);
+                Main.dust[terraDust].noGravity = true;
+                Dust dust = Main.dust[terraDust];
+                dust.velocity *= 0.5f;
+
+                terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.Clentaminator_Red, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.25f);
+                dust = Main.dust[terraDust];
+                dust.velocity *= 0.05f;
+            }
         }
     }
 }

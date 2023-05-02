@@ -29,19 +29,21 @@ public class VugarMutaterProjectile : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 1;
-		AIType = 14;        
-	}
 
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 16;
+
+        AIType = 14;        
+	}
     public override void AI()
     {
         base.AI();
         if (Main.rand.NextBool(2))
         {
-            Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.IceTorch, 0f, 0f, 127, default, 1.1f);
+            Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.IceTorch, 0f, 0f, 127, default, 1.15f);
             newDust.noGravity = true;
         }
     }
-
     public override bool PreDraw(ref Color lightColor)
     {
         Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;

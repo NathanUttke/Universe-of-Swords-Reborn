@@ -35,22 +35,20 @@ public class UltraMachine : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
-
-
 	public override void AddRecipes()
 	{		
 		CreateRecipe()
-			.AddIngredient(Mod, "Machine", 1)
+            .AddIngredient(ItemID.BrokenHeroSword, 1)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 5)
-			.AddIngredient(Mod, "DamascusBar", 20)
+			.AddIngredient(ModContent.ItemType<DamascusBar>(), 20)
 			.AddIngredient(ItemID.SoulofFright, 15)
 			.AddIngredient(ItemID.SoulofMight, 15)
 			.AddIngredient(ItemID.SoulofSight, 15)
 			.AddIngredient(ItemID.SpectreBar, 20)
-			.AddIngredient(Mod, "PrimeSword", 1)
-			.AddIngredient(Mod, "DestroyerSword", 1)
-			.AddIngredient(Mod, "TwinsSword", 1)
-			.AddIngredient(Mod, "MartianSaucerCore", 1)
+			.AddIngredient(ModContent.ItemType<PrimeSword>(), 1)
+			.AddIngredient(ModContent.ItemType<DestroyerSword>(), 1)
+			.AddIngredient(ModContent.ItemType<TwinsSword>(), 1)
+			.AddIngredient(ModContent.ItemType<MartianSaucerCore>(), 1)
 			.AddIngredient(ItemID.ShroomiteBar, 10)
 			.AddIngredient(ItemID.LihzahrdPowerCell, 5)
 			.AddTile(TileID.MythrilAnvil)
@@ -66,7 +64,7 @@ public class UltraMachine : ModItem
         float numberProjectiles = 3;
         float rotation = MathHelper.ToRadians(10f);
         position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 4f;
-        for (int i = 0; (float)i < numberProjectiles; i++)
+        for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
             Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, Item.shoot, damage, knockback, player.whoAmI);

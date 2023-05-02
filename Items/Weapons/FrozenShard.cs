@@ -34,7 +34,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.knockBack = 8.0f;
 
             Item.shoot = ModContent.ProjectileType<FrozenCrystallusProj>();
-            Item.shootSpeed = 5;
+            Item.shootSpeed = 6f;
 
             Item.value = Item.sellPrice(0, 4, 0, 0);
             Item.autoReuse = true;

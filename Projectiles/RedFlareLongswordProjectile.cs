@@ -22,12 +22,12 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
             Projectile.penetrate = -1;
+            Projectile.timeLeft = 300;
         }
 
         public override void AI()
         {
             base.AI();
-
             if (Projectile.ai[1] == 0f)
             {
                 Projectile.ai[1] = 1f;                     

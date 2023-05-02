@@ -28,7 +28,7 @@ public class Apocalypse : ModItem
         Item.UseSound = SoundID.Item116;
         Item.shoot = ProjectileID.ApprenticeStaffT3Shot;
         Item.shootSpeed = 10f;
-        Item.value = Item.sellPrice(0, 30, 0, 0);
+        Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
         SacrificeTotal = 1;
@@ -42,17 +42,16 @@ public class Apocalypse : ModItem
             Main.dust[dust].noGravity = true;
         }
     }
-
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        float spread = 0.783f;
+        float spread = 0.75f;
         float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
         double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
         double deltaAngle = spread / 4f;
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             double offsetAngle = startAngle + deltaAngle * i;
-            Projectile newProj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), Item.shoot, damage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
+            Projectile newProj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, damage, knockback, player.whoAmI, 0f, 0f);
             newProj.DamageType = DamageClass.MeleeNoSpeed;
         }
         return false;
@@ -60,14 +59,13 @@ public class Apocalypse : ModItem
 
     public override void AddRecipes()
     {
-
-        Recipe val = CreateRecipe(1);
-        val.AddIngredient(ItemID.ApprenticeStaffT3, 1);
-        val.AddIngredient(ItemID.HellstoneBar, 20);
-        val.AddIngredient(ItemID.MeteoriteBar, 20);
-        val.AddIngredient(Mod, "MartianSaucerCore", 1);
-        val.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2);
-        val.AddTile(TileID.LunarCraftingStation);
-        val.Register();
+        CreateRecipe()
+        .AddIngredient(ItemID.ApprenticeStaffT3, 1)
+        .AddIngredient(ItemID.HellstoneBar, 20)
+        .AddIngredient(ItemID.MeteoriteBar, 20)
+        .AddIngredient(Mod, "MartianSaucerCore", 1)
+        .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+        .AddTile(TileID.LunarCraftingStation)
+        .Register();
     }
 }

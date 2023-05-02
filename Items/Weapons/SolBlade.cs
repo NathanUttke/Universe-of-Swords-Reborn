@@ -22,12 +22,12 @@ public class SolBlade : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 80;
+		Item.damage = 79;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item70;
-		Item.shootSpeed = 40f;
+		Item.shootSpeed = 25f;
 		Item.shoot = Mod.Find<ModProjectile>("Armageddon").Type;
-		Item.value = Item.sellPrice(0, 50, 0, 0);
+		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -37,7 +37,7 @@ public class SolBlade : ModItem
 	{
 		if (Main.rand.NextBool(3))
 		{
-			int dust = Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.InfernoFork, 0f, 0f, 100, default(Color), 2f);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.InfernoFork, 0f, 0f, 100, default, 2f);
 			Main.dust[dust].noGravity = true;
 		}
 	}

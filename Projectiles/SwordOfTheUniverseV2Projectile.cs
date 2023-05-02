@@ -2,7 +2,6 @@
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.ID;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -20,8 +19,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.scale = Main.rand.NextFloat(0.75f, 1.35f);
             Projectile.Opacity = 0.5f;
             Projectile.light = 0.5f;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 14;
         }
         public override void AI()
         {
@@ -84,9 +81,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
-
-   
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);  
 
             return false;
         }
