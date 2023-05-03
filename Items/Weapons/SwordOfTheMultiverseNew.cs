@@ -16,7 +16,9 @@ public class SwordOfTheMultiverseNew : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Sword of the Multiverse");
-        Tooltip.SetDefault("'You only get what you give'");
+        Tooltip.SetDefault("'You only get what you give'\nPress left or right click for a alternate attack" +
+            "\nHold up or down for a alternate attack"
+            );
     }
 
     public override void SetDefaults()
@@ -87,30 +89,30 @@ public class SwordOfTheMultiverseNew : ModItem
         {
             if (player.controlUp && !player.controlDown)
             {
-                Item.scale = 4.5f;
-                Item.shoot = ProjectileID.None;
-                Item.noUseGraphic = false;
-                Item.useStyle = ItemUseStyleID.Swing;
-                Item.useAnimation = 17;
-				Item.crit = 40;
-            }
-            else
-            {
                 Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
                 Item.noUseGraphic = true;
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.useAnimation = 27;
-				Item.crit = 30;
+                Item.crit = 30;
+            }
+            else
+            {
+                Item.scale = 4.5f;
+                Item.shoot = ProjectileID.None;
+                Item.useAnimation = 13;
+                Item.crit = 40;
+                Item.noUseGraphic = false;
+                Item.useStyle = ItemUseStyleID.Swing;
             }
         }
         else
         {
             Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
-            Item.noUseGraphic = false;
-            Item.useStyle = ItemUseStyleID.Swing;
             Item.scale = 1.25f;
             Item.useAnimation = 27;
-			Item.crit = 30;
+            Item.crit = 30;
+            Item.noUseGraphic = false;
+            Item.useStyle = ItemUseStyleID.Swing;
         }
         return true;
     }
