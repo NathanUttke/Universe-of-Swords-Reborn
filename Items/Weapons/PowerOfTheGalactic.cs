@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -20,10 +21,10 @@ public class PowerOfTheGalactic : ModItem
         Item.height = 64;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 20;
-        Item.useAnimation = 20;
+        Item.useTime = 30;
+        Item.useAnimation = 15;
         Item.damage = 120;
-        Item.knockBack = 15f;
+        Item.knockBack = 8f;
         Item.scale = 1.25f;
         Item.shootSpeed = 10f;
         Item.UseSound = SoundID.Item1;
@@ -35,15 +36,15 @@ public class PowerOfTheGalactic : ModItem
 
     public override void AddRecipes()
     {
-        Recipe val = CreateRecipe(1);
-        val.AddIngredient(ItemID.FragmentSolar, 15);
-        val.AddIngredient(ItemID.FragmentVortex, 15);
-        val.AddIngredient(ItemID.FragmentNebula, 15);
-        val.AddIngredient(ItemID.FragmentStardust, 15);
-        val.AddIngredient(ItemID.LunarBar, 10);
-        val.AddIngredient(Mod, "LunarOrb", 1);
-        val.AddTile(TileID.LunarCraftingStation);
-        val.Register();
+        CreateRecipe()
+        .AddIngredient(ItemID.FragmentSolar, 15)
+        .AddIngredient(ItemID.FragmentVortex, 15)
+        .AddIngredient(ItemID.FragmentNebula, 15)
+        .AddIngredient(ItemID.FragmentStardust, 15)
+        .AddIngredient(ItemID.LunarBar, 8)
+        .AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
+        .AddTile(TileID.LunarCraftingStation)
+        .Register();
     }
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

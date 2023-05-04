@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -22,7 +21,7 @@ public class ClingerSword : ModItem
 		Item.UseSound = SoundID.Item100;
 		Item.shoot = ProjectileID.EyeFire;
 		Item.shootSpeed = 2.5f;
-		Item.value = Item.sellPrice(0, 3, 0, 0);
+		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

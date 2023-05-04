@@ -19,9 +19,9 @@ public class Crystallus : ModItem
 		Item.height = 46;
 		Item.rare = ItemRarityID.Blue;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 25;
-		Item.useAnimation = 25;
-		Item.damage = 10;
+		Item.useTime = 24;
+		Item.useAnimation = 24;
+		Item.damage = 11;
 		Item.knockBack = 3f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 60, 0);
@@ -44,7 +44,7 @@ public class Crystallus : ModItem
 		CreateRecipe()
 		.AddIngredient(ItemID.ManaCrystal, 5)
 		.AddIngredient(ItemID.FallenStar, 10)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 5)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 10)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

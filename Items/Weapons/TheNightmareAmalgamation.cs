@@ -20,13 +20,13 @@ public class TheNightmareAmalgamation : ModItem
 		Item.height = 110;
 		Item.rare = ItemRarityID.Purple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 25;
-		Item.useAnimation = 25;
+		Item.useTime = 23;
+		Item.useAnimation = 23;
 		Item.damage = 115;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item71;
 		Item.shoot = ModContent.ProjectileType<Nightmare>();
-		Item.shootSpeed = 30f;
+		Item.shootSpeed = 15f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 

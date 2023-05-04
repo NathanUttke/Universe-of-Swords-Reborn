@@ -24,7 +24,7 @@ public class ScarledFlareGreatsword : ModItem
 		Item.useTime = 20;
 		Item.useAnimation = 20;
 		Item.damage = 125;
-		Item.knockBack = 8f;
+		Item.knockBack = 7.5f;
 		Item.shootSpeed = 60f;
 		Item.shoot = ProjectileType<FlareCore>();
 		Item.UseSound = SoundID.Item45;

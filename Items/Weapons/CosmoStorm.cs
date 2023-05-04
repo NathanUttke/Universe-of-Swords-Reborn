@@ -20,17 +20,20 @@ public class CosmoStorm : ModItem
         Item.width = 86;
         Item.height = 86;
         Item.rare = ItemRarityID.Red;
-        Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 3f;
+
         Item.useTime = 70;
         Item.useAnimation = 20;
-        Item.damage = 105;
+        Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item15;
+
+        Item.damage = 130;
+        Item.DamageType = DamageClass.Melee;
+
         Item.shoot = ProjectileID.NebulaArcanum;
         Item.shootSpeed = 10f;
         Item.value = 650000;
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee;
         SacrificeTotal = 1;
     }
 
@@ -45,7 +48,7 @@ public class CosmoStorm : ModItem
         .AddIngredient(ItemID.NebulaArcanum, 1)
         .AddIngredient(ItemID.TrueExcalibur, 1)
         .AddIngredient(ItemID.LargeAmethyst, 4)
-        .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+        .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 5)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }
