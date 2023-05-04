@@ -5,8 +5,12 @@ The original mod creator, Gnom and Horrior, abandoned the mod but has endoesed t
 Credits:
 
 [Sprites]
+- HORRIOR
 - mutater
 - Kosky
 
 [Code]
-
+- Kosky
+- TheBlackAbyss
+- Gnome
+- Eldrazi 
