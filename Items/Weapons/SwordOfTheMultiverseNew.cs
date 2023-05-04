@@ -90,28 +90,45 @@ public class SwordOfTheMultiverseNew : ModItem
             if (player.controlUp && !player.controlDown)
             {
                 Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
-                Item.noUseGraphic = true;
-                Item.useStyle = ItemUseStyleID.Shoot;
                 Item.useAnimation = 27;
                 Item.crit = 30;
             }
             else
             {
-                Item.scale = 4.5f;
                 Item.shoot = ProjectileID.None;
                 Item.useAnimation = 13;
                 Item.crit = 40;
-                Item.noUseGraphic = false;
-                Item.useStyle = ItemUseStyleID.Swing;
             }
         }
         else
         {
             Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
-            Item.scale = 1.25f;
             Item.useAnimation = 27;
             Item.crit = 30;
+        }
+        return true;
+    }
+
+    public override bool? UseItem(Player player)
+    {
+        if (player.altFunctionUse == 2)
+        {
+            if (player.controlUp && !player.controlDown)
+            {
+                Item.useStyle = ItemUseStyleID.Shoot;
+                Item.noUseGraphic = true;
+            }
+            else
+            {
+                Item.noUseGraphic = false;
+                Item.scale = 4.5f;
+                Item.useStyle = ItemUseStyleID.Swing;
+            }
+        }
+        else
+        {
             Item.noUseGraphic = false;
+            Item.scale = 1.25f;
             Item.useStyle = ItemUseStyleID.Swing;
         }
         return true;
