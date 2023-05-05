@@ -18,7 +18,7 @@ public class PoisonSword : ModItem
 		Item.useTime = 60;
 		Item.useAnimation = 30;
 		Item.knockBack = 5f;
-		Item.damage = 45;
+		Item.damage = 40;
 		Item.shoot = ProjectileID.PoisonFang;
 		Item.shootSpeed = 5f;
 		Item.UseSound = SoundID.Item43;
