@@ -27,6 +27,9 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.aiStyle = -1;
             Projectile.light = 0.5f;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
+            Projectile.ArmorPenetration = 30;
         }
 
         public override void AI()
@@ -89,9 +92,9 @@ namespace UniverseOfSwordsMod.Projectiles
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, j / 15f), SpriteEffects.None, 0);
 
             }            
-            AlternateFinalFractalHelper empressBladeDrawer = default;
-            empressBladeDrawer.ColorStart = Color.HotPink;
-            empressBladeDrawer.Draw(Projectile, "EmpressBlade");
+            AlternateFinalFractalHelper newFinalSwordDrawer = default;
+            newFinalSwordDrawer.ColorStart = Color.HotPink;
+            newFinalSwordDrawer.Draw(Projectile, "EmpressBlade");
 
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
