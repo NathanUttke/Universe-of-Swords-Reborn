@@ -31,7 +31,8 @@ public class PianoSword2 : ModItem
         Item.shootSpeed = 15f;
         Item.value = 80000;
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+        Item.DamageType = DamageClass.Melee; 
+        SacrificeTotal = 1;
     }
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -58,9 +59,9 @@ public class PianoSword2 : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.JavelinFriendly, damage, knockback, player.whoAmI, 0f, 0f);
-        Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.JackOLantern, damage, knockback, player.whoAmI, 0f, 0f);
-        return true;
+        int projToShoot = Main.rand.Next(ProjectileID.QuarterNote, ProjectileID.TiedEighthNote);
+        Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, projToShoot, damage, knockback, player.whoAmI, 0f, 0f);
+        return false;
     }
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
