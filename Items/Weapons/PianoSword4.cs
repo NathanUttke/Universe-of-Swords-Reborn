@@ -55,16 +55,14 @@ public class PianoSword4 : ModItem
 		val.Register();
 	}
 
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.CrystalBullet, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.VampireKnife, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.HeatRay, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.BulletHighVelocity, damage, knockback, player.whoAmI, 0f, 0f);
-		return true;
-	}
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        int projToShoot = Main.rand.Next(ProjectileID.QuarterNote, ProjectileID.TiedEighthNote);
+        Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, projToShoot, damage, knockback, player.whoAmI, 0f, 0f);
+        return false;
+    }
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
 		target.AddBuff(144, 360, false);
 		target.AddBuff(30, 360, false);
