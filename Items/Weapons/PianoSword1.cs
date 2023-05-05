@@ -30,7 +30,8 @@ public class PianoSword1 : ModItem
 		Item.shootSpeed = 12f;
 		Item.value = 40000;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -41,28 +42,23 @@ public class PianoSword1 : ModItem
 
 	public override void AddRecipes()
 	{
-
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.LivingWoodPiano, 1);
-		val.AddIngredient(ItemID.CactusPiano, 1);
-		val.AddIngredient(ItemID.EbonwoodPiano, 1);
-		val.AddIngredient(ItemID.RichMahoganyPiano, 1);
-		val.AddIngredient(ItemID.PalmWoodPiano, 1);
-		val.AddIngredient(ItemID.BorealWoodPiano, 1);
-		val.AddIngredient(ItemID.Piano, 1);
-		val.AddTile(TileID.Sawmill);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ItemID.LivingWoodPiano, 1)
+		.AddIngredient(ItemID.CactusPiano, 1)
+		.AddIngredient(ItemID.EbonwoodPiano, 1)
+		.AddIngredient(ItemID.RichMahoganyPiano, 1)
+		.AddIngredient(ItemID.PalmWoodPiano, 1)
+		.AddIngredient(ItemID.BorealWoodPiano, 1)
+		.AddIngredient(ItemID.Piano, 1)
+		.AddTile(TileID.Sawmill)
+		.Register();
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.FrostburnArrow, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.FireArrow, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.FlaironBubble, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.CursedArrow, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.IchorArrow, damage, knockback, player.whoAmI, 0f, 0f);
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.Stake, damage, knockback, player.whoAmI, 0f, 0f);
-		return true;
+		int projToShoot = Main.rand.Next(ProjectileID.QuarterNote, ProjectileID.TiedEighthNote);
+		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, projToShoot, damage, knockback, player.whoAmI, 0f, 0f);
+		return false;
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
