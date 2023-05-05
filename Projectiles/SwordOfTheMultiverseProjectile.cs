@@ -28,8 +28,8 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.aiStyle = -1;
             Projectile.light = 0.5f;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
-            Projectile.ArmorPenetration = 30;
+            Projectile.localNPCHitCooldown = 9;
+            Projectile.ArmorPenetration = 40;
         }
 
         public override void AI()
@@ -51,6 +51,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             player.heldProj = Projectile.whoAmI;
             player.itemTime = player.itemAnimation = 2;
+
             Projectile.position = Projectile.Center;
             Projectile.velocity = Vector2.Zero;
             Projectile.Center = Main.MouseWorld;

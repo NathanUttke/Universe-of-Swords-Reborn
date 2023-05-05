@@ -26,6 +26,7 @@ public class PowerOfTheGalactic : ModItem
         Item.damage = 120;
         Item.knockBack = 8f;
         Item.scale = 1.25f;
+		Item.shoot = ProjectileID.NebulaBlaze2;
         Item.shootSpeed = 10f;
         Item.UseSound = SoundID.Item1;
         Item.value = 650500;

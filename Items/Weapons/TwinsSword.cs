@@ -16,8 +16,8 @@ public class TwinsSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
+		Item.width = 58;
+		Item.height = 58;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;

@@ -4,8 +4,8 @@ This continuation aims to make the mod better by reworking, respriting and balan
 Credits:
 
 [Sprites]
-- HORRIOR
 - mutater
+- HORRIOR
 - Kosky
 
 [Code]

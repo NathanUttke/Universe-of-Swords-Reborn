@@ -17,7 +17,7 @@ public class StarSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
+		Item.width = 60;
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
@@ -29,7 +29,7 @@ public class StarSword : ModItem
 		Item.shootSpeed = 9.25f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 1, 20, 0);
-		Item.autoReuse = false;
+		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 		
 		SacrificeTotal = 1;
 	}
