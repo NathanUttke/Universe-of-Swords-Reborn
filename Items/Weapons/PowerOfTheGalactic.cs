@@ -21,8 +21,8 @@ public class PowerOfTheGalactic : ModItem
         Item.height = 64;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 30;
-        Item.useAnimation = 15;
+        Item.useTime = 26;
+        Item.useAnimation = 13;
         Item.damage = 120;
         Item.knockBack = 8f;
         Item.scale = 1.25f;
