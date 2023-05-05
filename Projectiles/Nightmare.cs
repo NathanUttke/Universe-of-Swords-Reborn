@@ -1,10 +1,7 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,15 +13,16 @@ internal class Nightmare : ModProjectile
     {
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
         Main.projFrames[Projectile.type] = 4;
     }
     public override void SetDefaults()
     {
-        Projectile.width = 80;
-        Projectile.height = 112;
-        Projectile.scale = 0.65f;
+        Projectile.width = 94;
+        Projectile.height = 62;
+        Projectile.scale = 1f;
         Projectile.friendly = true;
-        Projectile.penetrate = 1;
+        Projectile.penetrate = 2;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
@@ -32,20 +30,11 @@ internal class Nightmare : ModProjectile
 
     public override void AI()
     {
-        float maxDetectRadius = 300f; 
-        float projSpeed = 20f; 
+        float maxDetectRadius = 250f; 
+        float projSpeed = 15f; 
 
-        Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch, 0f, 0f, 0, default, 1f);
-        obj.noGravity = true;
-        obj.scale = 1f;
-
-        Dust obj2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch, 0f, 0f, 0, default, 1f);
-        obj2.noGravity = true;
-        obj2.scale = 1.5f;
-
-        Dust obj3 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch, 0f, 0f, 0, default, 1f);
-        obj3.noGravity = true;
-        obj3.scale = 2f;
+        Dust skullDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, 0f, 0f, 100, default, 1.5f);
+        skullDust.noGravity = true;
 
         Projectile.frameCounter++;
         if (Projectile.frameCounter >= 8)
