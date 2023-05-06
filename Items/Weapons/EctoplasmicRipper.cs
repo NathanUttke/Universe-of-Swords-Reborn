@@ -9,30 +9,31 @@ public class EctoplasmicRipper : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Steals mana points upon hit");
+		Tooltip.SetDefault("Steals mana upon hitt");
 	}
 
 	public override void SetDefaults()
-	{
-		Item.damage = 75;
-		Item.crit = 2;
-		Item.DamageType = DamageClass.Magic; 
-		Item.width = 54;
-		Item.height = 54;
+	{		
+		Item.crit = 2;		
+		Item.width = 52;
+		Item.height = 52;
 
 		Item.useTime = 15;
 		Item.useAnimation = 15;
 		Item.useStyle = ItemUseStyleID.Swing;
+        Item.UseSound = SoundID.Item103;
 
-		Item.knockBack = 6f;
+        Item.damage = 75;
+        Item.DamageType = DamageClass.Magic;
+
+        Item.knockBack = 6f;
 		Item.value = Item.sellPrice(0, 1, 40, 0);
 		Item.rare = ItemRarityID.Cyan;
-		Item.scale = 1.25f;
-		Item.UseSound = SoundID.Item103;
+		Item.scale = 1.25f;		
 		Item.autoReuse = true;
-		Item.useTurn = true;
+		Item.useTurn = false;
 
-		Item.mana = 15;
+		Item.mana = 5;
         SacrificeTotal = 1;
     }
 
@@ -48,7 +49,7 @@ public class EctoplasmicRipper : ModItem
 	public override void AddRecipes()
 	{		
 		CreateRecipe()
-			.AddIngredient(ItemID.SpectreBar, 15)
+			.AddIngredient(ItemID.SpectreBar, 12)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}
@@ -56,10 +57,7 @@ public class EctoplasmicRipper : ModItem
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 	{
 		int healingAmt = damage / 8;
-		if (Main.rand.NextBool(3))
-		{
-            player.statMana += healingAmt;
-            player.HealEffect(healingAmt, true);
-        }		
+		player.statMana += healingAmt;
+		player.ManaEffect(healingAmt);
 	}
 }

@@ -69,6 +69,7 @@ public class TheNightmareAmalgamation : ModItem
 		.AddIngredient(Mod, "Executioner", 1)
 		.AddIngredient(Mod, "Doomsday", 1)
 		.AddIngredient(ModContent.ItemType<DragonsDeath>(), 1)
+		.AddIngredient(ModContent.ItemType<PurpleRuneBlade>(), 1)
 		.AddTile(TileID.LunarCraftingStation)
 		.Register();
 		CreateRecipe()
@@ -83,6 +84,7 @@ public class TheNightmareAmalgamation : ModItem
 		.AddIngredient(Mod, "Executioner", 1)
 		.AddIngredient(Mod, "Doomsday", 1)
 		.AddIngredient(ModContent.ItemType<DragonsDeath>(), 1)
+		.AddIngredient(ModContent.ItemType<PurpleRuneBlade>(), 1)
 		.AddTile(TileID.LunarCraftingStation)
 		.Register();
 	}

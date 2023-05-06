@@ -64,7 +64,22 @@ internal class Nightmare : ModProjectile
 
         Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
     }
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        Player owner = Main.player[Projectile.owner];
 
+        if (!target.HasBuff(BuffID.ShadowFlame))
+        {
+            target.AddBuff(BuffID.ShadowFlame, 500);
+        }
+
+        if (Main.rand.NextBool(3))
+        {
+            target.AddBuff(153, 800, false);
+            owner.statLife += 1;
+            owner.HealEffect(1, true);
+        }
+    }
     public NPC FindClosestNPC(float maxDetectDistance)
     {
         NPC closestNPC = null;
@@ -124,16 +139,5 @@ internal class Nightmare : ModProjectile
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.PurpleTorch, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default, 1f);
         }
         SoundEngine.PlaySound(SoundID.Dig, new Vector2(Projectile.position.X, Projectile.position.Y));
-    }
-
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-        Player owner = Main.player[Projectile.owner];
-        if (Main.rand.NextBool(3))
-        {
-            target.AddBuff(153, 800, false);
-            owner.statLife += 1;
-            owner.HealEffect(1, true);
-        }
     }
 }

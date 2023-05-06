@@ -29,20 +29,27 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.velocity *= 0.95f;
             Projectile.ai[0] += 1f;
 
-            if (Projectile.ai[0] > 200f) 
+            if (Projectile.ai[0] == 180f) 
             { 
                 Projectile.Kill();
             }
 
-            if (Projectile.ai[0] % 30f == 0)
-            {                
-                for (int i = 0; i < 20; i++)
+            if (Projectile.ai[1] == 0f)
+            {
+                Projectile.ai[1] = 1f;
+                for (int i = 0; i < 21; i++)
                 {
-                    Dust newDust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, Projectile.velocity.X, Projectile.velocity.Y)];
-                    newDust.velocity = newDust.velocity.RotatedByRandom(MathHelper.ToRadians(Projectile.ai[0]));
+                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.VilePowder, Projectile.velocity.X, Projectile.velocity.Y);
                 }
-            }   
+            }
         }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            if (!target.HasBuff(BuffID.ShadowFlame))
+            {
+                target.AddBuff(BuffID.ShadowFlame, 250);
+            }
+        }
     }
 }

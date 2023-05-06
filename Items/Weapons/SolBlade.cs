@@ -20,8 +20,10 @@ public class SolBlade : ModItem
 		Item.scale = 1f;
 		Item.rare = -11;
 		Item.useStyle = ItemUseStyleID.Swing;
+
 		Item.useTime = 20;
 		Item.useAnimation = 20;
+
 		Item.damage = 79;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item70;

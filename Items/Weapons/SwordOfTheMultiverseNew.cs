@@ -185,20 +185,21 @@ public class SwordOfTheMultiverseNew : ModItem
 
     public override void AddRecipes()
 	{
-        CreateRecipe()
-            .AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1)
-            .AddIngredient(ModContent.ItemType<SwordOfTheUniverseNew>(), 1)
-            .AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1)
-            .AddIngredient(ModContent.ItemType<UltraMachine>(), 1)
-            .AddIngredient(ModContent.ItemType<GnomBlade>(), 1)
-            .AddIngredient(ModContent.ItemType<DamascusBar>(), 50)
-            .AddIngredient(ModContent.ItemType<Orichalcon>(), 50)
-            .AddIngredient(ItemID.LunarBar, 25)
-            .AddIngredient(ModContent.ItemType<LunarOrb>(), 2)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)
-            .AddIngredient(ModContent.ItemType<UselessWeapon>(), 1)
-            .AddTile(TileID.LunarCraftingStation)
-			.Register();
+
+        Recipe newRecipe = CreateRecipe();
+        newRecipe.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1);
+        newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheUniverseNew>(), 1);
+        newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1);
+        newRecipe.AddIngredient(ModContent.ItemType<UltraMachine>(), 1);
+        newRecipe.AddIngredient(ModContent.ItemType<GnomBlade>(), 1);
+        newRecipe.AddIngredient(ModContent.ItemType<DamascusBar>(), 50);
+        newRecipe.AddIngredient(ModContent.ItemType<Orichalcon>(), 50);
+        newRecipe.AddIngredient(ItemID.LunarBar, 25);
+        newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
+        newRecipe.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15);
+        newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
+        newRecipe.AddTile(TileID.LunarCraftingStation);
+        newRecipe.Register();
 	}
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
