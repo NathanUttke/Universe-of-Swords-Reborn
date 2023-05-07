@@ -38,8 +38,6 @@ public class IceSword : ModItem
     }
     public override void AddRecipes()
     {
-
-
         Recipe val = CreateRecipe(1);
         val.AddIngredient(ItemID.IceBlock, 25);
         val.AddTile(TileID.WorkBenches);

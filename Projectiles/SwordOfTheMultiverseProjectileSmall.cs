@@ -73,7 +73,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
 
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, j / 15f), SpriteEffects.None, 0);
-
+               //Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale / j + 1, SpriteEffects.None, 0);
             }
             return true;
         }

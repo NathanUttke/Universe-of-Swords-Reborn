@@ -22,7 +22,7 @@ public class CosmoStorm : ModItem
         Item.rare = ItemRarityID.Red;
         Item.knockBack = 3f;
 
-        Item.useTime = 70;
+        Item.useTime = 40;
         Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item15;

@@ -29,6 +29,7 @@ public class FixedSwordOfPower : ModItem
 		Item.value = 18000;
 		Item.shoot = ProjectileID.Bone;
 		Item.shootSpeed = 16f;
+		Item.scale = 1.25f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -46,7 +47,9 @@ public class FixedSwordOfPower : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 0.5f + Main.rand.Next(0, 10)), knockback, player.whoAmI);
+		Projectile boneProj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * 0.60f), knockback, player.whoAmI);
+		boneProj.penetrate = 2;
+		boneProj.scale = 8.25f;
 		return false;
     }
 }

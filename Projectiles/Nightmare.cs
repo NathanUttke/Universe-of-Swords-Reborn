@@ -22,7 +22,7 @@ internal class Nightmare : ModProjectile
         Projectile.height = 62;
         Projectile.scale = 1f;
         Projectile.friendly = true;
-        Projectile.penetrate = 2;
+        Projectile.penetrate = 4;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
