@@ -32,9 +32,12 @@ namespace UniverseOfSwordsMod.Common.GlobalItems
                     case ItemID.WallOfFleshBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<BiggoronSword>(), 1);
                         break;
+                    case ItemID.DestroyerBossBag:
+                        player.QuickSpawnItem(entitySource, ModContent.ItemType<DestroyerSword>(), 1);
+                        break;
                     case ItemID.TwinsBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<TwinsSword>(), 1);
-                        break;
+                        break;                    
                     case ItemID.SkeletronPrimeBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<PrimeSword>(), 1);
                         break;
