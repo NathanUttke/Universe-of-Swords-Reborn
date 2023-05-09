@@ -17,35 +17,32 @@ namespace UniverseOfSwordsMod.Common.GlobalItems
             {
                 switch (arg)
                 {
-                    case 3319:
+                    case ItemID.EyeOfCthulhuBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<CthulhuJudge>(), 1);
                         break;
-                    case 3320:
+                    case ItemID.EaterOfWorldsBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<TheEater>(), 1);
                         break;
-                    case 3321:
+                    case ItemID.BrainOfCthulhuBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<TheBrain>(), 1);
                         break;
-                    case 3323:
+                    case ItemID.SkeletronBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<SwordOfPower>(), 1);
                         break;
-                    case 3324:
+                    case ItemID.WallOfFleshBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<BiggoronSword>(), 1);
                         break;
-                    case 3326:
+                    case ItemID.TwinsBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<TwinsSword>(), 1);
                         break;
-                    case 3327:
+                    case ItemID.SkeletronPrimeBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<PrimeSword>(), 1);
                         break;
-                    case 3328:
+                    case ItemID.PlanteraBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<Executioner>(), 1);
                         break;
-                    case 3330:
+                    case ItemID.FishronBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<DragonsDeath>(), 1);
-                        break;
-                    case 3331:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<Doomsday>(), 1);
                         break;
                 }
             }
