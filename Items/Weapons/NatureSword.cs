@@ -56,7 +56,7 @@ public class NatureSword : ModItem
 		.AddIngredient(ItemID.Seed, 10)
 		.AddIngredient(ItemID.Daybloom, 5)
 		.AddIngredient(ItemID.DirtBlock, 100)
-		.AddIngredient(Mod, "SwordMatter", 40)
+		.AddIngredient(Mod, "SwordMatter", 100)
 		.AddTile(TileID.Anvils)
 		.Register();
 		CreateRecipe()
@@ -64,7 +64,7 @@ public class NatureSword : ModItem
 		.AddIngredient(ItemID.Seed, 10)
 		.AddIngredient(ItemID.Daybloom, 5)
 		.AddIngredient(ItemID.DirtBlock, 100)
-		.AddIngredient(Mod, "SwordMatter", 40)
+		.AddIngredient(Mod, "SwordMatter", 100)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

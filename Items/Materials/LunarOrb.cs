@@ -18,7 +18,7 @@ public class LunarOrb : ModItem
 		Item.maxStack = 999;
 		Item.value = 700000;
 		Item.rare = ItemRarityID.Cyan;
-		SacrificeTotal = 25;
+		SacrificeTotal = 20;
 	}
 
 	public override void AddRecipes()

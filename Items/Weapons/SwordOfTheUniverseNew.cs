@@ -26,10 +26,10 @@ public class SwordOfTheUniverseNew : ModItem
 		Item.crit = 20;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 10;
+		Item.useTime = 8;
 		Item.useAnimation = 20;
 
-		Item.damage = 150;
+		Item.damage = 190;
 		Item.knockBack = 20f;
 		Item.UseSound = SoundID.Item169;
 

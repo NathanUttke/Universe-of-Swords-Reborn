@@ -23,7 +23,7 @@ public class ScarletFlareCore : ModItem
 		Item.maxStack = 99;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.rare = ItemRarityID.Red;        
-		SacrificeTotal = 25;        
+		SacrificeTotal = 3;        
     }
 
     public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

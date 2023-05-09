@@ -37,11 +37,10 @@ public class SapphireSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-								Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.Sapphire, 5);
-		val.AddTile(TileID.Anvils);
-		val.Register();
+	{		
+		CreateRecipe()
+		.AddIngredient(ItemID.Sapphire, 5)
+		.AddTile(TileID.Anvils)
+		.Register()
 	}
 }

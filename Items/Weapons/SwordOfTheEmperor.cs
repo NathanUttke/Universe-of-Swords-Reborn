@@ -48,14 +48,14 @@ public class SwordOfTheEmperor : ModItem
     {
         if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
         {
-            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 200, true);
+            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 300, true);
         }
     }
     public override void OnHitPvp(Player player, Player target, int damage, bool crit)
     {
         if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
         {
-            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 200, true);
+            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 300, true);
         }
     }
 }

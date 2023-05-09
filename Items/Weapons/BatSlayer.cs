@@ -9,7 +9,7 @@ public class BatSlayer : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Inflicts Confused debuff on enemies");
+		Tooltip.SetDefault("Inflicts Confused debuff on enemies\nDeals 10% more damage to bat enemies");
 	}
 
 	public override void SetDefaults()
@@ -25,16 +25,17 @@ public class BatSlayer : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
 	{
 		player.itemLocation.Y -= 1f * player.gravDir;
 	}
-
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
 		target.AddBuff(31, 360, false);
+		
 	}
 }

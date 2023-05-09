@@ -17,10 +17,10 @@ public class ClingerSword : ModItem
 		Item.useTime = 40;
 		Item.useAnimation = 20;
 		Item.damage = 50;
-		Item.knockBack = 5f;
+		Item.knockBack = 4.5f;
 		Item.UseSound = SoundID.Item100;
 		Item.shoot = ProjectileID.EyeFire;
-		Item.shootSpeed = 2.5f;
+		Item.shootSpeed = 3f;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
