@@ -34,7 +34,20 @@ public class SuperInflation : ModItem
 		SacrificeTotal = 1;
 	}
 
-	public override void AddRecipes()
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        float numberProjectiles = 4;
+        float rotation = MathHelper.ToRadians(10f);
+        position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 10f;
+        for (int i = 0; i < numberProjectiles; i++)
+        {
+            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy((double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
+            Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
+        }
+        return false;
+    }
+
+    public override void AddRecipes()
 	{		
 		CreateRecipe()
 		.AddIngredient(ModContent.ItemType<Inflation>(), 1)
