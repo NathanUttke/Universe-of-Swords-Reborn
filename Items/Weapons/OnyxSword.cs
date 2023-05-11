@@ -37,7 +37,7 @@ public class OnyxSword : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-        .AddIngredient(Mod, "SwordMatter", 400)
+        .AddIngredient(ModContent.ItemType<OnyxSword>(), 400)
         .AddIngredient(ItemID.OnyxBlaster, 1)
         .AddTile(TileID.MythrilAnvil)
         .Register();
@@ -50,7 +50,8 @@ public class OnyxSword : ModItem
         if (swingCount == 3)
         {
             swingCount = 0;
-            return true;
+            Projectile blackBolt = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+            blackBolt.DamageType = DamageClass.Melee;
         }
         return false;
     }

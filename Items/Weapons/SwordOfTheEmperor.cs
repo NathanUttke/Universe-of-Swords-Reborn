@@ -23,7 +23,7 @@ public class SwordOfTheEmperor : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 20;
         Item.useAnimation = 20;
-        Item.damage = 90;
+        Item.damage = 100;
         Item.knockBack = 3f;
         Item.UseSound = SoundID.Item1;
         Item.value = Item.sellPrice(0, 8, 0, 0);
