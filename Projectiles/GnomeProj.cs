@@ -21,8 +21,8 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.friendly = true;
-            Projectile.ignoreWater = false;
-            Projectile.tileCollide = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
             Projectile.width = 32;
             Projectile.height = 30;
             Projectile.alpha = 64;
@@ -30,12 +30,11 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.DamageType = DamageClass.Melee;
             Projectile.scale = 1.125f;
             Projectile.light = 0.25f;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 14;
+            Projectile.extraUpdates = 1;
+            Projectile.ArmorPenetration = 10;
             AIType = ProjectileID.Bullet;
-        }
-
-        public override void AI()
-        {
-            base.AI();
         }
 
         public override Color? GetAlpha(Color lightColor) => Color.White;
