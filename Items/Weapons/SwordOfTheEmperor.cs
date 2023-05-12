@@ -23,7 +23,7 @@ public class SwordOfTheEmperor : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 20;
         Item.useAnimation = 20;
-        Item.damage = 100;
+        Item.damage = 90;
         Item.knockBack = 3f;
         Item.UseSound = SoundID.Item1;
         Item.value = Item.sellPrice(0, 8, 0, 0);
@@ -48,14 +48,29 @@ public class SwordOfTheEmperor : ModItem
     {
         if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
         {
-            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 300, true);
+            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 400, true);
+        }
+
+        if (!target.HasBuff(BuffID.Weak))
+        {
+            target.AddBuff(BuffID.Weak, 400, true);
+        }
+
+        if (!target.HasBuff(BuffID.Ichor))
+        {
+            target.AddBuff(BuffID.Ichor, 400, true);
+        }
+
+        if (crit && Main.rand.NextBool(5) && !target.HasBuff(BuffID.Midas))
+        {
+            target.AddBuff(BuffID.Midas, 200, true);
         }
     }
     public override void OnHitPvp(Player player, Player target, int damage, bool crit)
     {
-        if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
+        if (!target.HasBuff(BuffID.Weak))
         {
-            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 300, true);
+            target.AddBuff(BuffID.Weak, 300, true);
         }
     }
 }
