@@ -15,8 +15,8 @@ public class GnomBlade : ModItem
 		Item.rare = ItemRarityID.Red;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 16;
-		Item.useAnimation = 14;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
 
 		Item.damage = 125;
 		Item.knockBack = 10f;
@@ -24,6 +24,7 @@ public class GnomBlade : ModItem
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
+		Item.crit = 8;
 
 		Item.shoot = ModContent.ProjectileType<GnomeProj>();
 		Item.shootSpeed = 20f;
@@ -41,6 +42,7 @@ public class GnomBlade : ModItem
 			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
 			.AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+			.AddIngredient(ModContent.ItemType<VugarMutater>(), 1)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();
 	}
