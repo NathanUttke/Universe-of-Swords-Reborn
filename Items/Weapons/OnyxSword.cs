@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -37,7 +38,8 @@ public class OnyxSword : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-        .AddIngredient(ModContent.ItemType<OnyxSword>(), 400)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 4)
+        .AddIngredient(ItemID.SoulofNight, 12)
         .AddIngredient(ItemID.OnyxBlaster, 1)
         .AddTile(TileID.MythrilAnvil)
         .Register();
