@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using UniverseOfSwordsMod.Items;
 using Terraria.ID;
 using Terraria.Chat;
 using Terraria.Localization;
@@ -21,6 +20,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             PlayerNameCondition playerNameCondition = new();
             LeadingConditionRule leadingConditionRule = new(playerNameCondition);
             Conditions.NotExpert condition = new();
+            Conditions.IsHardmode hardModeCondition = new();
 
             if (npc.lifeMax > 10 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly)
             {
@@ -33,6 +33,10 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
 
             switch (npc.type)
             {
+                case NPCID.GoblinWarrior:
+                case NPCID.GoblinThief:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GoblinKnife>(), 2, 1, 1));
+                    break;
                 case NPCID.EnchantedSword:
                     npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 4, 8), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 8, 12)));
                     break;
@@ -59,9 +63,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     break;
                 case NPCID.CultistBoss:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Doomsday>(), 2, 1, 1));
-                    break;
-                case NPCID.Paladin:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PaladinSword>(), 7, 1));
                     break;
                 case NPCID.MartianSaucerCore:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<MartianSaucerCore>(), 2, 1));
@@ -99,12 +100,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.DarkCaster:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WaterBoltSword>(), 40, 1));
                     break;
-                case NPCID.RustyArmoredBonesAxe:
-                case NPCID.RustyArmoredBonesFlail:
-                case NPCID.RustyArmoredBonesSword:
-                case NPCID.RustyArmoredBonesSwordNoArmor:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<RustySword>(), 150, 1));
-                    break;
                 case NPCID.DukeFishron:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DragonsDeath>(), 4, 1));
                     break;
@@ -114,9 +109,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.BlackRecluse:
                 case NPCID.BlackRecluseWall:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PoisonSword>(), 70, 1));
-                    break;
-                case NPCID.GoblinSummoner:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PhantomScimitar>(), 6, 1));
                     break;
                 case NPCID.DungeonGuardian:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HaloOfHorrors>(), 100, 1));
