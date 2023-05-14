@@ -1,15 +1,17 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TrueTerrablade : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        DisplayName.SetDefault("Super Terra Blade");
+    }
     public override void SetDefaults()
     {
         Item.damage = 125;

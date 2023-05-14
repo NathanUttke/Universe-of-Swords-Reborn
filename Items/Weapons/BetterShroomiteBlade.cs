@@ -31,12 +31,17 @@ public class BetterShroomiteBlade : ModItem
 		SacrificeTotal = 1;
 	}
 
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+		UniverseUtils.EmitHammushProjectiles(player, player.whoAmI, Item, hitbox, Item.damage, ProjectileID.Mushroom);
+    }
+
     public override void AddRecipes()
 	{		
 		CreateRecipe()
 		.AddIngredient(ModContent.ItemType<ShroomiteBlade>(), 1)
 		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
-		.AddIngredient(ItemID.ChlorophyteBar, 12)
+		.AddIngredient(ItemID.ShroomiteBar, 15)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();
 	}

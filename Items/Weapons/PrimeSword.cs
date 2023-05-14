@@ -34,9 +34,9 @@ public class PrimeSword : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		Projectile bombProj = Projectile.NewProjectileDirect(source, position, velocity, Item.shoot, Item.damage / 2, knockback, player.whoAmI);
-		bombProj.hostile = false;
-		bombProj.friendly = true;
+		Projectile bombProj = Projectile.NewProjectileDirect(source, position, velocity, type, Item.damage / 2, knockback, player.whoAmI);
+        bombProj.friendly = true;
+        bombProj.hostile = false;		
 		return false;
     }
 }

@@ -15,7 +15,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 13;
-            ProjectileID.Sets.TrailingMode[Type] = 2;
+            ProjectileID.Sets.TrailingMode[Type] = 3;
         }
         public override void SetDefaults()
         {
@@ -44,22 +44,23 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             SpriteBatch spriteBatch = Main.spriteBatch;
             SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-            Texture2D texture = TextureAssets.Projectile[Type].Value;
-            Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);            
+            Texture2D texture = TextureAssets.Projectile[Type].Value;            
 
-            for (int j = 0; j < Projectile.oldPos.Length - 1; j++)
+            Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);
+
+            for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-                Color color = new(11 + j * 5, 127, 255 - j * 5, 40);
-                spriteBatch.Draw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, spriteEffects, 0);
-            }
+                Color gnomTrailColor = new(11 + j * 16, 127, 255 - j * 16, 40);
+                spriteBatch.Draw(texture, drawPos, null, gnomTrailColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, spriteEffects, 0);
+            }           
             return true;
         }
 
         public override void Kill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.position);
-            Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position, Vector2.Zero, ProjectileID.DaybreakExplosion, (int)(Projectile.damage * 0.95f), 3f, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(Projectile.damage * 0.95f), 3f, Projectile.owner, 0f, 0f);
         }
     }
 }

@@ -22,13 +22,13 @@ public class Horrormageddon : ModItem
 		Item.height = 82;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
+		Item.useTime = 25;
 		Item.useAnimation = 15;
-		Item.damage = 105;
+		Item.damage = 100;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ModContent.ProjectileType<DemonScytheClone>();
-		Item.shootSpeed = 13f;
+		Item.shootSpeed = 14f;
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -57,7 +57,9 @@ public class Horrormageddon : ModItem
 		for (int numOfProjectiles = 0; numOfProjectiles < 3; numOfProjectiles++)
 		{
             double offsetAngle = startingAngle + deltaAngle * numOfProjectiles;
-			Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, (int)(damage * 1.15f), knockback / 2f, player.whoAmI);
+			Projectile schyteProj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, (int)(damage * 1.15f), knockback / 2f, player.whoAmI);
+			schyteProj.usesLocalNPCImmunity = true;
+			schyteProj.localNPCHitCooldown = 15;
         }
         return false;
     }

@@ -31,10 +31,10 @@ public class GelBlade : ModItem
 
     public override void AddRecipes()
     {
-        Recipe val = CreateRecipe(1);
-        val.AddIngredient(ItemID.Gel, 20);
-        val.AddTile(TileID.WorkBenches);
-        val.Register();
+        CreateRecipe()
+            .AddIngredient(ItemID.Gel, 20)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

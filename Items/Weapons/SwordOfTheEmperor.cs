@@ -20,12 +20,16 @@ public class SwordOfTheEmperor : ModItem
         Item.width = 100;
         Item.height = 100;        
         Item.rare = ItemRarityID.Red;
+
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 20;
         Item.useAnimation = 20;
+        Item.UseSound = SoundID.Item1;
+
         Item.damage = 90;
         Item.knockBack = 3f;
-        Item.UseSound = SoundID.Item1;
+        Item.scale = 1.25f;
+        
         Item.value = Item.sellPrice(0, 8, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 

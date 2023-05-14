@@ -23,7 +23,7 @@ public class VugarMutater : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;
         Item.useAnimation = 15;
-        Item.damage = 110;
+        Item.damage = 90;
         Item.knockBack = 4f;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ModContent.ProjectileType<VugarMutaterProjectile>();

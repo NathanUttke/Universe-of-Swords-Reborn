@@ -21,9 +21,9 @@ public class FixedSwordOfPower : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 40;
-		Item.useAnimation = 20;
-		Item.damage = 35;
+		Item.useTime = 38;
+		Item.useAnimation = 19;
+		Item.damage = 36;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 18000;
@@ -49,7 +49,7 @@ public class FixedSwordOfPower : ModItem
     {
 		Projectile boneProj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * 0.60f), knockback, player.whoAmI);
 		boneProj.penetrate = 2;
-		boneProj.scale = 8.25f;
+		boneProj.scale = 1.25f;
 		return false;
     }
 }

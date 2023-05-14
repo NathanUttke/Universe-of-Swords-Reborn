@@ -26,7 +26,8 @@ public class StoneSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 100;
 		Item.autoReuse = false;
-		Item.DamageType = DamageClass.Melee; SacrificeTotal = 1;
+		Item.DamageType = DamageClass.Melee; 
+		SacrificeTotal = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -35,12 +36,10 @@ public class StoneSword : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-				
-				Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.StoneBlock, 20);
-		val.AddTile(TileID.WorkBenches);
-		val.Register();
-	}
+	{			
+		CreateRecipe()
+            .AddIngredient(ItemID.StoneBlock, 20)
+            .AddTile(TileID.WorkBenches)
+            .Register();
+    }
 }

@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,7 +7,11 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class PumpkinBoom : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+		Tooltip.SetDefault("Creates explosions on hit");
+    }
+    public override void SetDefaults()
 	{
 		Item.width = 64;
 		Item.height = 64;
@@ -34,4 +39,9 @@ public class PumpkinBoom : ModItem
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}
+
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    {
+		Projectile.NewProjectile(target.GetSource_OnHit(target), target.position, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(damage / 2f), knockBack / 2f, player.whoAmI);
+    }
 }
