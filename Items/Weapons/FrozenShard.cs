@@ -29,7 +29,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.useAnimation = 20;
             Item.UseSound = SoundID.Item1;
 
-            Item.damage = 65;
+            Item.damage = 63;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 8f;
 
@@ -55,10 +55,17 @@ namespace UniverseOfSwordsMod.Items.Weapons
             CreateRecipe()
             .AddIngredient(ModContent.ItemType<CorruptCrystallus>(), 1)
             .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
-            .AddIngredient(ModContent.ItemType<Orichalcon>(), 1)
+            .AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
             .AddIngredient(ItemID.IceBlock, 400)
             .AddTile(TileID.MythrilAnvil)
 			.Register();
+            CreateRecipe()
+            .AddIngredient(ModContent.ItemType<CrimsonCrystallus>(), 1)
+            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+            .AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
+            .AddIngredient(ItemID.IceBlock, 400)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
         }
 		
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

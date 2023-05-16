@@ -47,12 +47,12 @@ namespace UniverseOfSwordsMod.Projectiles
         { 
             if (Main.rand.NextBool(3) && !NPCID.Sets.CountsAsCritter[target.type] && target.type != NPCID.TargetDummy)
             {
-                float newDamage = Main.rand.Next(1, 5);
-                if ((int)newDamage != 0 && !(Main.player[Main.myPlayer].lifeSteal <= 0f))
+                float stealDamage = Main.rand.Next(1, 5);
+                if ((int)stealDamage != 0 && !(Main.player[Main.myPlayer].lifeSteal <= 0f))
                 {
-                    Main.player[Main.myPlayer].lifeSteal -= newDamage;
-                    int num2 = Projectile.owner;
-                    Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, Projectile.owner, num2, newDamage);
+                    Main.player[Main.myPlayer].lifeSteal -= stealDamage;
+                    int playerOwner = Projectile.owner;
+                    Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, Projectile.owner, playerOwner, stealDamage);
                 }
             }
         }

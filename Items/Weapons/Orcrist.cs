@@ -16,12 +16,12 @@ public class Orcrist : ModItem
 	{
 		Item.width = 64;
 		Item.height = 64;
-		Item.scale = 1f;
+		Item.scale = 1.1f;
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 15;
-		Item.useAnimation = 15;
-		Item.damage = 70;
+		Item.useTime = 16;
+		Item.useAnimation = 16;
+		Item.damage = 65;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 100900;
@@ -36,15 +36,14 @@ public class Orcrist : ModItem
 	}
 
 	public override void AddRecipes()
-	{		
-									
+	{									
 		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "UpgradeMatter", 1);
+		val.AddIngredient(Mod, "UpgradeMatter", 2);
 		val.AddIngredient(ItemID.TitaniumSword, 1);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();
 		Recipe val2 = CreateRecipe(1);
-		val2.AddIngredient(Mod, "UpgradeMatter", 1);
+		val2.AddIngredient(Mod, "UpgradeMatter", 2);
 		val2.AddIngredient(ItemID.AdamantiteSword, 1);
 		val2.AddTile(TileID.MythrilAnvil);
 		val2.Register();

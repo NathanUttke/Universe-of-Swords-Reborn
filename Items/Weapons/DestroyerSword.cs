@@ -21,7 +21,7 @@ public class DestroyerSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 62;
+		Item.damage = 66;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 160000;

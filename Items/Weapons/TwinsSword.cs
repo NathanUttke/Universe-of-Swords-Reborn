@@ -22,7 +22,7 @@ public class TwinsSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 20;
-		Item.damage = 60;
+		Item.damage = 66;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 160000;

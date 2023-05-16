@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons
@@ -50,6 +51,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
         {
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<FrozenShard>(), 1)
+                .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
                 .AddIngredient(ItemID.HallowedBar, 25)
                 .AddIngredient(ItemID.SoulofMight, 15)
                 .AddIngredient(ItemID.SoulofFright, 15)

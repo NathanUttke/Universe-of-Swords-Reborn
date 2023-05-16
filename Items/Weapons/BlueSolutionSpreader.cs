@@ -12,14 +12,15 @@ public class BlueSolutionSpreader : ModItem
 {
     public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Infinite biome spreading? Awesome!\nRight click to change to Green Solution Spreader");
-	}
+        Tooltip.SetDefault("Infinite biome spreading? Awesome!\nRight click to choose between solutions");
+    }
 
 	public override void SetDefaults()
 	{
         Item.CloneDefaults(ModContent.ItemType<HallowSolutionSpreader>());
         Item.shoot = ProjectileID.MushroomSpray;
         Item.shootSpeed = 20f;
+        SacrificeTotal = 1;
     }
 
     public override bool CanRightClick()

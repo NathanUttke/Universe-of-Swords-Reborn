@@ -20,6 +20,7 @@ public class PurpleSolutionSpreader : ModItem
         Item.CloneDefaults(ModContent.ItemType<HallowSolutionSpreader>());
         Item.shoot = ProjectileID.CorruptSpray;
         Item.shootSpeed = 15f;
+        SacrificeTotal = 1;
     }
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
