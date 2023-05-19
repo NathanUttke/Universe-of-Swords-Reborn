@@ -23,6 +23,8 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate = -1;
             Projectile.timeLeft = 300;
             Projectile.ArmorPenetration = 10;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 14;
         }
 
         public override void AI()

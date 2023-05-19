@@ -16,13 +16,13 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.scale = 1.1f;
 
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 25;
-            Item.useAnimation = 20;
+            Item.useTime = 26;
+            Item.useAnimation = 21;
 
             Item.shoot = ModContent.ProjectileType<MechanicalProj>();
             Item.shootSpeed = 10f;
 
-            Item.damage = 90;
+            Item.damage = 89;
             Item.DamageType = DamageClass.Melee;
 
             Item.crit = 6;

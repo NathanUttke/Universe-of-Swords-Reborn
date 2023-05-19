@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -17,18 +18,18 @@ public class SolBlade : ModItem
 	{
 		Item.width = 86;
 		Item.height = 86;
-		Item.scale = 1f;
-		Item.rare = -11;
+		Item.scale = 1.1f;
+		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
 
 		Item.useTime = 20;
 		Item.useAnimation = 20;
 
-		Item.damage = 79;
+		Item.damage = 85;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item70;
 		Item.shootSpeed = 25f;
-		Item.shoot = Mod.Find<ModProjectile>("Armageddon").Type;
+		Item.shoot = ModContent.ProjectileType<Armageddon>();
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -46,20 +47,12 @@ public class SolBlade : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int numberProjectiles =  Main.rand.Next(2, 6);
+		int numberProjectiles =  Main.rand.Next(2, 5);
 		for (int i = 0; i < numberProjectiles; i++)
 		{
 			Vector2 perturbedSpeed = Utils.RotatedByRandom(new Vector2(velocity.X, velocity.Y), (double)MathHelper.ToRadians(40f));
 			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;
-	}
-
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
-	{
-		if (Main.rand.NextBool(3))
-		{
-			Projectile.NewProjectile(Item.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.InfernoFriendlyBlast, damage, knockback, player.whoAmI, 0f, 0f);
-		}
 	}
 }

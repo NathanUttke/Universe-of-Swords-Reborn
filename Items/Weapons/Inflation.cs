@@ -20,14 +20,18 @@ public class Inflation : ModItem
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 7.5f;
-        Item.useTime = 62;
-        Item.useAnimation = 62;
+        Item.useTime = 50;
+        Item.useAnimation = 50;
         Item.damage = 28;
-        Item.scale = 0.5f;
+        Item.scale = 0.75f;
         Item.crit = 8;
         Item.UseSound = SoundID.Item1;
         Item.value = 0;
         Item.autoReuse = true;
+    }
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
     }
 
     public override void AddRecipes()

@@ -25,7 +25,7 @@ public class GrandPiano : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 100;
+		Item.damage = 120;
 		Item.knockBack = 8f;
 		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/GrandPiano");
 		Item.shoot = ProjectileID.WoodenArrowFriendly;
@@ -52,7 +52,7 @@ public class GrandPiano : ModItem
 	}
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-        Vector2 pointPosition = new Vector2(player.position.X + (float)player.width * 0.5f + (float)(Main.rand.Next(201) * -player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
+        Vector2 pointPosition = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
         Projectile.NewProjectile(source, pointPosition, new Vector2(0f, 20f), ProjectileID.QuarterNote, damage / 2, knockback, player.whoAmI);
         return false;
 	}

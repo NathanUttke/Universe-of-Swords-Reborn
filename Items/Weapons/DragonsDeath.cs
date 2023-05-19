@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,4 +30,9 @@ public class DragonsDeath : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
+
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+		player.itemLocation = player.Center;
+    }
 }

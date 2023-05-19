@@ -8,7 +8,7 @@ public class BlackOre : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Black Ore");
+		DisplayName.SetDefault("Shadow Ore");
 	}
 
 	public override void SetDefaults()

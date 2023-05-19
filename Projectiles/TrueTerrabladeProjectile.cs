@@ -46,15 +46,13 @@ internal class TrueTerrabladeProjectile : ModProjectile
         SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         for (int i = 4; i < 31; i++)
         {
-            float oldVelocityX = Projectile.oldVelocity.X * (30f / i);
-            float oldVelocityY = Projectile.oldVelocity.Y * (30f / i);
 
-            int terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.8f);
+            int terraDust = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 8, 8, DustID.TerraBlade, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.8f);
             Main.dust[terraDust].noGravity = true;
             Dust dust = Main.dust[terraDust];
             dust.velocity *= 0.5f;
 
-            terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.4f);
+            terraDust = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 8, 8, DustID.TerraBlade, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.4f);
             dust = Main.dust[terraDust];
             dust.velocity *= 0.05f;
         }

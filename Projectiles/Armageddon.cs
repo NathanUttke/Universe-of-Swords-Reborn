@@ -23,7 +23,6 @@ public class Armageddon : ModProjectile
         Projectile.scale = Main.rand.NextFloat(1f, 1.5f);
         Projectile.aiStyle = 25;
         Projectile.friendly = true;
-        //Projectile.hostile = false;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.penetrate = 1;
         Projectile.ignoreWater = true;

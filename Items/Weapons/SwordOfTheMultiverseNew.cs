@@ -198,6 +198,10 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
         newRecipe.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15);
         newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
+        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AuricBar", out ModItem auricBar))
+        {  
+            newRecipe.AddIngredient(auricBar.Type, 5);
+        }
         newRecipe.AddTile(TileID.LunarCraftingStation);
         newRecipe.Register();
 	}

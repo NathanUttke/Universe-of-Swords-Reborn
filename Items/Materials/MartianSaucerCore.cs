@@ -18,6 +18,6 @@ public class MartianSaucerCore : ModItem
 		Item.maxStack = 999;
 		Item.value = 400000;
 		Item.rare = ItemRarityID.Yellow;
-		SacrificeTotal = 25;
+		SacrificeTotal = 10;
 	}
 }

@@ -22,7 +22,7 @@ internal class Nightmare : ModProjectile
         Projectile.height = 62;
         Projectile.scale = 1f;
         Projectile.friendly = true;
-        Projectile.penetrate = 4;
+        Projectile.penetrate = 2;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
@@ -30,6 +30,7 @@ internal class Nightmare : ModProjectile
 
     public override void AI()
     {
+        base.AI();
         float maxDetectRadius = 250f; 
         float projSpeed = 15f; 
 

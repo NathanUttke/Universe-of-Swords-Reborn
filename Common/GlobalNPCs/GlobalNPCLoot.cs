@@ -101,29 +101,22 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WaterBoltSword>(), 40, 1));
                     break;
                 case NPCID.DukeFishron:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DragonsDeath>(), 4, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<DragonsDeath>(), 4, 1));
                     break;
                 case NPCID.Crab:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<OceanRoar>(), 50, 1));
                     break;
-                case NPCID.BlackRecluse:
-                case NPCID.BlackRecluseWall:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<PoisonSword>(), 70, 1));
-                    break;
                 case NPCID.DungeonGuardian:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HaloOfHorrors>(), 100, 1));
                     break;
-                case NPCID.Stylist:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<Extase>(), 4, 1));
-                    break;
                 case NPCID.RedDevil:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ScarletFlareCore>(), 100, 1));
+                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ScarletFlareCore>(), 50, 1));
                     break;
                 case NPCID.Demon:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));
                     break;
                 case NPCID.Golem:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SolBlade>(), 10, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<SolBlade>(), 8, 1));
                     break;
                 case NPCID.WallofFlesh:
                     npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<BiggoronSword>()));
@@ -132,7 +125,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BlizzardRage>(), 4, 1));
                     break;
                 case NPCID.MoonLordCore:                    
-                    IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverseNew>(), 100, 1);
+                    IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverseNew>(), 300, 1);
                     leadingConditionRule.OnSuccess(rule);
                     npcLoot.Add(leadingConditionRule);
                     break;

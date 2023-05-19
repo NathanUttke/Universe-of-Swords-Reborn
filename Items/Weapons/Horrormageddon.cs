@@ -24,7 +24,7 @@ public class Horrormageddon : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
 		Item.useAnimation = 15;
-		Item.damage = 100;
+		Item.damage = 110;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ModContent.ProjectileType<DemonScytheClone>();

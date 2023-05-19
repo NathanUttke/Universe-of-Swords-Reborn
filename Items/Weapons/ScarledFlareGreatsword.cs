@@ -20,11 +20,14 @@ public class ScarledFlareGreatsword : ModItem
 		Item.width = 120;
 		Item.height = 120;
 		Item.rare = ItemRarityID.Red;
+
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 125;
-		Item.knockBack = 7.5f;
+
+		Item.damage = 130;
+		Item.knockBack = 7f;
+		Item.crit = 6;
 		Item.shootSpeed = 60f;
 		Item.shoot = ProjectileType<FlareCore>();
 		Item.UseSound = SoundID.Item45;
@@ -77,7 +80,8 @@ public class ScarledFlareGreatsword : ModItem
 		.AddIngredient(Mod, "RedFlareLongsword", 1)
 		.AddIngredient(Mod, "ScarletFlareCore", 1)
 		.AddIngredient(Mod, "TheNightmareAmalgamation", 1)
-		.AddTile(TileID.LunarCraftingStation)
+        .AddIngredient(ItemID.BrokenHeroSword, 1)
+        .AddTile(TileID.LunarCraftingStation)
 		.Register();
 	}
 }

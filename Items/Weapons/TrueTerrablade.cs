@@ -48,6 +48,7 @@ public class TrueTerrablade : ModItem
         .AddIngredient(ItemID.TerraBlade, 1)
         .AddIngredient(ItemID.SpectreBar, 20)
         .AddIngredient(ModContent.ItemType<TheNightmareAmalgamation>(), 1)
+        .AddIngredient(ItemID.BrokenHeroSword, 1)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }

@@ -22,7 +22,7 @@ public class TheNightmareAmalgamation : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 23;
 		Item.useAnimation = 23;
-		Item.damage = 115;
+		Item.damage = 120;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item71;
 		Item.shoot = ModContent.ProjectileType<Nightmare>();

@@ -11,6 +11,7 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Mechanical Projectile");
             ProjectileID.Sets.TrailCacheLength[Type] = 10;
             ProjectileID.Sets.TrailingMode[Type] = 2;
         }

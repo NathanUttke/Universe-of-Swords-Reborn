@@ -16,7 +16,7 @@ public class OceanRoar : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 50;
 		Item.useAnimation = 25;
-		Item.damage = 10;
+		Item.damage = 9;
 		Item.shoot = ProjectileID.Typhoon;
 		Item.shootSpeed = 1f;
 		Item.UseSound = SoundID.Item84;

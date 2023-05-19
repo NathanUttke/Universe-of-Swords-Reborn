@@ -22,11 +22,11 @@ public class CrystalVineSword : ModItem
         Item.scale = 1f;
         Item.rare = ItemRarityID.LightPurple;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 40;
+        Item.useTime = 50;
         Item.useAnimation = 30;
-        Item.damage = 72;
+        Item.damage = 73;
         Item.knockBack = 6f;
-        Item.UseSound = SoundID.Item101;
+        Item.UseSound = SoundID.Item1;
         Item.shoot = ProjectileID.CrystalVileShardShaft;
         Item.shootSpeed = 20f;
         Item.value = Item.sellPrice(0, 10, 0, 0);
@@ -54,8 +54,8 @@ public class CrystalVineSword : ModItem
     {
         CreateRecipe()
             .AddIngredient(ItemID.CrystalVileShard, 1)
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
-            .AddIngredient(ItemID.SoulofFright, 10)
+            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+            .AddIngredient(ItemID.SoulofFright, 12)
             .AddTile(TileID.MythrilAnvil)
             .Register();
     }

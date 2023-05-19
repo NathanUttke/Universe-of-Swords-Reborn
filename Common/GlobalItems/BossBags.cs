@@ -47,6 +47,9 @@ namespace UniverseOfSwordsMod.Common.GlobalItems
                     case ItemID.FishronBossBag:
                         player.QuickSpawnItem(entitySource, ModContent.ItemType<DragonsDeath>(), 1);
                         break;
+                    case ItemID.GolemBossBag:
+                        player.QuickSpawnItem(entitySource, ModContent.ItemType<SolBlade>(), 1);
+                        break;
                 }
             }
         }
