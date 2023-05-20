@@ -20,7 +20,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             PlayerNameCondition playerNameCondition = new();
             LeadingConditionRule leadingConditionRule = new(playerNameCondition);
             Conditions.NotExpert condition = new();
-            Conditions.IsHardmode hardModeCondition = new();
+            Conditions.IsExpert isExpertCondition = new();
 
             if (npc.lifeMax > 10 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly)
             {
@@ -107,7 +107,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<OceanRoar>(), 50, 1));
                     break;
                 case NPCID.DungeonGuardian:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<HaloOfHorrors>(), 100, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(isExpertCondition, ModContent.ItemType<HaloOfHorrors>(), 100, 1));
                     break;
                 case NPCID.RedDevil:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ScarletFlareCore>(), 50, 1));
@@ -125,36 +125,11 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BlizzardRage>(), 4, 1));
                     break;
                 case NPCID.MoonLordCore:                    
-                    IItemDropRule rule = ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<SwordOfTheMultiverseNew>(), 300, 1);
+                    IItemDropRule rule = ItemDropRule.ByCondition(isExpertCondition, ModContent.ItemType<SwordOfTheMultiverseNew>(), 300, 1);
                     leadingConditionRule.OnSuccess(rule);
                     npcLoot.Add(leadingConditionRule);
                     break;
             }
-        }
-        public override bool PreKill(NPC npc)
-        {
-            if (npc.type == NPCID.Plantera && !NPC.downedPlantBoss)
-            {
-                if (Main.netMode == NetmodeID.Server)
-                {
-                    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The world has been cursed with Black Ore"), new Color(41, 55, 41));
-                }
-
-                //in single player
-                if (Main.netMode == NetmodeID.SinglePlayer)
-                {
-                    Main.NewText("The world has been cursed with Black Ore", new Color(41, 55, 41));
-                }
-                //gen ore
-                for (int i = 0; i < Main.maxTilesX / 4200 * 50; i++)
-                {
-                    int num = WorldGen.genRand.Next(0, Main.maxTilesX);
-                    int Y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY - 300);
-                    Tile tile = Framing.GetTileSafely(num, Y);
-                    WorldGen.OreRunner(num, Y, (double)WorldGen.genRand.Next(8, 10), WorldGen.genRand.Next(3, 4), Mod.Find<ModTile>("BlackOreTile").Type);
-                }
-            }
-            return true;
-        }
+        }        
     }
 }
