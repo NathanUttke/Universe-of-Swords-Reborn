@@ -25,7 +25,7 @@ public class SwordOfTheMultiverseNew : ModItem
     {
         Item.width = 94;
         Item.height = 104;
-        Item.rare = ItemRarityID.Expert;
+        Item.rare = ItemRarityID.Red;
 
         Item.useTime = 7;
         Item.useAnimation = 25;

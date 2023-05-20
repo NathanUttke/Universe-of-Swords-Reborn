@@ -22,16 +22,16 @@ public class CosmoStorm : ModItem
         Item.rare = ItemRarityID.Red;
         Item.knockBack = 3f;
 
-        Item.useTime = 40;
+        Item.useTime = 30;
         Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item15;
 
-        Item.damage = 130;
+        Item.damage = 140;
         Item.DamageType = DamageClass.Melee;
 
         Item.shoot = ProjectileID.NebulaArcanum;
-        Item.shootSpeed = 10f;
+        Item.shootSpeed = 6f;
         Item.value = 650000;
         Item.autoReuse = true;
         SacrificeTotal = 1;
@@ -55,7 +55,7 @@ public class CosmoStorm : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, Item.shoot, damage, knockback, player.whoAmI, 0f, 0f);
+        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
         proj.tileCollide = false;
         proj.DamageType = DamageClass.Melee;
    

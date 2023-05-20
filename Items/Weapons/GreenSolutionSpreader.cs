@@ -17,7 +17,21 @@ public class GreenSolutionSpreader : ModItem
 
 	public override void SetDefaults()
 	{
-        Item.CloneDefaults(ModContent.ItemType<HallowSolutionSpreader>());
+        Item.width = 58;
+        Item.height = 58;
+        Item.scale = 1.3f;
+        Item.rare = ItemRarityID.Lime;
+
+        Item.useTime = 20;
+        Item.useAnimation = 20;
+        Item.useStyle = ItemUseStyleID.Swing;
+        Item.UseSound = SoundID.Item34;
+
+        Item.value = 830000;
+        Item.autoReuse = true;
+        Item.DamageType = DamageClass.Melee;
+        SacrificeTotal = 1;
+
         Item.shoot = ProjectileID.PureSpray;
         Item.shootSpeed = 20f;
         SacrificeTotal = 1;

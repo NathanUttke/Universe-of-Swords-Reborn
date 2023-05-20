@@ -18,7 +18,7 @@ public class GnomBlade : ModItem
 		Item.useTime = 12;
 		Item.useAnimation = 12;
 
-		Item.damage = 140;
+		Item.damage = 150;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 5, 0, 0);

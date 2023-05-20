@@ -50,7 +50,7 @@ public class SolBlade : ModItem
 		int numberProjectiles =  Main.rand.Next(2, 5);
 		for (int i = 0; i < numberProjectiles; i++)
 		{
-			Vector2 perturbedSpeed = Utils.RotatedByRandom(new Vector2(velocity.X, velocity.Y), (double)MathHelper.ToRadians(40f));
+			Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(40f)); // Utils.RotatedByRandom(new Vector2(velocity.X, velocity.Y), (double)MathHelper.ToRadians(40f))
 			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;

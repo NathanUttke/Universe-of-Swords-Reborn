@@ -76,12 +76,11 @@ public class GreatswordOfTheCosmos : ModItem
 			.AddIngredient(ItemID.FragmentVortex, 30)
 			.AddIngredient(ItemID.FragmentNebula, 30)
 			.AddIngredient(ItemID.FragmentStardust, 30)
-			.AddIngredient(ModContent.ItemType<PowerOfTheGalactic>(), 1)
-			.AddIngredient(ItemID.MeteoriteBar, 100)
-			.AddIngredient(ItemID.HellstoneBar, 100)
-			.AddIngredient(ModContent.ItemType<Orichalcon>(), 10)
+			.AddIngredient(ItemID.MeteoriteBar, 80)
+			.AddIngredient(ItemID.HellstoneBar, 80)
+			.AddIngredient(ModContent.ItemType<Orichalcon>(), 15)
 			.AddIngredient(ItemID.LunarBar, 50)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 10)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 12)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();
     }
