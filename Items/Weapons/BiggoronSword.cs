@@ -24,11 +24,11 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.height = 90;
 
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 40;
-            Item.useAnimation = 40;
+            Item.useTime = 38;
+            Item.useAnimation = 38;
             Item.autoReuse = true;
 
-            Item.damage = 42;
+            Item.damage = 45;
             Item.DamageType = DamageClass.Melee;
 
             Item.knockBack = 2f;

@@ -13,7 +13,7 @@ public class BladesOfBalance : ModItem
 	}
 	public override void SetDefaults()
 	{
-		Item.damage = 51;
+		Item.damage = 53;
 		Item.crit = 2;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

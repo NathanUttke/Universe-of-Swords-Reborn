@@ -45,16 +45,20 @@ public class SwordOfTheUniverseNew : ModItem
 	}
 
 	public override void AddRecipes()
-	{																																																														
-		CreateRecipe()
-        .AddIngredient(ModContent.ItemType<CosmoStorm>(), 1)
-        .AddIngredient(ModContent.ItemType<SuperInflation>(), 1)
-        .AddIngredient(ModContent.ItemType<EdgeLord>(), 1)
-        .AddIngredient(ModContent.ItemType<TheNightmareAmalgamation>(), 1)
-        .AddIngredient(ModContent.ItemType<SolBlade>(), 1)
-        .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
-		.AddTile(TileID.LunarCraftingStation)
-		.Register();
+	{
+		Recipe newRecipe = CreateRecipe();
+		newRecipe.AddIngredient(ModContent.ItemType<CosmoStorm>(), 1);
+		newRecipe.AddIngredient(ModContent.ItemType<SuperInflation>(), 1);
+		newRecipe.AddIngredient(ModContent.ItemType<EdgeLord>(), 1);
+		newRecipe.AddIngredient(ModContent.ItemType<TheNightmareAmalgamation>(), 1);
+		newRecipe.AddIngredient(ModContent.ItemType<SolBlade>(), 1);
+		newRecipe.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4);
+        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AuricBar", out ModItem auricBar))
+        {
+            newRecipe.AddIngredient(auricBar.Type, 5);
+        }
+		newRecipe.AddTile(TileID.LunarCraftingStation);
+        newRecipe.Register();
     }
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)

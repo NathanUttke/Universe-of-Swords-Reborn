@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -16,13 +17,13 @@ public class BowSword : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.scale = 1.25f;
+		Item.scale = 1.3f;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 35;
 		Item.useAnimation = 35;
-		Item.damage = 12;
-		Item.knockBack = 5f;
+		Item.damage = 13;
+		Item.knockBack = 4f;
 		Item.UseSound = SoundID.Item5;
 		Item.shootSpeed = 7f;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
@@ -37,8 +38,8 @@ public class BowSword : ModItem
 	{				
 		CreateRecipe()
 		.AddIngredient(ItemID.WoodenBow, 1)
-		.AddRecipeGroup("IronBar", 15)
-		.AddIngredient(Mod, "SwordMatter", 200)
+		.AddRecipeGroup(RecipeGroupID.IronBar, 15)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 200)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

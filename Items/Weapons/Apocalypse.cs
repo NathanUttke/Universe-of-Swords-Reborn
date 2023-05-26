@@ -23,7 +23,7 @@ public class Apocalypse : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 45;
         Item.useAnimation = 15;
-        Item.damage = 120;
+        Item.damage = 110;
         Item.knockBack = 12f;
         Item.UseSound = SoundID.Item116;
         Item.shoot = ProjectileID.ApprenticeStaffT3Shot;

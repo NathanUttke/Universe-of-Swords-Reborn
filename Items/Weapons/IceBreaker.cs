@@ -47,10 +47,10 @@ public class IceBreaker : ModItem
 	{
 		float numberProjectiles = Main.rand.Next(1, 3);
 		float rotation = MathHelper.ToRadians(10f);
-		position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 5f;
+		position += Vector2.Normalize(velocity) * 5f;
 		for (int i = 0; i < numberProjectiles; i++)
 		{
-			Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
+			Vector2 perturbedSpeed = Utils.RotatedBy(velocity, (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
 			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, Item.shoot, damage, knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;

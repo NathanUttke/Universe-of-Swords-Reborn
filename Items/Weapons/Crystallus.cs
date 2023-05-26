@@ -21,7 +21,7 @@ public class Crystallus : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 24;
 		Item.useAnimation = 24;
-		Item.damage = 11;
+		Item.damage = 12;
 		Item.knockBack = 3f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 60, 0);

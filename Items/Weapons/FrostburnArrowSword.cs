@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -21,7 +22,7 @@ public class FrostburnArrowSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 44;
 		Item.useAnimation = 22;
-		Item.damage = 40;
+		Item.damage = 15;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.FrostburnArrow;
@@ -34,8 +35,8 @@ public class FrostburnArrowSword : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        proj.DamageType = DamageClass.MeleeNoSpeed;
+        Projectile frostArrow = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        frostArrow.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }
 
@@ -43,8 +44,8 @@ public class FrostburnArrowSword : ModItem
 	{				
 		CreateRecipe()
 			.AddIngredient(ItemID.FrostburnArrow, 999)
-			.AddIngredient(Mod, "SwordMatter", 110)
-			.AddTile(TileID.MythrilAnvil)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 120)
+			.AddTile(TileID.Anvils)
 			.Register();
 	}
 }

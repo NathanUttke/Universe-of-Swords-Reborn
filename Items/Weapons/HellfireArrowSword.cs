@@ -21,7 +21,7 @@ public class HellfireArrowSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 50;
 		Item.useAnimation = 25;
-		Item.damage = 20;
+		Item.damage = 18;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.HellfireArrow;

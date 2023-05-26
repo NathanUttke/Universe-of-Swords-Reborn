@@ -22,7 +22,7 @@ public class CursedArrowSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 44;
 		Item.useAnimation = 22;
-		Item.damage = 40;
+		Item.damage = 38;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.CursedArrow;

@@ -13,6 +13,7 @@ public class CrystalVineSword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Crystal Vile Sword");
+        Tooltip.SetDefault("Ignores 12 points of enemy defense");
     }
 
     public override void SetDefaults()
@@ -22,17 +23,18 @@ public class CrystalVineSword : ModItem
         Item.scale = 1f;
         Item.rare = ItemRarityID.LightPurple;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 50;
-        Item.useAnimation = 30;
-        Item.damage = 73;
+        Item.useTime = 33;
+        Item.useAnimation = 33;
+        Item.damage = 50;
         Item.knockBack = 6f;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ProjectileID.CrystalVileShardShaft;
         Item.shootSpeed = 20f;
         Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee; 
+        Item.DamageType = DamageClass.Magic; 
         SacrificeTotal = 1;
+        Item.mana = 12;
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -44,8 +46,8 @@ public class CrystalVineSword : ModItem
         for (int i = 0; i < 25; i++)
         {
             double offsetAngle = startAngle + deltaAngle * i;
-            Projectile vileCrystal = Projectile.NewProjectileDirect(source, new Vector2(position.X, position.Y), new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, damage, knockback, player.whoAmI, 0f, 0f);
-            vileCrystal.DamageType = DamageClass.Melee;
+            Projectile vileProj = Projectile.NewProjectileDirect(source, new Vector2(position.X, position.Y), new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, damage, knockback, player.whoAmI, 0f, 0f);
+            vileProj.ArmorPenetration = 12;
         }
         return false;
     }
@@ -55,7 +57,7 @@ public class CrystalVineSword : ModItem
         CreateRecipe()
             .AddIngredient(ItemID.CrystalVileShard, 1)
             .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
-            .AddIngredient(ItemID.SoulofFright, 12)
+            .AddIngredient(ItemID.NettleBurst, 1)
             .AddTile(TileID.MythrilAnvil)
             .Register();
     }

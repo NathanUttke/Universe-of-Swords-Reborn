@@ -20,7 +20,7 @@ public class BatSlayer : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 33;
+		Item.damage = 35;
 		Item.knockBack = 7f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 5, 0, 0);

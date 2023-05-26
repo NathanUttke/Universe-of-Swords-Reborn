@@ -15,7 +15,7 @@ public class DeathSword : ModItem
         Item.scale = 1f;
         Item.rare = ItemRarityID.LightRed;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 80;
+        Item.useTime = 70;
         Item.useAnimation = 30;
         Item.damage = 20;
         Item.knockBack = 4f;
@@ -32,7 +32,7 @@ public class DeathSword : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.VilePowder, 0f, 0f, 100, default(Color), 2f);
+            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.VilePowder, 0f, 0f, 100, default, 2f);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity.X -= player.direction * 0f;
             Main.dust[dust].velocity.Y -= 0f;

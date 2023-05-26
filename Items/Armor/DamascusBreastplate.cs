@@ -26,9 +26,9 @@ public class DamascusBreastplate : ModItem
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)
 	{
-		if (head.type == Mod.Find<ModItem>("DamascusHelmet").Type)
+		if (head.type == ModContent.ItemType<DamascusHelmet>())
 		{
-			return legs.type == Mod.Find<ModItem>("DamascusLeggings").Type;
+			return legs.type == ModContent.ItemType<DamascusLeggings>();
 		}
 		return false;
 	}

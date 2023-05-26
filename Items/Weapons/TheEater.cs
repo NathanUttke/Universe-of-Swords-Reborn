@@ -34,7 +34,7 @@ public class TheEater : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectile(source, position, new Vector2(velocity.X * Utils.SelectRandom(Main.rand, -1, 1, 1, -1, 1, -1), velocity.Y), Item.shoot, (int)(Item.damage * 0.5f + Main.rand.Next(1, 4)), 4f, player.whoAmI);
+        Projectile.NewProjectile(source, position, new Vector2(velocity.X * Utils.SelectRandom(Main.rand, -1, 1, 1, -1, 1, -1), velocity.Y), type, (int)(Item.damage * 0.5f + Main.rand.Next(1, 4)), 4f, player.whoAmI);
         return false;
     }
 

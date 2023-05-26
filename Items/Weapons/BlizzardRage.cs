@@ -18,7 +18,7 @@ public class BlizzardRage : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 20;
-		Item.damage = 50;
+		Item.damage = 51;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ProjectileID.NorthPoleSnowflake;
