@@ -30,7 +30,7 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ProjectileID.FairyQueenMagicItemShot;
-		Item.shootSpeed = 10f;
+		Item.shootSpeed = 32f;
 		Item.value = Item.sellPrice(0, 9, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
