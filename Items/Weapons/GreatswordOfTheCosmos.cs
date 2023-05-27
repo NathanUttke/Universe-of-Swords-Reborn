@@ -24,7 +24,7 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 10;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
+		Item.useTime = 10;
 		Item.useAnimation = 20;
 		Item.damage = 150;
 		Item.knockBack = 6f;
