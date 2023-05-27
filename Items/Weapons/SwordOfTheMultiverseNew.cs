@@ -8,7 +8,6 @@ using UniverseOfSwordsMod.Buffs;
 using UniverseOfSwordsMod.Items.Materials;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using System;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -83,6 +82,33 @@ public class SwordOfTheMultiverseNew : ModItem
         }
         return true;
     }
+
+    public override bool CanUseItem(Player player)
+    {
+        if (player.altFunctionUse == 2)
+        {
+            if (player.controlUp && !player.controlDown)
+            {
+                Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
+                Item.useAnimation = 27;
+                Item.crit = 30;
+            }
+            else
+            {
+                Item.shoot = ProjectileID.None;
+                Item.useAnimation = 13;
+                Item.crit = 40;
+            }
+        }
+        else
+        {
+            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
+            Item.useAnimation = 27;
+            Item.crit = 30;
+        }
+        return true;
+    }
+
     public override bool? UseItem(Player player)
     {
         if (player.altFunctionUse == 2)
@@ -91,21 +117,12 @@ public class SwordOfTheMultiverseNew : ModItem
             {
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.noUseGraphic = true;
-                Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
-                Item.useTime = 7;
-                Item.useAnimation = 27;
-                Item.crit = 30;
-                Item.shootSpeed = 30f;
             }
             else
             {
                 Item.noUseGraphic = false;
                 Item.scale = 4.5f;
                 Item.useStyle = ItemUseStyleID.Swing;
-                Item.shoot = ProjectileID.None;
-                Item.shootSpeed = 30f;
-                Item.useAnimation = 13;
-                Item.crit = 40;
             }
         }
         else
@@ -113,11 +130,6 @@ public class SwordOfTheMultiverseNew : ModItem
             Item.noUseGraphic = false;
             Item.scale = 1.25f;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
-            Item.useAnimation = 27;
-            Item.useTime = 7;
-            Item.crit = 30;
-            Item.shootSpeed = 30f;
         }
         return true;
     }
@@ -184,7 +196,7 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<Orichalcon>(), 50);
         newRecipe.AddIngredient(ItemID.LunarBar, 25);
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
-        newRecipe.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 18);
+        newRecipe.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15);
         newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
         if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AuricBar", out ModItem auricBar))
         {  
