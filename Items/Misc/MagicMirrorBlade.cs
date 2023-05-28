@@ -25,7 +25,6 @@ public class MagicMirrorBlade : ModItem
 		Item.UseSound = SoundID.Item6;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = false;
-		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
 
@@ -70,7 +69,7 @@ public class MagicMirrorBlade : ModItem
 	{	
 		CreateRecipe()
 		.AddIngredient(ItemID.MagicMirror, 1)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 30)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
 		.Register();
 	}
 }

@@ -42,6 +42,6 @@ public class PumpkinBoom : ModItem
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-		Projectile.NewProjectile(target.GetSource_OnHit(target), target.position, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(damage / 2f), knockBack / 2f, player.whoAmI);
+		Projectile.NewProjectile(target.GetSource_OnHit(target), target.position, Vector2.Zero, ProjectileID.Landmine, (int)(damage / 2f), knockBack / 2f, player.whoAmI);
     }
 }

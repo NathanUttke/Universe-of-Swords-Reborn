@@ -12,7 +12,7 @@ public class AmberSword : ModItem
     {
         Item.width = 64;
         Item.height = 64;
-        Item.scale = 1.5f;
+        Item.scale = 1.15f;
         Item.rare = ItemRarityID.Green;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;

@@ -3,12 +3,17 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TrueGemSword : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+		DisplayName.SetDefault("True Gem Blade");
+    }
+    public override void SetDefaults()
 	{
 		Item.width = 58;
 		Item.height = 58;
@@ -19,8 +24,7 @@ public class TrueGemSword : ModItem
 		Item.useAnimation = 20;
 		Item.shoot = ProjectileID.EmeraldBolt;
 		Item.shootSpeed = 10f;
-		Item.damage = 80;
-		Item.expert = true;
+		Item.damage = 20;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
@@ -32,8 +36,8 @@ public class TrueGemSword : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
 		int projToShoot = Utils.SelectRandom(Main.rand, ProjectileID.EmeraldBolt, ProjectileID.DiamondBolt, ProjectileID.AmethystBolt, ProjectileID.TopazBolt, ProjectileID.SapphireBolt, ProjectileID.RubyBolt, ProjectileID.AmberBolt);
-        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI);
-		proj.DamageType = DamageClass.MeleeNoSpeed;
+        Projectile gemProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI);
+		gemProj.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }
 
@@ -48,16 +52,23 @@ public class TrueGemSword : ModItem
 		}
 	}
 
-	public override void AddRecipes()
-	{		
-		CreateRecipe()
-			.AddIngredient(Mod, "GemSlayer", 1)
-			.AddIngredient(ItemID.BrokenHeroSword, 1)
-			.AddTile(TileID.MythrilAnvil)
-			.Register();
-	}
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+        .AddIngredient(ModContent.ItemType<TopazSword>(), 1)
+        .AddIngredient(ModContent.ItemType<SapphireSword>(), 1)
+        .AddIngredient(ModContent.ItemType<EmeraldSword>(), 1)
+        .AddIngredient(ModContent.ItemType<AmethystSword>(), 1)
+        .AddIngredient(ModContent.ItemType<AmberSword>(), 1)
+        .AddIngredient(ModContent.ItemType<DiamondSword>(), 1)
+        .AddIngredient(ModContent.ItemType<RubySword>(), 1)
+		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+        .AddIngredient(ItemID.ShadowScale, 15)
+        .AddTile(TileID.TinkerersWorkbench)
+        .Register();
+    }
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
 		target.AddBuff(72, 360, false);
 	}

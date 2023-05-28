@@ -202,7 +202,14 @@ public class SwordOfTheMultiverseNew : ModItem
         {  
             newRecipe.AddIngredient(auricBar.Type, 5);
         }
-        newRecipe.AddTile(TileID.LunarCraftingStation);
+        if (calamityMod.TryFind("DraedonsForge", out ModTile draedonsForge))
+        {
+            newRecipe.AddTile(draedonsForge.Type);
+        }
+        else
+        {
+            newRecipe.AddTile(TileID.LunarCraftingStation);
+        }        
         newRecipe.Register();
 	}
 

@@ -26,12 +26,12 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 10;
 		Item.useAnimation = 20;
-		Item.damage = 150;
+		Item.damage = 145;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ProjectileID.FairyQueenMagicItemShot;
 		Item.shootSpeed = 32f;
-		Item.value = Item.sellPrice(0, 9, 0, 0);
+		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -72,7 +72,7 @@ public class GreatswordOfTheCosmos : ModItem
 			float num16 = num13 * num15;
 			float SpeedX = num17 + Main.rand.Next(-12, 10) * 0.2f;
 			float SpeedY = num16 + Main.rand.Next(-12, 10) * 0.2f;
-			Projectile rainProj = Projectile.NewProjectileDirect(source, vector2_1, new Vector2(SpeedX, SpeedY), type, damage, knockback, Main.myPlayer);
+			Projectile rainProj = Projectile.NewProjectileDirect(source, vector2_1, new Vector2(SpeedX, SpeedY), type, damage, knockback, Main.myPlayer, 1f);
 			rainProj.DamageType = DamageClass.Melee;
 		}
 		return false;
@@ -82,15 +82,12 @@ public class GreatswordOfTheCosmos : ModItem
 	{
 		CreateRecipe()
 			.AddIngredient(ItemID.StarWrath, 1)
-			.AddIngredient(ItemID.FragmentSolar, 30)
-			.AddIngredient(ItemID.FragmentVortex, 30)
-			.AddIngredient(ItemID.FragmentNebula, 30)
-			.AddIngredient(ItemID.FragmentStardust, 30)
-			.AddIngredient(ItemID.MeteoriteBar, 80)
-			.AddIngredient(ItemID.HellstoneBar, 80)
+			.AddIngredient(ModContent.ItemType<LunarOrb>(), 2)
+			.AddIngredient(ItemID.MeteoriteBar, 75)
+			.AddIngredient(ItemID.HellstoneBar, 75)
 			.AddIngredient(ModContent.ItemType<Orichalcon>(), 15)
-			.AddIngredient(ItemID.LunarBar, 50)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 12)
+			.AddIngredient(ItemID.LunarBar, 40)
+			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 10)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();
     }

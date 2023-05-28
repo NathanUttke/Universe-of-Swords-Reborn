@@ -24,7 +24,7 @@ public class PianoSword2 : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;
         Item.useAnimation = 30;
-        Item.damage = 44;
+        Item.damage = 30;
         Item.knockBack = 8f;
         Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/PianoBlue");
         Item.shoot = ProjectileID.Mushroom;

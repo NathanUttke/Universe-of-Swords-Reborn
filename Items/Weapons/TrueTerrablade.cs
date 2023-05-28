@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -10,27 +11,27 @@ public class TrueTerrablade : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Super Terra Blade");
+        DisplayName.SetDefault("Terra Ensis");
     }
     public override void SetDefaults()
     {
         Item.damage = 125;
         Item.DamageType = DamageClass.Melee; 
-        Item.width = 92;
-        Item.height = 108;
+        Item.width = 62;
+        Item.height = 68;
 
-        Item.useTime = 15;
-        Item.useAnimation = 15;
+        Item.useTime = 20;
+        Item.useAnimation = 16;
         Item.useStyle = ItemUseStyleID.Swing;
 
         Item.knockBack = 10f;
         Item.value = Item.sellPrice(0, 5, 0, 0);
 
         Item.shoot = ModContent.ProjectileType<TrueTerrabladeProjectile>();
-        Item.shootSpeed = 18f;
+        Item.shootSpeed = 15f;
 
         Item.rare = ItemRarityID.Purple;
-        Item.UseSound = SoundID.Item60;
+        Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
         Item.useTurn = true;
         SacrificeTotal = 1;
@@ -47,8 +48,9 @@ public class TrueTerrablade : ModItem
         CreateRecipe()
         .AddIngredient(ItemID.TerraBlade, 1)
         .AddIngredient(ItemID.SpectreBar, 20)
-        .AddIngredient(ModContent.ItemType<TheNightmareAmalgamation>(), 1)
         .AddIngredient(ItemID.BrokenHeroSword, 1)
+        .AddIngredient(ModContent.ItemType<VugarMutater>(), 1)
+        .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }

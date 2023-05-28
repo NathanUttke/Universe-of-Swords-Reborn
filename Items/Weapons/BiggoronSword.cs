@@ -37,6 +37,8 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.value = Item.sellPrice(0, 0, 60, 0);
             Item.rare = ItemRarityID.LightRed;
 
+            Item.scale = 1.25f;
+
             SacrificeTotal = 1;
         }
     }

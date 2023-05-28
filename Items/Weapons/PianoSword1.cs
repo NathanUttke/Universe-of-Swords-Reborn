@@ -23,7 +23,7 @@ public class PianoSword1 : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 30;
-		Item.damage = 22;
+		Item.damage = 20;
 		Item.knockBack = 3f;
 		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/PianoGreen");
 		Item.shoot = ProjectileID.WoodenArrowFriendly;
