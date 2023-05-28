@@ -33,7 +33,6 @@ public class TrueTerrablade : ModItem
         Item.rare = ItemRarityID.Purple;
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
-        Item.useTurn = true;
         SacrificeTotal = 1;
     }
 
