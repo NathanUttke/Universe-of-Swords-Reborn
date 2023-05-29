@@ -34,13 +34,12 @@ public class PianoSword1 : ModItem
 		SacrificeTotal = 1;
 	}
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.X -= 1f * (float)player.direction;
-		player.itemLocation.Y -= 1f * (float)player.direction;
-	}
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
 
-	public override void AddRecipes()
+    public override void AddRecipes()
 	{
 		CreateRecipe()
 		.AddIngredient(ItemID.LivingWoodPiano, 1)

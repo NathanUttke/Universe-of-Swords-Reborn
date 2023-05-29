@@ -44,7 +44,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             SpriteBatch spriteBatch = Main.spriteBatch;
             SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-            Texture2D texture = TextureAssets.Projectile[Type].Value;            
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
 
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);
 
@@ -53,7 +53,8 @@ namespace UniverseOfSwordsMod.Projectiles
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
                 Color gnomTrailColor = new(11 + j * 16, 127, 255 - j * 16, 40);
                 spriteBatch.Draw(texture, drawPos, null, gnomTrailColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, spriteEffects, 0);
-            }           
+            }   
+
             return true;
         }
 
