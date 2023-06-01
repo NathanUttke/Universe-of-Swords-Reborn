@@ -25,6 +25,7 @@ public class PumpkinBoom : ModItem
 		Item.knockBack = 6.5f;
 		Item.UseSound = SoundID.Item1;
 		Item.shootSpeed = 10f;
+		Item.scale = 1.25f;
 		Item.value = 360500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
@@ -42,6 +43,6 @@ public class PumpkinBoom : ModItem
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-		Projectile.NewProjectile(target.GetSource_OnHit(target), target.position, Vector2.Zero, ProjectileID.Landmine, (int)(damage / 2f), knockBack / 2f, player.whoAmI);
+		Projectile.NewProjectile(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.Landmine, (int)(damage / 2f), knockBack / 2f, player.whoAmI);
     }
 }

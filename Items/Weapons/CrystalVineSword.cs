@@ -29,7 +29,7 @@ public class CrystalVineSword : ModItem
         Item.knockBack = 4f;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ProjectileID.CrystalVileShardShaft;
-        Item.shootSpeed = 20f;
+        Item.shootSpeed = 32f;
         Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Magic; 

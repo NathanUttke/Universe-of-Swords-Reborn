@@ -1,10 +1,10 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ID;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -27,10 +27,13 @@ public class GrandPiano : ModItem
 		Item.useAnimation = 20;
 		Item.damage = 120;
 		Item.knockBack = 8f;
-		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/GrandPiano");
-		Item.shoot = ProjectileID.WoodenArrowFriendly;
+		//Item.UseSound = new SoundStyle("UniverseOfSwordsMod/Sounds/Item/GrandPiano");
+		Item.UseSound = SoundID.Item1;
+		Item.shoot = ModContent.ProjectileType<GrandPianoProjectile>();
 		Item.shootSpeed = 20f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
+		Item.noUseGraphic = true;
+		Item.noMelee = true;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -50,14 +53,20 @@ public class GrandPiano : ModItem
 		.AddTile(TileID.Autohammer)
 		.Register();
 	}
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+
+    public override bool CanUseItem(Player player)
+    {
+        return player.ownedProjectileCounts[ModContent.ProjectileType<GrandPianoProjectile>()] < 1;
+    }
+
+    /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
         Vector2 pointPosition = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
         Projectile.NewProjectile(source, pointPosition, new Vector2(0f, 20f), ProjectileID.QuarterNote, damage / 2, knockback, player.whoAmI);
         return false;
-	}
+	}*/
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
 		target.AddBuff(20, 360, false);
 		target.AddBuff(144, 360, false);
