@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +9,7 @@ public class SwordOfPower : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Broken Sword Of Power");
-		Tooltip.SetDefault("You need to fix this sword if you want to actually use it");
+		Tooltip.SetDefault("Could be fixed");
 	}
 
 	public override void SetDefaults()

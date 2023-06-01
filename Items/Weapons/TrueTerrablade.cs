@@ -48,7 +48,6 @@ public class TrueTerrablade : ModItem
         .AddIngredient(ItemID.TerraBlade, 1)
         .AddIngredient(ItemID.SpectreBar, 20)
         .AddIngredient(ItemID.BrokenHeroSword, 1)
-        .AddIngredient(ModContent.ItemType<VugarMutater>(), 1)
         .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15)
         .AddTile(TileID.LunarCraftingStation)
         .Register();

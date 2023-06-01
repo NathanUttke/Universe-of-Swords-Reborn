@@ -38,11 +38,10 @@ public class GnomBlade : ModItem
 			.AddIngredient(ItemID.LunarBar, 10)
 			.AddIngredient(ItemID.GardenGnome, 1)
 			.AddIngredient(ModContent.ItemType<Doomsday>(), 1)
-			.AddIngredient(ItemID.TerraBlade, 1)
 			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
 			.AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
 			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
-			.AddIngredient(ModContent.ItemType<VugarMutater>(), 1)
+			.AddIngredient(ModContent.ItemType<TrueTerrablade>(), 1)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();
 	}

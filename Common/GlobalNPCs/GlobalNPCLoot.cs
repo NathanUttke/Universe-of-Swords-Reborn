@@ -19,7 +19,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
         {
             PlayerNameCondition playerNameCondition = new();
             LeadingConditionRule leadingConditionRule = new(playerNameCondition);
-            Conditions.NotExpert condition = new();
+            Conditions.NotExpert notExpertCondition = new();
             Conditions.IsExpert isExpertCondition = new();
 
             if (npc.lifeMax > 10 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly)
@@ -28,7 +28,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             }
             if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
             {
-                npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TheEater>()));
+                npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<TheEater>()));
             }
 
             switch (npc.type)
@@ -41,25 +41,25 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 4, 8), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 8, 12)));
                     break;
                 case NPCID.EyeofCthulhu:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<CthulhuJudge>()));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<CthulhuJudge>()));
                     break;
                 case NPCID.BrainofCthulhu:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TheBrain>()));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<TheBrain>()));
                     break;
                 case NPCID.SkeletronHead:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<SwordOfPower>()));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<SwordOfPower>()));
                     break;
                 case NPCID.SkeletronPrime:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<PrimeSword>()));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<PrimeSword>()));
                     break;
                 case NPCID.Spazmatism:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<TwinsSword>()));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<TwinsSword>()));
                     break;
                 case NPCID.TheDestroyer:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<DestroyerSword>(), 1, 1, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<DestroyerSword>(), 1, 1, 1));
                     break;
                 case NPCID.Plantera:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<Executioner>(), 1, 1, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<Executioner>(), 1, 1, 1));
                     break;
                 case NPCID.CultistBoss:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Doomsday>(), 2, 1, 1));
@@ -101,7 +101,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WaterBoltSword>(), 40, 1));
                     break;
                 case NPCID.DukeFishron:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<DragonsDeath>(), 4, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<DragonsDeath>(), 4, 1));
                     break;
                 case NPCID.Crab:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<OceanRoar>(), 50, 1));
@@ -116,16 +116,16 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));
                     break;
                 case NPCID.Golem:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<SolBlade>(), 8, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<SolBlade>(), 8, 1));
                     break;
                 case NPCID.WallofFlesh:
-                    npcLoot.Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<BiggoronSword>()));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<BiggoronSword>()));
                     break;
                 case NPCID.IceQueen:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BlizzardRage>(), 4, 1));
                     break;
                 case NPCID.MoonLordCore:                    
-                    IItemDropRule rule = ItemDropRule.ByCondition(isExpertCondition, ModContent.ItemType<SwordOfTheMultiverseNew>(), 300, 1);
+                    IItemDropRule rule = ItemDropRule.ByCondition(isExpertCondition, ModContent.ItemType<GnomBlade>(), 300, 1);
                     leadingConditionRule.OnSuccess(rule);
                     npcLoot.Add(leadingConditionRule);
                     break;

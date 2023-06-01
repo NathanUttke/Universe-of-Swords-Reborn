@@ -39,6 +39,6 @@ public class WaterBoltSword : ModItem
 
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
-		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
+		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(15f));
     }
 }

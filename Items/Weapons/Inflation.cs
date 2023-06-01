@@ -23,6 +23,7 @@ public class Inflation : ModItem
         Item.useTime = 50;
         Item.useAnimation = 50;
         Item.damage = 28;
+        Item.DamageType = DamageClass.Melee;
         Item.scale = 0.75f;
         Item.crit = 8;
         Item.UseSound = SoundID.Item1;

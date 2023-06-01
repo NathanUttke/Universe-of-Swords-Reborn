@@ -1,21 +1,36 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
+using Terraria.GameContent.Creative;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace UniverseOfSwordsMod.Items.Weapons;
+namespace UniverseOfSwordsMod.Items.Misc;
 
-public class GreenSolutionSpreader : ModItem
+public class RedSolutionSpreader : ModItem
 {
 	public override void SetStaticDefaults()
 	{
+        DisplayName.SetDefault("Red Solution Spreader");
         Tooltip.SetDefault("Infinite biome spreading? Awesome!\nRight click to choose between solutions");
+        SacrificeTotal = 1;
+        On.Terraria.GameContent.Creative.ItemFilters.Tools.FitsFilter += Tools_FitsFilter;
     }
 
-	public override void SetDefaults()
+    private bool Tools_FitsFilter(On.Terraria.GameContent.Creative.ItemFilters.Tools.orig_FitsFilter orig, Terraria.GameContent.Creative.ItemFilters.Tools self, Item entry)
+    {       
+        if (Item.type == Type)
+        {
+            return true;
+        }
+        return orig(self, entry);
+    }
+
+    public override void SetDefaults()
 	{
         Item.width = 58;
         Item.height = 58;
@@ -29,22 +44,9 @@ public class GreenSolutionSpreader : ModItem
 
         Item.value = 830000;
         Item.autoReuse = true;
-        Item.DamageType = DamageClass.Melee;
-        SacrificeTotal = 1;
 
-        Item.shoot = ProjectileID.PureSpray;
-        Item.shootSpeed = 20f;
-        SacrificeTotal = 1;
-    }
-
-    public override bool CanRightClick()
-    {
-        return true;
-    }
-    public override void ModifyItemLoot(ItemLoot itemLoot)
-    {
-        itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<BlueSolutionSpreader>(), 1));
-        Item.TurnToAir();
+        Item.shoot = ProjectileID.CrimsonSpray;
+        Item.shootSpeed = 20f;         
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
@@ -56,15 +58,16 @@ public class GreenSolutionSpreader : ModItem
         {
             double offsetAngle = startAngle + deltaAngle * i;
             Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockback, player.whoAmI, 0f, 0f);
-        }
+        }        
         return false;
     }
+
     public override void AddRecipes()
-	{
-		CreateRecipe()
-			.AddIngredient(Mod, "SwordMatter", 200)
-			.AddIngredient(ItemID.GreenSolution, 300)
-			.AddTile(TileID.MythrilAnvil)
-			.Register();
+	{		
+		Recipe val = CreateRecipe(1);
+		val.AddIngredient(Mod, "SwordMatter", 200);
+		val.AddIngredient(ItemID.RedSolution, 300);
+		val.AddTile(TileID.MythrilAnvil);
+		val.Register();
 	}
 }

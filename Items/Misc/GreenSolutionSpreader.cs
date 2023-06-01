@@ -6,33 +6,45 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace UniverseOfSwordsMod.Items.Weapons;
+namespace UniverseOfSwordsMod.Items.Misc;
 
-public class BlueSolutionSpreader : ModItem
+public class GreenSolutionSpreader : ModItem
 {
-    public override void SetStaticDefaults()
+	public override void SetStaticDefaults()
 	{
         Tooltip.SetDefault("Infinite biome spreading? Awesome!\nRight click to choose between solutions");
-    }
-
-	public override void SetDefaults()
-	{
-        Item.CloneDefaults(ModContent.ItemType<HallowSolutionSpreader>());
-        Item.shoot = ProjectileID.MushroomSpray;
-        Item.shootSpeed = 20f;
         SacrificeTotal = 1;
+        On.Terraria.GameContent.Creative.ItemFilters.Tools.FitsFilter += Tools_FitsFilter;
     }
 
-    public override bool CanRightClick()
+    private bool Tools_FitsFilter(On.Terraria.GameContent.Creative.ItemFilters.Tools.orig_FitsFilter orig, Terraria.GameContent.Creative.ItemFilters.Tools self, Item entry)
     {
-        return true;
+        if (Item.type == Type)
+        {
+            return true;
+        }
+        return orig(self, entry);
     }
 
-    public override void ModifyItemLoot(ItemLoot itemLoot)
-    {
-        itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<HallowSolutionSpreader>(), 1));
-        Item.TurnToAir();
+    public override void SetDefaults()
+	{
+        Item.width = 58;
+        Item.height = 58;
+        Item.scale = 1.3f;
+        Item.rare = ItemRarityID.Lime;
+
+        Item.useTime = 20;
+        Item.useAnimation = 20;
+        Item.useStyle = ItemUseStyleID.Swing;
+        Item.UseSound = SoundID.Item34;
+
+        Item.value = 830000;
+        Item.autoReuse = true;
+
+        Item.shoot = ProjectileID.PureSpray;
+        Item.shootSpeed = 20f;
     }
+
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         float spread = 1.75f;
@@ -46,13 +58,12 @@ public class BlueSolutionSpreader : ModItem
         }
         return false;
     }
-
     public override void AddRecipes()
-	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddIngredient(ItemID.DarkBlueSolution, 300);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+	{
+		CreateRecipe()
+			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ItemID.GreenSolution, 300)
+			.AddTile(TileID.MythrilAnvil)
+			.Register();
 	}
 }

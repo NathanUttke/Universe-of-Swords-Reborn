@@ -1,11 +1,8 @@
-﻿using Terraria.Audio;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameContent;
-using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,7 +12,10 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Ultimate Saber");
             Main.projFrames[Projectile.type] = 7;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
         public override void SetDefaults()
         {
@@ -64,12 +64,15 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             Color defaultColor = Projectile.GetAlpha(lightColor);
             Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
+            Texture2D circleTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/Extra_Light");
+            SpriteBatch spriteBatch = Main.spriteBatch;
 
             int frameHeight = texture.Height / Main.projFrames[Projectile.type];
             int startY = frameHeight * Projectile.frame;            
             Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
-            //Main.EntitySpriteDraw(texture, Projectile.Center, sourceRectangle, defaultColor, Projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), Projectile.scale, SpriteEffects.None, 0);
+
+
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);            
             return false;
         }
     }

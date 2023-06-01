@@ -28,6 +28,7 @@ public class HaloOfHorrorsLevel3 : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.boneGloveItem = Item;
+		player.honeyCombItem = Item;
 		player.statDefense += 10;
 		player.GetArmorPenetration(DamageClass.Generic) += 15;
 		player.GetAttackSpeed(DamageClass.Melee) -= 0.10f;
@@ -50,7 +51,17 @@ public class HaloOfHorrorsLevel3 : ModItem
 			.AddIngredient(ItemID.SpectreBar, 25)
 			.AddIngredient(ItemID.HoneyComb, 1)
 			.AddIngredient(ItemID.BeeWax, 100)
+			.AddIngredient(ItemID.SharkToothNecklace, 1)
             .AddTile(TileID.TinkerersWorkbench)
 			.Register();
+        CreateRecipe()
+            .AddIngredient(ModContent.ItemType<HaloOfHorrors>())
+            .AddIngredient(ModContent.ItemType<Orichalcon>(), 15)
+            .AddIngredient(ItemID.Bone, 200)
+            .AddIngredient(ItemID.SpectreBar, 25)
+            .AddIngredient(ItemID.StingerNecklace, 1)
+            .AddIngredient(ItemID.BeeWax, 100)
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
     }
 }

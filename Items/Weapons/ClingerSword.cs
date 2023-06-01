@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -10,8 +11,8 @@ public class ClingerSword : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
+		Item.width = 60;
+		Item.height = 62;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 40;
@@ -21,11 +22,14 @@ public class ClingerSword : ModItem
 		Item.UseSound = SoundID.Item100;
 		Item.shoot = ProjectileID.EyeFire;
 		Item.shootSpeed = 3f;
+		//Item.shoot = ModContent.ProjectileType<ClingerSwordProjectile>();
+		//Item.channel = true;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
+
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage /  2, knockback, player.whoAmI);

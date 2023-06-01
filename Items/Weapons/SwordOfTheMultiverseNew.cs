@@ -198,11 +198,11 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
         newRecipe.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15);
         newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
-        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AuricBar", out ModItem auricBar))
+        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityBar) && calamityBar.TryFind("AuricBar", out ModItem auricBar))
         {  
             newRecipe.AddIngredient(auricBar.Type, 5);
         }
-        if (calamityMod.TryFind("DraedonsForge", out ModTile draedonsForge))
+        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityForge) && calamityForge.TryFind("DraedonsForge", out ModTile draedonsForge))
         {
             newRecipe.AddTile(draedonsForge.Type);
         }

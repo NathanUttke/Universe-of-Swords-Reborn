@@ -6,36 +6,43 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace UniverseOfSwordsMod.Items.Weapons;
+namespace UniverseOfSwordsMod.Items.Misc;
 
-public class PurpleSolutionSpreader : ModItem
+public class CyanSolutionSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
+        DisplayName.SetDefault("Hallow Solution Spreader");
 		Tooltip.SetDefault("Infinite biome spreading? Awesome!\nRight click to choose between solutions");
-	}
-
-	public override void SetDefaults()
-	{
-        Item.CloneDefaults(ModContent.ItemType<HallowSolutionSpreader>());
-        Item.shoot = ProjectileID.CorruptSpray;
-        Item.shootSpeed = 15f;
         SacrificeTotal = 1;
+        On.Terraria.GameContent.Creative.ItemFilters.Tools.FitsFilter += Tools_FitsFilter;
     }
 
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
+    private bool Tools_FitsFilter(On.Terraria.GameContent.Creative.ItemFilters.Tools.orig_FitsFilter orig, Terraria.GameContent.Creative.ItemFilters.Tools self, Item entry)
+    {
+        if (Item.type == Type)
+        {
+            return true;
+        }
+        return orig(self, entry);
+    }
+
+    public override void SetDefaults()
 	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-    public override bool CanRightClick()
-    {
-        return true;
-    }
-
-    public override void ModifyItemLoot(ItemLoot itemLoot)
-    {
-        itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<RedSolutionSpreader>(), 1));
-        Item.TurnToAir();
+		Item.width = 58;
+		Item.height = 58;
+		Item.scale = 1.3f;
+		Item.rare = ItemRarityID.Lime;	
+		
+		Item.useTime = 20;
+		Item.useAnimation = 20;
+		Item.useStyle = ItemUseStyleID.Swing;
+		Item.UseSound = SoundID.Item34;	
+		
+		Item.value = 830000;
+		Item.autoReuse = true;
+        Item.shoot = ProjectileID.HallowSpray;
+        Item.shootSpeed = 20f;
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -51,12 +58,11 @@ public class PurpleSolutionSpreader : ModItem
         }
         return false;
     }
-
     public override void AddRecipes()
 	{		
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddIngredient(ItemID.PurpleSolution, 100);
+		val.AddIngredient(ItemID.BlueSolution, 300);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();
 	}

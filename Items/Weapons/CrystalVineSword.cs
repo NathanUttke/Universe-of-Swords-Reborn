@@ -26,7 +26,7 @@ public class CrystalVineSword : ModItem
         Item.useTime = 33;
         Item.useAnimation = 33;
         Item.damage = 50;
-        Item.knockBack = 6f;
+        Item.knockBack = 4f;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ProjectileID.CrystalVileShardShaft;
         Item.shootSpeed = 20f;
