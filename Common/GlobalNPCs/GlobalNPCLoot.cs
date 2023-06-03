@@ -62,7 +62,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<Executioner>(), 1, 1, 1));
                     break;
                 case NPCID.CultistBoss:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Doomsday>(), 2, 1, 1));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Doomsday>(), 1, 1, 1));
                     break;
                 case NPCID.MartianSaucerCore:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<MartianSaucerCore>(), 2, 1));
