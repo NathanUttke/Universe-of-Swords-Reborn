@@ -27,7 +27,7 @@ public class TheEater : ModItem
         Item.value = Item.sellPrice(0, 0, 75, 0);
         Item.shoot = ProjectileID.TinyEater;
         Item.shootSpeed = 7f;
-        Item.autoReuse = false;
+        Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
         SacrificeTotal = 1;
     }

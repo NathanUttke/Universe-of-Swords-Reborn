@@ -35,8 +35,12 @@ public class SolBlade : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
 
-	public override void MeleeEffects(Player player, Rectangle hitbox)
+    public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
 		if (Main.rand.NextBool(3))
 		{
