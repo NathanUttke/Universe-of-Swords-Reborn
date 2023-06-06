@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Buffs;
 
 namespace UniverseOfSwordsMod.Items.Consumables;
 
@@ -23,9 +24,9 @@ public class Skooma : ModItem
 		Item.consumable = true;
 		Item.width = 22;
 		Item.height = 40;
-		Item.value = Item.sellPrice(0, 2, 0, 0);
+		Item.value = Item.sellPrice(0, 1, 45, 0);
 		Item.rare = ItemRarityID.Purple;
-		Item.buffType = Mod.Find<ModBuff>("Skooma").Type;
+		Item.buffType = ModContent.BuffType<Buffs.Skooma>();
 		Item.buffTime = 8000;
 		SacrificeTotal = 30;
 

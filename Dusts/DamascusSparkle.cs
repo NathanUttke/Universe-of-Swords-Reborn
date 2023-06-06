@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -10,8 +11,9 @@ public class DamascusSparkle : ModDust
 		dust.velocity *= 0.5f;
 		dust.noGravity = true;
 		dust.noLight = true;
-		dust.scale *= 2f;
+		dust.scale *= 1.25f;
 		dust.alpha = 100;
+		dust.frame = new Rectangle(24, 0, 22, 22);
 	}
 
 	public override bool Update(Dust dust)
@@ -19,7 +21,7 @@ public class DamascusSparkle : ModDust
 		dust.position += dust.velocity;
 		dust.rotation += dust.velocity.X * 0.2f;
 		dust.scale *= 0.95f;
-		if (dust.scale < 0.5f)
+		if (dust.scale < 0.25f)
 		{
 			dust.active = false;
 		}

@@ -20,7 +20,7 @@ public class GelBlade : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;
         Item.useAnimation = 30;
-        Item.damage = 9;
+        Item.damage = 10;
         Item.knockBack = 4.5f;
         Item.UseSound = SoundID.Item1;
         Item.value = 1500;
@@ -32,7 +32,7 @@ public class GelBlade : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-            .AddIngredient(ItemID.Gel, 20)
+            .AddIngredient(ItemID.Gel, 25)
             .AddTile(TileID.WorkBenches)
             .Register();
     }

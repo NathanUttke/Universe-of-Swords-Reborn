@@ -9,7 +9,7 @@ public class SwordOfPower : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Broken Sword Of Power");
-		Tooltip.SetDefault("Could be fixed");
+		Tooltip.SetDefault("Can be fixed");
 	}
 
 	public override void SetDefaults()

@@ -16,12 +16,12 @@ public class StoneSword : ModItem
 	{
 		Item.width = 35;
 		Item.height = 35;
-		Item.scale = 0.8f;
+		Item.scale = 1f;
 		Item.rare = ItemRarityID.Blue;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 30;
-		Item.damage = 7;
+		Item.damage = 8;
 		Item.knockBack = 2f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 100;

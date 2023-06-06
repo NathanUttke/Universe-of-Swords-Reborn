@@ -14,8 +14,8 @@ public class WoodenArrowSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 38;
-		Item.height = 38;
+		Item.width = 64;
+		Item.height = 64;
 		Item.rare = ItemRarityID.White;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 60;

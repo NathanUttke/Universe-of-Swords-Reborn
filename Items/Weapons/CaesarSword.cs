@@ -19,8 +19,12 @@ public class CaesarSword : ModItem
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
+        Item.damage = 22;
+        Item.DamageType = DamageClass.Melee;
+        Item.knockBack = 5f;
+        Item.crit = 12;
 
-		Item.value = Item.sellPrice(0, 0, 30, 0);
+        Item.value = Item.sellPrice(0, 0, 30, 0);
 		Item.autoReuse = true;	
 		SacrificeTotal = 1;
 		ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;

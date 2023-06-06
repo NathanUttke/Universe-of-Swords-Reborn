@@ -17,6 +17,6 @@ public class NordMead : ModBuff
 		player.GetDamage(DamageClass.Melee) += 0.1f;
 		player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
 		player.endurance += 0.25f;
-		player.statDefense -= 8;
+		player.statDefense -= 6;
 	}
 }

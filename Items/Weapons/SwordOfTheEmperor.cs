@@ -48,6 +48,11 @@ public class SwordOfTheEmperor : ModItem
             .Register();
     }
 
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
+
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
         if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))

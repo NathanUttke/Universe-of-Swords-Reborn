@@ -1,26 +1,41 @@
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.Graphics.Shaders;
+using System;
+using Microsoft.Xna.Framework;
 
 namespace UniverseOfSwordsMod.Dusts;
 
+
 public class EmperorBlaze : ModDust
 {
-	public override void OnSpawn(Dust dust)
+    public override string Texture => "UniverseOfSwordsMod/Dusts/EmperorBlaze";
+    public override void OnSpawn(Dust dust)
 	{
-		dust.velocity *= 0.75f;
+		dust.velocity.Y *= 0.75f;
 		dust.noGravity = true;
-		dust.noLight = true;
-		dust.scale *= 1.5f;
+		dust.scale = 0.5f;
+		dust.noLight = true;	
+		//dust.shader = new ArmorShaderData(new Ref<Effect>(Mod.Assets.Request<Effect>("Assets/Effects/GlowEffect", AssetRequestMode.ImmediateLoad).Value), "GlowEffectPass");
 	}
 	public override bool Update(Dust dust)
 	{
-		dust.position += dust.velocity;
-		dust.rotation += dust.velocity.X * 0.2f;
-		dust.scale *= 0.8f;
-		if (dust.scale < 0.5f)
+		dust.position.Y += dust.velocity.Y;
+		dust.rotation += 0.015f;	
+		if (dust.scale < 1.15f)
 		{
-			dust.active = false;
-		}
+            dust.scale += 0.0030f;
+        }
+		else
+		{
+            dust.alpha += 48;
+            if (dust.alpha >= 255)
+            {
+                dust.active = false;
+            }
+        }
 		return false;
 	}
 }

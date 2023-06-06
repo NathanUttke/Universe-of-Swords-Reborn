@@ -8,7 +8,7 @@ public class MeleePower : ModBuff
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Melee Power");
-		Description.SetDefault("Increased melee stats: 4% increased melee crit, 10% increased melee damage and 10% increased melee speed");
+		Description.SetDefault("Minor improvements to melee stats");
 	}
 
 	public override void Update(Player player, ref int buffIndex)

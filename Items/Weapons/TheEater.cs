@@ -21,7 +21,7 @@ public class TheEater : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 40;
         Item.useAnimation = 20;
-        Item.damage = 15;
+        Item.damage = 17;
         Item.knockBack = 4f;
         Item.UseSound = SoundID.Item1;
         Item.value = Item.sellPrice(0, 0, 75, 0);

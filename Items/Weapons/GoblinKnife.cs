@@ -21,7 +21,7 @@ public class GoblinKnife : ModItem
         Item.useStyle = ItemUseStyleID.Thrust;
         Item.useTime = 9;
         Item.useAnimation = 9;
-        Item.damage = 20;
+        Item.damage = 22;
         Item.knockBack = 2.5f;
         Item.UseSound = SoundID.Item1;
         Item.value = Item.sellPrice(0, 0, 25, 0);

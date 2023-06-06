@@ -30,9 +30,8 @@ public class DamascusHelmet : ModItem
 	}
 
 	public override void AddRecipes()
-	{
-		
-										Recipe val = CreateRecipe(1);
+	{		
+		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "DamascusBar", 10);
 		val.AddIngredient(Mod, "SwordMatter", 65);
 		val.AddTile(TileID.Anvils);

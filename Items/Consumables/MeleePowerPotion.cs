@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Buffs;
 
 namespace UniverseOfSwordsMod.Items.Consumables;
 
@@ -8,7 +9,7 @@ public class MeleePowerPotion : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Increases melee stats by small amount");
+		Tooltip.SetDefault("Minor improvements to melee stats");
 	}
 
 	public override void SetDefaults()
@@ -24,7 +25,7 @@ public class MeleePowerPotion : ModItem
 		Item.height = 26;
 		Item.value = Item.sellPrice(0, 0, 4, 0);
 		Item.rare = ItemRarityID.Orange;
-		Item.buffType = Mod.Find<ModBuff>("MeleePower").Type;
+		Item.buffType = ModContent.BuffType<MeleePower>();
 		Item.buffTime = 8000;
 		SacrificeTotal = 30;
 	}

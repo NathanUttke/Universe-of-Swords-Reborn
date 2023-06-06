@@ -38,10 +38,19 @@ public class CrimsonCrystallus : ModItem
     {
         velocity = velocity.RotatedByRandom(MathHelper.ToRadians(25f));
     }
+
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (ModLoader.TryGetMod("CalamityMod", out _))
+		{
+			damage *= 1.15f;
+		}
+		return;
+    }
     public override void AddRecipes()
 	{		
 		CreateRecipe()
-		.AddIngredient(Mod, "Crystallus", 1)
+		.AddIngredient(ModContent.ItemType<Crystallus>(), 1)
 		.AddIngredient(ItemID.CrimtaneBar, 12)
 		.AddIngredient(ItemID.TissueSample, 8)
 		.AddTile(TileID.Anvils)

@@ -25,6 +25,15 @@ public class ShroomiteBlade : ModItem
 		SacrificeTotal = 1;
     }
 
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (ModLoader.TryGetMod("CalamityMod", out _))
+        {
+            damage *= 1.05f;
+        }
+        return;
+    }
+
     public override void AddRecipes()
     {
         CreateRecipe()

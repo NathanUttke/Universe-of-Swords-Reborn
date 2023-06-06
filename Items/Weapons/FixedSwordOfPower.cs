@@ -45,6 +45,15 @@ public class FixedSwordOfPower : ModItem
 			.Register();
 	}
 
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (ModLoader.TryGetMod("CalamityMod", out _))
+        {
+            damage *= 1.10f;
+        }
+        return;
+    }
+
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
 		Projectile boneProj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * 0.60f), knockback, player.whoAmI);
