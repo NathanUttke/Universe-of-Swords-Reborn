@@ -13,7 +13,7 @@ public class DamascusSparkle : ModDust
 		dust.noLight = true;
 		dust.scale *= 1.25f;
 		dust.alpha = 100;
-		dust.frame = new Rectangle(24, 0, 22, 22);
+		dust.frame = new Rectangle(0, 0, 22, 22);
 	}
 
 	public override bool Update(Dust dust)
