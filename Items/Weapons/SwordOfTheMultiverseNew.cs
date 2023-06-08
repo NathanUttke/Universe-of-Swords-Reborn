@@ -183,6 +183,15 @@ public class SwordOfTheMultiverseNew : ModItem
         }
     }
 
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (ModLoader.TryGetMod("CalamityMod", out _))
+        {
+            damage *= 2f;
+        }
+        return;
+    }
+
     public override void AddRecipes()
 	{
 

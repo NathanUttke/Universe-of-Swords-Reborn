@@ -35,7 +35,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             {
                 case NPCID.GoblinWarrior:
                 case NPCID.GoblinThief:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GoblinKnife>(), 2, 1, 1));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GoblinKnife>(), 3, 1, 1));
                     break;
                 case NPCID.EnchantedSword:
                     npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 4, 8), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 8, 12)));

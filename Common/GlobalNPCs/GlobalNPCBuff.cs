@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Common.GlobalNPCs
 {
@@ -38,10 +39,11 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             }
             if (Main.rand.Next(8) < 6)
             {
-                int dust = Dust.NewDust(((Entity)npc).position - new Vector2(2f, 2f), ((Entity)npc).width + 4, ((Entity)npc).height + 4, ((GlobalNPC)this).Mod.Find<ModDust>("EmperorBlaze").Type, ((Entity)npc).velocity.X * 0.4f, ((Entity)npc).velocity.Y * 0.4f, 100, default(Color), 3.5f);
+                int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, ModContent.DustType<EmperorBlaze>(), 0f, 0f, 100, default(Color), 3.5f);
                 Main.dust[dust].noGravity = true;
                 Dust obj = Main.dust[dust];
-                obj.velocity *= 0.5f;
+                obj.velocity.X = 0;
+                obj.velocity.Y *= 0.5f;
                 Main.dust[dust].velocity.Y -= 0.5f;
                 if (Main.rand.NextBool(8))
                 {

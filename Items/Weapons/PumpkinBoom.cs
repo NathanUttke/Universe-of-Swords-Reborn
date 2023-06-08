@@ -41,6 +41,15 @@ public class PumpkinBoom : ModItem
 			.Register();
 	}
 
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (ModLoader.TryGetMod("CalamityMod", out _))
+        {
+            damage *= 1.05f;
+        }
+        return;
+    }
+
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
 		Projectile.NewProjectile(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.Landmine, (int)(damage / 2f), knockBack / 2f, player.whoAmI);

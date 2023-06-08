@@ -13,14 +13,13 @@ public class DoubleBladedLightsaber : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("The Ultimate Saber");
-		Tooltip.SetDefault("'Watch out to not cut your body in half'");
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(55, 7, false));
 		ItemID.Sets.AnimatesAsSoul[Type] = true;
 	}
 
 	public override void SetDefaults()
 	{
-		Item.damage = 70;
+		Item.damage = 72;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
 
 		SacrificeTotal = 1;

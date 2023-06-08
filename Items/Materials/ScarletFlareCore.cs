@@ -41,13 +41,13 @@ public class ScarletFlareCore : ModItem
         Vector2 vector2 = new(Item.width / 2 - origin.X, Item.height - frame.Height);
         Vector2 vectorPosition = Item.position - Main.screenPosition + origin + vector2;
 
-        Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+        spriteBatch.End();
+        spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
         spriteBatch.Draw(glowSphere, vectorPosition, null, drawColorGlow, Item.velocity.X, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1f, SpriteEffects.None, 0);
 
-        Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+        spriteBatch.End();
+        spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
         globalTimeWrapped %= 4f;
         globalTimeWrapped /= 2f;
@@ -65,6 +65,9 @@ public class ScarletFlareCore : ModItem
         {
             spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 4f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(255, 119, 119, 80), Item.velocity.X * 0.25f, origin, Item.scale, SpriteEffects.None, 0f);
         }
-        return true;
+
+        spriteBatch.Draw(texture, vectorPosition, frame, Color.White, rotation, origin, scale, SpriteEffects.None, 0f);
+
+        return false;
     }
 }
