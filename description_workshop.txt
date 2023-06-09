@@ -1,21 +1,20 @@
-[h1]Universe of Swords[/h1]
+[h1]Universe of Swords Reborn[/h1]
 
-[i]Universe of Swords Reborn[/i] is a port and a continuation of the original [i]Universe of Swords[/i] from tModLoader 1.3, its mod creator, [i]Gnom[/i], abandoned the mod but has endorsed this continuation.
-This continuation aims to make the mod better by reworking, respriting and balancing the items throughout the game's progression.
+[b][url=https://discord.gg/DBCZg54fjX]Discord[/url][/b] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2984054672]Legacy Version[/url][/b]
 
+The [b]Universe of Swords Reborn[/b] Mod is a port and continuation of the original Universe of Swords Mod from tModLoader 1.3, with a lot of changes regarding to balancing and the overall quality. 
+
+Its original creator, Gnom, abandoned the mod but endorsed this port and gave us creative freedom going forward.
 
 [h2]Credits[/h2]
 
 [h3]Sprites[/h3]
-
 [list]
 [*]HORRIOR
 [*]mutater
 [*]Kosky
 [/list]
-
 [h3]Code[/h3]
-
 [list]
 [*]Kosky
 [*]TheBlackAbyss
