@@ -18,9 +18,9 @@ public class HumanBuzzSaw : ModProjectile
 
     public override void SetDefaults()
     {
-        Projectile.width = 128;
-        Projectile.height = 128;
-        Projectile.scale = 4f;
+        Projectile.width = 102;
+        Projectile.height = 102;
+        Projectile.scale = 1f;
         Projectile.penetrate = -1;
         Projectile.tileCollide = false;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;

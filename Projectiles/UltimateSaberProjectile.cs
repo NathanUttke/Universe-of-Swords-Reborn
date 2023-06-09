@@ -28,7 +28,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = DamageClass.MeleeNoSpeed;
         }
 
         private bool _initialized;
