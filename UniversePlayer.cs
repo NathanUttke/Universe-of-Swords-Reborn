@@ -3,6 +3,8 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
+using Terraria.ID;
+using UniverseOfSwordsMod.Buffs;
 
 namespace UniverseOfSwordsMod;
 
@@ -29,10 +31,11 @@ public class UniversePlayer : ModPlayer
 		{
 			if (Main.rand.NextBool(8) && drawInfo.shadow == 0f)
 			{
-				int dust = Dust.NewDust(drawInfo.Position - new Vector2(2f, 2f), Player.width + 4, Player.height + 4, ModContent.DustType<EmperorBlaze>(), Player.velocity.X * 0.4f, Player.velocity.Y * 0.4f, 100, default(Color), 3f);
+				int dust = Dust.NewDust(drawInfo.Position - new Vector2(2f, 2f), Player.width + 4, Player.height + 4, ModContent.DustType<Dusts.EmperorBlaze>(), 0f, Player.velocity.Y * 0.4f, 100, Color.Red, 3f);
 				Main.dust[dust].noGravity = true;
 				Dust obj = Main.dust[dust];
-				obj.velocity *= 0.8f;
+				obj.velocity.X = 0;
+				obj.velocity.Y *= 0.8f;
 				Main.dust[dust].velocity.Y -= 0.5f;				
 				Main.dust[dust].noGravity = false;	
 			}
