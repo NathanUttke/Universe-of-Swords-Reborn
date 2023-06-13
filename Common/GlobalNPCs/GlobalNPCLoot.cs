@@ -19,6 +19,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
         {
             PlayerNameCondition playerNameCondition = new();
             LeadingConditionRule leadingConditionRule = new(playerNameCondition);
+            Conditions.IsHardmode isHardmodeCondition = new();
             Conditions.NotExpert notExpertCondition = new();
             Conditions.IsExpert isExpertCondition = new();
 
@@ -35,7 +36,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             {
                 case NPCID.GoblinWarrior:
                 case NPCID.GoblinThief:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GoblinKnife>(), 3, 1, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(isHardmodeCondition, ModContent.ItemType<GoblinKnife>(), 3, 1, 1));
                     break;
                 case NPCID.EnchantedSword:
                     npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 4, 8), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 8, 12)));
