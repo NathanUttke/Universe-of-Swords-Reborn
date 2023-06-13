@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 
@@ -18,7 +20,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.ownerHitCheck = true;
             Projectile.tileCollide = false;
-            //Projectile.width = Projectile.height = 64;
 
             Projectile.aiStyle = -1;
             Projectile.rotation = -0.8f;
@@ -38,14 +39,13 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Projectile.ai[0] == 20f) 
             {
                 Projectile.ai[0] = 0;
-                acceleration *= -1f;
+                acceleration *= -1f;                
             }
             
             if (Main.myPlayer == Projectile.owner && (!player.channel || !player.controlUseItem || player.noItems || player.CCed))
             {
                 Projectile.Kill();
-            }
-
+            }                      
 
             Projectile.rotation += acceleration * player.direction;
             Projectile.position.X += player.width / 2 * player.direction;
@@ -53,21 +53,24 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.spriteDirection = player.direction;
 
             Projectile.AngleTo(Main.MouseWorld);
-            //player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Quarter, Projectile.rotation);            
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);            
             player.ChangeDir(player.direction);
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            if (!target.HasBuff(BuffID.CursedInferno))
+            {
+                target.AddBuff(BuffID.CursedInferno, 300);
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (Projectile.spriteDirection == -1)
-            {
-                spriteEffects = SpriteEffects.None;
-            }
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, new Vector2(0f, TextureAssets.Projectile[Type].Height()), Projectile.scale, spriteEffects, 0);
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, new Vector2(0f * Main.player[Projectile.owner].direction, TextureAssets.Projectile[Type].Height()), Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
     }
