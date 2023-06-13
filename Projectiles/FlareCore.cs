@@ -4,11 +4,19 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using System;
+using System.Reflection;
+
 
 namespace UniverseOfSwordsMod.Projectiles;
 
 public class FlareCore : ModProjectile
 {
+    public override void SetStaticDefaults()
+    {
+        ProjectileID.Sets.TrailCacheLength[Type] = 8;
+        ProjectileID.Sets.TrailingMode[Type] = 2;
+    }
     public override void SetDefaults()
     {
         Projectile.width = 25;
@@ -39,16 +47,22 @@ public class FlareCore : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
+        /*var mainType = typeof(Main); 
+        // Reflection stuff
+        MethodInfo methodInfo = mainType.GetMethod("DrawPrettyStarSparkle", BindingFlags.NonPublic | BindingFlags.Static);
+        if (methodInfo != null)
+        {
+            methodInfo.Invoke(this, new object[] {Projectile, SpriteEffects.None, Projectile.Center + Vector2.Zero - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY) + (Projectile.rotation - MathHelper.PiOver2).ToRotationVector2(), Color.Yellow, Color.Red});
+        }*/
+
+
         Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
         Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
         Color drawColorGlow = Color.Red;
 
         Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1.125f, SpriteEffects.None, 0);
-
-        Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
         Texture2D texture = TextureAssets.Projectile[Type].Value;
         Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
