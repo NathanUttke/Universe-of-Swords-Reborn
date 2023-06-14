@@ -22,7 +22,7 @@ internal class Nightmare : ModProjectile
         Projectile.height = 62;
         Projectile.scale = 1f;
         Projectile.friendly = true;
-        Projectile.penetrate = 2;
+        Projectile.penetrate = 1;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
@@ -61,8 +61,7 @@ internal class Nightmare : ModProjectile
         if (closestNPC == null) 
         {
             return;
-        }
-
+        }        
         Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
     }
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -74,11 +73,11 @@ internal class Nightmare : ModProjectile
             target.AddBuff(BuffID.ShadowFlame, 500);
         }
 
-        if (Main.rand.NextBool(3))
+        if (Main.rand.NextBool(3) && !target.HasBuff(BuffID.ShadowFlame))
         {
-            target.AddBuff(153, 800, false);
-            owner.statLife += 1;
-            owner.HealEffect(1, true);
+            target.AddBuff(BuffID.ShadowFlame, 800, false);
+            owner.statLife += 2;   
+            owner.HealEffect(2, true);
         }
     }
     public NPC FindClosestNPC(float maxDetectDistance)
@@ -123,7 +122,7 @@ internal class Nightmare : ModProjectile
         Main.spriteBatch.End();
         Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
 
-        Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1.25f, SpriteEffects.None, 0);
+        Main.spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1.25f, SpriteEffects.None, 0);
         Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, spriteEffects, 0);
 
         Main.spriteBatch.End();
@@ -133,11 +132,11 @@ internal class Nightmare : ModProjectile
 
     public override void Kill(int timeLeft)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.PurpleTorch, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default, 1f);
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.PurpleTorch, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default, 1f);
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default, 1f);
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, Projectile.oldVelocity.X * 0.25f, Projectile.oldVelocity.Y * 0.25f, 0, default, 1f);
         }
-        SoundEngine.PlaySound(SoundID.Dig, new Vector2(Projectile.position.X, Projectile.position.Y));
+        SoundEngine.PlaySound(SoundID.DD2_SkeletonDeath, new Vector2(Projectile.position.X, Projectile.position.Y));
     }
 }
