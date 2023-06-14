@@ -16,8 +16,8 @@ public class TheNightmareAmalgamation : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 110;
-		Item.height = 110;
+		Item.width = 90;
+		Item.height = 90;
 		Item.rare = ItemRarityID.Purple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 23;
@@ -35,9 +35,21 @@ public class TheNightmareAmalgamation : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, (int)(damage * 1.25f), knockback, player.whoAmI, 0f, 0f);	
-		return false;
-	}
+        /*int i = 0;
+        while (i < 2)
+        {
+            Vector2 spinPoint = Vector2.Normalize(velocity) * 14f;
+            spinPoint = spinPoint.RotatedBy(MathHelper.ToRadians(22 * i));
+            if (spinPoint.HasNaNs())
+            {
+                spinPoint -= Vector2.UnitY;
+            }
+            Projectile.NewProjectile(source, position, spinPoint, type, (int)(damage * 1.25f), knockback, player.whoAmI);
+            i++;
+        }*/
+        Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.25f), knockback, player.whoAmI);
+        return false;
+    }
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
@@ -52,7 +64,10 @@ public class TheNightmareAmalgamation : ModItem
 
 	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
 	{
-		target.AddBuff(153, 800, false);
+		if (!target.HasBuff(BuffID.ShadowFlame))
+		{
+            target.AddBuff(BuffID.ShadowFlame, 800, false);
+        }
 	}
 
 	public override void AddRecipes()
