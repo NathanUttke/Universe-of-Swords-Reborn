@@ -26,7 +26,7 @@ public class EdgeLord : ModItem
 		Item.useAnimation = 20;
 		Item.damage = 100;
 		Item.knockBack = 8f;
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item169;
 		Item.shoot = ModContent.ProjectileType<EdgeLordProjectile>();
 		Item.shootSpeed = 20f;
 		Item.value = 800000;

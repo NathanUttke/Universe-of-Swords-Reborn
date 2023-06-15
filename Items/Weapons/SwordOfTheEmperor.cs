@@ -22,15 +22,15 @@ public class SwordOfTheEmperor : ModItem
         Item.rare = ItemRarityID.Red;
 
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 20;
-        Item.useAnimation = 20;
-        Item.UseSound = SoundID.Item1;
+        Item.useTime = 22;
+        Item.useAnimation = 22;
+        Item.UseSound = SoundID.Item169;
 
         Item.damage = 85;
         Item.knockBack = 4.5f;
         Item.scale = 1.25f;
         
-        Item.value = Item.sellPrice(0, 8, 0, 0);
+        Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
         SacrificeTotal = 1;
@@ -39,7 +39,7 @@ public class SwordOfTheEmperor : ModItem
     {
         CreateRecipe()
             .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 10)  
-            .AddIngredient(ModContent.ItemType<Orichalcon>(), 13)
+            .AddIngredient(ModContent.ItemType<Orichalcon>(), 12)
             .AddIngredient(ModContent.ItemType<BiggoronSword>())
             .AddIngredient(ItemID.BrokenHeroSword, 1)
             .AddIngredient(ItemID.GoldBar, 25)

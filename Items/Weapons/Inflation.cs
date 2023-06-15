@@ -26,7 +26,7 @@ public class Inflation : ModItem
         Item.DamageType = DamageClass.Melee;
         Item.scale = 0.75f;
         Item.crit = 8;
-        Item.UseSound = SoundID.Item1;
+        Item.UseSound = SoundID.Item169;
         Item.value = 0;
         Item.autoReuse = true;
     }

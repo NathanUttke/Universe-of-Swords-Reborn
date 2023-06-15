@@ -9,6 +9,7 @@ public class InnosWrath : ModItem
 {
 	public override void SetStaticDefaults()
 	{
+		DisplayName.SetDefault("Innos' Wrath");
 		Tooltip.SetDefault("Pulses with light energy of Innos");
 	}
 
@@ -18,13 +19,13 @@ public class InnosWrath : ModItem
 		Item.height = 124;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
-		Item.useAnimation = 20;
+		Item.useTime = 19;
+		Item.useAnimation = 19;
 		Item.damage = 90;
 		Item.knockBack = 10f;
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item169;
 		Item.value = 611500;
-		Item.crit = 12;
+		Item.crit = 13;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;

@@ -23,11 +23,11 @@ public class SuperInflation : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 10f;
 		Item.useTime = 48;
-		Item.useAnimation = 12;
+		Item.useAnimation = 20;
 		Item.damage = 130;
         Item.shoot = ProjectileID.GoldCoin;
         Item.shootSpeed = 30f;
-        Item.UseSound = SoundID.Item1;
+        Item.UseSound = SoundID.Item169;
 		Item.value = 0;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 

@@ -30,7 +30,7 @@ public class ScarledFlareGreatsword : ModItem
 		Item.crit = 6;
 		Item.shootSpeed = 60f;
 		Item.shoot = ProjectileType<FlareCore>();
-		Item.UseSound = SoundID.Item45;
+		Item.UseSound = SoundID.Item169;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 

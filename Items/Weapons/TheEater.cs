@@ -1,8 +1,10 @@
 using Microsoft.Xna.Framework;
+using Mono.Cecil;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -25,18 +27,19 @@ public class TheEater : ModItem
         Item.knockBack = 4f;
         Item.UseSound = SoundID.Item1;
         Item.value = Item.sellPrice(0, 0, 75, 0);
-        Item.shoot = ProjectileID.TinyEater;
-        Item.shootSpeed = 7f;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
         SacrificeTotal = 1;
     }
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-        Projectile.NewProjectile(source, position, new Vector2(velocity.X * Utils.SelectRandom(Main.rand, -1, 1, 1, -1, 1, -1), velocity.Y), type, (int)(Item.damage * 0.5f + Main.rand.Next(1, 4)), 4f, player.whoAmI);
-        return false;
+        if (Main.rand.NextBool(2))
+        {
+            Projectile.NewProjectile(target.GetSource_OnHit(target), target.position, new Vector2(7f * Utils.SelectRandom(Main.rand, -1, 1, 1, -1, 1, -1), 7f), ProjectileID.TinyEater, (int)(Item.damage * 0.5f + Main.rand.Next(1, 4)), 4f, player.whoAmI);
+        }
     }
+
 
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {

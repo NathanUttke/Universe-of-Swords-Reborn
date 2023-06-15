@@ -24,7 +24,7 @@ public class DragonsDeath : ModItem
 		Item.useAnimation = 20;
 		Item.damage = 140;
 		Item.knockBack = 13f;
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item169;
 		Item.value = 490500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
