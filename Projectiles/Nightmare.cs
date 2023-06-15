@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,14 +13,13 @@ internal class Nightmare : ModProjectile
     public override void SetStaticDefaults()
     {
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-        ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
-        Main.projFrames[Projectile.type] = 4;
     }
     public override void SetDefaults()
     {
-        Projectile.width = 94;
-        Projectile.height = 62;
+        Projectile.width = 54;
+        Projectile.height = 58;
         Projectile.scale = 1f;
         Projectile.friendly = true;
         Projectile.penetrate = 1;
@@ -101,32 +101,43 @@ internal class Nightmare : ModProjectile
         return closestNPC;
     }
 
+    public override Color? GetAlpha(Color lightColor) => new Color(255, 82, 119, 100);
+
     public override bool PreDraw(ref Color lightColor)
     {
         SpriteEffects spriteEffects = SpriteEffects.None;
-
+        SpriteBatch spriteBatch = Main.spriteBatch;
+        Texture2D voidTextureExtra = TextureAssets.Extra[131].Value;
         Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
-        int frameHeight = texture.Height / Main.projFrames[Projectile.type];
-        int startY = frameHeight * Projectile.frame;
+        Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
 
         Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-        Color drawColorGlow = Color.Purple;
-
-        Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
+        Color drawColorGlow = Color.HotPink;
 
         if (Projectile.spriteDirection == -1)
         {
             spriteEffects = SpriteEffects.FlipHorizontally;
         }
 
-        Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
+        spriteBatch.End();
+        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
 
-        Main.spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1.25f, SpriteEffects.None, 0);
-        Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, spriteEffects, 0);
+        spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1f, SpriteEffects.None, 0);
 
-        Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
+        spriteBatch.End();
+        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
+
+        for (int i = 0; i < Projectile.oldPos.Length; i++)
+        {
+            float num = 10 - i;
+            Color drawColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
+            drawColor *= num / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
+            spriteBatch.Draw(voidTextureExtra, (Projectile.oldPos[i] - Main.screenPosition) + new Vector2(Projectile.width / 2f, Projectile.height / 2f) + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + Main.GlobalTimeWrappedHourly * 2f, drawOrigin, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
+            spriteBatch.Draw(texture, (Projectile.oldPos[i] - Main.screenPosition) + new Vector2(Projectile.width / 2f, Projectile.height / 2f) + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, (Projectile.scale) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
+        }
+
+        spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+
         return false;
     }
 
