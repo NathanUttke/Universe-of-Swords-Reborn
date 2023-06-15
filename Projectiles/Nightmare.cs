@@ -112,7 +112,7 @@ internal class Nightmare : ModProjectile
         Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
 
         Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-        Color drawColorGlow = Color.HotPink;
+        Color drawColorGlow = new(255, 128, 255);
 
         if (Projectile.spriteDirection == -1)
         {
@@ -123,6 +123,14 @@ internal class Nightmare : ModProjectile
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
 
         spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1f, SpriteEffects.None, 0);
+
+        for (int i = 0; i < Projectile.oldPos.Length; i++)
+        {
+            float num = 10 - i;
+            Color drawColor = drawColorGlow * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
+            drawColor *= num / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
+            spriteBatch.Draw(glowSphere, (Projectile.oldPos[i] - Main.screenPosition) + new Vector2(Projectile.width / 2f, Projectile.height / 2f) + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+        }
 
         spriteBatch.End();
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
