@@ -45,7 +45,14 @@ public class FrostburnArrowSword : ModItem
 		CreateRecipe()
 			.AddIngredient(ItemID.FrostburnArrow, 999)
 			.AddIngredient(ModContent.ItemType<SwordMatter>(), 120)
+			.AddIngredient(ItemID.ShadowScale, 10)
 			.AddTile(TileID.Anvils)
 			.Register();
-	}
+        CreateRecipe()
+            .AddIngredient(ItemID.FrostburnArrow, 999)
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 120)
+            .AddIngredient(ItemID.TissueSample, 10)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }
