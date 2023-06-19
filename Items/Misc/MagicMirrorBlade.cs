@@ -16,8 +16,8 @@ public class MagicMirrorBlade : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 60;
-		Item.height = 64;
+		Item.width = 58;
+		Item.height = 58;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 26;
@@ -69,7 +69,7 @@ public class MagicMirrorBlade : ModItem
 	{	
 		CreateRecipe()
 		.AddIngredient(ItemID.MagicMirror, 1)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)
 		.Register();
 	}
 }
