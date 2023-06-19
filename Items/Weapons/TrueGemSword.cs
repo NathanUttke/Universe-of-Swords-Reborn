@@ -55,21 +55,16 @@ public class TrueGemSword : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-        .AddIngredient(ModContent.ItemType<TopazSword>(), 1)
-        .AddIngredient(ModContent.ItemType<SapphireSword>(), 1)
-        .AddIngredient(ModContent.ItemType<EmeraldSword>(), 1)
-        .AddIngredient(ModContent.ItemType<AmethystSword>(), 1)
-        .AddIngredient(ModContent.ItemType<AmberSword>(), 1)
-        .AddIngredient(ModContent.ItemType<DiamondSword>(), 1)
-        .AddIngredient(ModContent.ItemType<RubySword>(), 1)
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
-        .AddIngredient(ItemID.ShadowScale, 15)
+        .AddIngredient(ItemID.Topaz, 5)
+        .AddIngredient(ItemID.Sapphire, 5)
+        .AddIngredient(ItemID.Emerald, 5)
+        .AddIngredient(ItemID.Amethyst, 10)
+        .AddIngredient(ItemID.Amber, 10)
+        .AddIngredient(ItemID.Diamond, 10)
+        .AddIngredient(ItemID.Ruby, 10)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 120)
+        .AddIngredient(ItemID.ShadowScale, 10)
         .AddTile(TileID.TinkerersWorkbench)
         .Register();
     }
-
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-	{
-		target.AddBuff(72, 360, false);
-	}
 }

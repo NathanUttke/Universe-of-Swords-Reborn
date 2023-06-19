@@ -1,7 +1,5 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -22,7 +20,7 @@ public class CosmoStorm : ModItem
         Item.rare = ItemRarityID.Red;
         Item.knockBack = 3f;
 
-        Item.useTime = 30;
+        Item.useTime = 20;
         Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item15;
@@ -30,8 +28,6 @@ public class CosmoStorm : ModItem
         Item.damage = 140;
         Item.DamageType = DamageClass.Melee;
 
-        Item.shoot = ProjectileID.NebulaArcanum;
-        Item.shootSpeed = 6f;
         Item.value = 650000;
         Item.autoReuse = true;
         SacrificeTotal = 1;
@@ -40,11 +36,11 @@ public class CosmoStorm : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-        .AddIngredient(ItemID.FragmentNebula, 30)
-        .AddIngredient(ItemID.FragmentSolar, 30)
+        .AddIngredient(ItemID.FragmentNebula, 25)
+        .AddIngredient(ItemID.FragmentSolar, 25)
         .AddIngredient(Mod, "LunarOrb", 1)
-        .AddIngredient(Mod, "PowerOfTheGalactic", 1)
-        .AddIngredient(ItemID.LunarBar, 20)
+        .AddIngredient(ModContent.ItemType<PowerOfTheGalactic>(), 1)
+        .AddIngredient(ItemID.LunarBar, 15)
         .AddIngredient(ItemID.NebulaArcanum, 1)
         .AddIngredient(ItemID.TrueExcalibur, 1)
         .AddIngredient(ItemID.LargeAmethyst, 4)
@@ -53,12 +49,16 @@ public class CosmoStorm : ModItem
         .Register();
     }
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
-        proj.tileCollide = false;
-        proj.DamageType = DamageClass.Melee;
-   
-        return false;
+        Vector2 hitPosition = Main.rand.NextVector2Circular(200f, 200f);
+        hitPosition.SafeNormalize(hitPosition);
+
+        if (Main.rand.NextBool(3) && target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
+        {
+            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 20f, hitPosition / 4f, ProjectileID.NebulaArcanum, damage, knockBack, player.whoAmI, 0f, 0f);
+            proj.DamageType = DamageClass.Melee;
+        }               
     }
 }
