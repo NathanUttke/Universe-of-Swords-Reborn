@@ -40,7 +40,7 @@ public class BetterShroomiteBlade : ModItem
 	{		
 		CreateRecipe()
 		.AddIngredient(ModContent.ItemType<ShroomiteBlade>(), 1)
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
 		.AddIngredient(ItemID.ShroomiteBar, 15)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();

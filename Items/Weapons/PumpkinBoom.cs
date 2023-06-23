@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -21,7 +22,7 @@ public class PumpkinBoom : ModItem
 		Item.useTime = 20;
 		Item.useAnimation = 20;
 
-		Item.damage = 59;
+		Item.damage = 50;
 		Item.knockBack = 6.5f;
 		Item.UseSound = SoundID.Item1;
 		Item.shootSpeed = 10f;
@@ -35,8 +36,8 @@ public class PumpkinBoom : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<PumpkinSword>(), 1)
-			.AddIngredient(Mod, "Orichalcon", 1)
-			.AddIngredient(Mod, "SwordMatter", 120)
+			.AddIngredient(ModContent.ItemType<Orichalcon>(), 1)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}

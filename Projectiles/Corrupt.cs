@@ -25,10 +25,10 @@ public class Corrupt : ModProjectile
 		Projectile.DamageType = DamageClass.MeleeNoSpeed;
 		Projectile.penetrate = 1;
 		Projectile.alpha = 255;
-		Projectile.light = 0f;
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = true;
 		Projectile.extraUpdates = 1;
+		Projectile.timeLeft = 60;
         AIType = 14;
 	}
 

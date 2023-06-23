@@ -69,7 +69,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);
 
-            Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
+            Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
             Color drawColorGlow = Color.Purple;
 
             Main.spriteBatch.End();

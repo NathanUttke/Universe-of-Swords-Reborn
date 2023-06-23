@@ -1,6 +1,4 @@
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Projectiles;
@@ -18,11 +16,11 @@ public class ClingerSword : ModItem
 		Item.useTime = 60;
 		Item.useAnimation = 60;
 		Item.damage = 50;
-		Item.knockBack = 4.5f;
-		Item.UseSound = SoundID.Item100;
+		Item.knockBack = 4.5f;		
 		Item.shoot = ModContent.ProjectileType<ClingerSwordProjectile>();
+		Item.shootSpeed = 5f;
+		Item.noMelee = true;
 		Item.noUseGraphic = true;
-		Item.channel = true;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 

@@ -32,12 +32,12 @@ public class BoxOfGrenades : ModItem
 			return;
 		}
 		grenadeBoxCounter++;
-		if (grenadeBoxCounter <= 50)
+		if (grenadeBoxCounter <= 45)
 		{
 			return;
 		}
 		grenadeBoxCounter = 0;
-		Projectile grenadeBox = Projectile.NewProjectileDirect(player.GetSource_Accessory(Item), player.Center, new Vector2(12f * player.direction, Main.rand.Next(-11, 10)), ProjectileID.Grenade, Main.rand.Next(14, 50), 4.1f, player.whoAmI);
+		Projectile grenadeBox = Projectile.NewProjectileDirect(player.GetSource_Accessory(Item), player.Center, new Vector2(12f * player.direction, Main.rand.Next(-11, 10)), ProjectileID.Grenade, Main.rand.Next(25, 60), 4.1f, player.whoAmI);
 		grenadeBox.DamageType = DamageClass.Generic;
 	}
 
@@ -45,7 +45,7 @@ public class BoxOfGrenades : ModItem
     {
 		CreateRecipe(1)
 		.AddIngredient(ItemID.WoodenCrate, 1)
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
 		.AddIngredient(ItemID.Grenade, 800)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();

@@ -34,16 +34,14 @@ public class TheEater : ModItem
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-        if (Main.rand.NextBool(2))
+        Vector2 hitPosition = Main.rand.NextVector2Circular(50f, 50f);
+        hitPosition.SafeNormalize(hitPosition);
+
+        if (Main.rand.NextBool(3) && target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
         {
-            Projectile.NewProjectile(target.GetSource_OnHit(target), target.position, new Vector2(7f * Utils.SelectRandom(Main.rand, -1, 1, 1, -1, 1, -1), 7f), ProjectileID.TinyEater, (int)(Item.damage * 0.5f + Main.rand.Next(1, 4)), 4f, player.whoAmI);
+            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 20f, hitPosition / 4f, ProjectileID.TinyEater, damage / 3, knockBack, player.whoAmI, 0f, 0f);
+            proj.DamageType = DamageClass.Melee;
         }
-    }
-
-
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-    {
-        velocity = velocity.RotatedByRandom(MathHelper.ToRadians(25f));
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

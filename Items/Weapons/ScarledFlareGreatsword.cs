@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 using static Terraria.ModLoader.ModContent;
 
@@ -22,13 +23,13 @@ public class ScarledFlareGreatsword : ModItem
 		Item.rare = ItemRarityID.Red;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
+		Item.useTime = 25;
 		Item.useAnimation = 20;
 
 		Item.damage = 130;
-		Item.knockBack = 7f;
+		Item.knockBack = 6f;
 		Item.crit = 6;
-		Item.shootSpeed = 60f;
+		Item.shootSpeed = 20f;
 		Item.shoot = ProjectileType<FlareCore>();
 		Item.UseSound = SoundID.Item169;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
@@ -42,19 +43,7 @@ public class ScarledFlareGreatsword : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-        float numberProjectiles = 3;
-        float rotation = MathHelper.ToRadians(10f);
-        position += Vector2.Normalize(velocity * 4f);
-
-        for (int i = 0; i < numberProjectiles; i++)		
-		{
-            Vector2 perturbedSpeed = Utils.RotatedBy(velocity, (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
-            Projectile redSword = Projectile.NewProjectileDirect(source, position, perturbedSpeed, ProjectileType<RedFlareLongswordProjectile>(), (int)(damage * 1.25f), knockback, player.whoAmI, 0f, 0f);
-			redSword.tileCollide = false;
-			redSword.scale = 1.15f;
-		}
-
-        Projectile.NewProjectileDirect(source, position, velocity * 1.5f, type, (int)(damage * 1.30f), knockback, player.whoAmI, 0f, 0f);
+		Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 2.5f), knockback, player.whoAmI, 0f, 0f);
         return false;
 	}
 
@@ -76,10 +65,10 @@ public class ScarledFlareGreatsword : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe()
-		.AddIngredient(Mod, "UpgradeMatter", 4)
-		.AddIngredient(Mod, "RedFlareLongsword", 1)
-		.AddIngredient(Mod, "ScarletFlareCore", 1)
-		.AddIngredient(Mod, "TheNightmareAmalgamation", 1)
+		.AddIngredient(ItemType<SwordMatter>(), 30)
+		.AddIngredient(ItemType<RedFlareLongsword>(), 1)
+		.AddIngredient(ItemType<ScarledFlareGreatsword>(), 1)
+		.AddIngredient(ItemType<TheNightmareAmalgamation>(), 1)
         .AddIngredient(ItemID.BrokenHeroSword, 1)
         .AddTile(TileID.LunarCraftingStation)
 		.Register();

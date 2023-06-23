@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -22,7 +23,7 @@ public class PurpleRuneBlade : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 35;
 		Item.useAnimation = 25;
-		Item.damage = 38;
+		Item.damage = 45;
 
 		Item.shoot = ModContent.ProjectileType<PurpleRuneProjectile>();
 		Item.shootSpeed = 8f;
@@ -48,8 +49,7 @@ public class PurpleRuneBlade : ModItem
 	{		
 		CreateRecipe()
 		.AddIngredient(ItemID.ShadowFlameKnife, 1)
-		.AddIngredient(Mod, "DamascusBar", 15)
-		.AddIngredient(Mod, "UpgradeMatter", 1)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

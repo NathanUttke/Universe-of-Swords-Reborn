@@ -62,8 +62,7 @@ public class LegendaryWarriorGauntlet : ModItem
 		.AddIngredient(ItemID.AnkhShield, 1)
 		.AddIngredient(ItemID.LifeFruit, 10)
 		.AddIngredient(ItemID.LunarBar, 25)
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 18)
-		.AddIngredient(Mod, "LunarOrb", 4)
+		.AddIngredient(ModContent.ItemType<LunarOrb>(), 4)
 		.AddTile(TileID.DemonAltar)
 		.Register();
 	}

@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -19,7 +20,7 @@ public class ChlorophyteArrowSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
+		Item.useTime = 40;
 		Item.useAnimation = 20;
 		Item.damage = 68;
 		Item.knockBack = 8f;
@@ -43,7 +44,7 @@ public class ChlorophyteArrowSword : ModItem
 	{				
 		CreateRecipe()
 			.AddIngredient(ItemID.ChlorophyteArrow, 500)
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 15)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}

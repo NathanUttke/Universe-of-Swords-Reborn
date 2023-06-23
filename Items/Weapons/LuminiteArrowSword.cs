@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -43,7 +44,7 @@ public class LuminiteArrowSword : ModItem
 	{				
 		CreateRecipe()
 			.AddIngredient(ItemID.MoonlordArrow, 500)
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();
 	}

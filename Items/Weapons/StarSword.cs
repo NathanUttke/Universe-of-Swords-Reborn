@@ -37,7 +37,7 @@ public class StarSword : ModItem
     public override void AddRecipes()
 	{		
 		CreateRecipe()
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 15)
 		.AddIngredient(ItemID.Starfury, 1)
 		.AddIngredient(ItemID.FallenStar, 20)
 		.AddTile(TileID.Anvils)

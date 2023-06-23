@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -30,38 +31,31 @@ public class HumanBuzzSaw : ModItem
 		Item.useAnimation = 4;		
 		Item.UseSound = SoundID.Item1;
 
-		Item.knockBack = 3.5f;
+		Item.knockBack = 4f;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.rare = ItemRarityID.LightRed;
-		Item.shoot = Mod.Find<ModProjectile>("HumanBuzzSaw").Type;
+		Item.shoot = ModContent.ProjectileType<Projectiles.HumanBuzzSaw>();
 
         Item.channel = true;
         Item.autoReuse = true;
         Item.noUseGraphic = true;
         Item.noMelee = true;
     }
-
-	//public override bool UseItemFrame(Player player)
-	//{
-	//	player.bodyFrame.Y = 3 * player.bodyFrame.Height;
-	//	return true;
-	//}
-
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.Sawmill, 1);
-		val.AddIngredient(ItemID.TitaniumBar, 8);
-		val.AddIngredient(Mod, "SwordMatter", 60);
-		val.AddIngredient(Mod, "DamascusBar", 20);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
-		Recipe val2 = CreateRecipe(1);
-		val2.AddIngredient(ItemID.Sawmill, 1);
-		val2.AddIngredient(ItemID.AdamantiteBar, 8);
-		val2.AddIngredient(Mod, "SwordMatter", 60);
-		val2.AddIngredient(Mod, "DamascusBar", 20);
-		val2.AddTile(TileID.MythrilAnvil);
-		val2.Register();
+		CreateRecipe()
+		.AddIngredient(ItemID.Sawmill, 1)
+		.AddIngredient(ItemID.TitaniumBar, 8)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
+		.AddIngredient(ModContent.ItemType<DamascusBar>(), 20)
+		.AddTile(TileID.MythrilAnvil)
+		.Register();
+		CreateRecipe()
+		.AddIngredient(ItemID.Sawmill, 1)
+		.AddIngredient(ItemID.AdamantiteBar, 8)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
+        .AddIngredient(ModContent.ItemType<DamascusBar>(), 20)
+        .AddTile(TileID.MythrilAnvil)
+		.Register();
 	}
 }

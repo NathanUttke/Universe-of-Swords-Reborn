@@ -42,8 +42,9 @@ public class Executioner : ModItem
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
-			Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, Item.shoot, damage, knockback, player.whoAmI);
+			Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
 			proj.DamageType = DamageClass.MeleeNoSpeed;
+            proj.timeLeft = 100;
         }
         return false;
     }

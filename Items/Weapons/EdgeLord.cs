@@ -42,7 +42,7 @@ public class EdgeLord : ModItem
 			.AddIngredient(ItemID.MoonStone, 1)
 			.AddIngredient(ItemID.HellstoneBar, 50)
 			.AddIngredient(ItemID.SunStone, 1)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 35)
 			.AddIngredient(ItemID.DeathSickle, 1)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
@@ -51,7 +51,7 @@ public class EdgeLord : ModItem
 			.AddIngredient(ItemID.MoonStone, 1)
 			.AddIngredient(ItemID.HellstoneBar, 50)
             .AddIngredient(ItemID.SunStone, 1)
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 35)
 			.AddIngredient(ItemID.DeathSickle, 1)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();

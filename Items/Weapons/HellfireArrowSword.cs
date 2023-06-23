@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -43,7 +44,7 @@ public class HellfireArrowSword : ModItem
 	{				
 		CreateRecipe()
 			.AddIngredient(ItemID.HellfireArrow, 500)
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 15)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

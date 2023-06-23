@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -40,7 +41,7 @@ public class WoodenArrowSword : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.WoodenArrow, 500)
-			.AddIngredient(Mod, "SwordMatter", 100)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 4)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

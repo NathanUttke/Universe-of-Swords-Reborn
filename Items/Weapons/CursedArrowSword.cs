@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -45,7 +46,7 @@ public class CursedArrowSword : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.CursedArrow, 500)
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}

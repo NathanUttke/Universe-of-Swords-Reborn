@@ -38,7 +38,7 @@ public class IceBreaker : ModItem
 		CreateRecipe()
 		.AddIngredient(ItemID.Frostbrand, 1)
 		.AddIngredient(ItemID.SnowBlock, 200)
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();
 	}
@@ -51,7 +51,8 @@ public class IceBreaker : ModItem
 		for (int i = 0; i < numberProjectiles; i++)
 		{
 			Vector2 perturbedSpeed = Utils.RotatedBy(velocity, (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
-			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, Item.shoot, damage, knockback, player.whoAmI, 0f, 0f);
+			Projectile iceProj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI, 0f, 0f);
+			iceProj.timeLeft = 100;
 		}
 		return false;
 	}

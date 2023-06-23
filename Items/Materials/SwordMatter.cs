@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Reflection.Metadata.Ecma335;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -46,8 +47,8 @@ public class SwordMatter : ModItem
 		Color whiteColor = Color.HotPink;
 		whiteColor.A = 30;
 
-        spriteBatch.Draw(pinkExtra, vectorPosition, pinkExtraFrame, whiteColor, rotation + globalTimeWrapped / 2f, pinkOrigin, scale, SpriteEffects.None, 0f);
-        spriteBatch.Draw(texture, vectorPosition, frame, Color.White, rotation, origin, scale, SpriteEffects.None, 0f);
+        spriteBatch.Draw(pinkExtra, vectorPosition, pinkExtraFrame, whiteColor, rotation + globalTimeWrapped * 0.75f, pinkOrigin, scale + MathF.Sin(scale / 4f), SpriteEffects.None, 0f);
+        spriteBatch.Draw(texture, vectorPosition, frame, Color.White, rotation, origin, scale + MathF.Sin(scale / 4f), SpriteEffects.None, 0f);
         return false;
     }
 }

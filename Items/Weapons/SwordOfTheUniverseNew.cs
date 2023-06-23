@@ -52,7 +52,7 @@ public class SwordOfTheUniverseNew : ModItem
 		newRecipe.AddIngredient(ModContent.ItemType<EdgeLord>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<TheNightmareAmalgamation>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<SolBlade>(), 1);
-		newRecipe.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4);
+		newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 75);
         if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AuricBar", out ModItem auricBar))
         {
             newRecipe.AddIngredient(auricBar.Type, 5);

@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -19,7 +20,7 @@ public class HolyArrowSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.LightRed;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 25;
+		Item.useTime = 50;
 		Item.useAnimation = 25;
 		Item.damage = 40;
 		Item.knockBack = 7f;
@@ -43,7 +44,7 @@ public class HolyArrowSword : ModItem
 	{				
 		CreateRecipe()
 			.AddIngredient(ItemID.HolyArrow, 500)
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 30)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

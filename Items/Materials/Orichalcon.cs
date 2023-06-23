@@ -29,8 +29,7 @@ public class Orichalcon : ModItem
 		.AddIngredient(ItemID.SoulofLight, 25)
 		.AddIngredient(ItemID.SoulofNight, 25)
 		.AddIngredient(ItemID.PixieDust, 10)
-		.AddIngredient(ModContent.ItemType<DamascusBar>(), 5)
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+		.AddIngredient(ModContent.ItemType<DamascusBar>(), 10)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();
 	}

@@ -33,7 +33,7 @@ public class TheSwarm : ModItem
 	public override void AddRecipes()
 	{		
 		CreateRecipe()
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 1)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 5)
 		.AddIngredient(ModContent.ItemType<TheStinger>(), 1)
 		.AddIngredient(ItemID.BeeKeeper, 1)
 		.AddTile(TileID.Anvils)

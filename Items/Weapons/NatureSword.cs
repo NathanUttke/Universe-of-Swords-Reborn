@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -56,7 +57,7 @@ public class NatureSword : ModItem
 		.AddIngredient(ItemID.Seed, 10)
 		.AddIngredient(ItemID.Daybloom, 5)
 		.AddIngredient(ItemID.DirtBlock, 100)
-		.AddIngredient(Mod, "SwordMatter", 100)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 10)
 		.AddTile(TileID.Anvils)
 		.Register();
 		CreateRecipe()
@@ -64,7 +65,7 @@ public class NatureSword : ModItem
 		.AddIngredient(ItemID.Seed, 10)
 		.AddIngredient(ItemID.Daybloom, 5)
 		.AddIngredient(ItemID.DirtBlock, 100)
-		.AddIngredient(Mod, "SwordMatter", 100)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 10)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

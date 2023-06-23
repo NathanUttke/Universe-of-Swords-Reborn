@@ -38,7 +38,7 @@ public class UltraMachine : ModItem
 	{		
 		CreateRecipe()
             .AddIngredient(ItemID.BrokenHeroSword, 1)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 5)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
 			.AddIngredient(ModContent.ItemType<DamascusBar>(), 20)
 			.AddIngredient(ItemID.SoulofFright, 15)
 			.AddIngredient(ItemID.SoulofMight, 15)

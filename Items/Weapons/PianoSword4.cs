@@ -41,17 +41,17 @@ public class PianoSword4 : ModItem
 
     public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.PearlwoodPiano, 1);
-		val.AddIngredient(ItemID.MartianPiano, 1);
-		val.AddIngredient(ItemID.CrystalPiano, 1);
-		val.AddIngredient(ItemID.SpookyPiano, 1);
-		val.AddIngredient(ItemID.FleshPiano, 1);
-		val.AddIngredient(ItemID.LihzahrdPiano, 1);
-		val.AddIngredient(ItemID.SteampunkPiano, 1);
-		val.AddIngredient(ItemID.GoldenPiano, 1);
-		val.AddTile(TileID.Sawmill);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ItemID.PearlwoodPiano, 1)
+		.AddIngredient(ItemID.MartianPiano, 1)
+		.AddIngredient(ItemID.CrystalPiano, 1)
+		.AddIngredient(ItemID.SpookyPiano, 1)
+		.AddIngredient(ItemID.FleshPiano, 1)
+		.AddIngredient(ItemID.LihzahrdPiano, 1)
+		.AddIngredient(ItemID.SteampunkPiano, 1)
+		.AddIngredient(ItemID.GoldenPiano, 1)
+		.AddTile(TileID.Sawmill)
+		.Register();
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

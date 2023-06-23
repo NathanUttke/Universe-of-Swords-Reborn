@@ -29,7 +29,7 @@ public class TrueTerrabladeProjectile : ModProjectile
 		Projectile.scale = 1f;
 		Projectile.tileCollide = true;
 		Projectile.ignoreWater = true;
-		Projectile.timeLeft = 200;
+		Projectile.timeLeft = 100;
 		Projectile.aiStyle = ProjAIStyleID.Arrow;
         AIType = ProjectileID.Bullet;
 	}

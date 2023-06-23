@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -15,10 +16,10 @@ public class CrimsonCrystallus : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 50;
 		Item.useAnimation = 25;
-		Item.damage = 19;
+		Item.damage = 18;
 		Item.knockBack = 5f;
-		Item.shoot = Mod.Find<ModProjectile>("Tier2CProjectile").Type;
-		Item.shootSpeed = 10f;
+		Item.shoot = ModContent.ProjectileType<Tier2CProjectile>();
+		Item.shootSpeed = 8f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;

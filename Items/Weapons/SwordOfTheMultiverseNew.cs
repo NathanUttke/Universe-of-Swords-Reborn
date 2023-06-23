@@ -205,7 +205,7 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<Orichalcon>(), 50);
         newRecipe.AddIngredient(ItemID.LunarBar, 25);
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
-        newRecipe.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 15);
+        newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 200);
         newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
         if (ModLoader.TryGetMod("CalamityMod", out Mod calamityBar) && calamityBar.TryFind("AuricBar", out ModItem auricBar))
         {  

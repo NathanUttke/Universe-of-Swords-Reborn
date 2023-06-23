@@ -17,8 +17,8 @@ public class Apocalypse : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 64;
-        Item.height = 68;
+        Item.width = 60;
+        Item.height = 60;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 45;
@@ -64,7 +64,7 @@ public class Apocalypse : ModItem
         .AddIngredient(ItemID.HellstoneBar, 20)
         .AddIngredient(ItemID.MeteoriteBar, 20)
         .AddIngredient(Mod, "MartianSaucerCore", 1)
-        .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 15)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }

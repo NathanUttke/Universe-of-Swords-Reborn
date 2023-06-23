@@ -34,7 +34,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.localNPCHitCooldown = 14;
             Projectile.extraUpdates = 1;
             Projectile.ArmorPenetration = 10;
-            Projectile.timeLeft = 300;
+            Projectile.timeLeft = 200;
             AIType = ProjectileID.Bullet;
         }
 

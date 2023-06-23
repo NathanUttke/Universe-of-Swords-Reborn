@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -21,18 +22,27 @@ public class PowerOfTheGalactic : ModItem
         Item.height = 64;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 26;
-        Item.useAnimation = 13;
-        Item.damage = 120;
-        Item.knockBack = 8f;
+        Item.useTime = 24;
+        Item.useAnimation = 24;
+        Item.damage = 125;
+        Item.knockBack = 7f;
         Item.scale = 1.25f;
-		Item.shoot = ProjectileID.NebulaBlaze2;
-        Item.shootSpeed = 10f;
+        Item.shoot = ProjectileID.NebulaBlaze2;
+        //Item.shoot = ModContent.ProjectileType<TestHomingProjectile>();
+        Item.shootSpeed = 8f;
         Item.UseSound = SoundID.Item1;
         Item.value = 650500;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
+    }
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile blazeProj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        blazeProj.DamageType = DamageClass.Melee;
+        blazeProj.timeLeft = 80;
+        return false;
     }
 
     public override void AddRecipes()

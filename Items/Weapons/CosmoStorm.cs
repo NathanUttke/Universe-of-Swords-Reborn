@@ -44,7 +44,7 @@ public class CosmoStorm : ModItem
         .AddIngredient(ItemID.NebulaArcanum, 1)
         .AddIngredient(ItemID.TrueExcalibur, 1)
         .AddIngredient(ItemID.LargeAmethyst, 4)
-        .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 5)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }

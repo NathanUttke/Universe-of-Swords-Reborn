@@ -19,7 +19,7 @@ public class Inflation : ModItem
         Item.height = 128;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.knockBack = 7.5f;
+        Item.knockBack = 5f;
         Item.useTime = 50;
         Item.useAnimation = 50;
         Item.damage = 28;
@@ -38,19 +38,19 @@ public class Inflation : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-           .AddIngredient(ItemID.PlatinumCoin, 21)
+           .AddIngredient(ItemID.PlatinumCoin, 20)
            .AddIngredient(ItemID.GoldenCrate, 5)
            .AddIngredient(ItemID.GoldBar, 400)
            .AddIngredient(ItemID.GoldBroadsword, 1)
-           .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
+           .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
            .AddTile(TileID.Anvils)
            .Register();
         CreateRecipe()
-            .AddIngredient(ItemID.PlatinumCoin, 21)
+            .AddIngredient(ItemID.PlatinumCoin, 20)
             .AddIngredient(ItemID.GoldenCrateHard, 5)
             .AddIngredient(ItemID.PlatinumBar, 400)
             .AddIngredient(ItemID.PlatinumBroadsword, 1)
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
             .AddTile(TileID.Anvils)
             .Register();
     }

@@ -48,13 +48,11 @@ public class RedFlareLongsword : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.HellstoneBar, 25)
-			.AddIngredient(ItemID.RedTorch, 25)
-			.AddIngredient(ItemID.Ruby, 15)
+			.AddIngredient(ItemID.Ruby, 10)	
 			.AddIngredient(ItemID.SoulofFright, 20)
 			.AddIngredient(ItemID.BrokenHeroSword, 1)
 			.AddIngredient(ItemID.BeamSword, 1)
 			.AddIngredient(ModContent.ItemType<Orichalcon>(), 20)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 2)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -41,7 +42,7 @@ public class VenomArrowSword : ModItem
 	{				
 		CreateRecipe()
 			.AddIngredient(ItemID.VenomArrow, 500)
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}

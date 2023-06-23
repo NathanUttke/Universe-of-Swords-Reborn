@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -44,8 +45,7 @@ public class UnholyArrowSword : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe()
-			.AddIngredient(ItemID.UnholyArrow, 999)
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ItemID.UnholyArrow, 800)			
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

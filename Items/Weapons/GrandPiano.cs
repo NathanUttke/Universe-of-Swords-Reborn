@@ -28,7 +28,7 @@ public class GrandPiano : ModItem
 		Item.damage = 120;
 		Item.knockBack = 8f;
 		//Item.UseSound = new SoundStyle("UniverseOfSwordsMod/Sounds/Item/GrandPiano");
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item169;
 		Item.shoot = ModContent.ProjectileType<GrandPianoProjectile>();
 		Item.shootSpeed = 20f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
@@ -49,7 +49,7 @@ public class GrandPiano : ModItem
 		.AddIngredient(Mod, "PianoSword2", 1)
 		.AddIngredient(Mod, "PianoSword3", 1)
 		.AddIngredient(Mod, "PianoSword4", 1)
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
 		.AddTile(TileID.Autohammer)
 		.Register();
 	}

@@ -38,6 +38,7 @@ public class TrueGemSword : ModItem
 		int projToShoot = Utils.SelectRandom(Main.rand, ProjectileID.EmeraldBolt, ProjectileID.DiamondBolt, ProjectileID.AmethystBolt, ProjectileID.TopazBolt, ProjectileID.SapphireBolt, ProjectileID.RubyBolt, ProjectileID.AmberBolt);
         Projectile gemProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI);
 		gemProj.DamageType = DamageClass.MeleeNoSpeed;
+		gemProj.timeLeft = 80;
         return false;
     }
 
@@ -62,7 +63,7 @@ public class TrueGemSword : ModItem
         .AddIngredient(ItemID.Amber, 10)
         .AddIngredient(ItemID.Diamond, 10)
         .AddIngredient(ItemID.Ruby, 10)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 120)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 8)
         .AddIngredient(ItemID.ShadowScale, 10)
         .AddTile(TileID.TinkerersWorkbench)
         .Register();

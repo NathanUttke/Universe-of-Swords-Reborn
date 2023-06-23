@@ -3,16 +3,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class JesterArrowSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		Tooltip.SetDefault("Shoots Jester's arrows");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 64;
@@ -21,7 +17,7 @@ public class JesterArrowSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 50;
 		Item.useAnimation = 25;
-		Item.damage = 20;
+		Item.damage = 18;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.JestersArrow;
@@ -43,7 +39,7 @@ public class JesterArrowSword : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.JestersArrow, 500)
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 8)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

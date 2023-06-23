@@ -54,14 +54,14 @@ namespace UniverseOfSwordsMod.Items.Weapons
         {
             CreateRecipe()
             .AddIngredient(ModContent.ItemType<CorruptCrystallus>(), 1)
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
             .AddIngredient(ItemID.IceBlock, 400)
             .AddTile(TileID.MythrilAnvil)
 			.Register();
             CreateRecipe()
             .AddIngredient(ModContent.ItemType<CrimsonCrystallus>(), 1)
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 3)
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
             .AddIngredient(ItemID.IceBlock, 400)
             .AddTile(TileID.MythrilAnvil)

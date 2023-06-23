@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -19,7 +20,7 @@ public class FlamingArrowSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.White;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
+		Item.useTime = 60;
 		Item.useAnimation = 30;
 		Item.damage = 18;
 		Item.knockBack = 4f;
@@ -43,7 +44,7 @@ public class FlamingArrowSword : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.FlamingArrow, 500)
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

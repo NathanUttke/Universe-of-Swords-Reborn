@@ -51,7 +51,7 @@ public class SuperInflation : ModItem
 	{		
 		CreateRecipe()
 		.AddIngredient(ModContent.ItemType<Inflation>(), 1)
-		.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)
 		.AddIngredient(ModContent.ItemType<Orichalcon>(), 8)
 		.AddIngredient(ItemID.LunarBar, 5)
 		.AddTile(TileID.LunarCraftingStation)

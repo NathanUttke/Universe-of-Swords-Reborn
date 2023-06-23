@@ -12,6 +12,11 @@ namespace UniverseOfSwordsMod.Projectiles
 {
     public class RedFlareLongswordProjectile : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 16;
@@ -51,26 +56,18 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
-
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
-
-            //Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-            //Color drawColorGlow = Color.Red;
-
-            //Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 0.125f, SpriteEffects.None, 0);
-
+            SpriteBatch spriteBatch = Main.spriteBatch;
+            spriteBatch.End();
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
   
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
 
-            Main.spriteBatch.Draw(texture, new Vector2(Projectile.position.X - Main.screenPosition.X + Projectile.width / 2, Projectile.position.Y - Main.screenPosition.Y + Projectile.height / 2), sourceRectangle, Color.White, Projectile.rotation, new Vector2(TextureAssets.Projectile[Projectile.type].Width(), 0f), Projectile.scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, new Vector2(Projectile.position.X - Main.screenPosition.X + Projectile.width / 2, Projectile.position.Y - Main.screenPosition.Y + Projectile.height / 2), sourceRectangle, Color.White, Projectile.rotation, new Vector2(TextureAssets.Projectile[Projectile.type].Width(), 0f), Projectile.scale, SpriteEffects.None, 0);
             default(FlameLashDrawer).Draw(Projectile);
 
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+            spriteBatch.End();
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
             return false;
         }

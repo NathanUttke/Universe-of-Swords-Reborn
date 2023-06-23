@@ -38,7 +38,7 @@ public class OnyxSword : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-        .AddIngredient(ModContent.ItemType<SwordMatter>(), 4)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 15)
         .AddIngredient(ItemID.SoulofNight, 12)
         .AddIngredient(ItemID.OnyxBlaster, 1)
         .AddTile(TileID.MythrilAnvil)

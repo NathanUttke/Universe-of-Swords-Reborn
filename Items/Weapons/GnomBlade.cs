@@ -40,7 +40,7 @@ public class GnomBlade : ModItem
 			.AddIngredient(ModContent.ItemType<Doomsday>(), 1)
 			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
 			.AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
-			.AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 80)
 			.AddIngredient(ModContent.ItemType<TrueTerrablade>(), 1)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();

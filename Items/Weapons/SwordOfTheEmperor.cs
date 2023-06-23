@@ -38,7 +38,7 @@ public class SwordOfTheEmperor : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 10)  
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 35)  
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 12)
             .AddIngredient(ModContent.ItemType<BiggoronSword>())
             .AddIngredient(ItemID.BrokenHeroSword, 1)

@@ -56,7 +56,7 @@ public class CrystalVineSword : ModItem
     {
         CreateRecipe()
             .AddIngredient(ItemID.CrystalVileShard, 1)
-            .AddIngredient(ModContent.ItemType<UpgradeMatter>(), 4)
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
             .AddIngredient(ItemID.NettleBurst, 1)
             .AddTile(TileID.MythrilAnvil)
             .Register();

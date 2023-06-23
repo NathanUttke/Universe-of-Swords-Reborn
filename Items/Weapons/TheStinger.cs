@@ -46,7 +46,7 @@ public class TheStinger : ModItem
     public override void AddRecipes()
 	{		
 		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<SwordMatter>(), 80)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 3)
 			.AddIngredient(ItemID.Vine, 4)
 			.AddIngredient(ItemID.Stinger, 20)
 			.AddTile(TileID.Anvils)

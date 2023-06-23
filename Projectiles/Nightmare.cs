@@ -26,6 +26,7 @@ internal class Nightmare : ModProjectile
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
+        Projectile.timeLeft = 50;
     }
 
     public override void AI()

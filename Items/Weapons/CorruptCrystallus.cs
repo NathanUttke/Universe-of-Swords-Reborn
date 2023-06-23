@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -21,8 +22,8 @@ public class CorruptCrystallus : ModItem
         Item.damage = 18;
         Item.knockBack = 5f;
 
-        Item.shoot = Mod.Find<ModProjectile>("Corrupt").Type;
-        Item.shootSpeed = 5f;
+        Item.shoot = ModContent.ProjectileType<Corrupt>();
+        Item.shootSpeed = 8f;
 
         Item.value = Item.sellPrice(0, 1, 0, 0);
         Item.autoReuse = true;

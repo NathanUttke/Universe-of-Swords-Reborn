@@ -64,7 +64,6 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             Color defaultColor = Projectile.GetAlpha(lightColor);
             Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
-            Texture2D circleTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/Extra_Light");
             SpriteBatch spriteBatch = Main.spriteBatch;
 
             int frameHeight = texture.Height / Main.projFrames[Projectile.type];

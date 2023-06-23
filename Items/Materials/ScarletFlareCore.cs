@@ -12,7 +12,7 @@ public class ScarletFlareCore : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Scarlet Flare Core");
-		Tooltip.SetDefault("'Core from depths of hell'");
+		Tooltip.SetDefault("'From depths of hell'");
         ItemID.Sets.ItemNoGravity[Item.type] = false;
     }
 

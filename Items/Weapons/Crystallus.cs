@@ -44,7 +44,7 @@ public class Crystallus : ModItem
 		CreateRecipe()
 		.AddIngredient(ItemID.ManaCrystal, 5)
 		.AddIngredient(ItemID.FallenStar, 10)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 5)
 		.AddTile(TileID.Anvils)
 		.Register();
 	}

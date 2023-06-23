@@ -21,7 +21,7 @@ public class InnosWrath : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 19;
 		Item.useAnimation = 19;
-		Item.damage = 90;
+		Item.damage = 110;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item169;
 		Item.value = 611500;
