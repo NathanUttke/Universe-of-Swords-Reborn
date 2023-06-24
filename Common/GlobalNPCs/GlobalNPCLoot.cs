@@ -10,6 +10,7 @@ using UniverseOfSwordsMod.Common.ItemDropRules.Conditions;
 using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Items.Accessories;
 using UniverseOfSwordsMod.Items.Misc;
+using UniverseOfSwordsMod.Items.Consumables;
 
 namespace UniverseOfSwordsMod.Common.GlobalNPCs
 {
@@ -44,6 +45,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     break;
                 case NPCID.EnchantedSword:
                     npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 70, 1, 2), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 60, 1, 3)));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SwordBossSummon>(), 25, 1, 1));
                     break;
                 case NPCID.EyeofCthulhu:
                     npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<CthulhuJudge>()));
