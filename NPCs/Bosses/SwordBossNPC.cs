@@ -1,17 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Mono.Cecil;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.PlayerDrawLayer;
+using UniverseOfSwordsMod.Common.Systems;
+
 
 namespace UniverseOfSwordsMod.NPCs.Bosses
 {
+    [AutoloadBossHead]
     public class SwordBossNPC : ModNPC
     {
         //public override string Texture => $"Terraria/Images/NPC_{NPCID.EnchantedSword}";
@@ -60,7 +60,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-            return null;
+            return true;
         }
 
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
@@ -81,6 +81,12 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             }
         }
 
+        public override void OnSpawn(IEntitySource source)
+        {
+            NPC.alpha = 255;
+            NPC.ai[0] = -1f;
+        }
+
         private float dashSpeed = 18f;
         private Player player => Main.player[NPC.target];
         private float timeToChange = 15f;
@@ -96,6 +102,20 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             {
                 NPC.EncourageDespawn(10);
                 return;
+            }
+
+            if (NPC.ai[0] == -1)
+            {
+                NPC.rotation += 0.25f;
+                if (NPC.alpha > 0)
+                {
+                    NPC.alpha -= 2;
+                }
+                if (NPC.alpha < 0)
+                {
+                    NPC.alpha = 0;
+                    NPC.ai[0] = 0f;
+                }
             }
 
             if (NPC.ai[0] == 0f)
@@ -182,21 +202,30 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                 }
             }
         }
+
+        public override void OnKill()
+        {
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedSwordBoss, -1);
+        }
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Vector2 vector12 = new(TextureAssets.Npc[Type].Width() / 2, TextureAssets.Npc[Type].Height() / Main.npcFrameCount[Type] / 2);
-            Color npcColor = Lighting.GetColor((int)(NPC.position.X + NPC.width * 0.5) / 16, (int)((NPC.position.Y + NPC.height * 0.5) / 16.0));
-            float newScale = NPC.scale;
-            for (int i = 1; i < NPC.oldPos.Length; i++)
-            {                
-                newScale -= 0.1f;
-                Color newColor = npcColor;
-                newColor.R /= 2;
-                newColor.G /= 2;
-                newColor.B /= 2;
-                newColor.A /= 2;
-                spriteBatch.Draw(TextureAssets.Npc[Type].Value, new Vector2(NPC.oldPos[i].X - Main.screenPosition.X + NPC.width / 2 - TextureAssets.Npc[Type].Width() * NPC.scale / 2f + vector12.X * NPC.scale, NPC.oldPos[i].Y - Main.screenPosition.Y + NPC.height - TextureAssets.Npc[Type].Height() * NPC.scale / Main.npcFrameCount[Type] + 4f + vector12.Y * NPC.scale), NPC.frame, newColor, NPC.rotation, vector12, newScale, SpriteEffects.None, 0f);
+            if (NPC.ai[0] != -1f)
+            {
+                Vector2 vector12 = new(TextureAssets.Npc[Type].Width() / 2, TextureAssets.Npc[Type].Height() / Main.npcFrameCount[Type] / 2);
+                Color npcColor = Lighting.GetColor((int)(NPC.position.X + NPC.width * 0.5) / 16, (int)((NPC.position.Y + NPC.height * 0.5) / 16.0));
+                float newScale = NPC.scale;
+                for (int i = 1; i < NPC.oldPos.Length; i++)
+                {
+                    newScale -= 0.1f;
+                    Color newColor = npcColor;
+                    newColor.R /= 2;
+                    newColor.G /= 2;
+                    newColor.B /= 2;
+                    newColor.A /= 2;
+                    spriteBatch.Draw(TextureAssets.Npc[Type].Value, new Vector2(NPC.oldPos[i].X - Main.screenPosition.X + NPC.width / 2 - TextureAssets.Npc[Type].Width() * NPC.scale / 2f + vector12.X * NPC.scale, NPC.oldPos[i].Y - Main.screenPosition.Y + NPC.height - TextureAssets.Npc[Type].Height() * NPC.scale / Main.npcFrameCount[Type] + 4f + vector12.Y * NPC.scale), NPC.frame, newColor, NPC.rotation, vector12, newScale, SpriteEffects.None, 0f);
+                }
             }
+
             return true;
         }
     }

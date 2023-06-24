@@ -40,10 +40,10 @@ namespace UniverseOfSwordsMod.Common.GlobalItems
 
         public override void AddRecipes()
         {
-            Recipe a = Recipe.Create(ItemID.Terragrim, 1);
-            a.AddIngredient(ItemID.EnchantedSword, 1);
-            a.AddIngredient(null, "UpgradeMatter", 4);
-            a.Register();
+            Recipe terrgrimRecipe = Recipe.Create(ItemID.Terragrim, 1);
+            terrgrimRecipe.AddIngredient(ItemID.EnchantedSword, 1);
+            terrgrimRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 15);
+            terrgrimRecipe.Register();
         }
     }
 }

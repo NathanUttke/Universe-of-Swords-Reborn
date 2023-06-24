@@ -23,9 +23,13 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             Conditions.NotExpert notExpertCondition = new();
             Conditions.IsExpert isExpertCondition = new();
 
-            if (npc.lifeMax > 10 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly)
+            if (npc.lifeMax >= 45 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly && !npc.boss)
             {
-                npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, 3, 1, 2));
+                npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, 70, 1, 1));
+            }
+            if (npc.boss)
+            {
+                npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, 2, 3, 10));
             }
             if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
             {
@@ -39,7 +43,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(isHardmodeCondition, ModContent.ItemType<GoblinKnife>(), 3, 1, 1));
                     break;
                 case NPCID.EnchantedSword:
-                    npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 4, 8), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 1, 8, 12)));
+                    npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 70, 1, 2), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 60, 1, 3)));
                     break;
                 case NPCID.EyeofCthulhu:
                     npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<CthulhuJudge>()));
@@ -77,9 +81,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.GreekSkeleton:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<CaesarSword>(), 15, 1));
                     break;
-                case NPCID.PirateShip:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DutchmanSword>(), 5, 1));
-                    break;
                 case NPCID.BigMimicCorruption:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ClingerSword>(), 3, 1));
                     break;
@@ -111,7 +112,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(isExpertCondition, ModContent.ItemType<HaloOfHorrors>(), 100, 1));
                     break;
                 case NPCID.RedDevil:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ScarletFlareCore>(), 50, 1));
+                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ScarletFlareCore>(), 25, 1));
                     break;
                 case NPCID.Demon:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));

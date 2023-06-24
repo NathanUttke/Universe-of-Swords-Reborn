@@ -10,8 +10,7 @@ namespace UniverseOfSwordsMod.Common.GlobalItems
     public class GlobalItemLoot : GlobalItem
     {
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
-        {
-            LeadingConditionRule planteraRule = new LeadingConditionRule(new Conditions.DownedPlantera());
+        {            
             if (ItemID.Sets.IsFishingCrate[item.type] || ItemID.Sets.IsFishingCrateHardmode[item.type])
             {
                 itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<DamascusOre>(), 7, 6, 23));
