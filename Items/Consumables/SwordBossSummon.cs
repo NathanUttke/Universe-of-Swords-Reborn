@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.NPCs.Bosses;
 
 namespace UniverseOfSwordsMod.Items.Consumables
@@ -17,7 +18,7 @@ namespace UniverseOfSwordsMod.Items.Consumables
 
         public override void SetDefaults()
         {
-            Item.width = 20;
+            Item.width = 26;
             Item.height = 28;
             Item.maxStack = 20;
             Item.value = 100;
@@ -41,7 +42,7 @@ namespace UniverseOfSwordsMod.Items.Consumables
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     //NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<SwordBossNPC>());
-                    Vector2 spawnPosition = player.Center + new Vector2(800f * player.direction, 0f) + Main.rand.NextVector2Circular(150f, 150f);
+                    Vector2 spawnPosition = player.Center + new Vector2(500f * player.direction, 0f) + Main.rand.NextVector2Circular(100f, 100f);
                     NPC.SpawnBoss((int)spawnPosition.X, (int)spawnPosition.Y, ModContent.NPCType<SwordBossNPC>(), player.whoAmI);
                 }
                 else
@@ -50,6 +51,17 @@ namespace UniverseOfSwordsMod.Items.Consumables
                 }
             }
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
+                .AddIngredient(ItemID.SoulofFright, 15)
+                .AddIngredient(ItemID.SoulofMight, 15)
+                .AddIngredient(ItemID.SoulofSight, 15)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

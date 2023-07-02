@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,56 +18,22 @@ public class CaesarSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Green;
 
-        Item.DamageType = DamageClass.Melee;
-        Item.useStyle = ItemUseStyleID.Swing;
+        Item.useStyle = ItemUseStyleID.Thrust;
         Item.UseSound = SoundID.Item1;
-        Item.damage = 22;
-        Item.DamageType = DamageClass.Melee;
-        Item.knockBack = 5f;
-        Item.crit = 12;
+        Item.useTime = 10;
+        Item.useAnimation = 10;
+        Item.damage = 32;
+        Item.DamageType = DamageClass.MeleeNoSpeed;
+        Item.knockBack = 3f;
+        Item.crit = 8;
 
         Item.value = Item.sellPrice(0, 0, 30, 0);
 		Item.autoReuse = true;	
 		SacrificeTotal = 1;
-		ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+
 	}
-	public override bool AltFunctionUse(Player player) => true;
-
-    public override bool CanUseItem(Player player)
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
-        if (player.altFunctionUse == 2)
-		{
-            Item.useStyle = ItemUseStyleID.Thrust;
-            Item.useTime = 10;
-            Item.useAnimation = 10;
-            Item.damage = 44;
-            Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.knockBack = 3f;
-            Item.crit = 8;
-        }
-		else
-		{
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 16;
-            Item.useAnimation = 16;
-            Item.damage = 22;
-            Item.DamageType = DamageClass.Melee;
-            Item.knockBack = 5f;
-            Item.crit = 12;
-        }
-        return true;
-    }
-
-    public override bool? UseItem(Player player)
-    {
-        if (player.altFunctionUse == 2)
-        {
-            Item.useStyle = ItemUseStyleID.Thrust;
-        }
-        else
-        {
-            Item.useStyle = ItemUseStyleID.Swing;
-        }
-        return true;
+        player.itemHeight += (int)MathF.Sin(player.itemTime * player.direction);
     }
 }

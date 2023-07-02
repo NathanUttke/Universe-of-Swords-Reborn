@@ -30,7 +30,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
 
             Projectile.extraUpdates = 1;
-            Projectile.timeLeft = 300;
+            Projectile.timeLeft = 120;
 
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;

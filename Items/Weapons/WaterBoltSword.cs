@@ -32,7 +32,7 @@ public class WaterBoltSword : ModItem
     {
         Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage*0.5f), knockback, player.whoAmI);
 		proj.tileCollide = false;
-		proj.timeLeft = 100;
+		proj.timeLeft = 80;
         proj.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }

@@ -10,7 +10,14 @@ public class LegendaryWarriorGauntlet : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Legendary Warrior's Gauntlet");
-		Tooltip.SetDefault("'Legendary gauntlet that grants wearer ultimate melee skills'\n15 defense\nHighly increased melee damage\n30% increased melee critical chance\nGreatly increased life regeneration\nIncreases maximum life by 20\n20% increased endurance\nGrants immunity to most debuffs\nGrants Spelunker, Thorns and Titan potion effects");
+		Tooltip.SetDefault("'Legendary gauntlet that grants wearer ultimate melee skills'\n" +
+			"15 defense\n" +
+			"Highly increased melee damage\n" +
+			"30% increased melee critical chance\n" +
+			"Greatly increased life regeneration\n" +
+			"Increases maximum life by 20\n20% increased endurance\n" +
+			"Grants immunity to most debuffs\n" +
+			"Grants Spelunker, Thorns and Titan potion effects");
 	}
 
 	public override void SetDefaults()
@@ -35,16 +42,16 @@ public class LegendaryWarriorGauntlet : ModItem
 		player.AddBuff(108, 2, true);
 		player.AddBuff(14, 2, true);
 		player.buffImmune[BuffID.WitheredWeapon] = true;
-		player.buffImmune[36] = true;
-		player.buffImmune[67] = true;
-		player.buffImmune[22] = true;
-		player.buffImmune[31] = true;
-		player.buffImmune[23] = true;
-		player.buffImmune[20] = true;
-		player.buffImmune[35] = true;
-		player.buffImmune[32] = true;
-		player.buffImmune[33] = true;
-		player.buffImmune[46] = true;
+		player.buffImmune[BuffID.BrokenArmor] = true;
+		player.buffImmune[BuffID.Burning] = true;
+		player.buffImmune[BuffID.Darkness] = true;
+		player.buffImmune[BuffID.Confused] = true;
+		player.buffImmune[BuffID.Cursed] = true;
+		player.buffImmune[BuffID.Poisoned] = true;
+		player.buffImmune[BuffID.Silenced] = true;
+		player.buffImmune[BuffID.Slow] = true;
+		player.buffImmune[BuffID.Weak] = true;
+		player.buffImmune[BuffID.Chilled] = true;
 	}
 
 	public override void AddRecipes()

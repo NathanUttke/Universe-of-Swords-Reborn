@@ -40,17 +40,17 @@ public class Inflation : ModItem
         CreateRecipe()
            .AddIngredient(ItemID.PlatinumCoin, 20)
            .AddIngredient(ItemID.GoldenCrate, 5)
-           .AddIngredient(ItemID.GoldBar, 400)
+           .AddIngredient(ItemID.GoldBar, 200)
            .AddIngredient(ItemID.GoldBroadsword, 1)
-           .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
+           .AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
            .AddTile(TileID.Anvils)
            .Register();
         CreateRecipe()
             .AddIngredient(ItemID.PlatinumCoin, 20)
             .AddIngredient(ItemID.GoldenCrateHard, 5)
-            .AddIngredient(ItemID.PlatinumBar, 400)
+            .AddIngredient(ItemID.PlatinumBar, 200)
             .AddIngredient(ItemID.PlatinumBroadsword, 1)
-            .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
             .AddTile(TileID.Anvils)
             .Register();
     }

@@ -1,5 +1,4 @@
 ﻿using Terraria.ID;
-using System.Diagnostics.Metrics;
 using Terraria.ModLoader;
 
 namespace UniverseOfSwordsMod.Projectiles

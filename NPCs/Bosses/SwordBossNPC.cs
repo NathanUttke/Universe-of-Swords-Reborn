@@ -4,10 +4,14 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Common.Systems;
-
+using UniverseOfSwordsMod.Items.Consumables;
+using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Items.Weapons;
+using UniverseOfSwordsMod.Items.Weapons.BossDrops;
 
 namespace UniverseOfSwordsMod.NPCs.Bosses
 {
@@ -18,7 +22,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cursed Sword");
+            DisplayName.SetDefault("Evil Flying Blade");
             Main.npcFrameCount[Type] = 1;
             NPCID.Sets.TrailCacheLength[Type] = 15;
             NPCID.Sets.TrailingMode[Type] = 3;
@@ -46,7 +50,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             NPC.boss = true;
             NPC.noGravity = true;
             NPC.noTileCollide = true;
-            NPC.damage = 45;
+            NPC.damage = 50;
             NPC.defense = 14;
             NPC.lifeMax = 7500;
             NPC.knockBackResist = 0f;
@@ -87,9 +91,26 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             NPC.ai[0] = -1f;
         }
 
-        private float dashSpeed = 18f;
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<SwordBossBag>()));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 10, 3, 13));
+
+            LeadingConditionRule notExpertRule = new(new Conditions.NotExpert());
+            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SwordStaff>(), 3, 1, 1));
+            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<InnosWrath>(), 3, 1, 1));
+            npcLoot.Add(notExpertRule);
+
+        }
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.GreaterHealingPotion;
+        }
+
+        private float dashSpeed = 20f;
         private Player player => Main.player[NPC.target];
-        private float timeToChange = 15f;
+        private float timeToChange = 14f;
         public override void AI()
         { 
             base.AI();
@@ -100,12 +121,13 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
             if (player.dead)
             {
-                NPC.EncourageDespawn(10);
+                NPC.EncourageDespawn(12);
                 return;
             }
 
-            if (NPC.ai[0] == -1)
+            if (NPC.ai[0] == -1f)
             {
+                NPC.dontTakeDamage = true;
                 NPC.rotation += 0.25f;
                 if (NPC.alpha > 0)
                 {
@@ -120,6 +142,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
             if (NPC.ai[0] == 0f)
             {
+                NPC.dontTakeDamage = false;
                 Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
                 Vector2 playerPosNpc = new(player.position.X + player.width / 2 - npcPosition.X, player.position.Y + player.height / 2 - npcPosition.Y);
                 float playerPosNpcSqrt = dashSpeed / playerPosNpc.Length();
@@ -148,7 +171,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                     if (Main.rand.NextBool(5))
                     {
                         int enchantSword = NPC.NewNPC(NPC.GetSource_FromAI(), (int)npcPosition.X, (int)npcPosition.Y, NPCID.EnchantedSword);
-                        if (Main.netMode == NetmodeID.Server && enchantSword < 10)
+                        if (Main.netMode == NetmodeID.Server && enchantSword < 8)
                         {
                             NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, enchantSword);
                         }
@@ -168,12 +191,12 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             {
                 if (NPC.life <= NPC.lifeMax * 0.5)
                 {
-                    timeToChange = 8f;
+                    timeToChange = 7f;                    
                 }
 
                 Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
                 Vector2 playerPosNpc = new(player.position.X + player.width / 2 - npcPosition.X, player.position.Y + player.height / 2 - npcPosition.Y);
-                float playerPosNpcSqrt = (dashSpeed * 0.75f) / playerPosNpc.Length();
+                float playerPosNpcSqrt = dashSpeed / playerPosNpc.Length();
                 playerPosNpc *= playerPosNpcSqrt;
                 npcPosition += playerPosNpc;
 
@@ -189,7 +212,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                         {
                             Vector2 spinPoint = Vector2.Normalize(playerPosNpc * 4f) * 14f;
                             spinPoint = spinPoint.RotatedBy(-i * MathHelper.Pi / 5f, Vector2.Zero);
-                            Projectile swordProj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), npcPosition, spinPoint, ProjectileID.LightBeam, 15, 0f, player.whoAmI);
+                            Projectile swordProj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), npcPosition, spinPoint, ProjectileID.LightBeam, 20, 0f, player.whoAmI);
                             swordProj.friendly = false;
                             swordProj.hostile = true;
                         }

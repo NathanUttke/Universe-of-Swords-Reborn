@@ -38,7 +38,7 @@ public class UltraMachine : ModItem
 	{		
 		CreateRecipe()
             .AddIngredient(ItemID.BrokenHeroSword, 1)
-			.AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 45)
 			.AddIngredient(ModContent.ItemType<DamascusBar>(), 20)
 			.AddIngredient(ItemID.SoulofFright, 15)
 			.AddIngredient(ItemID.SoulofMight, 15)
@@ -66,7 +66,7 @@ public class UltraMachine : ModItem
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
-            Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, Item.shoot, damage, knockback, player.whoAmI);
+            Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
             proj.DamageType = DamageClass.Melee;
 			proj.hostile = false;
 			proj.friendly = true;

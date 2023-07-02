@@ -28,16 +28,17 @@ public class DragonsDeath : ModItem
 		Item.UseSound = SoundID.Item169;
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
-		Item.shoot = ModContent.ProjectileType<DragonsDeathProjectile>();
-		Item.shootSpeed = 1f;
 		Item.value = 490500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
 		SacrificeTotal = 1;
 	}
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    public override bool CanUseItem(Player player)
     {
-        return base.Shoot(player, source, position, velocity, type, damage, knockback);
+        Item.shoot = ModContent.ProjectileType<DragonsDeathProjectile>();
+        Item.shootSpeed = 1f;
+        return true;
     }
+
 }

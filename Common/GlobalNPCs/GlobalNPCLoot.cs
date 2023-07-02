@@ -11,6 +11,7 @@ using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Items.Accessories;
 using UniverseOfSwordsMod.Items.Misc;
 using UniverseOfSwordsMod.Items.Consumables;
+using UniverseOfSwordsMod.NPCs.Bosses;
 
 namespace UniverseOfSwordsMod.Common.GlobalNPCs
 {
@@ -23,14 +24,17 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             Conditions.IsHardmode isHardmodeCondition = new();
             Conditions.NotExpert notExpertCondition = new();
             Conditions.IsExpert isExpertCondition = new();
+            int hardmodeChanceCommon = Main.hardMode ? 20 : 30;
+            int hardmodeChanceBoss = Main.hardMode ? 2 : 4;
 
             if (npc.lifeMax >= 45 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly && !npc.boss)
             {
-                npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, 70, 1, 1));
+                npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, hardmodeChanceCommon, 1, 2));
             }
+
             if (npc.boss)
             {
-                npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, 2, 3, 10));
+                npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<SwordMatter>(), hardmodeChanceBoss, 5, 10));               
             }
             if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
             {
@@ -41,11 +45,10 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             {
                 case NPCID.GoblinWarrior:
                 case NPCID.GoblinThief:
-                    npcLoot.Add(ItemDropRule.ByCondition(isHardmodeCondition, ModContent.ItemType<GoblinKnife>(), 3, 1, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(isHardmodeCondition, ModContent.ItemType<GoblinKnife>(), 4, 1, 1));
                     break;
                 case NPCID.EnchantedSword:
-                    npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 70, 1, 2), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 60, 1, 3)));
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SwordBossSummon>(), 25, 1, 1));
+                    npcLoot.Add(new DropBasedOnExpertMode(ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 30, 1, 2), ItemDropRule.Common(ModContent.ItemType<SwordMatter>(), 20, 2, 4)));
                     break;
                 case NPCID.EyeofCthulhu:
                     npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<CthulhuJudge>()));
@@ -64,7 +67,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     break;
                 case NPCID.TheDestroyer:
                     npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<DestroyerSword>(), 1, 1, 1));
-                    break;
+                    break;   
                 case NPCID.Plantera:
                     npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<Executioner>(), 1, 1, 1));
                     break;
@@ -86,20 +89,14 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.BigMimicCorruption:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ClingerSword>(), 3, 1));
                     break;
-                case NPCID.LunarTowerNebula:
-                case NPCID.LunarTowerStardust:
-                case NPCID.LunarTowerSolar:
-                case NPCID.LunarTowerVortex:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<InnosWrath>(), 5, 1));
-                    break;
                 case NPCID.GiantBat:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BatSlayer>(), 50, 1));
                     break;
                 case NPCID.TheGroom:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<UselessWeapon>(), 30, 1));
+                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<UselessWeapon>(), 20, 1));
                     break;
                 case NPCID.Mimic:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ElBastardo>(), 4, 1));
+                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ElBastardo>(), 5, 1));
                     break;
                 case NPCID.DarkCaster:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<WaterBoltSword>(), 40, 1));
@@ -123,7 +120,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<SolBlade>(), 8, 1));
                     break;
                 case NPCID.WallofFlesh:
-                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<BiggoronSword>()));
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<BiggoronSword>(), 1, 1, 1));
                     break;
                 case NPCID.IceQueen:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<BlizzardRage>(), 4, 1));

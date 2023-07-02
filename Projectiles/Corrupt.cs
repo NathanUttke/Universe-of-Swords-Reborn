@@ -10,26 +10,25 @@ public class Corrupt : ModProjectile
 {
 	public override void SetStaticDefaults()
 	{
-		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
-		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+		DisplayName.SetDefault("Corrupt Crystallus");
 	}
+
 
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.scale = 1f;
-		Projectile.aiStyle = 1;
+		Projectile.aiStyle = ProjAIStyleID.Arrow;
 		Projectile.friendly = true;
-		Projectile.hostile = false;
 		Projectile.DamageType = DamageClass.MeleeNoSpeed;
 		Projectile.penetrate = 1;
 		Projectile.alpha = 255;
-		Projectile.ignoreWater = true;
+		Projectile.ignoreWater = false;
 		Projectile.tileCollide = true;
 		Projectile.extraUpdates = 1;
 		Projectile.timeLeft = 60;
-        AIType = 14;
+        AIType = ProjectileID.Bullet;
 	}
 
 	public override void AI()

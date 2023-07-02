@@ -2,9 +2,9 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Misc;
 
@@ -61,10 +61,10 @@ public class BlueSolutionSpreader : ModItem
 
     public override void AddRecipes()
 	{		
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "SwordMatter", 200);
-		val.AddIngredient(ItemID.DarkBlueSolution, 300);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe(1)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 30)
+        .AddIngredient(ItemID.DarkBlueSolution, 300)
+		.AddTile(TileID.MythrilAnvil)
+		.Register();
 	}
 }

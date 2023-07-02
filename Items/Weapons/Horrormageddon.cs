@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Items.Weapons.BossDrops;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -42,7 +43,7 @@ public class Horrormageddon : ModItem
 		.AddIngredient(ModContent.ItemType<DeathSword>(), 1)
         .AddIngredient(ModContent.ItemType<ElBastardo>(), 1)
         .AddIngredient(ModContent.ItemType<InnosWrath>(), 1)
-        .AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 45)
         .AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
         .AddTile(TileID.LunarCraftingStation)
         .Register();

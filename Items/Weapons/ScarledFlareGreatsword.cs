@@ -28,25 +28,28 @@ public class ScarledFlareGreatsword : ModItem
 
 		Item.damage = 130;
 		Item.knockBack = 6f;
+		Item.scale = 1f;
 		Item.crit = 6;
+		Item.noUseGraphic = true;
+		Item.noMelee = true;
 		Item.shootSpeed = 20f;
-		Item.shoot = ProjectileType<FlareCore>();
+		Item.shoot = ProjectileType<ScarledGreatswordProjectile>();
 		Item.UseSound = SoundID.Item169;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
+        return false;
+    }
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         player.itemLocation = player.Center;
     }
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-		Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 2.5f), knockback, player.whoAmI, 0f, 0f);
-        return false;
-	}
-
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
 		if (Main.rand.NextBool(2))
@@ -65,7 +68,7 @@ public class ScarledFlareGreatsword : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe()
-		.AddIngredient(ItemType<SwordMatter>(), 30)
+		.AddIngredient(ItemType<SwordMatter>(), 50)
 		.AddIngredient(ItemType<RedFlareLongsword>(), 1)
 		.AddIngredient(ItemType<ScarledFlareGreatsword>(), 1)
 		.AddIngredient(ItemType<TheNightmareAmalgamation>(), 1)

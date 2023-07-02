@@ -34,10 +34,9 @@ public class NatureSword : ModItem
 
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-        if (Main.rand.NextBool(3))
+        if (Main.rand.NextBool(3) && !NPCID.Sets.CountsAsCritter[target.type])
 		{
 			UniverseUtils.SummonSuperStarSlash(target.position, target.GetSource_OnHit(target), 10, player.whoAmI, ProjectileID.SeedlerThorn);
-			//Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center, new Vector2(0f, -20f), ProjectileID.VilethornBase, 8, 3f, player.whoAmI);
 		}
     }
 

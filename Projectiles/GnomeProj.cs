@@ -19,7 +19,7 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void SetDefaults()
         {
-            Projectile.aiStyle = ProjAIStyleID.Arrow;
+            Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
@@ -34,11 +34,16 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.localNPCHitCooldown = 14;
             Projectile.extraUpdates = 1;
             Projectile.ArmorPenetration = 10;
-            Projectile.timeLeft = 200;
-            AIType = ProjectileID.Bullet;
+            Projectile.timeLeft = 100;
         }
 
         public override Color? GetAlpha(Color lightColor) => Color.White;
+
+        public override void AI()
+        {
+            base.AI();
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+        }
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -52,7 +57,7 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
                 Color gnomTrailColor = new(11 + j * 16, 127, 255 - j * 16, 40);
-                spriteBatch.Draw(texture, drawPos, null, gnomTrailColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, spriteEffects, 0);
+                spriteBatch.Draw(texture, drawPos, null, gnomTrailColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
             }   
 
             return true;

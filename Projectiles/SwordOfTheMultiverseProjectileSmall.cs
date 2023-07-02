@@ -70,7 +70,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
                 Color color = Lighting.GetColor((int)(Projectile.position.X + (double)Projectile.width / 2) / 16, (int)((Projectile.position.Y + Projectile.height * 0.5) / 16.0));
                 color = Projectile.GetAlpha(color);
-                float multValue = 5 - j;
+                float multValue = 8 - j;
                 color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
 
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale - j / Projectile.oldPos.Length, SpriteEffects.None, 0);               
@@ -82,9 +82,9 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Main.rand.NextBool(2))
             {
-                Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch, 0f, 0f, 0, default, 1f);
+                Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, 0f, 0f, 0, default, 1f);
                 obj.noGravity = true;
-                obj.scale = 1f;
+                obj.scale = 1.25f;
             }
         }      
     }

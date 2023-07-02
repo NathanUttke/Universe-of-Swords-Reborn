@@ -28,7 +28,7 @@ public class SolBlade : ModItem
 		Item.damage = 85;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item70;
-		Item.shootSpeed = 25f;
+		Item.shootSpeed = 20f;
 		Item.shoot = ModContent.ProjectileType<Armageddon>();
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
@@ -51,10 +51,10 @@ public class SolBlade : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int numberProjectiles =  Main.rand.Next(2, 5);
+		int numberProjectiles =  Main.rand.Next(2, 4);
 		for (int i = 0; i < numberProjectiles; i++)
 		{
-			Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(40f)); // Utils.RotatedByRandom(new Vector2(velocity.X, velocity.Y), (double)MathHelper.ToRadians(40f))
+			Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(40));
 			Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;

@@ -2,9 +2,9 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Misc;
 
@@ -61,7 +61,7 @@ public class GreenSolutionSpreader : ModItem
     public override void AddRecipes()
 	{
 		CreateRecipe()
-			.AddIngredient(Mod, "SwordMatter", 200)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 30)
 			.AddIngredient(ItemID.GreenSolution, 300)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();

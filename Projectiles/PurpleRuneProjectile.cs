@@ -20,6 +20,8 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate = -1;
             Projectile.alpha = 255;
             Projectile.ignoreWater = true;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 23;
         }
 
         public override void AI()

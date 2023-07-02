@@ -38,7 +38,7 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.crit = 30;
 
         Item.scale = 1.25f;
-        Item.value = Item.sellPrice(0, 13, 0, 0);
+        Item.value = Item.sellPrice(0, 12, 0, 0);
 
         Item.autoReuse = true;
         Item.noUseGraphic = false;
@@ -74,11 +74,11 @@ public class SwordOfTheMultiverseNew : ModItem
 		
         for (float i = 0f; i < 1f; i += 0.25f)
         {
-            spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 8f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(90, 70, 255, 50), Item.velocity.X * 0.2f, origin, Item.scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 8f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(90, 70, 255, 50), Item.velocity.X * 0.2f, origin, 1.25f, SpriteEffects.None, 0f);
         }
         for (float i = 0f; i < 1f; i += 0.34f)
         {
-            spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 4f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(140, 120, 255, 77), Item.velocity.X * 0.2f, origin, Item.scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 4f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(140, 120, 255, 77), Item.velocity.X * 0.2f, origin, 1.25f, SpriteEffects.None, 0f);
         }
         return true;
     }
@@ -205,7 +205,7 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<Orichalcon>(), 50);
         newRecipe.AddIngredient(ItemID.LunarBar, 25);
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
-        newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 200);
+        newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 300);
         newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
         if (ModLoader.TryGetMod("CalamityMod", out Mod calamityBar) && calamityBar.TryFind("AuricBar", out ModItem auricBar))
         {  

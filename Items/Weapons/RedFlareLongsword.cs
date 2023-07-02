@@ -52,7 +52,7 @@ public class RedFlareLongsword : ModItem
 			.AddIngredient(ItemID.SoulofFright, 20)
 			.AddIngredient(ItemID.BrokenHeroSword, 1)
 			.AddIngredient(ItemID.BeamSword, 1)
-			.AddIngredient(ModContent.ItemType<Orichalcon>(), 20)
+			.AddIngredient(ModContent.ItemType<Orichalcon>(), 15)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}

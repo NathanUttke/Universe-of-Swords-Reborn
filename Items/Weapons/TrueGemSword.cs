@@ -63,7 +63,7 @@ public class TrueGemSword : ModItem
         .AddIngredient(ItemID.Amber, 10)
         .AddIngredient(ItemID.Diamond, 10)
         .AddIngredient(ItemID.Ruby, 10)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 8)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 10)
         .AddIngredient(ItemID.ShadowScale, 10)
         .AddTile(TileID.TinkerersWorkbench)
         .Register();

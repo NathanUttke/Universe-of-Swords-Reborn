@@ -19,7 +19,7 @@ public class GnomBlade : ModItem
 		Item.useAnimation = 12;
 
 		Item.damage = 150;
-		Item.knockBack = 10f;
+		Item.knockBack = 9f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
@@ -27,7 +27,7 @@ public class GnomBlade : ModItem
 		Item.crit = 8;
 
 		Item.shoot = ModContent.ProjectileType<GnomeProj>();
-		Item.shootSpeed = 20f;
+		Item.shootSpeed = 10f;
 
 		SacrificeTotal = 1;
 	}
@@ -41,7 +41,7 @@ public class GnomBlade : ModItem
 			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
 			.AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
 			.AddIngredient(ModContent.ItemType<SwordMatter>(), 80)
-			.AddIngredient(ModContent.ItemType<TrueTerrablade>(), 1)
+			.AddIngredient(ModContent.ItemType<TerraEnsis>(), 1)
 			.AddTile(TileID.LunarCraftingStation)
 			.Register();
 	}

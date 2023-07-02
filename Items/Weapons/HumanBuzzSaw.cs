@@ -23,7 +23,7 @@ public class HumanBuzzSaw : ModItem
 		Item.width = 102;
 		Item.height = 102;
 		Item.crit = 8;
-		Item.scale = 2f;
+		Item.scale = 1f;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
 

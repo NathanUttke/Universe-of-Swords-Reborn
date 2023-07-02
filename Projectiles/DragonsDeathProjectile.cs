@@ -9,6 +9,7 @@ namespace UniverseOfSwordsMod.Projectiles
 {
     internal class DragonsDeathProjectile : ModProjectile
     {
+        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/DragonsDeath";
         public override void SetDefaults()
         {
             Projectile.aiStyle = -1;

@@ -15,11 +15,10 @@ public class Tier2CProjectile : ModProjectile
 		Projectile.scale = 1f;
 		Projectile.aiStyle = 1;
 		Projectile.friendly = true;
-		Projectile.hostile = false;
 		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.penetrate = 1;
 		Projectile.alpha = 255;
-		Projectile.ignoreWater = true;
+		Projectile.ignoreWater = false;
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 60;
 		Projectile.extraUpdates = 1;

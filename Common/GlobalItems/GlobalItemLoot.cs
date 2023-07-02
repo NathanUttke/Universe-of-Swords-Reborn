@@ -16,6 +16,7 @@ namespace UniverseOfSwordsMod.Common.GlobalItems
                 itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<DamascusOre>(), 7, 6, 23));
                 itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<DamascusBar>(), 8, 2, 7));
                 itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<MeleePowerPotion>(), 7, 1, 3));
+                itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<SwordMatter>(), 40, 1, 2));
             }                     
         }
     }

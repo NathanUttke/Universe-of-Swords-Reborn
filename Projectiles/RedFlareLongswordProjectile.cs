@@ -22,11 +22,11 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
-            Projectile.light = 0.5f;
+            Projectile.light = 0.7f;
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
-            Projectile.penetrate = -1;
-            Projectile.timeLeft = 300;
+            Projectile.penetrate = 1;
+            Projectile.timeLeft = 80;
             Projectile.ArmorPenetration = 10;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 14;
@@ -46,7 +46,7 @@ namespace UniverseOfSwordsMod.Projectiles
             dust2.velocity *= -0.25f;
             Main.dust[RedDust].noGravity = true;
 
-            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 0.785f;
+            Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver4;
 
             if (Projectile.velocity.Y > 16f)
             {

@@ -39,7 +39,7 @@ public class JesterArrowSword : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.JestersArrow, 500)
-			.AddIngredient(ModContent.ItemType<SwordMatter>(), 8)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 10)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

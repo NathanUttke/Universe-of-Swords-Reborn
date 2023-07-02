@@ -6,12 +6,12 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
     public class ClingerSwordProjectile : ModProjectile
     {
+        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/ClingerSword";
         public override void SetDefaults()
         {
             Projectile.penetrate = -1;

@@ -5,6 +5,7 @@ namespace UniverseOfSwordsMod.Projectiles
 {
     public class GrandPianoProjectile : ModProjectile
     {
+        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/GrandPiano";
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 142;

@@ -27,9 +27,9 @@ public class PowerOfTheGalactic : ModItem
         Item.damage = 125;
         Item.knockBack = 7f;
         Item.scale = 1.25f;
-        Item.shoot = ProjectileID.NebulaBlaze2;
-        //Item.shoot = ModContent.ProjectileType<TestHomingProjectile>();
-        Item.shootSpeed = 8f;
+        //Item.shoot = ProjectileID.NebulaBlaze2;
+        Item.shoot = ModContent.ProjectileType<ShaderProjectile>();
+        Item.shootSpeed = 20f;
         Item.UseSound = SoundID.Item1;
         Item.value = 650500;
         Item.autoReuse = true;
