@@ -4,6 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 [LegacyName (new string[] { "UltraMachine" })]
@@ -27,8 +28,10 @@ public class LifeRemovalMachine : ModItem
 		Item.damage = 140;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item1;
-		Item.shoot = ProjectileID.DeathLaser;
-		Item.shootSpeed = 28f;
+		Item.shoot = ModContent.ProjectileType<LifeRemovalMachineProjectile>();
+		Item.shootSpeed = 1f;
+		Item.noMelee = true;
+		Item.noUseGraphic = true;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -52,24 +55,5 @@ public class LifeRemovalMachine : ModItem
 			.AddIngredient(ItemID.LihzahrdPowerCell, 5)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
-	}
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation = player.Center;
-    }
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-        float numberProjectiles = 3;
-        float rotation = MathHelper.ToRadians(10f);
-        position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 4f;
-        for (int i = 0; i < numberProjectiles; i++)
-        {
-            Vector2 perturbedSpeed = Utils.RotatedBy(velocity, (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
-            Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
-            proj.DamageType = DamageClass.Melee;
-			proj.hostile = false;
-			proj.friendly = true;
-        }
-        return false;
 	}
 }
