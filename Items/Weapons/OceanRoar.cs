@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,15 +14,20 @@ public class OceanRoar : ModItem
 		Item.scale = 1f;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 75;
+		Item.useTime = 120;
 		Item.useAnimation = 25;
 		Item.damage = 9;
 		Item.shoot = ProjectileID.Typhoon;
 		Item.shootSpeed = 1f;
 		Item.UseSound = SoundID.Item84;
 		Item.value = 5000;
-		Item.autoReuse = false;
+		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
 	}
+
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+    {
+		damage /= 2;
+    }
 }
