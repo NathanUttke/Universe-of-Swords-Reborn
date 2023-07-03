@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +13,7 @@ public class OceanRoar : ModItem
 		Item.scale = 1f;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 50;
+		Item.useTime = 75;
 		Item.useAnimation = 25;
 		Item.damage = 9;
 		Item.shoot = ProjectileID.Typhoon;
