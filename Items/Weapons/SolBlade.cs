@@ -11,7 +11,7 @@ public class SolBlade : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Unleashes small spread of meteors\nMelee attacks chance have chance to spawn inferno explosion");
+		Tooltip.SetDefault("Unleashes small spread of meteors");
 	}
 
 	public override void SetDefaults()

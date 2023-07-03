@@ -6,8 +6,8 @@ using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
-
-public class UltraMachine : ModItem
+[LegacyName (new string[] { "UltraMachine" })]
+public class LifeRemovalMachine : ModItem
 {
 	public override void SetStaticDefaults()
 	{
@@ -17,19 +17,19 @@ public class UltraMachine : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 132;
-		Item.height = 132;
+		Item.width = 116;
+		Item.height = 116;
 		Item.rare = ItemRarityID.Red;
 		Item.crit = 10;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 27;
-		Item.useAnimation = 27;
-		Item.damage = 130;
+		Item.useTime = 25;
+		Item.useAnimation = 25;
+		Item.damage = 140;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ProjectileID.DeathLaser;
 		Item.shootSpeed = 28f;
-		Item.value = Item.sellPrice(0, 9, 0, 0);
+		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		SacrificeTotal = 1;
@@ -57,7 +57,6 @@ public class UltraMachine : ModItem
     {
         player.itemLocation = player.Center;
     }
-
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
         float numberProjectiles = 3;
@@ -65,7 +64,7 @@ public class UltraMachine : ModItem
         position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 4f;
         for (int i = 0; i < numberProjectiles; i++)
         {
-            Vector2 perturbedSpeed = Utils.RotatedBy(new Vector2(velocity.X, velocity.Y), (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
+            Vector2 perturbedSpeed = Utils.RotatedBy(velocity, (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
             Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
             proj.DamageType = DamageClass.Melee;
 			proj.hostile = false;

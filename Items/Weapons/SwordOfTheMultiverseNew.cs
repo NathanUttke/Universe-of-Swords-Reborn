@@ -199,7 +199,7 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheUniverseNew>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1);
-        newRecipe.AddIngredient(ModContent.ItemType<UltraMachine>(), 1);
+        newRecipe.AddIngredient(ModContent.ItemType<LifeRemovalMachine>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<GnomBlade>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<DamascusBar>(), 50);
         newRecipe.AddIngredient(ModContent.ItemType<Orichalcon>(), 50);
