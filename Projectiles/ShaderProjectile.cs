@@ -1,14 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.Graphics;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -27,12 +24,13 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.aiStyle = ProjAIStyleID.MagicMissile;
             Projectile.friendly = true;
             Projectile.light = 0.8f;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.DamageType = DamageClass.Melee;
+            Projectile.timeLeft = 60;
             AIType = ProjectileID.RainbowRodBullet;
         }
 
@@ -43,7 +41,7 @@ namespace UniverseOfSwordsMod.Projectiles
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
             for (int i = 0; i < 6; i++)
             {
-                int deathDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.BlueTorch, 0f, 0f, 0, default, 1.5f);
+                int deathDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.BlueTorch, 0f, 0f, 0, default, 5f);
                 Main.dust[deathDust].noGravity = true;
                 Dust deathDust2 = Main.dust[deathDust];
                 deathDust2.velocity *= 3f;
@@ -84,10 +82,6 @@ namespace UniverseOfSwordsMod.Projectiles
 
         private float StripWidth(float progressOnStrip)
         {
-            //float thing = 1f;
-            //float lerpValue = Utils.GetLerpValue(0.6f, 0f, progressOnStrip, false);
-            //thing *= 1f - (1f - lerpValue) * (1f - lerpValue);
-            //return MathHelper.Lerp(0f, 23f, thing);
             return Projectile.width * 1f * Utils.GetLerpValue(0.2f, 0f, progressOnStrip, true);
         }
 

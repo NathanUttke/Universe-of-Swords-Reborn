@@ -12,7 +12,7 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Type] = 8;
+            ProjectileID.Sets.TrailCacheLength[Type] = 10;
             ProjectileID.Sets.TrailingMode[Type] = 0;
         }
         public override void SetDefaults()
@@ -25,6 +25,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.aiStyle = -1;
             Projectile.light = 0.33f;
             Projectile.penetrate = -1;
+            Projectile.timeLeft = 150;
         }
         public override void AI()
         {

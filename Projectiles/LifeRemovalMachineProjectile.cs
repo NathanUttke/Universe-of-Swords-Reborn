@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -8,12 +7,14 @@ using Terraria.ModLoader;
 using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.Graphics.Shaders;
+using Mono.Cecil;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    internal class ScarledGreatswordProjectile : DragonsDeathProjectile
+    internal class LifeRemovalMachineProjectile : ModProjectile
     {
-        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/ScarledFlareGreatsword";
+        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/LifeRemovalMachine";
 
         public override void SetStaticDefaults()
         {
@@ -47,11 +48,11 @@ namespace UniverseOfSwordsMod.Projectiles
             return false;
         }
 
-        private readonly float shootSpeed = 25f;
-        private const float maxTime = 40f;
+        private readonly float shootSpeed = 30f;
+        private const float maxTime = 50f;
         public override void AI()
         {
-            
+
             Player player = Main.player[Projectile.owner];
             Vector2 playerCenter = player.RotatedRelativePoint(player.MountedCenter);
 
@@ -76,24 +77,37 @@ namespace UniverseOfSwordsMod.Projectiles
                 {
                     Projectile.rotation -= MathHelper.PiOver2;
                 }
-            }            
+            }
             Projectile.ai[0] += 1f;
 
-            // Spawn a projectile every 15 ticks
+            // Spawn a projectile every 5 ticks
 
-            if (Projectile.ai[0] == 10f)
+            if (Projectile.ai[0] == 5f || Projectile.ai[0] == 25f)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, velocity * shootSpeed, ModContent.ProjectileType<FlareCore>(), (int)(Projectile.damage * 3f), Projectile.knockBack, player.whoAmI);
+                float numberProjectiles = 3;
+                float rotation = MathHelper.ToRadians(10f);
+                playerCenter += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 4f;
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    Vector2 perturbedSpeed = Utils.RotatedBy(velocity, (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
+                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), playerCenter, perturbedSpeed * shootSpeed, ProjectileID.DeathLaser, Projectile.damage, Projectile.knockBack, player.whoAmI);
+                    proj.DamageType = DamageClass.Melee;
+                    proj.timeLeft = 80;
+                    proj.usesLocalNPCImmunity = true;
+                    proj.localNPCHitCooldown = 20;
+                    proj.hostile = false;
+                    proj.friendly = true;
+                }                
                 Projectile.ai[0] += 1f;
             }
 
             Projectile.rotation += MathHelper.TwoPi * 2f / maxTime * velocityXSign;
-            bool halfUseTime = Projectile.ai[0] == (int)(maxTime / 2f);
-            if (Projectile.ai[0] >= maxTime || (halfUseTime && !player.controlUseItem))
+            bool isInHalfMaxTime = Projectile.ai[0] == (int)(maxTime / 2f);
+            if (Projectile.ai[0] >= maxTime || (isInHalfMaxTime && !player.controlUseItem))
             {
                 Projectile.Kill();
             }
-            else if (halfUseTime)
+            else if (isInHalfMaxTime)
             {
                 Vector2 mousePosition = Main.MouseWorld;
                 int mouseDirection = ((player.DirectionTo(mousePosition).X > 0f) ? 1 : (-1));
@@ -119,7 +133,7 @@ namespace UniverseOfSwordsMod.Projectiles
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
         }
         public override bool PreDraw(ref Color lightColor)
-        {            
+        {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
 
