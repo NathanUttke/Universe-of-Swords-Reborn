@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Terraria;
-using Terraria.GameContent.Generation;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -20,8 +19,7 @@ public class UniverseOfSwordsWorld : ModSystem
 
 	public override void SaveWorldData(TagCompound tag)/* tModPorter Suggestion: Edit tag parameter instead of returning new TagCompound */
 	{
-
-		tag.Add("spawnOre", (object)spawnOre);
+		tag.Add("spawnOre", spawnOre);
 		//return val;
 	}
 
@@ -49,9 +47,8 @@ public class UniverseOfSwordsWorld : ModSystem
 
 		int ShiniesIndex = tasks.FindIndex((GenPass genpass) => genpass.Name.Equals("Shinies"));
 		if (ShiniesIndex != -1)
-        {      	// Next, we insert our pass directly after the original "Shinies" pass.
-                // ExampleOrePass is a class seen bellow
-                	tasks.Insert(ShiniesIndex + 1, new OrePass("Universe Of Swords Mod Ores", 237.4298f));
+        {
+            tasks.Insert(ShiniesIndex + 1, new OrePass("Universe Of Swords Mod Ores", 237.4298f));
         }
 	}
 
