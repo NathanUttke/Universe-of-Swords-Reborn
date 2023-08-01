@@ -1,8 +1,7 @@
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using UniverseOfSwordsMod.Items;
-using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Items.Misc;
 using UniverseOfSwordsMod.Items.Weapons;
 
@@ -10,46 +9,44 @@ namespace UniverseOfSwordsMod.Common.GlobalItems
 {
     public class BossBags : GlobalItem
     {
-        public override void OpenVanillaBag(string context, Player player, int arg)
+        public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
-            var entitySource = player.GetSource_OpenItem(arg);
-
-            if (context == "bossBag")
+            if (ItemID.Sets.BossBag[item.type] || ItemID.Sets.PreHardmodeLikeBossBag[item.type])
             {
-                switch (arg)
+                switch (item.type)
                 {
                     case ItemID.EyeOfCthulhuBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<CthulhuJudge>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CthulhuJudge>(), 1, 1, 1));
                         break;
                     case ItemID.EaterOfWorldsBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<TheEater>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheEater>(), 1, 1, 1));
                         break;
                     case ItemID.BrainOfCthulhuBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<TheBrain>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheBrain>(), 1, 1, 1));
                         break;
                     case ItemID.SkeletronBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<SwordOfPower>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SwordOfPower>(), 1, 1, 1));
                         break;
                     case ItemID.WallOfFleshBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<BiggoronSword>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BiggoronSword>(), 1, 1, 1));
                         break;
                     case ItemID.DestroyerBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<DestroyerSword>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DestroyerSword>(), 1, 1, 1));
                         break;
                     case ItemID.TwinsBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<TwinsSword>(), 1);
-                        break;                    
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TwinsSword>(), 1, 1, 1));
+                        break;
                     case ItemID.SkeletronPrimeBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<PrimeSword>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<PrimeSword>(), 1, 1, 1));
                         break;
                     case ItemID.PlanteraBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<Executioner>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Executioner>(), 1, 1, 1));
                         break;
                     case ItemID.FishronBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<DragonsDeath>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DragonsDeath>(), 1, 1, 1)); 
                         break;
                     case ItemID.GolemBossBag:
-                        player.QuickSpawnItem(entitySource, ModContent.ItemType<SolBlade>(), 1);
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SolBlade>(), 1, 1, 1));
                         break;
                 }
             }

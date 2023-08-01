@@ -22,7 +22,7 @@ public class DamascusPickaxe : ModItem
 		Item.rare = ItemRarityID.Green;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void AddRecipes()

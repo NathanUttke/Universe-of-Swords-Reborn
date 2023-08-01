@@ -10,8 +10,8 @@ public class MagicMirrorBlade : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Magic Mirror Blade");
-		Tooltip.SetDefault("'Magic Mirror and sword fused together'");
+		// DisplayName.SetDefault("Magic Mirror Blade");
+		// Tooltip.SetDefault("'Magic Mirror and sword fused together'");
 	}
 
 	public override void SetDefaults()
@@ -25,7 +25,7 @@ public class MagicMirrorBlade : ModItem
 		Item.UseSound = SoundID.Item6;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = false;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

@@ -12,7 +12,7 @@ public class StarSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Shoots bouncy stars");
+		// Tooltip.SetDefault("Shoots bouncy stars");
 	}
 
 	public override void SetDefaults()
@@ -31,7 +31,7 @@ public class StarSword : ModItem
 		Item.value = Item.sellPrice(0, 1, 20, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 		
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void AddRecipes()

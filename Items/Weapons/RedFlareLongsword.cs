@@ -11,8 +11,8 @@ public class RedFlareLongsword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Scarlet Flare Longsword");
-		Tooltip.SetDefault("Fires scarlet flare waves and ignites enemies with Scarlet flames\n'Ignite your foes in scarlet flames'");
+		// DisplayName.SetDefault("Scarlet Flare Longsword");
+		// Tooltip.SetDefault("Fires scarlet flare waves and ignites enemies with Scarlet flames\n'Ignite your foes in scarlet flames'");
 	}
 
 	public override void SetDefaults()
@@ -32,7 +32,7 @@ public class RedFlareLongsword : ModItem
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -57,7 +57,7 @@ public class RedFlareLongsword : ModItem
 			.Register();
 	}
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(24, 500, false);
 	}

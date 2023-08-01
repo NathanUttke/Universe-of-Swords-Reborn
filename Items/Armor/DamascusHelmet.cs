@@ -10,8 +10,8 @@ public class DamascusHelmet : ModItem
 	public override void SetStaticDefaults()
 	{
 		
-		DisplayName.SetDefault("Damascus Helmet");
-		Tooltip.SetDefault("3% increased melee speed");
+		// DisplayName.SetDefault("Damascus Helmet");
+		// Tooltip.SetDefault("3% increased melee speed");
 	}
 
 	public override void SetDefaults()
@@ -21,7 +21,7 @@ public class DamascusHelmet : ModItem
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 4;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateEquip(Player player)

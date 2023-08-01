@@ -11,8 +11,8 @@ public class SwordOfTheEmperor : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Sword of The Emperor");
-        Tooltip.SetDefault("'Grant them the Emperor's mercy. Let the heretics burn!'");
+        // DisplayName.SetDefault("Sword of The Emperor");
+        // Tooltip.SetDefault("'Grant them the Emperor's mercy. Let the heretics burn!'");
     }
 
     public override void SetDefaults()
@@ -33,7 +33,7 @@ public class SwordOfTheEmperor : ModItem
         Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
     public override void AddRecipes()
     {
@@ -53,7 +53,7 @@ public class SwordOfTheEmperor : ModItem
         player.itemLocation = player.Center;
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
         {
@@ -70,12 +70,12 @@ public class SwordOfTheEmperor : ModItem
             target.AddBuff(BuffID.Ichor, 400, true);
         }
 
-        if (crit && Main.rand.NextBool(5) && !target.HasBuff(BuffID.Midas))
+        if (hit.Crit && Main.rand.NextBool(5) && !target.HasBuff(BuffID.Midas))
         {
             target.AddBuff(BuffID.Midas, 200, true);
         }
     }
-    public override void OnHitPvp(Player player, Player target, int damage, bool crit)
+    public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
     {
         if (!target.HasBuff(BuffID.Weak))
         {

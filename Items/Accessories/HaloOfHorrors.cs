@@ -8,8 +8,8 @@ public class HaloOfHorrors : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Skull of Insanity");
-		Tooltip.SetDefault("Level 1 \n5 defense\n5% increased armor penetration\nIncreased health regeneration\n5% increased damage\nCurses the wearer with Feral bite\n30% decreased melee speed");
+		// DisplayName.SetDefault("Skull of Insanity");
+		// Tooltip.SetDefault("Level 1 \n5 defense\n5% increased armor penetration\nIncreased health regeneration\n5% increased damage\nCurses the wearer with Feral bite\n30% decreased melee speed");
 	}
 
 	public override void SetDefaults()
@@ -20,7 +20,7 @@ public class HaloOfHorrors : ModItem
 		Item.rare = ItemRarityID.Purple;
 		Item.expert = true;
 		Item.accessory = true; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)

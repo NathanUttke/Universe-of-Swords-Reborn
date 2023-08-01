@@ -13,8 +13,8 @@ public class SwordMatter : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Sword Matter");
-		Tooltip.SetDefault("'Matter of all swords'");
+		// DisplayName.SetDefault("Sword Matter");
+		// Tooltip.SetDefault("'Matter of all swords'");
 		ItemID.Sets.ItemIconPulse[Item.type] = true;
 		ItemID.Sets.ItemNoGravity[Item.type] = true;
 	}
@@ -26,7 +26,7 @@ public class SwordMatter : ModItem
 		Item.maxStack = 9999;
 		Item.value = 0;
 		Item.rare = ItemRarityID.Orange;
-		SacrificeTotal = 25;
+		Item.ResearchUnlockCount = 25;
 	}
 
     public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

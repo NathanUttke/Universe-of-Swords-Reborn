@@ -11,7 +11,7 @@ public class SolBlade : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Unleashes small spread of meteors");
+		// Tooltip.SetDefault("Unleashes small spread of meteors");
 	}
 
 	public override void SetDefaults()
@@ -33,7 +33,7 @@ public class SolBlade : ModItem
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {

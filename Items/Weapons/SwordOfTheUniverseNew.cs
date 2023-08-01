@@ -14,8 +14,8 @@ public class SwordOfTheUniverseNew : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Sword of the Universe");
-		Tooltip.SetDefault("'This sword doesn't swing. It lifts the Universe towards the blade'");
+		// DisplayName.SetDefault("Sword of the Universe");
+		// Tooltip.SetDefault("'This sword doesn't swing. It lifts the Universe towards the blade'");
 	}
 
 	public override void SetDefaults()
@@ -41,7 +41,7 @@ public class SwordOfTheUniverseNew : ModItem
         Item.autoReuse = true;
 
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void AddRecipes()
@@ -86,7 +86,7 @@ public class SwordOfTheUniverseNew : ModItem
 		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(72, 360, false);
 		target.AddBuff(69, 360, false);

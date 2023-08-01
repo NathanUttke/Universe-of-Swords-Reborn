@@ -10,7 +10,7 @@ public class CosmoStorm : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("'Sword that shatters galaxies'");
+        // Tooltip.SetDefault("'Sword that shatters galaxies'");
     }
 
     public override void SetDefaults()
@@ -30,7 +30,7 @@ public class CosmoStorm : ModItem
 
         Item.value = 650000;
         Item.autoReuse = true;
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void AddRecipes()
@@ -50,14 +50,14 @@ public class CosmoStorm : ModItem
     }
 
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         Vector2 hitPosition = Main.rand.NextVector2Circular(200f, 200f);
         hitPosition.SafeNormalize(hitPosition);
 
         if (Main.rand.NextBool(3) && target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
         {
-            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 20f, hitPosition / 4f, ProjectileID.NebulaArcanum, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 20f, hitPosition / 4f, ProjectileID.NebulaArcanum, damageDone, Item.knockBack, player.whoAmI, 0f, 0f);
             proj.DamageType = DamageClass.Melee;
         }               
     }

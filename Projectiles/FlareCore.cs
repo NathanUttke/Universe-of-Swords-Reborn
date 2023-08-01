@@ -46,7 +46,7 @@ public class FlareCore : ModProjectile
         redDust.noGravity = true;
         redDust.scale = 1.15f;
     }
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (Main.rand.NextBool(2) && !target.HasBuff(BuffID.OnFire))
         {

@@ -13,7 +13,7 @@ public class PowerOfTheGalactic : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Sword made from all galactic elements");
+        // Tooltip.SetDefault("Sword made from all galactic elements");
     }
 
     public override void SetDefaults()
@@ -34,7 +34,7 @@ public class PowerOfTheGalactic : ModItem
         Item.value = 650500;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -58,7 +58,7 @@ public class PowerOfTheGalactic : ModItem
         .Register();
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         target.AddBuff(69, 360, false);
         target.AddBuff(24, 360, false);

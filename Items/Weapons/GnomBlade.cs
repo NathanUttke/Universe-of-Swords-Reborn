@@ -29,7 +29,7 @@ public class GnomBlade : ModItem
 		Item.shoot = ModContent.ProjectileType<GnomeProj>();
 		Item.shootSpeed = 10f;
 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void AddRecipes()
@@ -46,7 +46,7 @@ public class GnomBlade : ModItem
 			.Register();
 	}
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
         if (!target.HasBuff(BuffID.Weak))
         {

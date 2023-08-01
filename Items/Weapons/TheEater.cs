@@ -12,7 +12,7 @@ public class TheEater : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("'Sword of Corruption'");
+        // Tooltip.SetDefault("'Sword of Corruption'");
     }
 
     public override void SetDefaults()
@@ -29,17 +29,17 @@ public class TheEater : ModItem
         Item.value = Item.sellPrice(0, 0, 75, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         Vector2 hitPosition = Main.rand.NextVector2Circular(50f, 50f);
         hitPosition.SafeNormalize(hitPosition);
 
         if (Main.rand.NextBool(3) && target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
         {
-            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 20f, hitPosition / 4f, ProjectileID.TinyEater, damage / 3, knockBack, player.whoAmI, 0f, 0f);
+            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 20f, hitPosition / 4f, ProjectileID.TinyEater, damageDone / 3, 4f, player.whoAmI, 0f, 0f);
             proj.DamageType = DamageClass.Melee;
         }
     }

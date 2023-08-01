@@ -10,7 +10,7 @@ public class VolatileKnives : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Volatile Knives");
+		// DisplayName.SetDefault("Volatile Knives");
 	}
 
 	public override void SetDefaults()
@@ -20,7 +20,7 @@ public class VolatileKnives : ModItem
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.rare = ItemRarityID.Purple;
 		Item.accessory = true; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	private int grenadeBoxCounter;

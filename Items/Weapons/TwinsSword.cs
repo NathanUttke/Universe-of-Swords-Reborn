@@ -11,7 +11,7 @@ public class TwinsSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Whoosh, whoosh!");
+		// Tooltip.SetDefault("Whoosh, whoosh!");
 	}
 
 	public override void SetDefaults()
@@ -30,7 +30,7 @@ public class TwinsSword : ModItem
 		Item.shootSpeed = 5.2f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

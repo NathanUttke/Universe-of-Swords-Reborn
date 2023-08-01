@@ -12,8 +12,8 @@ namespace UniverseOfSwordsMod.Items.Weapons
     {
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Frozen Crystallus");
-			Tooltip.SetDefault("Inflicts Frostburn debuff");
+            // DisplayName.SetDefault("Frozen Crystallus");
+			// Tooltip.SetDefault("Inflicts Frostburn debuff");
 		}
 		
         public override void SetDefaults()
@@ -38,7 +38,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
 
             Item.value = Item.sellPrice(0, 4, 0, 0);
             Item.autoReuse = true;
-            SacrificeTotal = 1;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -68,7 +68,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             .Register();
         }
 		
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
            if (!target.HasBuff(BuffID.Frostburn))
            {

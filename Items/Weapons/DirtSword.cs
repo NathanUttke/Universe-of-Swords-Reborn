@@ -22,7 +22,7 @@ public class DirtSword : ModItem
 		Item.value = 15;
 		Item.autoReuse = false;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 	public override void AddRecipes()
 	{				

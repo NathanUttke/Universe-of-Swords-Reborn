@@ -9,8 +9,8 @@ public class BlueDamascusChestplate : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Blue Damascus Chestplate");
-		Tooltip.SetDefault("'Armor for durable warriors'\n7% increased melee damage\n10% increased movement speed");
+		// DisplayName.SetDefault("Blue Damascus Chestplate");
+		// Tooltip.SetDefault("'Armor for durable warriors'\n7% increased melee damage\n10% increased movement speed");
 	}
 
 	public override void SetDefaults()
@@ -20,7 +20,7 @@ public class BlueDamascusChestplate : ModItem
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Cyan;
 		Item.defense = 20;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)

@@ -65,7 +65,7 @@ internal class Nightmare : ModProjectile
         }        
         Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
     }
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
         Player owner = Main.player[Projectile.owner];
 

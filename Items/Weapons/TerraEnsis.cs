@@ -11,7 +11,7 @@ public class TerraEnsis : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Terra Ensis");
+        // DisplayName.SetDefault("Terra Ensis");
     }
     public override void SetDefaults()
     {
@@ -33,7 +33,7 @@ public class TerraEnsis : ModItem
         Item.rare = ItemRarityID.Purple;
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

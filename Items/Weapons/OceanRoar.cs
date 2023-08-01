@@ -23,7 +23,7 @@ public class OceanRoar : ModItem
 		Item.value = 5000;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

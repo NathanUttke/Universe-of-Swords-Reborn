@@ -15,7 +15,7 @@ public class TrueTerrabladeProjectile : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("True Terra Blade");
+        // DisplayName.SetDefault("True Terra Blade");
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
     }

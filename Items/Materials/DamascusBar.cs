@@ -8,8 +8,8 @@ public class DamascusBar : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Damascus Bar");
-		Tooltip.SetDefault("'Material for creating powerful swords'");
+		// DisplayName.SetDefault("Damascus Bar");
+		// Tooltip.SetDefault("'Material for creating powerful swords'");
 	}
 
 	public override void SetDefaults()
@@ -26,7 +26,7 @@ public class DamascusBar : ModItem
 		Item.consumable = true;
 		Item.createTile = Mod.Find<ModTile>("DamascusBarTile").Type;
 		Item.maxStack = 9999;
-		SacrificeTotal = 25;
+		Item.ResearchUnlockCount = 25;
 	}
 
 	public override void AddRecipes()

@@ -11,8 +11,8 @@ public class PianoSword3 : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Mozart Mauler");
-		Tooltip.SetDefault("'Piano Concerto No.20 - Mozart'");
+		// DisplayName.SetDefault("Mozart Mauler");
+		// Tooltip.SetDefault("'Piano Concerto No.20 - Mozart'");
 	}
 
 	public override void SetDefaults()
@@ -32,7 +32,7 @@ public class PianoSword3 : ModItem
 		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -61,7 +61,7 @@ public class PianoSword3 : ModItem
         return false;
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(137, 360, false);
 	}

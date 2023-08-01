@@ -24,7 +24,7 @@ public class CrimsonCrystallus : ModItem
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)

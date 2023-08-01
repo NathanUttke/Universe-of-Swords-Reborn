@@ -1,17 +1,15 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Consumables;
 
 namespace UniverseOfSwordsMod.Common.GlobalNPCs
 {
     public class GlobalNPCShop : GlobalNPC
     {
-        public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        public override void SetupTravelShop(int[] shop, ref int nextSlot)
         {
-            if (Main.rand.NextBool(2) && type == 368)
-            {
-                shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("Skooma").Type, false);
-                nextSlot++;
-            }
+            shop[nextSlot++] = ModContent.ItemType<Skooma>();
         }
     }
 }

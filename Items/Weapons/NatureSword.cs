@@ -11,7 +11,7 @@ public class NatureSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'Sword made out of only pure ingredients given from Mother Nature'");
+		// Tooltip.SetDefault("'Sword made out of only pure ingredients given from Mother Nature'");
 	}
 
 	public override void SetDefaults()
@@ -29,10 +29,10 @@ public class NatureSword : ModItem
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (Main.rand.NextBool(3) && !NPCID.Sets.CountsAsCritter[target.type])
 		{

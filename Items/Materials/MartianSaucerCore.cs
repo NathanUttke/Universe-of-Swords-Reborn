@@ -8,7 +8,7 @@ public class MartianSaucerCore : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Pulses with space energy");
+		// Tooltip.SetDefault("Pulses with space energy");
 	}
 
 	public override void SetDefaults()
@@ -18,6 +18,6 @@ public class MartianSaucerCore : ModItem
 		Item.maxStack = 999;
 		Item.value = 400000;
 		Item.rare = ItemRarityID.Yellow;
-		SacrificeTotal = 10;
+		Item.ResearchUnlockCount = 10;
 	}
 }

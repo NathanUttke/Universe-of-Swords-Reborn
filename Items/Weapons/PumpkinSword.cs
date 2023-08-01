@@ -23,7 +23,7 @@ public class PumpkinSword : ModItem
         Item.value = 1888;
         Item.autoReuse = false;
         Item.DamageType = DamageClass.Melee; 
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void AddRecipes()

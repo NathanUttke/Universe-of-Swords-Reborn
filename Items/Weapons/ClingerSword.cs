@@ -24,7 +24,7 @@ public class ClingerSword : ModItem
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override bool CanUseItem(Player player)

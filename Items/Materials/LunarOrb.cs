@@ -8,7 +8,7 @@ public class LunarOrb : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Essence of Lunar Towers");
+		// Tooltip.SetDefault("Essence of Lunar Towers");
 	}
 
 	public override void SetDefaults()
@@ -18,7 +18,7 @@ public class LunarOrb : ModItem
 		Item.maxStack = 999;
 		Item.value = 700000;
 		Item.rare = ItemRarityID.Cyan;
-		SacrificeTotal = 10;
+		Item.ResearchUnlockCount = 10;
 	}
 
 	public override void AddRecipes()

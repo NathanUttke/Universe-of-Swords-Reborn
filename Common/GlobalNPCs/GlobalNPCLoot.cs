@@ -1,17 +1,12 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.Chat;
-using Terraria.Localization;
 using Terraria.GameContent.ItemDropRules;
 using UniverseOfSwordsMod.Items.Weapons;
 using UniverseOfSwordsMod.Common.ItemDropRules.Conditions;
 using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Items.Accessories;
 using UniverseOfSwordsMod.Items.Misc;
-using UniverseOfSwordsMod.Items.Consumables;
-using UniverseOfSwordsMod.NPCs.Bosses;
 
 namespace UniverseOfSwordsMod.Common.GlobalNPCs
 {

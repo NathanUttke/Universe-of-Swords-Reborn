@@ -12,7 +12,7 @@ public class OnyxSword : ModItem
     private int swingCount;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Shoots Onyx");
+        // Tooltip.SetDefault("Shoots Onyx");
     }
 
     public override void SetDefaults()
@@ -32,7 +32,7 @@ public class OnyxSword : ModItem
         Item.value = 70500;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void AddRecipes()

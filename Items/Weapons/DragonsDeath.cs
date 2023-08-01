@@ -11,8 +11,8 @@ public class DragonsDeath : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Dragon's Death");
-		Tooltip.SetDefault("'It's great for impersonating dragon hunters'");
+		// DisplayName.SetDefault("Dragon's Death");
+		// Tooltip.SetDefault("'It's great for impersonating dragon hunters'");
 	}
 
 	public override void SetDefaults()
@@ -31,7 +31,7 @@ public class DragonsDeath : ModItem
 		Item.value = 490500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override bool CanUseItem(Player player)

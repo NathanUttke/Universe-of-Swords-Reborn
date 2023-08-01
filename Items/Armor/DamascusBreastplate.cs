@@ -10,8 +10,8 @@ public class DamascusBreastplate : ModItem
 	public override void SetStaticDefaults()
 	{
 		
-		DisplayName.SetDefault("Damascus Breastplate");
-		Tooltip.SetDefault("4% increased melee damage");
+		// DisplayName.SetDefault("Damascus Breastplate");
+		// Tooltip.SetDefault("4% increased melee damage");
 	}
 
 	public override void SetDefaults()
@@ -21,7 +21,7 @@ public class DamascusBreastplate : ModItem
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 6;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)

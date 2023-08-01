@@ -68,7 +68,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
             Projectile.ai[1] += 1f;
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!target.HasBuff(BuffID.CursedInferno))
             {

@@ -25,7 +25,7 @@ public class DeathSword : ModItem
         Item.value = 160200;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

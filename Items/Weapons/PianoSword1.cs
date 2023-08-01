@@ -11,8 +11,8 @@ public class PianoSword1 : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Beethoven Beater");
-		Tooltip.SetDefault("'Moonlight Sonata - Beethoven'");
+		// DisplayName.SetDefault("Beethoven Beater");
+		// Tooltip.SetDefault("'Moonlight Sonata - Beethoven'");
 	}
 
 	public override void SetDefaults()
@@ -31,7 +31,7 @@ public class PianoSword1 : ModItem
 		Item.value = 40000;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -60,7 +60,7 @@ public class PianoSword1 : ModItem
 		return false;
 	}
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(20, 360, false);
 	}

@@ -15,10 +15,10 @@ public class SwordOfTheMultiverseNew : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Sword of the Multiverse");
-        Tooltip.SetDefault("'You only get what you give'\nPress left or right click for a alternate attack" +
+        // DisplayName.SetDefault("Sword of the Multiverse");
+        /* Tooltip.SetDefault("'You only get what you give'\nPress left or right click for a alternate attack" +
             "\nHold up or down for a alternate attack"
-            );
+            ); */
     }
 
     public override void SetDefaults()
@@ -46,7 +46,7 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
         Item.shootSpeed = 30f;
 
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
         ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
     }    
 
@@ -222,7 +222,7 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.Register();
 	}
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
 		{

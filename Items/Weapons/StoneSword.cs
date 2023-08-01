@@ -9,7 +9,7 @@ public class StoneSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'You Rock!'");
+		// Tooltip.SetDefault("'You Rock!'");
 	}
 
 	public override void SetDefaults()
@@ -27,7 +27,7 @@ public class StoneSword : ModItem
 		Item.value = 100;
 		Item.autoReuse = false;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

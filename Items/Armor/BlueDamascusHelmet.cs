@@ -10,8 +10,8 @@ public class BlueDamascusHelmet : ModItem
 	public override void SetStaticDefaults()
 	{
 		
-		DisplayName.SetDefault("Blue Damascus Helmet");
-		Tooltip.SetDefault("'Armor for durable warriors'\n6% increased melee speed\n6% increased melee critical chance");
+		// DisplayName.SetDefault("Blue Damascus Helmet");
+		// Tooltip.SetDefault("'Armor for durable warriors'\n6% increased melee speed\n6% increased melee critical chance");
 	}
 
 	public override void SetDefaults()
@@ -21,7 +21,7 @@ public class BlueDamascusHelmet : ModItem
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Cyan;
 		Item.defense = 30;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateEquip(Player player)

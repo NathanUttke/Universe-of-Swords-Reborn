@@ -13,7 +13,7 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sword Of The Multiverse");
+            // DisplayName.SetDefault("Sword Of The Multiverse");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
@@ -38,7 +38,7 @@ namespace UniverseOfSwordsMod.Projectiles
             AIType = ProjectileID.Bullet;
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
             {

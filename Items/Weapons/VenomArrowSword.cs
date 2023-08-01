@@ -10,7 +10,7 @@ public class VenomArrowSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Shoots Venom arrows");
+		// Tooltip.SetDefault("Shoots Venom arrows");
 	}
 
 	public override void SetDefaults()
@@ -30,7 +30,7 @@ public class VenomArrowSword : ModItem
 		Item.value = 36500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

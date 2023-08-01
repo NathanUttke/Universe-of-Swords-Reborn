@@ -14,7 +14,7 @@ public class Horrormageddon : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'Where you see an army, I see a graveyard'");
+		// Tooltip.SetDefault("'Where you see an army, I see a graveyard'");
 	}
 
 	public override void SetDefaults()
@@ -33,7 +33,7 @@ public class Horrormageddon : ModItem
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void AddRecipes()

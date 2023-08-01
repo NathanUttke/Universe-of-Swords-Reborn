@@ -22,7 +22,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Evil Flying Blade");
+            // DisplayName.SetDefault("Evil Flying Blade");
             Main.npcFrameCount[Type] = 1;
             NPCID.Sets.TrailCacheLength[Type] = 15;
             NPCID.Sets.TrailingMode[Type] = 3;
@@ -73,7 +73,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             return true;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             if (Main.netMode == NetmodeID.Server)
             {
@@ -109,17 +109,17 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
         }
 
         private float dashSpeed = 20f;
-        private Player player => Main.player[NPC.target];
+        private Player Player => Main.player[NPC.target];
         private float timeToChange = 14f;
         public override void AI()
         { 
             base.AI();
-            if (NPC.target < 0 || NPC.target == 255 || player.dead || !player.active)
+            if (NPC.target < 0 || NPC.target == 255 || Player.dead || !Player.active)
             {
                 NPC.TargetClosest();
             }
 
-            if (player.dead)
+            if (Player.dead)
             {
                 NPC.EncourageDespawn(12);
                 return;
@@ -144,7 +144,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             {
                 NPC.dontTakeDamage = false;
                 Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-                Vector2 playerPosNpc = new(player.position.X + player.width / 2 - npcPosition.X, player.position.Y + player.height / 2 - npcPosition.Y);
+                Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
                 float playerPosNpcSqrt = dashSpeed / playerPosNpc.Length();
                 playerPosNpc *= playerPosNpcSqrt;               
 
@@ -164,7 +164,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                 if (NPC.justHit && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-                    Vector2 playerPosNpc = new(player.position.X + player.width / 2 - npcPosition.X, player.position.Y + player.height / 2 - npcPosition.Y);
+                    Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
                     float playerPosNpcSqrt = 5f / playerPosNpc.Length();
                     playerPosNpc *= playerPosNpcSqrt;
                     npcPosition += playerPosNpc;
@@ -195,7 +195,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                 }
 
                 Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-                Vector2 playerPosNpc = new(player.position.X + player.width / 2 - npcPosition.X, player.position.Y + player.height / 2 - npcPosition.Y);
+                Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
                 float playerPosNpcSqrt = dashSpeed / playerPosNpc.Length();
                 playerPosNpc *= playerPosNpcSqrt;
                 npcPosition += playerPosNpc;
@@ -212,7 +212,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                         {
                             Vector2 spinPoint = Vector2.Normalize(playerPosNpc * 4f) * 14f;
                             spinPoint = spinPoint.RotatedBy(-i * MathHelper.Pi / 5f, Vector2.Zero);
-                            Projectile swordProj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), npcPosition, spinPoint, ProjectileID.LightBeam, 20, 0f, player.whoAmI);
+                            Projectile swordProj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), npcPosition, spinPoint, ProjectileID.LightBeam, 20, 0f, Player.whoAmI);
                             swordProj.friendly = false;
                             swordProj.hostile = true;
                         }

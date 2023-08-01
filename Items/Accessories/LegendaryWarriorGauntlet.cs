@@ -9,15 +9,15 @@ public class LegendaryWarriorGauntlet : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Legendary Warrior's Gauntlet");
-		Tooltip.SetDefault("'Legendary gauntlet that grants wearer ultimate melee skills'\n" +
+		// DisplayName.SetDefault("Legendary Warrior's Gauntlet");
+		/* Tooltip.SetDefault("'Legendary gauntlet that grants wearer ultimate melee skills'\n" +
 			"15 defense\n" +
 			"Highly increased melee damage\n" +
 			"30% increased melee critical chance\n" +
 			"Greatly increased life regeneration\n" +
 			"Increases maximum life by 20\n20% increased endurance\n" +
 			"Grants immunity to most debuffs\n" +
-			"Grants Spelunker, Thorns and Titan potion effects");
+			"Grants Spelunker, Thorns and Titan potion effects"); */
 	}
 
 	public override void SetDefaults()
@@ -27,7 +27,7 @@ public class LegendaryWarriorGauntlet : ModItem
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.rare = ItemRarityID.Red;
 		Item.accessory = true; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)

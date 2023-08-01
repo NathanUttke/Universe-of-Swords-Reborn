@@ -12,7 +12,7 @@ public class DoubleBladedLightsaber : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("The Ultimate Saber");
+		// DisplayName.SetDefault("The Ultimate Saber");
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(55, 7, false));
 		ItemID.Sets.AnimatesAsSoul[Type] = true;
 	}
@@ -22,7 +22,7 @@ public class DoubleBladedLightsaber : ModItem
 		Item.damage = 72;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 
 		Item.width = 138;
 		Item.height = 138;

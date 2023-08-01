@@ -10,8 +10,8 @@ public class GreenDamascusChestplate : ModItem
 	public override void SetStaticDefaults()
 	{
 		
-		DisplayName.SetDefault("Green Damascus Chestplate");
-		Tooltip.SetDefault("'Armor for fast warriors'\n15% increased melee damage\n10% increased melee speed");
+		// DisplayName.SetDefault("Green Damascus Chestplate");
+		// Tooltip.SetDefault("'Armor for fast warriors'\n15% increased melee damage\n10% increased melee speed");
 	}
 
 	public override void SetDefaults()
@@ -21,7 +21,7 @@ public class GreenDamascusChestplate : ModItem
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 30;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)

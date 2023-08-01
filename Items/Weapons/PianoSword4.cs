@@ -11,8 +11,8 @@ public class PianoSword4 : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Liszt Lasher");
-		Tooltip.SetDefault("'Piano sonata in B minor - Liszt'");
+		// DisplayName.SetDefault("Liszt Lasher");
+		// Tooltip.SetDefault("'Piano sonata in B minor - Liszt'");
 	}
 
 	public override void SetDefaults()
@@ -31,7 +31,7 @@ public class PianoSword4 : ModItem
 		Item.value = Item.sellPrice(0, 12, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -61,7 +61,7 @@ public class PianoSword4 : ModItem
         return false;
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(144, 360, false);
 		target.AddBuff(30, 360, false);

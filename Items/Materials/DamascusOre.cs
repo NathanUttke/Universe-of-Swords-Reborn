@@ -8,7 +8,7 @@ public class DamascusOre : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Damascus Ore");
+		// DisplayName.SetDefault("Damascus Ore");
 	}
 
 	public override void SetDefaults()
@@ -24,6 +24,6 @@ public class DamascusOre : ModItem
 		Item.consumable = true;
 		Item.createTile = Mod.Find<ModTile>("DamascusOreTile").Type;
 		Item.maxStack = 9999;
-		SacrificeTotal = 100;
+		Item.ResearchUnlockCount = 100;
 	}
 }

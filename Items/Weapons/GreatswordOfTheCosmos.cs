@@ -14,7 +14,7 @@ public class GreatswordOfTheCosmos : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Greatsword of the Cosmos");		
+		// DisplayName.SetDefault("Greatsword of the Cosmos");		
 	}
 
 	public override void SetDefaults()
@@ -34,7 +34,7 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

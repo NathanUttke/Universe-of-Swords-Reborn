@@ -9,8 +9,8 @@ public class Skooma : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Skooma");
-		Tooltip.SetDefault("Increases movement speed and jump height");
+		// DisplayName.SetDefault("Skooma");
+		// Tooltip.SetDefault("Increases movement speed and jump height");
 	}
 
 	public override void SetDefaults()
@@ -28,7 +28,7 @@ public class Skooma : ModItem
 		Item.rare = ItemRarityID.Purple;
 		Item.buffType = ModContent.BuffType<Buffs.Skooma>();
 		Item.buffTime = 8000;
-		SacrificeTotal = 30;
+		Item.ResearchUnlockCount = 30;
 
 	}
 

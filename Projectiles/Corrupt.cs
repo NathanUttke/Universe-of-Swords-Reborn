@@ -10,7 +10,7 @@ public class Corrupt : ModProjectile
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Corrupt Crystallus");
+		// DisplayName.SetDefault("Corrupt Crystallus");
 	}
 
 

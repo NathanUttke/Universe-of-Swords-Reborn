@@ -10,7 +10,7 @@ public class UselessWeapon : ModItem
 {
     public override void SetStaticDefaults()
     {
-		DisplayName.SetDefault("Wooden Cane");
+		// DisplayName.SetDefault("Wooden Cane");
     }
     public override void SetDefaults()
 	{
@@ -33,7 +33,7 @@ public class UselessWeapon : ModItem
 		Item.shootSpeed = 5f;
 
         Item.knockBack = 4f;
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
 
         Item.noUseGraphic = true;
         Item.noMelee = true;

@@ -10,7 +10,7 @@ public class Executioner : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Executioner");
+        // DisplayName.SetDefault("Executioner");
     }
 
     public override void SetDefaults()
@@ -30,7 +30,7 @@ public class Executioner : ModItem
         Item.value = Item.sellPrice(0, 3, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

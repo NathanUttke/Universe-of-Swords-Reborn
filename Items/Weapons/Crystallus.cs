@@ -10,7 +10,7 @@ public class Crystallus : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Crystallus");
+		// DisplayName.SetDefault("Crystallus");
 	}
 
 	public override void SetDefaults()
@@ -27,7 +27,7 @@ public class Crystallus : ModItem
 		Item.value = Item.sellPrice(0, 0, 60, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)

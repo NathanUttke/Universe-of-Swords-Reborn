@@ -1,8 +1,10 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -10,7 +12,7 @@ public class BetterShroomiteBlade : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Bigger and better!");
+		// Tooltip.SetDefault("Bigger and better!");
 	}
 
 	public override void SetDefaults()
@@ -24,17 +26,25 @@ public class BetterShroomiteBlade : ModItem
 		Item.damage = 75;
 		Item.knockBack = 7f;
 		Item.UseSound = SoundID.Item1;
-		Item.value = 380000;
-		Item.autoReuse = true;
+		Item.value = 380000;		
 		Item.DamageType = DamageClass.Melee;
-		Item.scale = 1.20f;
-		SacrificeTotal = 1;
+		Item.scale = 1f;
+		Item.shoot = ModContent.ProjectileType<BetterShroomiteProj>();
+		Item.noMelee = true;
+		Item.shootsEveryUse = true;
+        Item.autoReuse = true;
+        Item.ResearchUnlockCount = 1;
 	}
 
-    public override void MeleeEffects(Player player, Rectangle hitbox)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		UniverseUtils.EmitHammushProjectiles(player, player.whoAmI, Item, hitbox, Item.damage, ProjectileID.Mushroom);
+        float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
+        Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale);
+        NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI); // Sync the changes in multiplayer.
+
+        return true;
     }
+
 
     public override void AddRecipes()
 	{		

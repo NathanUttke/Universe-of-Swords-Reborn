@@ -11,7 +11,7 @@ public class GiantUnicornHorn : ModItem
 {
     public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Fabolous!");
+		// Tooltip.SetDefault("Fabolous!");
 	}
 
 	public override void SetDefaults()
@@ -37,7 +37,7 @@ public class GiantUnicornHorn : ModItem
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

@@ -10,8 +10,8 @@ public class RedDamascusHelmet : ModItem
 	public override void SetStaticDefaults()
 	{
 		
-		DisplayName.SetDefault("Red Damascus Helmet");
-		Tooltip.SetDefault("'Armor for agressive warriors'\n10% increased melee damage\n14% increased melee critical chance");
+		// DisplayName.SetDefault("Red Damascus Helmet");
+		// Tooltip.SetDefault("'Armor for agressive warriors'\n10% increased melee damage\n14% increased melee critical chance");
 	}
 
 	public override void SetDefaults()
@@ -21,7 +21,7 @@ public class RedDamascusHelmet : ModItem
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Orange;
 		Item.defense = 20;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateEquip(Player player)

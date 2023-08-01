@@ -10,7 +10,7 @@ public class WoodenArrowSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Shoots Wooden Arrows");
+		// Tooltip.SetDefault("Shoots Wooden Arrows");
 	}
 
 	public override void SetDefaults()
@@ -29,7 +29,7 @@ public class WoodenArrowSword : ModItem
 		Item.value = 3500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

@@ -86,10 +86,12 @@ namespace UniverseOfSwordsMod.Projectiles.Minions
             float maxTargetDistance = 900f;
             bool foundTarget = false;
             int maxDistance = 500;
+
             if (Projectile.ai[1] != 0f)
             {
                 maxDistance = 1400;
             }
+
             if (Vector2.Distance(Projectile.Center, Main.player[Projectile.owner].Center) > maxDistance)
             {
                 Projectile.ai[0] = 1f;

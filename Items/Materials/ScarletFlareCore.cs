@@ -11,8 +11,8 @@ public class ScarletFlareCore : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Scarlet Flare Core");
-		Tooltip.SetDefault("'From depths of hell'");
+		// DisplayName.SetDefault("Scarlet Flare Core");
+		// Tooltip.SetDefault("'From depths of hell'");
         ItemID.Sets.ItemNoGravity[Item.type] = false;
     }
 
@@ -23,7 +23,7 @@ public class ScarletFlareCore : ModItem
 		Item.maxStack = 99;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.rare = ItemRarityID.Red;        
-		SacrificeTotal = 3;        
+		Item.ResearchUnlockCount = 3;        
     }
 
     public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

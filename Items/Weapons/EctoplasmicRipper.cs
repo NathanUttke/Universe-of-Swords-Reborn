@@ -9,7 +9,7 @@ public class EctoplasmicRipper : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Steals mana upon hitt");
+		// Tooltip.SetDefault("Steals mana upon hitt");
 	}
 
 	public override void SetDefaults()
@@ -34,7 +34,7 @@ public class EctoplasmicRipper : ModItem
 		Item.useTurn = false;
 
 		Item.mana = 5;
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -54,9 +54,9 @@ public class EctoplasmicRipper : ModItem
 			.Register();
 	}
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		int healingAmt = damage / 8;
+		int healingAmt = damageDone / 8;
 		player.statMana += healingAmt;
 		player.ManaEffect(healingAmt);
 	}

@@ -11,8 +11,8 @@ public class PianoSword2 : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Gershwin Gasher");
-        Tooltip.SetDefault("'Rhapsody in Blue - Gershwin'");
+        // DisplayName.SetDefault("Gershwin Gasher");
+        // Tooltip.SetDefault("'Rhapsody in Blue - Gershwin'");
     }
 
     public override void SetDefaults()
@@ -32,7 +32,7 @@ public class PianoSword2 : ModItem
         Item.value = 80000;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -63,7 +63,7 @@ public class PianoSword2 : ModItem
         return false;
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         target.AddBuff(153, 360, false);
         target.AddBuff(44, 360, false);

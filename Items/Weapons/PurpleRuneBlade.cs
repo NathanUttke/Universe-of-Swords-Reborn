@@ -11,8 +11,8 @@ public class PurpleRuneBlade : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Shadow Rune Blade");
-		Tooltip.SetDefault("'Pulses with dark energy of shadowflame'");
+		// DisplayName.SetDefault("Shadow Rune Blade");
+		// Tooltip.SetDefault("'Pulses with dark energy of shadowflame'");
 	}
 
 	public override void SetDefaults()
@@ -33,7 +33,7 @@ public class PurpleRuneBlade : ModItem
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -54,7 +54,7 @@ public class PurpleRuneBlade : ModItem
 		.Register();
 	}
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		if (!target.HasBuff(BuffID.ShadowFlame) && Main.rand.NextBool(2))
 		{

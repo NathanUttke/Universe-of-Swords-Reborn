@@ -13,7 +13,7 @@ public class EdgeLord : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'Blood for the Blood God! Skulls for the skull throne! Milk for the Khorne flakes!'");
+		// Tooltip.SetDefault("'Blood for the Blood God! Skulls for the skull throne! Milk for the Khorne flakes!'");
 	}
 
 	public override void SetDefaults()
@@ -32,7 +32,7 @@ public class EdgeLord : ModItem
 		Item.value = 800000;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void AddRecipes()
@@ -60,7 +60,7 @@ public class EdgeLord : ModItem
     {
         player.itemLocation = player.Center;
     }
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		if (!target.HasBuff(BuffID.Bleeding))
 		{

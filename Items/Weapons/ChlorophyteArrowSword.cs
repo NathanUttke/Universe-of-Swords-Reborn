@@ -11,7 +11,7 @@ public class ChlorophyteArrowSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Shoots Chlorophyte arrows");
+		// Tooltip.SetDefault("Shoots Chlorophyte arrows");
 	}
 
 	public override void SetDefaults()
@@ -30,7 +30,7 @@ public class ChlorophyteArrowSword : ModItem
 		Item.value = 78500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

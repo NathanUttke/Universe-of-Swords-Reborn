@@ -9,7 +9,7 @@ public class CaesarSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'Et tu, Brute?'\nHold right click for a stabbing attack");
+		// Tooltip.SetDefault("'Et tu, Brute?'\nHold right click for a stabbing attack");
 	}
 
 	public override void SetDefaults()
@@ -29,7 +29,7 @@ public class CaesarSword : ModItem
 
         Item.value = Item.sellPrice(0, 0, 30, 0);
 		Item.autoReuse = true;	
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 
 	}
     public override void UseStyle(Player player, Rectangle heldItemFrame)

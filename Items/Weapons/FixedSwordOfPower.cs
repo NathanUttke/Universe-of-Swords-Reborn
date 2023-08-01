@@ -12,7 +12,7 @@ public class FixedSwordOfPower : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Sword Of Power");
+		// DisplayName.SetDefault("Sword Of Power");
 	}
 
 	public override void SetDefaults()
@@ -32,7 +32,7 @@ public class FixedSwordOfPower : ModItem
 		Item.scale = 1.20f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void AddRecipes()

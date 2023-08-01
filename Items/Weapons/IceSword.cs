@@ -21,7 +21,7 @@ public class IceSword : ModItem
         Item.value = 128;
         Item.autoReuse = false;
         Item.DamageType = DamageClass.Melee; 
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)

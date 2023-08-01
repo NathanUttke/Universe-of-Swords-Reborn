@@ -10,8 +10,8 @@ public class GreenDamascusLeggings : ModItem
 	public override void SetStaticDefaults()
 	{
 		
-		DisplayName.SetDefault("Green Damascus Leggings");
-		Tooltip.SetDefault("'Armor for fast warriors'\n10% increased melee critical chance\n35% increased movement speed");
+		// DisplayName.SetDefault("Green Damascus Leggings");
+		// Tooltip.SetDefault("'Armor for fast warriors'\n10% increased melee critical chance\n35% increased movement speed");
 	}
 
 	public override void SetDefaults()
@@ -21,7 +21,7 @@ public class GreenDamascusLeggings : ModItem
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 10;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateEquip(Player player)

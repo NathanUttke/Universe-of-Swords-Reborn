@@ -10,7 +10,7 @@ public class Inflation : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Congratulations, you made an overpriced sword!");
+        // Tooltip.SetDefault("Congratulations, you made an overpriced sword!");
     }
 
     public override void SetDefaults()
@@ -19,7 +19,7 @@ public class Inflation : ModItem
         Item.height = 128;
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.knockBack = 5f;
+        Item.knockBack = 4f;
         Item.useTime = 50;
         Item.useAnimation = 50;
         Item.damage = 28;
@@ -55,7 +55,7 @@ public class Inflation : ModItem
             .Register();
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (!target.HasBuff(BuffID.Midas))
         {

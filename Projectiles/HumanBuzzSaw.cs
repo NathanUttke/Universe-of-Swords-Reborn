@@ -14,7 +14,7 @@ public class HumanBuzzSaw : ModProjectile
     public override string Texture => "UniverseOfSwordsMod/Items/Weapons/HumanBuzzSaw";
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Human Buzz Saw");
+        // DisplayName.SetDefault("Human Buzz Saw");
     }
 
     public override void SetDefaults()

@@ -12,7 +12,7 @@ public class IceBreaker : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'Freezing to the touch'");
+		// Tooltip.SetDefault("'Freezing to the touch'");
 	}
 
 	public override void SetDefaults()
@@ -31,7 +31,7 @@ public class IceBreaker : ModItem
 		Item.value = 300200;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 	public override void AddRecipes()
 	{		

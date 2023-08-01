@@ -27,7 +27,7 @@ public class TheSwarm : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
 		Item.scale = 1.1f;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void AddRecipes()

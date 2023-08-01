@@ -9,8 +9,8 @@ public class InnosWrath : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Innos' Wrath");
-		Tooltip.SetDefault("Pulses with light energy of Innos");
+		// DisplayName.SetDefault("Innos' Wrath");
+		// Tooltip.SetDefault("Pulses with light energy of Innos");
 	}
 
 	public override void SetDefaults()
@@ -28,14 +28,14 @@ public class InnosWrath : ModItem
 		Item.crit = 13;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         player.itemLocation = player.Center;
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		if (!target.HasBuff(BuffID.Bleeding))
 		{

@@ -13,7 +13,7 @@ namespace UniverseOfSwordsMod.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.SortingPriorityBossSpawns[Type] = 12;
-            DisplayName.SetDefault("Suspicious Looking Sword");
+            // DisplayName.SetDefault("Suspicious Looking Sword");
         }
 
         public override void SetDefaults()
@@ -47,7 +47,7 @@ namespace UniverseOfSwordsMod.Items.Consumables
                 }
                 else
                 {
-                    NetMessage.SendData(MessageID.SpawnBoss, player.whoAmI, ModContent.NPCType<SwordBossNPC>());
+                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, player.whoAmI, ModContent.NPCType<SwordBossNPC>());
                 }
             }
             return true;

@@ -11,7 +11,7 @@ namespace UniverseOfSwordsMod.Items.Consumables
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sword Boss Bag");
+            // DisplayName.SetDefault("Sword Boss Bag");
             ItemID.Sets.BossBag[Type] = true;
         }
 

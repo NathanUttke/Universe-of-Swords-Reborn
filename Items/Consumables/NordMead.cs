@@ -8,7 +8,7 @@ public class NordMead : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Nord Mead");
+		// DisplayName.SetDefault("Nord Mead");
 	}
 
 	public override void SetDefaults()
@@ -26,7 +26,7 @@ public class NordMead : ModItem
 		Item.rare = ItemRarityID.Orange;
 		Item.buffType = Mod.Find<ModBuff>("NordMead").Type;
 		Item.buffTime = 14000;
-		SacrificeTotal = 20;
+		Item.ResearchUnlockCount = 20;
 	}
 
 	public override void AddRecipes()

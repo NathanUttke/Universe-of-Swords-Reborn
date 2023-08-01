@@ -10,7 +10,7 @@ public class UnholyArrowSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Shoots Unholy arrows");
+		// Tooltip.SetDefault("Shoots Unholy arrows");
 	}
 
 	public override void SetDefaults()
@@ -29,7 +29,7 @@ public class UnholyArrowSword : ModItem
 		Item.value = 8500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

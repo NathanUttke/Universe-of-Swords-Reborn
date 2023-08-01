@@ -10,8 +10,8 @@ public class BlueDamascusLeggings : ModItem
 	public override void SetStaticDefaults()
 	{
 		
-		DisplayName.SetDefault("Blue Damascus Leggings");
-		Tooltip.SetDefault("'Armor for durable warriors'\n6% increased melee critical chance\n5% increased movement speed");
+		// DisplayName.SetDefault("Blue Damascus Leggings");
+		// Tooltip.SetDefault("'Armor for durable warriors'\n6% increased melee critical chance\n5% increased movement speed");
 	}
 
 	public override void SetDefaults()
@@ -21,7 +21,7 @@ public class BlueDamascusLeggings : ModItem
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Cyan;
 		Item.defense = 20;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateEquip(Player player)

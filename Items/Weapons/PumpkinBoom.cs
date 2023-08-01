@@ -10,7 +10,7 @@ public class PumpkinBoom : ModItem
 {
     public override void SetStaticDefaults()
     {
-		Tooltip.SetDefault("Creates explosions on hit");
+		// Tooltip.SetDefault("Creates explosions on hit");
     }
     public override void SetDefaults()
 	{
@@ -30,7 +30,7 @@ public class PumpkinBoom : ModItem
 		Item.value = 360500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
 	}
 	public override void AddRecipes()
 	{		
@@ -51,8 +51,8 @@ public class PumpkinBoom : ModItem
         return;
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-		Projectile.NewProjectile(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.Landmine, (int)(damage / 2f), knockBack / 2f, player.whoAmI);
+		Projectile.NewProjectile(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.Landmine, (int)(damageDone / 2f), Item.knockBack / 2f, player.whoAmI);
     }
 }

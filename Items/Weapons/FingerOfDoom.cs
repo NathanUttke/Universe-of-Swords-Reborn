@@ -20,6 +20,6 @@ public class FingerOfDoom : ModItem
 		Item.value = 470100;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 }

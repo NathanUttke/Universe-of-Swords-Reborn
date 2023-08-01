@@ -9,8 +9,8 @@ public class GreenDamascusHelmet : ModItem
 {
 	public override void SetStaticDefaults()
 	{		
-		DisplayName.SetDefault("Green Damascus Helmet");
-		Tooltip.SetDefault("'Armor for fast warriors'\n20% increased melee speed\n14% increased melee critical chance");
+		// DisplayName.SetDefault("Green Damascus Helmet");
+		// Tooltip.SetDefault("'Armor for fast warriors'\n20% increased melee speed\n14% increased melee critical chance");
 	}
 
 	public override void SetDefaults()
@@ -20,7 +20,7 @@ public class GreenDamascusHelmet : ModItem
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 20;
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateEquip(Player player)

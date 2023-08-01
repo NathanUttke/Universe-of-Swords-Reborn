@@ -12,8 +12,8 @@ public class LifeRemovalMachine : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Life Removal Machine");
-		Tooltip.SetDefault("'Insert Hollywood computer generated special effects here'");
+		// DisplayName.SetDefault("Life Removal Machine");
+		// Tooltip.SetDefault("'Insert Hollywood computer generated special effects here'");
 	}
 
 	public override void SetDefaults()
@@ -35,7 +35,7 @@ public class LifeRemovalMachine : ModItem
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 	public override void AddRecipes()
 	{		

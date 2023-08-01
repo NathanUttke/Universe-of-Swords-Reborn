@@ -9,7 +9,7 @@ public class TheBrain : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'Sword of Crimson'");
+		// Tooltip.SetDefault("'Sword of Crimson'");
 	}
 
 	public override void SetDefaults()
@@ -29,7 +29,7 @@ public class TheBrain : ModItem
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)

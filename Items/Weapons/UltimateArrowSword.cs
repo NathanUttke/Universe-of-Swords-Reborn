@@ -14,7 +14,7 @@ public class UltimateArrowSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Ultimate Arrow Sword");
+		// DisplayName.SetDefault("Ultimate Arrow Sword");
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(55, 13, false));
 		ItemID.Sets.AnimatesAsSoul[Type] = true;
 	}
@@ -39,7 +39,7 @@ public class UltimateArrowSword : ModItem
 		Item.damage = 120;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 
 		Item.width = 64;
 		Item.height = 64;

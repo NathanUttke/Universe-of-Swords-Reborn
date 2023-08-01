@@ -16,7 +16,7 @@ public class DamascusSparkle : ModDust
 		dust.frame = new Rectangle(0, 0, 22, 22);
 	}
 
-	public override bool Update(Dust dust)
+    public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
 		dust.rotation += dust.velocity.X * 0.2f;

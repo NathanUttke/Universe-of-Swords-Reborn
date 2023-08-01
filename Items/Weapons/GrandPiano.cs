@@ -12,8 +12,8 @@ public class GrandPiano : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Grand Piano");
-		Tooltip.SetDefault("'Rage Quit - Horrior'");
+		// DisplayName.SetDefault("Grand Piano");
+		// Tooltip.SetDefault("'Rage Quit - Horrior'");
 	}
 
 	public override void SetDefaults()
@@ -36,7 +36,7 @@ public class GrandPiano : ModItem
 		Item.noMelee = true;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 	public override void UseStyle(Player player, Rectangle heldItemFrame)
 	{
@@ -66,7 +66,7 @@ public class GrandPiano : ModItem
         return false;
 	}*/
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(20, 360, false);
 		target.AddBuff(144, 360, false);

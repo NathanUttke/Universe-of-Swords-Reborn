@@ -57,7 +57,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.Center = Main.MouseWorld;
             Projectile.rotation += MathHelper.PiOver4 * 0.4f;            
         }       
-        public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
             {

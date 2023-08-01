@@ -9,7 +9,7 @@ public class MeleePowerPotion : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Minor improvements to melee stats");
+		// Tooltip.SetDefault("Minor improvements to melee stats");
 	}
 
 	public override void SetDefaults()
@@ -27,7 +27,7 @@ public class MeleePowerPotion : ModItem
 		Item.rare = ItemRarityID.Orange;
 		Item.buffType = ModContent.BuffType<MeleePower>();
 		Item.buffTime = 8000;
-		SacrificeTotal = 30;
+		Item.ResearchUnlockCount = 30;
 	}
 
 	public override void AddRecipes()

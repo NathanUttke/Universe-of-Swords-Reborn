@@ -8,7 +8,7 @@ public class CthulhuJudge : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("I have an eye on you...");
+		// Tooltip.SetDefault("I have an eye on you...");
 	}
 
 	public override void SetDefaults()
@@ -26,6 +26,6 @@ public class CthulhuJudge : ModItem
 		Item.value = Item.sellPrice(0, 0, 40, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 }

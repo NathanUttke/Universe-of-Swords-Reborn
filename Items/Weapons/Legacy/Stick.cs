@@ -10,7 +10,7 @@ namespace UniverseOfSwordsMod.Items.Weapons.Legacy
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("'You shouldn't have this'\nLegacy Item\nTrash");
+            // Tooltip.SetDefault("'You shouldn't have this'\nLegacy Item\nTrash");
         }
 
         public override void SetDefaults()

@@ -7,8 +7,8 @@ public class Skooma : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Skooma");
-		Description.SetDefault("Major improvements to movement speed");
+		// DisplayName.SetDefault("Skooma");
+		// Description.SetDefault("Major improvements to movement speed");
 	}
 
 	public override void Update(Player player, ref int buffIndex)

@@ -9,7 +9,7 @@ public class GelBlade : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Slows down enemies");
+        // Tooltip.SetDefault("Slows down enemies");
     }
 
     public override void SetDefaults()
@@ -26,7 +26,7 @@ public class GelBlade : ModItem
         Item.value = 1500;
         Item.autoReuse = false;
         Item.DamageType = DamageClass.Melee; 
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void AddRecipes()
@@ -37,7 +37,7 @@ public class GelBlade : ModItem
             .Register();
     }
 
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         target.AddBuff(137, 360, false);
     }

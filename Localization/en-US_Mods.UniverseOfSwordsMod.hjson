@@ -1,0 +1,706 @@
+Tiles: {
+	DamascusBarTile.MapEntry: Damascus Bar Tile
+	DamascusOreTile.MapEntry: Damascus Ore Tile
+}
+
+Buffs: {
+	EmperorBlaze: {
+		DisplayName: Emperor Blaze
+		Description: Mods.UniverseOfSwordsMod.Buffs.EmperorBlaze.Description
+	}
+
+	MeleePower: {
+		DisplayName: Melee Power
+		Description: Mods.UniverseOfSwordsMod.Buffs.MeleePower.Description
+	}
+
+	NordMead: {
+		DisplayName: Nord Mead
+		Description: Mods.UniverseOfSwordsMod.Buffs.NordMead.Description
+	}
+
+	Skooma: {
+		DisplayName: Skooma
+		Description: Mods.UniverseOfSwordsMod.Buffs.Skooma.Description
+	}
+
+	SwordMinionBuff: {
+		DisplayName: Sword Minion Buff
+		Description: Mods.UniverseOfSwordsMod.Buffs.SwordMinionBuff.Description
+	}
+}
+
+Items: {
+	HaloOfHorrors: {
+		DisplayName: Halo Of Horrors
+		Tooltip: ""
+	}
+
+	HaloOfHorrorsLevel2: {
+		DisplayName: Halo Of Horrors Level2
+		Tooltip: ""
+	}
+
+	HaloOfHorrorsLevel3: {
+		DisplayName: Halo Of Horrors Level3
+		Tooltip: ""
+	}
+
+	HaloOfHorrorsLevel4: {
+		DisplayName: Halo Of Horrors Level4
+		Tooltip: ""
+	}
+
+	LegendaryWarriorGauntlet: {
+		DisplayName: Legendary Warrior Gauntlet
+		Tooltip: ""
+	}
+
+	VolatileKnives: {
+		DisplayName: Volatile Knives
+		Tooltip: ""
+	}
+
+	BlueDamascusChestplate: {
+		DisplayName: Blue Damascus Chestplate
+		Tooltip: ""
+	}
+
+	BlueDamascusHelmet: {
+		DisplayName: Blue Damascus Helmet
+		Tooltip: ""
+	}
+
+	BlueDamascusLeggings: {
+		DisplayName: Blue Damascus Leggings
+		Tooltip: ""
+	}
+
+	DamascusBreastplate: {
+		DisplayName: Damascus Breastplate
+		Tooltip: ""
+	}
+
+	DamascusHelmet: {
+		DisplayName: Damascus Helmet
+		Tooltip: ""
+	}
+
+	DamascusLeggings: {
+		DisplayName: Damascus Leggings
+		Tooltip: ""
+	}
+
+	GreenDamascusChestplate: {
+		DisplayName: Green Damascus Chestplate
+		Tooltip: ""
+	}
+
+	GreenDamascusHelmet: {
+		DisplayName: Green Damascus Helmet
+		Tooltip: ""
+	}
+
+	GreenDamascusLeggings: {
+		DisplayName: Green Damascus Leggings
+		Tooltip: ""
+	}
+
+	RedDamascusChestplate: {
+		DisplayName: Red Damascus Chestplate
+		Tooltip: ""
+	}
+
+	RedDamascusHelmet: {
+		DisplayName: Red Damascus Helmet
+		Tooltip: ""
+	}
+
+	RedDamascusLeggings: {
+		DisplayName: Red Damascus Leggings
+		Tooltip: ""
+	}
+
+	MeleePowerPotion: {
+		DisplayName: Melee Power Potion
+		Tooltip: ""
+	}
+
+	NordMead: {
+		DisplayName: Nord Mead
+		Tooltip: ""
+	}
+
+	Skooma: {
+		DisplayName: Skooma
+		Tooltip: ""
+	}
+
+	SwordBossBag: {
+		DisplayName: Sword Boss Bag
+		Tooltip: ""
+	}
+
+	SwordBossSummon: {
+		DisplayName: Sword Boss Summon
+		Tooltip: ""
+	}
+
+	DamascusBar: {
+		DisplayName: Damascus Bar
+		Tooltip: ""
+	}
+
+	DamascusOre: {
+		DisplayName: Damascus Ore
+		Tooltip: ""
+	}
+
+	LunarOrb: {
+		DisplayName: Lunar Orb
+		Tooltip: ""
+	}
+
+	MartianSaucerCore: {
+		DisplayName: Martian Saucer Core
+		Tooltip: ""
+	}
+
+	Orichalcon: {
+		DisplayName: Orichalcon
+		Tooltip: ""
+	}
+
+	ScarletFlareCore: {
+		DisplayName: Scarlet Flare Core
+		Tooltip: ""
+	}
+
+	SwordMatter: {
+		DisplayName: Sword Matter
+		Tooltip: ""
+	}
+
+	BlueSolutionSpreader: {
+		DisplayName: Blue Solution Spreader
+		Tooltip: ""
+	}
+
+	CyanSolutionSword: {
+		DisplayName: Cyan Solution Sword
+		Tooltip: ""
+	}
+
+	GreenSolutionSpreader: {
+		DisplayName: Green Solution Spreader
+		Tooltip: ""
+	}
+
+	MagicMirrorBlade: {
+		DisplayName: Magic Mirror Blade
+		Tooltip: ""
+	}
+
+	PurpleSolutionSpreader: {
+		DisplayName: Purple Solution Spreader
+		Tooltip: ""
+	}
+
+	RedSolutionSpreader: {
+		DisplayName: Red Solution Spreader
+		Tooltip: ""
+	}
+
+	SwordOfPower: {
+		DisplayName: Sword Of Power
+		Tooltip: ""
+	}
+
+	DamascusHamaxe: {
+		DisplayName: Damascus Hamaxe
+		Tooltip: ""
+	}
+
+	DamascusPickaxe: {
+		DisplayName: Damascus Pickaxe
+		Tooltip: ""
+	}
+
+	Apocalypse: {
+		DisplayName: Apocalypse
+		Tooltip: ""
+	}
+
+	BatSlayer: {
+		DisplayName: Bat Slayer
+		Tooltip: ""
+	}
+
+	BetterShroomiteBlade: {
+		DisplayName: Better Shroomite Blade
+		Tooltip: ""
+	}
+
+	BiggoronSword: {
+		DisplayName: Biggoron Sword
+		Tooltip: ""
+	}
+
+	BlizzardRage: {
+		DisplayName: Blizzard Rage
+		Tooltip: ""
+	}
+
+	BoneArrowSword: {
+		DisplayName: Bone Arrow Sword
+		Tooltip: ""
+	}
+
+	InnosWrath: {
+		DisplayName: Innos Wrath
+		Tooltip: ""
+	}
+
+	SwordStaff: {
+		DisplayName: Sword Staff
+		Tooltip: ""
+	}
+
+	CaesarSword: {
+		DisplayName: Caesar Sword
+		Tooltip: ""
+	}
+
+	ChlorophyteArrowSword: {
+		DisplayName: Chlorophyte Arrow Sword
+		Tooltip: ""
+	}
+
+	ClingerSword: {
+		DisplayName: Clinger Sword
+		Tooltip: ""
+	}
+
+	CorruptCrystallus: {
+		DisplayName: Corrupt Crystallus
+		Tooltip: ""
+	}
+
+	CosmoStorm: {
+		DisplayName: Cosmo Storm
+		Tooltip: ""
+	}
+
+	CrimsonCrystallus: {
+		DisplayName: Crimson Crystallus
+		Tooltip: ""
+	}
+
+	Crystallus: {
+		DisplayName: Crystallus
+		Tooltip: ""
+	}
+
+	CrystalVineSword: {
+		DisplayName: Crystal Vine Sword
+		Tooltip: ""
+	}
+
+	CthulhuJudge: {
+		DisplayName: Cthulhu Judge
+		Tooltip: ""
+	}
+
+	CursedArrowSword: {
+		DisplayName: Cursed Arrow Sword
+		Tooltip: ""
+	}
+
+	DeathSword: {
+		DisplayName: Death Sword
+		Tooltip: ""
+	}
+
+	DestroyerSword: {
+		DisplayName: Destroyer Sword
+		Tooltip: ""
+	}
+
+	DirtSword: {
+		DisplayName: Dirt Sword
+		Tooltip: ""
+	}
+
+	Doomsday: {
+		DisplayName: Doomsday
+		Tooltip: ""
+	}
+
+	DoubleBladedLightsaber: {
+		DisplayName: Double Bladed Lightsaber
+		Tooltip: ""
+	}
+
+	DragonsDeath: {
+		DisplayName: Dragons Death
+		Tooltip: ""
+	}
+
+	EctoplasmicRipper: {
+		DisplayName: Ectoplasmic Ripper
+		Tooltip: ""
+	}
+
+	EdgeLord: {
+		DisplayName: Edge Lord
+		Tooltip: ""
+	}
+
+	ElBastardo: {
+		DisplayName: El Bastardo
+		Tooltip: ""
+	}
+
+	Executioner: {
+		DisplayName: Executioner
+		Tooltip: ""
+	}
+
+	FingerOfDoom: {
+		DisplayName: Finger Of Doom
+		Tooltip: ""
+	}
+
+	FixedSwordOfPower: {
+		DisplayName: Fixed Sword Of Power
+		Tooltip: ""
+	}
+
+	FlamingArrowSword: {
+		DisplayName: Flaming Arrow Sword
+		Tooltip: ""
+	}
+
+	FrostburnArrowSword: {
+		DisplayName: Frostburn Arrow Sword
+		Tooltip: ""
+	}
+
+	FrozenShard: {
+		DisplayName: Frozen Shard
+		Tooltip: ""
+	}
+
+	GelBlade: {
+		DisplayName: Gel Blade
+		Tooltip: ""
+	}
+
+	GiantUnicornHorn: {
+		DisplayName: Giant Unicorn Horn
+		Tooltip: ""
+	}
+
+	GnomBlade: {
+		DisplayName: Gnom Blade
+		Tooltip: ""
+	}
+
+	GoblinKnife: {
+		DisplayName: Goblin Knife
+		Tooltip: ""
+	}
+
+	GrandPiano: {
+		DisplayName: Grand Piano
+		Tooltip: ""
+	}
+
+	GreatswordOfTheCosmos: {
+		DisplayName: Greatsword Of The Cosmos
+		Tooltip: ""
+	}
+
+	HellfireArrowSword: {
+		DisplayName: Hellfire Arrow Sword
+		Tooltip: ""
+	}
+
+	HolyArrowSword: {
+		DisplayName: Holy Arrow Sword
+		Tooltip: ""
+	}
+
+	Horrormageddon: {
+		DisplayName: Horrormageddon
+		Tooltip: ""
+	}
+
+	HumanBuzzSaw: {
+		DisplayName: Human Buzz Saw
+		Tooltip: ""
+	}
+
+	IceBreaker: {
+		DisplayName: Ice Breaker
+		Tooltip: ""
+	}
+
+	IceSword: {
+		DisplayName: Ice Sword
+		Tooltip: ""
+	}
+
+	IchorArrowSword: {
+		DisplayName: Ichor Arrow Sword
+		Tooltip: ""
+	}
+
+	Inflation: {
+		DisplayName: Inflation
+		Tooltip: ""
+	}
+
+	JesterArrowSword: {
+		DisplayName: Jester Arrow Sword
+		Tooltip: ""
+	}
+
+	Stick: {
+		DisplayName: Stick
+		Tooltip: ""
+	}
+
+	LifeRemovalMachine: {
+		DisplayName: Life Removal Machine
+		Tooltip: ""
+	}
+
+	LuminiteArrowSword: {
+		DisplayName: Luminite Arrow Sword
+		Tooltip: ""
+	}
+
+	MechanicalSoul: {
+		DisplayName: Mechanical Soul
+		Tooltip: ""
+	}
+
+	NatureSword: {
+		DisplayName: Nature Sword
+		Tooltip: ""
+	}
+
+	OceanRoar: {
+		DisplayName: Ocean Roar
+		Tooltip: ""
+	}
+
+	OnyxSword: {
+		DisplayName: Onyx Sword
+		Tooltip: ""
+	}
+
+	PianoSword1: {
+		DisplayName: Piano Sword1
+		Tooltip: ""
+	}
+
+	PianoSword2: {
+		DisplayName: Piano Sword2
+		Tooltip: ""
+	}
+
+	PianoSword3: {
+		DisplayName: Piano Sword3
+		Tooltip: ""
+	}
+
+	PianoSword4: {
+		DisplayName: Piano Sword4
+		Tooltip: ""
+	}
+
+	PowerOfTheGalactic: {
+		DisplayName: Power Of The Galactic
+		Tooltip: ""
+	}
+
+	PrimeSword: {
+		DisplayName: Prime Sword
+		Tooltip: ""
+	}
+
+	PumpkinBoom: {
+		DisplayName: Pumpkin Boom
+		Tooltip: ""
+	}
+
+	PumpkinSword: {
+		DisplayName: Pumpkin Sword
+		Tooltip: ""
+	}
+
+	PurpleRuneBlade: {
+		DisplayName: Purple Rune Blade
+		Tooltip: ""
+	}
+
+	RedFlareLongsword: {
+		DisplayName: Red Flare Longsword
+		Tooltip: ""
+	}
+
+	ScarledFlareGreatsword: {
+		DisplayName: Scarled Flare Greatsword
+		Tooltip: ""
+	}
+
+	ShroomiteBlade: {
+		DisplayName: Shroomite Blade
+		Tooltip: ""
+	}
+
+	SolBlade: {
+		DisplayName: Sol Blade
+		Tooltip: ""
+	}
+
+	StarSword: {
+		DisplayName: Star Sword
+		Tooltip: ""
+	}
+
+	StoneSword: {
+		DisplayName: Stone Sword
+		Tooltip: ""
+	}
+
+	SuperInflation: {
+		DisplayName: Super Inflation
+		Tooltip: ""
+	}
+
+	SwordOfTheEmperor: {
+		DisplayName: Sword Of The Emperor
+		Tooltip: ""
+	}
+
+	SwordOfTheMultiverseNew: {
+		DisplayName: Sword Of The Multiverse New
+		Tooltip: ""
+	}
+
+	SwordOfTheUniverseNew: {
+		DisplayName: Sword Of The Universe New
+		Tooltip: ""
+	}
+
+	TerraEnsis: {
+		DisplayName: Terra Ensis
+		Tooltip: ""
+	}
+
+	TheBrain: {
+		DisplayName: The Brain
+		Tooltip: ""
+	}
+
+	TheEater: {
+		DisplayName: The Eater
+		Tooltip: ""
+	}
+
+	TheNightmareAmalgamation: {
+		DisplayName: The Nightmare Amalgamation
+		Tooltip: ""
+	}
+
+	TheStinger: {
+		DisplayName: The Stinger
+		Tooltip: ""
+	}
+
+	TheSwarm: {
+		DisplayName: The Swarm
+		Tooltip: ""
+	}
+
+	TrueGemSword: {
+		DisplayName: True Gem Sword
+		Tooltip: ""
+	}
+
+	TwinsSword: {
+		DisplayName: Twins Sword
+		Tooltip: ""
+	}
+
+	UltimateArrowSword: {
+		DisplayName: Ultimate Arrow Sword
+		Tooltip: ""
+	}
+
+	UnholyArrowSword: {
+		DisplayName: Unholy Arrow Sword
+		Tooltip: ""
+	}
+
+	UselessWeapon: {
+		DisplayName: Useless Weapon
+		Tooltip: ""
+	}
+
+	VenomArrowSword: {
+		DisplayName: Venom Arrow Sword
+		Tooltip: ""
+	}
+
+	WaterBoltSword: {
+		DisplayName: Water Bolt Sword
+		Tooltip: ""
+	}
+
+	WoodenArrowSword: {
+		DisplayName: Wooden Arrow Sword
+		Tooltip: ""
+	}
+}
+
+NPCs.SwordBossNPC.DisplayName: Sword Boss N P C
+
+Projectiles: {
+	Armageddon.DisplayName: Armageddon
+	ClingerSwordProjectile.DisplayName: Clinger Sword Projectile
+	Corrupt.DisplayName: Corrupt
+	DemonScytheClone.DisplayName: Demon Scythe Clone
+	DragonsDeathProjectile.DisplayName: Dragons Death Projectile
+	EdgeLordProjectile.DisplayName: Edge Lord Projectile
+	FlareCore.DisplayName: Flare Core
+	FrozenCrystallusProj.DisplayName: Frozen Crystallus Proj
+	GnomeProj.DisplayName: Gnome Proj
+	GrandPianoProjectile.DisplayName: Grand Piano Projectile
+	HumanBuzzSaw.DisplayName: Human Buzz Saw
+	IceBreakerProjectile.DisplayName: Ice Breaker Projectile
+	LifeRemovalMachineProjectile.DisplayName: Life Removal Machine Projectile
+	MechanicalProj.DisplayName: Mechanical Proj
+	SwordMinion.DisplayName: Sword Minion
+	Nightmare.DisplayName: Nightmare
+	PurpleRuneProjectile.DisplayName: Purple Rune Projectile
+	PurpleScytheClone.DisplayName: Purple Scythe Clone
+	RedFlareLongswordProjectile.DisplayName: Red Flare Longsword Projectile
+	ScarledGreatswordProjectile.DisplayName: Scarled Greatsword Projectile
+	ShaderProjectile.DisplayName: Shader Projectile
+	StarSwordProjectile.DisplayName: Star Sword Projectile
+	SwordOfTheMultiverseProjectile.DisplayName: Sword Of The Multiverse Projectile
+	SwordOfTheMultiverseProjectileSmall.DisplayName: Sword Of The Multiverse Projectile Small
+	SwordOfTheUniverseV2Projectile.DisplayName: Sword Of The Universe V2 Projectile
+	Tier2CProjectile.DisplayName: Tier2 C Projectile
+	TrueTerrabladeProjectile.DisplayName: True Terrablade Projectile
+	TwinsProjectile.DisplayName: Twins Projectile
+	UltimateSaberProjectile.DisplayName: Ultimate Saber Projectile
+	UnicornHornProjectile.DisplayName: Unicorn Horn Projectile
+	UnicornHornProjectile2.DisplayName: Unicorn Horn Projectile2
+	UselessProjectile.DisplayName: Useless Projectile
+	BetterShroomiteProj.DisplayName: Better Shroomite Proj
+}

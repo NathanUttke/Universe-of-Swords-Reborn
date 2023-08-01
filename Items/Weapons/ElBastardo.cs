@@ -8,7 +8,7 @@ public class ElBastardo : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'The legendary El Bastardo'");
+		// Tooltip.SetDefault("'The legendary El Bastardo'");
 	}
 
 	public override void SetDefaults()
@@ -26,6 +26,6 @@ public class ElBastardo : ModItem
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 }

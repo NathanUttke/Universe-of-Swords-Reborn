@@ -9,13 +9,13 @@ public class HumanBuzzSaw : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Human Buzz Saw");
-		Tooltip.SetDefault("'Cuts through hordes of Terraria like butter'");
+		// DisplayName.SetDefault("Human Buzz Saw");
+		// Tooltip.SetDefault("'Cuts through hordes of Terraria like butter'");
 	}
 
 	public override void SetDefaults()
 	{
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
 
         Item.damage = 24;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 

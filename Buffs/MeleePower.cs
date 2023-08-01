@@ -7,8 +7,8 @@ public class MeleePower : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Melee Power");
-		Description.SetDefault("Minor improvements to melee stats");
+		// DisplayName.SetDefault("Melee Power");
+		// Description.SetDefault("Minor improvements to melee stats");
 	}
 
 	public override void Update(Player player, ref int buffIndex)

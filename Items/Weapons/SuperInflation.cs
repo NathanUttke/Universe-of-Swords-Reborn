@@ -12,7 +12,7 @@ public class SuperInflation : ModItem
     public override string Texture => "UniverseofSwordsMod/Items/Weapons/Inflation";
     public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("'Throw money at ALL your problems'\n15% more damage if the player has a gold coin.");
+		// Tooltip.SetDefault("'Throw money at ALL your problems'\n15% more damage if the player has a gold coin.");
 	}
 
 	public override void SetDefaults()
@@ -31,7 +31,7 @@ public class SuperInflation : ModItem
 		Item.value = 0;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -71,7 +71,7 @@ public class SuperInflation : ModItem
         }
     }
 
-	public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
         if (!target.HasBuff(BuffID.Midas))
         {

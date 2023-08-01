@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -33,7 +34,10 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.value = Item.sellPrice(0, 6, 0, 0);
             Item.autoReuse = true;
 
-        }	
+            Item.noMelee = true;
+            Item.shootsEveryUse = true;
+
+        }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(2))

@@ -8,8 +8,8 @@ public class Orichalcon : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Scintillo Bar");
-		Tooltip.SetDefault("Most powerful and rarest ore for making swords");
+		// DisplayName.SetDefault("Scintillo Bar");
+		// Tooltip.SetDefault("Most powerful and rarest ore for making swords");
 	}
 
 	public override void SetDefaults()
@@ -19,7 +19,7 @@ public class Orichalcon : ModItem
 		Item.maxStack = 999;
 		Item.value = 180000;
 		Item.rare = ItemRarityID.LightPurple;
-		SacrificeTotal = 25;
+		Item.ResearchUnlockCount = 25;
 	}
 
 	public override void AddRecipes()

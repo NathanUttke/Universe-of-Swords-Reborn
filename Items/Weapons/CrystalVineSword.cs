@@ -12,8 +12,8 @@ public class CrystalVineSword : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Crystal Vile Sword");
-        Tooltip.SetDefault("Ignores 12 points of enemy defense");
+        // DisplayName.SetDefault("Crystal Vile Sword");
+        // Tooltip.SetDefault("Ignores 12 points of enemy defense");
     }
 
     public override void SetDefaults()
@@ -33,7 +33,7 @@ public class CrystalVineSword : ModItem
         Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Magic; 
-        SacrificeTotal = 1;
+        Item.ResearchUnlockCount = 1;
         Item.mana = 12;
     }
 

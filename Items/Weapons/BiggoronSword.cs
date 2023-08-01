@@ -9,8 +9,8 @@ namespace UniverseOfSwordsMod.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sword of The Legend");
-            Tooltip.SetDefault("Heavy but strong");
+            // DisplayName.SetDefault("Sword of The Legend");
+            // Tooltip.SetDefault("Heavy but strong");
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -39,7 +39,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
 
             Item.scale = 1.25f;
 
-            SacrificeTotal = 1;
+            Item.ResearchUnlockCount = 1;
         }
     }
 }

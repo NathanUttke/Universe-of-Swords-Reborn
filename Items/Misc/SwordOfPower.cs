@@ -8,8 +8,8 @@ public class SwordOfPower : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Broken Sword Of Power");
-		Tooltip.SetDefault("Needs to be fixed");
+		// DisplayName.SetDefault("Broken Sword Of Power");
+		// Tooltip.SetDefault("Needs to be fixed");
 	}
 
 	public override void SetDefaults()
@@ -20,6 +20,6 @@ public class SwordOfPower : ModItem
 		Item.useStyle = ItemUseStyleID.None;
 		Item.value = 0;
 		Item.autoReuse = false;	
-		SacrificeTotal = 1;
+		Item.ResearchUnlockCount = 1;
 	}
 }
