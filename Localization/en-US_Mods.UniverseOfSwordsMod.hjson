@@ -1,54 +1,93 @@
 Tiles: {
-	DamascusBarTile.MapEntry: Damascus Bar Tile
-	DamascusOreTile.MapEntry: Damascus Ore Tile
+	DamascusBarTile.MapEntry: Damascus Bar
+	DamascusOreTile.MapEntry: Damascus Ore
 }
 
 Buffs: {
 	EmperorBlaze: {
 		DisplayName: Emperor Blaze
-		Description: Mods.UniverseOfSwordsMod.Buffs.EmperorBlaze.Description
+		Description: Losing life.
 	}
 
 	MeleePower: {
 		DisplayName: Melee Power
-		Description: Mods.UniverseOfSwordsMod.Buffs.MeleePower.Description
+		Description: Minor improvements to melee stats.
 	}
 
 	NordMead: {
 		DisplayName: Nord Mead
-		Description: Mods.UniverseOfSwordsMod.Buffs.NordMead.Description
+		Description:
+			'''
+			"When we raise our flagon to another dead dragon, there is just one drink we need!" 
+			Reduced defense
+			'''
 	}
 
 	Skooma: {
 		DisplayName: Skooma
-		Description: Mods.UniverseOfSwordsMod.Buffs.Skooma.Description
+		Description: Increased movement and jump speed.
 	}
 
 	SwordMinionBuff: {
-		DisplayName: Sword Minion Buff
-		Description: Mods.UniverseOfSwordsMod.Buffs.SwordMinionBuff.Description
+		DisplayName: Flying Sword
+		Description: A flying sword fights for you!
 	}
 }
 
 Items: {
 	HaloOfHorrors: {
-		DisplayName: Halo Of Horrors
-		Tooltip: ""
+		DisplayName: Skull of Insanity
+		Tooltip:
+			'''
+			Level 1 
+			5 defense
+			5% increased armor penetration
+			Increased health regeneration
+			5% increased damage
+			Curses the wearer with Feral bite
+			30% decreased melee speed
+			'''
 	}
 
 	HaloOfHorrorsLevel2: {
-		DisplayName: Halo Of Horrors Level2
-		Tooltip: ""
+		DisplayName: Skull of Insanity
+		Tooltip:
+			'''
+			Level 2
+			10 defense
+			5% Increased armor penetration
+			Increased health regeneration
+			15% increased damage
+			20% decreased melee speed
+			Curses the wearer with a 33% Feral bite chance
+			'''
 	}
 
 	HaloOfHorrorsLevel3: {
-		DisplayName: Halo Of Horrors Level3
-		Tooltip: ""
+		DisplayName: Skull of Insanity
+		Tooltip:
+			'''
+			Level 3
+			10 defense
+			15% increased armor penetration
+			Increased health regeneration
+			15% increased damage
+			10% decreased melee speed
+			Curses the wearer with a 20% Feral bite chance
+			'''
 	}
 
 	HaloOfHorrorsLevel4: {
-		DisplayName: Halo Of Horrors Level4
-		Tooltip: ""
+		DisplayName: Skull of Insanity
+		Tooltip:
+			'''
+			Level 4
+			15 defense
+			15% increased armor penetration
+			Increased health regeneration
+			15% increased damage
+			8% decreased melee speed
+			'''
 	}
 
 	LegendaryWarriorGauntlet: {
@@ -137,12 +176,12 @@ Items: {
 	}
 
 	SwordBossBag: {
-		DisplayName: Sword Boss Bag
+		DisplayName: Treasure Bag (Evil Flying Blade)
 		Tooltip: ""
 	}
 
 	SwordBossSummon: {
-		DisplayName: Sword Boss Summon
+		DisplayName: Suspicious Looking Blade
 		Tooltip: ""
 	}
 
@@ -167,7 +206,7 @@ Items: {
 	}
 
 	Orichalcon: {
-		DisplayName: Orichalcon
+		DisplayName: Scintillo Bar
 		Tooltip: ""
 	}
 
@@ -187,7 +226,7 @@ Items: {
 	}
 
 	CyanSolutionSword: {
-		DisplayName: Cyan Solution Sword
+		DisplayName: Hallowed Solution Spreader
 		Tooltip: ""
 	}
 
@@ -212,7 +251,7 @@ Items: {
 	}
 
 	SwordOfPower: {
-		DisplayName: Sword Of Power
+		DisplayName: Broken Sword Of Power
 		Tooltip: ""
 	}
 
@@ -237,13 +276,13 @@ Items: {
 	}
 
 	BetterShroomiteBlade: {
-		DisplayName: Better Shroomite Blade
+		DisplayName: Super Shroomite Blade
 		Tooltip: ""
 	}
 
 	BiggoronSword: {
-		DisplayName: Biggoron Sword
-		Tooltip: ""
+		DisplayName: Sword of the Legend
+		Tooltip: Heavy but strong
 	}
 
 	BlizzardRage: {
@@ -257,7 +296,7 @@ Items: {
 	}
 
 	InnosWrath: {
-		DisplayName: Innos Wrath
+		DisplayName: Innos' Wrath
 		Tooltip: ""
 	}
 
@@ -268,7 +307,7 @@ Items: {
 
 	CaesarSword: {
 		DisplayName: Caesar Sword
-		Tooltip: ""
+		Tooltip: '''"Et tu, Brute?"'''
 	}
 
 	ChlorophyteArrowSword: {
@@ -302,7 +341,7 @@ Items: {
 	}
 
 	CrystalVineSword: {
-		DisplayName: Crystal Vine Sword
+		DisplayName: Crystal Vile Sword
 		Tooltip: ""
 	}
 
@@ -337,12 +376,12 @@ Items: {
 	}
 
 	DoubleBladedLightsaber: {
-		DisplayName: Double Bladed Lightsaber
+		DisplayName: The Ultimate Lightsaber
 		Tooltip: ""
 	}
 
 	DragonsDeath: {
-		DisplayName: Dragons Death
+		DisplayName: Dragon's Death
 		Tooltip: ""
 	}
 
@@ -353,7 +392,7 @@ Items: {
 
 	EdgeLord: {
 		DisplayName: Edge Lord
-		Tooltip: ""
+		Tooltip: Slows down enemies
 	}
 
 	ElBastardo: {
@@ -372,7 +411,7 @@ Items: {
 	}
 
 	FixedSwordOfPower: {
-		DisplayName: Fixed Sword Of Power
+		DisplayName: Sword Of Power
 		Tooltip: ""
 	}
 
@@ -488,7 +527,7 @@ Items: {
 
 	NatureSword: {
 		DisplayName: Nature Sword
-		Tooltip: ""
+		Tooltip: Sword made out of ingredients given of the Mother Nature
 	}
 
 	OceanRoar: {
@@ -502,23 +541,23 @@ Items: {
 	}
 
 	PianoSword1: {
-		DisplayName: Piano Sword1
-		Tooltip: ""
+		DisplayName: Beethoven Beater
+		Tooltip: Moonlight Sonata - Beethoven
 	}
 
 	PianoSword2: {
-		DisplayName: Piano Sword2
-		Tooltip: ""
+		DisplayName: Gershwin Gasher
+		Tooltip: Rhapsody in Blue - Gershwin
 	}
 
 	PianoSword3: {
-		DisplayName: Piano Sword3
-		Tooltip: ""
+		DisplayName: Mozart Mauler
+		Tooltip: Piano Concerto No.20 - Mozart
 	}
 
 	PianoSword4: {
-		DisplayName: Piano Sword4
-		Tooltip: ""
+		DisplayName: Liszt Lasher
+		Tooltip: Piano sonata in B minor - Liszt
 	}
 
 	PowerOfTheGalactic: {
@@ -542,7 +581,7 @@ Items: {
 	}
 
 	PurpleRuneBlade: {
-		DisplayName: Purple Rune Blade
+		DisplayName: Shadowflame Blade
 		Tooltip: ""
 	}
 
@@ -587,12 +626,12 @@ Items: {
 	}
 
 	SwordOfTheMultiverseNew: {
-		DisplayName: Sword Of The Multiverse New
+		DisplayName: Sword Of The Multiverse
 		Tooltip: ""
 	}
 
 	SwordOfTheUniverseNew: {
-		DisplayName: Sword Of The Universe New
+		DisplayName: Sword Of The Universe
 		Tooltip: ""
 	}
 
@@ -632,7 +671,7 @@ Items: {
 	}
 
 	TwinsSword: {
-		DisplayName: Twins Sword
+		DisplayName: Twins' Sword
 		Tooltip: ""
 	}
 
@@ -671,37 +710,37 @@ NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
 
 Projectiles: {
 	Armageddon.DisplayName: Armageddon
-	ClingerSwordProjectile.DisplayName: Clinger Sword Projectile
+	ClingerSwordProjectile.DisplayName: Clinger Sword
 	Corrupt.DisplayName: Corrupt
-	DemonScytheClone.DisplayName: Demon Scythe Clone
-	DragonsDeathProjectile.DisplayName: Dragons Death Projectile
-	EdgeLordProjectile.DisplayName: Edge Lord Projectile
+	DemonScytheClone.DisplayName: Demon Scythe
+	DragonsDeathProjectile.DisplayName: Dragon's Death
+	EdgeLordProjectile.DisplayName: Edge Lord
 	FlareCore.DisplayName: Flare Core
-	FrozenCrystallusProj.DisplayName: Frozen Crystallus Proj
-	GnomeProj.DisplayName: Gnome Proj
-	GrandPianoProjectile.DisplayName: Grand Piano Projectile
+	FrozenCrystallusProj.DisplayName: Frozen Crystallus
+	GnomeProj.DisplayName: Gnome
+	GrandPianoProjectile.DisplayName: Grand Pian
 	HumanBuzzSaw.DisplayName: Human Buzz Saw
-	IceBreakerProjectile.DisplayName: Ice Breaker Projectile
-	LifeRemovalMachineProjectile.DisplayName: Life Removal Machine Projectile
+	IceBreakerProjectile.DisplayName: Ice Breaker
+	LifeRemovalMachineProjectile.DisplayName: Life Removal Machine
 	MechanicalProj.DisplayName: Mechanical Proj
 	SwordMinion.DisplayName: Sword Minion
 	Nightmare.DisplayName: Nightmare
-	PurpleRuneProjectile.DisplayName: Purple Rune Projectile
-	PurpleScytheClone.DisplayName: Purple Scythe Clone
-	RedFlareLongswordProjectile.DisplayName: Red Flare Longsword Projectile
-	ScarledGreatswordProjectile.DisplayName: Scarled Greatsword Projectile
-	ShaderProjectile.DisplayName: Shader Projectile
-	StarSwordProjectile.DisplayName: Star Sword Projectile
-	SwordOfTheMultiverseProjectile.DisplayName: Sword Of The Multiverse Projectile
-	SwordOfTheMultiverseProjectileSmall.DisplayName: Sword Of The Multiverse Projectile Small
-	SwordOfTheUniverseV2Projectile.DisplayName: Sword Of The Universe V2 Projectile
+	PurpleRuneProjectile.DisplayName: Purple Rune
+	PurpleScytheClone.DisplayName: Purple Scythe
+	RedFlareLongswordProjectile.DisplayName: Red Flare Longsword
+	ScarledGreatswordProjectile.DisplayName: Scarled Greatsword
+	ShaderProjectile.DisplayName: Power Of The Galactic
+	StarSwordProjectile.DisplayName: Star
+	SwordOfTheMultiverseProjectile.DisplayName: Sword Of The Multiverse
+	SwordOfTheMultiverseProjectileSmall.DisplayName: Sword Of The Multiverse
+	SwordOfTheUniverseV2Projectile.DisplayName: Sword Of The Universe
 	Tier2CProjectile.DisplayName: Tier2 C Projectile
-	TrueTerrabladeProjectile.DisplayName: True Terrablade Projectile
-	TwinsProjectile.DisplayName: Twins Projectile
-	UltimateSaberProjectile.DisplayName: Ultimate Saber Projectile
-	UnicornHornProjectile.DisplayName: Unicorn Horn Projectile
-	UnicornHornProjectile2.DisplayName: Unicorn Horn Projectile2
+	TrueTerrabladeProjectile.DisplayName: Terra Ensis
+	TwinsProjectile.DisplayName: Twins' Projectile
+	UltimateSaberProjectile.DisplayName: Ultimate Saber
+	UnicornHornProjectile.DisplayName: Unicorn Horn
+	UnicornHornProjectile2.DisplayName: Unicorn Horn
 	UselessProjectile.DisplayName: Useless Projectile
-	BetterShroomiteProj.DisplayName: Better Shroomite Proj
-	PrimeSlashProj.DisplayName: Prime Slash Proj
+	BetterShroomiteProj.DisplayName: Better Shroomite
+	PrimeSlashProj.DisplayName: Prime Slash
 }
