@@ -21,8 +21,8 @@ public class TrueTerrabladeProjectile : ModProjectile
     }
     public override void SetDefaults()
 	{
-		Projectile.width = 62;
-		Projectile.height = 68;
+		Projectile.width = 31;
+		Projectile.height = 34;
 		Projectile.friendly = true;
 		Projectile.penetrate = 1;		
 		Projectile.DamageType = DamageClass.Melee;

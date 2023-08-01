@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -30,10 +31,22 @@ public class TerraEnsis : ModItem
         Item.shoot = ModContent.ProjectileType<TrueTerrabladeProjectile>();
         Item.shootSpeed = 15f;
 
+        Item.shootsEveryUse = true;
+        Item.noMelee = true;
+
         Item.rare = ItemRarityID.Purple;
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
         Item.ResearchUnlockCount = 1;
+    }
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
+        Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), ProjectileID.TerraBlade2, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale);
+        NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI); // Sync the changes in multiplayer.
+
+        return true;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

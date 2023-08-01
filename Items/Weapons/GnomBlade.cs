@@ -1,4 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -22,11 +24,12 @@ public class GnomBlade : ModItem
 		Item.knockBack = 9f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
-		Item.autoReuse = true;
+		
 		Item.DamageType = DamageClass.Melee;
 		Item.crit = 8;
+        Item.autoReuse = true;
 
-		Item.shoot = ModContent.ProjectileType<GnomeProj>();
+        Item.shoot = ModContent.ProjectileType<GnomeProj>();
 		Item.shootSpeed = 10f;
 
 		Item.ResearchUnlockCount = 1;
@@ -46,7 +49,8 @@ public class GnomBlade : ModItem
 			.Register();
 	}
 
-	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
         if (!target.HasBuff(BuffID.Weak))
         {
