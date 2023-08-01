@@ -667,7 +667,7 @@ Items: {
 	}
 }
 
-NPCs.SwordBossNPC.DisplayName: Sword Boss N P C
+NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
 
 Projectiles: {
 	Armageddon.DisplayName: Armageddon
@@ -703,4 +703,5 @@ Projectiles: {
 	UnicornHornProjectile2.DisplayName: Unicorn Horn Projectile2
 	UselessProjectile.DisplayName: Useless Projectile
 	BetterShroomiteProj.DisplayName: Better Shroomite Proj
+	PrimeSlashProj.DisplayName: Prime Slash Proj
 }
