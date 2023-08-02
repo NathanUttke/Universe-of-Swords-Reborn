@@ -77,7 +77,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 dustVelocity = (dustRotation + Projectile.ai[0] * MathHelper.PiOver2).ToRotationVector2();
             if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
             {
-                Color dustColor = Color.Lerp(Color.Blue, Color.SkyBlue, Main.rand.NextFloat() * 0.3f);
+                Color dustColor = Color.Lerp(Color.Red, Color.HotPink, Main.rand.NextFloat() * 0.3f);
                 Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), DustID.FireworksRGB, dustVelocity * 1f, 100, dustColor, 0.4f);
                 coloredDust.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
                 coloredDust.noGravity = true;
