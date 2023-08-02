@@ -27,8 +27,8 @@ Mods: {
 			}
 
 			SwordMinionBuff: {
-				DisplayName: Mods.UniverseOfSwordsMod.BuffName.SwordMinionBuff
-				Description: Mods.UniverseOfSwordsMod.BuffDescription.SwordMinionBuff
+				DisplayName: Flying Blade
+				Description: A flying blade fights for you.
 			}
 		}
 
@@ -579,7 +579,7 @@ Mods: {
 			PumpkinSword.DisplayName: Pumpkin Sword
 
 			PurpleRuneBlade: {
-				DisplayName: Shadow Rune Blade
+				DisplayName: Shadowflame Blade
 				Tooltip: "'Pulses with dark energy of shadowflame'"
 			}
 
@@ -697,35 +697,35 @@ Mods: {
 			Armageddon.DisplayName: Armageddon
 			ClingerSwordProjectile.DisplayName: Clinger Sword Projectile
 			Corrupt.DisplayName: Corrupt Crystallus
-			DemonScytheClone.DisplayName: Demon Scythe Clone
-			DragonsDeathProjectile.DisplayName: Dragons Death Projectile
+			DemonScytheClone.DisplayName: Demon Scythe
+			DragonsDeathProjectile.DisplayName: Dragons Death
 			EdgeLordProjectile.DisplayName: Edge Lord Projectile
 			FlareCore.DisplayName: Flare Core
 			FrozenCrystallusProj.DisplayName: Frozen Crystallus Proj
 			GnomeProj.DisplayName: Gnome Proj
 			GrandPianoProjectile.DisplayName: Grand Piano Projectile
 			HumanBuzzSaw.DisplayName: Human Buzz Saw
-			IceBreakerProjectile.DisplayName: Ice Breaker Projectile
-			LifeRemovalMachineProjectile.DisplayName: Life Removal Machine Projectile
-			MechanicalProj.DisplayName: Mechanical Projectile
+			IceBreakerProjectile.DisplayName: Ice Breaker
+			LifeRemovalMachineProjectile.DisplayName: Life Removal Machine 
+			MechanicalProj.DisplayName: Mechanical Soul
 			SwordMinion.DisplayName: Sword Minion
 			Nightmare.DisplayName: Nightmare
-			PurpleRuneProjectile.DisplayName: Purple Rune Projectile
-			PurpleScytheClone.DisplayName: Purple Scythe Clone
-			RedFlareLongswordProjectile.DisplayName: Red Flare Longsword Projectile
-			ScarledGreatswordProjectile.DisplayName: Scarled Greatsword Projectile
-			ShaderProjectile.DisplayName: Shader Projectile
-			StarSwordProjectile.DisplayName: Star Sword Projectile
-			SwordOfTheMultiverseProjectile.DisplayName: Sword Of The Multiverse Projectile
+			PurpleRuneProjectile.DisplayName: Purple Rune
+			PurpleScytheClone.DisplayName: Purple Scythe
+			RedFlareLongswordProjectile.DisplayName: Red Flare Longsword 
+			ScarledGreatswordProjectile.DisplayName: Scarled Greatsword
+			ShaderProjectile.DisplayName: Power Of The Galactic
+			StarSwordProjectile.DisplayName: Star
+			SwordOfTheMultiverseProjectile.DisplayName: Sword Of The Multiverse 
 			SwordOfTheMultiverseProjectileSmall.DisplayName: Sword Of The Multiverse
-			SwordOfTheUniverseV2Projectile.DisplayName: Sword Of The Universe V2 Projectile
-			Tier2CProjectile.DisplayName: Tier2 C Projectile
-			TrueTerrabladeProjectile.DisplayName: True Terra Blade
+			SwordOfTheUniverseV2Projectile.DisplayName: Sword Of The Universe
+			Tier2CProjectile.DisplayName: Crimson Thing
+			TrueTerrabladeProjectile.DisplayName: Terra Ensis
 			TwinsProjectile.DisplayName: Twins Projectile
 			UltimateSaberProjectile.DisplayName: Ultimate Saber
-			UnicornHornProjectile.DisplayName: Unicorn Horn Projectile
-			UnicornHornProjectile2.DisplayName: Unicorn Horn Projectile2
-			UselessProjectile.DisplayName: Useless Projectile
+			UnicornHornProjectile.DisplayName: Unicorn Horn
+			UnicornHornProjectile2.DisplayName: Unicorn Horn 
+			UselessProjectile.DisplayName: Useless Weapon
 		}
 
 		Tiles: {
