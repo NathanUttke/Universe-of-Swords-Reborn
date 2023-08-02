@@ -28,7 +28,7 @@ public class UniverseOfSwordsWorld : ModSystem
 		spawnOre = tag.GetBool("spawnOre");
 	}
 
-	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 	{
 		// Because world generation is like layering several images ontop of each other, we need to do some steps between the original world generation steps.
 
@@ -72,7 +72,7 @@ public class OrePass : GenPass
 
 		for (int i = 0; i < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); i++)
 		{
-			WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY), (double)WorldGen.genRand.Next(4, 7), WorldGen.genRand.Next(3, 7), ModContent.TileType<DamascusOreTile>(), false, 0f, 0f, false, true);
+			WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, Main.maxTilesY), (double)WorldGen.genRand.Next(4, 7), WorldGen.genRand.Next(3, 7), ModContent.TileType<DamascusOreTile>(), false, 0f, 0f, false, true);
 		};
 
 		//for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
