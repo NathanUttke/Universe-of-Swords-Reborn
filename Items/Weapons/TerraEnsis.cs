@@ -16,7 +16,7 @@ public class TerraEnsis : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 125;
+        Item.damage = 120;
         Item.DamageType = DamageClass.Melee; 
         Item.width = 62;
         Item.height = 68;
@@ -61,7 +61,7 @@ public class TerraEnsis : ModItem
         .AddIngredient(ItemID.TerraBlade, 1)
         .AddIngredient(ItemID.SpectreBar, 20)
         .AddIngredient(ItemID.BrokenHeroSword, 1)
-        .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 35)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }
