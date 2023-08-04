@@ -1,42 +1,43 @@
-Tiles: {
-	DamascusBarTile.MapEntry: Damascus Bar
-	DamascusOreTile.MapEntry: Damascus Ore
+Projectiles: {
+	Armageddon.DisplayName: Armageddon
+	ClingerSwordProjectile.DisplayName: Clinger Sword
+	Corrupt.DisplayName: Corrupt Crystallus
+	DemonScytheClone.DisplayName: Demon Scythe
+	DragonsDeathProjectile.DisplayName: Dragons Death
+	EdgeLordProjectile.DisplayName: Edge Lord
+	FlareCore.DisplayName: Flare Core
+	FrozenCrystallusProj.DisplayName: Frozen Crystallus
+	GnomeProj.DisplayName: Gnome
+	GrandPianoProjectile.DisplayName: Grand Piano
+	HumanBuzzSaw.DisplayName: Human Buzz Saw
+	IceBreakerProjectile.DisplayName: Ice Breaker
+	LifeRemovalMachineProjectile.DisplayName: Life Removal Machine 
+	MechanicalProj.DisplayName: Mechanical Soul
+	SwordMinion.DisplayName: Flying Blade
+	Nightmare.DisplayName: Nightmare
+	PurpleRuneProjectile.DisplayName: Shadowflame Rune
+	PurpleScytheClone.DisplayName: Purple Scythe
+	RedFlareLongswordProjectile.DisplayName: Red Flare Longsword 
+	ScarledGreatswordProjectile.DisplayName: Scarled Greatsword
+	ShaderProjectile.DisplayName: Power Of The Galactic
+	StarSwordProjectile.DisplayName: Star
+	SwordOfTheMultiverseProjectile.DisplayName: Sword Of The Multiverse 
+	SwordOfTheMultiverseProjectileSmall.DisplayName: Sword Of The Multiverse
+	SwordOfTheUniverseV2Projectile.DisplayName: Sword Of The Universe
+	Tier2CProjectile.DisplayName: Crimson Thing
+	TrueTerrabladeProjectile.DisplayName: Terra Ensis
+	TwinsProjectile.DisplayName: Twins Projectile
+	UltimateSaberProjectile.DisplayName: Ultimate Saber
+	UnicornHornProjectile.DisplayName: Unicorn Horn
+	UnicornHornProjectile2.DisplayName: Unicorn Horn 
+	UselessProjectile.DisplayName: Useless Weapon
 }
 
-Buffs: {
-	EmperorBlaze: {
-		DisplayName: Emperor Blaze
-		Description: Losing life.
-	}
-
-	MeleePower: {
-		DisplayName: Melee Power
-		Description: Minor improvements to melee stats.
-	}
-
-	NordMead: {
-		DisplayName: Nord Mead
-		Description:
-			'''
-			"When we raise our flagon to another dead dragon, there is just one drink we need!" 
-			Reduced defense
-			'''
-	}
-
-	Skooma: {
-		DisplayName: Skooma
-		Description: Increased movement and jump speed.
-	}
-
-	SwordMinionBuff: {
-		DisplayName: Flying Sword
-		Description: A flying sword fights for you!
-	}
-}
+NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
 
 Items: {
 	HaloOfHorrors: {
-		DisplayName: Skull of Insanity
+	DisplayName: Skull of Insanity
 		Tooltip:
 			'''
 			Level 1 
@@ -91,200 +92,277 @@ Items: {
 	}
 
 	LegendaryWarriorGauntlet: {
-		DisplayName: Legendary Warrior Gauntlet
-		Tooltip: ""
+		DisplayName: Legendary Warrior's Gauntlet
+		Tooltip:
+			'''
+			'Legendary gauntlet that grants wearer ultimate melee skills'
+			15 defense
+			Highly increased melee damage
+			30% increased melee critical chance
+			Greatly increased life regeneration
+			Increases maximum life by 20
+			20% increased endurance
+			Grants immunity to most debuffs
+			Grants Spelunker, Thorns and Titan potion effects
+			'''
 	}
 
-	VolatileKnives: {
-		DisplayName: Volatile Knives
-		Tooltip: ""
-	}
+	VolatileKnives.DisplayName: Volatile Knives
 
 	BlueDamascusChestplate: {
 		DisplayName: Blue Damascus Chestplate
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Armor for durable warriors'
+			7% increased melee damage
+			10% increased movement speed
+			'''
 	}
 
 	BlueDamascusHelmet: {
 		DisplayName: Blue Damascus Helmet
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Armor for durable warriors'
+			6% increased melee speed
+			6% increased melee critical chance
+			'''
 	}
 
 	BlueDamascusLeggings: {
 		DisplayName: Blue Damascus Leggings
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Armor for durable warriors'
+			6% increased melee critical chance
+			5% increased movement speed
+			'''
 	}
 
 	DamascusBreastplate: {
 		DisplayName: Damascus Breastplate
-		Tooltip: ""
+		Tooltip: 4% increased melee damage
 	}
 
 	DamascusHelmet: {
 		DisplayName: Damascus Helmet
-		Tooltip: ""
+		Tooltip: 3% increased melee speed
 	}
 
 	DamascusLeggings: {
 		DisplayName: Damascus Leggings
-		Tooltip: ""
+		Tooltip: 6% increased movement speed
 	}
 
 	GreenDamascusChestplate: {
 		DisplayName: Green Damascus Chestplate
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Armor for fast warriors'
+			15% increased melee damage
+			10% increased melee speed
+			'''
 	}
 
 	GreenDamascusHelmet: {
 		DisplayName: Green Damascus Helmet
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Armor for fast warriors'
+			20% increased melee speed
+			14% increased melee critical chance
+			'''
 	}
 
 	GreenDamascusLeggings: {
 		DisplayName: Green Damascus Leggings
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Armor for fast warriors'
+			10% increased melee critical chance
+			35% increased movement speed
+			'''
 	}
 
 	RedDamascusChestplate: {
 		DisplayName: Red Damascus Chestplate
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Armor for agressive warriors'
+			10% increased melee damage
+			10% increased melee critical chance
+			'''
 	}
 
 	RedDamascusHelmet: {
 		DisplayName: Red Damascus Helmet
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Armor for agressive warriors'
+			10% increased melee damage
+			14% increased melee critical chance
+			'''
 	}
 
 	RedDamascusLeggings: {
 		DisplayName: Red Damascus Leggings
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Armor for agressive warriors'
+			10% increased melee critical chance
+			10% increased melee damage
+			'''
 	}
 
 	MeleePowerPotion: {
 		DisplayName: Melee Power Potion
-		Tooltip: ""
+		Tooltip: Minor improvements to melee stats
 	}
-
+	
 	NordMead: {
 		DisplayName: Nord Mead
 		Tooltip: ""
-	}
+	}	
 
 	Skooma: {
 		DisplayName: Skooma
-		Tooltip: ""
+		Tooltip: Increases movement speed and jump height
 	}
-
+	
 	SwordBossBag: {
 		DisplayName: Treasure Bag (Evil Flying Blade)
 		Tooltip: ""
-	}
+	}	
 
 	SwordBossSummon: {
-		DisplayName: Suspicious Looking Blade
-		Tooltip: ""
-	}
+		DisplayName: Suspicious Looking Sword
+		Tooltip: "Summons Evil Flying Blade"
+	}	
 
 	DamascusBar: {
 		DisplayName: Damascus Bar
-		Tooltip: ""
+		Tooltip: "'Material for creating powerful swords'"
 	}
-
+	
 	DamascusOre: {
 		DisplayName: Damascus Ore
 		Tooltip: ""
-	}
+	}	
 
 	LunarOrb: {
 		DisplayName: Lunar Orb
-		Tooltip: ""
+		Tooltip: Essence of Lunar Towers
 	}
 
 	MartianSaucerCore: {
 		DisplayName: Martian Saucer Core
-		Tooltip: ""
+		Tooltip: Pulses with space energy
 	}
 
 	Orichalcon: {
 		DisplayName: Scintillo Bar
-		Tooltip: ""
+		Tooltip: Most powerful and rarest ore for making swords
 	}
 
 	ScarletFlareCore: {
 		DisplayName: Scarlet Flare Core
-		Tooltip: ""
+		Tooltip: "'From depths of hell'"
 	}
 
 	SwordMatter: {
 		DisplayName: Sword Matter
-		Tooltip: ""
+		Tooltip: "'Matter of all swords'"
 	}
 
 	BlueSolutionSpreader: {
 		DisplayName: Blue Solution Spreader
-		Tooltip: ""
+		Tooltip:
+			'''
+			Infinite biome spreading? Awesome!
+			Right click to choose between solutions
+			'''
 	}
 
 	CyanSolutionSword: {
-		DisplayName: Hallowed Solution Spreader
-		Tooltip: ""
+		DisplayName: Hallow Solution Spreader
+		Tooltip:
+			'''
+			Infinite biome spreading? Awesome!
+			Right click to choose between solutions
+			'''
 	}
 
 	GreenSolutionSpreader: {
 		DisplayName: Green Solution Spreader
-		Tooltip: ""
+		Tooltip:
+			'''
+			Infinite biome spreading? Awesome!
+			Right click to choose between solutions
+			'''
 	}
 
 	MagicMirrorBlade: {
 		DisplayName: Magic Mirror Blade
-		Tooltip: ""
+		Tooltip: "'Magic Mirror and sword fused together'"
 	}
 
 	PurpleSolutionSpreader: {
 		DisplayName: Purple Solution Spreader
-		Tooltip: ""
+		Tooltip:
+			'''
+			Infinite biome spreading? Awesome!
+			Right click to choose between solutions
+			'''
 	}
 
 	RedSolutionSpreader: {
 		DisplayName: Red Solution Spreader
-		Tooltip: ""
+		Tooltip:
+			'''
+			Infinite biome spreading? Awesome!
+			Right click to choose between solutions
+			'''
 	}
 
 	SwordOfPower: {
 		DisplayName: Broken Sword Of Power
-		Tooltip: ""
+		Tooltip: Needs to be fixed
 	}
 
 	DamascusHamaxe: {
 		DisplayName: Damascus Hamaxe
 		Tooltip: ""
-	}
-
+	}	
+	
 	DamascusPickaxe: {
 		DisplayName: Damascus Pickaxe
 		Tooltip: ""
-	}
+	}	
 
 	Apocalypse: {
 		DisplayName: Apocalypse
-		Tooltip: ""
+		Tooltip: Weapon that causes apocalypse
 	}
 
 	BatSlayer: {
 		DisplayName: Bat Slayer
-		Tooltip: ""
+		Tooltip:
+			'''
+			Inflicts Confused debuff on enemies
+			Deals 10% more damage to bat enemies
+			'''
 	}
 
 	BetterShroomiteBlade: {
-		DisplayName: Super Shroomite Blade
-		Tooltip: ""
+		DisplayName: Better Shroomite Blade
+		Tooltip: Bigger and better!
 	}
 
 	BiggoronSword: {
-		DisplayName: Sword of the Legend
+		DisplayName: Sword of The Legend
 		Tooltip: Heavy but strong
 	}
-
+	
 	BlizzardRage: {
 		DisplayName: Blizzard Rage
 		Tooltip: ""
@@ -292,79 +370,83 @@ Items: {
 
 	BoneArrowSword: {
 		DisplayName: Bone Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Bone arrows
 	}
 
 	InnosWrath: {
 		DisplayName: Innos' Wrath
-		Tooltip: ""
+		Tooltip: Pulses with light energy of Innos
 	}
-
+	
 	SwordStaff: {
 		DisplayName: Sword Staff
-		Tooltip: ""
+		Tooltip: Summons a flying blade
 	}
 
 	CaesarSword: {
 		DisplayName: Caesar Sword
-		Tooltip: '''"Et tu, Brute?"'''
+		Tooltip:
+			'''
+			'Et tu, Brute?'
+			Hold right click for a stabbing attack
+			'''
 	}
 
 	ChlorophyteArrowSword: {
 		DisplayName: Chlorophyte Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Chlorophyte arrows
 	}
-
+	
 	ClingerSword: {
 		DisplayName: Clinger Sword
 		Tooltip: ""
 	}
-
+	
 	CorruptCrystallus: {
 		DisplayName: Corrupt Crystallus
 		Tooltip: ""
-	}
+	}	
 
 	CosmoStorm: {
 		DisplayName: Cosmo Storm
-		Tooltip: ""
+		Tooltip: "'Sword that shatters galaxies'"
 	}
-
+	
 	CrimsonCrystallus: {
 		DisplayName: Crimson Crystallus
 		Tooltip: ""
-	}
-
+	}	
+	
 	Crystallus: {
 		DisplayName: Crystallus
 		Tooltip: ""
-	}
+	}		
 
 	CrystalVineSword: {
 		DisplayName: Crystal Vile Sword
-		Tooltip: ""
+		Tooltip: Ignores 12 points of enemy defense
 	}
 
 	CthulhuJudge: {
 		DisplayName: Cthulhu Judge
-		Tooltip: ""
+		Tooltip: I have an eye on you...
 	}
 
 	CursedArrowSword: {
 		DisplayName: Cursed Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Cursed arrows
 	}
-
+	
 	DeathSword: {
 		DisplayName: Death Sword
 		Tooltip: ""
 	}
-
+	
 	DestroyerSword: {
 		DisplayName: Destroyer Sword
-		Tooltip: ""
+		Tooltip: Boom, Boom!
 	}
-
+	
 	DirtSword: {
 		DisplayName: Dirt Sword
 		Tooltip: ""
@@ -374,39 +456,39 @@ Items: {
 		DisplayName: Doomsday
 		Tooltip: ""
 	}
-
+	
 	DoubleBladedLightsaber: {
-		DisplayName: The Ultimate Lightsaber
+		DisplayName: The Ultimate Saber
 		Tooltip: ""
 	}
 
 	DragonsDeath: {
 		DisplayName: Dragon's Death
-		Tooltip: ""
+		Tooltip: "'It's great for impersonating dragon hunters'"
 	}
 
 	EctoplasmicRipper: {
 		DisplayName: Ectoplasmic Ripper
-		Tooltip: ""
+		Tooltip: Steals mana upon hitt
 	}
 
 	EdgeLord: {
 		DisplayName: Edge Lord
-		Tooltip: Slows down enemies
+		Tooltip: "'Blood for the Blood God! Skulls for the skull throne! Milk for the Khorne flakes!'"
 	}
 
 	ElBastardo: {
 		DisplayName: El Bastardo
-		Tooltip: ""
+		Tooltip: "'The legendary El Bastardo'"
 	}
-
+	
 	Executioner: {
 		DisplayName: Executioner
 		Tooltip: ""
 	}
 
 	FingerOfDoom: {
-		DisplayName: Finger Of Doom
+		DisplayName: FingerOfDoom
 		Tooltip: ""
 	}
 
@@ -417,152 +499,157 @@ Items: {
 
 	FlamingArrowSword: {
 		DisplayName: Flaming Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Flaming arrows
 	}
 
 	FrostburnArrowSword: {
 		DisplayName: Frostburn Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Frostburn arrows
 	}
 
 	FrozenShard: {
-		DisplayName: Frozen Shard
-		Tooltip: ""
+		DisplayName: Frozen Crystallus
+		Tooltip: Inflicts Frostburn debuff
 	}
 
 	GelBlade: {
 		DisplayName: Gel Blade
-		Tooltip: ""
+		Tooltip: Slows down enemies
 	}
 
 	GiantUnicornHorn: {
 		DisplayName: Giant Unicorn Horn
-		Tooltip: ""
+		Tooltip: Fabolous!
 	}
-
+	
 	GnomBlade: {
 		DisplayName: Gnom Blade
 		Tooltip: ""
-	}
+	}	
 
 	GoblinKnife: {
 		DisplayName: Goblin Knife
-		Tooltip: ""
+		Tooltip: Fast and small knife of Goblins
 	}
 
 	GrandPiano: {
 		DisplayName: Grand Piano
-		Tooltip: ""
+		Tooltip: "'Rage Quit - Horrior'"
 	}
-
+	
 	GreatswordOfTheCosmos: {
-		DisplayName: Greatsword Of The Cosmos
+		DisplayName: Greatsword of the Cosmos
 		Tooltip: ""
 	}
 
 	HellfireArrowSword: {
 		DisplayName: Hellfire Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Hellfire arrows
 	}
 
 	HolyArrowSword: {
 		DisplayName: Holy Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Holy arrows
 	}
 
 	Horrormageddon: {
 		DisplayName: Horrormageddon
-		Tooltip: ""
+		Tooltip: "'Where you see an army, I see a graveyard'"
 	}
 
 	HumanBuzzSaw: {
 		DisplayName: Human Buzz Saw
-		Tooltip: ""
+		Tooltip: "'Cuts through hordes of Terraria like butter'"
 	}
 
 	IceBreaker: {
 		DisplayName: Ice Breaker
-		Tooltip: ""
+		Tooltip: "'Freezing to the touch'"
 	}
-
+	
 	IceSword: {
 		DisplayName: Ice Sword
 		Tooltip: ""
-	}
+	}	
 
 	IchorArrowSword: {
 		DisplayName: Ichor Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Ichor arrows
 	}
 
 	Inflation: {
 		DisplayName: Inflation
-		Tooltip: ""
+		Tooltip: Congratulations, you made an overpriced sword!
 	}
-
+	
 	JesterArrowSword: {
 		DisplayName: Jester Arrow Sword
 		Tooltip: ""
-	}
+	}	
 
 	Stick: {
 		DisplayName: Stick
-		Tooltip: ""
+		Tooltip:
+			'''
+			'You shouldn't have this'
+			Legacy Item
+			Trash
+			'''
 	}
 
 	LifeRemovalMachine: {
 		DisplayName: Life Removal Machine
-		Tooltip: ""
+		Tooltip: "'Insert Hollywood computer generated special effects here'"
 	}
 
 	LuminiteArrowSword: {
 		DisplayName: Luminite Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Luminite arrows
 	}
-
+	
 	MechanicalSoul: {
 		DisplayName: Mechanical Soul
 		Tooltip: ""
-	}
+	}	
 
 	NatureSword: {
 		DisplayName: Nature Sword
-		Tooltip: Sword made out of ingredients given of the Mother Nature
+		Tooltip: "'Sword made out of only pure ingredients given from Mother Nature'"
 	}
-
+	
 	OceanRoar: {
 		DisplayName: Ocean Roar
 		Tooltip: ""
-	}
+	}	
 
 	OnyxSword: {
 		DisplayName: Onyx Sword
-		Tooltip: ""
+		Tooltip: Shoots Onyx
 	}
 
 	PianoSword1: {
 		DisplayName: Beethoven Beater
-		Tooltip: Moonlight Sonata - Beethoven
+		Tooltip: "'Moonlight Sonata - Beethoven'"
 	}
 
 	PianoSword2: {
 		DisplayName: Gershwin Gasher
-		Tooltip: Rhapsody in Blue - Gershwin
+		Tooltip: "'Rhapsody in Blue - Gershwin'"
 	}
 
 	PianoSword3: {
 		DisplayName: Mozart Mauler
-		Tooltip: Piano Concerto No.20 - Mozart
+		Tooltip: "'Piano Concerto No.20 - Mozart'"
 	}
 
 	PianoSword4: {
 		DisplayName: Liszt Lasher
-		Tooltip: Piano sonata in B minor - Liszt
+		Tooltip: "'Piano sonata in B minor - Liszt'"
 	}
 
 	PowerOfTheGalactic: {
 		DisplayName: Power Of The Galactic
-		Tooltip: ""
+		Tooltip: Sword made from all galactic elements
 	}
 
 	PrimeSword: {
@@ -572,9 +659,9 @@ Items: {
 
 	PumpkinBoom: {
 		DisplayName: Pumpkin Boom
-		Tooltip: ""
+		Tooltip: Creates explosions on hit
 	}
-
+	
 	PumpkinSword: {
 		DisplayName: Pumpkin Sword
 		Tooltip: ""
@@ -582,59 +669,72 @@ Items: {
 
 	PurpleRuneBlade: {
 		DisplayName: Shadowflame Blade
-		Tooltip: ""
+		Tooltip: "'Pulses with dark energy of shadowflame'"
 	}
 
 	RedFlareLongsword: {
-		DisplayName: Red Flare Longsword
-		Tooltip: ""
+		DisplayName: Scarlet Flare Longsword
+		Tooltip:
+			'''
+			Fires scarlet flare waves and ignites enemies with Scarlet flames
+			'Ignite your foes in scarlet flames'
+			'''
 	}
-
+	
 	ScarledFlareGreatsword: {
-		DisplayName: Scarled Flare Greatsword
+		DisplayName: Scarlet Flare Greatsword
 		Tooltip: ""
 	}
-
+	
 	ShroomiteBlade: {
-		DisplayName: Shroomite Blade
+		DisplayName: Scarlet Flare Greatsword
 		Tooltip: ""
 	}
 
 	SolBlade: {
 		DisplayName: Sol Blade
-		Tooltip: ""
+		Tooltip: Unleashes small spread of meteors
 	}
 
 	StarSword: {
 		DisplayName: Star Sword
-		Tooltip: ""
+		Tooltip: Shoots bouncy stars
 	}
 
 	StoneSword: {
 		DisplayName: Stone Sword
-		Tooltip: ""
+		Tooltip: "'You Rock!'"
 	}
 
 	SuperInflation: {
 		DisplayName: Super Inflation
-		Tooltip: ""
+		Tooltip:
+			'''
+			'Throw money at ALL your problems'
+			15% more damage if the player has a gold coin.
+			'''
 	}
 
 	SwordOfTheEmperor: {
-		DisplayName: Sword Of The Emperor
-		Tooltip: ""
+		DisplayName: Sword of The Emperor
+		Tooltip: "'Grant them the Emperor's mercy. Let the heretics burn!'"
 	}
 
 	SwordOfTheMultiverseNew: {
-		DisplayName: Sword Of The Multiverse
-		Tooltip: ""
+		DisplayName: Sword of the Multiverse
+		Tooltip:
+			'''
+			'You only get what you give'
+			Press left or right click for a alternate attack
+			Hold up or down for a alternate attack
+			'''
 	}
 
 	SwordOfTheUniverseNew: {
-		DisplayName: Sword Of The Universe
-		Tooltip: ""
+		DisplayName: Sword of the Universe
+		Tooltip: "'This sword doesn't swing. It lifts the Universe towards the blade'"
 	}
-
+	
 	TerraEnsis: {
 		DisplayName: Terra Ensis
 		Tooltip: ""
@@ -642,105 +742,102 @@ Items: {
 
 	TheBrain: {
 		DisplayName: The Brain
-		Tooltip: ""
+		Tooltip: "'Sword of Crimson'"
 	}
 
 	TheEater: {
 		DisplayName: The Eater
-		Tooltip: ""
+		Tooltip: "'Sword of Corruption'"
 	}
 
 	TheNightmareAmalgamation: {
 		DisplayName: The Nightmare Amalgamation
-		Tooltip: ""
+		Tooltip: "'The source of your nightmares'"
 	}
 
 	TheStinger: {
 		DisplayName: The Stinger
-		Tooltip: ""
+		Tooltip: 33% chance of shooting a stinger
 	}
 
 	TheSwarm: {
 		DisplayName: The Swarm
 		Tooltip: ""
 	}
-
+	
 	TrueGemSword: {
-		DisplayName: True Gem Sword
+		DisplayName: True Gem Blade
 		Tooltip: ""
-	}
+	}	
 
 	TwinsSword: {
-		DisplayName: Twins' Sword
-		Tooltip: ""
+		DisplayName: Twins Sword
+		Tooltip: Whoosh, whoosh!
 	}
-
+	
 	UltimateArrowSword: {
 		DisplayName: Ultimate Arrow Sword
-		Tooltip: ""
-	}
+		Tooltip: "Shoots a lot of arrows"
+	}	
 
 	UnholyArrowSword: {
 		DisplayName: Unholy Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Unholy arrows
 	}
-
+	
 	UselessWeapon: {
-		DisplayName: Useless Weapon
+		DisplayName: Wooden Cane
 		Tooltip: ""
-	}
+	}	
 
 	VenomArrowSword: {
 		DisplayName: Venom Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Venom arrows
 	}
-
+	
 	WaterBoltSword: {
 		DisplayName: Water Bolt Sword
 		Tooltip: ""
-	}
+	}	
 
 	WoodenArrowSword: {
 		DisplayName: Wooden Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Wooden Arrows
 	}
 }
 
-NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
+Buffs: {
+	EmperorBlaze: {
+		DisplayName: Emperor Blaze
+		Description: Losing life
+	}
 
-Projectiles: {
-	Armageddon.DisplayName: Armageddon
-	ClingerSwordProjectile.DisplayName: Clinger Sword
-	Corrupt.DisplayName: Corrupt
-	DemonScytheClone.DisplayName: Demon Scythe
-	DragonsDeathProjectile.DisplayName: Dragon's Death
-	EdgeLordProjectile.DisplayName: Edge Lord
-	FlareCore.DisplayName: Flare Core
-	FrozenCrystallusProj.DisplayName: Frozen Crystallus
-	GnomeProj.DisplayName: Gnome
-	GrandPianoProjectile.DisplayName: Grand Pian
-	HumanBuzzSaw.DisplayName: Human Buzz Saw
-	IceBreakerProjectile.DisplayName: Ice Breaker
-	LifeRemovalMachineProjectile.DisplayName: Life Removal Machine
-	MechanicalProj.DisplayName: Mechanical Proj
-	SwordMinion.DisplayName: Sword Minion
-	Nightmare.DisplayName: Nightmare
-	PurpleRuneProjectile.DisplayName: Purple Rune
-	PurpleScytheClone.DisplayName: Purple Scythe
-	RedFlareLongswordProjectile.DisplayName: Red Flare Longsword
-	ScarledGreatswordProjectile.DisplayName: Scarled Greatsword
-	ShaderProjectile.DisplayName: Power Of The Galactic
-	StarSwordProjectile.DisplayName: Star
-	SwordOfTheMultiverseProjectile.DisplayName: Sword Of The Multiverse
-	SwordOfTheMultiverseProjectileSmall.DisplayName: Sword Of The Multiverse
-	SwordOfTheUniverseV2Projectile.DisplayName: Sword Of The Universe
-	Tier2CProjectile.DisplayName: Tier2 C Projectile
-	TrueTerrabladeProjectile.DisplayName: Terra Ensis
-	TwinsProjectile.DisplayName: Twins' Projectile
-	UltimateSaberProjectile.DisplayName: Ultimate Saber
-	UnicornHornProjectile.DisplayName: Unicorn Horn
-	UnicornHornProjectile2.DisplayName: Unicorn Horn
-	UselessProjectile.DisplayName: Useless Projectile
-	BetterShroomiteProj.DisplayName: Better Shroomite
-	PrimeSlashProj.DisplayName: Prime Slash
+	MeleePower: {
+		DisplayName: Melee Power
+		Description: Minor improvements to melee stats
+	}
+
+	NordMead: {
+		DisplayName: Nord Mead
+		Description:
+			'''
+			'When we raise our flagon to another dead dragon, there is just one drink we need!'
+			Reduced defense
+			'''
+	}
+
+	Skooma: {
+		DisplayName: Skooma
+		Description: Major improvements to movement speed
+	}
+
+	SwordMinionBuff: {
+		DisplayName: Flying Blade
+		Description: A flying blade fights for you.
+	}
+}
+
+Tiles: {
+	DamascusOreTile.MapEntry: Damascus Ore 
+	DamascusBarTile.MapEntry: Damascus Bar
 }
