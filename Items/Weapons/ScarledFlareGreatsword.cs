@@ -26,7 +26,7 @@ public class ScarledFlareGreatsword : ModItem
 		Item.useTime = 25;
 		Item.useAnimation = 20;
 
-		Item.damage = 120;
+		Item.damage = 135;
 		Item.knockBack = 6f;
 		Item.scale = 1f;
 		Item.crit = 6;
