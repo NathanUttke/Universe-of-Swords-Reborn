@@ -63,7 +63,7 @@ public class Apocalypse : ModItem
         .AddIngredient(ItemID.ApprenticeStaffT3, 1)
         .AddIngredient(ItemID.HellstoneBar, 20)
         .AddIngredient(ItemID.MeteoriteBar, 20)
-        .AddIngredient(Mod, "MartianSaucerCore", 1)
+        .AddIngredient(ModContent.ItemType<MartianSaucerCore>(), 1)
         .AddIngredient(ModContent.ItemType<SwordMatter>(), 15)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
