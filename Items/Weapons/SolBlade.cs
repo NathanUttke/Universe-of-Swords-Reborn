@@ -16,7 +16,7 @@ public class SolBlade : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 86;
+		Item.width = 82;
 		Item.height = 86;
 		Item.scale = 1.1f;
 		Item.rare = ItemRarityID.Yellow;
