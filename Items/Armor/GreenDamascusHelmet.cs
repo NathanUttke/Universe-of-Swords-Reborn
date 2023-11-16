@@ -15,8 +15,8 @@ public class GreenDamascusHelmet : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 16;
-		Item.height = 18;
+		Item.width = 18;
+		Item.height = 20;
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 20;
