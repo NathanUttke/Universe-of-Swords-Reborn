@@ -15,6 +15,7 @@ namespace UniverseOfSwordsMod.Items.Weapons.BossDrops
             ItemID.Sets.GamepadWholeScreenUseRange[Type] = true;
             ItemID.Sets.LockOnIgnoresCollision[Type] = true;
             ItemID.Sets.StaffMinionSlotsRequired[Type] = 1;
+			Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {
