@@ -172,7 +172,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                     int enchantSword = NPC.NewNPC(NPC.GetSource_FromAI(), (int)npcPosition.X, (int)npcPosition.Y, NPCID.EnchantedSword);
                     if (Main.netMode == NetmodeID.Server)
                     {
-                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPCID.EnchantedSword);
+                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPCID.EnchantedSword, 0f, 0f, 0f, 0, 0, 0);
                     }
                 }
 
