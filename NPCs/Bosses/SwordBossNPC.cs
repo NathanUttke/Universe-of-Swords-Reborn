@@ -161,20 +161,18 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
                 NPC.rotation = NPC.velocity.ToRotation() + MathHelper.PiOver2;
 
-                if (NPC.justHit && Main.netMode != NetmodeID.MultiplayerClient)
+                if (NPC.justHit && Main.rand.NextBool(5))
                 {
                     Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
                     Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
                     float playerPosNpcSqrt = 5f / playerPosNpc.Length();
                     playerPosNpc *= playerPosNpcSqrt;
                     npcPosition += playerPosNpc;
-                    if (Main.rand.NextBool(5))
+
+                    int enchantSword = NPC.NewNPC(NPC.GetSource_FromAI(), (int)npcPosition.X, (int)npcPosition.Y, NPCID.EnchantedSword);
+                    if (Main.netMode == NetmodeID.Server)
                     {
-                        int enchantSword = NPC.NewNPC(NPC.GetSource_FromAI(), (int)npcPosition.X, (int)npcPosition.Y, NPCID.EnchantedSword);
-                        if (Main.netMode == NetmodeID.Server && enchantSword < 8)
-                        {
-                            NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, enchantSword);
-                        }
+                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPCID.EnchantedSword);
                     }
                 }
 
