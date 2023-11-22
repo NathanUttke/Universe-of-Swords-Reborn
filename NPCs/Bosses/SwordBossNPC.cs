@@ -161,7 +161,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
                 NPC.rotation = NPC.velocity.ToRotation() + MathHelper.PiOver2;
 
-                if (NPC.justHit && Main.rand.NextBool(5))
+                if (NPC.justHit && Main.rand.NextBool(5) && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
                     Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
