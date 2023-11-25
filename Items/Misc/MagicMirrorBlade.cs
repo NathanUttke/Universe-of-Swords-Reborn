@@ -71,5 +71,9 @@ public class MagicMirrorBlade : ModItem
 		.AddIngredient(ItemID.MagicMirror, 1)
 		.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)
 		.Register();
+		CreateRecipe()
+		.AddIngredient(ItemID.IceMirror, 1)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)
+		.Register();
 	}
 }
