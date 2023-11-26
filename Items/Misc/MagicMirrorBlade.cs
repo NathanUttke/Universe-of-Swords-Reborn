@@ -20,8 +20,6 @@ public class MagicMirrorBlade : ModItem
 		Item.height = 58;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 26;
-		Item.useAnimation = 26;
 		Item.UseSound = SoundID.Item6;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = false;
@@ -64,6 +62,12 @@ public class MagicMirrorBlade : ModItem
 			}
 		}
 	}
+	
+    public override bool CanUseItem(Player player)
+    {
+		Item.useTime = 26;
+		Item.useAnimation = 26;		
+    }	
 
 	public override void AddRecipes()
 	{	
