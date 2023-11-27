@@ -1,4 +1,4 @@
 displayName = [c/6508cf:Universe of Swords Reborn]
 author = TheBlackAbyss, Kosky
-version = 2.2.1
+version = 2.2.0.3
 homepage = https://discord.gg/DBCZg54fjX
