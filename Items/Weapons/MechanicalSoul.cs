@@ -23,7 +23,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.shoot = ModContent.ProjectileType<MechanicalProj>();
             Item.shootSpeed = 10f;
 
-            Item.damage = 89;
+            Item.damage = 90;
             Item.DamageType = DamageClass.Melee;
 
             Item.crit = 6;
