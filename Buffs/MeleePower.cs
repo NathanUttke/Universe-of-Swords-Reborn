@@ -13,7 +13,7 @@ public class MeleePower : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.GetCritChance(DamageClass.Generic) += 4;
+		player.GetCritChance(DamageClass.Melee) += 4;
 		player.GetDamage(DamageClass.Melee) += 0.1f;
 		player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
 	}
