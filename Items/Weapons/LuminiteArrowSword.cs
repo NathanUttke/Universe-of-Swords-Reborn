@@ -22,7 +22,7 @@ public class LuminiteArrowSword : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 26;
 		Item.useAnimation = 13;
-		Item.damage = 100;
+		Item.damage = 105;
 		Item.knockBack = 9f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.MoonlordArrow;
