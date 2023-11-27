@@ -24,7 +24,7 @@ public class LegendaryWarriorGauntlet : ModItem
 	{
 		Item.width = 24;
 		Item.height = 28;
-		Item.value = Item.sellPrice(0, 8, 0, 0);
+		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.rare = ItemRarityID.Red;
 		Item.accessory = true; 
 		Item.ResearchUnlockCount = 1;
