@@ -24,7 +24,8 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.aiStyle = 140;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 30;
-        }        
+        } 
+		
         public Player Owner => Main.player[Projectile.owner];
         public Vector2 velocityDirection;
         public int SwingDirection => MathF.Sign(Projectile.velocity.X);
@@ -38,9 +39,9 @@ namespace UniverseOfSwordsMod.Projectiles
             }
             return false;
         }
+		
         public override void AI()
-        {         
-
+        {      
             Owner.direction = SwingDirection;
             Owner.heldProj = Projectile.whoAmI;
             Owner.itemTime = Owner.itemAnimation = 2;
@@ -60,11 +61,12 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.scale = 1f + (MathF.Sin(Projectile.ai[1] / 4f) * -Owner.direction);
             Projectile.spriteDirection = Owner.direction;
             Projectile.rotation = -MathF.Sin(Projectile.ai[1] / 4f);
+			
             if (Owner.direction < 0)
             {
                 Projectile.rotation -= MathHelper.PiOver2;
-            }
-            //Projectile.rotation = Utils.AngleLerp(2f * SwingDirection, -2f * SwingDirection, MathF.Sin(Projectile.ai[1] / 15f)) - MathHelper.PiOver2 * SwingDirection;
+            }         
+			
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
             Projectile.ai[1] += 1f;
         }
