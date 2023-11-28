@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
-
+[LegacyName (new string[] { "SwordOfTheMultiverse" })]
 public class SwordOfTheMultiverseNew : ModItem
 {
     public override void SetStaticDefaults()
