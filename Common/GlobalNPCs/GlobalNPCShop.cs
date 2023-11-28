@@ -10,6 +10,10 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
         public override void SetupTravelShop(int[] shop, ref int nextSlot)
         {
             shop[nextSlot++] = ModContent.ItemType<Skooma>();
+            if (NPC.downedGolemBoss)
+            {
+                shop[nextSlot++] = ModContent.ItemType<Apocalypse>();
+            }			
         }
     }
 }

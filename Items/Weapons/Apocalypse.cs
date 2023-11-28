@@ -57,7 +57,7 @@ public class Apocalypse : ModItem
         return false;
     }
 
-    public override void AddRecipes()
+/*    public override void AddRecipes()
     {
         CreateRecipe()
         .AddIngredient(ItemID.ApprenticeStaffT3, 1)
@@ -67,5 +67,5 @@ public class Apocalypse : ModItem
         .AddIngredient(ModContent.ItemType<SwordMatter>(), 15)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
-    }
+    }*/
 }
