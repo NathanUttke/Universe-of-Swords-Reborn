@@ -9,7 +9,7 @@ using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
-
+[LegacyName (new string[] { "SwordOfTheUniverse" })]
 public class SwordOfTheUniverseNew : ModItem
 {
 	public override void SetStaticDefaults()
