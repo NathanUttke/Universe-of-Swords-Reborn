@@ -49,7 +49,8 @@ namespace UniverseOfSwordsMod.Common.Systems
                 ModContent.NPCType<SwordBossNPC>(),
                 new Dictionary<string, object>
                     {
-                    ["spawnItems"] = summonItem
+                    ["spawnItems"] = summonItem,
+                    ["spawnInfo"] = Language.GetOrRegister("Mods.UniverseOfSwordsMod.BossChecklist.SwordBossNPC.SpawnInfo")
                     }
                 );
 
