@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Consumables;
 using UniverseOfSwordsMod.NPCs.Bosses;
@@ -22,14 +23,10 @@ namespace UniverseOfSwordsMod.Common.Systems
                 return;
             }
 
-            if (bossChecklist.Version < new Version(1, 3, 1))
+            if (bossChecklist.Version < new Version(1, 6))
             {
                 return;
-            }
-
-            string bossName = "Evil Flying Blade";
-
-            int bossType = ModContent.NPCType<SwordBossNPC>();
+            }         
 
             Func<bool> downedSword = () => DownedBossSystem.downedSwordBoss;
 
@@ -41,20 +38,20 @@ namespace UniverseOfSwordsMod.Common.Systems
 
             string despawnInfo = null;
 
-            float weight = 12.0f;
+            float weight = 11.0f;
 
             bossChecklist.Call(
-                "AddBoss",
+                "LogBoss",
                 Mod,
-                bossName,
-                bossType,
+                "EvilFlyingBlade",
                 weight,
                 downedSword,
-                available,
-                null,
-                summonItem,
-                spawnInfo,
-                despawnInfo);
+                ModContent.NPCType<SwordBossNPC>(),
+                new Dictionary<string, object>
+                    {
+                    ["spawnItems"] = summonItem
+                    }
+                );
 
 
         }
