@@ -36,15 +36,15 @@ public class CosmoStorm : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-        .AddIngredient(ItemID.FragmentNebula, 25)
-        .AddIngredient(ItemID.FragmentSolar, 25)
-        .AddIngredient(Mod, "LunarOrb", 1)
+        .AddIngredient(ItemID.FragmentNebula, 20)
+        .AddIngredient(ItemID.FragmentSolar, 20)
+        .AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
         .AddIngredient(ModContent.ItemType<PowerOfTheGalactic>(), 1)
         .AddIngredient(ItemID.LunarBar, 15)
         .AddIngredient(ItemID.NebulaArcanum, 1)
         .AddIngredient(ItemID.TrueExcalibur, 1)
-        .AddIngredient(ItemID.LargeAmethyst, 4)
-        .AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
+        .AddIngredient(ItemID.LargeAmethyst, 2)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 45)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }
