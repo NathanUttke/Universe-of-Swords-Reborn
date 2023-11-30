@@ -19,12 +19,19 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             Conditions.IsHardmode isHardmodeCondition = new();
             Conditions.NotExpert notExpertCondition = new();
             Conditions.IsExpert isExpertCondition = new();
-            //int hardmodeChanceCommon = Main.hardMode ? 20 : 30;
-            //int hardmodeChanceBoss = Main.hardMode ? 2 : 4;
+
+            int swordMatterChance = 10;
+
+            // Increase Sword Matter drop chance to 20% after defeating Moon Lord
+
+            if (NPC.downedMoonlord)
+            {
+                swordMatterChance = 5;
+            }
 
             if (npc.lifeMax >= 45 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly && !npc.boss)
             {
-                npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, 10, 1, 2));
+                npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, swordMatterChance, 1, 2));
             }
 
             if (npc.boss)
