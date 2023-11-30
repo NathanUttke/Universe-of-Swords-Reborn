@@ -16,7 +16,7 @@ public class LunarOrb : ModItem
 		Item.width = 40;
 		Item.height = 40;
 		Item.maxStack = 999;
-		Item.value = 700000;
+		Item.value = Item.sellPrice(0, 14, 0, 0);		
 		Item.rare = ItemRarityID.Cyan;
 		Item.ResearchUnlockCount = 10;
 	}

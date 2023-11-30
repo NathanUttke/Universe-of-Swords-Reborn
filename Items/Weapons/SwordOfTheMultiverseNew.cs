@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
-[LegacyName (new string[] { "SwordOfTheMultiverse" })]
+
 public class SwordOfTheMultiverseNew : ModItem
 {
     public override void SetStaticDefaults()
@@ -187,7 +187,7 @@ public class SwordOfTheMultiverseNew : ModItem
     {
         if (ModLoader.TryGetMod("CalamityMod", out _))
         {
-            damage *= 2f;
+            damage *= 1.5f;
         }
         return;
     }
@@ -205,7 +205,7 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<Orichalcon>(), 50);
         newRecipe.AddIngredient(ItemID.LunarBar, 25);
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
-        newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 300);
+        newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 500);
         newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
         if (ModLoader.TryGetMod("CalamityMod", out Mod calamityBar) && calamityBar.TryFind("AuricBar", out ModItem auricBar))
         {  

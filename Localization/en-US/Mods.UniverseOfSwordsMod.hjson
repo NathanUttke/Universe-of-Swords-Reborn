@@ -742,7 +742,7 @@ Items: {
 
 	TerraEnsis: {
 		DisplayName: Terra Ensis
-		Tooltip: ""
+		Tooltip: Shoots a projectile that splits into 20 more.
 	}
 
 	TheBrain: {

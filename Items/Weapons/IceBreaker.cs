@@ -37,7 +37,7 @@ public class IceBreaker : ModItem
 	{		
 		CreateRecipe()
 		.AddIngredient(ItemID.Frostbrand, 1)
-		.AddIngredient(ItemID.SnowBlock, 200)
+		.AddIngredient(ModContent.ItemType<IceSword>(), 1)
 		.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();

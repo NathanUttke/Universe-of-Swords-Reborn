@@ -61,7 +61,7 @@ public class TerraEnsis : ModItem
         .AddIngredient(ItemID.TerraBlade, 1)
         .AddIngredient(ItemID.SpectreBar, 20)
         .AddIngredient(ItemID.BrokenHeroSword, 1)
-        .AddIngredient(ModContent.ItemType<SwordMatter>(), 35)
+        .AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }

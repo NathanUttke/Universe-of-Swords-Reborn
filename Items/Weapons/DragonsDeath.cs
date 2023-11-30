@@ -23,7 +23,7 @@ public class DragonsDeath : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 140;
+		Item.damage = 150;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item169;
 		Item.noMelee = true;
