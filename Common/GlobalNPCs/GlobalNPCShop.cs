@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Consumables;
+using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Common.GlobalNPCs
 {
@@ -13,7 +14,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             if (NPC.downedGolemBoss)
             {
                 shop[nextSlot++] = ModContent.ItemType<Apocalypse>();
-            }			
+            }
         }
     }
 }
