@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Steamworks;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -35,6 +37,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.OnFire] = true;
             NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
         }
+
         public override void SetDefaults()
         {
             NPC.width = 80;
@@ -44,7 +47,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             NPC.noTileCollide = true;
             NPC.damage = 50;
             NPC.defense = 14;
-            NPC.lifeMax = 7500;
+            NPC.lifeMax = 15000;
             NPC.knockBackResist = 0f;
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath6;
@@ -100,12 +103,15 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             potionType = ItemID.GreaterHealingPotion;
         }
 
-        private float dashSpeed = 20f;
+        private readonly float dashSpeed = 20f;
         private Player Player => Main.player[NPC.target];
-        private float timeToChange = 14f;
+
+        private int dashCounter = 0;        
+
+        private float dashTimer = 25f;
         public override void AI()
-        { 
-            base.AI();
+        {            
+
             if (NPC.target < 0 || NPC.target == 255 || Player.dead || !Player.active)
             {
                 NPC.TargetClosest();
@@ -113,6 +119,14 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
             if (Player.dead)
             {
+                if (NPC.alpha < 255)
+                {
+                    NPC.alpha += 2;
+                }
+                if (NPC.alpha > 255)
+                {
+                    NPC.alpha = 255;
+                }
                 NPC.EncourageDespawn(12);
                 return;
             }
@@ -129,6 +143,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                 {
                     NPC.alpha = 0;
                     NPC.ai[0] = 0f;
+                    SoundEngine.PlaySound(SoundID.Item71, NPC.position);
                 }
             }
 
@@ -138,39 +153,32 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                 Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
                 Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
                 float playerPosNpcSqrt = dashSpeed / playerPosNpc.Length();
-                playerPosNpc *= playerPosNpcSqrt;               
+                playerPosNpc *= playerPosNpcSqrt;
 
                 NPC.velocity = playerPosNpc;
                 NPC.rotation = NPC.velocity.ToRotation() + MathHelper.PiOver2;
+
+                dashTimer = NPC.life <= NPC.lifeMax * 0.5 ? 2f : 25f;
 
                 NPC.ai[0] = 1f;
                 NPC.ai[1] = 0f;
                 NPC.netUpdate = true;
             }
             else if (NPC.ai[0] == 1f)
-            {      
+            {
+
                 NPC.velocity *= 0.99f;
 
                 NPC.rotation = NPC.velocity.ToRotation() + MathHelper.PiOver2;
 
-                if (NPC.justHit && Main.rand.NextBool(5) && Main.netMode != NetmodeID.MultiplayerClient)
-                {
-                    Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-                    Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
-                    float playerPosNpcSqrt = 5f / playerPosNpc.Length();
-                    playerPosNpc *= playerPosNpcSqrt;
-                    npcPosition += playerPosNpc;
-
-                    int enchantSword = NPC.NewNPC(NPC.GetSource_FromAI(), (int)npcPosition.X, (int)npcPosition.Y, NPCID.EnchantedSword);
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPCID.EnchantedSword, 0f, 0f, 0f, 0, 0, 0);
-                    }
-                }
-
                 NPC.ai[1] += 1f;
                 if (NPC.ai[1] >= 50f)
                 {
+                    if (dashCounter <= 3)
+                    {
+                        dashCounter++;
+                    }
+
                     NPC.netUpdate = true;
                     NPC.ai[0] = 2f;
                     NPC.ai[1] = 0f;
@@ -179,39 +187,147 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             }
             else if (NPC.ai[0] == 2f)
             {
-                if (NPC.life <= NPC.lifeMax * 0.5)
-                {
-                    timeToChange = 7f;                    
-                }
-
                 Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
                 Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
                 float playerPosNpcSqrt = dashSpeed / playerPosNpc.Length();
                 playerPosNpc *= playerPosNpcSqrt;
                 npcPosition += playerPosNpc;
 
-                NPC.velocity *= 0.99f;
                 NPC.ai[1] += 1f;
+                NPC.velocity *= 0.99f;
                 NPC.rotation += 0.25f;
 
-                if (NPC.ai[1] >= timeToChange)
+
+                if (NPC.ai[1] > 25f)
                 {
-                    if (NPC.life <= NPC.lifeMax * 0.75 && Main.netMode != NetmodeID.MultiplayerClient)
+                    for (int i = 0; i < 10; i++)
                     {
-                        for (int i = 0; i < 10; i++)
+                        if (dashCounter < 3)
                         {
-                            Vector2 spinPoint = Vector2.Normalize(playerPosNpc * 4f) * 14f;
-                            spinPoint = spinPoint.RotatedBy(-i * MathHelper.Pi / 5f, Vector2.Zero);
-                            Projectile swordProj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), npcPosition, spinPoint, ProjectileID.LightBeam, 20, 0f, Player.whoAmI);
-                            swordProj.friendly = false;
-                            swordProj.hostile = true;
+                            break;
                         }
+
+                        Vector2 spinPoint = Vector2.Normalize(playerPosNpc * 4f) * 14f;
+                        spinPoint = spinPoint.RotatedBy(-i * MathHelper.Pi / 5f, Vector2.Zero);
+                        Projectile swordProj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), npcPosition, spinPoint, ProjectileID.EnchantedBeam, 25, 0f, Player.whoAmI);
+                        swordProj.tileCollide = false;
+                        swordProj.friendly = false;
+                        swordProj.hostile = true;
+                    }
+
+                    if (dashCounter >= 3)
+                    {
+                        dashCounter = 0;
                     }
 
                     SoundEngine.PlaySound(SoundID.Item71, NPC.position);
                     NPC.netUpdate = true;
+
+
+                    NPC.ai[0] = NPC.life <= NPC.lifeMax * 0.5 ? 0f : 3f;
+                    NPC.ai[1] = 0f;
+                }
+            }
+            else if (NPC.ai[0] == 3f)
+            {
+                float num10 = 8f;
+                float num11 = 0.1f;
+
+                NPC.rotation += 0.25f;
+
+                Vector2 vector = new Vector2(NPC.position.X + (float)NPC.width * 0.5f, NPC.position.Y + (float)NPC.height * 0.5f);
+                float num12 = Player.position.X + (float)(Player.width / 2) - vector.X;
+                float num13 = Player.position.Y + (float)(Player.height / 2) - 200f - vector.Y;
+                float num14 = (float)Math.Sqrt(num12 * num12 + num13 * num13);
+                float num15 = num14;
+                num14 = num10 / num14;
+                num12 *= num14;
+                num13 *= num14;
+
+                if (NPC.velocity.X < num12)
+                {
+                    NPC.velocity.X += num11;
+                    if (NPC.velocity.X < 0f && num12 > 0f)
+                    {
+                        NPC.velocity.X += num11;
+                    }
+                }
+
+                else if (NPC.velocity.X > num12)
+                {
+                    NPC.velocity.X -= num11;
+                    if (NPC.velocity.X > 0f && num12 < 0f)
+                    {
+                        NPC.velocity.X -= num11;
+                    }
+                }
+                if (NPC.velocity.Y < num13)
+                {
+                    NPC.velocity.Y += num11;
+                    if (NPC.velocity.Y < 0f && num13 > 0f)
+                    {
+                        NPC.velocity.Y += num11;
+                    }
+                }
+                else if (NPC.velocity.Y > num13)
+                {
+                    NPC.velocity.Y -= num11;
+                    if (NPC.velocity.Y > 0f && num13 < 0f)
+                    {
+                        NPC.velocity.Y -= num11;
+                    }
+                }
+
+                NPC.ai[1] += 1f;
+                float num16 = 300f;
+
+                if (NPC.ai[1] >= num16)
+                {
+                    SoundEngine.PlaySound(SoundID.Item71, NPC.position);
                     NPC.ai[0] = 0f;
                     NPC.ai[1] = 0f;
+                    NPC.ai[2] = 0f;
+                    NPC.target = 255;
+                    NPC.netUpdate = true;
+                }
+                else if (NPC.position.Y + NPC.height < Player.position.Y && num15 < 500f)
+                {
+                    if (!Player.dead)
+                    {
+                        NPC.ai[2] += 1f;
+                    }                                     
+
+                    if (NPC.ai[2] % 80f == 0f)
+                    {
+                        NPC.ai[2] = 0f;                        
+                        float num18 = 6f;
+
+                        float num19 = Player.position.X + (float)(Player.width / 2) - vector.X;
+                        float num20 = Player.position.Y + (float)(Player.height / 2) - vector.Y;
+                        float num21 = (float)Math.Sqrt(num19 * num19 + num20 * num20);
+                        num21 = num18 / num21;
+                        Vector2 vector2 = vector;
+                        Vector2 vector3 = default;
+                        vector3.X = num19 * num21;
+                        vector3.Y = num20 * num21;
+                        vector2.X += vector3.X * 20f;
+                        vector2.Y += vector3.Y * 20f;
+
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
+                        {
+                            int swordNPC = NPC.NewNPC(NPC.GetSource_FromAI(), (int)vector2.X, (int)vector2.Y, NPCID.EnchantedSword);                            
+                            Main.npc[swordNPC].velocity.X = vector3.X * 2f;
+                            Main.npc[swordNPC].velocity.Y = vector3.Y * 2f;
+                            if (Main.netMode == NetmodeID.Server && swordNPC < Main.maxNPCs)
+                            {
+                                NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, swordNPC);
+                            }
+                        }                        
+                        for (int m = 0; m < 10; m++)
+                        {
+                            Dust.NewDust(vector2, 20, 20, 5, vector3.X * 0.4f, vector3.Y * 0.4f);
+                        }
+                    }
                 }
             }
         }
@@ -224,18 +340,18 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
         {
             if (NPC.ai[0] != -1f)
             {
-                Vector2 vector12 = new(TextureAssets.Npc[Type].Width() / 2, TextureAssets.Npc[Type].Height() / Main.npcFrameCount[Type] / 2);
+                Vector2 texture = new(TextureAssets.Npc[Type].Width() / 2, TextureAssets.Npc[Type].Height() / Main.npcFrameCount[Type] / 2);
                 Color npcColor = Lighting.GetColor((int)(NPC.position.X + NPC.width * 0.5) / 16, (int)((NPC.position.Y + NPC.height * 0.5) / 16.0));
-                float newScale = NPC.scale;
+                float afterImageScale = NPC.scale;
                 for (int i = 1; i < NPC.oldPos.Length; i++)
                 {
-                    newScale -= 0.1f;
+                    afterImageScale -= 0.1f;
                     Color newColor = npcColor;
                     newColor.R /= 2;
                     newColor.G /= 2;
                     newColor.B /= 2;
                     newColor.A /= 2;
-                    spriteBatch.Draw(TextureAssets.Npc[Type].Value, new Vector2(NPC.oldPos[i].X - Main.screenPosition.X + NPC.width / 2 - TextureAssets.Npc[Type].Width() * NPC.scale / 2f + vector12.X * NPC.scale, NPC.oldPos[i].Y - Main.screenPosition.Y + NPC.height - TextureAssets.Npc[Type].Height() * NPC.scale / Main.npcFrameCount[Type] + 4f + vector12.Y * NPC.scale), NPC.frame, newColor, NPC.rotation, vector12, newScale, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(TextureAssets.Npc[Type].Value, new Vector2(NPC.oldPos[i].X - Main.screenPosition.X + NPC.width / 2 - TextureAssets.Npc[Type].Width() * NPC.scale / 2f + texture.X * NPC.scale, NPC.oldPos[i].Y - Main.screenPosition.Y + NPC.height - TextureAssets.Npc[Type].Height() * NPC.scale / Main.npcFrameCount[Type] + 4f + texture.Y * NPC.scale), NPC.frame, newColor, NPC.rotation, texture, afterImageScale, SpriteEffects.None, 0f);
                 }
             }
 
