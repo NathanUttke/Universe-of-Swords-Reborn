@@ -19,7 +19,7 @@ public class TheEater : ModItem
     {
         Item.width = 54;
         Item.height = 58;
-        Item.rare = ItemRarityID.LightPurple;
+        Item.rare = ItemRarityID.LightRed;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 40;
         Item.useAnimation = 20;

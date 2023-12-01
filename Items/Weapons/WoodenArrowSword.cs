@@ -41,7 +41,7 @@ public class WoodenArrowSword : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.WoodenArrow, 500)
-			.AddIngredient(ModContent.ItemType<SwordMatter>(), 4)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 10)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

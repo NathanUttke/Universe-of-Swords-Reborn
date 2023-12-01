@@ -52,7 +52,7 @@ public class TheSwarm : ModItem
             for (int i = 0; i < Main.rand.Next(1, 3); i++)
             {
                 double offsetAngle = startAngle + deltaAngle * i;
-                Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), Item.shoot, newDamage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, newDamage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
             }
         }
 

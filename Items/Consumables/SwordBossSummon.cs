@@ -42,7 +42,7 @@ namespace UniverseOfSwordsMod.Items.Consumables
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     //NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<SwordBossNPC>());
-                    Vector2 spawnPosition = player.Center + new Vector2(500f * player.direction, 0f) + Main.rand.NextVector2Circular(100f, 100f);
+                    Vector2 spawnPosition = player.Center + new Vector2(500f * player.direction, 0f) + Main.rand.NextVector2Circular(70f, 70f);
                     NPC.SpawnBoss((int)spawnPosition.X, (int)spawnPosition.Y, ModContent.NPCType<SwordBossNPC>(), player.whoAmI);
                 }
                 else

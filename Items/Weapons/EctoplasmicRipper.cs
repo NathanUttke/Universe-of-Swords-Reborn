@@ -29,7 +29,7 @@ public class EctoplasmicRipper : ModItem
         Item.knockBack = 6f;
 		Item.value = Item.sellPrice(0, 1, 40, 0);
 		Item.rare = ItemRarityID.Cyan;
-		Item.scale = 1.25f;		
+		Item.scale = 1.5f;		
 		Item.autoReuse = true;
 		Item.useTurn = false;
 
