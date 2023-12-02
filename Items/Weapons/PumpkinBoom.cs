@@ -36,7 +36,6 @@ public class PumpkinBoom : ModItem
 	{		
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<PumpkinSword>(), 1)
-			.AddIngredient(ModContent.ItemType<Orichalcon>(), 1)
 			.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
