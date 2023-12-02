@@ -70,7 +70,8 @@ public class ScarledFlareGreatsword : ModItem
 		CreateRecipe()
 		.AddIngredient(ItemType<SwordMatter>(), 50)
 		.AddIngredient(ItemType<RedFlareLongsword>(), 1)
-		.AddIngredient(ItemType<TheNightmareAmalgamation>(), 1)
+        .AddIngredient(ItemType<ScarletFlareCore>(), 1)
+        .AddIngredient(ItemType<TheNightmareAmalgamation>(), 1)
         .AddIngredient(ItemID.BrokenHeroSword, 1)
         .AddTile(TileID.LunarCraftingStation)
 		.Register();
