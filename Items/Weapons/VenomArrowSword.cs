@@ -17,7 +17,7 @@ public class VenomArrowSword : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.scale = 1.5f;
+		Item.scale = 1f;
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 44;
