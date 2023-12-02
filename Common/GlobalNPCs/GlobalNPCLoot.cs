@@ -19,6 +19,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             Conditions.IsHardmode isHardmodeCondition = new();
             Conditions.NotExpert notExpertCondition = new();
             Conditions.IsExpert isExpertCondition = new();
+            Conditions.DownedPlantera planteraCondition = new();
 
             int swordMatterChance = 10;
 
@@ -36,7 +37,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
 
             if (npc.boss)
             {
-                npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<SwordMatter>(), 4, 5, 10));               
+                npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<SwordMatter>(), 8, 3, 8));               
             }
             if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
             {
@@ -113,7 +114,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(isExpertCondition, ModContent.ItemType<HaloOfHorrors>(), 100, 1));
                     break;
                 case NPCID.RedDevil:
-                    npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<ScarletFlareCore>(), 25, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(planteraCondition, ModContent.ItemType<ScarletFlareCore>(), 25));
                     break;
                 case NPCID.Demon:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));
