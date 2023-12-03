@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria.Graphics.Shaders;
 
-namespace Terraria.Graphics;
+namespace UniverseOfSwordsMod.Graphics;
 
 public struct AlternateFinalFractalHelper
 {
