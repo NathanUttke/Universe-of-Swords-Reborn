@@ -37,6 +37,7 @@ public class DestroyerSword : ModItem
 		Projectile laserProj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
 		laserProj.friendly = true;
 		laserProj.hostile = false;
+		laserProj.timeLeft = 100;
 		return false;
     }
 
