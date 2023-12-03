@@ -30,7 +30,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 swordMatterChance = 5;
             }
 
-            if (npc.lifeMax >= 45 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly && !npc.boss)
+            if (npc.lifeMax >= 40 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly && !npc.boss)
             {
                 npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, swordMatterChance, 1, 2));
             }
@@ -75,7 +75,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<Executioner>(), 1, 1, 1));
                     break;
                 case NPCID.CultistBoss:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Doomsday>(), 1, 1, 1));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Doomsday>(), 1));
                     break;
                 case NPCID.MartianSaucerCore:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<MartianSaucerCore>(), 2, 1));
