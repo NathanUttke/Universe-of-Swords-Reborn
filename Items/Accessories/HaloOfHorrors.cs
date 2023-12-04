@@ -14,8 +14,8 @@ public class HaloOfHorrors : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 62;
-		Item.height = 60;
+		Item.width = 38;
+		Item.height = 40;
 		Item.value = Item.sellPrice(0, 6, 0, 0);
 		Item.rare = ItemRarityID.Purple;
 		Item.expert = true;
