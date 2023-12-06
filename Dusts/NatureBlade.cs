@@ -11,6 +11,7 @@ public class NatureBlade : ModDust
 		dust.velocity *= 0.5f;
 		dust.noGravity = true;
 		dust.noLight = true;
+		dust.scale *= 0.5f;
 		dust.frame = new Rectangle(0, 0, 16, 16);
 	}
 	public override bool Update(Dust dust)
@@ -19,7 +20,7 @@ public class NatureBlade : ModDust
 		dust.rotation = dust.velocity.ToRotation();
 		dust.scale -= 0.025f;
 		dust.alpha = 127;
-		if (dust.scale < 0.75f)
+		if (dust.scale < 0.25f)
 		{
 			dust.active = false;
 		}

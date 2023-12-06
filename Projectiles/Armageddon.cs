@@ -4,6 +4,9 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace UniverseOfSwordsMod.Projectiles;
 
@@ -20,7 +23,7 @@ public class Armageddon : ModProjectile
     {
         Projectile.width = 20;
         Projectile.height = 13;
-        Projectile.scale = Main.rand.NextFloat(1f, 1.5f);
+        Projectile.scale = 1f;
         Projectile.aiStyle = 25;
         Projectile.friendly = true;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
@@ -35,7 +38,7 @@ public class Armageddon : ModProjectile
         Projectile.rotation = Projectile.velocity.ToRotation();
         if (Main.rand.NextBool(2))
         {
-            Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Flare, 0f, 0f, 0, default, 1f);
+            Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, default, 1f);
             obj.noGravity = true;
             obj.scale = 2f;
         }
@@ -43,14 +46,26 @@ public class Armageddon : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        default(FlameLashDrawer).Draw(Projectile);
-        return true;
+        SpriteBatch spriteBatch = Main.spriteBatch;
+        Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
+        Color drawColorGlow = Color.Orange;
+        drawColorGlow.A = 0;
+
+        Texture2D meteorTexture = TextureAssets.Projectile[Type].Value;
+        Vector2 drawOrigin = new(meteorTexture.Width / 2, meteorTexture.Height / 2);
+
+
+        spriteBatch.Draw(meteorTexture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+        spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1f, SpriteEffects.None, 0);
+
+        return false;
     }
 
     public override void Kill(int timeLeft)
     {
-        Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 0, default, 1f);
-        Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default, 1f);
+        Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 0, default, 1f);
+        Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default, 1f);
+
         Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, 0f, 0f, ProjectileID.InfernoFriendlyBlast, Projectile.damage, Projectile.knockBack, Main.myPlayer, 0f, 0f);
         SoundEngine.PlaySound(SoundID.Dig, new Vector2(Projectile.position.X, Projectile.position.Y));             
     }
