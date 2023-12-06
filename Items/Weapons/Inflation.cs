@@ -17,7 +17,7 @@ public class Inflation : ModItem
     {
         Item.width = 128;
         Item.height = 128;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ItemRarityID.Orange;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 4f;
         Item.useTime = 50;

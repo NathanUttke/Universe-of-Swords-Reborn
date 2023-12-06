@@ -19,7 +19,7 @@ public class NatureSword : ModItem
 		Item.width = 72;
 		Item.height = 72;
 		Item.scale = 1f;
-		Item.rare = ItemRarityID.Green;
+		Item.rare = ItemRarityID.Blue;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 50;
 		Item.useAnimation = 25;

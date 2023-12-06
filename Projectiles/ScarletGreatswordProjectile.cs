@@ -11,9 +11,9 @@ using Terraria.Graphics.Shaders;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    internal class ScarledGreatswordProjectile : DragonsDeathProjectile
+    internal class ScarletGreatswordProjectile : DragonsDeathProjectile
     {
-        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/ScarledFlareGreatsword";
+        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/ScarletFlareGreatsword";
 
         public override void SetStaticDefaults()
         {
@@ -51,24 +51,26 @@ namespace UniverseOfSwordsMod.Projectiles
         private const float maxTime = 40f;
         public override void AI()
         {
-            
             Player player = Main.player[Projectile.owner];
-            Vector2 playerCenter = player.RotatedRelativePoint(player.MountedCenter);
-
-            Vector2 velocity = new(Main.mouseX + Main.screenPosition.X - playerCenter.X, Main.mouseY + Main.screenPosition.Y - playerCenter.Y);
-            velocity.Normalize();
-
 
             if (player.dead)
             {
                 Projectile.Kill();
                 return;
-            }
+            } 
+            
+            Vector2 playerCenter = player.RotatedRelativePoint(player.MountedCenter);
+
+            // Get the cursor's position
+
+            Vector2 velocity = new(Main.mouseX + Main.screenPosition.X - playerCenter.X, Main.mouseY + Main.screenPosition.Y - playerCenter.Y);
+            velocity.Normalize();
 
             Lighting.AddLight(player.Center, 0.8f, 0.45f, 0.1f);
 
             int velocityXSign = Math.Sign(Projectile.velocity.X);
             Projectile.velocity = new Vector2(velocityXSign, 0f);
+
             if (Projectile.ai[0] == 0f)
             {
                 Projectile.rotation = new Vector2(velocityXSign, 0f - player.gravDir).ToRotation() + -MathHelper.PiOver4 + MathHelper.Pi;
@@ -79,11 +81,11 @@ namespace UniverseOfSwordsMod.Projectiles
             }            
             Projectile.ai[0] += 1f;
 
-            // Spawn a projectile every 15 ticks
+            // Spawn a projectile every 8 ticks
 
-            if (Projectile.ai[0] == 10f)
+            if (Projectile.ai[0] == 8f)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, velocity * shootSpeed, ModContent.ProjectileType<FlareCore>(), (int)(Projectile.damage * 3f), Projectile.knockBack, player.whoAmI);
+                Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, velocity * shootSpeed, ModContent.ProjectileType<FlareCore>(), (int)(Projectile.damage * 2f), Projectile.knockBack, player.whoAmI);
                 Projectile.ai[0] += 1f;
             }
 

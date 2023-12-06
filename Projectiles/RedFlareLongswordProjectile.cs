@@ -56,19 +56,15 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            SpriteBatch spriteBatch = Main.spriteBatch;
-            spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
-  
+            SpriteBatch spriteBatch = Main.spriteBatch;             
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
 
-            spriteBatch.Draw(texture, new Vector2(Projectile.position.X - Main.screenPosition.X + Projectile.width / 2, Projectile.position.Y - Main.screenPosition.Y + Projectile.height / 2), sourceRectangle, Color.White, Projectile.rotation, new Vector2(TextureAssets.Projectile[Projectile.type].Width(), 0f), Projectile.scale, SpriteEffects.None, 0);
+            Color projColor = Color.White;
+            projColor.A = 0;
+
+            spriteBatch.Draw(texture, new Vector2(Projectile.position.X - Main.screenPosition.X + Projectile.width / 2, Projectile.position.Y - Main.screenPosition.Y + Projectile.height / 2), sourceRectangle, projColor, Projectile.rotation, new Vector2(TextureAssets.Projectile[Projectile.type].Width(), 0f), Projectile.scale, SpriteEffects.None, 0);
             default(FlameLashDrawer).Draw(Projectile);
-
-            spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
-
             return false;
         }
         public override void Kill(int timeLeft)

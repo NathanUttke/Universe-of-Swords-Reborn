@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -17,7 +18,7 @@ public class DestroyerSword : ModItem
 	{
 		Item.width = 62;
 		Item.height = 62;
-		Item.rare = ItemRarityID.LightPurple;
+		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
@@ -25,25 +26,17 @@ public class DestroyerSword : ModItem
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 160000;
-		Item.shoot = ProjectileID.DeathLaser;
-		Item.shootSpeed = 10f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
 	}
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-		Projectile laserProj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-		laserProj.friendly = true;
-		laserProj.hostile = false;
-		laserProj.timeLeft = 100;
-		return false;
-    }
-
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-    {
-		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
+        if (target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
+        {
+			UniverseUtils.SummonSuperStarSlash(target.position, target.GetSource_OnHit(target), damageDone, player.whoAmI, ModContent.ProjectileType<DestroyerLaser>());
+        }
     }
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)

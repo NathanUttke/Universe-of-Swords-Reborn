@@ -51,7 +51,7 @@ public class SwordOfTheUniverseNew : ModItem
 		newRecipe.AddIngredient(ModContent.ItemType<CosmoStorm>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<SuperInflation>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<EdgeLord>(), 1);
-		newRecipe.AddIngredient(ModContent.ItemType<ScarledFlareGreatsword>(), 1);
+		newRecipe.AddIngredient(ModContent.ItemType<ScarletFlareGreatsword>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<SolBlade>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 250);
         if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AuricBar", out ModItem auricBar))

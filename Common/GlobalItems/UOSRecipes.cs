@@ -5,13 +5,13 @@ using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Common.GlobalItems
 {
-    public class UOSRRecipes : ModSystem
+    public class UOSRecipes : ModSystem
     {
-        public static RecipeGroup UOSRRecipeGroup;
+        public static RecipeGroup UOSRecipeGroup;
 
         public override void Unload()
         {
-            UOSRRecipeGroup = null;
+            UOSRecipeGroup = null;
         }
 
         public override void AddRecipeGroups()
@@ -38,10 +38,10 @@ namespace UniverseOfSwordsMod.Common.GlobalItems
 
         public override void AddRecipes()
         {
-            Recipe terrgrimRecipe = Recipe.Create(ItemID.Terragrim, 1);
-            terrgrimRecipe.AddIngredient(ItemID.EnchantedSword, 1);
-            terrgrimRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 15);
-            terrgrimRecipe.Register();
+            Recipe.Create(ItemID.Terragrim, 1)
+            .AddIngredient(ItemID.EnchantedSword, 1)
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 20)
+            .Register();
         }
     }
 }

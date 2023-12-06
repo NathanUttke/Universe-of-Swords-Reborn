@@ -66,6 +66,8 @@ namespace UniverseOfSwordsMod.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             Color defaultColor = Projectile.GetAlpha(lightColor);
+            defaultColor.A = 0;
+
             Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/SOTUV2Glow");
 
@@ -73,14 +75,7 @@ namespace UniverseOfSwordsMod.Projectiles
             int startY = frameHeight * Projectile.frame;
             Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
 
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
-
             Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), Projectile.scale * 2f, SpriteEffects.None, 0);
-
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
-
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);  
 
             return false;

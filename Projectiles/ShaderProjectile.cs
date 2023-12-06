@@ -55,8 +55,8 @@ namespace UniverseOfSwordsMod.Projectiles
             miscShaderData.UseSaturation(-0.5f);
             miscShaderData.UseOpacity(2.25f);
             miscShaderData.Apply();
+
             vertexStrip.PrepareStrip(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + Projectile.Size / 2f, Projectile.oldPos.Length, false);
-            //vertexStrip.PrepareStripWithProceduralPadding(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + Projectile.Size / 2f);
             vertexStrip.DrawTrail();
             Main.pixelShader.CurrentTechnique.Passes[0].Apply();
 

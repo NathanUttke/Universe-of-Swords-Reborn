@@ -45,10 +45,10 @@ public class GrandPiano : ModItem
 	public override void AddRecipes()
 	{		
 		CreateRecipe()
-		.AddIngredient(Mod, "PianoSword1", 1)
-		.AddIngredient(Mod, "PianoSword2", 1)
-		.AddIngredient(Mod, "PianoSword3", 1)
-		.AddIngredient(Mod, "PianoSword4", 1)
+		.AddIngredient(ModContent.ItemType<BeethovenBeater>(), 1)
+		.AddIngredient(ModContent.ItemType<GershwinGasher>(), 1)
+		.AddIngredient(ModContent.ItemType<MozartMauler>(), 1)
+		.AddIngredient(ModContent.ItemType<LisztLasher>(), 1)
 		.AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
 		.AddTile(TileID.Autohammer)
 		.Register();

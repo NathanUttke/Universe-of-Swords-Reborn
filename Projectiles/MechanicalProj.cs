@@ -12,8 +12,8 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Mechanical Projectile");
-            ProjectileID.Sets.TrailCacheLength[Type] = 10;
-            ProjectileID.Sets.TrailingMode[Type] = 2;
+            ProjectileID.Sets.TrailCacheLength[Type] = 12;
+            ProjectileID.Sets.TrailingMode[Type] = 0;
         }
         public override void SetDefaults()
         {
@@ -57,14 +57,14 @@ namespace UniverseOfSwordsMod.Projectiles
                 dust.noGravity = true;
                 dust.scale = 1.1f;
             }
-        }
-        public override Color? GetAlpha(Color lightColor) => new Color(247, 119, 91, 50) * Projectile.Opacity;
+        }        
 
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
 
-            Color projColor = Projectile.GetAlpha(lightColor);
+            Color projColor = Color.OrangeRed;
+            projColor.A = 0;
             Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
 
             SpriteEffects spriteEffects = SpriteEffects.None;
@@ -72,16 +72,19 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
+            
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                Vector2 drawPos = Projectile.Size / 2f + Projectile.oldPos[i] - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);     
+                Vector2 drawPos = Projectile.Size / 2f + Projectile.oldPos[i] - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+                
+                projColor = Projectile.GetAlpha(projColor);
+                projColor *= 0.75f;
 
-                projColor *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-                Main.EntitySpriteDraw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale - i / (float) Projectile.oldPos.Length, spriteEffects, 0);
-            }
-
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+                Main.spriteBatch.Draw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale - i / (float) Projectile.oldPos.Length, spriteEffects, 0);
+            }            
+            
+            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             return false;
         }
     }

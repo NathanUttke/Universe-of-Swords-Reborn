@@ -9,7 +9,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-public class ScarledFlareGreatsword : ModItem
+public class ScarletFlareGreatsword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
@@ -26,14 +26,14 @@ public class ScarledFlareGreatsword : ModItem
 		Item.useTime = 25;
 		Item.useAnimation = 20;
 
-		Item.damage = 135;
+		Item.damage = 125;
 		Item.knockBack = 6f;
 		Item.scale = 1f;
 		Item.crit = 6;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
 		Item.shootSpeed = 20f;
-		Item.shoot = ProjectileType<ScarledGreatswordProjectile>();
+		Item.shoot = ProjectileType<ScarletGreatswordProjectile>();
 		Item.UseSound = SoundID.Item169;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;

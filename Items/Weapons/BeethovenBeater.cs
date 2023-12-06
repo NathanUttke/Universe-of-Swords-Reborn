@@ -7,7 +7,7 @@ using Terraria.ID;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-public class PianoSword1 : ModItem
+public class BeethovenBeater : ModItem
 {
 	public override void SetStaticDefaults()
 	{

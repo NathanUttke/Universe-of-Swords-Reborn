@@ -13,7 +13,7 @@ public class Doomsday : ModItem
 		Item.width = 66;
 		Item.height = 70;
 		Item.scale = 1f;
-		Item.rare = ItemRarityID.Yellow;
+		Item.rare = ItemRarityID.Cyan;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
@@ -22,7 +22,7 @@ public class Doomsday : ModItem
 		Item.UseSound = SoundID.Item45;
 		Item.value = 470000;
 		Item.shoot = ProjectileID.InfernoFriendlyBlast;
-		Item.shootSpeed = 10f;
+		Item.shootSpeed = 12f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
@@ -31,6 +31,7 @@ public class Doomsday : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+		proj.timeLeft = 100;
         proj.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }

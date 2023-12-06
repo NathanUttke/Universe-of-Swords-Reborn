@@ -19,7 +19,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             Conditions.IsHardmode isHardmodeCondition = new();
             Conditions.NotExpert notExpertCondition = new();
             Conditions.IsExpert isExpertCondition = new();
-            Conditions.DownedPlantera planteraCondition = new();
+            DownedGolem isGolemDown = new();
 
             int swordMatterChance = 10;
 
@@ -27,11 +27,12 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
 
             if (NPC.downedMoonlord)
             {
+                Main.NewText("Sword Matter drop chance increased.");
                 swordMatterChance = 5;
             }
 
             if (npc.lifeMax >= 40 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly && !npc.boss)
-            {
+            {              
                 npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, swordMatterChance, 1, 2));
             }
 
@@ -114,7 +115,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(isExpertCondition, ModContent.ItemType<HaloOfHorrors>(), 100, 1));
                     break;
                 case NPCID.RedDevil:
-                    npcLoot.Add(ItemDropRule.ByCondition(planteraCondition, ModContent.ItemType<ScarletFlareCore>(), 25));
+                    npcLoot.Add(ItemDropRule.ByCondition(isGolemDown, ModContent.ItemType<ScarletFlareCore>(), 25));
                     break;
                 case NPCID.Demon:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));
@@ -132,6 +133,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     IItemDropRule rule = ItemDropRule.ByCondition(isExpertCondition, ModContent.ItemType<GnomBlade>(), 300, 1);
                     leadingConditionRule.OnSuccess(rule);
                     npcLoot.Add(leadingConditionRule);
+                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<LuminiteArrowSword>(), 9, 1, 1, 2));
                     break;
             }
         }        

@@ -48,7 +48,10 @@ public class CosmoStorm : ModItem
         .AddTile(TileID.LunarCraftingStation)
         .Register();
     }
-
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {

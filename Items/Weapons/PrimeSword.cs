@@ -18,7 +18,7 @@ public class PrimeSword : ModItem
 	{
 		Item.width = 62;
 		Item.height = 64;
-		Item.rare = ItemRarityID.LightPurple;
+		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 20;

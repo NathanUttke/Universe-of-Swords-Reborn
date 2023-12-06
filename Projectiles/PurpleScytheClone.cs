@@ -29,15 +29,10 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);
 
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-            Color drawColorGlow = Color.Violet;            
-
-            spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+            Color drawColorGlow = Color.Violet;
+            drawColorGlow.A = 0;
 
             spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 0.5f, SpriteEffects.None, 0);
-
-            spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {

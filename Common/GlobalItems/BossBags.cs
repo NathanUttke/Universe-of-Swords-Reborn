@@ -48,6 +48,9 @@ namespace UniverseOfSwordsMod.Common.GlobalItems
                     case ItemID.GolemBossBag:
                         itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SolBlade>(), 1, 1, 1));
                         break;
+                    case ItemID.MoonLordBossBag:
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<LuminiteArrowSword>(), 4, 1, 1));
+                        break;
                 }
             }
         }

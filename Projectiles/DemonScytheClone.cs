@@ -55,22 +55,15 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
+            SpriteBatch spriteBatch = Main.spriteBatch;
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);
 
             Texture2D glowSphereTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
             Color drawColorGlow = Color.Cyan;
-
-            SpriteBatch spriteBatch = Main.spriteBatch;
-
-
-            spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+            drawColorGlow.A = 0;            
 
             spriteBatch.Draw(glowSphereTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphereTexture.Width / 2, glowSphereTexture.Height / 2), 0.75f, SpriteEffects.None, 0);
-
-            spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
@@ -86,7 +79,6 @@ namespace UniverseOfSwordsMod.Projectiles
             }            
 
             spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
-
 
             return false;
         }

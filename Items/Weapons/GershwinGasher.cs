@@ -7,7 +7,7 @@ using Terraria.ID;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-public class PianoSword2 : ModItem
+public class GershwinGasher : ModItem
 {
     public override void SetStaticDefaults()
     {

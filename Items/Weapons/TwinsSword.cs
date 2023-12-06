@@ -18,7 +18,7 @@ public class TwinsSword : ModItem
 	{
 		Item.width = 58;
 		Item.height = 58;
-		Item.rare = ItemRarityID.LightPurple;
+		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 20;

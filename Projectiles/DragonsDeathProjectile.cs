@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace UniverseOfSwordsMod.Projectiles
@@ -10,6 +11,7 @@ namespace UniverseOfSwordsMod.Projectiles
     internal class DragonsDeathProjectile : ModProjectile
     {
         public override string Texture => "UniverseOfSwordsMod/Items/Weapons/DragonsDeath";
+
         public override void SetDefaults()
         {
             Projectile.aiStyle = -1;
@@ -29,10 +31,12 @@ namespace UniverseOfSwordsMod.Projectiles
             float projRotation = Projectile.rotation - MathHelper.PiOver4 + MathHelper.Pi * Math.Sign(Projectile.velocity.X);
             float collisionPoint = 0f;
             float boxSize = 160f;
+
             if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint))
             {
                 return true;
             }
+
             return false;
         }
         public override void AI()
@@ -62,7 +66,7 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 Projectile.alpha = 0;
             }
-            _ = Projectile.ai[0] / useTime;
+            //_ = Projectile.ai[0] / useTime;
             Projectile.ai[0] += 1f;
             Projectile.rotation += MathHelper.TwoPi * 2f / useTime * velocityXSign;
             bool halfUseTime = Projectile.ai[0] == (int)(useTime / 2f);

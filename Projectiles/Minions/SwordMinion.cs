@@ -22,7 +22,7 @@ namespace UniverseOfSwordsMod.Projectiles.Minions
         {
             Projectile.friendly = true;
             Projectile.width = 16;
-            Projectile.height = 42;
+            Projectile.height = 48;
             Projectile.minion = true;
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Summon;
@@ -83,7 +83,7 @@ namespace UniverseOfSwordsMod.Projectiles.Minions
             }
             float projectilePosX = Projectile.position.X;
             float projectilePosY = Projectile.position.Y;
-            float maxTargetDistance = 900f;
+            float maxTargetDistance = 800f;
             bool foundTarget = false;
             int maxDistance = 500;
 
@@ -175,7 +175,7 @@ namespace UniverseOfSwordsMod.Projectiles.Minions
                         Projectile.velocity.X = -0.15f;
                         Projectile.velocity.Y = -0.05f;
                     }
-                    Projectile.velocity *= 1.01f;
+                    Projectile.velocity *= 1.015f;
                 } 
                 Projectile.rotation = Projectile.velocity.X * 0.05f;
                 if (MathF.Abs(Projectile.velocity.X) > 0.2)

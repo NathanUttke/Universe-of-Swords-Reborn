@@ -53,7 +53,11 @@ public class TheNightmareAmalgamation : ModItem
         return false;
     }
 
-	public override void MeleeEffects(Player player, Rectangle hitbox)
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
+    public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
 		if (Main.rand.NextBool(2))
 		{
