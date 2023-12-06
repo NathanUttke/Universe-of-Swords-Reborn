@@ -33,6 +33,8 @@ Projectiles: {
 	UselessProjectile.DisplayName: Useless Weapon
 	BetterShroomiteProj.DisplayName: Better Shroomite Proj
 	PrimeSlashProj.DisplayName: Prime Slash Proj
+	DestroyerLaser.DisplayName: Destroyer Laser
+	ScarletGreatswordProjectile.DisplayName: Scarlet Greatsword Projectile
 }
 
 NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
@@ -331,7 +333,7 @@ Items: {
 
 	SwordOfPower: {
 		DisplayName: Broken Sword Of Power
-		Tooltip: Needs to be fixed
+		Tooltip: It's broken
 	}
 
 	DamascusHamaxe: {
@@ -808,6 +810,31 @@ Items: {
 	WoodenArrowSword: {
 		DisplayName: Wooden Arrow Sword
 		Tooltip: Shoots Wooden Arrows
+	}
+
+	ScarletFlareGreatsword: {
+		DisplayName: Scarlet Flare Greatsword
+		Tooltip: ""
+	}
+
+	MozartMauler: {
+		Tooltip: ""
+		DisplayName: Mozart Mauler
+	}
+
+	LisztLasher: {
+		Tooltip: ""
+		DisplayName: Liszt Lasher
+	}
+
+	GershwinGasher: {
+		Tooltip: ""
+		DisplayName: Gershwin Gasher
+	}
+
+	BeethovenBeater: {
+		Tooltip: ""
+		DisplayName: Beethoven Beater
 	}
 }
 
