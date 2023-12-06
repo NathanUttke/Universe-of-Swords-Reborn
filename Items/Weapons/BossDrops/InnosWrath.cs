@@ -17,11 +17,11 @@ public class InnosWrath : ModItem
 	{
 		Item.width = 124;
 		Item.height = 124;
-		Item.rare = ItemRarityID.Red;
+		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 19;
 		Item.useAnimation = 19;
-		Item.damage = 80;
+		Item.damage = 72;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item169;
 		Item.value = 611500;

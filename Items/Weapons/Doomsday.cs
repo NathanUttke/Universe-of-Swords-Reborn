@@ -17,7 +17,7 @@ public class Doomsday : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 100;
+		Item.damage = 130;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item45;
 		Item.value = 470000;

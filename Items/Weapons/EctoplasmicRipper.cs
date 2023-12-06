@@ -46,7 +46,7 @@ public class EctoplasmicRipper : ModItem
 		}
 	}
 
-	public override void AddRecipes()
+    public override void AddRecipes()
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.SpectreBar, 12)

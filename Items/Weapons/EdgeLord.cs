@@ -38,20 +38,10 @@ public class EdgeLord : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<TheBrain>(), 1)
 			.AddIngredient(ItemID.MoonStone, 1)
 			.AddIngredient(ItemID.HellstoneBar, 50)
 			.AddIngredient(ItemID.SunStone, 1)
 			.AddIngredient(ModContent.ItemType<SwordMatter>(), 35)
-			.AddIngredient(ItemID.DeathSickle, 1)
-			.AddTile(TileID.MythrilAnvil)
-			.Register();
-		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<TheEater>(), 1)
-			.AddIngredient(ItemID.MoonStone, 1)
-			.AddIngredient(ItemID.HellstoneBar, 50)
-            .AddIngredient(ItemID.SunStone, 1)
-            .AddIngredient(ModContent.ItemType<SwordMatter>(), 35)
 			.AddIngredient(ItemID.DeathSickle, 1)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();

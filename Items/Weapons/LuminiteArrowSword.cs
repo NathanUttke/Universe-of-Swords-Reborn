@@ -39,13 +39,4 @@ public class LuminiteArrowSword : ModItem
         proj.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }
-
-	public override void AddRecipes()
-	{				
-		CreateRecipe()
-			.AddIngredient(ItemID.MoonlordArrow, 500)
-			.AddIngredient(ModContent.ItemType<SwordMatter>(), 40)
-			.AddTile(TileID.LunarCraftingStation)
-			.Register();
-	}
 }

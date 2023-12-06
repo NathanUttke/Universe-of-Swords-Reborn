@@ -52,6 +52,7 @@ public class PumpkinBoom : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-		Projectile.NewProjectile(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.Landmine, (int)(damageDone / 2f), Item.knockBack / 2f, player.whoAmI);
+		Projectile boomProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.Landmine, (int)(damageDone / 2f), Item.knockBack / 2f, player.whoAmI);
+		boomProj.DamageType = DamageClass.MeleeNoSpeed;
     }
 }

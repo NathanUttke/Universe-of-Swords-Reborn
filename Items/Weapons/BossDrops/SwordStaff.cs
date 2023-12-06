@@ -35,6 +35,7 @@ namespace UniverseOfSwordsMod.Items.Weapons.BossDrops
             Item.noMelee = true;
             Item.DamageType = DamageClass.Summon;
             Item.buffType = ModContent.BuffType<SwordMinionBuff>();
+            Item.rare = ItemRarityID.Yellow;
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

@@ -18,7 +18,6 @@ public class CursedArrowSword : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.scale = 1.5f;
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 44;
