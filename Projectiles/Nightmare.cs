@@ -27,6 +27,7 @@ internal class Nightmare : ModProjectile
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
         Projectile.timeLeft = 50;
+        Projectile.light = 0.25f;
     }
 
     public override void AI()
