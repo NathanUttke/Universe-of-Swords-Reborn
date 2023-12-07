@@ -6,16 +6,14 @@ using Terraria.ModLoader;
 namespace UniverseOfSwordsMod.Dusts;
 
 public class GlowDust : ModDust
-{
-    public override string Texture => "UniverseofSwordsMod/Assets/GlowDust";
+{   
     public override void OnSpawn(Dust dust)
     {
         dust.velocity *= 0.6f;
-        dust.noGravity = true;
-        dust.noLight = true;
-        dust.scale *= 1f;
+        dust.noGravity = true;        
+        dust.scale *= 0.5f;
         dust.frame = new Rectangle(0, 0, 128, 128);
-        dust.noLightEmittence = true;
+        dust.noLightEmittence = false;
     }
 
     public override bool Update(Dust dust)
@@ -23,19 +21,16 @@ public class GlowDust : ModDust
         dust.position += dust.velocity;
         dust.rotation += dust.velocity.X * 0.2f;
         dust.scale *= 0.9f;
-        if (dust.scale < 0.1f)
+        if (dust.scale < 0.01f)
         {
             dust.active = false;
         }
         return false;
     }
 
-    public override bool PreDraw(Dust dust)
+    public override Color? GetAlpha(Dust dust, Color lightColor)
     {
-        Color dustColor = Color.Orange;
-        dustColor.A = 0;
-
-        Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, dustColor, dust.rotation, new Vector2(4f, 4f), dust.scale, SpriteEffects.None, 0);
-        return false;
+        dust.color.A = 0;
+        return dust.color;
     }
 }

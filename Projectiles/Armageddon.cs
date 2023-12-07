@@ -38,9 +38,7 @@ public class Armageddon : ModProjectile
         Projectile.rotation = Projectile.velocity.ToRotation();
         if (Main.rand.NextBool(2))
         {
-            Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, default, 1f);
-            obj.noGravity = true;
-            obj.scale = 2f;
+            Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 1f);
         }
     }
 
@@ -56,7 +54,7 @@ public class Armageddon : ModProjectile
 
 
         spriteBatch.Draw(meteorTexture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
-        spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1f, SpriteEffects.None, 0);
+        spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 0.8f, SpriteEffects.None, 0);
 
         return false;
     }
@@ -72,6 +70,9 @@ public class Armageddon : ModProjectile
 
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
-        target.AddBuff(189, 500, false);
+        if (!target.HasBuff(BuffID.Daybreak))
+        {
+            target.AddBuff(BuffID.Daybreak, 500, false);
+        }
     }
 }

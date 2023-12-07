@@ -14,7 +14,7 @@ public class TheSwarm : ModItem
 	{
 		Item.width = 64;
 		Item.height = 64;
-		Item.rare = ItemRarityID.LightRed;
+		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 40;
 		Item.useAnimation = 20;

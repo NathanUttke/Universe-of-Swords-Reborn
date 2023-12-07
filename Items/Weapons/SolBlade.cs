@@ -44,9 +44,9 @@ public class SolBlade : ModItem
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
-		if (Main.rand.NextBool(3))
+		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, default, 2f);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 1.5f);
 			Main.dust[dust].noGravity = true;
 		}
 	}
