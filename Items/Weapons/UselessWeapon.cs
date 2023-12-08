@@ -18,7 +18,15 @@ public class UselessWeapon : ModItem
 		Item.height = 56;
 		Item.rare = ItemRarityID.Pink;
 
-        Item.DamageType = DamageClass.MeleeNoSpeed;
+        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("TrueMeleeDamageClass", out DamageClass TrueMeleeDamageClass))
+        {
+            Item.DamageType = TrueMeleeDamageClass;
+        }
+        else
+        {
+            Item.DamageType = DamageClass.MeleeNoSpeed;
+        }
+
         Item.damage = 8; 
 
         Item.useTime = 14;
@@ -39,6 +47,8 @@ public class UselessWeapon : ModItem
         Item.noMelee = true;
         Item.autoReuse = true;
     }
+
+
 
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {

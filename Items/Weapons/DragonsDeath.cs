@@ -23,22 +23,26 @@ public class DragonsDeath : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 150;
-		Item.knockBack = 10f;
-		Item.UseSound = SoundID.Item169;
-		Item.noMelee = true;
-		Item.noUseGraphic = true;
-		Item.value = 490500;
-		Item.autoReuse = true;
-		Item.DamageType = DamageClass.MeleeNoSpeed; 
-		Item.ResearchUnlockCount = 1;
-	}
+        Item.UseSound = SoundID.Item169;
 
-    public override bool CanUseItem(Player player)
-    {
+        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("TrueMeleeDamageClass", out DamageClass TrueMelee))
+        {
+            Item.DamageType = TrueMelee;
+        }
+        else
+        {
+            Item.DamageType = DamageClass.MeleeNoSpeed;
+        }
+
+        Item.damage = 150;
+		Item.knockBack = 10f;
         Item.shoot = ModContent.ProjectileType<DragonsDeathProjectile>();
         Item.shootSpeed = 1f;
-        return true;
-    }
+        Item.noMelee = true;
+		Item.noUseGraphic = true;
+		Item.value = 490500;
+		Item.autoReuse = true;		
+		Item.ResearchUnlockCount = 1;
+	}
 
 }

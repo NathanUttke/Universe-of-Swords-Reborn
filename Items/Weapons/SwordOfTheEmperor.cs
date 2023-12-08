@@ -26,7 +26,7 @@ public class SwordOfTheEmperor : ModItem
         Item.useAnimation = 22;
         Item.UseSound = SoundID.Item169;
 
-        Item.damage = 85;
+        Item.damage = 90;
         Item.knockBack = 4.5f;
         Item.scale = 1.25f;
         

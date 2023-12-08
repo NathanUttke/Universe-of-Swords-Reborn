@@ -23,8 +23,17 @@ public class ClingerSword : ModItem
 		Item.noUseGraphic = true;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
+
+        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("TrueMeleeDamageClass", out DamageClass TrueMelee))
+        {
+            Item.DamageType = TrueMelee;
+        }
+        else
+        {
+            Item.DamageType = DamageClass.MeleeNoSpeed;
+        }
+
+        Item.ResearchUnlockCount = 1;
 	}
 
     public override bool CanUseItem(Player player)

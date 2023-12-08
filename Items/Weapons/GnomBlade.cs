@@ -44,8 +44,8 @@ public class GnomBlade : ModItem
 			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
 			.AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
 			.AddIngredient(ModContent.ItemType<SwordMatter>(), 100)
-			.AddIngredient(ModContent.ItemType<TerraEnsis>(), 1)
-			.AddTile(TileID.LunarCraftingStation)
+            .AddIngredient(ModContent.ItemType<PumpkinBoom>(), 1)
+            .AddTile(TileID.LunarCraftingStation)
 			.Register();
 	}
 

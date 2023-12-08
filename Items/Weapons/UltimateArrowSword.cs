@@ -1,13 +1,8 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using UniverseOfSwordsMod.Projectiles;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using UniverseOfSwordsMod.Items.Materials;
-using static UniverseOfSwordsMod.UniverseUtils;
-using static Humanizer.In;
-
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class UltimateArrowSword : ModItem
@@ -83,7 +78,7 @@ public class UltimateArrowSword : ModItem
         return false;
     }
 
-    public override void AddRecipes()
+    /*public override void AddRecipes()
     {
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<WoodenArrowSword>())
@@ -101,5 +96,5 @@ public class UltimateArrowSword : ModItem
 			.AddIngredient(ModContent.ItemType<LuminiteArrowSword>())
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
-    }
+    }*/
 }

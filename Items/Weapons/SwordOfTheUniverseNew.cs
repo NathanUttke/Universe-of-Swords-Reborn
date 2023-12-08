@@ -58,7 +58,14 @@ public class SwordOfTheUniverseNew : ModItem
         {
             newRecipe.AddIngredient(auricBar.Type, 5);
         }
-		newRecipe.AddTile(TileID.LunarCraftingStation);
+        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityForge) && calamityForge.TryFind("DraedonsForge", out ModTile draedonsForge))
+        {
+            newRecipe.AddTile(draedonsForge.Type);
+        }
+        else
+        {
+            newRecipe.AddTile(TileID.LunarCraftingStation);
+        }
         newRecipe.Register();
     }
 
