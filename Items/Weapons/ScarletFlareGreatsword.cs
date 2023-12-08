@@ -9,6 +9,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
+[LegacyName(new string[] { "ScarledFlareGreatsword" })]
 public class ScarletFlareGreatsword : ModItem
 {
 	public override void SetStaticDefaults()

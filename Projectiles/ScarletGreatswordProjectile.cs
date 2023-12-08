@@ -49,31 +49,32 @@ namespace UniverseOfSwordsMod.Projectiles
 
         private readonly float shootSpeed = 25f;
         private const float maxTime = 40f;
+        Player Owner => Main.player[Projectile.owner];
         public override void AI()
         {
-            Player player = Main.player[Projectile.owner];
+            
+            Vector2 playerCenter = Owner.RotatedRelativePoint(Owner.MountedCenter);
 
-            if (player.dead)
+            if (!Owner.active || Owner.dead || Owner.noItems || Owner.CCed)
             {
                 Projectile.Kill();
                 return;
-            } 
+            }          
             
-            Vector2 playerCenter = player.RotatedRelativePoint(player.MountedCenter);
 
             // Get the cursor's position
 
             Vector2 velocity = new(Main.mouseX + Main.screenPosition.X - playerCenter.X, Main.mouseY + Main.screenPosition.Y - playerCenter.Y);
             velocity.Normalize();
 
-            Lighting.AddLight(player.Center, 0.8f, 0.45f, 0.1f);
+            Lighting.AddLight(Owner.Center, 0.8f, 0.45f, 0.1f);
 
             int velocityXSign = Math.Sign(Projectile.velocity.X);
             Projectile.velocity = new Vector2(velocityXSign, 0f);
 
             if (Projectile.ai[0] == 0f)
             {
-                Projectile.rotation = new Vector2(velocityXSign, 0f - player.gravDir).ToRotation() + -MathHelper.PiOver4 + MathHelper.Pi;
+                Projectile.rotation = new Vector2(velocityXSign, 0f - Owner.gravDir).ToRotation() + -MathHelper.PiOver4 + MathHelper.Pi;
                 if (Projectile.velocity.X < 0f)
                 {
                     Projectile.rotation -= MathHelper.PiOver2;
@@ -83,25 +84,25 @@ namespace UniverseOfSwordsMod.Projectiles
 
             // Spawn a projectile every 8 ticks
 
-            if (Projectile.ai[0] == 8f)
-            {
-                Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, velocity * shootSpeed, ModContent.ProjectileType<FlareCore>(), (int)(Projectile.damage * 2f), Projectile.knockBack, player.whoAmI);
+            if (Projectile.ai[0] == 8f && Main.myPlayer == Projectile.owner)
+            {                
+                Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, velocity * shootSpeed, ModContent.ProjectileType<FlareCore>(), (int)(Projectile.damage * 2f), Projectile.knockBack, Owner.whoAmI);
                 Projectile.ai[0] += 1f;
             }
 
             Projectile.rotation += MathHelper.TwoPi * 2f / maxTime * velocityXSign;
             bool halfUseTime = Projectile.ai[0] == (int)(maxTime / 2f);
-            if (Projectile.ai[0] >= maxTime || (halfUseTime && !player.controlUseItem))
+            if (Projectile.ai[0] >= maxTime || (halfUseTime && !Owner.controlUseItem))
             {
                 Projectile.Kill();
             }
             else if (halfUseTime)
             {
                 Vector2 mousePosition = Main.MouseWorld;
-                int mouseDirection = ((player.DirectionTo(mousePosition).X > 0f) ? 1 : (-1));
+                int mouseDirection = ((Owner.DirectionTo(mousePosition).X > 0f) ? 1 : (-1));
                 if (mouseDirection != Projectile.velocity.X)
                 {
-                    player.ChangeDir(mouseDirection);
+                    Owner.ChangeDir(mouseDirection);
                     Projectile.velocity = new Vector2(mouseDirection, 0f);
                     Projectile.netUpdate = true;
                     Projectile.rotation -= MathHelper.Pi;
@@ -109,16 +110,20 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             Projectile.position = playerCenter - Projectile.Size / 2f;
-            Projectile.Center = player.Center;
-
-            Projectile.spriteDirection = Projectile.direction;
+            Projectile.Center = Owner.Center;
+            
             Projectile.timeLeft = 2;
+            SetPlayerValues();
+        }
 
-            player.ChangeDir(Projectile.direction);
-            player.heldProj = Projectile.whoAmI;
-            player.SetDummyItemTime(2);
-            player.itemRotation = MathHelper.WrapAngle(Projectile.rotation);
-            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
+        public void SetPlayerValues()
+        {
+            Projectile.spriteDirection = Projectile.direction;
+            Owner.ChangeDir(Projectile.direction);
+            Owner.heldProj = Projectile.whoAmI;
+            Owner.SetDummyItemTime(2);
+            Owner.itemRotation = MathHelper.WrapAngle(Projectile.rotation);
+            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
         }
         public override bool PreDraw(ref Color lightColor)
         {            

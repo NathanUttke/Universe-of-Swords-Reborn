@@ -16,7 +16,7 @@ public class TheBrain : ModItem
 	{
 		Item.width = 58;
 		Item.height = 58;
-		Item.rare = ItemRarityID.LightRed;
+		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		
 		Item.useTime = 40;

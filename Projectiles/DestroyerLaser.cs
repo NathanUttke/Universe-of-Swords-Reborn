@@ -18,6 +18,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.width = 6;
             Projectile.height = 6;
             Projectile.aiStyle = 1;
+            Projectile.penetrate = 10;
             Projectile.extraUpdates = 2;
             AIType = ProjectileID.Bullet;
             Projectile.friendly = true;
@@ -30,8 +31,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;            
             SpriteEffects spriteEffects = SpriteEffects.None;
 
             Color projColor = Projectile.GetAlpha(lightColor);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -14,12 +15,9 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             // DisplayName.SetDefault("Ultimate Saber");
             Main.projFrames[Projectile.type] = 7;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
         public override void SetDefaults()
-        {
-            base.SetDefaults();
+        {            
             Projectile.width = 56;
             Projectile.height = 56;
             Projectile.aiStyle = -1;
@@ -34,18 +32,19 @@ namespace UniverseOfSwordsMod.Projectiles
         private bool _initialized;
         public override void AI()
         {
-            base.AI();
+            base.AI();            
 
-            Player player = Main.player[Projectile.owner];            
+            Player player = Main.player[Projectile.owner];
+
+            Main.NewText(player.ownedProjectileCounts[Type]);
 
             double rad = Projectile.ai[1] * 5.0 * (Math.PI / 180.0);
             double distance = 90;
             Projectile.ai[1] += 1f;
-            //Projectile.Center = player.Center + Vector2.One.RotatedBy(Projectile.ai[0]) * (int)rad;
-            //Projectile.rotation = Projectile.position.ToRotation() + MathHelper.PiOver2;
+
             float posX = player.Center.X - (int)(Math.Cos(rad) * distance) - Projectile.width / 2;
             float posY = player.Center.Y - (int)(Math.Sin(rad) * distance) - Projectile.height / 2;            
-            //Projectile.Center = player.RotatedRelativePoint(player.MountedCenter) + Projectile.velocity * (Projectile.ai[1] - 1f);
+
             Projectile.rotation = player.Center.AngleTo(Projectile.Center) + MathHelper.PiOver4;
             Projectile.position = new Vector2(posX, posY);
 
@@ -55,8 +54,8 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             if (!_initialized)
-            {
-                Projectile.frame = player.ownedProjectileCounts[Type];
+            {                 
+                Projectile.frame = player.ownedProjectileCounts[Type];                
                 _initialized = true;
             }
         }
