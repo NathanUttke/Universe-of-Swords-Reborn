@@ -31,14 +31,8 @@ public class WaterBoltSword : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage*0.5f), knockback, player.whoAmI);
-		proj.tileCollide = false;
 		proj.timeLeft = 80;
         proj.DamageType = DamageClass.MeleeNoSpeed;
         return false;
-    }
-
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-    {
-		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(15f));
     }
 }
