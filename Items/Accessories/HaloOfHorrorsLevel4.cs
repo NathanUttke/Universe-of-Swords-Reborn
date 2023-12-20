@@ -29,19 +29,18 @@ public class HaloOfHorrorsLevel4 : ModItem
 	{
 		player.boneGloveItem = Item;
 		player.statDefense += 15;
-		player.GetArmorPenetration(DamageClass.Generic) += 15;
-		player.GetAttackSpeed(DamageClass.Melee) -= 0.08f;
+		player.GetArmorPenetration(DamageClass.Generic) += 15;		
 		player.statLifeMax2 += 25;
-		player.GetDamage(DamageClass.Generic) += 0.15f;
+		player.GetDamage(DamageClass.Melee) += 0.15f;
 		player.AddBuff(BuffID.RapidHealing, 300, true);
 		player.AddBuff(BuffID.Honey, 300, true);
-		player.AddBuff(BuffID.Regeneration, 300, true);
+		player.AddBuff(BuffID.Regeneration, 300, true);		
 	}
 
     public override void AddRecipes()
     {
 		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<HaloOfHorrors>())
+			.AddIngredient(ModContent.ItemType<HaloOfHorrorsLevel3>())
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 20)
 			.AddIngredient(ItemID.LifeCrystal, 15)
 			.AddIngredient(ItemID.RegenerationPotion, 30)

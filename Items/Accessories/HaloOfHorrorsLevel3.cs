@@ -45,7 +45,7 @@ public class HaloOfHorrorsLevel3 : ModItem
     public override void AddRecipes()
     {
 		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<HaloOfHorrors>())
+			.AddIngredient(ModContent.ItemType<HaloOfHorrorsLevel2>())
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 15)
 			.AddIngredient(ItemID.Bone, 200)
 			.AddIngredient(ItemID.SpectreBar, 25)
@@ -55,7 +55,7 @@ public class HaloOfHorrorsLevel3 : ModItem
             .AddTile(TileID.TinkerersWorkbench)
 			.Register();
         CreateRecipe()
-            .AddIngredient(ModContent.ItemType<HaloOfHorrors>())
+            .AddIngredient(ModContent.ItemType<HaloOfHorrorsLevel2>())
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 15)
             .AddIngredient(ItemID.Bone, 200)
             .AddIngredient(ItemID.SpectreBar, 25)

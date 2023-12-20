@@ -81,7 +81,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 projColor = Projectile.GetAlpha(projColor);
                 projColor *= 0.75f;
 
-                Main.spriteBatch.Draw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale - i / (float) Projectile.oldPos.Length, spriteEffects, 0);
+                Main.spriteBatch.Draw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             }            
             
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);

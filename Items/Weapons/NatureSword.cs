@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
+using UniverseOfSwordsMod.Utilities;
 using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -36,7 +37,7 @@ public class NatureSword : ModItem
     {
         if (Main.rand.NextBool(3) && !NPCID.Sets.CountsAsCritter[target.type])
 		{
-			UniverseUtils.SummonSuperStarSlash(target.position, target.GetSource_OnHit(target), 10, player.whoAmI, ProjectileID.SeedlerThorn);
+			UniverseUtils.SummonSuperStarSlash(target.position, target.GetSource_OnHit(target), (int)(damageDone * 0.75f), player.whoAmI, ProjectileID.SeedlerThorn);
 		}
     }
 
@@ -44,8 +45,7 @@ public class NatureSword : ModItem
 	{	
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<NatureBlade>(), 0f, 0f, 100, default, 1f);
-			Main.dust[dust].noGravity = true;
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<NatureBlade>(), 0f, 0f, 100, default, 1f);
 		}
 	}
 

@@ -3,11 +3,11 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 
-namespace UniverseOfSwordsMod
+namespace UniverseOfSwordsMod.Utilities
 {
-    public static class UniverseUtils
+    public partial class UniverseUtils
     {
-        public static void SummonSuperStarSlash(Vector2 target, IEntitySource source, int damage, int owner, int type)
+        public static void SummonSuperStarSlash(Vector2 targetPosition, IEntitySource source, int damage, int owner, int type)
         {
             Vector2 v = Main.rand.NextVector2CircularEdge(200f, 200f);
             if (v.Y < 0f)
@@ -16,7 +16,7 @@ namespace UniverseOfSwordsMod
             }
             v.Y += 100f;
             Vector2 vector = v.SafeNormalize(Vector2.UnitY) * 6f;
-            Projectile.NewProjectile(source, target - vector * 20f, vector, type, (int)(damage * 0.75), 0f, owner, 0f, target.Y);
+            Projectile.NewProjectile(source, targetPosition - vector * 20f, vector, type, (int)(damage * 0.75), 0f, owner, 0f, targetPosition.Y);
         }
         public static void EmitHammushProjectiles(Player player, int i, Item item, Rectangle hitbox, int damage, int projectileId)
         {            

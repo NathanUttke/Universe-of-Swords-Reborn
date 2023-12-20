@@ -12,7 +12,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
         {
             if (Main.hardMode && spawnInfo.Player.ZoneForest)
             {
-                pool[NPCID.EnchantedSword] = SpawnCondition.OverworldDay.Chance;
+                pool[NPCID.EnchantedSword] = SpawnCondition.OverworldDay.Chance * 0.25f;
             }
         }
     }

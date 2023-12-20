@@ -33,9 +33,10 @@ public class LegendaryWarriorGauntlet : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.statDefense += 15;
-		player.GetDamage(DamageClass.Melee) *= 1.15f;
+		player.GetDamage(DamageClass.Melee) += 0.15f;
 		player.lifeRegen += 15;
-		player.GetCritChance(DamageClass.Generic) += 25;
+		player.GetAttackSpeed(DamageClass.Melee) += 0.20f;
+		player.GetCritChance(DamageClass.Melee) += 25;
 		player.statLifeMax2 += 20;
 		player.endurance += 0.2f;
 		player.AddBuff(9, 2, true);

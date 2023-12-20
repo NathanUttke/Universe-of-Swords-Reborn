@@ -6,14 +6,15 @@ using Terraria.ID;
 using UniverseOfSwordsMod.Projectiles;
 using UniverseOfSwordsMod.Buffs;
 using UniverseOfSwordsMod.Items.Materials;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
+using Terraria.GameInput;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 [LegacyName(new string[] { "SwordOfTheMultiverse" })]
 public class SwordOfTheMultiverseNew : ModItem
 {
+    private readonly int MaxModes = 2;
+    private int currentMode = 1;
     public override void SetStaticDefaults()
     {
         // DisplayName.SetDefault("Sword of the Multiverse");
@@ -35,7 +36,7 @@ public class SwordOfTheMultiverseNew : ModItem
 
         Item.damage = 220;
         Item.DamageType = DamageClass.Melee;
-        Item.knockBack = 2.5f;
+        Item.knockBack = 2.25f;
         Item.crit = 30;
 
         Item.scale = 1.25f;
@@ -43,103 +44,56 @@ public class SwordOfTheMultiverseNew : ModItem
 
         Item.autoReuse = true;
         Item.noUseGraphic = false;
-
-        Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
+        
+        Item.shoot = ProjectileID.LunarFlare;
         Item.shootSpeed = 30f;
 
         Item.ResearchUnlockCount = 1;
-        ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
-    }    
-
-    public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        Item.reuseDelay = 0;
+        Item.ArmorPenetration = 20;
+    }            
+    public override void HoldItem(Player player)
     {        
-        float globalTimeWrapped = Main.GlobalTimeWrappedHourly;
-        float itemTime = Item.timeSinceItemSpawned / 240f + globalTimeWrapped * 0.04f;
-        Texture2D texture = TextureAssets.Item[Item.type].Value;
-
-        var frame = texture.Frame();
-
-        Vector2 origin = frame.Size() / 2f;
-        Vector2 vector2 = new(Item.width / 2 - origin.X, Item.height - frame.Height);
-        Vector2 vectorPosition = Item.position - Main.screenPosition + origin + vector2;
-
-        globalTimeWrapped %= 4f;
-        globalTimeWrapped /= 2f;
-		
-        if (globalTimeWrapped >= 1f)
+        if (player.whoAmI == Main.myPlayer && PlayerInput.Triggers.Current.MouseRight && !Main.mapFullscreen && !player.controlUseItem && player.ItemTimeIsZero)
         {
-            globalTimeWrapped = 2f - globalTimeWrapped;
-        }
-		
-        globalTimeWrapped = globalTimeWrapped / 2f + 0.5f;
-		
-        for (float i = 0f; i < 1f; i += 0.25f)
-        {
-            spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 8f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(90, 70, 255, 50), Item.velocity.X * 0.2f, origin, 1.25f, SpriteEffects.None, 0f);
-        }
-        for (float i = 0f; i < 1f; i += 0.34f)
-        {
-            spriteBatch.Draw(texture, vectorPosition + new Vector2(0.5f, 4f).RotatedBy((i + itemTime) * MathHelper.TwoPi) * globalTimeWrapped, frame, new Color(140, 120, 255, 77), Item.velocity.X * 0.2f, origin, 1.25f, SpriteEffects.None, 0f);
-        }
-        return true;
-    }
 
-    public override bool CanUseItem(Player player)
-    {
-        if (player.altFunctionUse == 2)
-        {
-            if (player.controlUp && !player.controlDown)
+            if (currentMode > MaxModes)
             {
-                Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectile>();
-                Item.useAnimation = 27;
-                Item.crit = 30;
+                currentMode = 0;
             }
-            else
-            {
-                Item.shoot = ProjectileID.None;
-                Item.useAnimation = 13;
-                Item.crit = 40;
-            }
-        }
-        else
-        {
-            Item.shoot = ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>();
-            Item.useAnimation = 27;
-            Item.crit = 30;
-        }
-        return true;
-    }
 
-    public override bool? UseItem(Player player)
-    {
-        if (player.altFunctionUse == 2)
-        {
-            if (player.controlUp && !player.controlDown)
-            {
-                Item.useStyle = ItemUseStyleID.Shoot;
-                Item.noUseGraphic = true;
-            }
-            else
-            {
-                Item.noUseGraphic = false;
-                Item.scale = 4.5f;
-                Item.useStyle = ItemUseStyleID.Swing;
-            }
+            currentMode++;
+            Main.NewText($"[c/6508CF:Sword Of The Multiverse: Mode {currentMode} has been selected.]");
+            player.SetItemTime(15);
         }
-        else
+
+        if (currentMode == 1)
         {
+            Item.useTime = Item.useAnimation;
+            Item.shootSpeed = 25f;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noUseGraphic = false;
-            Item.scale = 1.25f;
+        }
+        else if (currentMode == 2)
+        {
+            Item.useTime = 7;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.noUseGraphic = false;            
+        }
+        else if (currentMode == 3)
+        {
+            Item.noUseGraphic = true;
             Item.useStyle = ItemUseStyleID.Swing;
         }
-        return true;
-    }
-
-    public override bool AltFunctionUse(Player player) => true;
-
+    }    
+    
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {  
-        if (player.altFunctionUse != 2)
+    { 
+        if (currentMode == 1)
+        {            
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseWave>(), (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f);
+        }
+        if (currentMode == 2)
         {
             Vector2 targetPos = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
             float heightLimit = targetPos.Y;
@@ -164,12 +118,12 @@ public class SwordOfTheMultiverseNew : ModItem
                 heading *= velocity.Length();
                 velocity.X = heading.X;
                 velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.025f;
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, (int)(damage * 1.5f), knockback, player.whoAmI, 0f, heightLimit);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>(), (int)(damage * 1.5f), knockback, player.whoAmI, 0f, heightLimit);
             }
         }
-        else
+        else if (currentMode == 3)
         {
-            Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseProjectile>(), (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f);
         }
 
         return false;
@@ -177,9 +131,9 @@ public class SwordOfTheMultiverseNew : ModItem
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.NextBool(2) && player.altFunctionUse != 2)
+        if (Main.rand.NextBool(2) && currentMode == 1)
         {
-            Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PinkTorch, 0f, 0f, 100, Color.Red, 2f)];
+            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PinkTorch, 0f, 0f, 100, default, 2f);
             dust.noGravity = true;
         }
     }

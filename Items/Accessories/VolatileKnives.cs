@@ -36,7 +36,7 @@ public class VolatileKnives : ModItem
 			return;
 		}
 		grenadeBoxCounter = 0;
-		Projectile knifeBox = Projectile.NewProjectileDirect(player.GetSource_Accessory(Item), player.Center, new Vector2(6f * player.direction, Main.rand.Next(-20, -10)), Utils.SelectRandom(Main.rand, ProjectileID.MagicDagger, ProjectileID.PoisonedKnife, ProjectileID.ThrowingKnife), Main.rand.Next(25, 60), 4.1f, player.whoAmI);
+		Projectile knifeBox = Projectile.NewProjectileDirect(player.GetSource_Accessory(Item), player.Center, new Vector2(6f * player.direction, Main.rand.Next(-20, -10)), Utils.SelectRandom(Main.rand, ProjectileID.MagicDagger, ProjectileID.PoisonedKnife, ProjectileID.ThrowingKnife), Main.rand.Next(25, 70), 4f, player.whoAmI);
 		knifeBox.DamageType = DamageClass.Generic;
 		knifeBox.usesLocalNPCImmunity = true;
 		knifeBox.localNPCHitCooldown = 20;
