@@ -14,7 +14,7 @@ public class OceanRoar : ModItem
 		Item.scale = 1f;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 120;
+		Item.useTime = 75;
 		Item.useAnimation = 25;
 		Item.damage = 9;
 		Item.shoot = ProjectileID.Typhoon;
@@ -25,9 +25,4 @@ public class OceanRoar : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
 	}
-
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-    {
-		damage /= 2;
-    }
 }
