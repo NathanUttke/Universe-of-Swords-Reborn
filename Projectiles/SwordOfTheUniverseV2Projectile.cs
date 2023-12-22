@@ -2,6 +2,7 @@
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -18,7 +19,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.alpha = 0;
             Projectile.scale = Main.rand.NextFloat(0.75f, 1.35f);
             Projectile.Opacity = 0.5f;
-            Projectile.light = 0.5f;
+            Projectile.light = 0.4f;
         }
         public override void AI()
         {
@@ -68,15 +69,14 @@ namespace UniverseOfSwordsMod.Projectiles
             Color defaultColor = Projectile.GetAlpha(lightColor);
             defaultColor.A = 0;
 
-            Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/SOTUV2Glow");
 
-            int frameHeight = texture.Height / Main.projFrames[Projectile.type];
-            int startY = frameHeight * Projectile.frame;
-            Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
+            Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
+            Vector2 drawnOriginGlow = new(glowSphere.Width / 2, glowSphere.Height / 2);
 
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), Projectile.scale * 2f, SpriteEffects.None, 0);
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);  
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, drawnOriginGlow, Projectile.scale * 2f, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
 
             return false;
         }

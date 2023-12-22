@@ -71,7 +71,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
 
-            spriteBatch.Draw(galacTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation + Main.GlobalTimeWrappedHourly * 2.25f, origin, 1.5f, spriteEffects, 1);
+            spriteBatch.Draw(galacTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation + Main.GlobalTimeWrappedHourly * 3f, origin, 1.5f, spriteEffects, 1);
             return false;
         }
 

@@ -15,11 +15,13 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
+            Projectile.extraUpdates = 1;
             Projectile.light = 0.33f;
         }
 
         public override void AI()
         {
+            Player owner = Main.player[Projectile.owner];
             if (Projectile.ai[0] == 0f)
             {
                 Projectile.ai[1] += 1f;
@@ -32,47 +34,45 @@ namespace UniverseOfSwordsMod.Projectiles
             }
             else
             {
-                float acceleration = 3f;
-                Vector2 vector6 = new(Projectile.position.X + Projectile.width * 0.5f, Projectile.position.Y + Projectile.height * 0.5f);
-                float playerWidthPosX = Main.player[Projectile.owner].position.X + (Main.player[Projectile.owner].width / 2) - vector6.X;
-                float playerHeightPosY = Main.player[Projectile.owner].position.Y + (Main.player[Projectile.owner].height / 2) - vector6.Y;
-                float num64 = (float)Math.Sqrt(playerWidthPosX * playerWidthPosX + playerHeightPosY * playerHeightPosY);
-                if (num64 > 3000f)
+                float acceleration = 2f; 
+                Vector2 playerProjCenterDistance = owner.Center - Projectile.Center;                
+                float playerProjDistance = Vector2.Distance(owner.Center, Projectile.Center);
+                if (playerProjDistance > 3000f)
                 {
                     Projectile.Kill();
-                }
-                num64 = 15f / num64;
-                playerWidthPosX *= num64;
-                playerHeightPosY *= num64;
+                }                
+                playerProjDistance = 15f / playerProjDistance;
+                playerProjCenterDistance.X *= playerProjDistance;
+                playerProjCenterDistance.Y *= playerProjDistance;
 
-                if (Projectile.velocity.X < playerWidthPosX)
+                if (Projectile.velocity.X < playerProjCenterDistance.X)
                 {
                     Projectile.velocity.X += acceleration;
-                    if (Projectile.velocity.X < 0f && playerWidthPosX > 0f)
+                    if (Projectile.velocity.X < 0f && playerProjCenterDistance.X > 0f)
                     {
                         Projectile.velocity.X += acceleration;
                     }
                 }
-                else if (Projectile.velocity.X > playerWidthPosX)
+                else if (Projectile.velocity.X > playerProjCenterDistance.X)
                 {
                     Projectile.velocity.X -= acceleration;
-                    if (Projectile.velocity.X > 0f && playerWidthPosX < 0f)
+                    if (Projectile.velocity.X > 0f && playerProjCenterDistance.X < 0f)
                     {
                         Projectile.velocity.X -= acceleration;
                     }
                 }
-                if (Projectile.velocity.Y < playerHeightPosY)
+                if (Projectile.velocity.Y < playerProjCenterDistance.Y)
                 {
                     Projectile.velocity.Y += acceleration;
-                    if (Projectile.velocity.Y < 0f && playerHeightPosY > 0f)
+                    if (Projectile.velocity.Y < 0f && playerProjCenterDistance.Y > 0f)
                     {
                         Projectile.velocity.Y += acceleration;
                     }
                 }
-                else if (Projectile.velocity.Y > playerHeightPosY)
+                else if (Projectile.velocity.Y > playerProjCenterDistance.Y)
                 {
                     Projectile.velocity.Y -= acceleration;
-                    if (Projectile.velocity.Y > 0f && playerHeightPosY < 0f)
+                    if (Projectile.velocity.Y > 0f && playerProjCenterDistance.Y < 0f)
                     {
                         Projectile.velocity.Y -= acceleration;
                     }
@@ -80,9 +80,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
                 if (Main.myPlayer == Projectile.owner)
                 {
-                    Rectangle rectangle = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
-                    Rectangle value = new((int)Main.player[Projectile.owner].position.X, (int)Main.player[Projectile.owner].position.Y, Main.player[Projectile.owner].width, Main.player[Projectile.owner].height);
-                    if (rectangle.Intersects(value))
+                    if (Projectile.Hitbox.Intersects(owner.Hitbox))
                     {
                         Projectile.Kill();
                     }
@@ -90,7 +88,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             Lighting.AddLight(Projectile.position, 0.25f, 0.25f, 0.25f);
-            Projectile.rotation += 0.4f * Projectile.direction;
+            Projectile.rotation += 0.25f * Projectile.direction;
         }
     }
 }
