@@ -10,7 +10,7 @@ using UniverseOfSwordsMod.Buffs;
 
 namespace UniverseOfSwordsMod.Projectiles
 {    
-    public class SwordOfTheMultiverseProjectile : ModProjectile
+    public class SwordOfTheMultiverseProjectileYoyo : ModProjectile
     {
         public override string Texture => "UniverseOfSwordsMod/Items/Weapons/SwordOfTheMultiverseNew";
         public override void SetStaticDefaults()
@@ -29,8 +29,9 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.aiStyle = -1;
             Projectile.light = 0.5f;
+            Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 8;            
+            Projectile.localNPCHitCooldown = 12;            
         }
 
         public override void AI()
@@ -56,7 +57,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.position = Projectile.Center;
             Projectile.velocity = Vector2.Zero;
             Projectile.Center = Main.MouseWorld;
-            Projectile.rotation += 0.25f;            
+            Projectile.rotation += 0.2f;            
         }       
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -109,7 +110,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public void DrawTrail(Projectile proj)
         {
             MiscShaderData miscShaderData = GameShaders.Misc["EmpressBlade"];
-            miscShaderData.UseShaderSpecificData(new Vector4(1, 0, 0, 0.6f));
+            miscShaderData.UseShaderSpecificData(new Vector4(1, 0, 0, 0.6f));            
             miscShaderData.Apply();
             _vertexStrip.PrepareStrip(proj.oldPos, proj.oldRot, StripColors, StripWidth, -Main.screenPosition + proj.Size / 2f, proj.oldPos.Length, includeBacksides: false);
             _vertexStrip.DrawTrail();

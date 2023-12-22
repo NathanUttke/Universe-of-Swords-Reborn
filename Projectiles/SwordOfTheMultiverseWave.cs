@@ -20,7 +20,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             Projectile.width = 168;
             Projectile.height = 64;
-            Projectile.scale = 2.5f;
+            Projectile.scale = 2f;
             Projectile.aiStyle = -1;
             Projectile.penetrate = -1;
             Projectile.friendly = true;            
@@ -50,8 +50,8 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.Kill();
             }
 
-            Projectile.scale *= 0.99f;
-            Projectile.velocity *= 0.98f;
+            //Projectile.scale *= 0.99f;
+            Projectile.velocity *= 0.97f;
         }
 
         public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
@@ -86,7 +86,7 @@ namespace UniverseOfSwordsMod.Projectiles
             //projColor.A = 127;                     
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
 
-            projColor.A = 0;
+            //projColor.A = 0;
             Main.spriteBatch.Draw(glowTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOriginGlow, Projectile.scale, spriteEffects, 0);
             return false;
         }

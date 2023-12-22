@@ -91,7 +91,7 @@ public class SwordOfTheMultiverseNew : ModItem
     { 
         if (currentMode == 1)
         {            
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseWave>(), (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseWave>(), (int)(damage * 2f), knockback, player.whoAmI, 0f, 0f);
         }
         if (currentMode == 2)
         {
@@ -123,7 +123,7 @@ public class SwordOfTheMultiverseNew : ModItem
         }
         else if (currentMode == 3)
         {
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseProjectile>(), (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseProjectileYoyo>(), (int)(damage * 2f), knockback, player.whoAmI, 0f, 0f);
         }
 
         return false;

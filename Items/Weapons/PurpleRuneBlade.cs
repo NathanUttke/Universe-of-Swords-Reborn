@@ -21,12 +21,12 @@ public class PurpleRuneBlade : ModItem
 		Item.height = 52;
 		Item.rare = ItemRarityID.Purple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 35;
-		Item.useAnimation = 25;
+		Item.useTime = 17;
+		Item.useAnimation = 17;
 		Item.damage = 45;
 
 		Item.shoot = ModContent.ProjectileType<PurpleRuneProjectile>();
-		Item.shootSpeed = 8f;
+		Item.shootSpeed = 10f;
 
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;

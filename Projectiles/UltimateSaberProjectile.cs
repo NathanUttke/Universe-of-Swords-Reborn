@@ -36,7 +36,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             Player player = Main.player[Projectile.owner];
 
-            Main.NewText(player.ownedProjectileCounts[Type]);
+            //Main.NewText(player.ownedProjectileCounts[Type]);
 
             double rad = Projectile.ai[1] * 5.0 * (Math.PI / 180.0);
             double distance = 90;
