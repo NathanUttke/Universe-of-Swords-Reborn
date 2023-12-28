@@ -33,7 +33,7 @@ public class DamascusLeggings : ModItem
 	{
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "DamascusBar", 15);
-		val.AddIngredient(Mod, "SwordMatter", 65);
+		val.AddIngredient(Mod, "SwordMatter", 10);
 		val.AddTile(TileID.Anvils);
 		val.Register();
 	}

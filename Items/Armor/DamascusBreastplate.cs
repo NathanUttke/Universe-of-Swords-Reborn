@@ -51,7 +51,7 @@ public class DamascusBreastplate : ModItem
 	{
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(Mod, "DamascusBar", 20);
-		val.AddIngredient(Mod, "SwordMatter", 60);
+		val.AddIngredient(Mod, "SwordMatter", 10);
 		val.AddTile(TileID.Anvils);
 		val.Register();
 	}
