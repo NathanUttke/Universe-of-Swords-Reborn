@@ -24,6 +24,7 @@ public class MagicMirrorBlade : ModItem
         Item.useTime = 26;
         Item.useAnimation = 26;
         Item.value = Item.sellPrice(0, 0, 50, 0);
+		Item.noMelee = true;
 		Item.autoReuse = false;
 		Item.ResearchUnlockCount = 1;
     }
@@ -68,11 +69,11 @@ public class MagicMirrorBlade : ModItem
 	{	
 		CreateRecipe()
 		.AddIngredient(ItemID.MagicMirror, 1)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 		.Register();
 		CreateRecipe()
 		.AddIngredient(ItemID.IceMirror, 1)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 		.Register();
 	}
 }
