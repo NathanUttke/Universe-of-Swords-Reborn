@@ -11,7 +11,7 @@ public class CorruptCrystallus : ModItem
 	public override void SetDefaults()
 	{
         Item.width = 44;
-        Item.height = 54;
+        Item.height = 52;
         Item.rare = ItemRarityID.Green;
 
         Item.useStyle = ItemUseStyleID.Swing;
@@ -40,11 +40,6 @@ public class CorruptCrystallus : ModItem
 			Main.dust[dust].noGravity = true;
 		}
 	}
-
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-    {
-		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(10f));
-    }
     public override void AddRecipes()
 	{		
 		CreateRecipe()
