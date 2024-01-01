@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using rail;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -31,18 +32,42 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.scale = 1.125f;
             Projectile.light = 0.25f;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 14;
+            Projectile.localNPCHitCooldown = -1;
             Projectile.extraUpdates = 1;
             Projectile.ArmorPenetration = 10;
-            Projectile.timeLeft = 100;
+            Projectile.timeLeft = 50;
         }
 
-        public override Color? GetAlpha(Color lightColor) => Color.White;
-
+        public override Color? GetAlpha(Color lightColor) => Color.White;       
         public override void AI()
         {
             base.AI();
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (Projectile.ai[1] == 1f || target.immortal || NPCID.Sets.CountsAsCritter[target.type])
+            {
+                return;
+            }
+            int direction = Main.rand.Next(-1, 2) * 1;
+            float screenPosX = Main.screenPosition.X;
+            float screenPosY = Main.screenPosition.Y;
+            if (direction < 0)
+            {
+                screenPosX += Main.screenWidth;
+            }
+            screenPosY += Main.rand.Next(Main.screenHeight);
+            Vector2 screenPosition = new(screenPosX, screenPosY);
+            Vector2 targetPos = new (target.Center.X - screenPosition.X, target.Center.Y - screenPosition.Y);
+            targetPos.X += Main.rand.Next(-50, 51) * 0.1f;
+            targetPos.Y += Main.rand.Next(-50, 51) * 0.1f;
+            float targetDist = targetPos.Length();
+            targetDist = 24f / targetDist;
+            targetPos.X *= targetDist;
+            targetPos.Y *= targetDist;
+            Projectile.NewProjectile(target.GetSource_OnHit(target), screenPosition, targetPos, Type, (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner, 0f, 1f);
         }
 
         public override bool PreDraw(ref Color lightColor)
