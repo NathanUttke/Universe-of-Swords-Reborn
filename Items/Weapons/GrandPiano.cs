@@ -25,7 +25,7 @@ public class GrandPiano : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 120;
+		Item.damage = 75;
 		Item.knockBack = 8f;
 		//Item.UseSound = new SoundStyle("UniverseOfSwordsMod/Sounds/Item/GrandPiano");
 		Item.UseSound = SoundID.Item169;
@@ -65,6 +65,15 @@ public class GrandPiano : ModItem
         Projectile.NewProjectile(source, pointPosition, new Vector2(0f, 20f), ProjectileID.QuarterNote, damage / 2, knockback, player.whoAmI);
         return false;
 	}*/
+
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (ModLoader.TryGetMod("CalamityMod", out _))
+        {
+            damage *= 1.2f;
+        }
+        return;
+    }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
