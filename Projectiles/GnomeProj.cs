@@ -72,8 +72,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            SpriteBatch spriteBatch = Main.spriteBatch;
-            SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            SpriteBatch spriteBatch = Main.spriteBatch;            
             Texture2D texture = TextureAssets.Projectile[Type].Value;
 
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);

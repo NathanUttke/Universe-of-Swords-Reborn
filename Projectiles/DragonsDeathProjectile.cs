@@ -5,12 +5,13 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
     internal class DragonsDeathProjectile : ModProjectile
     {
-        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/DragonsDeath";
+        public override string Texture => ModContent.GetInstance<DragonsDeath>().Texture;
 
         public override void SetDefaults()
         {

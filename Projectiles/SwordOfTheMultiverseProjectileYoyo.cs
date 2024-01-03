@@ -7,12 +7,13 @@ using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Buffs;
+using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {    
     public class SwordOfTheMultiverseProjectileYoyo : ModProjectile
     {
-        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/SwordOfTheMultiverseNew";
+        public override string Texture => ModContent.GetInstance<SwordOfTheMultiverseNew>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;

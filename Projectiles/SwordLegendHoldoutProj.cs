@@ -49,7 +49,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         private float EaseInBack(float value)
         {
-            float c1 = 1.70158f;
+            float c1 = 1.70158f;            
             float c3 = c1 + 1;
 
             return c3 * value * value * value - c1 * value * value;
@@ -83,7 +83,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Owner.heldProj = Projectile.whoAmI;            
             Owner.itemTime = Owner.itemAnimation = 2;
             Owner.itemRotation = Projectile.rotation;
-
+            Owner.SetDummyItemTime(2);
 
             switch (CurrentAIState)
             {
@@ -169,7 +169,7 @@ namespace UniverseOfSwordsMod.Projectiles
             if (CurrentAIState != AIState.SwingingLeft)
             {
                 textureOrigin = new(texture.Width / 2f, texture.Height / 2f);
-            }            
+            }
 
             spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);
             return false;

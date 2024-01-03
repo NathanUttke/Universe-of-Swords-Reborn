@@ -5,6 +5,8 @@ using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent;
+using UniverseOfSwordsMod.Utilities;
+using Terraria.GameContent.Drawing;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -50,6 +52,18 @@ namespace UniverseOfSwordsMod.Projectiles
                 Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Cyan, 0f, 0f, 100, default, 0.75f);
                 newDust.rotation += 0.05f;
                 newDust.noGravity = true;
+            }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (Main.netMode != NetmodeID.Server)
+            {
+                UniverseUtils.Spawn_TrueNightsEdgeCyan(new ParticleOrchestraSettings
+                {
+                    PositionInWorld = target.Center,
+                    IndexOfPlayerWhoInvokedThis = (byte)Main.myPlayer
+                });
             }
         }
 

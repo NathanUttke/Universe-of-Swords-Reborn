@@ -5,15 +5,14 @@ using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
-using Terraria.Graphics;
 using Terraria.ID;
-using Terraria.Graphics.Shaders;
+using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
     internal class ScarletGreatswordProjectile : DragonsDeathProjectile
     {
-        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/ScarletFlareGreatsword";
+        public override string Texture => ModContent.GetInstance<ScarletFlareGreatsword>().Texture;
 
         public override void SetStaticDefaults()
         {

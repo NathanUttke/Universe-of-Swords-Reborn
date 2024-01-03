@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.PlayerDrawLayer;
 using Terraria.Audio;
 
 namespace UniverseOfSwordsMod.Projectiles
@@ -38,7 +37,7 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 
-                Color color = Lighting.GetColor((int)(Projectile.position.X + (double)Projectile.width / 2) / 16, (int)((Projectile.position.Y + Projectile.height * 0.5) / 16.0));
+                Color color = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
                 color = Projectile.GetAlpha(color);
                 float multValue = 8 - j;
                 color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
@@ -54,9 +53,9 @@ namespace UniverseOfSwordsMod.Projectiles
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
             for (int z = 0; z < 30; z++)
             {
-                int purpleDust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Shadowflame, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.5f);
+                int purpleDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.5f);
                 Main.dust[purpleDust].noGravity = true;
-                Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Shadowflame, Projectile.velocity.X, Projectile.velocity.Y, 100);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, Projectile.velocity.X, Projectile.velocity.Y, 100);
             }
         }
     }
