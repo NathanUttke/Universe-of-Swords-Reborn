@@ -82,5 +82,26 @@ namespace UniverseOfSwordsMod.Utilities
             num4 *= player.gravDir;
             Projectile.NewProjectile(player.GetSource_ItemUse(item), (hitbox.X + hitbox.Width / 2) + num5, (hitbox.Y + hitbox.Height / 2) + num4, player.direction * num3, num2 * player.gravDir, projectileId, damage / 2, 0f, i);
         }
+
+        public static NPC FindClosestNPC(float maxDetectDistance, Vector2 position)
+        {
+            NPC closestNPC = null;
+            float sqrMaxDetectDistance = maxDetectDistance * maxDetectDistance;
+
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC target = Main.npc[i];
+                if (target.CanBeChasedBy())
+                {
+                    float sqrDistanceToTarget = Vector2.DistanceSquared(target.Center, position);
+                    if (sqrDistanceToTarget < sqrMaxDetectDistance)
+                    {
+                        sqrMaxDetectDistance = sqrDistanceToTarget;
+                        closestNPC = target;
+                    }
+                }
+            }
+            return closestNPC;
+        }
     }
 }
