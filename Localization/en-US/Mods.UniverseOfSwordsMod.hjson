@@ -34,10 +34,16 @@ Projectiles: {
 	BetterShroomiteProj.DisplayName: Better Shroomite Proj
 	PrimeSlashProj.DisplayName: Prime Slash Proj
 	DestroyerLaser.DisplayName: Destroyer Laser
-	ScarletGreatswordProjectile.DisplayName: Scarlet Greatsword Projectile
+	ScarletGreatswordProjectile.DisplayName: Scarlet Flare Greatsword
+	SwordLegendHoldoutProj.DisplayName: Sword Of The Legend
+	SwordOfTheMultiverseProjectileYoyo.DisplayName: Sword Of The Multiverse
+	SwordOfTheMultiverseWave.DisplayName: Sword Of The Multiverse
 }
 
 NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
+RedDamascus.SetBonus: Grants Titan potion effect, 10% increased melee damage, 10% increased melee critical chance, increases maximum life by 20
+GreenDamascus.SetBonus: 20% increased melee speed, 7% increased melee critical chance, 50% increased movement speed, increases maximum life by 20
+BlueDamascus.SetBonus: 10% endurance, 7% increased melee critical chance, increases maximum life by 60
 
 Items: {
 	HaloOfHorrors: {
