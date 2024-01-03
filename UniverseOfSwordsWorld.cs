@@ -12,12 +12,12 @@ public class UniverseOfSwordsWorld : ModSystem
 {
 	public static bool spawnOre;
 
-	public override void OnWorldLoad()/* tModPorter Suggestion: Also override OnWorldUnload, and mirror your worldgen-sensitive data initialization in PreWorldGen */
+	public override void OnWorldLoad()
 	{
 		spawnOre = false;
 	}
 
-	public override void SaveWorldData(TagCompound tag)/* tModPorter Suggestion: Edit tag parameter instead of returning new TagCompound */
+	public override void SaveWorldData(TagCompound tag)
 	{
 		tag.Add("spawnOre", spawnOre);
 		//return val;
