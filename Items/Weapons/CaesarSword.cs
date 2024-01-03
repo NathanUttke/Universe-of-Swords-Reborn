@@ -1,13 +1,17 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.GameContent;
+using Terraria.GameContent.Drawing;
+using Terraria.Graphics.Renderers;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 public class CaesarSword : ModItem
 {
-	public override void SetStaticDefaults()
+
+    public override void SetStaticDefaults()
 	{
 		// Tooltip.SetDefault("'Et tu, Brute?'\nHold right click for a stabbing attack");
 	}
@@ -32,6 +36,8 @@ public class CaesarSword : ModItem
 		Item.ResearchUnlockCount = 1;
 
 	}
+
+
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         player.itemHeight += (int)MathF.Sin(player.itemTime * player.direction);

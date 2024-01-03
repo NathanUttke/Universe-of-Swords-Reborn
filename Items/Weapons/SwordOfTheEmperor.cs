@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Buffs;
@@ -55,6 +56,13 @@ public class SwordOfTheEmperor : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
+        ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.Keybrand, new ParticleOrchestraSettings
+        {
+            PositionInWorld = target.Center,
+            MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
+
+        }, player.whoAmI);
+
         if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
         {
             target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 400, true);

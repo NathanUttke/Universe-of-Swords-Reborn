@@ -18,7 +18,7 @@ public class BlueDamascusLeggings : ModItem
 	{
 		Item.width = 22;
 		Item.height = 18;
-		Item.value = Item.sellPrice(0, 7, 0, 0);
+		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.rare = ItemRarityID.Cyan;
 		Item.defense = 20;
 		Item.ResearchUnlockCount = 1;
@@ -39,7 +39,6 @@ public class BlueDamascusLeggings : ModItem
 		val.AddIngredient(ItemID.SoulofSight, 15);
 		val.AddIngredient(ItemID.SoulofFright, 15);
 		val.AddIngredient(ItemID.IronskinPotion, 15);
-		val.AddIngredient(ItemID.HallowedGreaves, 1);
 		val.AddIngredient(ItemID.HallowedBar, 16);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();

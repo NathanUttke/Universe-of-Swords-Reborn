@@ -34,7 +34,7 @@ public class TheEater : ModItem
 
         if (target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
         {
-            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 20f, hitPosition / 4f, ProjectileID.TinyEater, damageDone / 3, 4f, player.whoAmI, 0f, 0f);
+            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 5f, hitPosition / 4f, ProjectileID.TinyEater, damageDone / 3, 4f, player.whoAmI, 0f, 0f);
             proj.DamageType = DamageClass.Melee;
         }
     }

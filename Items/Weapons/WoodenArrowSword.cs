@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -37,7 +38,15 @@ public class WoodenArrowSword : ModItem
 		player.itemLocation.Y -= 1f * player.gravDir;
 	}
 
-	public override void AddRecipes()
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        proj.timeLeft = 70;
+        proj.DamageType = DamageClass.MeleeNoSpeed;
+        return false;
+    }
+
+    public override void AddRecipes()
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.WoodenArrow, 500)

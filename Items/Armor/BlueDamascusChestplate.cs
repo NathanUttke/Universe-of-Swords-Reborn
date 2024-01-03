@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace UniverseOfSwordsMod.Items.Armor;
 
@@ -17,7 +18,7 @@ public class BlueDamascusChestplate : ModItem
 	{
 		Item.width = 26;
 		Item.height = 20;
-		Item.value = Item.sellPrice(0, 7, 0, 0);
+		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.rare = ItemRarityID.Cyan;
 		Item.defense = 20;
 		Item.ResearchUnlockCount = 1;
@@ -25,17 +26,17 @@ public class BlueDamascusChestplate : ModItem
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)
 	{
-		if (head.type == Mod.Find<ModItem>("BlueDamascusHelmet").Type)
+		if (head.type == ModContent.ItemType<BlueDamascusHelmet>())
 		{
-			return legs.type == Mod.Find<ModItem>("BlueDamascusLeggings").Type;
+			return legs.type == ModContent.ItemType<BlueDamascusLeggings>();
 		}
 		return false;
 	}
 
 	public override void UpdateArmorSet(Player player)
 	{
-		player.setBonus = "10% endurance, 7% increased melee critical chance, increases maximum life by 60";
-		player.endurance += 0.1f;
+		player.setBonus = (string)Language.GetOrRegister("Mods.UniverseOfSwordsMod.BlueDamascus.SetBonus");
+        player.endurance += 0.1f;
 		player.GetCritChance(DamageClass.Generic) += 7;
 		player.statLifeMax2 += 60;
 	}
@@ -55,7 +56,6 @@ public class BlueDamascusChestplate : ModItem
 		val.AddIngredient(ItemID.SoulofSight, 15);
 		val.AddIngredient(ItemID.SoulofFright, 15);
 		val.AddIngredient(ItemID.IronskinPotion, 15);
-		val.AddIngredient(ItemID.HallowedPlateMail, 1);
 		val.AddIngredient(ItemID.HallowedBar, 16);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();

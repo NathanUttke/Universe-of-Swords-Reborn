@@ -18,7 +18,7 @@ public class BlueDamascusHelmet : ModItem
 	{
 		Item.width = 16;
 		Item.height = 18;
-		Item.value = Item.sellPrice(0, 7, 0, 0);
+		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.rare = ItemRarityID.Cyan;
 		Item.defense = 30;
 		Item.ResearchUnlockCount = 1;
@@ -39,7 +39,6 @@ public class BlueDamascusHelmet : ModItem
 		val.AddIngredient(ItemID.SoulofSight, 15);
 		val.AddIngredient(ItemID.SoulofFright, 15);
 		val.AddIngredient(ItemID.IronskinPotion, 15);
-		val.AddIngredient(ItemID.HallowedMask, 1);
 		val.AddIngredient(ItemID.HallowedBar, 16);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();

@@ -28,7 +28,7 @@ public class GnomBlade : ModItem
         Item.autoReuse = true;
 
         Item.shoot = ModContent.ProjectileType<GnomeProj>();
-		Item.shootSpeed = 6f;
+		Item.shootSpeed = 12f;
 
 		Item.ResearchUnlockCount = 1;
 	}
@@ -46,7 +46,6 @@ public class GnomBlade : ModItem
             .AddTile(TileID.LunarCraftingStation)
 			.Register();
 	}
-
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
