@@ -110,7 +110,8 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
         private float dashTimer = 25f;
         public override void AI()
-        {            
+        {
+            Vector2 npcCenter = NPC.Center;
 
             if (NPC.target < 0 || NPC.target == 255 || Player.dead || !Player.active)
             {
@@ -187,8 +188,8 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             }
             else if (NPC.ai[0] == 2f)
             {
-                Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-                Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
+                Vector2 npcPosition = NPC.Center;
+                Vector2 playerPosNpc = Player.Center;
                 float playerPosNpcSqrt = dashSpeed / playerPosNpc.Length();
                 playerPosNpc *= playerPosNpcSqrt;
                 npcPosition += playerPosNpc;
@@ -231,57 +232,52 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             else if (NPC.ai[0] == 3f)
             {
                 float num10 = 8f;
-                float num11 = 0.1f;
+                float acceleration = 0.15f;
 
                 NPC.rotation += 0.25f;
+                Vector2 npcPlayerDist = new(Player.Center.X - NPC.Center.X, Player.Center.Y - 250f - NPC.Center.Y);               
+                float npcPlayerDist2 = num10 / npcPlayerDist.Length();
+                npcPlayerDist.X *= npcPlayerDist2;
+                npcPlayerDist.Y *= npcPlayerDist2;
 
-                Vector2 vector = new Vector2(NPC.position.X + (float)NPC.width * 0.5f, NPC.position.Y + (float)NPC.height * 0.5f);
-                float num12 = Player.position.X + (float)(Player.width / 2) - vector.X;
-                float num13 = Player.position.Y + (float)(Player.height / 2) - 200f - vector.Y;
-                float num14 = (float)Math.Sqrt(num12 * num12 + num13 * num13);
-                float num15 = num14;
-                num14 = num10 / num14;
-                num12 *= num14;
-                num13 *= num14;
-
-                if (NPC.velocity.X < num12)
+                if (NPC.velocity.X < npcPlayerDist.X)
                 {
-                    NPC.velocity.X += num11;
-                    if (NPC.velocity.X < 0f && num12 > 0f)
+                    NPC.velocity.X += acceleration;
+                    if (NPC.velocity.X < 0f && npcPlayerDist.X > 0f)
                     {
-                        NPC.velocity.X += num11;
+                        NPC.velocity.X += acceleration;
                     }
                 }
 
-                else if (NPC.velocity.X > num12)
+                else if (NPC.velocity.X > npcPlayerDist.X)
                 {
-                    NPC.velocity.X -= num11;
-                    if (NPC.velocity.X > 0f && num12 < 0f)
+                    NPC.velocity.X -= acceleration;
+                    if (NPC.velocity.X > 0f && npcPlayerDist.X < 0f)
                     {
-                        NPC.velocity.X -= num11;
+                        NPC.velocity.X -= acceleration;
                     }
                 }
-                if (NPC.velocity.Y < num13)
+                if (NPC.velocity.Y < npcPlayerDist.Y)
                 {
-                    NPC.velocity.Y += num11;
-                    if (NPC.velocity.Y < 0f && num13 > 0f)
+                    NPC.velocity.Y += acceleration;
+                    if (NPC.velocity.Y < 0f && npcPlayerDist.Y > 0f)
                     {
-                        NPC.velocity.Y += num11;
+                        NPC.velocity.Y += acceleration;
                     }
                 }
-                else if (NPC.velocity.Y > num13)
+                else if (NPC.velocity.Y > npcPlayerDist.Y)
                 {
-                    NPC.velocity.Y -= num11;
-                    if (NPC.velocity.Y > 0f && num13 < 0f)
+                    NPC.velocity.Y -= acceleration;
+                    if (NPC.velocity.Y > 0f && npcPlayerDist.Y < 0f)
                     {
-                        NPC.velocity.Y -= num11;
+                        NPC.velocity.Y -= acceleration;
                     }
                 }
 
                 NPC.ai[1] += 1f;
-                float num16 = 300f;
+                float maxTime = 300f;
 
-                if (NPC.ai[1] >= num16)
+                if (NPC.ai[1] >= maxTime)
                 {
                     SoundEngine.PlaySound(SoundID.Item71, NPC.position);
                     NPC.ai[0] = 0f;
@@ -290,7 +286,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                     NPC.target = 255;
                     NPC.netUpdate = true;
                 }
-                else if (NPC.position.Y + NPC.height < Player.position.Y && num15 < 500f)
+                else if (NPC.Center.Y < Player.position.Y && Vector2.Distance(NPC.Center, Player.Center) < 500f)
                 {
                     if (!Player.dead)
                     {
@@ -302,11 +298,11 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                         NPC.ai[2] = 0f;                        
                         float num18 = 6f;
 
-                        float num19 = Player.position.X + (float)(Player.width / 2) - vector.X;
-                        float num20 = Player.position.Y + (float)(Player.height / 2) - vector.Y;
+                        float num19 = Player.Center.X - NPC.Center.X;
+                        float num20 = Player.Center.Y - NPC.Center.Y;
                         float num21 = (float)Math.Sqrt(num19 * num19 + num20 * num20);
                         num21 = num18 / num21;
-                        Vector2 vector2 = vector;
+                        Vector2 vector2 = npcCenter;
                         Vector2 vector3 = default;
                         vector3.X = num19 * num21;
                         vector3.Y = num20 * num21;
@@ -325,7 +321,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                         }                        
                         for (int m = 0; m < 10; m++)
                         {
-                            Dust.NewDust(vector2, 20, 20, 5, vector3.X * 0.4f, vector3.Y * 0.4f);
+                            Dust.NewDust(vector2, 20, 20, DustID.WhiteTorch, vector3.X * 0.4f, vector3.Y * 0.4f);
                         }
                     }
                 }
