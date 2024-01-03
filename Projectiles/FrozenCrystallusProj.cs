@@ -29,7 +29,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.ignoreWater = true;
             Projectile.tileCollide = true;
             Projectile.extraUpdates = 1;
-            Projectile.timeLeft = 100;
+            Projectile.timeLeft = 80;
 
             AIType = ProjectileID.Bullet;
         }

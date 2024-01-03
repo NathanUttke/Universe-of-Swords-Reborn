@@ -19,7 +19,7 @@ public class GreenDamascusHelmet : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetAttackSpeed(DamageClass.Melee) += 0.1f;		
+		player.GetAttackSpeed(DamageClass.Melee) += 0.05f;		
 	}
 
 	public override void AddRecipes()

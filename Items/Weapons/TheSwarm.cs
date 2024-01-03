@@ -46,8 +46,8 @@ public class TheSwarm : ModItem
 		if(Main.rand.NextBool(3))
 		{
             float spread = 0.174f;
-            float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-            double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
+            float baseSpeed = velocity.Length();
+            double startAngle = velocity.ToRotation() - (double)(spread / 2f);
             double deltaAngle = spread / 2f;
             for (int i = 0; i < Main.rand.Next(1, 3); i++)
             {

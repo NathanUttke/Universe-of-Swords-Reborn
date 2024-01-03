@@ -56,8 +56,11 @@ public class EctoplasmicRipper : ModItem
 
 	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		int healingAmt = damageDone / 8;
-		player.statMana += healingAmt;
-		player.ManaEffect(healingAmt);
+		if (!target.immortal && NPCID.Sets.CountsAsCritter[target.type])
+		{
+            int healingAmt = damageDone / 8;
+            player.statMana += healingAmt;
+            player.ManaEffect(healingAmt);
+        }
 	}
 }

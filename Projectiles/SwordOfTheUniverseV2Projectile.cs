@@ -18,7 +18,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
             Projectile.penetrate = 1;
-            Projectile.alpha = 0;
+            Projectile.alpha = 127;
             Projectile.scale = Main.rand.NextFloat(0.75f, 1.5f);            
             Projectile.light = 0.5f;
         }
@@ -64,7 +64,9 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
             Vector2 drawnOriginGlow = new(glowSphere.Width / 2, glowSphere.Height / 2);
 
+            defaultColor.A = 0;
             Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, drawnOriginGlow, Projectile.scale * 2f, SpriteEffects.None, 0);
+            defaultColor.A = 127;
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
 
             return false;

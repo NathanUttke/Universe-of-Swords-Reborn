@@ -38,7 +38,7 @@ public class TheStinger : ModItem
     {
 		if (Main.rand.NextBool(2))
 		{
-            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(5f)), ProjectileID.HornetStinger, 10, knockback * 0.75f, player.whoAmI);
+            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(5f)), ProjectileID.HornetStinger, damage / 2, knockback * 0.75f, player.whoAmI);
         }
 		return false;
     }

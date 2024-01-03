@@ -51,8 +51,6 @@ namespace UniverseOfSwordsMod.Projectiles
         public ref float SwingTimer => ref Projectile.ai[1];
         public int SwingDirection => MathF.Sign(Projectile.velocity.X);
         private const float MaxTime = 12.5f;
-        private bool isInitialized;
-
         private float EaseInBack(float value)
         {
             float c1 = 1.70158f;            
@@ -61,7 +59,6 @@ namespace UniverseOfSwordsMod.Projectiles
             return c3 * value * value * value - c1 * value * value;
 
         }
-
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float projRotation = Projectile.rotation - MathHelper.PiOver4 * MathF.Sign(Projectile.velocity.X);

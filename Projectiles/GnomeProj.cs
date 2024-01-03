@@ -35,7 +35,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.localNPCHitCooldown = -1;
             Projectile.extraUpdates = 1;
             Projectile.ArmorPenetration = 10;
-            Projectile.timeLeft = 50;
+            Projectile.timeLeft = 70;
         }
 
         public override Color? GetAlpha(Color lightColor) => Color.White;       

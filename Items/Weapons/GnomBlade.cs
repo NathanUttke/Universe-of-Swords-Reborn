@@ -28,7 +28,7 @@ public class GnomBlade : ModItem
         Item.autoReuse = true;
 
         Item.shoot = ModContent.ProjectileType<GnomeProj>();
-		Item.shootSpeed = 12f;
+		Item.shootSpeed = 13f;
 
 		Item.ResearchUnlockCount = 1;
 	}

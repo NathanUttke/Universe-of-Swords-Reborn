@@ -18,6 +18,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void SetDefaults()
         {
             Projectile.CloneDefaults(ProjectileID.DemonScythe);
+            Projectile.timeLeft = 80;
             AIType = ProjectileID.DemonScythe;
         }
 

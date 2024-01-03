@@ -38,7 +38,6 @@ public class GreenDamascusChestplate : ModItem
 	public override void UpdateArmorSet(Player player)
 	{
 		player.setBonus = (string)Language.GetOrRegister("Mods.UniverseOfSwordsMod.GreenDamascus.SetBonus");
-		player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
 		player.GetCritChance(DamageClass.Generic) += 7;
 		player.moveSpeed += 0.5f;
 		player.statLifeMax2 += 20;
