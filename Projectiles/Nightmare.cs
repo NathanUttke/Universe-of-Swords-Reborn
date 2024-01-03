@@ -27,7 +27,7 @@ internal class Nightmare : ModProjectile
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
-        Projectile.timeLeft = 80;        
+        Projectile.timeLeft = 90;        
         Projectile.light = 0.25f;
     }
 
@@ -59,7 +59,7 @@ internal class Nightmare : ModProjectile
             target.AddBuff(BuffID.ShadowFlame, 800);
         }
 
-        if (Main.rand.NextBool(3))
+        if (Main.rand.NextBool(3) && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type])
         {            
             owner.statLife += 2;   
             owner.HealEffect(2, true);
