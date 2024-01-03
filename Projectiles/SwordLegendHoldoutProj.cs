@@ -27,6 +27,12 @@ namespace UniverseOfSwordsMod.Projectiles
             get => (AIState)Projectile.ai[0];
             set => Projectile.ai[0] = (float)value;
         }
+
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Type] = 10;
+            ProjectileID.Sets.TrailingMode[Type] = 2;
+        }
         public override void SetDefaults()
         {
             Projectile.Size = new(90);
@@ -165,13 +171,20 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
             Vector2 textureOrigin = new (0f * Owner.direction, texture.Height);
+            Color projColor = Color.White;
 
             if (CurrentAIState != AIState.SwingingLeft)
             {
                 textureOrigin = new(texture.Width / 2f, texture.Height / 2f);
             }
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                projColor *= 0.70f;
+                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + new Vector2(texture.Width / 2f, texture.Height / 2f), null, projColor, Projectile.oldRot[i] - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);
+            }
+
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
     }
