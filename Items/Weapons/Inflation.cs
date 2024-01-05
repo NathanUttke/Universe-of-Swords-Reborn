@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -15,16 +16,16 @@ public class Inflation : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 128;
-        Item.height = 128;
+        Item.width = 64;
+        Item.height = 64;
         Item.rare = ItemRarityID.Orange;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 4f;
         Item.useTime = 50;
         Item.useAnimation = 50;
-        Item.damage = 28;
+        Item.damage = 23;
         Item.DamageType = DamageClass.Melee;
-        Item.scale = 0.75f;
+        Item.scale = 1f;
         Item.crit = 8;
         Item.UseSound = SoundID.Item169;
         Item.value = 0;
@@ -57,9 +58,16 @@ public class Inflation : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
+        ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.Keybrand, new ParticleOrchestraSettings
+        {
+            PositionInWorld = target.Center,
+            MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
+
+        }, player.whoAmI);
+
         if (!target.HasBuff(BuffID.Midas))
         {
-            target.AddBuff(BuffID.Midas, 300);
+            target.AddBuff(BuffID.Midas, 500);
         }
     }
 }

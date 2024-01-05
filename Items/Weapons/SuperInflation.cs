@@ -1,16 +1,17 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class SuperInflation : ModItem
 {
-    public override string Texture => "UniverseOfSwordsMod/Items/Weapons/Inflation";
     public override void SetStaticDefaults()
 	{
 		// Tooltip.SetDefault("'Throw money at ALL your problems'\n15% more damage if the player has a gold coin.");
@@ -26,28 +27,35 @@ public class SuperInflation : ModItem
 		Item.useTime = 48;
 		Item.useAnimation = 20;
 		Item.damage = 130;
-        Item.shoot = ProjectileID.GoldCoin;
-        Item.shootSpeed = 30f;
-        Item.UseSound = SoundID.Item169;
+        //Item.shoot = ProjectileID.GoldCoin;
+        Item.shoot = ModContent.ProjectileType<SuperInflationHoldoutProj>();
+        Item.shootSpeed = 9f;
 		Item.value = 0;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
+        Item.noMelee = true;
+        Item.noUseGraphic = true;
 	}
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        float numberProjectiles = 4;
-        float rotation = MathHelper.ToRadians(10f);
-        position += Vector2.Normalize(velocity * 10f);
-        for (int i = 0; i < numberProjectiles; i++)
+        for (int i = 0; i < 3; i++)
         {
-            Vector2 perturbedSpeed = velocity.RotatedBy((double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
-            Projectile coinProj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI, 0f, 0f);
-            coinProj.DamageType = DamageClass.MeleeNoSpeed;
+            float f = 0.25f * i * MathHelper.TwoPi;
+            Vector2 vector51 = player.RotatedRelativePoint(player.itemLocation) + f.ToRotationVector2() * MathHelper.Lerp(20f, 60f, 0.25f * i);
+            vector51.Y -= player.height / 2f;
+
+            Vector2 v5 = Main.MouseWorld - vector51;
+            Vector2 vector52 = velocity.SafeNormalize(Vector2.UnitY) * Item.shootSpeed;
+            v5 = v5.SafeNormalize(vector52) * Item.shootSpeed;
+            v5 = Vector2.Lerp(v5, vector52, 0.25f);
+            Projectile coinProj = Projectile.NewProjectileDirect(source, vector51, v5, type, damage / 3, knockback, player.whoAmI);
+            coinProj.timeLeft = 40;
         }
+
         return false;
-    }
+    }*/
 
     public override void AddRecipes()
 	{		
