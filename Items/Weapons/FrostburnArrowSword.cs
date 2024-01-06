@@ -36,7 +36,7 @@ public class FrostburnArrowSword : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile frostArrow = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        frostArrow.timeLeft = 70;
+        frostArrow.timeLeft = 50;
         frostArrow.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }

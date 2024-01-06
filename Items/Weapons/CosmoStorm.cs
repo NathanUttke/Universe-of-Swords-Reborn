@@ -58,10 +58,11 @@ public class CosmoStorm : ModItem
         Vector2 hitPosition = Main.rand.NextVector2Circular(200f, 200f);
         hitPosition.SafeNormalize(hitPosition);
 
-        if (Main.rand.NextBool(3) && target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
+        if (target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
         {
             Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 20f, hitPosition / 4f, ProjectileID.NebulaArcanum, damageDone, Item.knockBack, player.whoAmI, 0f, 0f);
             proj.DamageType = DamageClass.Melee;
+            proj.tileCollide = false;
         }               
     }
 }

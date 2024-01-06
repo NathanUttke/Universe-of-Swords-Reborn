@@ -30,7 +30,7 @@ public class GrandPiano : ModItem
 		//Item.UseSound = new SoundStyle("UniverseOfSwordsMod/Sounds/Item/GrandPiano");
 		Item.UseSound = SoundID.Item169;
 		Item.shoot = ModContent.ProjectileType<GrandPianoProjectile>();
-		Item.shootSpeed = 20f;
+		Item.shootSpeed = 12f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.noUseGraphic = true;
 		Item.noMelee = true;

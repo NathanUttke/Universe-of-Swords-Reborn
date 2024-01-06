@@ -36,10 +36,4 @@ public class CaesarSword : ModItem
 		Item.ResearchUnlockCount = 1;
 
 	}
-
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemHeight += (int)MathF.Sin(player.itemTime * player.direction);
-    }
 }

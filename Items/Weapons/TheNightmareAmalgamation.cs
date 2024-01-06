@@ -28,7 +28,7 @@ public class TheNightmareAmalgamation : ModItem
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item71;
 		Item.shoot = ModContent.ProjectileType<Nightmare>();
-		Item.shootSpeed = 18f;
+		Item.shootSpeed = 12f;
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 

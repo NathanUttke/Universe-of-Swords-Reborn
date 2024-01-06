@@ -40,13 +40,13 @@ public class CrystalVineSword : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         float spread = 1.75f;
-        float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-        double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
+        float baseSpeed = velocity.Length();
+        double startAngle = velocity.ToRotation() - (double)(spread / 2f);
         double deltaAngle = spread / 2f;
         for (int i = 0; i < 25; i++)
         {
             double offsetAngle = startAngle + deltaAngle * i;
-            Projectile vileProj = Projectile.NewProjectileDirect(source, new Vector2(position.X, position.Y), new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile vileProj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, damage, knockback, player.whoAmI, 0f, 0f);
             vileProj.ArmorPenetration = 12;
         }
         return false;
