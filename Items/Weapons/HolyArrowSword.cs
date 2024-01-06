@@ -36,6 +36,7 @@ public class HolyArrowSword : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * 0.5f), knockback, player.whoAmI);
+		proj.timeLeft = 70;
         proj.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }

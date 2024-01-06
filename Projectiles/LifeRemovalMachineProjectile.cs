@@ -4,17 +4,17 @@ using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
-using Terraria.Graphics;
 using Terraria.ID;
-using Terraria.Graphics.Shaders;
-using Mono.Cecil;
-using static Terraria.ModLoader.PlayerDrawLayer;
+using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
     internal class LifeRemovalMachineProjectile : ModProjectile
     {
-        public override string Texture => "UniverseOfSwordsMod/Items/Weapons/LifeRemovalMachine";
+        public override string Texture => ModContent.GetInstance<LifeRemovalMachine>().Texture;
+
+        const float ShootSpeed = 30f;
+        const float MaxTime = 50f;
 
         public override void SetStaticDefaults()
         {
@@ -33,7 +33,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.ownerHitCheck = true;
             Projectile.scale = 1f;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 18;
+            Projectile.localNPCHitCooldown = 17;
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -41,18 +41,13 @@ namespace UniverseOfSwordsMod.Projectiles
             float projRotation = Projectile.rotation - MathHelper.PiOver4 + MathHelper.Pi * Math.Sign(Projectile.velocity.X);
             float collisionPoint = 0f;
             float boxSize = 160f;
-            if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint))
-            {
-                return true;
-            }
-            return false;
-        }
 
-        private readonly float shootSpeed = 30f;
-        private const float maxTime = 50f;
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint);
+        }
         Player Owner => Main.player[Projectile.owner];
         public override void AI()
-        {            
+        {
+            bool isInHalfMaxTime = Projectile.ai[0] == (int)(MaxTime / 2f);
             Vector2 playerCenter = Owner.RotatedRelativePoint(Owner.MountedCenter);
 
 
@@ -68,7 +63,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Lighting.AddLight(Owner.Center, 0.8f, 0.45f, 0.1f);
 
             int velocityXSign = Math.Sign(Projectile.velocity.X);
-            Projectile.velocity = new Vector2(velocityXSign, 0f);
+            Projectile.velocity = new(velocityXSign, 0f);
             if (Projectile.ai[0] == 0f)
             {
                 Projectile.rotation = new Vector2(velocityXSign, 0f - Owner.gravDir).ToRotation() + -MathHelper.PiOver4 + MathHelper.Pi;
@@ -79,25 +74,24 @@ namespace UniverseOfSwordsMod.Projectiles
             }
             Projectile.ai[0] += 1f;
 
-            // Spawn a projectile every 5 ticks
+            // Spawn a projectile every 5 or 25 ticks
 
             if ((Projectile.ai[0] == 5f || Projectile.ai[0] == 25f) && Main.myPlayer == Projectile.owner)
             {
                 float numberProjectiles = 3;
                 float rotation = MathHelper.ToRadians(10f);
-                playerCenter += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 4f;
+                playerCenter += Vector2.Normalize(velocity) * 4f;
 
                 for (int i = 0; i < numberProjectiles; i++)
                 {
                     Vector2 perturbedSpeed = Utils.RotatedBy(velocity, (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.25f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, perturbedSpeed * shootSpeed, ModContent.ProjectileType<DestroyerLaser>(), (int)(Projectile.damage * 1.5f), Projectile.knockBack, Owner.whoAmI);
+                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, perturbedSpeed * ShootSpeed, ModContent.ProjectileType<DestroyerLaser>(), (int)(Projectile.damage * 1.5f), Projectile.knockBack, Owner.whoAmI);
                 }                
                 Projectile.ai[0] += 1f;
             }
 
-            Projectile.rotation += MathHelper.TwoPi * 2f / maxTime * velocityXSign;
-            bool isInHalfMaxTime = Projectile.ai[0] == (int)(maxTime / 2f);
-            if (Projectile.ai[0] >= maxTime || (isInHalfMaxTime && !Owner.controlUseItem))
+            Projectile.rotation += MathHelper.TwoPi * 2f / MaxTime * velocityXSign;            
+            if (Projectile.ai[0] >= MaxTime || (isInHalfMaxTime && !Owner.controlUseItem))
             {
                 Projectile.Kill();
             }

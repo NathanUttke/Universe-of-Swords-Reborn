@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -50,9 +52,18 @@ public class PumpkinBoom : ModItem
         return;
     }
 
+
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-		Projectile boomProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.Landmine, (int)(damageDone / 2f), Item.knockBack / 2f, player.whoAmI);
+        ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.Excalibur, new ParticleOrchestraSettings
+        {
+            PositionInWorld = target.Center,
+            MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
+
+        }, player.whoAmI);
+
+        Projectile boomProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(damageDone / 2f), Item.knockBack / 2f, player.whoAmI, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
+		boomProj.penetrate = 1;
 		boomProj.DamageType = DamageClass.MeleeNoSpeed;
     }
 }

@@ -9,9 +9,9 @@ public class GlowDust : ModDust
 {   
     public override void OnSpawn(Dust dust)
     {
-        dust.velocity *= 0.6f;
+        dust.velocity *= 0.5f;
         dust.noGravity = true;        
-        dust.scale *= 0.5f;
+        //dust.scale *= 0.5f;
         dust.frame = new Rectangle(0, 0, 128, 128);
         dust.noLightEmittence = false;
     }
@@ -19,7 +19,7 @@ public class GlowDust : ModDust
     public override bool Update(Dust dust)
     {
         dust.position += dust.velocity;
-        dust.rotation += dust.velocity.X * 0.2f;
+        //dust.rotation += dust.velocity.X * 0.2f;
         dust.scale *= 0.9f;
         if (dust.scale < 0.01f)
         {
@@ -32,5 +32,12 @@ public class GlowDust : ModDust
     {
         dust.color.A = 0;
         return dust.color;
+    }
+
+    public override bool PreDraw(Dust dust)
+    {
+        Color drawColor = Lighting.GetColor((int)(dust.position.X + 4) / 16, (int)(dust.position.Y + 4) / 16);
+        Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, dust.GetAlpha(drawColor), dust.rotation, new Vector2(64f, 64f), 0.5f * dust.scale, SpriteEffects.None, 0);
+        return false;
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using MonoMod.RuntimeDetour;
 using System;
 using Terraria;
 using Terraria.DataStructures;

@@ -46,13 +46,13 @@ public class Apocalypse : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         float spread = 0.75f;
-        float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-        double startAngle = Math.Atan2(velocity.X, velocity.Y) - (double)(spread / 2f);
-        double deltaAngle = spread / 4f;
+        float baseSpeed = velocity.Length();
+        float startAngle = velocity.ToRotation() - spread / 2f;
+        float deltaAngle = spread / 4f;
         for (int i = 0; i < 3; i++)
         {
-            double offsetAngle = startAngle + deltaAngle * i;
-            Projectile newProj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, damage, knockback, player.whoAmI, 0f, 0f);
+            float offsetAngle = startAngle + deltaAngle * i;
+            Projectile newProj = Projectile.NewProjectileDirect(source, position, baseSpeed * offsetAngle.ToRotationVector2(), type, damage, knockback, player.whoAmI, 0f, 0f);
             newProj.DamageType = DamageClass.MeleeNoSpeed;
         }
         return false;

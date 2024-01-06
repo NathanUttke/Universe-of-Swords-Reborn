@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,16 +20,14 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
-            Projectile.light = 0.7f;
+            Projectile.light = 0.4f;
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 80;
             Projectile.ArmorPenetration = 10;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 14;
         }
-
+        
         public override void AI()
         {
             base.AI();
@@ -41,12 +37,12 @@ namespace UniverseOfSwordsMod.Projectiles
                 SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
             }
 
-            int RedDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.5f);
+            int RedDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch, 0f, 0f, 100, default, 1.25f);
             Dust dust2 = Main.dust[RedDust];
             dust2.velocity *= -0.25f;
             Main.dust[RedDust].noGravity = true;
 
-            Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver4;
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
 
             if (Projectile.velocity.Y > 16f)
             {
@@ -58,13 +54,26 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             SpriteBatch spriteBatch = Main.spriteBatch;             
             Texture2D texture = TextureAssets.Projectile[Type].Value;
+            Vector2 drawOrigin = new(texture.Width - 4f, 2f);
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
 
             Color projColor = Color.White;
             projColor.A = 0;
 
-            spriteBatch.Draw(texture, new Vector2(Projectile.position.X - Main.screenPosition.X + Projectile.width / 2, Projectile.position.Y - Main.screenPosition.Y + Projectile.height / 2), sourceRectangle, projColor, Projectile.rotation, new Vector2(TextureAssets.Projectile[Projectile.type].Width(), 0f), Projectile.scale, SpriteEffects.None, 0);
-            default(FlameLashDrawer).Draw(Projectile);
+            for (int j = 0; j < Projectile.oldPos.Length; j++)
+            {
+                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + (Projectile.Size / 2f);
+
+                Color color = projColor;                
+                color.R += 8;
+                color.G *= (byte)0.75f;
+                color.B *= (byte)0.75f;
+
+
+                spriteBatch.Draw(texture, drawPos, sourceRectangle, color, Projectile.rotation, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+            }
+
+            spriteBatch.Draw(texture, Projectile.position - Main.screenPosition + (Projectile.Size / 2f), sourceRectangle, projColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
         public override void Kill(int timeLeft)
@@ -73,11 +82,9 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 1; i < 24; i++)
             {
-                float oldVelX = Projectile.velocity.X * (30f / i);
-                float oldVelY = Projectile.velocity.Y * (30f / i);
-                int redDust = Dust.NewDust(new Vector2(Projectile.position.X - oldVelX, Projectile.position.Y - oldVelY), 4, 4, DustID.RedTorch, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.8f);
+                int redDust = Dust.NewDust(Projectile.position, 4, 4, DustID.RedTorch, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.8f);
                 Main.dust[redDust].noGravity = true;
-                redDust = Dust.NewDust(new Vector2(Projectile.position.X - oldVelX, Projectile.position.Y - oldVelY), 4, 4, DustID.RedTorch, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.4f);
+                redDust = Dust.NewDust(Projectile.position, 4, 4, DustID.RedTorch, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.4f);
                 Main.dust[redDust].noGravity = true;
             }
         }

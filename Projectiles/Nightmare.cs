@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Utilities;
 
 namespace UniverseOfSwordsMod.Projectiles;
 
@@ -26,45 +27,28 @@ internal class Nightmare : ModProjectile
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
-        Projectile.timeLeft = 50;
+        Projectile.timeLeft = 90;        
         Projectile.light = 0.25f;
     }
 
     public override void AI()
     {
         base.AI();
-        float maxDetectRadius = 250f; 
-        float projSpeed = 15f; 
+        float maxDetectRadius = 300f; 
+        float projSpeed = 7.5f; 
 
         Dust skullDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, 0f, 0f, 100, default, 1.5f);
         skullDust.noGravity = true;
 
-        Projectile.frameCounter++;
-        if (Projectile.frameCounter >= 8)
-        {
-            Projectile.frame++;
-            Projectile.frameCounter = 0;
-            if (Projectile.frame > 3)
-            {
-                Projectile.frame = 0;
-            }
-        }
-
         Projectile.rotation = Projectile.velocity.ToRotation();
-
-        if (Projectile.spriteDirection == -1)
-        {
-            Projectile.rotation += MathHelper.Pi;
-        }
-        Projectile.direction = Projectile.spriteDirection = (Projectile.velocity.X > 0f) ? 1 : -1;
-        Projectile.alpha = (int)Projectile.localAI[0] * 2;
-
-        NPC closestNPC = FindClosestNPC(maxDetectRadius);
+        Projectile.spriteDirection = Projectile.direction;     
+        
+        NPC closestNPC = UniverseUtils.FindClosestNPC(maxDetectRadius, Projectile.Center);
         if (closestNPC == null) 
         {
             return;
         }        
-        Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+        Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed, 0.1f);
     }
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
@@ -72,35 +56,14 @@ internal class Nightmare : ModProjectile
 
         if (!target.HasBuff(BuffID.ShadowFlame))
         {
-            target.AddBuff(BuffID.ShadowFlame, 500);
+            target.AddBuff(BuffID.ShadowFlame, 800);
         }
 
-        if (Main.rand.NextBool(3) && !target.HasBuff(BuffID.ShadowFlame))
-        {
-            target.AddBuff(BuffID.ShadowFlame, 800, false);
+        if (Main.rand.NextBool(3) && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type])
+        {            
             owner.statLife += 2;   
             owner.HealEffect(2, true);
         }
-    }
-    public NPC FindClosestNPC(float maxDetectDistance)
-    {
-        NPC closestNPC = null;
-        float sqrMaxDetectDistance = maxDetectDistance * maxDetectDistance;
-
-        for (int i = 0; i < Main.maxNPCs; i++)
-        {
-            NPC target = Main.npc[i];
-            if (target.CanBeChasedBy())
-            {
-                float sqrDistanceToTarget = Vector2.DistanceSquared(target.Center, Projectile.Center);
-                if (sqrDistanceToTarget < sqrMaxDetectDistance)
-                {
-                    sqrMaxDetectDistance = sqrDistanceToTarget;
-                    closestNPC = target;
-                }
-            }
-        }
-        return closestNPC;
     }
 
     public override Color? GetAlpha(Color lightColor) => new Color(255, 82, 119, 100);
@@ -118,7 +81,7 @@ internal class Nightmare : ModProjectile
 
         if (Projectile.spriteDirection == -1)
         {
-            spriteEffects = SpriteEffects.FlipHorizontally;
+            spriteEffects = SpriteEffects.FlipVertically;
         }
 
         spriteBatch.End();

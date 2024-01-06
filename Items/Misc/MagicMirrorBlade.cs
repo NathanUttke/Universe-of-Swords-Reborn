@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -24,6 +25,7 @@ public class MagicMirrorBlade : ModItem
         Item.useTime = 26;
         Item.useAnimation = 26;
         Item.value = Item.sellPrice(0, 0, 50, 0);
+		Item.noMelee = true;
 		Item.autoReuse = false;
 		Item.ResearchUnlockCount = 1;
     }
@@ -44,13 +46,18 @@ public class MagicMirrorBlade : ModItem
 			{
 				return;
 			}
-			for (int d = 0; d < 70; d++)
+			for (int d = 0; d < 30; d++)
 			{
-				Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 150, default, 1.5f);
-			}
+                ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.StardustPunch, new ParticleOrchestraSettings
+                {
+                    PositionInWorld = player.MountedCenter,
+                    MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
+
+                }, player.whoAmI);
+            }
 			player.grappling[0] = -1;
 			player.grapCount = 0;
-			for (int p = 0; p < 1000; p++)
+			for (int p = 0; p < Main.maxProjectiles; p++)
 			{
 				if (Main.projectile[p].active && Main.projectile[p].owner == player.whoAmI && Main.projectile[p].aiStyle == 7)
 				{
@@ -58,21 +65,26 @@ public class MagicMirrorBlade : ModItem
 				}
 			}
 			player.Spawn(PlayerSpawnContext.RecallFromItem);
-			for (int d2 = 0; d2 < 70; d2++)
+			for (int d2 = 0; d2 < 30; d2++)
 			{
-				Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default, 1.5f);
-			}
+                ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.StardustPunch, new ParticleOrchestraSettings
+                {
+                    PositionInWorld = player.MountedCenter,
+                    MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
+
+                }, player.whoAmI);
+            }
 		}
 	}
 	public override void AddRecipes()
 	{	
 		CreateRecipe()
 		.AddIngredient(ItemID.MagicMirror, 1)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 		.Register();
 		CreateRecipe()
 		.AddIngredient(ItemID.IceMirror, 1)
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)
+		.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 		.Register();
 	}
 }

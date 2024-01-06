@@ -35,7 +35,6 @@ public class BatSlayer : ModItem
 	}
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.AddBuff(31, 360, false);
-		
+		target.AddBuff(31, 360, false);		
 	}
 }

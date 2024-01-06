@@ -14,7 +14,7 @@ Projectiles: {
 	LifeRemovalMachineProjectile.DisplayName: Life Removal Machine
 	MechanicalProj.DisplayName: Mechanical Soul
 	SwordMinion.DisplayName: Flying Blade
-	Nightmare.DisplayName: Nightmare
+	Nightmare.DisplayName: The Nightmare Amalgamation
 	PurpleRuneProjectile.DisplayName: Shadowflame Rune
 	PurpleScytheClone.DisplayName: Purple Scythe
 	RedFlareLongswordProjectile.DisplayName: Red Flare Longsword
@@ -24,20 +24,26 @@ Projectiles: {
 	SwordOfTheMultiverseProjectile.DisplayName: Sword Of The Multiverse
 	SwordOfTheMultiverseProjectileSmall.DisplayName: Sword Of The Multiverse
 	SwordOfTheUniverseV2Projectile.DisplayName: Sword Of The Universe
-	Tier2CProjectile.DisplayName: Crimson Thing
+	Tier2CProjectile.DisplayName: Crimson Stinger
 	TrueTerrabladeProjectile.DisplayName: Terra Ensis
-	TwinsProjectile.DisplayName: Twins Projectile
-	UltimateSaberProjectile.DisplayName: Ultimate Saber
+	TwinsProjectile.DisplayName: Twins's Blade
+	UltimateSaberProjectile.DisplayName: The Ultimate Saber
 	UnicornHornProjectile.DisplayName: Unicorn Horn
 	UnicornHornProjectile2.DisplayName: Unicorn Horn
-	UselessProjectile.DisplayName: Useless Weapon
-	BetterShroomiteProj.DisplayName: Better Shroomite Proj
-	PrimeSlashProj.DisplayName: Prime Slash Proj
+	UselessProjectile.DisplayName: Wooden Cane
+	BetterShroomiteProj.DisplayName: Better Shroomite Blade
+	PrimeSlashProj.DisplayName: Prime Slash
 	DestroyerLaser.DisplayName: Destroyer Laser
-	ScarletGreatswordProjectile.DisplayName: Scarlet Greatsword Projectile
+	ScarletGreatswordProjectile.DisplayName: Scarlet Flare Greatsword
+	SwordLegendHoldoutProj.DisplayName: Sword Of The Legend
+	SwordOfTheMultiverseProjectileYoyo.DisplayName: Sword Of The Multiverse
+	SwordOfTheMultiverseWave.DisplayName: Sword Of The Multiverse
 }
 
 NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
+RedDamascus.SetBonus: Grants Titan potion effect, 10% increased melee damage, 10% increased melee critical chance, increases maximum life by 20
+GreenDamascus.SetBonus: 20% increased melee speed, 7% increased melee critical chance, 50% increased movement speed, increases maximum life by 20
+BlueDamascus.SetBonus: 10% endurance, 7% increased melee critical chance, increases maximum life by 60
 
 Items: {
 	HaloOfHorrors: {

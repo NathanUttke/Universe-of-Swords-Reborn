@@ -15,8 +15,8 @@ public class GnomBlade : ModItem
 		Item.rare = ItemRarityID.Red;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 12;
-		Item.useAnimation = 12;
+		Item.useTime = 15;
+		Item.useAnimation = 15;
 
 		Item.damage = 150;
 		Item.knockBack = 9f;
@@ -28,7 +28,7 @@ public class GnomBlade : ModItem
         Item.autoReuse = true;
 
         Item.shoot = ModContent.ProjectileType<GnomeProj>();
-		Item.shootSpeed = 6f;
+		Item.shootSpeed = 13f;
 
 		Item.ResearchUnlockCount = 1;
 	}
@@ -46,7 +46,6 @@ public class GnomBlade : ModItem
             .AddTile(TileID.LunarCraftingStation)
 			.Register();
 	}
-
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{

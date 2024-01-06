@@ -1,19 +1,13 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Armor;
 
 [AutoloadEquip(EquipType.Body)]
 public class DamascusBreastplate : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		
-		// DisplayName.SetDefault("Damascus Breastplate");
-		// Tooltip.SetDefault("4% increased melee damage");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 18;
@@ -49,10 +43,10 @@ public class DamascusBreastplate : ModItem
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "DamascusBar", 20);
-		val.AddIngredient(Mod, "SwordMatter", 60);
-		val.AddTile(TileID.Anvils);
-		val.Register();
-	}
+		CreateRecipe()
+            .AddIngredient(ModContent.ItemType<DamascusBar>(), 20)
+            .AddIngredient(ModContent.ItemType<SwordMatter>(), 10)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

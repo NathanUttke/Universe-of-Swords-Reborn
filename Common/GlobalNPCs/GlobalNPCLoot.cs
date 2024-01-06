@@ -115,7 +115,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(isExpertCondition, ModContent.ItemType<HaloOfHorrors>(), 100, 1));
                     break;
                 case NPCID.RedDevil:
-                    npcLoot.Add(ItemDropRule.ByCondition(isGolemDown, ModContent.ItemType<ScarletFlareCore>(), 25));
+                    npcLoot.Add(ItemDropRule.ByCondition(isGolemDown, ModContent.ItemType<ScarletFlareCore>(), 10));
                     break;
                 case NPCID.Demon:
                     npcLoot.Add(ItemDropRule.ExpertGetsRerolls(ModContent.ItemType<DeathSword>(), 40, 1));

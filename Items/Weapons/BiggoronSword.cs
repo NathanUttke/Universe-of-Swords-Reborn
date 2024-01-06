@@ -1,7 +1,9 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons
 {
@@ -12,12 +14,6 @@ namespace UniverseOfSwordsMod.Items.Weapons
             // DisplayName.SetDefault("Sword of The Legend");
             // Tooltip.SetDefault("Heavy but strong");
         }
-
-        public override void UseStyle(Player player, Rectangle heldItemFrame)
-        {
-            player.itemLocation = player.Center;
-        }
-
         public override void SetDefaults()
         {
             Item.width = 90;
@@ -29,7 +25,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.autoReuse = true;
 
             Item.damage = 45;
-            Item.DamageType = DamageClass.Melee;
+            Item.DamageType = DamageClass.MeleeNoSpeed;
 
             Item.knockBack = 8f;
             Item.UseSound = SoundID.Item1;
@@ -38,9 +34,14 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.rare = ItemRarityID.LightRed;
 
             Item.scale = 1.25f;
+            Item.shoot = ModContent.ProjectileType<SwordLegendHoldoutProj>();            
+            Item.shootSpeed = 5f;
 
             Item.ResearchUnlockCount = 1;
+            Item.noMelee = true;
+            Item.noUseGraphic = true;
         }
+        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<SwordLegendHoldoutProj>()] <= 0;
     }
 }
 

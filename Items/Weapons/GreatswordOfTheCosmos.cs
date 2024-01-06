@@ -48,11 +48,11 @@ public class GreatswordOfTheCosmos : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		int numberProjectiles = 30;
-		Vector2 vector2_1 = new();
+		Vector2 vector2_1 = default;
 		for (int index = 0; index < numberProjectiles; index++)
 		{
 			vector2_1.X = (float)(player.position.X + player.width * 1.0 + Main.rand.Next(100) * -player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X));
-			vector2_1.Y = (float)(player.position.Y + player.height * 0.5 - 600.0);
+			vector2_1.Y = (float)(player.Center.Y - 600.0);
 
 		    vector2_1.X = (float)(((double)vector2_1.X + player.Center.X) / 2.0) + Main.rand.Next(-100, 100);
 			vector2_1.Y -= 500 * index;
@@ -72,7 +72,7 @@ public class GreatswordOfTheCosmos : ModItem
 			float num16 = num13 * num15;
 			float SpeedX = num17 + Main.rand.Next(-12, 10) * 0.2f;
 			float SpeedY = num16 + Main.rand.Next(-12, 10) * 0.2f;
-			Projectile rainProj = Projectile.NewProjectileDirect(source, vector2_1, new Vector2(SpeedX, SpeedY), type, damage, knockback, Main.myPlayer, 1f);
+			Projectile rainProj = Projectile.NewProjectileDirect(source, vector2_1, new Vector2(SpeedX, SpeedY), type, damage, knockback, player.whoAmI);
 			rainProj.DamageType = DamageClass.Melee;
 		}
 		return false;

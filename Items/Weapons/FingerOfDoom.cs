@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,4 +23,14 @@ public class FingerOfDoom : ModItem
 		Item.DamageType = DamageClass.Melee;
 		Item.ResearchUnlockCount = 1;
 	}
+
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+    {
+        ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.Keybrand, new ParticleOrchestraSettings
+        {
+            PositionInWorld = target.Center,
+            MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
+
+        }, player.whoAmI);
+    }
 }

@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Armor;
 
@@ -33,13 +34,9 @@ public class RedDamascusHelmet : ModItem
 	public override void AddRecipes()
 	{
 		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "DamascusBar", 15);
+		val.AddIngredient(ModContent.ItemType<ScarletFlareCore>(), 5);
 		val.AddIngredient(Mod, "DamascusHelmet", 1);
-		val.AddIngredient(ItemID.SoulofMight, 15);
-		val.AddIngredient(ItemID.SoulofSight, 15);
-		val.AddIngredient(ItemID.SoulofFright, 15);
 		val.AddIngredient(ItemID.WrathPotion, 15);
-		val.AddIngredient(ItemID.HallowedMask, 1);
 		val.AddIngredient(ItemID.HallowedBar, 16);
 		val.AddTile(TileID.MythrilAnvil);
 		val.Register();

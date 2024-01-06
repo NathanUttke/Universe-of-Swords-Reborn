@@ -68,7 +68,7 @@ public class PurpleSolutionSpreader : ModItem
 	{		
 		CreateRecipe()
         .AddIngredient(ModContent.ItemType<SwordMatter>(), 30)
-        .AddIngredient(ItemID.PurpleSolution, 100)
+        .AddIngredient(ItemID.PurpleSolution, 300)
 		.AddTile(TileID.MythrilAnvil)
 		.Register();
 	}

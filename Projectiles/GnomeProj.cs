@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using rail;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -26,29 +27,54 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.width = 32;
             Projectile.height = 30;
             Projectile.alpha = 64;
-            Projectile.penetrate = -1;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.penetrate = 1;
+            Projectile.DamageType = DamageClass.Melee;            
             Projectile.scale = 1.125f;
-            Projectile.light = 0.25f;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 14;
+            Projectile.light = 0.25f;           
             Projectile.extraUpdates = 1;
             Projectile.ArmorPenetration = 10;
-            Projectile.timeLeft = 100;
+            Projectile.timeLeft = 70;
         }
 
-        public override Color? GetAlpha(Color lightColor) => Color.White;
-
+        public override Color? GetAlpha(Color lightColor) => Color.White;       
         public override void AI()
         {
             base.AI();
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
         }
+        
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (Projectile.ai[1] == 1f || target.immortal || NPCID.Sets.CountsAsCritter[target.type])
+            {
+                return;
+            }            
+
+            for (int i = 0; i < 3; i++)
+            {
+                int direction = Main.rand.Next(-1, 2) * 1;
+                Vector2 screenPos = Main.screenPosition;
+                if (direction < 0)
+                {
+                    screenPos.X += Main.screenWidth;
+                }
+                screenPos.Y += Main.rand.Next(Main.screenHeight);
+                //Vector2 screenPosition = new(screenPos.X, screenPos.Y);
+                Vector2 targetPos = new(target.Center.X - screenPos.X, target.Center.Y - screenPos.Y);
+                targetPos.X += Main.rand.Next(-50, 51) * 0.1f;
+                targetPos.Y += Main.rand.Next(-50, 51) * 0.1f;
+                float targetDist = targetPos.Length();
+                targetDist = 24f / targetDist;
+                targetPos.X *= targetDist;
+                targetPos.Y *= targetDist;
+                Projectile gnomProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), screenPos, targetPos, Type, (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner, 0f, 1f);
+                gnomProj.penetrate = -1;
+            }
+        }
 
         public override bool PreDraw(ref Color lightColor)
         {
-            SpriteBatch spriteBatch = Main.spriteBatch;
-            SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            SpriteBatch spriteBatch = Main.spriteBatch;            
             Texture2D texture = TextureAssets.Projectile[Type].Value;
 
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);

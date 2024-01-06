@@ -7,6 +7,8 @@ using UniverseOfSwordsMod.Projectiles;
 using UniverseOfSwordsMod.Buffs;
 using UniverseOfSwordsMod.Items.Materials;
 using Terraria.GameInput;
+using System.IO;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -43,6 +45,7 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.value = Item.sellPrice(0, 12, 0, 0);
 
         Item.autoReuse = true;
+        Item.noMelee = false;
         Item.noUseGraphic = false;
         
         Item.shoot = ProjectileID.LunarFlare;
@@ -51,7 +54,17 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.ResearchUnlockCount = 1;
         Item.reuseDelay = 0;
         Item.ArmorPenetration = 20;
-    }            
+    }
+
+    public override void NetSend(BinaryWriter writer)
+    {
+        writer.Write7BitEncodedInt(currentMode);
+    }
+
+    public override void NetReceive(BinaryReader reader)
+    {
+        currentMode = reader.ReadInt32();
+    }
     public override void HoldItem(Player player)
     {        
         if (player.whoAmI == Main.myPlayer && PlayerInput.Triggers.Current.MouseRight && !Main.mapFullscreen && !player.controlUseItem && player.ItemTimeIsZero)
@@ -72,17 +85,20 @@ public class SwordOfTheMultiverseNew : ModItem
             Item.useTime = Item.useAnimation;
             Item.shootSpeed = 25f;
             Item.useStyle = ItemUseStyleID.Swing;
+            Item.noMelee = false;
             Item.noUseGraphic = false;
         }
         else if (currentMode == 2)
         {
             Item.useTime = 7;
             Item.useStyle = ItemUseStyleID.Swing;
+            Item.noMelee = false;
             Item.noUseGraphic = false;            
         }
         else if (currentMode == 3)
         {
             Item.noUseGraphic = true;
+            Item.noMelee = true;
             Item.useStyle = ItemUseStyleID.Swing;
         }
     }    
@@ -131,9 +147,9 @@ public class SwordOfTheMultiverseNew : ModItem
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.NextBool(2) && currentMode == 1)
+        if (Main.rand.NextBool(2) && currentMode != 3)
         {
-            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PinkTorch, 0f, 0f, 100, default, 2f);
+            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), 0f, 0f, 100, Color.Violet, 2f);
             dust.noGravity = true;
         }
     }
@@ -175,9 +191,9 @@ public class SwordOfTheMultiverseNew : ModItem
 
 	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
+		if (!target.HasBuff(ModContent.BuffType<Buffs.EmperorBlaze>()))
 		{
-            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 700, true);
+            target.AddBuff(ModContent.BuffType<Buffs.EmperorBlaze>(), 700, true);
         }
         if (!target.HasBuff(BuffID.Weak))
         {
