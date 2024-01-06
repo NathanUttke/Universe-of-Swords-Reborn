@@ -15,8 +15,8 @@ public class GnomBlade : ModItem
 		Item.rare = ItemRarityID.Red;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 12;
-		Item.useAnimation = 12;
+		Item.useTime = 15;
+		Item.useAnimation = 15;
 
 		Item.damage = 150;
 		Item.knockBack = 9f;
