@@ -45,7 +45,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             NPC.boss = true;
             NPC.noGravity = true;
             NPC.noTileCollide = true;
-            NPC.damage = 50;
+            NPC.damage = 0;
             NPC.defense = 14;
             NPC.lifeMax = 15000;
             NPC.knockBackResist = 0f;
@@ -108,7 +108,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
         private int dashCounter = 0;        
 
-        private float dashTimer = 25f;
+        private float dashTimer;
         public override void AI()
         {
             Vector2 npcCenter = NPC.Center;
@@ -134,6 +134,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
             if (NPC.ai[0] == -1f)
             {
+                NPC.damage = 0;
                 NPC.dontTakeDamage = true;
                 NPC.rotation += 0.25f;
                 if (NPC.alpha > 0)
@@ -150,9 +151,10 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
 
             if (NPC.ai[0] == 0f)
             {
+                NPC.damage = 50;
                 NPC.dontTakeDamage = false;
-                Vector2 npcPosition = new(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-                Vector2 playerPosNpc = new(Player.position.X + Player.width / 2 - npcPosition.X, Player.position.Y + Player.height / 2 - npcPosition.Y);
+                Vector2 npcPosition = NPC.Center;
+                Vector2 playerPosNpc = new(Player.Center.X - npcPosition.X, Player.Center.Y - npcPosition.Y);
                 float playerPosNpcSqrt = dashSpeed / playerPosNpc.Length();
                 playerPosNpc *= playerPosNpcSqrt;
 
@@ -167,9 +169,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             }
             else if (NPC.ai[0] == 1f)
             {
-
                 NPC.velocity *= 0.99f;
-
                 NPC.rotation = NPC.velocity.ToRotation() + MathHelper.PiOver2;
 
                 NPC.ai[1] += 1f;
@@ -231,6 +231,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             }
             else if (NPC.ai[0] == 3f)
             {
+                NPC.damage = 0;
                 float num10 = 8f;
                 float acceleration = 0.15f;
 
@@ -296,7 +297,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                     if (NPC.ai[2] % 80f == 0f)
                     {
                         NPC.ai[2] = 0f;                        
-                        float num18 = 6f;
+                        float num18 = 5f;
 
                         float num19 = Player.Center.X - NPC.Center.X;
                         float num20 = Player.Center.Y - NPC.Center.Y;
@@ -312,8 +313,8 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             int swordNPC = NPC.NewNPC(NPC.GetSource_FromAI(), (int)vector2.X, (int)vector2.Y, NPCID.EnchantedSword);                            
-                            Main.npc[swordNPC].velocity.X = vector3.X * 2f;
-                            Main.npc[swordNPC].velocity.Y = vector3.Y * 2f;
+                            Main.npc[swordNPC].velocity.X = vector3.X * 1.25f;
+                            Main.npc[swordNPC].velocity.Y = vector3.Y * 1.25f;
                             if (Main.netMode == NetmodeID.Server && swordNPC < Main.maxNPCs)
                             {
                                 NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, swordNPC);
