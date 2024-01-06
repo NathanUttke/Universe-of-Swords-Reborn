@@ -45,6 +45,7 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.value = Item.sellPrice(0, 12, 0, 0);
 
         Item.autoReuse = true;
+        Item.noMelee = false;
         Item.noUseGraphic = false;
         
         Item.shoot = ProjectileID.LunarFlare;
@@ -84,17 +85,20 @@ public class SwordOfTheMultiverseNew : ModItem
             Item.useTime = Item.useAnimation;
             Item.shootSpeed = 25f;
             Item.useStyle = ItemUseStyleID.Swing;
+            Item.noMelee = false;
             Item.noUseGraphic = false;
         }
         else if (currentMode == 2)
         {
             Item.useTime = 7;
             Item.useStyle = ItemUseStyleID.Swing;
+            Item.noMelee = false;
             Item.noUseGraphic = false;            
         }
         else if (currentMode == 3)
         {
             Item.noUseGraphic = true;
+            Item.noMelee = true;
             Item.useStyle = ItemUseStyleID.Swing;
         }
     }    
