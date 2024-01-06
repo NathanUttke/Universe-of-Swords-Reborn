@@ -54,7 +54,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             SpriteBatch spriteBatch = Main.spriteBatch;             
             Texture2D texture = TextureAssets.Projectile[Type].Value;
-            Vector2 drawOrigin = new(texture.Width, 0f);
+            Vector2 drawOrigin = new(texture.Width - 4f, 2f);
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
 
             Color projColor = Color.White;

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -71,12 +72,27 @@ namespace UniverseOfSwordsMod.Projectiles
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - num20), Projectile.Center + projRotation.ToRotationVector2() * num20, 23f * Projectile.scale, ref collisionPoint7);
         }
 
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write((int)CurrentAIState);
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            CurrentAIState = (AIState)reader.ReadInt32();
+        }
+
         public override void AI()
         {           
-            if (Main.myPlayer == Projectile.owner && (Owner.dead || !Owner.controlUseItem || Owner.noItems || Owner.CCed))
+            if (Owner.dead || Owner.noItems || Owner.CCed || !Owner.active)
             {
                 Projectile.Kill();
             }        
+
+            if (SwingTimer == 11f && !Owner.controlUseItem && CurrentAIState == AIState.SwingingLeft)
+            {
+                Projectile.Kill();
+            }
 
             if (Main.myPlayer == Projectile.owner && Main.mapFullscreen)
             {
@@ -99,8 +115,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 case AIState.Retracting:
                     RetractWeapon();
                     break;
-            }
-
+            }            
             Projectile.direction = (Projectile.velocity.X > 0f).ToDirectionInt();
             Projectile.spriteDirection = Projectile.direction;
         }
@@ -166,6 +181,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
+            Texture2D trailTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/BiggoronSwordTrail");
             SpriteBatch spriteBatch = Main.spriteBatch;
             Vector2 textureOrigin = new (0f * Owner.direction, texture.Height);
             Color projColor = Color.White;
@@ -178,7 +194,7 @@ namespace UniverseOfSwordsMod.Projectiles
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 projColor *= 0.70f;
-                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + new Vector2(texture.Width / 2f, texture.Height / 2f), null, projColor, Projectile.oldRot[i] - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(trailTexture, Projectile.oldPos[i] - Main.screenPosition + new Vector2(texture.Width / 2f, texture.Height / 2f), null, projColor, Projectile.oldRot[i] - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);
             }
 
             spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);
