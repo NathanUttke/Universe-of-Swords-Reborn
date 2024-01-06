@@ -27,12 +27,10 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.width = 32;
             Projectile.height = 30;
             Projectile.alpha = 64;
-            Projectile.penetrate = -1;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.penetrate = 1;
+            Projectile.DamageType = DamageClass.Melee;            
             Projectile.scale = 1.125f;
-            Projectile.light = 0.25f;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = -1;
+            Projectile.light = 0.25f;           
             Projectile.extraUpdates = 1;
             Projectile.ArmorPenetration = 10;
             Projectile.timeLeft = 70;
@@ -44,30 +42,34 @@ namespace UniverseOfSwordsMod.Projectiles
             base.AI();
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
         }
-
+        
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Projectile.ai[1] == 1f || target.immortal || NPCID.Sets.CountsAsCritter[target.type])
             {
                 return;
-            }
-            int direction = Main.rand.Next(-1, 2) * 1;
-            float screenPosX = Main.screenPosition.X;
-            float screenPosY = Main.screenPosition.Y;
-            if (direction < 0)
+            }            
+
+            for (int i = 0; i < 3; i++)
             {
-                screenPosX += Main.screenWidth;
+                int direction = Main.rand.Next(-1, 2) * 1;
+                Vector2 screenPos = Main.screenPosition;
+                if (direction < 0)
+                {
+                    screenPos.X += Main.screenWidth;
+                }
+                screenPos.Y += Main.rand.Next(Main.screenHeight);
+                //Vector2 screenPosition = new(screenPos.X, screenPos.Y);
+                Vector2 targetPos = new(target.Center.X - screenPos.X, target.Center.Y - screenPos.Y);
+                targetPos.X += Main.rand.Next(-50, 51) * 0.1f;
+                targetPos.Y += Main.rand.Next(-50, 51) * 0.1f;
+                float targetDist = targetPos.Length();
+                targetDist = 24f / targetDist;
+                targetPos.X *= targetDist;
+                targetPos.Y *= targetDist;
+                Projectile gnomProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), screenPos, targetPos, Type, (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner, 0f, 1f);
+                gnomProj.penetrate = -1;
             }
-            screenPosY += Main.rand.Next(Main.screenHeight);
-            Vector2 screenPosition = new(screenPosX, screenPosY);
-            Vector2 targetPos = new (target.Center.X - screenPosition.X, target.Center.Y - screenPosition.Y);
-            targetPos.X += Main.rand.Next(-50, 51) * 0.1f;
-            targetPos.Y += Main.rand.Next(-50, 51) * 0.1f;
-            float targetDist = targetPos.Length();
-            targetDist = 24f / targetDist;
-            targetPos.X *= targetDist;
-            targetPos.Y *= targetDist;
-            Projectile.NewProjectile(target.GetSource_OnHit(target), screenPosition, targetPos, Type, (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner, 0f, 1f);
         }
 
         public override bool PreDraw(ref Color lightColor)
