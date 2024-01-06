@@ -19,7 +19,7 @@ public class GlowDust : ModDust
     public override bool Update(Dust dust)
     {
         dust.position += dust.velocity;
-        dust.rotation += dust.velocity.X * 0.2f;
+        //dust.rotation += dust.velocity.X * 0.2f;
         dust.scale *= 0.9f;
         if (dust.scale < 0.01f)
         {
