@@ -2,8 +2,10 @@
 
 [b][url=https://discord.gg/DBCZg54fjX]Discord[/url][/b] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2984054672]Legacy Version[/url][/b]
 
-The [b]Universe of Swords Reborn[/b] Mod is a port and continuation of the original Universe of Swords Mod from tModLoader 1.3, a mod that adds a ton of melee weapons,
-mostly consisting of swords.
+The [b]Universe of Swords Reborn[/b] Mod is a port and continuation of the original Universe of Swords Mod from tModLoader 1.3, it adds 80+ weapons,
+most of them being sword themed.
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303]Recipe Browser[/url] is highly recommended to be used with this mod.
 
 [h2]Credits[/h2]
 
