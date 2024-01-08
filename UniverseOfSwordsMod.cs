@@ -1,18 +1,21 @@
 using Microsoft.Xna.Framework.Graphics;
-using System;
+using ReLogic.Content;
 using Terraria;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
 using Terraria.ModLoader;
-using UniverseOfSwordsMod.Common.Systems;
-using UniverseOfSwordsMod.Items.Consumables;
-using UniverseOfSwordsMod.NPCs.Bosses;
-
 namespace UniverseOfSwordsMod
 {
     public class UniverseOfSwordsMod : Mod
-    {
+    {        
         public override void Load()
         {
-            base.Load();
+
+            if (Main.netMode != NetmodeID.Server)
+            {
+                Ref<Effect> PowerGalacticShader = new(ModContent.Request<Effect>("UniverseOfSwordsMod/Assets/Effects/PowerOfTheGalacticShader", AssetRequestMode.ImmediateLoad).Value);
+                GameShaders.Misc["GalacticShader"] = new MiscShaderData(PowerGalacticShader, "PowerGalacticPass").UseProjectionMatrix(true);
+            }
         }
     }
 }
