@@ -50,13 +50,12 @@ namespace UniverseOfSwordsMod.Projectiles
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, Projectile.Center + projRotation * Projectile.height * Projectile.scale, 23f * Projectile.scale, ref _);
         }
 
-
-
         public override void AI()
         {
-            if (Main.myPlayer == Projectile.owner && (Owner.dead || !Owner.controlUseItem || Owner.noItems || Owner.CCed))
+            if (Main.myPlayer == Projectile.owner && (Owner.dead || Owner.noItems || Owner.CCed || !Owner.active))
             {
                 Projectile.Kill();
+                return;
             }
 
             if (Main.myPlayer == Projectile.owner && Main.mapFullscreen)
@@ -72,8 +71,7 @@ namespace UniverseOfSwordsMod.Projectiles
             
             Projectile.velocity = new Vector2(velocityXSign, 0f);
 
-            SetPlayerValues();            
-            
+            SetPlayerValues();           
 
             if (Timer == 0f)
             {                
@@ -83,7 +81,12 @@ namespace UniverseOfSwordsMod.Projectiles
                     Projectile.rotation += MathHelper.PiOver4;
                 }
             }
-            
+
+            if (Timer == MaxTime && !Owner.controlUseItem)
+            {
+                Projectile.Kill();
+            }
+
             Projectile.spriteDirection = Projectile.direction;
             Projectile.position = Owner.RotatedRelativePoint(Owner.Center, true) - Projectile.Size / 2 + Vector2.UnitX * Owner.direction;
             if (Owner.direction < 0)
@@ -92,9 +95,10 @@ namespace UniverseOfSwordsMod.Projectiles
             } 
             
             Projectile.rotation = -1f + EaseInBack(RotationTimer / 8f) * velocityXSign;
+
             //Main.NewText(Projectile.rotation);
             if (Timer == MaxTime * 0.72f)
-            {
+            {                
                 for (int i = 0; i < 3; i++)
                 {
                     float f = 0.25f * i * MathHelper.TwoPi;
@@ -111,10 +115,11 @@ namespace UniverseOfSwordsMod.Projectiles
                 Timer++;
             }
 
-            if (Timer >= MaxTime * 0.33f)
-            {                
-                SoundEngine.PlaySound(SoundID.Item169, Projectile.position);
+            if (Timer == 8f)
+            {
+                SoundEngine.PlaySound(SoundID.Item169, Projectile.position);                
             }
+
 
             if (Timer >= MaxTime)
             {                
@@ -134,8 +139,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         private void SetPlayerValues()
         {            
-            Owner.heldProj = Projectile.whoAmI;            
-            Owner.itemTime = Owner.itemAnimation = 2;
+            Owner.heldProj = Projectile.whoAmI;           
             Owner.itemRotation = Projectile.rotation;
             Owner.SetDummyItemTime(2);
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + MathHelper.ToRadians(240));
