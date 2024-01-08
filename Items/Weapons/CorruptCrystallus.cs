@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -36,7 +37,7 @@ public class CorruptCrystallus : ModItem
 	{	
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Demonite, 0f, 0f, 100, default, 2f);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.MediumOrchid, 2f);
 			Main.dust[dust].noGravity = true;
 		}
 	}

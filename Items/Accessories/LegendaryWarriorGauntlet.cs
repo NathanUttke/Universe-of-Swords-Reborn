@@ -34,14 +34,13 @@ public class LegendaryWarriorGauntlet : ModItem
 	{
 		player.statDefense += 15;
 		player.GetDamage(DamageClass.Melee) += 0.15f;
-		player.lifeRegen += 15;
-		player.GetAttackSpeed(DamageClass.Melee) += 0.20f;
+		player.lifeRegen += 15;		
 		player.GetCritChance(DamageClass.Melee) += 25;
 		player.statLifeMax2 += 20;
 		player.endurance += 0.2f;
-		player.AddBuff(9, 2, true);
-		player.AddBuff(108, 2, true);
-		player.AddBuff(14, 2, true);
+		player.AddBuff(BuffID.Spelunker, 2, true);
+		player.AddBuff(BuffID.Titan, 2, true);
+		player.AddBuff(BuffID.Thorns, 2, true);
 		player.buffImmune[BuffID.WitheredWeapon] = true;
 		player.buffImmune[BuffID.BrokenArmor] = true;
 		player.buffImmune[BuffID.Burning] = true;

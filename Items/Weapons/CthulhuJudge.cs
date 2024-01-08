@@ -6,11 +6,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class CthulhuJudge : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("I have an eye on you...");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 58;
@@ -20,7 +15,7 @@ public class CthulhuJudge : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
 		Item.useAnimation = 30;
-		Item.damage = 24;
+		Item.damage = 25;
 		Item.knockBack = 6.5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 40, 0);

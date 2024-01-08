@@ -23,7 +23,7 @@ public class GnomBlade : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		
-		Item.DamageType = DamageClass.Melee;
+		Item.DamageType = DamageClass.MeleeNoSpeed;
 		Item.crit = 8;
         Item.autoReuse = true;
 

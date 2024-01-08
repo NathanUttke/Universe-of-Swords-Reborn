@@ -22,9 +22,9 @@ public class EdgeLord : ModItem
 		Item.height = 128;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 40;
+		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 100;
+		Item.damage = 90;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item169;
 		Item.shoot = ModContent.ProjectileType<EdgeLordProjectile>();
@@ -42,7 +42,7 @@ public class EdgeLord : ModItem
 			.AddIngredient(ItemID.HellstoneBar, 50)
 			.AddIngredient(ItemID.SunStone, 1)
 			.AddIngredient(ModContent.ItemType<SwordMatter>(), 35)
-			.AddIngredient(ItemID.DeathSickle, 1)
+			.AddIngredient(ItemID.DeathSickle, 1)			
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}

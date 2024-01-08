@@ -12,11 +12,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class GreatswordOfTheCosmos : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Greatsword of the Cosmos");		
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 100;
@@ -47,26 +42,27 @@ public class GreatswordOfTheCosmos : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int numberProjectiles = 30;
+		int numberProjectiles = 25;
 		Vector2 vector2_1 = default;
 		for (int index = 0; index < numberProjectiles; index++)
 		{
-			vector2_1.X = (float)(player.position.X + player.width * 1.0 + Main.rand.Next(100) * -player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X));
-			vector2_1.Y = (float)(player.Center.Y - 600.0);
+			vector2_1.X = player.position.X + player.width * 1f + Main.rand.Next(100) * -player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X);
+			vector2_1.Y = player.Center.Y - 600f;
 
-		    vector2_1.X = (float)(((double)vector2_1.X + player.Center.X) / 2.0) + Main.rand.Next(-100, 100);
+		    vector2_1.X = ((vector2_1.X + player.Center.X) / 2f) + Main.rand.Next(-100, 100);
 			vector2_1.Y -= 500 * index;
+
 			float num12 = Main.mouseX + Main.screenPosition.X - vector2_1.X;
 			float num13 = Main.mouseY + Main.screenPosition.Y - vector2_1.Y;
-			if ((double)num13 < 0.0)
+			if (num13 < 0f)
 			{
 				num13 *= -1f;
 			}
-			if ((double)num13 < 20.0)
+			if (num13 < 20f)
 			{
 				num13 = 20f;
 			}
-			float num14 = (float)Math.Sqrt((double)num12 * (double)num12 + (double)num13 * (double)num13);
+			float num14 = MathF.Sqrt(num12 * num12 + num13 * num13);
 			float num15 = Item.shootSpeed / num14;
 			float num17 = num12 * num15;
 			float num16 = num13 * num15;

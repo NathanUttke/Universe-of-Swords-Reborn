@@ -8,10 +8,7 @@ namespace UniverseOfSwordsMod.Items.Accessories;
 [LegacyName (new string[] { "BoxOfGrenades" })]
 public class VolatileKnives : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Volatile Knives");
-	}
+    private int grenadeBoxCounter;
 
 	public override void SetDefaults()
 	{
@@ -22,8 +19,7 @@ public class VolatileKnives : ModItem
 		Item.accessory = true; 
 		Item.ResearchUnlockCount = 1;
 	}
-
-	private int grenadeBoxCounter;
+	
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		if (Main.myPlayer != player.whoAmI)

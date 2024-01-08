@@ -44,10 +44,10 @@ public class SwordMatter : ModItem
         Vector2 vector2 = new(Item.width / 2 - origin.X, Item.height - frame.Height);
         Vector2 vectorPosition = Item.position - Main.screenPosition + origin + vector2;
 
-		Color whiteColor = Color.HotPink;
-		whiteColor.A = 30;
+		Color glowColor = Color.HotPink;
+		glowColor.A = 50;
 
-        spriteBatch.Draw(pinkExtra, vectorPosition, pinkExtraFrame, whiteColor, rotation + globalTimeWrapped * 0.75f, pinkOrigin, scale + MathF.Sin(scale / 4f), SpriteEffects.None, 0f);
+        spriteBatch.Draw(pinkExtra, vectorPosition, pinkExtraFrame, glowColor, rotation + globalTimeWrapped * 0.75f, pinkOrigin, scale + MathF.Sin(scale / 4f), SpriteEffects.None, 0f);
         spriteBatch.Draw(texture, vectorPosition, frame, Color.White, rotation, origin, scale + MathF.Sin(scale / 4f), SpriteEffects.None, 0f);
         return false;
     }

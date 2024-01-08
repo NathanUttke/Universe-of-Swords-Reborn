@@ -134,7 +134,7 @@ public class SwordOfTheMultiverseNew : ModItem
                 heading *= velocity.Length();
                 velocity.X = heading.X;
                 velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.025f;
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>(), (int)(damage * 1.5f), knockback, player.whoAmI, 0f, heightLimit);
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>(), (int)(damage * 1.5f), knockback, player.whoAmI, 0f, heightLimit);
             }
         }
         else if (currentMode == 3)

@@ -11,8 +11,7 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 public class DoubleBladedLightsaber : ModItem
 {
 	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("The Ultimate Saber");
+	{		
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(55, 7, false));
 		ItemID.Sets.AnimatesAsSoul[Type] = true;
 	}

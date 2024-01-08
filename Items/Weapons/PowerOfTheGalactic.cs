@@ -26,23 +26,14 @@ public class PowerOfTheGalactic : ModItem
         Item.useAnimation = 22;
         Item.damage = 125;
         Item.knockBack = 7f;
-        Item.scale = 1.25f;
-        //Item.shoot = ProjectileID.NebulaBlaze2;
-        Item.shoot = ModContent.ProjectileType<ShaderProjectile>();
+        Item.scale = 1f;
+        Item.shoot = ModContent.ProjectileType<GalacticProjectile>();
         Item.shootSpeed = 20f;
         Item.UseSound = SoundID.Item1;
         Item.value = 650500;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
-    }
-
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {
-        Projectile blazeProj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        blazeProj.DamageType = DamageClass.Melee;
-        blazeProj.timeLeft = 80;
-        return false;
     }
 
     public override void AddRecipes()
@@ -58,11 +49,19 @@ public class PowerOfTheGalactic : ModItem
         .Register();
     }
 
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(40)) * Main.rand.NextFloat(0.9f, 1.3f), type, damage, knockback, player.whoAmI);
+        }
+        return false;
+    }
+
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        target.AddBuff(69, 360, false);
-        target.AddBuff(24, 360, false);
-        target.AddBuff(31, 360, false);
-        target.AddBuff(44, 360, false);
+        target.AddBuff(BuffID.Ichor, 360, false);
+        target.AddBuff(BuffID.Confused, 360, false);
+        target.AddBuff(BuffID.Frostburn, 360, false);
     }
 }

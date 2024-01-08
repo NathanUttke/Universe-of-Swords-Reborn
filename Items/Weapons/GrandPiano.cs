@@ -27,7 +27,6 @@ public class GrandPiano : ModItem
 		Item.useAnimation = 20;
 		Item.damage = 75;
 		Item.knockBack = 8f;
-		//Item.UseSound = new SoundStyle("UniverseOfSwordsMod/Sounds/Item/GrandPiano");
 		Item.UseSound = SoundID.Item169;
 		Item.shoot = ModContent.ProjectileType<GrandPianoProjectile>();
 		Item.shootSpeed = 12f;
@@ -37,10 +36,6 @@ public class GrandPiano : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
-	}
-	public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation = player.Center;
 	}
 	public override void AddRecipes()
 	{		
@@ -70,20 +65,24 @@ public class GrandPiano : ModItem
     {
         if (ModLoader.TryGetMod("CalamityMod", out _))
         {
-            damage *= 1.2f;
+            damage *= 1.25f;
         }
         return;
     }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.AddBuff(20, 360, false);
-		target.AddBuff(144, 360, false);
-		target.AddBuff(30, 360, false);
-		target.AddBuff(72, 360, false);
-		target.AddBuff(153, 360, false);
-		target.AddBuff(44, 360, false);
-		target.AddBuff(137, 360, false);
-		target.AddBuff(70, 360, false);
+        if (!target.HasBuff(BuffID.Bleeding))
+        {
+            target.AddBuff(BuffID.Bleeding, 400);
+        }
+        if (!target.HasBuff(BuffID.Weak))
+        {
+            target.AddBuff(BuffID.Weak, 400);
+        }
+        if (!target.HasBuff(BuffID.Confused))
+		{
+			target.AddBuff(BuffID.Confused, 400);
+		}
 	}
 }
