@@ -83,12 +83,11 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 
-                Color color = Lighting.GetColor((int)(Projectile.position.X + (double)Projectile.width / 2) / 16, (int)((Projectile.position.Y + Projectile.height * 0.5) / 16.0));
-                color = Projectile.GetAlpha(color);
-                float multValue = 8 - j;
-                color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
 
-                spriteBatch.Draw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, 0.75f - j / Projectile.oldPos.Length, SpriteEffects.None, 0);
+                Color color = Projectile.GetAlpha(lightColor);
+                color *= 0.75f;
+
+                spriteBatch.Draw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, 0.75f - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
 
             }            
 

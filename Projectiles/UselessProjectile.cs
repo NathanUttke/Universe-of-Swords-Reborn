@@ -12,7 +12,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.ownerHitCheck = true;
             Projectile.extraUpdates = 1;
             Projectile.aiStyle = ProjAIStyleID.ShortSword;

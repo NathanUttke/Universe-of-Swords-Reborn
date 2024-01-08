@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles;
 
@@ -36,9 +37,7 @@ public class Corrupt : ModProjectile
 		base.AI();
 		if (Main.rand.NextBool(2))
 		{
-			Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Demonite, 0f, 0f, 0, default, 1f);
-			obj.noGravity = true;
-			obj.scale = 1f;
+			Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.MediumOrchid, 1f);
 		}
 	}
 
@@ -47,8 +46,8 @@ public class Corrupt : ModProjectile
 
 		for (int i = 0; i < 10; i++)
 		{
-			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Demonite, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default, 1f);
+			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.MediumOrchid, 1f);
 		}
-		SoundEngine.PlaySound(SoundID.Dig, new Vector2(Projectile.position.X, Projectile.position.Y));
+		SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
 	}
 }

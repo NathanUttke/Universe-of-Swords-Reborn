@@ -28,18 +28,17 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.height = 30;
             Projectile.alpha = 64;
             Projectile.penetrate = 1;
-            Projectile.DamageType = DamageClass.Melee;            
+            Projectile.DamageType = DamageClass.MeleeNoSpeed;            
             Projectile.scale = 1.125f;
             Projectile.light = 0.25f;           
             Projectile.extraUpdates = 1;
             Projectile.ArmorPenetration = 10;
-            Projectile.timeLeft = 70;
+            Projectile.timeLeft = 50;
         }
 
         public override Color? GetAlpha(Color lightColor) => Color.White;       
         public override void AI()
-        {
-            base.AI();
+        {            
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
         }
         
@@ -68,6 +67,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 targetPos.X *= targetDist;
                 targetPos.Y *= targetDist;
                 Projectile gnomProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), screenPos, targetPos, Type, (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner, 0f, 1f);
+                gnomProj.timeLeft = 100;
                 gnomProj.penetrate = -1;
             }
         }
@@ -77,7 +77,7 @@ namespace UniverseOfSwordsMod.Projectiles
             SpriteBatch spriteBatch = Main.spriteBatch;            
             Texture2D texture = TextureAssets.Projectile[Type].Value;
 
-            Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);
+            Vector2 drawOrigin = texture.Size() / 2f;
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
@@ -92,7 +92,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void Kill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.position);
-            Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(Projectile.damage * 0.95f), 3f, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(Projectile.damage * 0.95f), 4f, Projectile.owner, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
         }
     }
 }

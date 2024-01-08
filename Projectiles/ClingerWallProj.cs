@@ -32,7 +32,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 Main.dust[fireDust].velocity.Y -= 0.5f;
                 Main.dust[fireDust].position.X += 6f;
                 Main.dust[fireDust].position.Y -= 2f;
-
             }
         }
     }

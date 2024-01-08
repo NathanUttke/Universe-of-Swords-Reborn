@@ -8,6 +8,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.Graphics;
 using Terraria.Audio;
 using System;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles;
 
@@ -25,7 +26,7 @@ public class FlareCore : ModProjectile
 
         Projectile.scale = 1.15f;
         Projectile.aiStyle = -1;
-        Projectile.timeLeft = 50;
+        Projectile.timeLeft = 30;
 
         Projectile.penetrate = -1;
         Projectile.friendly = true;
@@ -34,7 +35,8 @@ public class FlareCore : ModProjectile
 
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.ArmorPenetration = 30;
-        Projectile.light = 0.8f;
+        Projectile.light = 0.5f;
+        Projectile.alpha = 0;
 
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 13;
@@ -54,6 +56,8 @@ public class FlareCore : ModProjectile
         }
     }
 
+    public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
+
     public override bool PreDraw(ref Color lightColor)
     {
         /*var mainType = typeof(Main); 
@@ -67,22 +71,24 @@ public class FlareCore : ModProjectile
         SpriteBatch spriteBatch = Main.spriteBatch;
 
         Texture2D texture = TextureAssets.Projectile[Type].Value;
-        Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
-        Vector2 origin = sourceRectangle.Size() / 2;
-        Color newColor = Color.White;
+        Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
+        Color glowColor = new Color(255, 0, 0, 0);
+
+        //Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
+        //Vector2 origin = sourceRectangle.Size() / 2;
 
         for (int j = 0; j < Projectile.oldPos.Length; j++)
         {
-            Vector2 drawPos = Projectile.oldPos[j] - Main.screenPosition + origin;
-            float multValue = 10 - j;
-            newColor *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-            newColor.A /= 8;
-            spriteBatch.Draw(texture, drawPos, sourceRectangle, newColor, Projectile.velocity.ToRotation() + MathHelper.PiOver2, origin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
+            Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
 
+            Color color = Projectile.GetAlpha(lightColor);
+            color *= 0.5f;
+
+            spriteBatch.Draw(texture, drawPos, null, color, Projectile.velocity.ToRotation() + MathHelper.PiOver2, Projectile.Size / 2f, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
+            //spriteBatch.Draw(glowTexture, drawPos, null, glowColor, Projectile.rotation, glowTexture.Size() / 2f, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
         }
-        newColor.A = 0;
-        spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.velocity.ToRotation() + MathHelper.PiOver2, origin, Projectile.scale, SpriteEffects.None, 0);
-
+        
+        spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.velocity.ToRotation() + MathHelper.PiOver2, Projectile.Size / 2f, Projectile.scale, SpriteEffects.None, 0);
         return false;
     }
 
@@ -90,25 +96,10 @@ public class FlareCore : ModProjectile
     {
         SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
         Projectile.Damage();
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 16; i++)
         {
-            int explodeDust = Dust.NewDust(Projectile.position, 25, 50, DustID.Clentaminator_Red, 0f, 0f, 100, default, 1.5f);
-            Main.dust[explodeDust].velocity = Main.rand.NextVector2Circular(7f, 7f);
+            int explodeDust = Dust.NewDust(Projectile.position, 25, 50, ModContent.DustType<GlowDust>(), 0f, 0f, 100, new Color(255, 64, 64, 0), 2f);
+            Main.dust[explodeDust].velocity = Main.rand.NextVector2Circular(7f, 7f).SafeNormalize(Vector2.Zero);
         }
-    }
-    public override Color? GetAlpha(Color lightColor) => Color.Red;
-
-    private Color StripColors(float progressOnStrip)
-    {
-        Color result = Color.Lerp(Color.White, Color.Red, Utils.GetLerpValue(-0.2f, 0.5f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip));
-        result.A = 0;
-        return result;
-    }
-    private float StripWidth(float progressOnStrip)
-    {
-        float num = 1f;
-        float lerpValue = Utils.GetLerpValue(0f, 0.2f, progressOnStrip, clamped: true);
-        num *= 1f - (1f - lerpValue) * (1f - lerpValue);
-        return 64f;
-    }
+    }    
 }

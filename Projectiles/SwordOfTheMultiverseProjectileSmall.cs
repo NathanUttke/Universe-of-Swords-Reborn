@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Humanizer;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
@@ -6,6 +7,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Buffs;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -40,9 +42,9 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
+            if (!target.HasBuff(ModContent.BuffType<Buffs.EmperorBlaze>()))
             {
-                target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 800, true);
+                target.AddBuff(ModContent.BuffType<Buffs.EmperorBlaze>(), 800, true);
             }
         }
 
@@ -53,26 +55,17 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);           
             
-            Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
+            Texture2D glowStar = TextureAssets.Extra[ExtrasID.SharpTears].Value;
             Color drawColorGlow = Color.Purple;
-
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
-
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1f, SpriteEffects.None, 0);
-
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+            drawColorGlow.A = 0;            
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-
-                Color color = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
-                color = Projectile.GetAlpha(color);
-                float multValue = 8 - j;
-                color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-
+                
+                Color color = Projectile.GetAlpha(lightColor);
+                color *= 0.75f;
+                Main.EntitySpriteDraw(glowStar, drawPos, null, drawColorGlow, Projectile.rotation, glowStar.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);               
             }
             return true;
@@ -82,9 +75,8 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Main.rand.NextBool(2))
             {
-                Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, 0f, 0f, 0, default, 1f);
+                Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple, 1f);
                 obj.noGravity = true;
-                obj.scale = 1.25f;
             }
         }      
     }

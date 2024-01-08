@@ -29,9 +29,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.localNPCHitCooldown = 8;
-            Projectile.alpha = 0;            
-            Projectile.ownerHitCheck = true;
-            Projectile.ownerHitCheckDistance = 600f;
+            Projectile.alpha = 0;           
             Projectile.light = 0.25f;
             Projectile.extraUpdates = 1;
         }
@@ -84,10 +82,10 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             //projColor.A = 127;                     
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
 
             //projColor.A = 0;
-            Main.spriteBatch.Draw(glowTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOriginGlow, Projectile.scale, spriteEffects, 0);
+            //Main.spriteBatch.Draw(glowTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOriginGlow, Projectile.scale, spriteEffects, 0);
             return false;
         }
     }

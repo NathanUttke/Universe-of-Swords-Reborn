@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -24,23 +25,24 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 10;
 
-            Projectile.alpha = 100;
+            Projectile.alpha = 0;
         }
         public override void AI()
-        {
-            base.AI();
-            if (Projectile.velocity.X < 0f)
-            {
-                Projectile.spriteDirection = -1;
-            }
-            Projectile.rotation += Projectile.direction * 0.05f;
+        {           
+            
             Projectile.rotation += Projectile.direction * 0.5f * (Projectile.timeLeft / 180f);
             Projectile.velocity *= 0.96f;
+            Projectile.alpha += 1;
 
-            for(int i = 0; i < 2; i++)
+            if (Projectile.alpha > 255)
             {
-                Dust newDust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch, 0f, 0f, 100)];
-                newDust.noGravity = true;
+                Projectile.alpha = 255;
+                Projectile.Kill();
+            }
+
+            if (Main.rand.NextBool(2))
+            {
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Red with { A = 0 });
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -48,31 +50,26 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Main.rand.NextBool(3) && !NPCID.Sets.CountsAsCritter[target.type] && target.type != NPCID.TargetDummy)
             {
                 float stealDamage = Main.rand.Next(1, 5);
-                if ((int)stealDamage != 0 && !(Main.player[Main.myPlayer].lifeSteal <= 0f))
+                if ((int)stealDamage != 0 && !(Main.player[Projectile.owner].lifeSteal <= 0f))
                 {
-                    Main.player[Main.myPlayer].lifeSteal -= stealDamage;
+                    Main.player[Projectile.owner].lifeSteal -= stealDamage;
                     int playerOwner = Projectile.owner;
-                    Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, Projectile.owner, playerOwner, stealDamage);
+                    Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, playerOwner, playerOwner, stealDamage);
                 }
             }
         }
 
-        public override void Kill(int timeLeft)
-        {
-            Projectile.alpha += 5;
-        }
-
-        public override Color? GetAlpha(Color lightColor) => new Color(253, 122, 122, 0) * Projectile.Opacity;
+        public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
 
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
             Color drawColorGlow = Color.Red;
-            Color drawColorEdge = Color.White;
             drawColorGlow.A = 0;
-            drawColorEdge.A = 0;
+            Color drawColorEdge = Projectile.GetAlpha(lightColor);
+            drawColorGlow.A = 0;
 
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 2f, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f, SpriteEffects.None, 0);
 
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);

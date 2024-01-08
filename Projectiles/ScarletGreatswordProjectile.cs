@@ -59,7 +59,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.Kill();
                 return;
             }          
-            
 
             // Get the cursor's position
 
@@ -91,6 +90,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             Projectile.rotation += MathHelper.TwoPi * 2f / maxTime * velocityXSign;
             bool halfUseTime = Projectile.ai[0] == (int)(maxTime / 2f);
+            
             if (Projectile.ai[0] >= maxTime || (halfUseTime && !Owner.controlUseItem))
             {
                 Projectile.Kill();

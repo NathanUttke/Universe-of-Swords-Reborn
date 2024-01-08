@@ -29,7 +29,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);
 
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-            Color drawColorGlow = Color.Purple;
+            Color drawColorGlow = Color.MediumPurple;
             drawColorGlow.A = 0;
 
             spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 0.5f, SpriteEffects.None, 0);
@@ -38,12 +38,10 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 
-                Color color = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
-                color = Projectile.GetAlpha(color);
-                float multValue = 8 - j;
-                color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
+                Color color = Projectile.GetAlpha(lightColor);
+                color *= 0.75f;
 
-                spriteBatch.Draw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, j / 15f), SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
 
             }
             return true;

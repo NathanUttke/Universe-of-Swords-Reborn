@@ -59,15 +59,13 @@ namespace UniverseOfSwordsMod.Projectiles
             Color defaultColor = Projectile.GetAlpha(lightColor);
 
             Texture2D texture = TextureAssets.Projectile[Type].Value;
-            Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/SOTUV2Glow");
+            Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/SOTUV2Glow");
 
             Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
             Vector2 drawnOriginGlow = new(glowSphere.Width / 2, glowSphere.Height / 2);
-
-            defaultColor.A = 0;
+            
             Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, drawnOriginGlow, Projectile.scale * 2f, SpriteEffects.None, 0);
-            defaultColor.A = 127;
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
 
             return false;
         }
