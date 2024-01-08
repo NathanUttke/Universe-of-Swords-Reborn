@@ -23,15 +23,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
 
             int swordMatterChance = 10;
 
-            // Increase Sword Matter drop chance to 20% after defeating Moon Lord
-
-            if (NPC.downedMoonlord)
-            {
-                Main.NewText("Sword Matter drop chance increased.");
-                swordMatterChance = 5;
-            }
-
-            if (npc.lifeMax >= 40 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly && !npc.boss)
+            if (npc.lifeMax >= 20 && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.immortal && !npc.SpawnedFromStatue && !npc.friendly && !npc.boss)
             {              
                 npcLoot.Add(ItemDropRule.WithRerolls(ModContent.ItemType<SwordMatter>(), 1, swordMatterChance, 1, 2));
             }
