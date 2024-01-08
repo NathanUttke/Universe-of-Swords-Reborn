@@ -38,6 +38,9 @@ Projectiles: {
 	SwordLegendHoldoutProj.DisplayName: Sword Of The Legend
 	SwordOfTheMultiverseProjectileYoyo.DisplayName: Sword Of The Multiverse
 	SwordOfTheMultiverseWave.DisplayName: Sword Of The Multiverse
+	SuperInflationHoldoutProj.DisplayName: Super Inflation Holdout Proj
+	ClingerWallProj.DisplayName: Clinger Wall Proj
+	GalacticProjectile.DisplayName: Galactic Projectile
 }
 
 NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
@@ -107,8 +110,8 @@ Items: {
 			'''
 			'Legendary gauntlet that grants wearer ultimate melee skills'
 			15 defense
-			Highly increased melee damage
-			30% increased melee critical chance
+			15% increased melee damage
+			25% increased melee critical chance
 			Greatly increased life regeneration
 			Increases maximum life by 20
 			20% increased endurance
