@@ -31,7 +31,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void AI()
         {
             base.AI();
-            Projectile.rotation += 0.8f;
+            Projectile.rotation += Projectile.direction * MathHelper.PiOver4;
             Projectile.ai[0] += 1f;
 
             Lighting.AddLight(Projectile.Center, 0.68f, 0.25f, 1f);

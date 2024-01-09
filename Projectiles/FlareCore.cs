@@ -72,23 +72,25 @@ public class FlareCore : ModProjectile
 
         Texture2D texture = TextureAssets.Projectile[Type].Value;
         Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
-        Color glowColor = new Color(255, 0, 0, 0);
+        Color drawColor = Color.White with { A = 0 };
+        Color glowColor = new Color(255, 64, 64, 0);
 
         //Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
-        //Vector2 origin = sourceRectangle.Size() / 2;
+        //Vector2 origin = sourceRectangle.Size() / 2;       
 
         for (int j = 0; j < Projectile.oldPos.Length; j++)
         {
             Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
+            
+            drawColor *= 0.75f;
+            glowColor *= 0.75f;
 
-            Color color = Projectile.GetAlpha(lightColor);
-            color *= 0.5f;
-
-            spriteBatch.Draw(texture, drawPos, null, color, Projectile.velocity.ToRotation() + MathHelper.PiOver2, Projectile.Size / 2f, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
-            //spriteBatch.Draw(glowTexture, drawPos, null, glowColor, Projectile.rotation, glowTexture.Size() / 2f, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
+            spriteBatch.Draw(glowTexture, drawPos, null, glowColor, Projectile.rotation, glowTexture.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, drawPos, null, drawColor, Projectile.velocity.ToRotation() + MathHelper.PiOver2, Projectile.Size / 2f, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);            
         }
-        
-        spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.velocity.ToRotation() + MathHelper.PiOver2, Projectile.Size / 2f, Projectile.scale, SpriteEffects.None, 0);
+
+        spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White with { A = 127 }, Projectile.velocity.ToRotation() + MathHelper.PiOver2, Projectile.Size / 2f, Projectile.scale, SpriteEffects.None, 0);
+
         return false;
     }
 

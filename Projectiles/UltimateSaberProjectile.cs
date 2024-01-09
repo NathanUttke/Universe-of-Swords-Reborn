@@ -12,9 +12,10 @@ namespace UniverseOfSwordsMod.Projectiles
     public class UltimateSaberProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Ultimate Saber");
+        {            
             Main.projFrames[Projectile.type] = 7;
+            ProjectileID.Sets.TrailCacheLength[Type] = 10;
+            ProjectileID.Sets.TrailingMode[Type] = 0;
         }
         public override void SetDefaults()
         {            
@@ -30,47 +31,53 @@ namespace UniverseOfSwordsMod.Projectiles
         }
 
         private bool _initialized;
+        Player Owner => Main.player[Projectile.owner];
         public override void AI()
         {
-            base.AI();            
+            base.AI();          
 
-            Player player = Main.player[Projectile.owner];
-
-            //Main.NewText(player.ownedProjectileCounts[Type]);
-
-            double rad = Projectile.ai[1] * 5.0 * (Math.PI / 180.0);
-            double distance = 90;
+            float rad = MathHelper.ToRadians(Projectile.ai[1] * 5f);            
+            float distance = 90;
             Projectile.ai[1] += 1f;
 
-            float posX = player.Center.X - (int)(Math.Cos(rad) * distance) - Projectile.width / 2;
-            float posY = player.Center.Y - (int)(Math.Sin(rad) * distance) - Projectile.height / 2;            
+            float posX = Owner.Center.X - (int)(Math.Cos(rad) * distance) - Projectile.width / 2;
+            float posY = Owner.Center.Y - (int)(Math.Sin(rad) * distance) - Projectile.height / 2;            
 
-            Projectile.rotation = player.Center.AngleTo(Projectile.Center) + MathHelper.PiOver4;
+            Projectile.rotation = Owner.Center.AngleTo(Projectile.Center) + MathHelper.PiOver4;
             Projectile.position = new Vector2(posX, posY);
 
-            if (Main.myPlayer == Projectile.owner && (!player.channel || !player.controlUseItem || player.noItems || player.CCed))
+            if (Main.myPlayer == Projectile.owner && (!Owner.channel || !Owner.controlUseItem || Owner.noItems || Owner.CCed))
             {
                 Projectile.Kill();
             }
 
             if (!_initialized)
             {                 
-                Projectile.frame = player.ownedProjectileCounts[Type];                
+                Projectile.frame = Owner.ownedProjectileCounts[Type];                
                 _initialized = true;
             }
         }
+
+        public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
+
         public override bool PreDraw(ref Color lightColor)
         {
-            Color defaultColor = Projectile.GetAlpha(lightColor);
+            Color projColor = Projectile.GetAlpha(lightColor);
             Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
             SpriteBatch spriteBatch = Main.spriteBatch;
 
             int frameHeight = texture.Height / Main.projFrames[Projectile.type];
             int startY = frameHeight * Projectile.frame;            
-            Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
+            Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);            
 
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + sourceRectangle.Size() / 2f;
+                projColor *= 0.75f;
+                spriteBatch.Draw(texture, drawPos, sourceRectangle, projColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
+            }
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);            
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);            
             return false;
         }
     }

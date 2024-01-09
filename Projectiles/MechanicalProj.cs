@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.GameContent;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -30,7 +31,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
 
             Projectile.extraUpdates = 1;
-            Projectile.timeLeft = 120;
+            Projectile.timeLeft = 100;
 
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;
@@ -43,7 +44,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Projectile.scale > 0f)
             {
-                Projectile.scale -= 0.0075f;
+                Projectile.scale -= 0.01f;
             }
             else
             {
@@ -53,7 +54,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             if (Main.rand.NextBool(2))
             {
-                Dust dust = Dust.NewDustDirect(Projectile.Center, Projectile.width, Projectile.height, DustID.OrangeTorch, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.25f);
+                Dust dust = Dust.NewDustDirect(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, Color.OrangeRed with { A = 0 }, 2f);
                 dust.noGravity = true;
                 dust.scale = 1.1f;
             }
@@ -65,7 +66,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             Color projColor = Color.OrangeRed;
             projColor.A = 0;
-            Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
+            Vector2 drawOrigin = texture.Size() / 2f;
 
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)

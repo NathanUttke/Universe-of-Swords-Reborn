@@ -69,22 +69,21 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+                        
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                Vector2 drawPos = Projectile.Size / 2f + Projectile.oldPos[i] - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
-                
-                projColor2.A = 0;
-                projColor2 *= 0.75f;                
+                Vector2 drawPos = Projectile.Size / 2f + Projectile.oldPos[i] - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);                
 
-                Main.spriteBatch.Draw(texture, drawPos, null, projColor2, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+                projColor *= 0.5f;
+
+                Main.spriteBatch.Draw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+                Main.spriteBatch.Draw(glowTexture, drawPos, null, projColor, Projectile.rotation, drawOriginGlow, Projectile.scale, spriteEffects, 0);
             }
 
             //projColor.A = 127;                     
-            
 
+            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor2, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             //projColor.A = 0;
             //Main.spriteBatch.Draw(glowTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOriginGlow, Projectile.scale, spriteEffects, 0);
             return false;

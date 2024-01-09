@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Utilities;
 
 namespace UniverseOfSwordsMod.Projectiles;
@@ -27,7 +28,7 @@ internal class Nightmare : ModProjectile
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
-        Projectile.timeLeft = 90;        
+        Projectile.timeLeft = 50;        
         Projectile.light = 0.25f;
     }
 
@@ -37,8 +38,7 @@ internal class Nightmare : ModProjectile
         float maxDetectRadius = 300f; 
         float projSpeed = 7.5f; 
 
-        Dust skullDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, 0f, 0f, 100, default, 1.5f);
-        skullDust.noGravity = true;
+        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple with { A = 0 }, 2f);        
 
         Projectile.rotation = Projectile.velocity.ToRotation();
         Projectile.spriteDirection = Projectile.direction;     
@@ -66,7 +66,7 @@ internal class Nightmare : ModProjectile
         }
     }
 
-    public override Color? GetAlpha(Color lightColor) => new Color(255, 82, 119, 100);
+    public override Color? GetAlpha(Color lightColor) => new Color(195, 82, 255, 127);
 
     public override bool PreDraw(ref Color lightColor)
     {
@@ -74,18 +74,15 @@ internal class Nightmare : ModProjectile
         SpriteBatch spriteBatch = Main.spriteBatch;
         Texture2D voidTextureExtra = TextureAssets.Extra[131].Value;
         Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
-        Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
+        Vector2 drawOrigin = texture.Size() / 2f;
 
         Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-        Color drawColorGlow = new(255, 128, 255);
+        Color drawColorGlow = Color.Purple with { A = 0 };
 
         if (Projectile.spriteDirection == -1)
         {
             spriteEffects = SpriteEffects.FlipVertically;
         }
-
-        spriteBatch.End();
-        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
 
         spriteBatch.Draw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1f, SpriteEffects.None, 0);
 
@@ -94,19 +91,16 @@ internal class Nightmare : ModProjectile
             float num = 10 - i;
             Color drawColor = drawColorGlow * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
             drawColor *= num / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-            spriteBatch.Draw(glowSphere, (Projectile.oldPos[i] - Main.screenPosition) + new Vector2(Projectile.width / 2f, Projectile.height / 2f) + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+            spriteBatch.Draw(glowSphere, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, glowSphere.Size() / 2f, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
         }
-
-        spriteBatch.End();
-        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
 
         for (int i = 0; i < Projectile.oldPos.Length; i++)
         {
             float num = 10 - i;
             Color drawColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
             drawColor *= num / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-            spriteBatch.Draw(voidTextureExtra, (Projectile.oldPos[i] - Main.screenPosition) + new Vector2(Projectile.width / 2f, Projectile.height / 2f) + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + Main.GlobalTimeWrappedHourly * 2f, drawOrigin, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
-            spriteBatch.Draw(texture, (Projectile.oldPos[i] - Main.screenPosition) + new Vector2(Projectile.width / 2f, Projectile.height / 2f) + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, (Projectile.scale) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
+            spriteBatch.Draw(voidTextureExtra, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + Main.GlobalTimeWrappedHourly * 2f, drawOrigin, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
+            spriteBatch.Draw(texture, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, (Projectile.scale) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
         }
 
         spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
@@ -116,11 +110,14 @@ internal class Nightmare : ModProjectile
 
     public override void Kill(int timeLeft)
     {
+
+        int numOfProjectiles = 4;
         for (int i = 0; i < 15; i++)
         {
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, default, 1f);
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, Projectile.oldVelocity.X * 0.25f, Projectile.oldVelocity.Y * 0.25f, 0, default, 1f);
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.Purple with { A = 0 }, 2f);
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.25f, Projectile.oldVelocity.Y * 0.25f, 0, Color.Purple with { A = 0 }, 2f);
         }
-        SoundEngine.PlaySound(SoundID.DD2_SkeletonDeath, new Vector2(Projectile.position.X, Projectile.position.Y));
+        
+        SoundEngine.PlaySound(SoundID.DD2_SkeletonDeath, Projectile.position);
     }
 }

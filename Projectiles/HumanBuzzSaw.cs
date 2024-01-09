@@ -42,6 +42,7 @@ public class HumanBuzzSaw : ModProjectile
         Player player = Main.player[Projectile.owner];
 
         player.heldProj = Projectile.whoAmI;
+        player.SetDummyItemTime(2);
         player.itemTime = player.itemAnimation = 2;
         player.itemRotation = Projectile.rotation;
 
