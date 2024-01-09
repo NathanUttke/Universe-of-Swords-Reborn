@@ -55,12 +55,12 @@ public class CosmoStorm : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        Vector2 hitPosition = Main.rand.NextVector2Circular(200f, 200f);
-        hitPosition.SafeNormalize(hitPosition);
+        Vector2 hitPosition = Main.rand.NextVector2Circular(1000f, 1000f);
+        hitPosition = hitPosition.SafeNormalize(Vector2.UnitY) * 5f;
 
         if (target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
         {
-            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 3f, hitPosition / 12f, ProjectileID.NebulaArcanum, damageDone, Item.knockBack, player.whoAmI, 0f, 0f);
+            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 2f, hitPosition, ProjectileID.NebulaArcanum, damageDone, Item.knockBack, player.whoAmI, 0f, 0f);
             proj.DamageType = DamageClass.Melee;
             proj.tileCollide = false;
         }               

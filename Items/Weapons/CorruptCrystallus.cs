@@ -23,7 +23,7 @@ public class CorruptCrystallus : ModItem
         Item.damage = 18;
         Item.knockBack = 5f;
 
-        Item.shoot = ModContent.ProjectileType<Corrupt>();
+        Item.shoot = ModContent.ProjectileType<CorruptCrystallusProj>();
         Item.shootSpeed = 8f;
 
         Item.value = Item.sellPrice(0, 1, 0, 0);

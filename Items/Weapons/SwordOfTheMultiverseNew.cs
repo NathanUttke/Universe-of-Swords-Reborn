@@ -149,7 +149,7 @@ public class SwordOfTheMultiverseNew : ModItem
     {
         if (Main.rand.NextBool(2) && currentMode != 3)
         {
-            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), 0f, 0f, 100, Color.Violet, 2f);
+            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), 0f, 0f, 100, Color.Violet with { A = 0}, 2f);
             dust.noGravity = true;
         }
     }
@@ -178,9 +178,9 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
         newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 500);
         newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
-        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityForge) && calamityForge.TryFind("DraedonsForge", out ModTile draedonsForge))
+        if (ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod) && CalamityMod.TryFind("DraedonsForge", out ModTile DraedonsForge))
         {
-            newRecipe.AddTile(draedonsForge.Type);
+            newRecipe.AddTile(DraedonsForge.Type);
         }
         else
         {

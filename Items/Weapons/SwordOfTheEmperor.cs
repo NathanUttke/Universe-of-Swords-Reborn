@@ -10,12 +10,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class SwordOfTheEmperor : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        // DisplayName.SetDefault("Sword of The Emperor");
-        // Tooltip.SetDefault("'Grant them the Emperor's mercy. Let the heretics burn!'");
-    }
-
     public override void SetDefaults()
     {
         Item.width = 100;
