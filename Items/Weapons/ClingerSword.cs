@@ -21,6 +21,7 @@ public class ClingerSword : ModItem
 		//Item.shootSpeed = 5f;
 		//Item.noMelee = true;
 		//Item.noUseGraphic = true;
+        Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
 
