@@ -29,7 +29,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.light = 0.75f;
             Projectile.scale = 1f;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = 1; 
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;
             Projectile.tileCollide = false;

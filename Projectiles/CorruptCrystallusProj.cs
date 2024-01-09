@@ -7,7 +7,7 @@ using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles;
 
-public class Corrupt : ModProjectile
+public class CorruptCrystallusProj : ModProjectile
 {
 	public override void SetStaticDefaults()
 	{

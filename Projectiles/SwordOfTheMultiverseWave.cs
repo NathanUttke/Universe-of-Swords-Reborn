@@ -14,7 +14,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 4;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
         }
         public override void SetDefaults()
         {
@@ -29,8 +29,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.localNPCHitCooldown = 8;
-            Projectile.alpha = 0;           
-            Projectile.light = 0.25f;
+            Projectile.alpha = 0;        
             Projectile.extraUpdates = 1;
         }
 
@@ -71,6 +70,8 @@ namespace UniverseOfSwordsMod.Projectiles
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
 
+            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 Vector2 drawPos = Projectile.Size / 2f + Projectile.oldPos[i] - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
@@ -82,7 +83,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             //projColor.A = 127;                     
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+            
 
             //projColor.A = 0;
             //Main.spriteBatch.Draw(glowTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOriginGlow, Projectile.scale, spriteEffects, 0);

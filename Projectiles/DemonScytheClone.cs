@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent;
 using UniverseOfSwordsMod.Utilities;
 using Terraria.GameContent.Drawing;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -27,7 +28,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.aiStyle = -1;
             Projectile.light = 0.33f;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 150;
+            Projectile.timeLeft = 125;
         }
         public override void AI()
         {
@@ -49,7 +50,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < 4; i++)
             {
-                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Cyan, 0f, 0f, 100, default, 0.75f);
+                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Cyan with { A = 0 }, 2f);
                 newDust.rotation += 0.05f;
                 newDust.noGravity = true;
             }

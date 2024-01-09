@@ -21,7 +21,7 @@ public class DeathSword : ModItem
         Item.knockBack = 4f;
         Item.UseSound = SoundID.Item8;
         Item.shoot = ModContent.ProjectileType<PurpleScytheClone>();
-        Item.shootSpeed = 10f;
+        Item.shootSpeed = 7f;
         Item.value = 160200;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 

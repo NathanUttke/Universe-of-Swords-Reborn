@@ -24,16 +24,17 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.aiStyle = -1;
-            Projectile.light = 0.33f;
             Projectile.penetrate = -1;
             Projectile.alpha = 127;
-            Projectile.timeLeft = 80;
+            Projectile.timeLeft = 50;
         }
         public override void AI()
         {
             base.AI();
             Projectile.rotation += 0.8f;
             Projectile.ai[0] += 1f;
+
+            Lighting.AddLight(Projectile.Center, 0.68f, 0.25f, 1f);
 
             if (Projectile.ai[0] > 30f)
             {
