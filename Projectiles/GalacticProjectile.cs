@@ -90,7 +90,7 @@ namespace UniverseOfSwordsMod.Projectiles
             SpriteBatch spriteBatch = Main.spriteBatch;
             Texture2D galacTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowThing_Cyan");
             Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
-            Vector2 drawOriginStar = glowTexture.Size() / 2f;
+            Vector2 drawOriginGlow = glowTexture.Size() / 2f;
             Vector2 drawOriginThing = galacTexture.Size() / 2f;
             Color drawColorExtra = Color.Cyan with { A = 0 };            
             Color drawColorGalac = Projectile.GetAlpha(lightColor);
@@ -110,8 +110,8 @@ namespace UniverseOfSwordsMod.Projectiles
                 drawColorExtra *= 0.75f;
                 drawColorGalac *= 0.75f;
 
-                spriteBatch.Draw(galacTexture, drawPos, null, drawColorGalac, Projectile.rotation, drawOriginThing, Projectile.scale - j / (float) Projectile.oldPos.Length, spriteEffects, 0);
-                spriteBatch.Draw(glowTexture, drawPos, null, drawColorExtra, Projectile.rotation, drawOriginStar, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(galacTexture, drawPos, null, drawColorGalac, Projectile.rotation + Main.GlobalTimeWrappedHourly * 3f, drawOriginThing, Projectile.scale - j / (float) Projectile.oldPos.Length, spriteEffects, 0);
+                spriteBatch.Draw(glowTexture, drawPos, null, drawColorExtra, Projectile.rotation, drawOriginGlow, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
             spriteBatch.Draw(galacTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + Main.GlobalTimeWrappedHourly * 3f, drawOriginThing, 1.5f, spriteEffects, 1);

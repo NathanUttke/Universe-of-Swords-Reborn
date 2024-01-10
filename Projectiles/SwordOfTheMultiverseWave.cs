@@ -1,11 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using System;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -13,8 +12,8 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
         public override void SetDefaults()
         {
@@ -28,9 +27,16 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.usesLocalNPCImmunity = true;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.localNPCHitCooldown = 8;
+            Projectile.localNPCHitCooldown = 11;
             Projectile.alpha = 0;        
             Projectile.extraUpdates = 1;
+        }
+
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            float _ = 0f;
+            Vector2 projVelocity = Projectile.velocity.SafeNormalize(Vector2.UnitY).RotatedBy(-MathHelper.PiOver2) * Projectile.scale;            
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - projVelocity * 80f, Projectile.Center + projVelocity * 80f, 16f * Projectile.scale, ref _);
         }
 
         public override void AI()
@@ -46,46 +52,47 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.alpha = 255;
                 Projectile.Kill();
             }
-
-            //Projectile.scale *= 0.99f;
-            Projectile.velocity *= 0.97f;
+            
+            Projectile.velocity *= 0.96f;
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
+        public override Color? GetAlpha(Color lightColor) => Color.White * Projectile.Opacity;
+
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/SwordOfTheMultiverseWave");
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;            
 
-            Color projColor = Projectile.GetAlpha(lightColor);            
-            Color projColor2 = projColor;
+            Color projColor = Color.White;            
+            Color projColor2 = Projectile.GetAlpha(lightColor);            
 
-            Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
-            Vector2 drawOriginGlow = new(glowTexture.Width / 2, glowTexture.Height / 2);
+            Vector2 drawOrigin = texture.Size() / 2f;            
 
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-                        
+            
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                Vector2 drawPos = Projectile.Size / 2f + Projectile.oldPos[i] - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);                
+                if (i % 4 != 0)
+                {
+                    continue;
+                }
+
+                Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);                
 
                 projColor *= 0.5f;
-
-                Main.spriteBatch.Draw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
-                Main.spriteBatch.Draw(glowTexture, drawPos, null, projColor, Projectile.rotation, drawOriginGlow, Projectile.scale, spriteEffects, 0);
+                
+                Main.spriteBatch.Draw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);                
             }
-
-            //projColor.A = 127;                     
+                  
 
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor2, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
-            //projColor.A = 0;
-            //Main.spriteBatch.Draw(glowTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOriginGlow, Projectile.scale, spriteEffects, 0);
+
+
             return false;
         }
     }

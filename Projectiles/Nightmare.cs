@@ -28,7 +28,7 @@ internal class Nightmare : ModProjectile
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
-        Projectile.timeLeft = 50;        
+        Projectile.timeLeft = 30;        
         Projectile.light = 0.25f;
     }
 

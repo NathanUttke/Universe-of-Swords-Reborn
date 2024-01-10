@@ -76,17 +76,27 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             SpriteBatch spriteBatch = Main.spriteBatch;            
             Texture2D texture = TextureAssets.Projectile[Type].Value;
+            Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
+            Vector2 drawOriginGlow = glowTexture.Size() / 2f;
 
             Vector2 drawOrigin = texture.Size() / 2f;
+
+            spriteBatch.Draw(texture, (Projectile.Center - Main.screenPosition) + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-                Color gnomTrailColor = new(11 + j * 16, 127, 255 - j * 16, 40);
-                spriteBatch.Draw(texture, drawPos, null, gnomTrailColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
-            }   
 
-            return true;
+                Color gnomTrailColor = new(11 + j * 16, 127, 255 - j * 16, 40 - j);                
+                Color trailColorGlow = new(11 + j * 16, 127, 255 - j * 16, 0);
+                gnomTrailColor *= 0.75f;
+                trailColorGlow *= 0.75f;
+
+                spriteBatch.Draw(glowTexture, drawPos, null, trailColorGlow, Projectile.rotation, drawOriginGlow, 1f - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, drawPos, null, gnomTrailColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);                
+            }            
+
+            return false;
         }
 
         public override void Kill(int timeLeft)

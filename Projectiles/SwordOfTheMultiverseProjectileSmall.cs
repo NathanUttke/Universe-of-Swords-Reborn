@@ -14,8 +14,7 @@ namespace UniverseOfSwordsMod.Projectiles
     public class SwordOfTheMultiverseProjectileSmall : ModProjectile
     {
         public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Sword Of The Multiverse");
+        {            
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
@@ -29,15 +28,22 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = -1;
-            Projectile.alpha = 0;
-            Projectile.light = 0.5f;
+            Projectile.alpha = 0;            
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 6;
-            Projectile.ArmorPenetration = 40;
             AIType = ProjectileID.Bullet;
+        }
+
+        public override void AI()
+        {
+            Lighting.AddLight(Projectile.position, 0.5f, 0.25f, 0.5f);
+            if (Main.rand.NextBool(2))
+            {
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple with { A = 0 }, 2f);
+            }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -69,15 +75,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);               
             }
             return true;
-        }
-
-        public override void PostAI()
-        {
-            if (Main.rand.NextBool(2))
-            {
-                Dust obj = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple, 1f);
-                obj.noGravity = true;
-            }
-        }      
+        }   
     }
 }

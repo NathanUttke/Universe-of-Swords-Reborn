@@ -29,7 +29,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.aiStyle = -1;
-            Projectile.light = 0.5f;
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;            
@@ -38,6 +37,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void AI()
         {
             base.AI();
+            Lighting.AddLight(Projectile.Center, 1.5f, 1f, 1.5f);
             Player player = Main.player[Projectile.owner];
 
             if (Projectile.owner == Main.myPlayer && (!player.controlUseItem))
@@ -58,7 +58,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.position = Projectile.Center;
             Projectile.velocity = Vector2.Zero;
             Projectile.Center = Main.MouseWorld;
-            Projectile.rotation += 0.2f;            
+            Projectile.rotation += 0.15f;            
         }       
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -84,8 +84,9 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
 
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
-            Color drawColorGlow = Color.Purple;            
+            Color drawColorGlow = Color.Purple;
 
+            DrawTrail(Projectile);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
@@ -96,15 +97,15 @@ namespace UniverseOfSwordsMod.Projectiles
                 float multValue = 5 - j;
                 color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
 
-                Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, MathHelper.Lerp(Projectile.scale, 1f, j / 15f), SpriteEffects.None, 0);
+                Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation - MathHelper.PiOver4, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation - MathHelper.PiOver4, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 
             drawColorGlow.A = 0;
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 2f + Projectile.scale, SpriteEffects.None, 0);
-            DrawTrail(Projectile);
-
+            
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f + Projectile.scale, SpriteEffects.None, 0);
+            
             return false;
         }
 
