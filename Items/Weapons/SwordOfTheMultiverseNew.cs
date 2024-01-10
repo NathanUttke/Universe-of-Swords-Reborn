@@ -53,7 +53,7 @@ public class SwordOfTheMultiverseNew : ModItem
 
         Item.ResearchUnlockCount = 1;
         Item.reuseDelay = 0;
-        Item.ArmorPenetration = 20;
+        Item.ArmorPenetration = 40;
     }
 
     public override void NetSend(BinaryWriter writer)
