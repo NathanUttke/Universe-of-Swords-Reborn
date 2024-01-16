@@ -41,6 +41,10 @@ Projectiles: {
 	SuperInflationHoldoutProj.DisplayName: Super Inflation Holdout Proj
 	ClingerWallProj.DisplayName: Clinger Wall Proj
 	GalacticProjectile.DisplayName: Galactic Projectile
+	CorruptCrystallusProj.DisplayName: Corrupt Crystallus Proj
+	TestShaderProjectile.DisplayName: Test Shader Projectile
+	ClingerSlashProj.DisplayName: Clinger Slash Proj
+	NightmareProjectile.DisplayName: Nightmare Projectile
 }
 
 NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
@@ -741,8 +745,7 @@ Items: {
 		Tooltip:
 			'''
 			'You only get what you give'
-			Press left or right click for a alternate attack
-			Hold up and right click for a alternate attack
+			Press right click to cycle between modes.
 			'''
 	}
 
@@ -844,6 +847,11 @@ Items: {
 	BeethovenBeater: {
 		Tooltip: ""
 		DisplayName: Beethoven Beater
+	}
+
+	TestSword: {
+		DisplayName: Test Sword
+		Tooltip: ""
 	}
 }
 
