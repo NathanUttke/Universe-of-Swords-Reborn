@@ -24,7 +24,6 @@ namespace UniverseOfSwordsMod.Dusts
         public override bool Update(Dust dust)
         {
             dust.position += dust.velocity;
-            dust.rotation = dust.velocity.ToRotation();
             dust.scale *= 0.9f;
             if (dust.scale < 0.01f)
             {
