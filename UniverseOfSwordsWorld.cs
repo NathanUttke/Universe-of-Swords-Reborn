@@ -20,7 +20,6 @@ public class UniverseOfSwordsWorld : ModSystem
 	public override void SaveWorldData(TagCompound tag)
 	{
 		tag.Add("spawnOre", spawnOre);
-		//return val;
 	}
 
 	public override void LoadWorldData(TagCompound tag)
