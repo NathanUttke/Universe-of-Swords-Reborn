@@ -47,10 +47,12 @@ namespace UniverseOfSwordsMod.Projectiles
                 float acceleration = 2f; 
                 Vector2 playerProjCenterDistance = owner.Center - Projectile.Center;                
                 float playerProjDistance = Vector2.Distance(owner.Center, Projectile.Center);
+
                 if (playerProjDistance > 3000f)
                 {
                     Projectile.Kill();
-                }                
+                }          
+                
                 playerProjDistance = 15f / playerProjDistance;
                 playerProjCenterDistance.X *= playerProjDistance;
                 playerProjCenterDistance.Y *= playerProjDistance;
@@ -107,12 +109,15 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = new(texture.Width / 2f, texture.Height / 2f);
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
+                if (j % 3 != 0)
+                {
+                    continue;                    
+                }
+
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 
-                Color color = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
-                color = Projectile.GetAlpha(color);
-                float multValue = 8 - j;
-                color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
+                Color color = Projectile.GetAlpha(lightColor);
+                color *= 0.75f;
 
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             }

@@ -13,6 +13,12 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override string Texture => ModContent.GetInstance<DragonsDeath>().Texture;
 
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Type] = 20;
+            ProjectileID.Sets.TrailingMode[Type] = 2;
+        }
+
         public override void SetDefaults()
         {
             Projectile.aiStyle = -1;
@@ -33,26 +39,20 @@ namespace UniverseOfSwordsMod.Projectiles
             float collisionPoint = 0f;
             float boxSize = 160f;
 
-            if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint))
-            {
-                return true;
-            }
-
-            return false;
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint);
         }
 
         private const float UseTime = 50f;
         Player Owner => Main.player[Projectile.owner];
         public override void AI()
         {            
-            
-            Vector2 vector = Owner.RotatedRelativePoint(Owner.MountedCenter);
             if (Owner.dead || Owner.CCed || Owner.noItems || !Owner.active)
             {
                 Projectile.Kill();
                 return;
             }
 
+            Vector2 vector = Owner.RotatedRelativePoint(Owner.MountedCenter);
             int velocityXSign = Math.Sign(Projectile.velocity.X);
 
             Lighting.AddLight(Owner.Center, 0.75f, 0.9f, 1.15f);
@@ -85,13 +85,19 @@ namespace UniverseOfSwordsMod.Projectiles
                     Projectile.netUpdate = true;
                     Projectile.rotation -= MathHelper.Pi;
                 }
-            }      
+            }
 
-            Projectile.position = vector - Projectile.Size / 2f;
-            Projectile.Center = Owner.Center;
-            Projectile.spriteDirection = Projectile.direction;
+            //Projectile.position = vector - Projectile.Size / 2f;
+            //Projectile.Center = Owner.Center;
+            Projectile.Center = Owner.MountedCenter;
             Projectile.timeLeft = 2;
 
+            SetPlayerValues();
+        }
+
+        public void SetPlayerValues()
+        {
+            Projectile.spriteDirection = Projectile.direction;
             Owner.ChangeDir(Projectile.direction);
             Owner.heldProj = Projectile.whoAmI;
             Owner.SetDummyItemTime(2);
@@ -102,9 +108,17 @@ namespace UniverseOfSwordsMod.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
+            Vector2 drawOrigin = new(0f * Owner.direction, texture.Height);
             SpriteBatch spriteBatch = Main.spriteBatch;
+            Color projColor = new(255, 255, 255, 0);
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, new Vector2(0f * Owner.direction, texture.Height), Projectile.scale, SpriteEffects.None, 0);
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                projColor *= 0.7f;
+                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition , null, projColor, Projectile.oldRot[i], drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            }
+
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
     }

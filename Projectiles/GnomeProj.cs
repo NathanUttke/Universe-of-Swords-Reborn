@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using rail;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -33,13 +34,18 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.light = 0.25f;           
             Projectile.extraUpdates = 1;
             Projectile.ArmorPenetration = 10;
-            Projectile.timeLeft = 50;
+            Projectile.timeLeft = 40;
         }
 
         public override Color? GetAlpha(Color lightColor) => Color.White;       
         public override void AI()
         {            
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+
+            if (Main.rand.NextBool(2))
+            {
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.DarkCyan with { A = 0 }, 2f);
+            }
         }
         
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

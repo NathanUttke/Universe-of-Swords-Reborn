@@ -30,7 +30,7 @@ public class SolBlade : ModItem
 		Item.damage = 85;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item70;
-		Item.shootSpeed = 15f;
+		Item.shootSpeed = 12f;
 		Item.shoot = ModContent.ProjectileType<Armageddon>();
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;

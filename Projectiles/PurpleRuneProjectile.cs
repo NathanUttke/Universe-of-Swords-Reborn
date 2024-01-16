@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {    
@@ -17,11 +18,11 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 4;
             Projectile.alpha = 255;
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 23;
+            Projectile.localNPCHitCooldown = 25;
         }
 
         public override void AI()
@@ -39,9 +40,10 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Projectile.ai[1] == 0f)
             {
                 Projectile.ai[1] = 1f;
-                for (int i = 0; i < 21; i++)
+                for (int i = 0; i < 25; i++)
                 {
-                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.VilePowder, Projectile.velocity.X, Projectile.velocity.Y);
+                    Dust cloudDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.MediumOrchid with { A = 0 }, 2f);
+                    cloudDust.fadeIn = 3f;
                 }
             }
         }
@@ -50,7 +52,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (!target.HasBuff(BuffID.ShadowFlame))
             {
-                target.AddBuff(BuffID.ShadowFlame, 250);
+                target.AddBuff(BuffID.ShadowFlame, 300);
             }
         }
     }

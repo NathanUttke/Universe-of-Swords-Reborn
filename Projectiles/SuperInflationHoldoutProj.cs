@@ -31,7 +31,7 @@ namespace UniverseOfSwordsMod.Projectiles
         Player Owner => Main.player[Projectile.owner];
         public ref float Timer => ref Projectile.ai[0];
         public ref float RotationTimer => ref Projectile.ai[1];
-        private float Acceleration = 1f;
+        
         private const float MaxTime = 12.5f;
         private static float EaseInBack(float value)
         {
@@ -95,8 +95,7 @@ namespace UniverseOfSwordsMod.Projectiles
             } 
             
             Projectile.rotation = -1f + EaseInBack(RotationTimer / 8f) * velocityXSign;
-
-            //Main.NewText(Projectile.rotation);
+            
             if (Timer == MaxTime * 0.72f)
             {                
                 for (int i = 0; i < 3; i++)
@@ -120,7 +119,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 SoundEngine.PlaySound(SoundID.Item169, Projectile.position);                
             }
 
-
             if (Timer >= MaxTime)
             {                
                 Projectile.alpha += 16;
@@ -131,8 +129,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.alpha = 255;
                 Projectile.Kill();
             }
-
-            //Projectile.rotation = Projectile.velocity.ToRotation();
+            
             Timer++;
             RotationTimer += MathHelper.PiOver4 / 2f;
         }

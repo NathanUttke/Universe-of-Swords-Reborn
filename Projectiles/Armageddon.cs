@@ -38,7 +38,7 @@ public class Armageddon : ModProjectile
         Projectile.rotation = Projectile.velocity.ToRotation();
         if (Main.rand.NextBool(2))
         {
-            Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 1f);
+            Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange with { A = 0 }, 1f);
         }
     }
 

@@ -27,7 +27,7 @@ public class TheNightmareAmalgamation : ModItem
 		Item.damage = 120;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item71;
-		Item.shoot = ModContent.ProjectileType<Nightmare>();
+		Item.shoot = ModContent.ProjectileType<NightmareProjectile>();
 		Item.shootSpeed = 19f;
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.autoReuse = true;
@@ -68,41 +68,42 @@ public class TheNightmareAmalgamation : ModItem
 		}
 	}
 
-	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-	{
-		if (!target.HasBuff(BuffID.ShadowFlame))
-		{
-            target.AddBuff(BuffID.ShadowFlame, 800, false);
-        }
-	}
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+    {      
 
-	public override void AddRecipes()
-	{	
+        if (!target.HasBuff(BuffID.ShadowFlame))
+        {
+            target.AddBuff(BuffID.ShadowFlame, 800);
+        }
+
+        if (Main.rand.NextBool(3) && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type])
+        {
+            player.statLife += 3;
+            player.HealEffect(3, true);
+        }
+    }
+
+    public override void AddRecipes()
+	{
 		CreateRecipe()
-		.AddIngredient(Mod, "CthulhuJudge", 1)
-		.AddIngredient(Mod, "TheEater", 1)
+		.AddIngredient(ModContent.ItemType<CthulhuJudge>(), 1)
+		.AddIngredient(ModContent.ItemType<TheEater>(), 1)
 		.AddIngredient(ModContent.ItemType<TheSwarm>(), 1)
-		.AddIngredient(ModContent.ItemType<FixedSwordOfPower>(),1)
-		.AddIngredient(Mod, "PrimeSword", 1)
-		.AddIngredient(Mod, "DestroyerSword", 1)
-		.AddIngredient(Mod, "TwinsSword", 1)
-		.AddIngredient(Mod, "Executioner", 1)
-		.AddIngredient(Mod, "Doomsday", 1)
-		.AddIngredient(ModContent.ItemType<DragonsDeath>(), 1)
+		.AddIngredient(ModContent.ItemType<FixedSwordOfPower>(), 1)
+		.AddIngredient(ModContent.ItemType<LifeRemovalMachine>(), 1)
+		.AddIngredient(ModContent.ItemType<Executioner>(), 1)
+		.AddIngredient(ModContent.ItemType<Doomsday>(), 1)
 		.AddIngredient(ModContent.ItemType<PurpleRuneBlade>(), 1)
 		.AddTile(TileID.LunarCraftingStation)
 		.Register();
 		CreateRecipe()
-		.AddIngredient(Mod, "CthulhuJudge", 1)	
-		.AddIngredient(Mod, "TheBrain", 1)
-		.AddIngredient(ItemID.BeeKeeper, 1)
-		.AddIngredient(ModContent.ItemType<FixedSwordOfPower>(), 1)
-		.AddIngredient(Mod, "PrimeSword", 1)
-		.AddIngredient(Mod, "DestroyerSword", 1)
-		.AddIngredient(Mod, "TwinsSword", 1)
-		.AddIngredient(Mod, "Executioner", 1)
-		.AddIngredient(Mod, "Doomsday", 1)
-		.AddIngredient(ModContent.ItemType<DragonsDeath>(), 1)
+		.AddIngredient(ModContent.ItemType<CthulhuJudge>(), 1)
+		.AddIngredient(ModContent.ItemType<TheBrain>(), 1)
+		.AddIngredient(ModContent.ItemType<TheSwarm>(), 1)
+		.AddIngredient(ModContent.ItemType<FixedSwordOfPower>(),1)
+		.AddIngredient(ModContent.ItemType<LifeRemovalMachine>(),1)
+		.AddIngredient(ModContent.ItemType<Executioner>(), 1)
+		.AddIngredient(ModContent.ItemType<Doomsday>(), 1)
 		.AddIngredient(ModContent.ItemType<PurpleRuneBlade>(), 1)
 		.AddTile(TileID.LunarCraftingStation)
 		.Register();

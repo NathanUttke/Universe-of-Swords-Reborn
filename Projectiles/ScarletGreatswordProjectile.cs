@@ -17,7 +17,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 4;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
         public override void SetDefaults()
         {
@@ -39,11 +39,8 @@ namespace UniverseOfSwordsMod.Projectiles
             float projRotation = Projectile.rotation - MathHelper.PiOver4 + MathHelper.Pi * Math.Sign(Projectile.velocity.X);
             float collisionPoint = 0f;
             float boxSize = 160f;
-            if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint))
-            {
-                return true;
-            }
-            return false;
+
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint);
         }
 
         private readonly float shootSpeed = 25f;
@@ -108,11 +105,41 @@ namespace UniverseOfSwordsMod.Projectiles
                 }
             }
 
-            Projectile.position = playerCenter - Projectile.Size / 2f;
-            Projectile.Center = Owner.Center;
-            
+            //Projectile.position = playerCenter - Projectile.Size / 2f;
+            Projectile.Center = Owner.MountedCenter;
+
             Projectile.timeLeft = 2;
             SetPlayerValues();
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (Main.myPlayer != Projectile.owner)
+            {
+                return;
+            }
+
+            if (!target.active || target.immortal || NPCID.Sets.CountsAsCritter[target.type] || target.SpawnedFromStatue)
+            {
+                return;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                Vector2 offsetPosition = new(target.position.X + Main.rand.Next(-400, 400), target.position.Y - Main.rand.Next(500, 800));
+                Vector2 spawnVelocity = new(target.Center.X - offsetPosition.X, target.Center.Y - offsetPosition.Y);
+                //spawnVelocity.X += Main.rand.Next(-100, 101);
+
+                float spawnDistance = spawnVelocity.Length();
+                spawnDistance = 30f / spawnDistance;
+                spawnVelocity.X *= spawnDistance;
+                spawnVelocity.Y *= spawnDistance;
+
+                Projectile summonProjectile = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), offsetPosition, spawnVelocity, ProjectileID.RubyBolt, Projectile.damage / 3, 5f, Projectile.owner, 0f, 0f);
+                summonProjectile.penetrate = 1;
+                summonProjectile.tileCollide = false;
+                summonProjectile.DamageType = DamageClass.MeleeNoSpeed;
+            }
         }
 
         public void SetPlayerValues()
@@ -125,11 +152,19 @@ namespace UniverseOfSwordsMod.Projectiles
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
         }
         public override bool PreDraw(ref Color lightColor)
-        {            
+        {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
+            Vector2 drawOrigin = new(0f * Owner.direction, texture.Height);
             SpriteBatch spriteBatch = Main.spriteBatch;
+            Color projColor = new(255, 255, 255, 0);
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, new Vector2(0f * Main.player[Projectile.owner].direction, texture.Height), Projectile.scale, SpriteEffects.None, 0);
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                projColor *= 0.6f;
+                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition, null, projColor, Projectile.oldRot[i], drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            }
+
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
     }

@@ -28,7 +28,7 @@ public class CorruptCrystallusProj : ModProjectile
 		Projectile.ignoreWater = false;
 		Projectile.tileCollide = true;
 		Projectile.extraUpdates = 1;
-		Projectile.timeLeft = 60;
+		Projectile.timeLeft = 40;
         AIType = ProjectileID.Bullet;
 	}
 

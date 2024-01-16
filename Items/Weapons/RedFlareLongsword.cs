@@ -35,7 +35,10 @@ public class RedFlareLongsword : ModItem
 		Item.ResearchUnlockCount = 1;
 	}
 
-	public override void MeleeEffects(Player player, Rectangle hitbox)
+	public override bool CanShoot(Player player) => player.ItemAnimationJustStarted;
+
+
+    public override void MeleeEffects(Player player, Rectangle hitbox)
 	{	
 		if (Main.rand.NextBool(2))
 		{

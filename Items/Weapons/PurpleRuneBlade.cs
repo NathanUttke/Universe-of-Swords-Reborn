@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
@@ -20,11 +21,12 @@ public class PurpleRuneBlade : ModItem
 		Item.width = 52;
 		Item.height = 52;
 		Item.rare = ItemRarityID.Purple;
+
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 17;
 		Item.useAnimation = 17;
-		Item.damage = 45;
 
+		Item.damage = 45;
 		Item.shoot = ModContent.ProjectileType<PurpleRuneProjectile>();
 		Item.shootSpeed = 10f;
 
@@ -40,8 +42,8 @@ public class PurpleRuneBlade : ModItem
 	{											
 		if (Main.rand.NextBool(2))
 		{
-			Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f)];
-			dust.noGravity = true;
+			Vector2 dustRotation = player.itemLocation + (player.itemRotation.ToRotationVector2() * MathHelper.PiOver2 * 0.75f);
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), dustRotation.X, dustRotation.Y, 0, Color.Purple with { A = 0 }, 2f);
 		}
 	}
 

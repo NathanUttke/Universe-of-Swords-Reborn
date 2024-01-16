@@ -36,7 +36,7 @@ public class FrostburnArrowSword : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile frostArrow = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        frostArrow.timeLeft = 50;
+        frostArrow.timeLeft = 30;
         frostArrow.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }
@@ -44,13 +44,13 @@ public class FrostburnArrowSword : ModItem
     public override void AddRecipes()
 	{				
 		CreateRecipe()
-			.AddIngredient(ItemID.FrostburnArrow, 999)
+			.AddIngredient(ItemID.FrostburnArrow, 500)
 			.AddIngredient(ModContent.ItemType<SwordMatter>(), 12)
 			.AddIngredient(ItemID.ShadowScale, 10)
 			.AddTile(TileID.Anvils)
 			.Register();
         CreateRecipe()
-            .AddIngredient(ItemID.FrostburnArrow, 999)
+            .AddIngredient(ItemID.FrostburnArrow, 500)
             .AddIngredient(ModContent.ItemType<SwordMatter>(), 12)
             .AddIngredient(ItemID.TissueSample, 10)
             .AddTile(TileID.Anvils)

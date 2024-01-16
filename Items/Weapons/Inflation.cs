@@ -21,8 +21,8 @@ public class Inflation : ModItem
         Item.rare = ItemRarityID.Orange;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 4f;
-        Item.useTime = 50;
-        Item.useAnimation = 50;
+        Item.useTime = 45;
+        Item.useAnimation = 45;
         Item.damage = 23;
         Item.DamageType = DamageClass.Melee;
         Item.scale = 1f;
@@ -31,11 +31,6 @@ public class Inflation : ModItem
         Item.value = 0;
         Item.autoReuse = true;
     }
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation = player.Center;
-    }
-
     public override void AddRecipes()
     {
         CreateRecipe()

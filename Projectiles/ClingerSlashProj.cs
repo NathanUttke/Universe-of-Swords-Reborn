@@ -10,7 +10,7 @@ using UniverseOfSwordsMod.Utilities;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    public class PrimeSlashProj : ModProjectile
+    public class ClingerSlashProj : ModProjectile
     {
         public override string Texture => "UniverseofSwordsMod/Projectiles/BetterShroomiteProj";
         public override void SetStaticDefaults()
@@ -43,14 +43,14 @@ namespace UniverseOfSwordsMod.Projectiles
         // From ExampleSwingingEnergySwordProjectile
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, 1f, 0.5f, 0.5f);
             Projectile.localAI[0]++;
+            Lighting.AddLight(Projectile.Center, 0.5f, 1f, 0.5f);
             float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1];            
             float velocityRotation = Projectile.velocity.ToRotation();
             float adjustedRotation = MathHelper.Pi * Direction * percentageOfLife + velocityRotation + Direction * MathHelper.Pi + Player.fullRotation;
             Projectile.rotation = adjustedRotation;
 
-            float scaleMulti = 1f;
+            float scaleMulti = 0.6f;
             float scaleAdder = 1f;
 
             Projectile.Center = Player.RotatedRelativePoint(Player.MountedCenter) - Projectile.velocity;
@@ -73,6 +73,24 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
         }
+
+        private const float offsetPosition = 70f;
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (target.immortal || NPCID.Sets.CountsAsCritter[target.type] || target.SpawnedFromStatue)
+            {
+                return;
+            }
+            int i = 0;
+            int direction = 1;
+
+            while (i < 2)
+            {
+                Projectile.NewProjectile(target.GetSource_OnHit(target), target.Center.X + (offsetPosition * direction), target.Center.Y, 5f * -direction, 0f, ModContent.ProjectileType<ClingerWallProj>(), damageDone / 2, 0f, Projectile.owner, 0f, 0f);
+                direction *= -1;
+                i++;
+            }
+        }
         public void GenerateDust()
         {
             float dustRotation = Projectile.rotation + Main.rand.NextFloatDirection() * MathHelper.PiOver2 * 0.75f;
@@ -80,15 +98,15 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 dustVelocity = (dustRotation + Projectile.ai[0] * MathHelper.PiOver2).ToRotationVector2();
             if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
             {
-                Color dustColor = Color.Lerp(Color.Red, Color.HotPink, Main.rand.NextFloat() * 0.3f);
-                Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), ModContent.DustType<GlowDust>(), dustVelocity * 1f, 100, dustColor with { A = 0}, 1f);
+                Color dustColor = Color.Lerp(Color.Green, Color.LimeGreen, Main.rand.NextFloat() * 0.3f);
+                Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), ModContent.DustType<GlowDust>(), dustVelocity * 1f, 0, dustColor with { A = 0 }, 1f);
                 coloredDust.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
                 coloredDust.noGravity = true;
             }
 
             if (Main.rand.NextFloat() * 1.5f < Projectile.Opacity)
             {
-                Dust.NewDustPerfect(dustPosition, ModContent.DustType<GlowDust>(), dustVelocity, 100, Color.Red * Projectile.Opacity, 1.2f * Projectile.Opacity);
+                Dust.NewDustPerfect(dustPosition, ModContent.DustType<GlowDust>(), dustVelocity, 0, Color.LimeGreen * Projectile.Opacity, 1.2f * Projectile.Opacity);
             }
         }
 
@@ -131,9 +149,9 @@ namespace UniverseOfSwordsMod.Projectiles
             float lightingColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates()).ToVector3().Length() / (float)Math.Sqrt(3.0);
             lightingColor = Utils.Remap(lightingColor, 0.2f, 1f, 0f, 1f);
 
-            Color backDarkColor = new Color(128, 0, 0, 128); 
-            Color middleMediumColor = new (232, 60, 162); 
-            Color frontLightColor = new Color(255, 128, 128);
+            Color backDarkColor = new Color(0, 128, 64); 
+            Color middleMediumColor = Color.GreenYellow; 
+            Color frontLightColor = Color.LimeGreen;
 
             Color whiteTimesLerpTime = Color.White * lerpTime * 0.5f;
             whiteTimesLerpTime.A = (byte)(whiteTimesLerpTime.A * (1f - lightingColor));

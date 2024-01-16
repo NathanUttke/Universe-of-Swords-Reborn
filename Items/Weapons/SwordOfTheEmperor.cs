@@ -35,7 +35,6 @@ public class SwordOfTheEmperor : ModItem
         CreateRecipe()
             .AddIngredient(ModContent.ItemType<SwordMatter>(), 40)  
             .AddIngredient(ModContent.ItemType<Orichalcon>(), 12)
-            .AddIngredient(ModContent.ItemType<BiggoronSword>())
             .AddIngredient(ItemID.BrokenHeroSword, 1)
             .AddIngredient(ItemID.GoldBar, 25)
             .AddIngredient(ItemID.BreakerBlade, 1)

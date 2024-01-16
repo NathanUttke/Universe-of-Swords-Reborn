@@ -21,7 +21,7 @@ public class Tier2CProjectile : ModProjectile
 		Projectile.alpha = 255;
 		Projectile.ignoreWater = false;
 		Projectile.tileCollide = true;
-		Projectile.timeLeft = 60;
+		Projectile.timeLeft = 50;
 		Projectile.extraUpdates = 1;
 		AIType = 14;
 	}

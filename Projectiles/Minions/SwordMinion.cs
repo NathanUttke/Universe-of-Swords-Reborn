@@ -173,9 +173,9 @@ namespace UniverseOfSwordsMod.Projectiles.Minions
             if (Projectile.ai[1] == 0f)
             {
                 float num481 = 16f;
-                Vector2 vector39 = Projectile.Center;
-                float num482 = projectilePos.X - vector39.X;
-                float num483 = projectilePos.Y - vector39.Y;
+                Vector2 projCenter = Projectile.Center;
+                float num482 = projectilePos.X - projCenter.X;
+                float num483 = projectilePos.Y - projCenter.Y;
                 float num484 = MathF.Sqrt(num482 * num482 + num483 * num483);
                 if (num484 < 100f)
                 {

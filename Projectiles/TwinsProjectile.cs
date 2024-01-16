@@ -1,8 +1,5 @@
 ﻿using Terraria.Audio;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
-using System;
-using System.Security.Cryptography.X509Certificates;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,6 +20,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.extraUpdates = 2;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.light = 0.4f;
+            Projectile.timeLeft = 60;
         }
         public override void AI()
         {
@@ -54,13 +52,13 @@ namespace UniverseOfSwordsMod.Projectiles
             {            
                 
                 Vector2 dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + 1 * MathHelper.Pi) * vector9 - Projectile.rotation.ToRotationVector2() * 10f;
-                Dust redDust = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.Clentaminator_Green, 0f, 0f, 160)];
+                Dust redDust = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.Clentaminator_Green, 0f, 0f, 160, Color.White with { A = 0 })];
                 redDust.scale = dustScale;
                 redDust.noGravity = true;
                 redDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
                 redDust.velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 2f * 8f - redDust.position) * 2f + Projectile.velocity * 2f;
 
-                Dust greenDust = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.Clentaminator_Red, 0f, 0f, 160, default, dustScale)];
+                Dust greenDust = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.Clentaminator_Red, 0f, 0f, 160, Color.White with { A = 0 }, dustScale)];
                 dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + 2 * MathHelper.Pi) * vector9 - Projectile.rotation.ToRotationVector2() * 10f;
                 greenDust.noGravity = true;
                 greenDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
@@ -75,14 +73,15 @@ namespace UniverseOfSwordsMod.Projectiles
                 float oldVelocityX = Projectile.oldVelocity.X * (30f / i);
                 float oldVelocityY = Projectile.oldVelocity.Y * (30f / i);
 
-                int terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.Clentaminator_Green, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.25f);
-                Main.dust[terraDust].noGravity = true;
+                int terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.Clentaminator_Green, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.25f);                
                 Dust dust = Main.dust[terraDust];
+                dust.noGravity = true;
                 dust.velocity *= 0.5f;
 
-                terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.Clentaminator_Red, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.25f);
-                dust = Main.dust[terraDust];
-                dust.velocity *= 0.05f;
+                int terraDust2 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.Clentaminator_Red, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.25f);
+                Dust dust2 = Main.dust[terraDust2];
+                dust2.noGravity = true;
+                dust2.velocity *= 0.5f;
             }
         }
     }

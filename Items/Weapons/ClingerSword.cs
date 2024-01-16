@@ -1,4 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Projectiles;
@@ -17,9 +19,9 @@ public class ClingerSword : ModItem
 		Item.useAnimation = 25;
 		Item.damage = 50;
 		Item.knockBack = 4.5f;		
-		//Item.shoot = ModContent.ProjectileType<ClingerSwordProjectile>();
-		//Item.shootSpeed = 5f;
-		//Item.noMelee = true;
+		Item.shoot = ModContent.ProjectileType<ClingerSlashProj>();
+		Item.shootSpeed = 5f;
+		Item.noMelee = true;
 		//Item.noUseGraphic = true;
         Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
@@ -31,27 +33,22 @@ public class ClingerSword : ModItem
         }
         else
         {
-            Item.DamageType = DamageClass.MeleeNoSpeed;
+            Item.DamageType = DamageClass.Melee;
         }
 
         Item.ResearchUnlockCount = 1;
 	}
 
-    private float offsetPosition = 70f;
-    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-    {
-        if (target.immortal || NPCID.Sets.CountsAsCritter[target.type] || target.SpawnedFromStatue)
-        {
-            return;
-        }
-        int i = 0;
-        int direction = 1;
 
-        while (i < 2)
-        {
-            Projectile.NewProjectile(target.GetSource_OnHit(target), target.Center.X + (offsetPosition * direction), target.Center.Y, 5f * -direction, 0f, ModContent.ProjectileType<ClingerWallProj>(), Item.damage / 2, 0f, player.whoAmI, 0f, 0f);
-            direction *= -1;
-            i++;
-        }
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+
+        float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
+
+
+        Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale);
+        NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI); // Sync the changes in multiplayer.
+
+        return false;
     }
 }

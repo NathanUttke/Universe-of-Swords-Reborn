@@ -6,8 +6,6 @@ using Terraria.ID;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using Mono.Cecil;
-using static Terraria.ModLoader.PlayerDrawLayer;
 using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles;
@@ -30,9 +28,9 @@ public class TrueTerrabladeProjectile : ModProjectile
 		Projectile.scale = 1f;
 		Projectile.tileCollide = true;
 		Projectile.ignoreWater = true;
-		Projectile.timeLeft = 50;
-		Projectile.aiStyle = ProjAIStyleID.Arrow;
-        AIType = ProjectileID.Bullet;
+		Projectile.timeLeft = 30;
+		Projectile.aiStyle = -1;
+        //AIType = ProjectileID.Bullet;
 	}
 
     public override Color? GetAlpha(Color lightColor) => new Color(98, 242, 128, 45);
@@ -51,15 +49,14 @@ public class TrueTerrabladeProjectile : ModProjectile
         Texture2D terraTexture = TextureAssets.Projectile[Type].Value;
 
         Color drawColorGlowSecond = new(255, 242, 14, 42);
-        Vector2 drawOrigin = new(glowTexture.Width / 2, glowTexture.Height / 2);
-        Vector2 terraOrigin = new(terraTexture.Width / 2, terraTexture.Height / 2);
+        Vector2 drawOrigin = glowTexture.Size() / 2f;
+        Vector2 terraOrigin = terraTexture.Size() / 2f;
 
         SpriteEffects spriteEffects = SpriteEffects.None;
         if (Projectile.spriteDirection == -1)
         {
             spriteEffects = SpriteEffects.FlipHorizontally;
         }
-
 
         for (int i = 0; i < Projectile.oldPos.Length; i++)
         {
@@ -80,12 +77,12 @@ public class TrueTerrabladeProjectile : ModProjectile
         for (int i = 4; i < 31; i++)
         {
 
-            int terraDust = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 2f);
+            int terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 2f);
             Main.dust[terraDust].noGravity = true;
             Dust dust = Main.dust[terraDust];
             dust.velocity *= 0.75f;
 
-            terraDust = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 2f);
+            terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 2f);
             dust = Main.dust[terraDust];
             dust.velocity *= 0.25f;
         }

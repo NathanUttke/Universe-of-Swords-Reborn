@@ -35,20 +35,16 @@ public class UnholyArrowSword : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        proj.timeLeft = 70;
+        proj.timeLeft = 30;
         proj.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }
 
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-	{
-		player.itemLocation.Y -= 1f * player.gravDir;
-	}
-
 	public override void AddRecipes()
 	{
 		CreateRecipe()
-			.AddIngredient(ItemID.UnholyArrow, 800)			
+			.AddIngredient(ItemID.UnholyArrow, 500)			
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 15)			
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

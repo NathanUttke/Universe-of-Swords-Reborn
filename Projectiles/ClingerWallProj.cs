@@ -18,7 +18,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.alpha = 255;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
-            Projectile.timeLeft = 100;
+            Projectile.timeLeft = 90;
             Projectile.tileCollide = false;
         }
 

@@ -38,6 +38,10 @@ public class GoblinKnife : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
+        if (target.defense > 20)
+        {
+            damageDone *= 2;
+        }
         if (!target.HasBuff(BuffID.Bleeding))
         {
             target.AddBuff(BuffID.Bleeding, 400);

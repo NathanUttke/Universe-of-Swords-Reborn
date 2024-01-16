@@ -68,7 +68,8 @@ public class GreatswordOfTheCosmos : ModItem
 			float num16 = num13 * num15;
 			float SpeedX = num17 + Main.rand.Next(-12, 10) * 0.2f;
 			float SpeedY = num16 + Main.rand.Next(-12, 10) * 0.2f;
-			Projectile rainProj = Projectile.NewProjectileDirect(source, vector2_1, new Vector2(SpeedX, SpeedY), type, damage, knockback, player.whoAmI);
+			Projectile rainProj = Projectile.NewProjectileDirect(source, vector2_1, new Vector2(SpeedX, SpeedY), type, damage, knockback, player.whoAmI, 3f);
+			rainProj.extraUpdates = 1;
 			rainProj.DamageType = DamageClass.Melee;
 		}
 		return false;

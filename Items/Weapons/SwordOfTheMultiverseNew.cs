@@ -76,6 +76,7 @@ public class SwordOfTheMultiverseNew : ModItem
             }
 
             currentMode++;
+            Item.NetStateChanged();
             Main.NewText($"[c/6508CF:Sword Of The Multiverse: Mode {currentMode} has been selected.]");
             player.SetItemTime(15);
         }
@@ -149,7 +150,7 @@ public class SwordOfTheMultiverseNew : ModItem
     {
         if (Main.rand.NextBool(2) && currentMode != 3)
         {
-            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), 0f, 0f, 100, Color.Violet with { A = 0}, 2f);
+            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), 0f, 0f, 100, Color.Violet with { A = 0 }, 2f);
             dust.noGravity = true;
         }
     }
@@ -170,7 +171,7 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheUniverseNew>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1);
-        newRecipe.AddIngredient(ModContent.ItemType<LifeRemovalMachine>(), 1);
+        newRecipe.AddIngredient(ModContent.ItemType<ScarletFlareGreatsword>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<GnomBlade>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<DamascusBar>(), 50);
         newRecipe.AddIngredient(ModContent.ItemType<Orichalcon>(), 50);
@@ -178,9 +179,9 @@ public class SwordOfTheMultiverseNew : ModItem
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
         newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 500);
         newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
-        if (ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod) && CalamityMod.TryFind("DraedonsForge", out ModTile DraedonsForge))
+        if (ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod) && CalamityMod.TryFind("CosmicAnvil", out ModTile CosmicAnvil))
         {
-            newRecipe.AddTile(DraedonsForge.Type);
+            newRecipe.AddTile(CosmicAnvil.Type);
         }
         else
         {

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent;
 using Terraria.GameContent.Drawing;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -29,7 +30,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.ignoreWater = true;
             Projectile.tileCollide = true;
             Projectile.extraUpdates = 1;
-            Projectile.timeLeft = 80;
+            Projectile.timeLeft = 50;
 
             AIType = ProjectileID.Bullet;
         }
@@ -38,9 +39,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Main.rand.NextBool(2))
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Frost, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.1f);
-                dust.noGravity = true;
-                dust.scale = 1.1f;
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, Color.Cyan, 1.5f);
             }
         }
 
@@ -74,8 +73,8 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             for (int k = 0; k < 10; k++)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Frost, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
-				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Frost, Projectile.oldVelocity.X * 0.10f, Projectile.oldVelocity.Y * 0.10f);
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 0, Color.Cyan, 1.5f);
+				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.10f, Projectile.oldVelocity.Y * 0.10f, 0, Color.Cyan, 1.5f);
             }
             SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         }

@@ -9,12 +9,7 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class OnyxSword : ModItem
 {
-    private int swingCount;
-    public override void SetStaticDefaults()
-    {
-        // Tooltip.SetDefault("Shoots Onyx");
-    }
-
+    private int swingCounter;
     public override void SetDefaults()
     {
         Item.width = 32;
@@ -48,12 +43,12 @@ public class OnyxSword : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        swingCount++;
-        if (swingCount == 3)
+        swingCounter++;
+        if (swingCounter == 3)
         {
-            swingCount = 0;
+            swingCounter = 0;
             Projectile blackBolt = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-            blackBolt.DamageType = DamageClass.Melee;
+            blackBolt.DamageType = DamageClass.MeleeNoSpeed;
         }
         return false;
     }

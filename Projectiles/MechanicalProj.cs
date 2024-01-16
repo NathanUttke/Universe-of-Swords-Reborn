@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.GameContent;
 using UniverseOfSwordsMod.Dusts;
+using Terraria.Audio;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -21,7 +22,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.width = 80;
             Projectile.height = 36;
 
-            Projectile.scale = 2f;
+            Projectile.scale = 1.5f;
             Projectile.aiStyle = 1;
             Projectile.penetrate = 8;
             Projectile.alpha = 255;
@@ -31,7 +32,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
 
             Projectile.extraUpdates = 1;
-            Projectile.timeLeft = 100;
+            Projectile.timeLeft = 40;
 
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;
@@ -41,9 +42,9 @@ namespace UniverseOfSwordsMod.Projectiles
         }
 
         public override void AI()
-        {
+        {            
             if (Projectile.scale > 0f)
-            {
+            {                
                 Projectile.scale -= 0.01f;
             }
             else
@@ -54,11 +55,19 @@ namespace UniverseOfSwordsMod.Projectiles
 
             if (Main.rand.NextBool(2))
             {
-                Dust dust = Dust.NewDustDirect(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, Color.OrangeRed with { A = 0 }, 2f);
-                dust.noGravity = true;
-                dust.scale = 1.1f;
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.OrangeRed with { A = 0 }, 2f);
             }
-        }        
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            for (int k = 0; k < 10; k++)
+            {
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 0, Color.OrangeRed, 1.5f);
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.10f, Projectile.oldVelocity.Y * 0.10f, 0, Color.OrangeRed, 1.5f);
+            }
+            SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
+        }
 
         public override bool PreDraw(ref Color lightColor)
         {

@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,10 +9,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class PumpkinBoom : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-		// Tooltip.SetDefault("Creates explosions on hit");
-    }
     public override void SetDefaults()
 	{
 		Item.width = 64;
@@ -23,12 +18,11 @@ public class PumpkinBoom : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
+        Item.UseSound = SoundID.Item1;
 
-		Item.damage = 50;
-		Item.knockBack = 6.5f;
-		Item.UseSound = SoundID.Item1;
-		Item.shootSpeed = 10f;
-		Item.scale = 1.25f;
+        Item.damage = 50;
+		Item.knockBack = 6.5f;				
+		Item.scale = 1.5f;
 		Item.value = 360500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;

@@ -31,7 +31,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Type] = 10;
+            ProjectileID.Sets.TrailCacheLength[Type] = 20;
             ProjectileID.Sets.TrailingMode[Type] = 2;
         }
         public override void SetDefaults()
@@ -169,11 +169,22 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             Projectile.rotation += 0.25f;
             Vector2 vecTowardsPlayer = Projectile.DirectionTo(Owner.MountedCenter).SafeNormalize(Vector2.Zero);
-            if (Projectile.Distance(Owner.MountedCenter) <= 10f)
+
+            if (Projectile.Distance(Owner.MountedCenter) <= 50f)
             {
                 Projectile.scale *= 0.75f;
+            }
+
+            if (Projectile.Distance(Owner.MountedCenter) <= 10f)
+            {                
                 Projectile.Kill();
             }            
+
+            if (Projectile.Distance(Owner.Center) > 500f)
+            {
+                Projectile.Kill();
+            }
+
             Projectile.velocity *= 0.98f;
             Projectile.velocity = Projectile.velocity.MoveTowards(vecTowardsPlayer * 10f, 3f);            
         }
@@ -193,8 +204,8 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                projColor *= 0.70f;
-                spriteBatch.Draw(trailTexture, Projectile.oldPos[i] - Main.screenPosition + new Vector2(texture.Width / 2f, texture.Height / 2f), null, projColor, Projectile.oldRot[i] - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);
+                projColor *= 0.65f;
+                spriteBatch.Draw(trailTexture, Projectile.oldPos[i] - Main.screenPosition + texture.Size() / 2f, null, projColor, Projectile.oldRot[i] - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);
             }
 
             spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation - MathHelper.PiOver2, textureOrigin, Projectile.scale, SpriteEffects.None, 0);

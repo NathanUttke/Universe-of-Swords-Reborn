@@ -26,7 +26,7 @@ public class FlareCore : ModProjectile
 
         Projectile.scale = 1.15f;
         Projectile.aiStyle = -1;
-        Projectile.timeLeft = 30;
+        Projectile.timeLeft = 20;
 
         Projectile.penetrate = -1;
         Projectile.friendly = true;
@@ -44,13 +44,11 @@ public class FlareCore : ModProjectile
     public override void AI()
     {
         base.AI();        
-        Dust redDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch, 0f, 0f, 100, default, 1f);
-        redDust.noGravity = true;
-        redDust.scale = 1.15f;
+        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Red with { A = 0 }, 2f);
     }
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (Main.rand.NextBool(2) && !target.HasBuff(BuffID.OnFire))
+        if (!target.HasBuff(BuffID.OnFire))
         {
             target.AddBuff(BuffID.OnFire, 300);
         }

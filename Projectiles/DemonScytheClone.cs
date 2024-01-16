@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent;
 using UniverseOfSwordsMod.Utilities;
 using Terraria.GameContent.Drawing;
 using UniverseOfSwordsMod.Dusts;
+using Terraria.Audio;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -27,8 +27,9 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.aiStyle = -1;
             Projectile.light = 0.33f;
+            Projectile.alpha = 127;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 125;
+            Projectile.timeLeft = 30;
         }
         public override void AI()
         {
@@ -50,8 +51,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < 4; i++)
             {
-                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Cyan with { A = 0 }, 2f);
-                newDust.rotation += 0.05f;
+                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197, 0), 1f);
                 newDust.noGravity = true;
             }
         }
@@ -68,31 +68,43 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
+        public override void Kill(int timeLeft)
+        {
+            SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
+            for (int i = 0; i < 14; i++)
+            {
+                int deathDust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197, 0), 1.5f);  
+                Dust deathDust2 = Main.dust[deathDust];
+                deathDust2.velocity *= 4f;
+            }
+        }
+
+        public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
+
         public override bool PreDraw(ref Color lightColor)
         {
             SpriteBatch spriteBatch = Main.spriteBatch;
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);
+            Vector2 drawOrigin = texture.Size() / 2f;
 
             Texture2D glowSphereTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-            Color drawColorGlow = Color.Cyan;
-            drawColorGlow.A = 0;            
-
-            spriteBatch.Draw(glowSphereTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, new Vector2(glowSphereTexture.Width / 2, glowSphereTexture.Height / 2), 0.75f, SpriteEffects.None, 0);
+            Color drawColorGlow = new Color(58, 211, 197, 0);
+            Color drawColor = Projectile.GetAlpha(lightColor);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 
+                
+                drawColorGlow *= 0.5f;
+                drawColor *= 0.5f;
 
-                Color color = Projectile.GetAlpha(lightColor);
-                color *= 0.75f;
-
-                spriteBatch.Draw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, 0.75f - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(glowSphereTexture, drawPos, null, drawColorGlow, Projectile.rotation, glowSphereTexture.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, drawPos, null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
 
             }            
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White with { A = 0 }, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 
             return false;
         }

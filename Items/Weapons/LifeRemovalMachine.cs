@@ -51,8 +51,6 @@ public class LifeRemovalMachine : ModItem
 			.AddIngredient(ModContent.ItemType<DestroyerSword>(), 1)
 			.AddIngredient(ModContent.ItemType<TwinsSword>(), 1)
 			.AddIngredient(ModContent.ItemType<MartianSaucerCore>(), 1)
-			.AddIngredient(ItemID.ShroomiteBar, 10)
-			.AddIngredient(ItemID.LihzahrdPowerCell, 5)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}

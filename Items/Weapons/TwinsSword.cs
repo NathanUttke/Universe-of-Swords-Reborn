@@ -27,15 +27,21 @@ public class TwinsSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = 160000;
 		Item.shoot = ModContent.ProjectileType<TwinsProjectile>();
-		Item.shootSpeed = 5.2f;
+		Item.shootSpeed = 6f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
 	}
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<TwinsProjectile>(), (int)(Item.damage * 0.75f), knockback, player.whoAmI);  
-		return false;
+        if (!target.HasBuff(BuffID.CursedInferno))
+		{
+			target.AddBuff(BuffID.CursedInferno, 300);
+		}        
+		if (!target.HasBuff(BuffID.Bleeding))
+		{
+			target.AddBuff(BuffID.Bleeding, 300);
+		}
     }
 }

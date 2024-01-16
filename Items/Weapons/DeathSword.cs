@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -32,10 +33,7 @@ public class DeathSword : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PurpleTorch, 0f, 0f, 100, default, 2f);
-            Main.dust[dust].noGravity = true;
-            Main.dust[dust].velocity.X -= player.direction * 0f;
-            Main.dust[dust].velocity.Y -= 0f;
+            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.MediumOrchid, 2f);
         }
     }
 }

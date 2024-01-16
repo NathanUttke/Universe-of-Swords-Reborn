@@ -49,7 +49,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             if (Main.rand.NextBool(3))
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 2f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197, 0), 2f);
             }
 
             NPC closestNPC = UniverseUtils.FindClosestNPC(400f, Projectile.position);
@@ -57,18 +57,30 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 return;
             }
-            Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed, 0.12f);
+            Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed, 0.15f);
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (!target.HasBuff(BuffID.Weak))
+            {
+                target.AddBuff(BuffID.Weak, 400);
+            }
+            if (!target.HasBuff(BuffID.Frostburn))
+            {
+                target.AddBuff(BuffID.Frostburn, 400);
+            }
         }
 
         public override void Kill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 14; i++)
             {
-                int deathDust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 2f);
+                int deathDust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197, 0), 2f);
                 Main.dust[deathDust].noGravity = true;
                 Dust deathDust2 = Main.dust[deathDust];
-                deathDust2.velocity *= 3f;
+                deathDust2.velocity *= 4f;
             }
         }
 
@@ -92,7 +104,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
             Vector2 drawOriginGlow = glowTexture.Size() / 2f;
             Vector2 drawOriginThing = galacTexture.Size() / 2f;
-            Color drawColorExtra = Color.Cyan with { A = 0 };            
+            Color drawColorExtra = new Color(58, 211, 197, 0);            
             Color drawColorGalac = Projectile.GetAlpha(lightColor);
             Color drawColor = Projectile.GetAlpha(lightColor);
 

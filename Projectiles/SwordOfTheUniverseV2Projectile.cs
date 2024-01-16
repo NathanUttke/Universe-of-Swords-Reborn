@@ -20,7 +20,8 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate = 1;
             Projectile.alpha = 127;
             Projectile.scale = Main.rand.NextFloat(0.75f, 1.5f);            
-            Projectile.light = 0.5f;
+            Projectile.light = 0.4f;
+            Projectile.timeLeft = 70;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -49,7 +50,7 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 return;
             }
-            Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed, 0.1f);
+            Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed, 0.2f);
         }
 
         public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
@@ -61,10 +62,10 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/SOTUV2Glow");
 
-            Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
-            Vector2 drawnOriginGlow = new(glowSphere.Width / 2, glowSphere.Height / 2);
+            Vector2 drawOrigin = texture.Size() / 2f;
+            Vector2 drawnOriginGlow = glowSphere.Size() / 2f;
             
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, drawnOriginGlow, Projectile.scale * 2f, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, drawnOriginGlow, Projectile.scale * 1.75f, SpriteEffects.None, 0);
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
 
             return false;

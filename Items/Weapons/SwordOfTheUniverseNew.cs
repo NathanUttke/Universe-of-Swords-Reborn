@@ -58,9 +58,9 @@ public class SwordOfTheUniverseNew : ModItem
         {
             newRecipe.AddIngredient(auricBar.Type, 5);
         }
-        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityForge) && calamityForge.TryFind("DraedonsForge", out ModTile draedonsForge))
+        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityForge) && calamityForge.TryFind("CosmicAnvil", out ModTile CosmicAnvil))
         {
-            newRecipe.AddTile(draedonsForge.Type);
+            newRecipe.AddTile(CosmicAnvil.Type);
         }
         else
         {

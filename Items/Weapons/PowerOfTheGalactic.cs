@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
@@ -58,10 +59,19 @@ public class PowerOfTheGalactic : ModItem
         return false;
     }
 
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        if (Main.rand.NextBool(2))
+        {
+            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan with { A = 0 }, 1.5f);
+            Main.dust[dust].noGravity = true;
+        }
+    }
+
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        target.AddBuff(BuffID.Ichor, 360, false);
-        target.AddBuff(BuffID.Confused, 360, false);
-        target.AddBuff(BuffID.Frostburn, 360, false);
+        target.AddBuff(BuffID.Ichor, 400, false);
+        target.AddBuff(BuffID.Confused, 400, false);
+        target.AddBuff(BuffID.Frostburn, 400, false);
     }
 }

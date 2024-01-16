@@ -24,7 +24,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 80;
+            Projectile.timeLeft = 40;
             Projectile.ArmorPenetration = 10;
         }
         
