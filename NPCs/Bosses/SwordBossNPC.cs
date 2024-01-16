@@ -338,7 +338,7 @@ namespace UniverseOfSwordsMod.NPCs.Bosses
             if (NPC.ai[0] != -1f)
             {
                 Vector2 texture = new(TextureAssets.Npc[Type].Width() / 2, TextureAssets.Npc[Type].Height() / Main.npcFrameCount[Type] / 2);
-                Color npcColor = Lighting.GetColor((int)(NPC.position.X + NPC.width * 0.5) / 16, (int)((NPC.position.Y + NPC.height * 0.5) / 16.0));
+                Color npcColor = Lighting.GetColor((int)(NPC.Center.X) / 16, (int)((NPC.Center.Y) / 16.0));
                 float afterImageScale = NPC.scale;
                 for (int i = 1; i < NPC.oldPos.Length; i++)
                 {
