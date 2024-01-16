@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Tiles;
 
@@ -21,11 +21,9 @@ public class DamascusOreTile : ModTile
 		Main.tileShine[Type] = 975;
 		
 		HitSound = SoundID.Tink;
-		DustType = ModContent.DustType<Dusts.DamascusSparkle>();
-		//ItemDrop/* tModPorter Note: Removed. Tiles and walls will drop the item which places them automatically. Use RegisterItemDrop to alter the automatic drop if necessary. */ = ModContent.ItemType<DamascusOre>();
+		DustType = ModContent.DustType<DamascusSparkle>();		
 		
 		LocalizedText name = CreateMapEntryName();
-		// name.SetDefault("Damascus Ore");
 		
 		AddMapEntry(new Color(246, 249, 250), name);
 	    MinPick = 40;
