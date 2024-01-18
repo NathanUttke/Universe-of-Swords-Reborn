@@ -9,14 +9,14 @@ public class DamascusHamaxe : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.damage = 12;
+		Item.damage = 23;
 		Item.DamageType = DamageClass.Melee; 
 		Item.width = 38;
 		Item.height = 38;
 		Item.useTime = 19;
 		Item.useAnimation = 17;
 		Item.axe = 10;
-		Item.hammer = 50;
+		Item.hammer = 55;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 6f;
 		Item.value = Item.sellPrice(0, 0, 20, 0);

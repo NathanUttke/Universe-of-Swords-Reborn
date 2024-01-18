@@ -175,18 +175,13 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.scale *= 0.75f;
             }
 
-            if (Projectile.Distance(Owner.MountedCenter) <= 10f)
+            if (Projectile.Distance(Owner.MountedCenter) <= 10f || Projectile.Distance(Owner.MountedCenter) > 500f)
             {                
                 Projectile.Kill();
-            }            
-
-            if (Projectile.Distance(Owner.Center) > 500f)
-            {
-                Projectile.Kill();
-            }
+            }         
 
             Projectile.velocity *= 0.98f;
-            Projectile.velocity = Projectile.velocity.MoveTowards(vecTowardsPlayer * 10f, 3f);            
+            Projectile.velocity = Projectile.velocity.MoveTowards(vecTowardsPlayer * 11f, 3f);            
         }
 
         public override bool PreDraw(ref Color lightColor)

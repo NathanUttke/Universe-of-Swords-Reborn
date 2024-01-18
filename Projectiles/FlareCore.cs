@@ -35,15 +35,15 @@ public class FlareCore : ModProjectile
 
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.ArmorPenetration = 30;
-        Projectile.light = 0.5f;
         Projectile.alpha = 0;
 
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 13;
     }
     public override void AI()
-    {
-        base.AI();        
+    {        
+        Lighting.AddLight(Projectile.position, 0.5f, 0.1f, 0.1f);
+
         Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Red with { A = 0 }, 2f);
     }
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -70,8 +70,8 @@ public class FlareCore : ModProjectile
 
         Texture2D texture = TextureAssets.Projectile[Type].Value;
         Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
-        Color drawColor = Color.White with { A = 0 };
-        Color glowColor = new Color(255, 64, 64, 0);
+        Color drawColor = new (255, 0, 0, 0);
+        Color glowColor = new (255, 64, 64, 0);
 
         //Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
         //Vector2 origin = sourceRectangle.Size() / 2;       

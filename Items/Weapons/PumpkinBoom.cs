@@ -57,7 +57,6 @@ public class PumpkinBoom : ModItem
         }, player.whoAmI);
 
         Projectile boomProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(damageDone / 2f), Item.knockBack / 2f, player.whoAmI, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
-		boomProj.penetrate = 1;
 		boomProj.DamageType = DamageClass.MeleeNoSpeed;
     }
 }

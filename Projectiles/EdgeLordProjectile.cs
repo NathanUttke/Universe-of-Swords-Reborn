@@ -45,19 +45,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Red with { A = 0 });
             }
         }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        { 
-            if (Main.rand.NextBool(3) && !NPCID.Sets.CountsAsCritter[target.type] && target.type != NPCID.TargetDummy)
-            {
-                float stealDamage = Main.rand.Next(1, 5);
-                if ((int)stealDamage != 0 && !(Main.player[Projectile.owner].lifeSteal <= 0f))
-                {
-                    Main.player[Projectile.owner].lifeSteal -= stealDamage;
-                    int playerOwner = Projectile.owner;
-                    Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, playerOwner, playerOwner, stealDamage);
-                }
-            }
-        }
 
         public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
 

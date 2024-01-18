@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Buffs;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Consumables;
 
@@ -33,12 +34,12 @@ public class MeleePowerPotion : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe()
-			.AddIngredient(Mod, "SwordMatter", 25)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 18)
 			.AddIngredient(ItemID.Deathweed, 1)
 			.AddTile(TileID.Bottles)
 			.Register();
         CreateRecipe()
-			.AddIngredient(Mod, "SwordMatter", 25)
+			.AddIngredient(ModContent.ItemType<SwordMatter>(), 18)
 			.AddIngredient(ItemID.Deathweed, 1)
 			.AddTile(TileID.AlchemyTable)
 			.Register();

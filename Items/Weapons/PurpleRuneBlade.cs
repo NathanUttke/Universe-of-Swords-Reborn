@@ -42,8 +42,7 @@ public class PurpleRuneBlade : ModItem
 	{											
 		if (Main.rand.NextBool(2))
 		{
-			Vector2 dustRotation = player.itemLocation + (player.itemRotation.ToRotationVector2() * MathHelper.PiOver2 * 0.75f);
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), dustRotation.X, dustRotation.Y, 0, Color.Purple with { A = 0 }, 2f);
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Purple, 2f);
 		}
 	}
 

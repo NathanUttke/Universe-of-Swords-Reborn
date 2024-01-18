@@ -29,10 +29,10 @@ public class HaloOfHorrorsLevel2 : ModItem
 	{
 		player.boneGloveItem = Item;
 		player.statDefense += 10;
-		player.GetArmorPenetration(DamageClass.Generic) += 5;
+		player.GetArmorPenetration(DamageClass.Melee) += 5;
 		player.GetAttackSpeed(DamageClass.Melee) -= 0.20f;
 		player.statLifeMax2 += 10;
-		player.GetDamage(DamageClass.Generic) += 0.10f;
+		player.GetDamage(DamageClass.Melee) += 0.10f;
 		player.AddBuff(BuffID.RapidHealing, 100, true);
         if (Main.rand.NextBool(3))
 		{

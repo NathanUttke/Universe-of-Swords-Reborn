@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -24,7 +25,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 40;
+            Projectile.timeLeft = 20;
             Projectile.ArmorPenetration = 10;
         }
         
@@ -37,17 +38,12 @@ namespace UniverseOfSwordsMod.Projectiles
                 SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
             }
 
-            int RedDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch, 0f, 0f, 100, default, 1.25f);
+            int RedDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(255, 0, 0, 0), 1f);
             Dust dust2 = Main.dust[RedDust];
             dust2.velocity *= -0.25f;
             Main.dust[RedDust].noGravity = true;
 
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
-
-            if (Projectile.velocity.Y > 16f)
-            {
-                Projectile.velocity.Y = 16f;
-            }
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -57,8 +53,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = new(texture.Width - 4f, 2f);
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
 
-            Color projColor = Color.White;
-            projColor.A = 0;
+            Color projColor = new(255, 255, 255, 0);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
@@ -80,15 +75,10 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
 
-            for (int i = 1; i < 24; i++)
+            for (int i = 0; i < 25; i++)
             {
-                int redDust = Dust.NewDust(Projectile.position, 4, 4, DustID.RedTorch, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.8f);
-                Main.dust[redDust].noGravity = true;
-                redDust = Dust.NewDust(Projectile.position, 4, 4, DustID.RedTorch, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 1.4f);
-                Main.dust[redDust].noGravity = true;
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(255, 0, 0, 0), 1.25f);
             }
         }
-
-
     }
 }

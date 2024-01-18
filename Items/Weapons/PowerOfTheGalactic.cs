@@ -29,7 +29,7 @@ public class PowerOfTheGalactic : ModItem
         Item.knockBack = 7f;
         Item.scale = 1f;
         Item.shoot = ModContent.ProjectileType<GalacticProjectile>();
-        Item.shootSpeed = 20f;
+        Item.shootSpeed = 15f;
         Item.UseSound = SoundID.Item1;
         Item.value = 650500;
         Item.autoReuse = true;

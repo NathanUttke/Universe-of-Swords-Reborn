@@ -30,10 +30,10 @@ public class HaloOfHorrorsLevel3 : ModItem
 		player.boneGloveItem = Item;
 		player.honeyCombItem = Item;
 		player.statDefense += 10;
-		player.GetArmorPenetration(DamageClass.Generic) += 15;
+		player.GetArmorPenetration(DamageClass.Melee) += 15;
 		player.GetAttackSpeed(DamageClass.Melee) -= 0.10f;
 		player.statLifeMax2 += 20;
-		player.GetDamage(DamageClass.Generic) += 0.15f;
+		player.GetDamage(DamageClass.Melee) += 0.15f;
 		player.AddBuff(BuffID.RapidHealing, 300, true);
 		player.AddBuff(BuffID.Honey, 300, true);
         if (Main.rand.NextBool(5))

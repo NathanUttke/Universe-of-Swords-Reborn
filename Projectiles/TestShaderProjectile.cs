@@ -103,7 +103,10 @@ namespace UniverseOfSwordsMod.Projectiles
 
         private Color StripColors(float progressOnStrip)
         {
-            return Color.Lerp(Color.SkyBlue with { A = 0 }, Color.Cyan with { A = 0 }, progressOnStrip);
+            Color value = Main.hslToRgb((progressOnStrip * 1.6f - Main.GlobalTimeWrappedHourly) % 1f, 1f, 0.5f);
+            Color result = Color.Lerp(Color.White, value, Utils.GetLerpValue(-0.2f, 0.5f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip));
+            result.A = 0;
+            return result;
         }
 
         private float StripWidth(float progressOnStrip)

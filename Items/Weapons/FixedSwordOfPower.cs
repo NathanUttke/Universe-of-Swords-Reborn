@@ -29,7 +29,7 @@ public class FixedSwordOfPower : ModItem
 		Item.value = 18000;
 		Item.shoot = ProjectileID.Bone;
 		Item.shootSpeed = 16f;
-		Item.scale = 1.20f;
+		Item.scale = 1.25f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;

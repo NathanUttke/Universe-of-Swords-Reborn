@@ -33,8 +33,7 @@ internal class NightmareProjectile : ModProjectile
     }
 
     public override void AI()
-    {
-        base.AI();
+    {        
         float maxDetectRadius = 300f; 
         float projSpeed = 7.5f; 
 

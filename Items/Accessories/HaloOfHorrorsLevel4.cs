@@ -29,8 +29,9 @@ public class HaloOfHorrorsLevel4 : ModItem
 	{
 		player.boneGloveItem = Item;
 		player.statDefense += 15;
-		player.GetArmorPenetration(DamageClass.Generic) += 15;		
-		player.statLifeMax2 += 25;
+        player.statLifeMax2 += 25;
+		player.lifeRegen += 2;
+        player.GetArmorPenetration(DamageClass.Melee) += 15;	
 		player.GetDamage(DamageClass.Melee) += 0.15f;
 		player.AddBuff(BuffID.RapidHealing, 300, true);
 		player.AddBuff(BuffID.Honey, 300, true);

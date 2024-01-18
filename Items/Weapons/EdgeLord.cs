@@ -46,6 +46,7 @@ public class EdgeLord : ModItem
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}
+
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         player.itemLocation = player.Center;
@@ -56,5 +57,16 @@ public class EdgeLord : ModItem
 		{
 			target.AddBuff(BuffID.Bleeding, 400);
 		}
-	}
+
+        if (Main.rand.NextBool(3) && !NPCID.Sets.CountsAsCritter[target.type] && target.type != NPCID.TargetDummy)
+        {
+            float stealDamage = Main.rand.Next(1, 5);
+            if ((int)stealDamage != 0 && !(Main.player[player.whoAmI].lifeSteal <= 0f))
+            {
+                Main.player[player.whoAmI].lifeSteal -= stealDamage;
+                int playerOwner = player.whoAmI;
+                Projectile.NewProjectile(Projectile.GetSource_None(), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, playerOwner, playerOwner, stealDamage);
+            }
+        }
+    }
 }

@@ -27,7 +27,7 @@ public class ScarletFlareGreatsword : ModItem
 		Item.useTime = 25;
 		Item.useAnimation = 20;
 
-		Item.damage = 125;
+		Item.damage = 110;
 		Item.knockBack = 6f;
 		Item.scale = 1f;
 		Item.crit = 6;
@@ -41,31 +41,6 @@ public class ScarletFlareGreatsword : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
 	}
-
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {
-		Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f);
-        return false;
-    }
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation = player.Center;
-    }
-	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-		if (Main.rand.NextBool(2))
-		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.RedTorch, 0f, 0f, 100, default, 1.75f);
-			Main.dust[dust].noGravity = true;
-		}
-	}
-    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-	{
-		if (!target.HasBuff(BuffID.OnFire))
-		{
-            target.AddBuff(BuffID.OnFire, 600, false);
-        }
-	}
 	public override void AddRecipes()
 	{
 		CreateRecipe()
@@ -73,7 +48,7 @@ public class ScarletFlareGreatsword : ModItem
 		.AddIngredient(ItemType<RedFlareLongsword>(), 1)
         .AddIngredient(ItemType<ScarletFlareCore>(), 1)
         .AddIngredient(ItemType<TheNightmareAmalgamation>(), 1)
-        .AddTile(TileID.LunarCraftingStation)
+        .AddTile(TileID.MythrilAnvil)
 		.Register();
 	}
 }

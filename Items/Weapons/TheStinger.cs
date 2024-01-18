@@ -39,7 +39,7 @@ public class TheStinger : ModItem
 		if (Main.rand.NextBool(2))
 		{
             Projectile stingerProj = Projectile.NewProjectileDirect(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(5f)), ProjectileID.HornetStinger, damage / 2, knockback * 0.75f, player.whoAmI);
-			stingerProj.timeLeft = 80;
+			stingerProj.timeLeft = 40;
         }
 		return false;
     }

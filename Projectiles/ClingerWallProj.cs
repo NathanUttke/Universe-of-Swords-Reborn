@@ -26,7 +26,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {            
             for (int i = 0; i < 8; i++)
             {
-                int fireDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, new Color(200, 255, 0, 0), 0.75f);
+                int fireDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(150, 255, 0, 0), 0.75f);
                 Dust dust2 = Main.dust[fireDust];
                 dust2.velocity *= 0.5f;
                 Main.dust[fireDust].velocity.Y -= 0.5f;

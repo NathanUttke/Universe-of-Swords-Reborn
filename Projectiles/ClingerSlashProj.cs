@@ -73,14 +73,14 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
         }
-
-        private const float offsetPosition = 70f;
+        
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (target.immortal || NPCID.Sets.CountsAsCritter[target.type] || target.SpawnedFromStatue)
             {
                 return;
             }
+            float offsetPosition = 120f;
             int i = 0;
             int direction = 1;
 

@@ -15,7 +15,7 @@ public class DamascusPickaxe : ModItem
 		Item.height = 38;
 		Item.useTime = 17;
 		Item.useAnimation = 17;
-		Item.pick = 55;
+		Item.pick = 65;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 6f;
 		Item.value = Item.sellPrice(0, 0, 20, 0);

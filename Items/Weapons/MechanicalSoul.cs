@@ -29,7 +29,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.knockBack = 6.5f;
             Item.rare = ItemRarityID.Pink;
 
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = SoundID.DD2_SonicBoomBladeSlash;
             Item.value = Item.sellPrice(0, 6, 0, 0);
             Item.autoReuse = true;
 

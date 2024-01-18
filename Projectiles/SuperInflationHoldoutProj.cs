@@ -96,7 +96,7 @@ namespace UniverseOfSwordsMod.Projectiles
             
             Projectile.rotation = -1f + EaseInBack(RotationTimer / 8f) * velocityXSign;
             
-            if (Timer == MaxTime * 0.72f)
+            if (Timer == MaxTime * 0.8f)
             {                
                 for (int i = 0; i < 3; i++)
                 {

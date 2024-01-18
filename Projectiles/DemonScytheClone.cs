@@ -30,11 +30,12 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.alpha = 127;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 30;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 15;
         }
         public override void AI()
-        {
-            base.AI();
-            Projectile.rotation += 0.8f;
+        {            
+            Projectile.rotation += Projectile.direction * MathHelper.PiOver4;
             Projectile.ai[0] += 1f;
 
             if (Projectile.ai[0] > 30f)
@@ -51,8 +52,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < 4; i++)
             {
-                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197, 0), 1f);
-                newDust.noGravity = true;
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197, 0), 1f);
             }
         }
 
@@ -97,7 +97,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
                 
                 drawColorGlow *= 0.5f;
-                drawColor *= 0.5f;
+                drawColor *= 0.6f;
 
                 spriteBatch.Draw(glowSphereTexture, drawPos, null, drawColorGlow, Projectile.rotation, glowSphereTexture.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
                 spriteBatch.Draw(texture, drawPos, null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);

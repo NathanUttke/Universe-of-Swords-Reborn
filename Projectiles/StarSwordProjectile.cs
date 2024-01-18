@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using UniverseOfSwordsMod.Dusts;
+using System;
 
 namespace UniverseOfSwordsMod.Projectiles
 {    
@@ -43,17 +45,12 @@ namespace UniverseOfSwordsMod.Projectiles
                 SoundEngine.PlaySound(SoundID.Item9, Projectile.Center);  
             }
 
-            if (Projectile.velocity.Y < -16f)
-            {
-                Projectile.velocity.Y = -16f;
-            }
-            if (Projectile.velocity.Y > 16f)
+            if (MathF.Abs(Projectile.velocity.Y) > 16f)
             {
                 Projectile.velocity.Y = 16f;
             }      
 
-            Dust newDust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.YellowTorch, Projectile.velocity.X, Projectile.velocity.Y, 40, default, 1.5f)];
-            newDust.noGravity = true;
+            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.Yellow, 1.25f);
         }
         public override Color? GetAlpha(Color lightColor) => new Color(205, 201, 14, 40) * Projectile.Opacity;
 

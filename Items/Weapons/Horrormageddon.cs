@@ -5,7 +5,6 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
-using UniverseOfSwordsMod.Items.Weapons.BossDrops;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -25,7 +24,7 @@ public class Horrormageddon : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
 		Item.useAnimation = 15;
-		Item.damage = 110;
+		Item.damage = 125;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ModContent.ProjectileType<DemonScytheClone>();
@@ -42,7 +41,6 @@ public class Horrormageddon : ModItem
         .AddIngredient(ItemID.TheHorsemansBlade, 1)
 		.AddIngredient(ModContent.ItemType<DeathSword>(), 1)
         .AddIngredient(ModContent.ItemType<ElBastardo>(), 1)
-        .AddIngredient(ModContent.ItemType<InnosWrath>(), 1)
         .AddIngredient(ModContent.ItemType<SwordMatter>(), 45)
         .AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
         .AddTile(TileID.LunarCraftingStation)
@@ -58,9 +56,7 @@ public class Horrormageddon : ModItem
 		for (int numOfProjectiles = 0; numOfProjectiles < 3; numOfProjectiles++)
 		{
             double offsetAngle = startingAngle + deltaAngle * numOfProjectiles;
-			Projectile schyteProj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, (int)(damage * 1.15f), knockback / 2f, player.whoAmI);
-			schyteProj.usesLocalNPCImmunity = true;
-			schyteProj.localNPCHitCooldown = 15;
+			Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, (int)(damage * 1.15f), knockback / 2f, player.whoAmI);
         }
         return false;
     }

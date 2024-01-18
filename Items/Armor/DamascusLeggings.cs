@@ -21,7 +21,7 @@ public class DamascusLeggings : ModItem
 		Item.height = 18;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.rare = ItemRarityID.Green;
-		Item.defense = 4;
+		Item.defense = 6;
 		Item.ResearchUnlockCount = 1;
 	}
 

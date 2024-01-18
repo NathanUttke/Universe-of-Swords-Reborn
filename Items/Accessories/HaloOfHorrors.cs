@@ -26,10 +26,10 @@ public class HaloOfHorrors : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.statDefense += 5;
-		player.GetArmorPenetration(DamageClass.Generic) += 5;
+		player.GetArmorPenetration(DamageClass.Melee) += 5;
 		player.GetAttackSpeed(DamageClass.Melee) -= 0.30f;
 		player.statLifeMax2 += 10;
-		player.GetDamage(DamageClass.Generic) += 0.05f;
+		player.GetDamage(DamageClass.Melee) += 0.05f;
         player.AddBuff(BuffID.Rabies, 300, true);     
 	}
 }

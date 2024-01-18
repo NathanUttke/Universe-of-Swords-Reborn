@@ -21,6 +21,7 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void SetDefaults()
         {
+            Projectile.Size = new(120);
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
@@ -124,6 +125,15 @@ namespace UniverseOfSwordsMod.Projectiles
                 return;
             }
 
+            if (Owner.GetModPlayer<UniversePlayer>().swordTimer == 0)
+            {
+                Owner.GetModPlayer<UniversePlayer>().swordTimer = 20;
+            }
+            else
+            {
+                return;
+            }
+
             for (int i = 0; i < 3; i++)
             {
                 Vector2 offsetPosition = new(target.position.X + Main.rand.Next(-400, 400), target.position.Y - Main.rand.Next(500, 800));
@@ -141,16 +151,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 summonProjectile.DamageType = DamageClass.MeleeNoSpeed;
             }
         }
-
-        public void SetPlayerValues()
-        {
-            Projectile.spriteDirection = Projectile.direction;
-            Owner.ChangeDir(Projectile.direction);
-            Owner.heldProj = Projectile.whoAmI;
-            Owner.SetDummyItemTime(2);
-            Owner.itemRotation = MathHelper.WrapAngle(Projectile.rotation);
-            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
-        }
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
@@ -161,7 +161,7 @@ namespace UniverseOfSwordsMod.Projectiles
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 projColor *= 0.6f;
-                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition, null, projColor, Projectile.oldRot[i], drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f, null, projColor, Projectile.oldRot[i], drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             }
 
             spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);

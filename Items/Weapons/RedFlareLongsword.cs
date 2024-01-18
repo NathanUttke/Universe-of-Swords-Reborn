@@ -1,7 +1,9 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
@@ -19,7 +21,7 @@ public class RedFlareLongsword : ModItem
 	{
 		Item.width = 60;
 		Item.height = 60;
-		Item.scale = 1.1f;
+		Item.scale = 1.25f;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
@@ -35,25 +37,29 @@ public class RedFlareLongsword : ModItem
 		Item.ResearchUnlockCount = 1;
 	}
 
-	public override bool CanShoot(Player player) => player.ItemAnimationJustStarted;
-
+	public override bool CanShoot(Player player) => !player.ItemAnimationJustStarted;
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
 	{	
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.RedTorch, 0f, 0f, 100, default, 2f);
-			Main.dust[dust].noGravity = true;
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(255, 0, 0, 0), 1.5f);
 		}
 	}
 
-	public override void AddRecipes()
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		position += position.SafeNormalize(Vector2.Zero).RotatedBy(-MathHelper.PiOver2) * 24f; 
+		Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+		return false;
+    }
+
+    public override void AddRecipes()
 	{		
 		CreateRecipe()
 			.AddIngredient(ItemID.HellstoneBar, 25)
 			.AddIngredient(ItemID.Ruby, 10)	
 			.AddIngredient(ItemID.SoulofFright, 20)
-			.AddIngredient(ItemID.BrokenHeroSword, 1)
 			.AddIngredient(ItemID.BeamSword, 1)
 			.AddIngredient(ModContent.ItemType<Orichalcon>(), 15)
 			.AddTile(TileID.MythrilAnvil)
@@ -62,6 +68,9 @@ public class RedFlareLongsword : ModItem
 
 	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.AddBuff(24, 500, false);
-	}
+        if (!target.HasBuff(BuffID.OnFire))
+        {
+            target.AddBuff(BuffID.OnFire, 600, false);
+        }
+    }
 }
