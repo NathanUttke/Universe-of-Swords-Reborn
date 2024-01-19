@@ -31,35 +31,34 @@ public class BlizzardRage : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int numberProjectiles = Main.rand.Next(1, 3);
+		int numberProjectiles = Main.rand.Next(1, 4);
 		Vector2 vector2_1 = new();
-		for (int index = 0; index < numberProjectiles; index++)
+		for (int i = 0; i < numberProjectiles; i++)
 		{
-			//vector2_1 = ((float)(player.position.X + player.width * 0.5 + (double)(Main.rand.Next(100) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X)), (float)(player.position.Y + player.height * 0.5 - 600.0));
+			vector2_1.X = player.Center.X + (Main.rand.Next(100) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X);
+			vector2_1.Y = player.Center.Y - 600f;
 
-			// seperated above code into vector2_1.X and vector2_1.Y because of errors
-			vector2_1.X = (float)(player.position.X + player.width * 0.5 + (double)(Main.rand.Next(100) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X));
-			vector2_1.Y = (float)(player.position.Y + player.height * 0.5 - 600.0);
-
-		    vector2_1.X = (float)(((double)vector2_1.X + player.Center.X) / 2.0) + (float)Main.rand.Next(-100, 100);
-			vector2_1.Y -= 100 * index;
+		    vector2_1.X = (float)((vector2_1.X + player.Center.X) / 2f) + Main.rand.Next(-100, 100);
+			vector2_1.Y -= 100 * i;
 			float num12 = Main.mouseX + Main.screenPosition.X - vector2_1.X;
 			float num13 = Main.mouseY + Main.screenPosition.Y - vector2_1.Y;
-			if ((double)num13 < 0.0)
+
+			if (num13 < 0f)
 			{
 				num13 *= -1f;
 			}
-			if ((double)num13 < 20.0)
+			if (num13 < 20f)
 			{
 				num13 = 20f;
 			}
-			float num14 = (float)Math.Sqrt((double)num12 * (double)num12 + (double)num13 * (double)num13);
-			float num15 = Item.shootSpeed / num14;
-			float num17 = num12 * num15;
-			float num16 = num13 * num15;
-			velocity.X = num17 + Main.rand.Next(-12, 10) * 0.16f;
-			velocity.Y = num16 + Main.rand.Next(-12, 10) * 0.16f;
-			Projectile.NewProjectile(source, vector2_1.X, vector2_1.Y, velocity.X, velocity.Y, type, (int)(damage * 0.5f), knockback, Main.myPlayer, 0f, Main.rand.Next(5));
+
+			float num14 = MathF.Sqrt(num12 * num12 + num13 * num13);
+			float num15 = damage / num14;
+			num12 *= num15;
+			num13 *= num15;
+			velocity.X = num12 + Main.rand.Next(-12, 10) * 0.16f;
+			velocity.Y = num13 + Main.rand.Next(-12, 10) * 0.16f;
+			Projectile.NewProjectile(source, vector2_1, velocity, type, damage / 2, knockback, player.whoAmI, 0f, Main.rand.Next(5));
 		}
 		return false;
 	}	

@@ -15,7 +15,7 @@ public class UselessWeapon : ModItem
     public override void SetDefaults()
 	{
 		Item.width = 62;
-		Item.height = 56;
+		Item.height = 54;
 		Item.rare = ItemRarityID.Pink;
 
         if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("TrueMeleeDamageClass", out DamageClass TrueMeleeDamageClass))

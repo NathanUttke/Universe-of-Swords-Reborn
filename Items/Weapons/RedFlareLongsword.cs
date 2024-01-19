@@ -43,7 +43,7 @@ public class RedFlareLongsword : ModItem
 	{	
 		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(255, 0, 0, 0), 1.5f);
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(255, 150, 120, 0), 1.5f);
 		}
 	}
 

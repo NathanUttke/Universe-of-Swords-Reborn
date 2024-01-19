@@ -25,7 +25,7 @@ public class Executioner : ModItem
         Item.damage = 65;
         Item.knockBack = 6f;
         Item.UseSound = SoundID.Item1;
-        Item.shoot = ProjectileID.SeedlerThorn;
+        Item.shoot = ProjectileID.CrystalLeafShot;
         Item.shootSpeed = 25f;
         Item.value = Item.sellPrice(0, 3, 0, 0);
         Item.autoReuse = true;
@@ -42,9 +42,9 @@ public class Executioner : ModItem
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = Utils.RotatedBy(velocity, (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
-			Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
+			Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage / 3, knockback, player.whoAmI);
 			proj.DamageType = DamageClass.MeleeNoSpeed;
-            proj.timeLeft = 100;
+            proj.timeLeft = 80;
         }
         return false;
     }

@@ -40,11 +40,6 @@ public class GiantUnicornHorn : ModItem
 		Item.ResearchUnlockCount = 1;
 	}
 
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-    {
-		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
-    }
-
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile.NewProjectile(source, position, velocity * 2.25f, ModContent.ProjectileType<UnicornHornProjectile2>(), 33, knockback, player.whoAmI);

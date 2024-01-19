@@ -10,12 +10,6 @@ using Terraria.ModLoader;
 namespace UniverseOfSwordsMod.Items.Weapons;
 public class CaesarSword : ModItem
 {
-
-    public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("'Et tu, Brute?'\nHold right click for a stabbing attack");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 64;

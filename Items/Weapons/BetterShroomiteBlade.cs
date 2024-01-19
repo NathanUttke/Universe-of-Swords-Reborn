@@ -10,11 +10,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class BetterShroomiteBlade : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Bigger and better!");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 68;
@@ -38,7 +33,6 @@ public class BetterShroomiteBlade : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {              
-
         float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
 
         for (int i = 0; i < 3; i++)

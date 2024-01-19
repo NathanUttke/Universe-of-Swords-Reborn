@@ -30,7 +30,6 @@ public class CorruptCrystallus : ModItem
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee;
         Item.ResearchUnlockCount = 1;
-
     }
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)

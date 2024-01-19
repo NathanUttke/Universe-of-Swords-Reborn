@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using static Humanizer.In;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -76,7 +77,16 @@ public class CosmoStorm : ModItem
         if (!target.active || target.immortal || NPCID.Sets.CountsAsCritter[target.type] || target.SpawnedFromStatue)
         {
             return;
-        }        
+        }
+
+        if (player.GetModPlayer<UniversePlayer>().swordTimer == 0)
+        {
+            player.GetModPlayer<UniversePlayer>().swordTimer = 20;
+        }
+        else
+        {
+            return;
+        }
 
         for (int i = 0; i < 3; i++)
         {
