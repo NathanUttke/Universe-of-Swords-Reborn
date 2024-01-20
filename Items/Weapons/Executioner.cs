@@ -25,7 +25,7 @@ public class Executioner : ModItem
         Item.damage = 65;
         Item.knockBack = 6f;
         Item.UseSound = SoundID.Item1;
-        Item.shoot = ProjectileID.CrystalLeafShot;
+        Item.shoot = ProjectileID.SeedlerThorn;
         Item.shootSpeed = 25f;
         Item.value = Item.sellPrice(0, 3, 0, 0);
         Item.autoReuse = true;

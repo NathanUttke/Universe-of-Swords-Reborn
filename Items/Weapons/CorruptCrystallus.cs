@@ -36,8 +36,7 @@ public class CorruptCrystallus : ModItem
 	{	
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.MediumOrchid, 2f);
-			Main.dust[dust].noGravity = true;
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.MediumOrchid, 2f);
 		}
 	}
     public override void AddRecipes()

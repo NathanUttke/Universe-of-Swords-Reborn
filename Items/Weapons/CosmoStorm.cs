@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
-using static Humanizer.In;
+
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -53,7 +53,7 @@ public class CosmoStorm : ModItem
         newRecipe.AddIngredient(ItemID.FragmentNebula, 20);
         newRecipe.AddIngredient(ItemID.FragmentSolar, 20);
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 1);
-        newRecipe.AddIngredient(ModContent.ItemType<PowerOfTheGalactic>(), 1);
+        //newRecipe.AddIngredient(ModContent.ItemType<PowerOfTheGalactic>(), 1);
         newRecipe.AddIngredient(ItemID.LunarBar, 15);
         newRecipe.AddIngredient(ItemID.NebulaArcanum, 1);
         newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 45);
@@ -94,14 +94,14 @@ public class CosmoStorm : ModItem
             Vector2 spawnVelocity = new(target.Center.X - offsetPosition.X, target.Center.Y - offsetPosition.Y);
 
             float spawnDistance = spawnVelocity.Length();
-            spawnDistance = 10f / spawnDistance;
+            spawnDistance = 11f / spawnDistance;
             spawnVelocity.X *= spawnDistance;
             spawnVelocity.Y *= spawnDistance;
 
-            Projectile summonProjectile = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), offsetPosition, spawnVelocity, ProjectileID.NebulaArcanum, damageDone / 3, 5f, player.whoAmI, 0f, 0f);
+            Projectile summonProjectile = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), offsetPosition, spawnVelocity, ProjectileID.NebulaArcanum, damageDone, 5f, player.whoAmI, 0f, 0f);
             summonProjectile.extraUpdates = 2;
-            summonProjectile.penetrate = 1;
-            summonProjectile.timeLeft = 200;
+            summonProjectile.penetrate = 2;
+            summonProjectile.timeLeft = 250;
             summonProjectile.DamageType = DamageClass.Melee;
             summonProjectile.tileCollide = false;            
         }

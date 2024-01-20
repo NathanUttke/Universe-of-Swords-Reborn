@@ -12,9 +12,8 @@ namespace UniverseOfSwordsMod.Projectiles
     public class RedFlareLongswordProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
-        {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
+        {            
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
         public override void SetDefaults()
         {
@@ -38,7 +37,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
             }
 
-            int RedDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(255, 0, 0, 0), 1f);
+            int RedDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(250, 100, 100, 0), 1f);
             Dust dust2 = Main.dust[RedDust];
             dust2.velocity *= -0.25f;
             Main.dust[RedDust].noGravity = true;
@@ -52,32 +51,33 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 drawOrigin = new(texture.Width - 4f, 2f);
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
-
-            Color projColor = new(255, 255, 255, 0);
+            
+            Color drawColor = Color.White;
+            Color drawColorTrail = Color.White;
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + (Projectile.Size / 2f);
+                if (j % 2 != 0)
+                {
+                    continue;
+                }
 
-                Color color = projColor;                
-                color.R += 8;
-                color.G *= (byte)0.75f;
-                color.B *= (byte)0.75f;
+                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + (Projectile.Size / 2f);                
+                drawColorTrail *= 0.5f;
 
-
-                spriteBatch.Draw(texture, drawPos, sourceRectangle, color, Projectile.rotation, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, drawPos, sourceRectangle, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
-            spriteBatch.Draw(texture, Projectile.position - Main.screenPosition + (Projectile.Size / 2f), sourceRectangle, projColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, Projectile.position - Main.screenPosition + (Projectile.Size / 2f), sourceRectangle, drawColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
         public override void Kill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
 
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 15; i++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(255, 0, 0, 0), 1.25f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(250, 100, 100, 0), 1.25f);
             }
         }
     }

@@ -13,8 +13,6 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Mechanical Projectile");
-            ProjectileID.Sets.TrailCacheLength[Type] = 12;
             ProjectileID.Sets.TrailingMode[Type] = 0;
         }
         public override void SetDefaults()
@@ -24,7 +22,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             Projectile.scale = 1.5f;
             Projectile.aiStyle = 1;
-            Projectile.penetrate = 8;
+            Projectile.penetrate = 4;
             Projectile.alpha = 255;
 
             Projectile.friendly = true;
@@ -55,7 +53,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             if (Main.rand.NextBool(2))
             {
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.OrangeRed with { A = 0 }, 2f);
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, new Color(230, 100, 50), 1.5f);
             }
         }
 
@@ -63,8 +61,8 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             for (int k = 0; k < 10; k++)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 0, Color.OrangeRed, 1.5f);
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.10f, Projectile.oldVelocity.Y * 0.10f, 0, Color.OrangeRed, 1.5f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 0, new Color(230, 100, 50), 1.5f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.10f, Projectile.oldVelocity.Y * 0.10f, 0, new Color(230, 100, 50), 1.5f);
             }
             SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         }
@@ -73,8 +71,9 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
 
-            Color projColor = Color.OrangeRed;
-            projColor.A = 0;
+            Color projColor = Color.White;
+            Color projColor2 = projColor;
+
             Vector2 drawOrigin = texture.Size() / 2f;
 
             SpriteEffects spriteEffects = SpriteEffects.None;
@@ -86,12 +85,17 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
+                if (i % 2 != 0)
+                {
+                    continue;
+                }
+
                 Vector2 drawPos = Projectile.Size / 2f + Projectile.oldPos[i] - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
                 
-                projColor = Projectile.GetAlpha(projColor);
-                projColor *= 0.75f;
+                projColor2 = Projectile.GetAlpha(projColor2);
+                projColor2 *= 0.6f;
 
-                Main.spriteBatch.Draw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+                Main.spriteBatch.Draw(texture, drawPos, null, projColor2, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             }            
             
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);

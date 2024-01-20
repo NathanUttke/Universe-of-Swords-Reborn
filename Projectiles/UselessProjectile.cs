@@ -2,11 +2,13 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
-{
-    internal class UselessProjectile : ModProjectile
+{    
+    public class UselessProjectile : ModProjectile
     {
+        public override string Texture => ModContent.GetInstance<UselessWeapon>().Texture;
         public override void SetDefaults()
         {
             Projectile.friendly = true;

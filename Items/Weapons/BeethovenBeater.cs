@@ -53,16 +53,17 @@ public class BeethovenBeater : ModItem
 		.Register();
 	}
 
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-		int projToShoot = Main.rand.Next(ProjectileID.QuarterNote, ProjectileID.TiedEighthNote);
-		Projectile noteProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI, 0f, 0f);
-		noteProj.penetrate = 2;
-		noteProj.DamageType = DamageClass.MeleeNoSpeed;
-		return false;
-	}
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        int projToShoot = Main.rand.Next(ProjectileID.QuarterNote, ProjectileID.TiedEighthNote);
+        Projectile noteProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI, 0f, 0f);
+        noteProj.timeLeft = 100;
+        noteProj.penetrate = 3;
+        noteProj.DamageType = DamageClass.MeleeNoSpeed;
+        return false;
+    }
 
-	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(20, 360, false);
 	}

@@ -42,7 +42,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.ai[1] = 1f;
                 for (int i = 0; i < 25; i++)
                 {
-                    Dust cloudDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.MediumOrchid with { A = 0 }, 2f);
+                    Dust cloudDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.MediumOrchid with { A = 0 }, 2f);
                     cloudDust.fadeIn = 3f;
                 }
             }

@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -12,11 +11,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class PowerOfTheGalactic : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        // Tooltip.SetDefault("Sword made from all galactic elements");
-    }
-
     public override void SetDefaults()
     {
         Item.width = 64;
@@ -70,8 +64,10 @@ public class PowerOfTheGalactic : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        target.AddBuff(BuffID.Ichor, 400, false);
-        target.AddBuff(BuffID.Confused, 400, false);
-        target.AddBuff(BuffID.Frostburn, 400, false);
+        if (!target.HasBuff(BuffID.Frostburn))
+        {
+            target.AddBuff(BuffID.Frostburn, 400, false);
+
+        }
     }
 }

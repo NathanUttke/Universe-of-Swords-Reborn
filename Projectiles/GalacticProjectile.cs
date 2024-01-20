@@ -104,10 +104,9 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
             Vector2 drawOriginGlow = glowTexture.Size() / 2f;
             Vector2 drawOriginThing = galacTexture.Size() / 2f;
-            Color drawColorExtra = new Color(58, 211, 197, 0);            
-            Color drawColorGalac = Projectile.GetAlpha(lightColor);
+            Color drawColorExtra = new(58, 211, 197, 0);
             Color drawColor = Projectile.GetAlpha(lightColor);
-
+            Color drawColorGalac = drawColor;
 
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
@@ -126,7 +125,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 spriteBatch.Draw(glowTexture, drawPos, null, drawColorExtra, Projectile.rotation, drawOriginGlow, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
-            spriteBatch.Draw(galacTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + Main.GlobalTimeWrappedHourly * 3f, drawOriginThing, 1.5f, spriteEffects, 1);
+            spriteBatch.Draw(galacTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + Main.GlobalTimeWrappedHourly * 3f, drawOriginThing, 1.25f, spriteEffects, 1);
             return false;
         }
 

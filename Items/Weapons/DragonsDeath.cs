@@ -9,12 +9,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class DragonsDeath : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Dragon's Death");
-		// Tooltip.SetDefault("'It's great for impersonating dragon hunters'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 128;
@@ -25,9 +19,9 @@ public class DragonsDeath : ModItem
 		Item.useAnimation = 20;
         Item.UseSound = SoundID.Item169;
 
-        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("TrueMeleeDamageClass", out DamageClass TrueMelee))
+        if (ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod) && CalamityMod.TryFind("TrueMeleeDamageClass", out DamageClass TrueMeleeDamageClass))
         {
-            Item.DamageType = TrueMelee;
+            Item.DamageType = TrueMeleeDamageClass;
         }
         else
         {
@@ -44,5 +38,5 @@ public class DragonsDeath : ModItem
 		Item.autoReuse = true;		
 		Item.ResearchUnlockCount = 1;
 	}
-
+		
 }

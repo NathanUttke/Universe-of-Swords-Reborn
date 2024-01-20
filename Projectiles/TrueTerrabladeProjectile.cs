@@ -14,8 +14,6 @@ public class TrueTerrabladeProjectile : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        // DisplayName.SetDefault("True Terra Blade");
-        ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
     }
     public override void SetDefaults()
@@ -30,7 +28,6 @@ public class TrueTerrabladeProjectile : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.timeLeft = 30;
 		Projectile.aiStyle = -1;
-        //AIType = ProjectileID.Bullet;
 	}
 
     public override Color? GetAlpha(Color lightColor) => new Color(98, 242, 128, 45);
@@ -78,13 +75,12 @@ public class TrueTerrabladeProjectile : ModProjectile
         {
 
             int terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 2f);
-            Main.dust[terraDust].noGravity = true;
             Dust dust = Main.dust[terraDust];
             dust.velocity *= 0.75f;
 
             terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 2f);
-            dust = Main.dust[terraDust];
-            dust.velocity *= 0.25f;
+            Dust dust2 = Main.dust[terraDust];
+            dust2.velocity *= 0.25f;
         }
         if (Projectile.ai[1] == 0f)
         {

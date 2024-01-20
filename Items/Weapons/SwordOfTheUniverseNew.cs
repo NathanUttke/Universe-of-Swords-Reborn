@@ -45,7 +45,15 @@ public class SwordOfTheUniverseNew : ModItem
 		Item.ResearchUnlockCount = 1;
 	}
 
-	public override void AddRecipes()
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (ModLoader.TryGetMod("CalamityMod", out Mod _))
+        {
+            damage *= 1.3f;
+        }
+    }
+
+    public override void AddRecipes()
 	{
 		Recipe newRecipe = CreateRecipe();
 		newRecipe.AddIngredient(ModContent.ItemType<CosmoStorm>(), 1);
@@ -75,10 +83,11 @@ public class SwordOfTheUniverseNew : ModItem
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-        Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * 1.25f), knockback, player.whoAmI);
+    {
+        position += position.SafeNormalize(Vector2.Zero).RotatedBy(-MathHelper.PiOver2) * 24f;
+        Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.25f), knockback, player.whoAmI);
         return false;
-	}
+    }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {

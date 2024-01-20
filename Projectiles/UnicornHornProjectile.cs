@@ -2,11 +2,13 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
     internal class UnicornHornProjectile : ModProjectile
     {
+        public override string Texture => ModContent.GetInstance<GiantUnicornHorn>().Texture;
         public override void SetDefaults()
         {
             Projectile.friendly = true;

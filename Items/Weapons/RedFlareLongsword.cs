@@ -24,7 +24,7 @@ public class RedFlareLongsword : ModItem
 		Item.scale = 1.25f;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 30;
+		Item.useTime = 20;
 		Item.useAnimation = 20;
 		Item.damage = 75;
 		Item.knockBack = 5f;
@@ -43,7 +43,7 @@ public class RedFlareLongsword : ModItem
 	{	
 		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(255, 150, 120, 0), 1.5f);
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(250, 100, 100, 0), 1.5f);
 		}
 	}
 

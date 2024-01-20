@@ -50,7 +50,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.velocity.Y = 16f;
             }      
 
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.Yellow, 1.25f);
+            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.Yellow, 1f);
         }
         public override Color? GetAlpha(Color lightColor) => new Color(205, 201, 14, 40) * Projectile.Opacity;
 

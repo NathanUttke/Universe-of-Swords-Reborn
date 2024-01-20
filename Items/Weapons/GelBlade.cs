@@ -39,6 +39,10 @@ public class GelBlade : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        target.AddBuff(137, 360, false);
+        target.AddBuff(BuffID.Slimed, 400, false);
+        if (!target.HasBuff(BuffID.Slow))
+        {
+            target.AddBuff(BuffID.Slow, 400, false);
+        }
     }
 }

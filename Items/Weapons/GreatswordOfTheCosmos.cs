@@ -2,11 +2,11 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -24,8 +24,8 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.damage = 145;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item169;
-		Item.shoot = ProjectileID.FairyQueenMagicItemShot;
-		Item.shootSpeed = 32f;
+		Item.shoot = ModContent.ProjectileType<CosmoStarProjectile>();
+		Item.shootSpeed = 12f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -36,48 +36,30 @@ public class GreatswordOfTheCosmos : ModItem
     {
         if (Main.rand.NextBool(3))
 		{
-            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Shadowflame, 0f, 0f, 100, Utils.SelectRandom(Main.rand, Color.MediumVioletRed, Color.Cyan, Color.HotPink), 2f);
-            Main.dust[dust].noGravity = true;
+            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Utils.SelectRandom(Main.rand, Color.MediumVioletRed, Color.Cyan, Color.HotPink), 1f);
         }
+    }
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		int numberProjectiles = 25;
-		Vector2 vector2_1 = default;
+		int numberProjectiles = 3;		
 		for (int index = 0; index < numberProjectiles; index++)
 		{
-			vector2_1.X = player.position.X + player.width * 1f + Main.rand.Next(100) * -player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X);
-			vector2_1.Y = player.Center.Y - 600f;
+            Vector2 offsetPosition = new(position.X, player.Top.Y - Main.rand.Next(200, 400));
+			Vector2 newVelocity = new(velocity.X, Item.shootSpeed);
 
-		    vector2_1.X = ((vector2_1.X + player.Center.X) / 2f) + Main.rand.Next(-100, 100);
-			vector2_1.Y -= 500 * index;
-
-			float num12 = Main.mouseX + Main.screenPosition.X - vector2_1.X;
-			float num13 = Main.mouseY + Main.screenPosition.Y - vector2_1.Y;
-			if (num13 < 0f)
-			{
-				num13 *= -1f;
-			}
-			if (num13 < 20f)
-			{
-				num13 = 20f;
-			}
-			float num14 = MathF.Sqrt(num12 * num12 + num13 * num13);
-			float num15 = Item.shootSpeed / num14;
-			float num17 = num12 * num15;
-			float num16 = num13 * num15;
-			float SpeedX = num17 + Main.rand.Next(-12, 10) * 0.2f;
-			float SpeedY = num16 + Main.rand.Next(-12, 10) * 0.2f;
-			Projectile rainProj = Projectile.NewProjectileDirect(source, vector2_1, new Vector2(SpeedX, SpeedY), type, damage, knockback, player.whoAmI, 3f);
-			rainProj.extraUpdates = 1;
-			rainProj.DamageType = DamageClass.Melee;
-		}
+            Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), offsetPosition, newVelocity, type, damage, 5f, player.whoAmI, 0f, 0f);
+        }
 		return false;
 	}
 
     public override void AddRecipes()
 	{
 		CreateRecipe()
+            .AddIngredient(ModContent.ItemType<PowerOfTheGalactic>(), 1)
 			.AddIngredient(ItemID.StarWrath, 1)
 			.AddIngredient(ModContent.ItemType<LunarOrb>(), 2)
 			.AddIngredient(ItemID.MeteoriteBar, 30)

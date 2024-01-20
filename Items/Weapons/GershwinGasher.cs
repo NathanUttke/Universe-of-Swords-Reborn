@@ -42,24 +42,25 @@ public class GershwinGasher : ModItem
 
     public override void AddRecipes()
     {
-
-        Recipe val = CreateRecipe(1);
-        val.AddIngredient(ItemID.MushroomPiano, 1);
-        val.AddIngredient(ItemID.GranitePiano, 1);
-        val.AddIngredient(ItemID.MarblePiano, 1);
-        val.AddIngredient(ItemID.PumpkinPiano, 1);
-        val.AddIngredient(ItemID.DynastyPiano, 1);
-        val.AddIngredient(ItemID.FrozenPiano, 1);
-        val.AddIngredient(ItemID.GlassPiano, 1);
-        val.AddIngredient(ItemID.HoneyPiano, 1);
-        val.AddTile(TileID.Sawmill);
-        val.Register();
+        CreateRecipe()
+        .AddIngredient(ItemID.MushroomPiano, 1)
+        .AddIngredient(ItemID.GranitePiano, 1)
+        .AddIngredient(ItemID.MarblePiano, 1)
+        .AddIngredient(ItemID.PumpkinPiano, 1)
+        .AddIngredient(ItemID.DynastyPiano, 1)
+        .AddIngredient(ItemID.FrozenPiano, 1)
+        .AddIngredient(ItemID.GlassPiano, 1)
+        .AddIngredient(ItemID.HoneyPiano, 1)
+        .AddTile(TileID.Sawmill)
+        .Register();
     }
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		int projToShoot = Main.rand.Next(ProjectileID.QuarterNote, ProjectileID.TiedEighthNote);
 		Projectile noteProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI, 0f, 0f);
+        noteProj.timeLeft = 100;
+        noteProj.penetrate = 3;
 		noteProj.DamageType = DamageClass.MeleeNoSpeed;
 		return false;
 	}

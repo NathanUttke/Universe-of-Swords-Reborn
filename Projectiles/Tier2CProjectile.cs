@@ -30,7 +30,7 @@ public class Tier2CProjectile : ModProjectile
 	{
 		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Red with { A = 0}, 1.5f);
+			Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Red, 1.5f);
 		}
 	}
 

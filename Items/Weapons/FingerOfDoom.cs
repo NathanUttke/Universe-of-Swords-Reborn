@@ -16,6 +16,7 @@ public class FingerOfDoom : ModItem
 		Item.useTime = 13;
 		Item.useAnimation = 13;
 		Item.damage = 75;
+		Item.scale = 1.5f;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 470100;

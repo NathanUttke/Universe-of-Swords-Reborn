@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
@@ -10,11 +11,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class StarSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Shoots bouncy stars");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 60;
@@ -26,13 +22,20 @@ public class StarSword : ModItem
 		Item.damage = 25;
 		Item.knockBack = 5f;
 		Item.shoot = ModContent.ProjectileType<StarSwordProjectile>();
-		Item.shootSpeed = 9.25f;
+		Item.shootSpeed = 9f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 1, 20, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 		
 		Item.ResearchUnlockCount = 1;
 	}
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        if (Main.rand.NextBool(2))
+        {
+            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), 0f, 0f, 0, Color.Cyan with { A = 0 }, 1.5f);
+        }
+    }
 
     public override void AddRecipes()
 	{		

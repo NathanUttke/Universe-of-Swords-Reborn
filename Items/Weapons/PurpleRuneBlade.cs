@@ -10,12 +10,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class PurpleRuneBlade : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Shadow Rune Blade");
-		// Tooltip.SetDefault("'Pulses with dark energy of shadowflame'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 52;
@@ -42,7 +36,7 @@ public class PurpleRuneBlade : ModItem
 	{											
 		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Purple, 2f);
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.MediumOrchid, 2f);
 		}
 	}
 

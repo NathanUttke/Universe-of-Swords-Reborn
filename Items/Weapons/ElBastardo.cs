@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,4 +29,10 @@ public class ElBastardo : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
 	}
+
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
+
 }

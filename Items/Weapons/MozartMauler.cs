@@ -58,6 +58,8 @@ public class MozartMauler : ModItem
     {
         int projToShoot = Main.rand.Next(ProjectileID.QuarterNote, ProjectileID.TiedEighthNote);
         Projectile noteProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI, 0f, 0f);
+        noteProj.timeLeft = 100;
+        noteProj.penetrate = 3;
         noteProj.DamageType = DamageClass.MeleeNoSpeed;
         return false;
     }

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -33,7 +34,7 @@ public class EctoplasmicRipper : ModItem
 		Item.autoReuse = true;
 		Item.useTurn = false;
 
-		Item.mana = 5;
+		Item.mana = 10;
         Item.ResearchUnlockCount = 1;
     }
 
@@ -41,8 +42,7 @@ public class EctoplasmicRipper : ModItem
 	{				
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.MagicMirror, 0f, 0f, 100, default, 2f);
-			Main.dust[dust].noGravity = true;
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 1f);
 		}
 	}
 
@@ -58,9 +58,15 @@ public class EctoplasmicRipper : ModItem
 	{
 		if (!target.immortal && NPCID.Sets.CountsAsCritter[target.type])
 		{
-            int healingAmt = damageDone / 8;
-            player.statMana += healingAmt;
-            player.ManaEffect(healingAmt);
+            int manaAmount = Item.mana / 2;
+
+			if (hit.Crit)
+			{
+				manaAmount = (int)(manaAmount * 1.5);
+			}
+
+            player.statMana += manaAmount;
+            player.ManaEffect(manaAmount);
         }
 	}
 }
