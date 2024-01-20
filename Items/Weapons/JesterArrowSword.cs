@@ -21,7 +21,7 @@ public class JesterArrowSword : ModItem
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item5;
 		Item.shoot = ProjectileID.JestersArrow;
-		Item.shootSpeed = 10f;
+		Item.shootSpeed = 12f;
 		Item.value = 10500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
