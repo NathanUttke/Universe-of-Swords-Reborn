@@ -7,11 +7,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class GelBlade : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        // Tooltip.SetDefault("Slows down enemies");
-    }
-
     public override void SetDefaults()
     {
         Item.width = 54;

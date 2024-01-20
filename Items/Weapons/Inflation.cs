@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -26,7 +27,7 @@ public class Inflation : ModItem
         Item.damage = 23;
         Item.DamageType = DamageClass.Melee;
         Item.scale = 1f;
-        Item.crit = 8;
+        Item.crit = 0;
         Item.UseSound = SoundID.Item169;
         Item.value = 0;
         Item.autoReuse = true;
@@ -49,6 +50,14 @@ public class Inflation : ModItem
             .AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
             .AddTile(TileID.Anvils)
             .Register();
+    }
+
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        if (Main.rand.NextBool(3))
+        {
+            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.GoldCoin, 0f, 0f, 0, default, 1f);
+        }
     }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

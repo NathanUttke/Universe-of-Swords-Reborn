@@ -54,7 +54,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(205, 143, 255, 0) * Projectile.Opacity;
+        public override Color? GetAlpha(Color lightColor) => new Color(205, 143, 255, 0);
 
         public override bool PreDraw(ref Color lightColor)
         {            
@@ -62,8 +62,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);           
             
             Texture2D glowStar = TextureAssets.Extra[ExtrasID.SharpTears].Value;
-            Color drawColorGlow = Color.Purple;
-            drawColorGlow.A = 0;            
+            Color drawColorGlow = Color.Purple with { A = 0 };          
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {

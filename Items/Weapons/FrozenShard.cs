@@ -54,7 +54,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            position += position.SafeNormalize(Vector2.Zero).RotatedBy(-MathHelper.PiOver2) * 24f;
+            position += position.SafeNormalize(Vector2.Zero).RotatedBy(-MathHelper.PiOver2) * 30f;
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             return false;
         }

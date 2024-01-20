@@ -20,7 +20,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.alpha = 0;
-            //Projectile.hide = true;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.ownerHitCheck = true;
@@ -71,7 +70,8 @@ namespace UniverseOfSwordsMod.Projectiles
             
             Projectile.velocity = new Vector2(velocityXSign, 0f);
 
-            SetPlayerValues();           
+            SetPlayerValues();
+            CreateDust();
 
             if (Timer == 0f)
             {                
@@ -132,6 +132,14 @@ namespace UniverseOfSwordsMod.Projectiles
             
             Timer++;
             RotationTimer += MathHelper.PiOver4 / 2f;
+        }
+
+        private void CreateDust()
+        {
+            if (Main.rand.NextBool(3))
+            {
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GoldCoin, 0f, 0f, 0, default, 1f);
+            }
         }
 
         private void SetPlayerValues()

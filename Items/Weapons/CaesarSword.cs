@@ -16,10 +16,10 @@ public class CaesarSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Green;
 
-        Item.useStyle = ItemUseStyleID.Thrust;
+        Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 10;
-        Item.useAnimation = 10;
+        Item.useTime = 15;
+        Item.useAnimation = 15;
         Item.damage = 32;
         Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.knockBack = 3f;
@@ -30,4 +30,21 @@ public class CaesarSword : ModItem
 		Item.ResearchUnlockCount = 1;
 
 	}
+
+    private int swingCount = 0;
+
+    public override bool? UseItem(Player player)
+    {
+        swingCount++;
+        if (swingCount < 3)
+        {
+            Item.useStyle = ItemUseStyleID.Swing;
+        }
+        else if (swingCount == 3) 
+        {
+            Item.useStyle = ItemUseStyleID.Thrust;
+            swingCount = 0;
+        }
+        return true;
+    }
 }

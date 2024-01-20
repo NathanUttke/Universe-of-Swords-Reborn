@@ -19,7 +19,7 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void SetDefaults()
         {
-            Projectile.width = 48;
+            Projectile.width = 24;
             Projectile.height = 24;
 
             Projectile.scale = 1f;
@@ -50,7 +50,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
 
             Color projColor = Projectile.GetAlpha(lightColor);
-            Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
+            Vector2 drawOrigin = texture.Size() / 2f;
 
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)

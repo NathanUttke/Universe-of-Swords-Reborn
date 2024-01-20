@@ -30,17 +30,11 @@ public class GoblinKnife : ModItem
         Item.DamageType = DamageClass.Melee; 
         Item.ResearchUnlockCount = 1;
     }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.Y -= 1f * player.gravDir;
-    }
-
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (target.defense > 20)
         {
-            damageDone *= 2;
+            hit.Crit = true;            
         }
         if (!target.HasBuff(BuffID.Bleeding))
         {

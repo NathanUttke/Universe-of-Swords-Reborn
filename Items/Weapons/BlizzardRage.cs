@@ -13,7 +13,7 @@ public class BlizzardRage : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.scale = 1.1f;
+		Item.scale = 1f;
 		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
@@ -53,7 +53,7 @@ public class BlizzardRage : ModItem
 			}
 
 			float num14 = MathF.Sqrt(num12 * num12 + num13 * num13);
-			float num15 = damage / num14;
+			float num15 = Item.shootSpeed / num14;
 			num12 *= num15;
 			num13 *= num15;
 			velocity.X = num12 + Main.rand.Next(-12, 10) * 0.16f;

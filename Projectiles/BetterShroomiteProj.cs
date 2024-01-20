@@ -39,6 +39,7 @@ namespace UniverseOfSwordsMod.Projectiles
         // From ExampleSwingingEnergySwordProjectile
         public override void AI()
         {
+            Lighting.AddLight(Projectile.Center, 0.25f, 0.25f, 0.5f);
             Projectile.localAI[0]++;
             float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1];
             float direction = Projectile.ai[0];
@@ -114,9 +115,6 @@ namespace UniverseOfSwordsMod.Projectiles
             return false;
         }
 
-        
-
-
         public override bool PreDraw(ref Color lightColor)
         {
             Vector2 position = Projectile.Center - Main.screenPosition;
@@ -159,12 +157,12 @@ namespace UniverseOfSwordsMod.Projectiles
             for (float i = 0f; i < 8f; i += 1f)
             {
                 float edgeRotation = Projectile.rotation + Projectile.ai[0] * i * (MathHelper.Pi * -2f) * 0.025f + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0];
-                Vector2 drawpos = position + edgeRotation.ToRotationVector2() * ((float)texture.Width * 0.5f - 6f) * scale;
+                Vector2 drawpos = position + edgeRotation.ToRotationVector2() * (texture.Width / 2 - 6f) * scale;
                 DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos, new Color(255, 255, 255, 0) * lerpTime * (i / 9f), middleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, edgeRotation, new Vector2(0f, Utils.Remap(percentageOfLife, 0f, 1f, 3f, 0f)) * scale, Vector2.One * scale);
             }
 
             // This draws a large star sparkle at the front of the projectile.
-            Vector2 drawpos2 = position + (Projectile.rotation + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0]).ToRotationVector2() * ((float)texture.Width * 0.5f - 4f) * scale;
+            Vector2 drawpos2 = position + (Projectile.rotation + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0]).ToRotationVector2() * (texture.Width / 2 - 4f) * scale;
             DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos2, new Color(255, 255, 255, 0) * lerpTime * 0.5f, middleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(percentageOfLife, 0f, 1f, 4f, 1f)) * scale, Vector2.One * scale);
 
             return false;
