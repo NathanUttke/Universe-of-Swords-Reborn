@@ -27,8 +27,8 @@ public class FixedSwordOfPower : ModItem
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 18000;
-		Item.shoot = ProjectileID.Bone;
-		Item.shootSpeed = 16f;
+		Item.shoot = ProjectileID.BoneGloveProj;
+		Item.shootSpeed = 12f;
 		Item.scale = 1.25f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -57,6 +57,7 @@ public class FixedSwordOfPower : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
 		Projectile boneProj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * 0.60f), knockback, player.whoAmI);
+		boneProj.DamageType = DamageClass.Melee;
 		boneProj.penetrate = 2;
 		boneProj.scale = 1.25f;
 		return false;
