@@ -11,6 +11,7 @@ namespace UniverseOfSwordsMod.Common.GlobalProjectiles
             if (entity.type == ProjectileID.SwordBeam)
             {
                 entity.timeLeft = 40;
+                entity.penetrate = 2;
             }
         }
     }

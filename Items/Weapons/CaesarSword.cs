@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Drawing;
@@ -16,7 +17,7 @@ public class CaesarSword : ModItem
 		Item.height = 64;
 		Item.rare = ItemRarityID.Green;
 
-        Item.useStyle = ItemUseStyleID.Swing;
+        Item.useStyle = ItemUseStyleID.Thrust;
         Item.UseSound = SoundID.Item1;
         Item.useTime = 15;
         Item.useAnimation = 15;
@@ -29,22 +30,5 @@ public class CaesarSword : ModItem
 		Item.autoReuse = true;	
 		Item.ResearchUnlockCount = 1;
 
-	}
-
-    private int swingCount = 0;
-
-    public override bool? UseItem(Player player)
-    {
-        swingCount++;
-        if (swingCount < 3)
-        {
-            Item.useStyle = ItemUseStyleID.Swing;
-        }
-        else if (swingCount == 3) 
-        {
-            Item.useStyle = ItemUseStyleID.Thrust;
-            swingCount = 0;
-        }
-        return true;
-    }
+	} 
 }

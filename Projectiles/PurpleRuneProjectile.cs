@@ -37,14 +37,9 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.Kill();
             }
 
-            if (Projectile.ai[1] == 0f)
+            for (int i = 0; i < 3; i++)
             {
-                Projectile.ai[1] = 1f;
-                for (int i = 0; i < 25; i++)
-                {
-                    Dust cloudDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.MediumOrchid with { A = 0 }, 2f);
-                    cloudDust.fadeIn = 3f;
-                }
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X * 0.8f, Projectile.velocity.Y * 0.8f, 0, Color.MediumOrchid, 2f);
             }
         }
 

@@ -194,7 +194,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             if (CurrentAIState != AIState.SwingingLeft)
             {
-                textureOrigin = new(texture.Width / 2f, texture.Height / 2f);
+                textureOrigin = texture.Size() / 2f;
             }
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)

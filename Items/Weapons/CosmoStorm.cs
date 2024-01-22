@@ -52,8 +52,7 @@ public class CosmoStorm : ModItem
         Recipe newRecipe = CreateRecipe();
         newRecipe.AddIngredient(ItemID.FragmentNebula, 20);
         newRecipe.AddIngredient(ItemID.FragmentSolar, 20);
-        newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 1);
-        //newRecipe.AddIngredient(ModContent.ItemType<PowerOfTheGalactic>(), 1);
+        newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 1);        
         newRecipe.AddIngredient(ItemID.LunarBar, 15);
         newRecipe.AddIngredient(ItemID.NebulaArcanum, 1);
         newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 45);
