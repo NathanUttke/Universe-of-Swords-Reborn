@@ -26,10 +26,13 @@ public class DamascusOreTile : ModTile
 		LocalizedText name = CreateMapEntryName();
 		
 		AddMapEntry(new Color(246, 249, 250), name);
-	    MinPick = 40;
+	    MinPick = 65;
 	}
 
-	public override void NumDust(int i, int j, bool fail, ref int num)
+	public override bool CanExplode(int i, int j) => false;
+
+
+    public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = (fail ? 2 : 4);
 	}
