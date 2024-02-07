@@ -46,20 +46,15 @@ public class SolBlade : ModItem
 	{
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 1.5f);
-			Main.dust[dust].noGravity = true;
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 1.5f);
 		}
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-        float numberProjectiles = 3;
-        float rotation = MathHelper.ToRadians(15f);
-        position += Vector2.Normalize(velocity * 15f);
-
-        for (int i = 0; i < numberProjectiles; i++)
+        for (int i = -1; i <= 1; i++)
         {
-            Vector2 perturbedSpeed = velocity.RotatedBy((double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 1.5f;
+            Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.ToRadians(15f * i));
             Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI, 0f, 0f);
         }
         return false;
