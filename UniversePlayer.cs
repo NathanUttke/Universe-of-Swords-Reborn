@@ -11,6 +11,7 @@ namespace UniverseOfSwordsMod;
 public class UniversePlayer : ModPlayer
 {
 	public bool eBlaze;
+	public int swordTimer;
 
 	public override void ResetEffects()
 	{
@@ -24,14 +25,22 @@ public class UniversePlayer : ModPlayer
 			Player.lifeRegen -= 75;
 		}
 	}
-	
-	public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+
+    public override void PostUpdate()
+    {
+        if (swordTimer > 0)
+		{
+			swordTimer--;
+		}
+    }
+
+    public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
 	{
 		if (eBlaze)
 		{
 			if (Main.rand.NextBool(8) && drawInfo.shadow == 0f)
 			{
-				int dust = Dust.NewDust(drawInfo.Position - new Vector2(2f, 2f), Player.width + 4, Player.height + 4, ModContent.DustType<Dusts.EmperorBlaze>(), 0f, Player.velocity.Y * 0.4f, 100, Color.Red, 3f);
+				int dust = Dust.NewDust(drawInfo.Position - new Vector2(2f, 2f), Player.width + 4, Player.height + 4, ModContent.DustType<Dusts.EmperorBlaze>(), 0f, Player.velocity.Y * 0.4f, 0, new Color(255, 255, 255, 0), 3f);
 				Main.dust[dust].noGravity = true;
 				Dust obj = Main.dust[dust];
 				obj.velocity.X = 0;
