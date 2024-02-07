@@ -52,11 +52,9 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.Kill();
                 return;
             }
-
-            Vector2 vector = Owner.RotatedRelativePoint(Owner.MountedCenter);
-            int velocityXSign = Math.Sign(Projectile.velocity.X);
-
             Lighting.AddLight(Owner.Center, 0.75f, 0.9f, 1.15f);
+
+            int velocityXSign = Math.Sign(Projectile.velocity.X);            
             
             Projectile.velocity = new Vector2(velocityXSign, 0f);
             if (Projectile.ai[0] == 0f)
