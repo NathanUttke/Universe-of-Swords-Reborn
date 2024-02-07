@@ -22,20 +22,16 @@ public class GoblinKnife : ModItem
         Item.useTime = 9;
         Item.useAnimation = 9;
         Item.damage = 22;
-        Item.knockBack = 2.5f;
+        Item.knockBack = 0f;
         Item.UseSound = SoundID.Item1;
         Item.value = Item.sellPrice(0, 0, 25, 0);
-        Item.crit = 10;
+        Item.crit = 25;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
         Item.ResearchUnlockCount = 1;
     }
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (target.defense > 20)
-        {
-            hit.Crit = true;            
-        }
         if (!target.HasBuff(BuffID.Bleeding))
         {
             target.AddBuff(BuffID.Bleeding, 400);
