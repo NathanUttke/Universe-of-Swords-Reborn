@@ -24,7 +24,7 @@ public class SolBlade : ModItem
 		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
 
-		Item.useTime = 20;
+		Item.useTime = 30;
 		Item.useAnimation = 20;
 
 		Item.damage = 85;
