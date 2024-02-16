@@ -18,7 +18,7 @@ public class FingerOfDoom : ModItem
 		Item.damage = 75;
 		Item.scale = 1.5f;
 		Item.knockBack = 10f;
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item1 with { Pitch = 0.35f };
 		Item.value = 470100;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;

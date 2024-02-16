@@ -23,7 +23,7 @@ public class GiantUnicornHorn : ModItem
 		Item.useStyle = ItemUseStyleID.Rapier;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-        Item.UseSound = SoundID.Item1;
+        Item.UseSound = SoundID.Item1 with { Pitch = 0.35f };
 
         Item.damage = 55;
 		Item.scale = 1.25f;

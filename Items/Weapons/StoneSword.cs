@@ -23,7 +23,7 @@ public class StoneSword : ModItem
 		Item.useAnimation = 30;
 		Item.damage = 8;
 		Item.knockBack = 2f;
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item19 with { Pitch = -0.5f };
 		Item.value = 100;
 		Item.autoReuse = false;
 		Item.DamageType = DamageClass.Melee; 

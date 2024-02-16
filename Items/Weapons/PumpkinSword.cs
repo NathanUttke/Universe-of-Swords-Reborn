@@ -16,7 +16,7 @@ public class PumpkinSword : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;
         Item.useAnimation = 30;	
-        Item.UseSound = SoundID.Item1;			
+        Item.UseSound = SoundID.Item1 with { Pitch = 0.35f };			
 		
         Item.damage = 12;
         Item.knockBack = 3.4f;

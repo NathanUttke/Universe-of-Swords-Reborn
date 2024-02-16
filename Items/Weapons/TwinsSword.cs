@@ -24,7 +24,7 @@ public class TwinsSword : ModItem
 		Item.useAnimation = 20;
 		Item.damage = 66;
 		Item.knockBack = 6f;
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item1 with { Pitch = 0.35f };
 		Item.value = 160000;
 		Item.shoot = ModContent.ProjectileType<TwinsProjectile>();
 		Item.shootSpeed = 6f;

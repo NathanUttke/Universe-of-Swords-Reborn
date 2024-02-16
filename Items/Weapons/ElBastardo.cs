@@ -23,7 +23,7 @@ public class ElBastardo : ModItem
 		Item.useAnimation = 18;
 		Item.damage = 50;
 		Item.knockBack = 8f;
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item1 with { Pitch = -0.35f };
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 

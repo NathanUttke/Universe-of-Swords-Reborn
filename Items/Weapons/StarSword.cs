@@ -23,7 +23,7 @@ public class StarSword : ModItem
 		Item.knockBack = 5f;
 		Item.shoot = ModContent.ProjectileType<StarSwordProjectile>();
 		Item.shootSpeed = 9f;
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item1 with { Pitch = 0.35f };
 		Item.value = Item.sellPrice(0, 1, 20, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 		

@@ -24,7 +24,7 @@ public class PrimeSword : ModItem
 		Item.useAnimation = 20;
 		Item.damage = 66;
 		Item.knockBack = 5f;
-		Item.UseSound = SoundID.Item1;
+		Item.UseSound = SoundID.Item1 with { Pitch = -0.35f };
 		Item.value = 160000;
 
 		Item.shoot = ModContent.ProjectileType<PrimeSlashProj>();

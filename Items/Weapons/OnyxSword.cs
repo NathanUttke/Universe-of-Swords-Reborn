@@ -23,7 +23,7 @@ public class OnyxSword : ModItem
         Item.knockBack = 6f;
         Item.shoot = ProjectileID.BlackBolt;
         Item.shootSpeed = 15f;
-        Item.UseSound = SoundID.Item1;
+        Item.UseSound = SoundID.Item1 with { Pitch = 0.35f };
         Item.value = 70500;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
