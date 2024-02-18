@@ -7,6 +7,7 @@ using Terraria.ID;
 using System;
 using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
+using UniverseOfSwordsMod;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -35,7 +36,7 @@ public class SwordOfTheUniverseNew : ModItem
 		Item.UseSound = SoundID.Item169;
 
 		Item.shoot = ModContent.ProjectileType<SwordOfTheUniverseV2Projectile>();
-		Item.shootSpeed = 10f;
+		Item.shootSpeed = 8f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 
         Item.rare = ItemRarityID.Red;
@@ -47,7 +48,7 @@ public class SwordOfTheUniverseNew : ModItem
 
     public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
     {
-        if (ModLoader.TryGetMod("CalamityMod", out Mod _))
+        if (UniverseOfSwordsMod.Instance.CalamityMod is not null)
         {
             damage *= 1.3f;
         }
@@ -62,11 +63,11 @@ public class SwordOfTheUniverseNew : ModItem
 		newRecipe.AddIngredient(ModContent.ItemType<ScarletFlareGreatsword>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<SolBlade>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 250);
-        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AuricBar", out ModItem auricBar))
+        if (UniverseOfSwordsMod.Instance.CalamityMod.TryFind("AuricBar", out ModItem AuricBar))
         {
-            newRecipe.AddIngredient(auricBar.Type, 5);
+            newRecipe.AddIngredient(AuricBar.Type, 5);
         }
-        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityForge) && calamityForge.TryFind("CosmicAnvil", out ModTile CosmicAnvil))
+        if (UniverseOfSwordsMod.Instance.CalamityMod.TryFind("CosmicAnvil", out ModTile CosmicAnvil))
         {
             newRecipe.AddTile(CosmicAnvil.Type);
         }
@@ -83,33 +84,31 @@ public class SwordOfTheUniverseNew : ModItem
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {
-        position += position.SafeNormalize(Vector2.Zero).RotatedBy(-MathHelper.PiOver2) * 24f;
-        Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.25f), knockback, player.whoAmI);
+    {   
+        for (int i = 0; i < 4; i++)
+        {
+            Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
+            Projectile.NewProjectile(source, position, newVelocity, type, damage / 2, knockback, player.whoAmI);
+        }
+        
         return false;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.NextBool(2) && player.altFunctionUse != 2)
+        if (Main.rand.NextBool(2))
         {
             Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PortalBoltTrail, 0f, 0f, 100, Utils.SelectRandom(Main.rand, Color.Aqua, Color.Red, Color.Pink, Color.Yellow, Color.Blue), 1.5f)];
             dust.noGravity = true;
         }
     }
 
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-    {
-		velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
-    }
-
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.AddBuff(72, 360, false);
-		target.AddBuff(69, 360, false);
-		target.AddBuff(44, 360, false);
-		target.AddBuff(24, 360, false);
-		target.AddBuff(20, 360, false);
-		target.AddBuff(39, 360, false);
+		target.AddBuff(BuffID.Ichor, 400, false);
+		target.AddBuff(BuffID.Frostburn, 400, false);
+		target.AddBuff(BuffID.OnFire, 400, false);
+		target.AddBuff(BuffID.Venom, 400, false);
+		target.AddBuff(BuffID.CursedInferno, 400, false);
 	}
 }
