@@ -17,14 +17,14 @@ public class NatureSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 72;
-		Item.height = 72;
+		Item.width = 58;
+		Item.height = 70;
 		Item.scale = 1f;
 		Item.rare = ItemRarityID.Blue;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 50;
 		Item.useAnimation = 25;
-		Item.damage = 15;
+		Item.damage = 17;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
@@ -35,15 +35,29 @@ public class NatureSword : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (Main.rand.NextBool(2) && !NPCID.Sets.CountsAsCritter[target.type])
+        if (!target.active || target.immortal || NPCID.Sets.CountsAsCritter[target.type] || target.SpawnedFromStatue)
+        {
+            return;
+        }
+
+        if (player.GetModPlayer<UniversePlayer>().swordTimer == 0)
+        {
+            player.GetModPlayer<UniversePlayer>().swordTimer = 20;
+        }
+        else
+        {
+            return;
+        }
+
+        for (int i = 0; i < 3; i++)
 		{
-			UniverseUtils.SummonSuperStarSlash(target.position, target.GetSource_OnHit(target), (int)(damageDone * 0.75f), player.whoAmI, ProjectileID.SeedlerThorn);
+			UniverseUtils.SummonSuperStarSlash(target.position, target.GetSource_OnHit(target), (int)(damageDone * 0.5f), player.whoAmI, ProjectileID.SeedlerThorn);
 		}
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
 	{	
-		if (Main.rand.NextBool(2))
+		if (Main.rand.NextBool(3))
 		{
 			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<NatureBlade>(), 0f, 0f, 100, default, 1f);
 		}
