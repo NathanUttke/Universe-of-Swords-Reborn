@@ -13,8 +13,8 @@ public class CaesarSword : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
+		Item.width = 62;
+		Item.height = 62;
 		Item.rare = ItemRarityID.Green;
 
         Item.useStyle = ItemUseStyleID.Thrust;
