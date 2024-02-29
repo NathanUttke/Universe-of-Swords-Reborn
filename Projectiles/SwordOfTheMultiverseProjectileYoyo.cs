@@ -134,8 +134,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         private float StripWidth(float progressOnStrip)
         {
-            return 74f * Projectile.scale;
+            return 64f * Projectile.scale;
         }
-
     }
 }
