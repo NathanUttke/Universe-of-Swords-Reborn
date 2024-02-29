@@ -65,6 +65,12 @@ public class SwordOfTheMultiverseNew : ModItem
     {
         currentMode = reader.ReadInt32();
     }
+
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
+
     public override void HoldItem(Player player)
     {        
         if (player.whoAmI == Main.myPlayer && PlayerInput.Triggers.Current.MouseRight && !Main.mapFullscreen && !player.controlUseItem && player.ItemTimeIsZero)
