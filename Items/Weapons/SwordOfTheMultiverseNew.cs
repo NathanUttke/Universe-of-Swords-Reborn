@@ -27,8 +27,8 @@ public class SwordOfTheMultiverseNew : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 94;
-        Item.height = 104;
+        Item.width = 84;
+        Item.height = 98;
         Item.rare = ItemRarityID.Red;
 
         Item.useTime = 7;
@@ -157,7 +157,7 @@ public class SwordOfTheMultiverseNew : ModItem
 
     public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
     {
-        if (ModLoader.TryGetMod("CalamityMod", out _))
+        if (UniverseOfSwordsMod.Instance.CalamityMod is not null)
         {
             damage *= 1.5f;
         }
@@ -166,39 +166,32 @@ public class SwordOfTheMultiverseNew : ModItem
 
     public override void AddRecipes()
 	{
-
+        Mod CalamityMod = UniverseOfSwordsMod.Instance.CalamityMod;
         Recipe newRecipe = CreateRecipe();
         newRecipe.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheUniverseNew>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<ScarletFlareGreatsword>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<GnomBlade>(), 1);
-        newRecipe.AddIngredient(ModContent.ItemType<DamascusBar>(), 50);
-        newRecipe.AddIngredient(ModContent.ItemType<Orichalcon>(), 50);
         newRecipe.AddIngredient(ItemID.LunarBar, 25);
         newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 2);
         newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 500);
         newRecipe.AddIngredient(ModContent.ItemType<UselessWeapon>(), 1);
-        if (ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod) && CalamityMod.TryFind("CosmicAnvil", out ModTile CosmicAnvil))
-        {
-            newRecipe.AddTile(CosmicAnvil.Type);
-        }
-        else
+        if (CalamityMod is null)
         {
             newRecipe.AddTile(TileID.LunarCraftingStation);
+        }
+        else if (CalamityMod.TryFind("CosmicAnvil", out ModTile CosmicAnvil))
+        {
+            newRecipe.AddTile(CosmicAnvil.Type);            
         }        
         newRecipe.Register();
 	}
 
 	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		if (!target.HasBuff(ModContent.BuffType<Buffs.EmperorBlaze>()))
-		{
-            target.AddBuff(ModContent.BuffType<Buffs.EmperorBlaze>(), 700, true);
-        }
-        if (!target.HasBuff(BuffID.Weak))
-        {
-            target.AddBuff(BuffID.Weak, 400, true);
-        }
+        target.AddBuff(ModContent.BuffType<Buffs.EmperorBlaze>(), 700, true);
+        target.AddBuff(BuffID.Weak, 400, true);
+        target.AddBuff(BuffID.Venom, 400, true);
     }
 }
