@@ -31,13 +31,18 @@ public class TheSwarm : ModItem
 	}
 
 	public override void AddRecipes()
-	{		
-		CreateRecipe()
-		.AddIngredient(ModContent.ItemType<SwordMatter>(), 10)
-		.AddIngredient(ModContent.ItemType<TheStinger>(), 1)
-		.AddIngredient(ItemID.BeeKeeper, 1)
-		.AddTile(TileID.Anvils)
-		.Register();
+	{
+        Mod BombusApisBee = UniverseOfSwordsMod.Instance.BombusApisBee;
+		Recipe swordRecipe = CreateRecipe();
+		swordRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 10);
+		swordRecipe.AddIngredient(ModContent.ItemType<TheStinger>(), 1);
+		if (BombusApisBee is not null)
+		{
+			swordRecipe.AddIngredient(BombusApisBee.Find<ModItem>("Pollen"), 15);
+		}
+		swordRecipe.AddIngredient(ItemID.BeeKeeper, 1);
+		swordRecipe.AddTile(TileID.Anvils);
+        swordRecipe.Register();
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

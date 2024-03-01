@@ -28,7 +28,7 @@ public class SwordOfTheUniverseNew : ModItem
 		Item.crit = 20;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 8;
+		Item.useTime = 20;
 		Item.useAnimation = 20;
 
 		Item.damage = 190;
@@ -56,20 +56,21 @@ public class SwordOfTheUniverseNew : ModItem
 
     public override void AddRecipes()
 	{
-		Recipe newRecipe = CreateRecipe();
+        Mod CalamityMod = UniverseOfSwordsMod.Instance.CalamityMod;
+        Recipe newRecipe = CreateRecipe();
 		newRecipe.AddIngredient(ModContent.ItemType<CosmoStorm>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<SuperInflation>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<EdgeLord>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<ScarletFlareGreatsword>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<SolBlade>(), 1);
 		newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 250);
-        if (UniverseOfSwordsMod.Instance.CalamityMod.TryFind("AuricBar", out ModItem AuricBar))
+        if (CalamityMod is not null)
         {
-            newRecipe.AddIngredient(AuricBar.Type, 5);
+            newRecipe.AddIngredient(CalamityMod.Find<ModItem>("AuricBar"), 5);
         }
-        if (UniverseOfSwordsMod.Instance.CalamityMod.TryFind("CosmicAnvil", out ModTile CosmicAnvil))
+        if (CalamityMod is not null)
         {
-            newRecipe.AddTile(CosmicAnvil.Type);
+            newRecipe.AddTile(CalamityMod.Find<ModTile>("CosmicAnvil"));
         }
         else
         {
@@ -102,13 +103,4 @@ public class SwordOfTheUniverseNew : ModItem
             dust.noGravity = true;
         }
     }
-
-    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-	{
-		target.AddBuff(BuffID.Ichor, 400, false);
-		target.AddBuff(BuffID.Frostburn, 400, false);
-		target.AddBuff(BuffID.OnFire, 400, false);
-		target.AddBuff(BuffID.Venom, 400, false);
-		target.AddBuff(BuffID.CursedInferno, 400, false);
-	}
 }

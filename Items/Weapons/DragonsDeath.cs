@@ -37,6 +37,5 @@ public class DragonsDeath : ModItem
 		Item.value = 490500;
 		Item.autoReuse = true;		
 		Item.ResearchUnlockCount = 1;
-	}
-		
+	}		
 }
