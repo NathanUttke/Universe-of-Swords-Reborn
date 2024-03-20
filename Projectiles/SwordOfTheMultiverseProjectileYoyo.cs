@@ -85,6 +85,8 @@ namespace UniverseOfSwordsMod.Projectiles
 
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
             Color drawColorGlow = Color.Purple with { A = 0 };
+            Color drawColorTrail = Color.White with { A = 127 };
+
 
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
@@ -98,18 +100,13 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
 
-                Color color = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
-                color = Projectile.GetAlpha(color);
-                float multValue = 5 - j;
-                color *= multValue / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
+                drawColorTrail *= 0.6f;
 
-                Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation - MathHelper.PiOver4, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                Main.EntitySpriteDraw(texture, drawPos, null, drawColorTrail, Projectile.oldRot[j] - MathHelper.PiOver4, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation - MathHelper.PiOver4, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
-
-            drawColorGlow.A = 0;
-            
+           
             Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f + Projectile.scale, SpriteEffects.None, 0);
             
             return false;
@@ -118,7 +115,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public void DrawTrail(Projectile proj)
         {
             MiscShaderData miscShaderData = GameShaders.Misc["EmpressBlade"];
-            miscShaderData.UseShaderSpecificData(new Vector4(1, 0, 0, 0.6f));            
+            miscShaderData.UseShaderSpecificData(new Vector4(1, 0, 0, 0.75f));            
             miscShaderData.Apply();
             _vertexStrip.PrepareStrip(proj.oldPos, proj.oldRot, StripColors, StripWidth, -Main.screenPosition + proj.Size / 2f, proj.oldPos.Length, includeBacksides: false);
             _vertexStrip.DrawTrail();
@@ -127,14 +124,14 @@ namespace UniverseOfSwordsMod.Projectiles
 
         private Color StripColors(float progressOnStrip)
         {
-            Color result = Color.Lerp(Color.HotPink, ColorEnd, Utils.GetLerpValue(0f, 0.7f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip, clamped: true));
+            Color result = Color.Lerp(Color.HotPink with { A = 64 }, Color.Purple, Utils.GetLerpValue(0f, 0.75f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.75f, progressOnStrip, clamped: true));
             result.A /= 2;
             return result;
         }
 
         private float StripWidth(float progressOnStrip)
         {
-            return 64f * Projectile.scale;
+            return 58f * Projectile.scale;
         }
     }
 }

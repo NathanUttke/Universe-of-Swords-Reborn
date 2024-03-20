@@ -37,6 +37,19 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void AI()
         {
+            if (Projectile.ai[0] == 0f)
+            {
+                Projectile.ai[0] = 1f;
+                for (int i = 0; i < 10; i++)
+                {
+                    Vector2 spinPoint = Vector2.Zero;
+                    spinPoint += -Vector2.UnitY.RotatedBy(i * MathHelper.TwoPi / 10);
+                    spinPoint = spinPoint.RotatedBy(Projectile.velocity.ToRotation());
+                    Dust ringDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.LightCyan, 0.5f);
+                    ringDust.position = Projectile.Center + spinPoint;
+                    ringDust.velocity = spinPoint.SafeNormalize(Vector2.UnitY) * 2f;                  
+                }
+            }
             Projectile.rotation += Projectile.direction * 0.4f; 
         }
 
@@ -57,7 +70,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 drawColor *= 0.7f;
 
                 spriteBatch.Draw(texture, drawPos, null, drawColor, Projectile.rotation, Projectile.Size / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
-                spriteBatch.Draw(glowTexture, drawPos, null, drawColorTrail, Projectile.rotation, glowTexture.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(glowTexture, drawPos, null, drawColorTrail, Projectile.rotation, glowTexture.Size() / 2f, (Projectile.scale * 0.75f) - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White with { A = 0 }, Projectile.rotation, Projectile.Size / 2f, Projectile.scale, SpriteEffects.None, 0);

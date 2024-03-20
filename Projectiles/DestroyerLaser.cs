@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {    
@@ -22,6 +23,15 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.extraUpdates = 2;
             AIType = ProjectileID.Bullet;
             Projectile.friendly = true;
+            Projectile.timeLeft = 80;
+        }
+
+        public override void AI()
+        {
+            Vector2 newPos = Projectile.Center - Projectile.velocity / 10f;
+            Dust laserDust = Dust.NewDustDirect(newPos, 4, 4, ModContent.DustType<GlowDust>(), 0, 0, 100, Color.OrangeRed, 0.75f);
+            laserDust.position = newPos;
+            laserDust.velocity *= 0f;
         }
 
         public override void OnSpawn(IEntitySource source)

@@ -12,7 +12,7 @@ namespace UniverseOfSwordsMod.Projectiles
 {    
     public class StarSwordProjectile : ModProjectile
     {
-        public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.FallingStar}";
+        public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.StarCannonStar}";
 
         public readonly int numOfBounces = 8;
         public override void SetStaticDefaults()
@@ -22,8 +22,7 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void SetDefaults()
         {
-            Projectile.width = 30;
-            Projectile.height = 30;
+            Projectile.Size = new(30);
             Projectile.aiStyle = -1;
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
@@ -37,7 +36,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void AI()
         {
             Projectile.rotation += 0.4f;
-            Projectile.velocity.Y += 0.2f;
+            Projectile.velocity.Y += 0.15f;
 
             if (Projectile.soundDelay == 0)
             {
@@ -50,26 +49,10 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.velocity.Y = 16f;
             }      
 
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.Yellow, 1f);
+            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.Yellow, 0.5f);
         }
         public override Color? GetAlpha(Color lightColor) => new Color(205, 201, 14, 40) * Projectile.Opacity;
 
-        public override bool PreDraw(ref Color lightColor)
-        {
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;            
-
-            Color projColor = Projectile.GetAlpha(lightColor);            
-            Vector2 drawOrigin = new(texture.Width / 2, texture.Height / 2);
-
-            for (int i = 0; i < Projectile.oldPos.Length; i++)
-            {
-                Vector2 drawPos = (Projectile.oldPos[i] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-                projColor *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-                projColor.B = Utils.SelectRandom<byte>(Main.rand, 14, 20, 120, 0);
-                Main.EntitySpriteDraw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale - i / Projectile.oldPos.Length, SpriteEffects.None, 0);
-            }
-            return true;
-        }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
 
@@ -102,6 +85,23 @@ namespace UniverseOfSwordsMod.Projectiles
                 int randomStar = Utils.SelectRandom(Main.rand, 16, 17, 17, 17);
                 Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity * 0.2f, randomStar);
             }
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
+
+            Color projColor = Color.White with { A = 0 };
+
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                Vector2 drawPos = Projectile.oldPos[i] + texture.Size() / 2 - Main.screenPosition;
+                //projColor *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);              
+                projColor *= 0.8f;
+                Main.EntitySpriteDraw(texture, drawPos, texture.Frame(), projColor, Projectile.rotation, texture.Frame().Size() / 2, Projectile.scale - i / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+            }
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, texture.Frame(), Color.LightYellow with { A = 127 }, Projectile.rotation, texture.Frame().Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+
+            return false;
         }
     }
 }

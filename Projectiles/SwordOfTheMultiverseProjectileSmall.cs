@@ -23,17 +23,16 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.width = 22;
             Projectile.height = 30;
             Projectile.scale = 1.25f;
-            Projectile.aiStyle = 1;
+            Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.friendly = true;
-            Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = -1;
-            Projectile.alpha = 0;            
-            Projectile.ignoreWater = true;
-            Projectile.tileCollide = false;
+            Projectile.alpha = 0;           
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 6;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
             AIType = ProjectileID.Bullet;
         }
 
@@ -62,16 +61,18 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);           
             
             Texture2D glowStar = TextureAssets.Extra[ExtrasID.SharpTears].Value;
-            Color drawColorGlow = Color.Purple with { A = 0 };          
+            Color drawColorGlow = Color.HotPink with { A = 127 };
+            Color color = Projectile.GetAlpha(lightColor);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);                
                 
-                Color color = Projectile.GetAlpha(lightColor);
                 color *= 0.75f;
-                Main.EntitySpriteDraw(glowStar, drawPos, null, drawColorGlow, Projectile.rotation, glowStar.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+
+                Main.EntitySpriteDraw(glowStar, drawPos, null, drawColorGlow * 0.75f, Projectile.rotation, glowStar.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);               
+                Main.EntitySpriteDraw(texture, drawPos, null, color * 0.5f, Projectile.rotation, drawOrigin, (Projectile.scale * 1.25f) - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);               
             }
             return true;
         }   

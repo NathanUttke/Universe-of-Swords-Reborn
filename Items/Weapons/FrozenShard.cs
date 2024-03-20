@@ -47,7 +47,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
         {
             if (Main.rand.NextBool(2))
             {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 1f);
+                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.SkyBlue, 1.25f);
                 Main.dust[dust].noGravity = true;
             }
         }

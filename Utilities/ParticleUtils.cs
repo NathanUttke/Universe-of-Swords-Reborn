@@ -28,7 +28,7 @@ namespace UniverseOfSwordsMod.Utilities
         {
             return new FadingParticle();
         }
-        public static void Spawn_TrueNightsEdgeCyan(ParticleOrchestraSettings settings)
+        public static void Spawn_CyanParticle(ParticleOrchestraSettings settings)
         {
             float num = 30f;
             float num2 = 0f;

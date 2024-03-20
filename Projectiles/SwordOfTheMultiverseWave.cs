@@ -19,7 +19,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             Projectile.width = 168;
             Projectile.height = 64;
-            Projectile.scale = 2f;
+            Projectile.scale = 1.5f;
             Projectile.aiStyle = -1;
             Projectile.penetrate = -1;
             Projectile.friendly = true;            
@@ -62,6 +62,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;            
+            Texture2D textureExtra = TextureAssets.Extra[27].Value;            
 
             Color projColor = Color.White;            
             Color projColor2 = Projectile.GetAlpha(lightColor);            
@@ -72,8 +73,7 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Projectile.spriteDirection == -1)
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
-            }
-            
+            }            
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
@@ -84,15 +84,12 @@ namespace UniverseOfSwordsMod.Projectiles
 
                 Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);                
 
-                projColor *= 0.5f;
+                projColor *= 0.6f;
                 
                 Main.spriteBatch.Draw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);                
-            }
-                  
+            }                  
 
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor2, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
-
-
+            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), texture.Frame(), projColor2, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             return false;
         }
     }

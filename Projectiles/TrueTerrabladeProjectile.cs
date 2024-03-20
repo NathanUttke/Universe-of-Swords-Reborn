@@ -28,6 +28,7 @@ public class TrueTerrabladeProjectile : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.timeLeft = 30;
 		Projectile.aiStyle = -1;
+        Projectile.extraUpdates = 1;
 	}
 
     public override Color? GetAlpha(Color lightColor) => new Color(98, 242, 128, 45);
@@ -71,28 +72,25 @@ public class TrueTerrabladeProjectile : ModProjectile
     public override void Kill(int timeLeft)
     {        
         SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
-        for (int i = 4; i < 31; i++)
+        for (int i = 0; i < 20; i++)
         {
 
-            int terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 2f);
+            int terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 1f);
             Dust dust = Main.dust[terraDust];
             dust.velocity *= 0.75f;
 
-            terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 2f);
+            terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 1f);
             Dust dust2 = Main.dust[terraDust];
             dust2.velocity *= 0.25f;
         }
         if (Projectile.ai[1] == 0f)
         {
             Projectile.ai[1] = 1f;
-            float spread = 1.75f;
-            float baseSpeed = Projectile.oldVelocity.Length();
-            float startAngle = Projectile.oldVelocity.ToRotation() - spread / 2f;
-            float deltaAngle = spread / 2f;
             for (int i = 0; i < 20; i++)
             {
-                float offsetAngle = startAngle + deltaAngle * i;
-                Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.position, new Vector2(baseSpeed * MathF.Sin(offsetAngle), baseSpeed * MathF.Cos(offsetAngle)), ModContent.ProjectileType<TrueTerrabladeProjectile>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner, 0f, 1f);
+                Vector2 newVelocity = new Vector2(8f, 0f).RotatedBy(i + MathHelper.TwoPi / 20f);
+                Projectile newProj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.position, newVelocity, ModContent.ProjectileType<TrueTerrabladeProjectile>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner, 0f, 1f);
+                newProj.penetrate = 2;            
             }
         }
     }

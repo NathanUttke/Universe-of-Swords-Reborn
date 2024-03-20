@@ -44,7 +44,9 @@ namespace UniverseOfSwordsMod.Projectiles
 
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint);
         }
+
         Player Owner => Main.player[Projectile.owner];
+
         public override void AI()
         {
             bool isInHalfMaxTime = Projectile.ai[0] == (int)(MaxTime / 2f);

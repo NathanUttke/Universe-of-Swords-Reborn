@@ -25,7 +25,7 @@ public class NatureSword : ModItem
 		Item.useTime = 50;
 		Item.useAnimation = 25;
 		Item.damage = 17;
-		Item.knockBack = 6f;
+		Item.knockBack = 0f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;

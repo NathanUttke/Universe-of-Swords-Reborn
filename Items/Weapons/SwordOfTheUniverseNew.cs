@@ -36,7 +36,7 @@ public class SwordOfTheUniverseNew : ModItem
 		Item.UseSound = SoundID.Item169;
 
 		Item.shoot = ModContent.ProjectileType<SwordOfTheUniverseV2Projectile>();
-		Item.shootSpeed = 8f;
+		Item.shootSpeed = 10f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 
         Item.rare = ItemRarityID.Red;
@@ -50,7 +50,7 @@ public class SwordOfTheUniverseNew : ModItem
     {
         if (UniverseOfSwordsMod.Instance.CalamityMod is not null)
         {
-            damage *= 1.3f;
+            damage *= 1.25f;
         }
     }
 
@@ -88,7 +88,8 @@ public class SwordOfTheUniverseNew : ModItem
     {   
         for (int i = 0; i < 4; i++)
         {
-            Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
+            Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(15 * i));
+            newVelocity *= Main.rand.NextFloat(1f, 1.5f);
             Projectile.NewProjectile(source, position, newVelocity, type, damage / 2, knockback, player.whoAmI);
         }
         

@@ -60,7 +60,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Main.netMode != NetmodeID.Server)
             {
-                UniverseUtils.Spawn_TrueNightsEdgeCyan(new ParticleOrchestraSettings
+                UniverseUtils.Spawn_CyanParticle(new ParticleOrchestraSettings
                 {
                     PositionInWorld = target.Center,
                     IndexOfPlayerWhoInvokedThis = (byte)Main.myPlayer

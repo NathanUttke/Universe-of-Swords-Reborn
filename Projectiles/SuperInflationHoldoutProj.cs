@@ -101,7 +101,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 for (int i = 0; i < 3; i++)
                 {
                     float f = 0.25f * i * MathHelper.TwoPi;
-                    Vector2 vector51 = Owner.RotatedRelativePoint(Owner.itemLocation) + f.ToRotationVector2() * MathHelper.Lerp(20f, 60f, 0.25f * i);
+                    Vector2 vector51 = Owner.RotatedRelativePoint(Owner.Center) + f.ToRotationVector2() * MathHelper.Lerp(20f, 60f, 0.25f * i);
                     vector51.Y -= Owner.height / 2f;
 
                     Vector2 v5 = Main.MouseWorld - vector51;
@@ -121,11 +121,12 @@ namespace UniverseOfSwordsMod.Projectiles
 
             if (Timer >= MaxTime)
             {                
-                Projectile.alpha += 16;
+                Projectile.alpha += 16;               
             }
 
             if (Projectile.alpha > 255)
             {
+                Projectile.scale -= 0.1f;
                 Projectile.alpha = 255;
                 Projectile.Kill();
             }

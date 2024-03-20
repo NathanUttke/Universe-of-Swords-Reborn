@@ -18,10 +18,10 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
             Projectile.penetrate = 1;
-            Projectile.alpha = 127;
-            Projectile.scale = Main.rand.NextFloat(0.75f, 1.5f);            
+            Projectile.alpha = 0;
+            Projectile.scale = 1f;            
             Projectile.light = 0.4f;
-            Projectile.timeLeft = 70;
+            Projectile.timeLeft = 2000;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -34,26 +34,25 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void AI()
         {
-            base.AI();
-            Projectile.alpha += 1;
+            Projectile.alpha += 3;
             if (Projectile.alpha > 255) 
             {
                 Projectile.alpha = 255;
                 Projectile.Kill();
             }
 
-            float detectRadiusMax = 400f;
-            float projSpeed = 20f;
+            float detectRadiusMax = 500f;
+            float projSpeed = 16f;
 
             NPC closestNPC = UniverseUtils.FindClosestNPC(detectRadiusMax, Projectile.Center);
-            if (closestNPC == null)
+            if (closestNPC is null)
             {
                 return;
             }
-            Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed, 0.2f);
+            Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed, 0.05f);
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
+        public override Color? GetAlpha(Color lightColor) => Color.White with { A = 0 } * Projectile.Opacity;
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -65,8 +64,8 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = texture.Size() / 2f;
             Vector2 drawnOriginGlow = glowSphere.Size() / 2f;
             
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor, Projectile.rotation, drawnOriginGlow, Projectile.scale * 1.75f, SpriteEffects.None, 0);
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor * 0.75f, Projectile.rotation, drawnOriginGlow, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor, Projectile.rotation + (float)Main.timeForVisualEffects * 0.5f, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
 
             return false;
         }

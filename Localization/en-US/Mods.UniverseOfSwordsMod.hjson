@@ -38,13 +38,14 @@ Projectiles: {
 	SwordLegendHoldoutProj.DisplayName: Sword Of The Legend
 	SwordOfTheMultiverseProjectileYoyo.DisplayName: Sword Of The Multiverse
 	SwordOfTheMultiverseWave.DisplayName: Sword Of The Multiverse
-	SuperInflationHoldoutProj.DisplayName: Super Inflation Holdout Proj
+	SuperInflationHoldoutProj.DisplayName: Super Inflation
 	ClingerWallProj.DisplayName: Clinger Wall Proj
-	GalacticProjectile.DisplayName: Galactic Projectile
-	CorruptCrystallusProj.DisplayName: Corrupt Crystallus Proj
-	TestShaderProjectile.DisplayName: Test Shader Projectile
-	ClingerSlashProj.DisplayName: Clinger Slash Proj
+	GalacticProjectile.DisplayName: Galactic
+	CorruptCrystallusProj.DisplayName: Corrupt Crystallus
+	TestShaderProjectile.DisplayName: Test
+	ClingerSlashProj.DisplayName: Clinger
 	NightmareProjectile.DisplayName: Nightmare Projectile
+	CosmoStarProjectile.DisplayName: Cosmo Star Projectile
 }
 
 NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
@@ -728,11 +729,7 @@ Items: {
 
 	SuperInflation: {
 		DisplayName: Super Inflation
-		Tooltip:
-			'''
-			'Throw money at ALL your problems'
-			15% more damage if the player has a gold coin.
-			'''
+		Tooltip: Throw money at ALL your problems
 	}
 
 	SwordOfTheEmperor: {
@@ -756,7 +753,7 @@ Items: {
 
 	TerraEnsis: {
 		DisplayName: Terra Ensis
-		Tooltip: Shoots a projectile that splits into 20 more.
+		Tooltip: Shoots a projectile that splits into 20 more
 	}
 
 	TheBrain: {
@@ -776,7 +773,7 @@ Items: {
 
 	TheStinger: {
 		DisplayName: The Stinger
-		Tooltip: 33% chance of shooting a stinger
+		Tooltip: 50% chance of shooting a stinger
 	}
 
 	TheSwarm: {
@@ -868,11 +865,7 @@ Buffs: {
 
 	NordMead: {
 		DisplayName: Nord Mead
-		Description:
-			'''
-			'When we raise our flagon to another dead dragon, there is just one drink we need!'
-			Reduced defense
-			'''
+		Description: Reduced defense
 	}
 
 	Skooma: {
@@ -881,8 +874,8 @@ Buffs: {
 	}
 
 	SwordMinionBuff: {
-		DisplayName: Flying Blade
-		Description: A flying blade fights for you.
+		Description: Mods.UniverseOfSwordsMod.Buffs.SwordMinionBuff.Description
+		DisplayName: Sword Minion Buff
 	}
 }
 

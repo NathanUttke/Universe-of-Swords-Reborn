@@ -51,7 +51,7 @@ public class Horrormageddon : ModItem
     {
 		float angleSpread = 0.5f;
 		float baseSpeed = MathF.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-		double startingAngle = MathF.Atan2(velocity.X, velocity.Y) - (double)(angleSpread / 2f);
+		double startingAngle = velocity.ToRotation() - (double)(angleSpread / 2f);
 		double deltaAngle = angleSpread / 2f;
 		for (int numOfProjectiles = 0; numOfProjectiles < 3; numOfProjectiles++)
 		{

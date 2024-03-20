@@ -93,10 +93,10 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 
-                Color gnomTrailColor = new(11 + j * 16, 127, 255 - j * 16, 40 - j);                
-                Color trailColorGlow = new(11 + j * 16, 127, 255 - j * 16, 0);
-                gnomTrailColor *= 0.75f;
-                trailColorGlow *= 0.75f;
+                Color gnomTrailColor = new(15 + j * 16, 127, 255 - j * 16, 0);                
+                Color trailColorGlow = new(15 + j * 16, 127, 255 - j * 16, 0);
+                gnomTrailColor *= 0.5f;
+                trailColorGlow *= 0.5f;
 
                 spriteBatch.Draw(glowTexture, drawPos, null, trailColorGlow, Projectile.rotation, drawOriginGlow, 1f - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
                 spriteBatch.Draw(texture, drawPos, null, gnomTrailColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);                

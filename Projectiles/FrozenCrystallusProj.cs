@@ -15,7 +15,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 8;
-            ProjectileID.Sets.TrailingMode[Type] = 0;
+            ProjectileID.Sets.TrailingMode[Type] = 3;
         }
         public override void SetDefaults()
         {
@@ -39,7 +39,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Main.rand.NextBool(2))
             {
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, Color.Cyan, 1.5f);
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, Color.SkyBlue, 1.25f);
             }
         }
 
@@ -60,7 +60,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+                Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
                 projColor *= 0.75f;
                 Main.EntitySpriteDraw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             }
@@ -73,8 +73,8 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             for (int k = 0; k < 10; k++)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 0, Color.Cyan, 1.5f);
-				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.10f, Projectile.oldVelocity.Y * 0.10f, 0, Color.Cyan, 1.5f);
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 0, Color.SkyBlue, 1f);
+				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.10f, Projectile.oldVelocity.Y * 0.10f, 0, Color.SkyBlue, 1f);
             }
             SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         }

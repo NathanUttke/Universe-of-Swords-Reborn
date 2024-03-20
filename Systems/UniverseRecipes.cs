@@ -5,7 +5,7 @@ using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Common.GlobalItems
 {
-    public class UOSRecipes : ModSystem
+    public class UniverseRecipes : ModSystem
     {
         public static RecipeGroup UOSRecipeGroup;
 

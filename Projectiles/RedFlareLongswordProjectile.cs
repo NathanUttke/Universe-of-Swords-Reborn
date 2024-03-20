@@ -49,6 +49,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             SpriteBatch spriteBatch = Main.spriteBatch;             
             Texture2D texture = TextureAssets.Projectile[Type].Value;
+            Texture2D textureExtra = TextureAssets.Extra[ExtrasID.SharpTears].Value;
             Vector2 drawOrigin = new(texture.Width - 4f, 2f);
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
             
@@ -63,9 +64,10 @@ namespace UniverseOfSwordsMod.Projectiles
                 }
 
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + (Projectile.Size / 2f);                
-                drawColorTrail *= 0.5f;
+                drawColorTrail *= 0.75f;
 
-                spriteBatch.Draw(texture, drawPos, sourceRectangle, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, drawPos, sourceRectangle, drawColorTrail, Projectile.rotation, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, drawPos, sourceRectangle, drawColorTrail * 0.25f, Projectile.rotation, drawOrigin, (Projectile.scale * 1.5f) - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
             spriteBatch.Draw(texture, Projectile.position - Main.screenPosition + (Projectile.Size / 2f), sourceRectangle, drawColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);

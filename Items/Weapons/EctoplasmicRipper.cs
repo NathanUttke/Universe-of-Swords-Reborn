@@ -56,7 +56,7 @@ public class EctoplasmicRipper : ModItem
 
 	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		if (!target.immortal && NPCID.Sets.CountsAsCritter[target.type])
+		if (!target.immortal && !NPCID.Sets.CountsAsCritter[target.type])
 		{
             int manaAmount = Item.mana / 2;
 
