@@ -28,14 +28,16 @@ internal class NightmareProjectile : ModProjectile
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
-        Projectile.timeLeft = 20;        
+        Projectile.timeLeft = 30;        
         Projectile.light = 0.25f;
+        Projectile.extraUpdates = 1;
+        Projectile.aiStyle = -1;
     }
 
     public override void AI()
     {        
         float maxDetectRadius = 300f; 
-        float projSpeed = 7.5f; 
+        float projSpeed = 8f; 
 
         Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple with { A = 0 }, 2f);        
 
@@ -43,7 +45,7 @@ internal class NightmareProjectile : ModProjectile
         Projectile.spriteDirection = Projectile.direction;     
         
         NPC closestNPC = UniverseUtils.FindClosestNPC(maxDetectRadius, Projectile.Center);
-        if (closestNPC == null) 
+        if (closestNPC is null) 
         {
             return;
         }        
@@ -92,14 +94,20 @@ internal class NightmareProjectile : ModProjectile
         return false;
     }
 
-    public override void Kill(int timeLeft)
+    public override void OnKill(int timeLeft)
     {
-
-        int numOfProjectiles = 4;
         for (int i = 0; i < 15; i++)
         {
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.Purple with { A = 0 }, 2f);
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.25f, Projectile.oldVelocity.Y * 0.25f, 0, Color.Purple with { A = 0 }, 2f);
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.Purple with { A = 0 }, 1.5f);
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.25f, Projectile.oldVelocity.Y * 0.25f, 0, Color.Purple with { A = 0 }, 1.5f);
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            Vector2 newVelocity = new Vector2(8f, 0f).RotatedBy(i + MathHelper.TwoPi / 10f, Vector2.Zero);     
+            Projectile deathProj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.position, newVelocity, ProjectileID.ClothiersCurse, Projectile.damage, 0f, Projectile.owner);
+            deathProj.timeLeft = 40;
+            deathProj.extraUpdates = 1;
         }
         
         SoundEngine.PlaySound(SoundID.DD2_SkeletonDeath, Projectile.position);

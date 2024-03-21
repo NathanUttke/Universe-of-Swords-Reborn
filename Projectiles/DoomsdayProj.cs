@@ -41,7 +41,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.ai[0]++;
             if (Projectile.ai[0] % 5f == 0f)
             {
-                Projectile smallFire = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.position, Vector2.UnitY * 5f, ProjectileID.WandOfSparkingSpark, Projectile.damage * 2, 0f, Projectile.owner);
+                Projectile smallFire = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.position, Vector2.UnitY * 5f, ProjectileID.WandOfSparkingSpark, Projectile.damage / 2, 0f, Projectile.owner);
                 smallFire.timeLeft = 300;
                 smallFire.usesLocalNPCImmunity = true;
                 smallFire.localNPCHitCooldown = 17;
@@ -63,11 +63,6 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Projectile geyserFire = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center, -Vector2.UnitY * 4f, ProjectileID.GeyserTrap, Projectile.damage * 2, 0f, Projectile.owner);
-            geyserFire.hostile = false;
-            geyserFire.usesLocalNPCImmunity = true;
-            geyserFire.localNPCHitCooldown = 17;
-
             target.AddBuff(BuffID.OnFire, 300);
             target.AddBuff(BuffID.Weak, 300);
         }
