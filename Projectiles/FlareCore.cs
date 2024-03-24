@@ -33,7 +33,7 @@ public class FlareCore : ModProjectile
         Projectile.ignoreWater = true;
         Projectile.tileCollide = false;
 
-        Projectile.DamageType = DamageClass.Ranged;
+        Projectile.DamageType = DamageClass.Melee;
         Projectile.ArmorPenetration = 30;
         Projectile.alpha = 0;
 
@@ -43,8 +43,7 @@ public class FlareCore : ModProjectile
     public override void AI()
     {        
         Lighting.AddLight(Projectile.position, 0.5f, 0.1f, 0.1f);
-
-        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Red with { A = 0 }, 2f);
+        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Red, 1.5f);
     }
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
@@ -70,8 +69,8 @@ public class FlareCore : ModProjectile
 
         Texture2D texture = TextureAssets.Projectile[Type].Value;
         Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
-        Color drawColor = new (255, 0, 0, 0);
-        Color glowColor = new (255, 64, 64, 0);
+        Color drawColor = new(255, 0, 0, 0);
+        Color glowColor = new(255, 64, 64, 0);
 
         //Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
         //Vector2 origin = sourceRectangle.Size() / 2;       
@@ -92,14 +91,14 @@ public class FlareCore : ModProjectile
         return false;
     }
 
-    public override void Kill(int timeLeft)
+    public override void OnKill(int timeLeft)
     {
         SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
         Projectile.Damage();
         for (int i = 0; i < 16; i++)
         {
-            int explodeDust = Dust.NewDust(Projectile.position, 25, 50, ModContent.DustType<GlowDust>(), 0f, 0f, 100, new Color(255, 64, 64, 0), 2f);
-            Main.dust[explodeDust].velocity = Main.rand.NextVector2Circular(7f, 7f).SafeNormalize(Vector2.Zero);
+            Dust explodeDust = Dust.NewDustDirect(Projectile.position, 25, 50, ModContent.DustType<GlowDust>(), 0f, 0f, 100, new Color(255, 64, 64, 0), 2f);
+            explodeDust.velocity = Main.rand.NextVector2Circular(7f, 7f).SafeNormalize(Vector2.Zero);
         }
     }    
 }
