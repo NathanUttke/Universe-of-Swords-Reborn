@@ -16,7 +16,6 @@ internal class NightmareProjectile : ModProjectile
     {
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
-        ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
     }
     public override void SetDefaults()
     {
@@ -24,7 +23,7 @@ internal class NightmareProjectile : ModProjectile
         Projectile.height = 58;
         Projectile.scale = 1f;
         Projectile.friendly = true;
-        Projectile.penetrate = 1;
+        Projectile.penetrate = 2;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
@@ -35,21 +34,11 @@ internal class NightmareProjectile : ModProjectile
     }
 
     public override void AI()
-    {        
-        float maxDetectRadius = 300f; 
-        float projSpeed = 8f; 
-
-        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple with { A = 0 }, 2f);        
+    {       
+        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple with { A = 0 }, 1.5f);        
 
         Projectile.rotation = Projectile.velocity.ToRotation();
         Projectile.spriteDirection = Projectile.direction;     
-        
-        NPC closestNPC = UniverseUtils.FindClosestNPC(maxDetectRadius, Projectile.Center);
-        if (closestNPC is null) 
-        {
-            return;
-        }        
-        Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed, 0.1f);
     }
 
     public override Color? GetAlpha(Color lightColor) => new Color(195, 82, 255, 127);
@@ -102,13 +91,14 @@ internal class NightmareProjectile : ModProjectile
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.25f, Projectile.oldVelocity.Y * 0.25f, 0, Color.Purple with { A = 0 }, 1.5f);
         }
 
-        for (int i = 0; i < 10; i++)
+        /*for (int i = 0; i < 20; i++)
         {
-            Vector2 newVelocity = new Vector2(8f, 0f).RotatedBy(i + MathHelper.TwoPi / 10f, Vector2.Zero);     
-            Projectile deathProj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.position, newVelocity, ProjectileID.ClothiersCurse, Projectile.damage, 0f, Projectile.owner);
+            Vector2 newVelocity = new Vector2(8f, 0f).RotatedBy(i + MathHelper.TwoPi / 20f);     
+            Projectile deathProj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.position, newVelocity, ProjectileID.ClothiersCurse, Projectile.damage / 2, 0f, Projectile.owner);
             deathProj.timeLeft = 40;
+            deathProj.penetrate = 1;
             deathProj.extraUpdates = 1;
-        }
+        }*/
         
         SoundEngine.PlaySound(SoundID.DD2_SkeletonDeath, Projectile.position);
     }

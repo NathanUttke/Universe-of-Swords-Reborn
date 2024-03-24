@@ -34,32 +34,34 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.localNPCHitCooldown = 12;            
         }
 
+        Player Player => Main.player[Projectile.owner];
+
         public override void AI()
         {
-            base.AI();
             Lighting.AddLight(Projectile.Center, 1.5f, 1f, 1.5f);
-            Player player = Main.player[Projectile.owner];
+            
 
-            if (Projectile.owner == Main.myPlayer && (!player.controlUseItem))
+            if (Projectile.owner == Main.myPlayer && (!Player.controlUseItem))
             {
                 Projectile.Kill();
                 return;
             }
 
-            if (player.dead || !player.active)
+            if (Player.dead || !Player.active)
             {
                 Projectile.Kill();
                 return;
             }
 
-            player.heldProj = Projectile.whoAmI;
-            player.itemTime = player.itemAnimation = 2;
+            Player.heldProj = Projectile.whoAmI;
+            Player.itemTime = Player.itemAnimation = 2;
 
             Projectile.position = Projectile.Center;
             Projectile.velocity = Vector2.Zero;
             Projectile.Center = Main.MouseWorld;
             Projectile.rotation += 0.15f;            
-        }       
+        }      
+        
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))

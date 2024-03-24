@@ -54,7 +54,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Color drawColorGlow = Color.Red;
             drawColorGlow.A = 0;
             Color drawColorEdge = Projectile.GetAlpha(lightColor);
-            drawColorGlow.A = 0;
+            drawColorEdge.A = 0;
 
             Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f, SpriteEffects.None, 0);
 
