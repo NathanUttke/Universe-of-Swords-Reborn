@@ -26,6 +26,7 @@ public class Doomsday : ModItem
 		Item.value = 470000;
 		Item.shoot = ModContent.ProjectileType<DoomsdayProj>();
 		Item.shootSpeed = 12f;
+		Item.crit = 8;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
 		Item.ArmorPenetration = 20;
@@ -39,7 +40,7 @@ public class Doomsday : ModItem
 		{
 			Vector2 newVelocity = velocity * Main.rand.NextFloat(0.9f, 1.25f);
 			newVelocity = newVelocity.RotatedByRandom(0.3f);
-            Projectile.NewProjectileDirect(source, position, newVelocity, type, damage / 2, knockback, player.whoAmI);
+            Projectile.NewProjectileDirect(source, position, newVelocity, type, damage / 3, knockback, player.whoAmI);
         }
         return false;
     }

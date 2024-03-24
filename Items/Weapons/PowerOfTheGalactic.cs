@@ -21,7 +21,7 @@ public class PowerOfTheGalactic : ModItem
         Item.useAnimation = 22;
         Item.damage = 125;
         Item.knockBack = 7f;
-        Item.scale = 1f;
+        Item.scale = 1.25f;
         Item.shoot = ModContent.ProjectileType<GalacticProjectile>();
         Item.shootSpeed = 15f;
         Item.UseSound = SoundID.Item1;
@@ -48,7 +48,7 @@ public class PowerOfTheGalactic : ModItem
     {
         for (int i = 0; i < 2; i++)
         {
-            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(40)) * Main.rand.NextFloat(0.9f, 1.3f), type, damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(40)) * Main.rand.NextFloat(0.9f, 1.3f), type, damage * 2, knockback, player.whoAmI);
         }
         return false;
     }

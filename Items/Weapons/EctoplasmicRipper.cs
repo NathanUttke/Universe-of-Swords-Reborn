@@ -58,15 +58,28 @@ public class EctoplasmicRipper : ModItem
 	{
 		if (!target.immortal && !NPCID.Sets.CountsAsCritter[target.type])
 		{
-            int manaAmount = Item.mana / 2;
+            int manaAmount = Item.mana;
 
 			if (hit.Crit)
 			{
-				manaAmount = (int)(manaAmount * 1.5);
+				manaAmount *= 2;
 			}
 
             player.statMana += manaAmount;
             player.ManaEffect(manaAmount);
+
+
+			if (target.life < 0 && !target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type])
+			{
+				for (int i = 0; i < 3; i++)
+				{
+                    Vector2 newVelocity = (Vector2.One * 10f).RotatedByRandom(MathHelper.Pi);
+                    newVelocity.Normalize();
+                    Projectile energyProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.position, newVelocity * 3f, ProjectileID.SpectreWrath, Item.damage, 0f, player.whoAmI);
+                    energyProj.scale = 0.5f;
+					energyProj.timeLeft = 500;
+                }
+			}
         }
 	}
 }

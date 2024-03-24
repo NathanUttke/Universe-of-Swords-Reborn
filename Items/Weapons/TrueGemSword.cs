@@ -37,6 +37,7 @@ public class TrueGemSword : ModItem
     {
 		int projToShoot = Utils.SelectRandom(Main.rand, ProjectileID.EmeraldBolt, ProjectileID.DiamondBolt, ProjectileID.AmethystBolt, ProjectileID.TopazBolt, ProjectileID.SapphireBolt, ProjectileID.RubyBolt, ProjectileID.AmberBolt);
         Projectile gemProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI);
+		gemProj.extraUpdates = 1;
 		gemProj.DamageType = DamageClass.MeleeNoSpeed;
 		gemProj.timeLeft = 30;
         return false;

@@ -22,7 +22,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.useAnimation = 21;
 
             Item.shoot = ModContent.ProjectileType<MechanicalProj>();
-            Item.shootSpeed = 10f;
+            Item.shootSpeed = 14f;
 
             Item.damage = 90;
             Item.DamageType = DamageClass.Melee;
@@ -47,7 +47,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            position += position.SafeNormalize(Vector2.Zero).RotatedBy(-MathHelper.PiOver2) * 24f;
+            position.Y -= 48f;
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             return false;
         }

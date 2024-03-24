@@ -28,11 +28,7 @@ public class GrandPiano : ModItem
 		Item.damage = 75;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item169;
-		Item.shoot = ModContent.ProjectileType<GrandPianoProjectile>();
-		Item.shootSpeed = 12f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
-		Item.noUseGraphic = true;
-		Item.noMelee = true;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
@@ -49,10 +45,6 @@ public class GrandPiano : ModItem
 		.Register();
 	}
 
-    public override bool CanUseItem(Player player)
-    {
-        return player.ownedProjectileCounts[ModContent.ProjectileType<GrandPianoProjectile>()] < 1;
-    }
 
     /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
