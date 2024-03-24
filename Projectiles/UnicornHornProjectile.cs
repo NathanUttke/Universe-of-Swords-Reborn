@@ -11,6 +11,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override string Texture => ModContent.GetInstance<GiantUnicornHorn>().Texture;
         public override void SetDefaults()
         {
+            Projectile.Size = new(64);
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;

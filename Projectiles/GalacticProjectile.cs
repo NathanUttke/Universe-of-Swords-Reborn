@@ -39,8 +39,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.timeLeft = 90;            
         }
 
-        private static readonly VertexStrip vertexStrip = new();
-
         public override void AI()
         {
             float projSpeed = 8f;
@@ -72,7 +70,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
             for (int i = 0; i < 14; i++)
@@ -88,22 +86,13 @@ namespace UniverseOfSwordsMod.Projectiles
         
         public override bool PreDraw(ref Color lightColor)
         {
-            /*MiscShaderData miscShaderData = GameShaders.Misc["MagicMissile"];
-            MiscShaderData miscShaderData = GameShaders.Misc["GalacticShader"];          
-            miscShaderData.UseColor(Color.Cyan);
-            miscShaderData.UseImage0($"Images/Extra_{ExtrasID.RainbowRodTrailShape}");
-            miscShaderData.UseOpacity(2.25f);
-            miscShaderData.Apply();
-
-            vertexStrip.PrepareStrip(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + Projectile.Size / 2f, 30, false);
-            vertexStrip.DrawTrail();
-            Main.pixelShader.CurrentTechnique.Passes[0].Apply();*/
-
             SpriteBatch spriteBatch = Main.spriteBatch;
             Texture2D galacTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowThing_Cyan");
             Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
+
             Vector2 drawOriginGlow = glowTexture.Size() / 2f;
             Vector2 drawOriginThing = galacTexture.Size() / 2f;
+
             Color drawColorExtra = new(58, 211, 197, 0);
             Color drawColor = Projectile.GetAlpha(lightColor);
             Color drawColorGalac = drawColor;
@@ -128,19 +117,5 @@ namespace UniverseOfSwordsMod.Projectiles
             spriteBatch.Draw(galacTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + Main.GlobalTimeWrappedHourly * 3f, drawOriginThing, 1.25f, spriteEffects, 1);
             return false;
         }
-
-        private Color StripColors(float progressOnStrip)
-        {
-            return Color.Lerp(Color.White, Color.LightCyan, 0.25f);
-        }
-
-        private float StripWidth(float progressOnStrip)
-        {
-            float num = 1f;
-            float lerpValue = Utils.GetLerpValue(0f, 0.2f, progressOnStrip, clamped: true);
-            num *= 1f - (1f - lerpValue) * (1f - lerpValue);
-            return MathHelper.Lerp(0, 40f, num);
-        }
-
     }
 }

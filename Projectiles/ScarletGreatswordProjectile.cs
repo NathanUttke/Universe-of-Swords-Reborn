@@ -44,7 +44,7 @@ namespace UniverseOfSwordsMod.Projectiles
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint);
         }
 
-        private readonly float shootSpeed = 25f;
+        private const float shootSpeed = 25f;
         private const float maxTime = 40f;
         Player Owner => Main.player[Projectile.owner];
         public override void AI()
@@ -81,7 +81,8 @@ namespace UniverseOfSwordsMod.Projectiles
             // Spawn a projectile every 8 ticks
 
             if (Projectile.ai[0] == 8f && Main.myPlayer == Projectile.owner)
-            {                
+            {
+                Projectile.netUpdate = true;
                 Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, velocity * shootSpeed, ModContent.ProjectileType<FlareCore>(), (int)(Projectile.damage * 2f), Projectile.knockBack, Owner.whoAmI);
                 Projectile.ai[0] += 1f;
             }

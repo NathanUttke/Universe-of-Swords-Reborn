@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.GameContent.Drawing;
 using UniverseOfSwordsMod.Utilities;
+using Terraria.ID;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -17,21 +18,25 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = 2;
             Projectile.alpha = 0;
             Projectile.scale = 1f;            
             Projectile.light = 0.4f;
             Projectile.timeLeft = 2000;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 20;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            target.AddBuff(Utils.SelectRandom(Main.rand, BuffID.Ichor, BuffID.Venom, BuffID.Weak, BuffID.DryadsWardDebuff, BuffID.CursedInferno, BuffID.Bleeding), 300);
             ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.ShimmerTownNPCSend, new ParticleOrchestraSettings
             {
                 PositionInWorld = target.Center,                
 
             }, Projectile.owner);
         }
+
         public override void AI()
         {
             Projectile.alpha += 3;
@@ -65,7 +70,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawnOriginGlow = glowSphere.Size() / 2f;
             
             Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor * 0.75f, Projectile.rotation, drawnOriginGlow, Projectile.scale, SpriteEffects.None, 0);
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor, Projectile.rotation + (float)Main.timeForVisualEffects * 0.5f, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor, Projectile.rotation + (float)Main.timeForVisualEffects * 0.5f * Projectile.direction, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
 
             return false;
         }

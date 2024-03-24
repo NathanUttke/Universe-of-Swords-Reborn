@@ -7,11 +7,9 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetDefaults()
         {                     
-            Projectile.width = 12;
-            Projectile.height = 12;
+            Projectile.Size = new(12);
             Projectile.penetrate = -1;
             Projectile.friendly = true;
-            Projectile.hostile = false;
             Projectile.tileCollide = true;
             Projectile.aiStyle = 1;
             Projectile.DamageType = DamageClass.Melee;
@@ -20,7 +18,6 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void AI()
         {         
-            
             Projectile.velocity.Y += 0.1f;
         }
     }
