@@ -13,8 +13,7 @@ public class CaesarSword : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 62;
-		Item.height = 62;
+		Item.Size = new(62);
 		Item.rare = ItemRarityID.Green;
 
         Item.useStyle = ItemUseStyleID.Thrust;
@@ -27,8 +26,8 @@ public class CaesarSword : ModItem
         Item.crit = 8;
 
         Item.value = Item.sellPrice(0, 0, 30, 0);
-		Item.autoReuse = true;	
+		Item.autoReuse = true;
+        Item.useTurnOnAnimationStart = true;
 		Item.ResearchUnlockCount = 1;
-
 	} 
 }

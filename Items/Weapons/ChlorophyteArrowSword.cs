@@ -9,15 +9,10 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class ChlorophyteArrowSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Shoots Chlorophyte arrows");
-	}
 
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
+		Item.Size = new(64);
 		Item.rare = ItemRarityID.Pink;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 40;

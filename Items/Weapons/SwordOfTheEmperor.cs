@@ -24,6 +24,7 @@ public class SwordOfTheEmperor : ModItem
         Item.damage = 90;
         Item.knockBack = 4.5f;
         Item.scale = 1.25f;
+        Item.crit = 8;
         
         Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.autoReuse = true;

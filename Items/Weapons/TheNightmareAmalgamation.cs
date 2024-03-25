@@ -22,8 +22,8 @@ public class TheNightmareAmalgamation : ModItem
 		Item.height = 90;
 		Item.rare = ItemRarityID.Purple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 21;
-		Item.useAnimation = 21;
+		Item.useTime = 20;
+		Item.useAnimation = 20;
 		Item.damage = 120;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item71;
@@ -85,7 +85,6 @@ public class TheNightmareAmalgamation : ModItem
 		.AddIngredient(ModContent.ItemType<TheSwarm>(), 1)
 		.AddIngredient(ModContent.ItemType<FixedSwordOfPower>(), 1)
 		.AddIngredient(ModContent.ItemType<LifeRemovalMachine>(), 1)
-		.AddIngredient(ModContent.ItemType<Executioner>(), 1)
 		.AddIngredient(ModContent.ItemType<Doomsday>(), 1)
 		.AddIngredient(ModContent.ItemType<PurpleRuneBlade>(), 1)
 		.AddTile(TileID.LunarCraftingStation)
@@ -96,7 +95,6 @@ public class TheNightmareAmalgamation : ModItem
 		.AddIngredient(ModContent.ItemType<TheSwarm>(), 1)
 		.AddIngredient(ModContent.ItemType<FixedSwordOfPower>(),1)
 		.AddIngredient(ModContent.ItemType<LifeRemovalMachine>(),1)
-		.AddIngredient(ModContent.ItemType<Executioner>(), 1)
 		.AddIngredient(ModContent.ItemType<Doomsday>(), 1)
 		.AddIngredient(ModContent.ItemType<PurpleRuneBlade>(), 1)
 		.AddTile(TileID.LunarCraftingStation)

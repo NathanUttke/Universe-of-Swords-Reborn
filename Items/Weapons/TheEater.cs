@@ -30,11 +30,11 @@ public class TheEater : ModItem
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         Vector2 hitPosition = Main.rand.NextVector2Circular(50f, 50f);
-        hitPosition.SafeNormalize(hitPosition);
+        hitPosition = hitPosition.SafeNormalize(Vector2.UnitY);
 
         if (target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
         {
-            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 5f, hitPosition / 4f, ProjectileID.TinyEater, damageDone / 3, 4f, player.whoAmI, 0f, 0f);
+            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 5f, hitPosition / 8, ProjectileID.TinyEater, damageDone, 4f, player.whoAmI, 0f, 0f);
             proj.DamageType = DamageClass.Melee;
         }
     }

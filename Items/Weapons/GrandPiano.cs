@@ -18,8 +18,7 @@ public class GrandPiano : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 142;
-		Item.height = 142;
+		Item.Size = new(142);
 		Item.rare = ItemRarityID.Orange;
 		Item.crit = 11;
 		Item.useStyle = ItemUseStyleID.Swing;
@@ -33,7 +32,13 @@ public class GrandPiano : ModItem
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
 	}
-	public override void AddRecipes()
+
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+		player.itemLocation = player.MountedCenter - Vector2.UnitY * 8f;
+    }
+
+    public override void AddRecipes()
 	{		
 		CreateRecipe()
 		.AddIngredient(ModContent.ItemType<BeethovenBeater>(), 1)
@@ -44,7 +49,6 @@ public class GrandPiano : ModItem
 		.AddTile(TileID.Autohammer)
 		.Register();
 	}
-
 
     /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{

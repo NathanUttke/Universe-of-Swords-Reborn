@@ -34,14 +34,13 @@ public class BetterShroomiteBlade : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {              
         float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
-
-        for (int i = 0; i < 3; i++)
-		{
-            Projectile.NewProjectile(source, player.Center.X + Main.rand.Next(-100, 101), player.Center.Y + Main.rand.Next(-100, 101), 0f, 0f, ProjectileID.Mushroom, damage, knockback, player.whoAmI);
-        }
-
         Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale);
         NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI); // Sync the changes in multiplayer.
+
+        for (int i = 0; i < 3; i++)
+        {
+            Projectile.NewProjectile(source, player.Center.X + Main.rand.Next(-100, 101), player.Center.Y + Main.rand.Next(-100, 101), 0f, 0f, ProjectileID.Mushroom, damage, knockback, player.whoAmI);
+        }
 
         return false;
     }

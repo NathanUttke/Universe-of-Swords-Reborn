@@ -49,14 +49,10 @@ public class Horrormageddon : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		float angleSpread = 0.5f;
-		float baseSpeed = MathF.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-		double startingAngle = velocity.ToRotation() - (double)(angleSpread / 2f);
-		double deltaAngle = angleSpread / 2f;
-		for (int numOfProjectiles = 0; numOfProjectiles < 3; numOfProjectiles++)
+		for (int i = -1; i <= 1; i++)
 		{
-            double offsetAngle = startingAngle + deltaAngle * numOfProjectiles;
-			Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, (int)(damage * 1.15f), knockback / 2f, player.whoAmI);
+			Vector2 newVelocity = velocity.RotatedBy(MathHelper.ToRadians(15 * i));
+			Projectile.NewProjectileDirect(source, position + velocity, newVelocity, type, (int)(damage * 1.15f), knockback / 2f, player.whoAmI);
         }
         return false;
     }

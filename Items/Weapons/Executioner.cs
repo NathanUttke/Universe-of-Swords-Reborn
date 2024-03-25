@@ -26,7 +26,7 @@ public class Executioner : ModItem
         Item.knockBack = 6f;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ProjectileID.SeedlerThorn;
-        Item.shootSpeed = 25f;
+        Item.shootSpeed = 12f;
         Item.value = Item.sellPrice(0, 3, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
@@ -35,16 +35,12 @@ public class Executioner : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        float numberProjectiles = 3;
-        float rotation = MathHelper.ToRadians(20f);
-
-        position += Vector2.Normalize(velocity) * 5f;
-        for (int i = 0; i < numberProjectiles; i++)
+        for (int i = 0; i <= 6; i++)
         {
-            Vector2 perturbedSpeed = Utils.RotatedBy(velocity, (double)MathHelper.Lerp(0f - rotation, rotation, i / (numberProjectiles - 1f)), default) * 0.2f;
-			Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage / 3, knockback, player.whoAmI);
+            Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(45));
+            Projectile proj = Projectile.NewProjectileDirect(source, position, newVelocity, type, damage / 3, knockback, player.whoAmI, 1f, 1f);
 			proj.DamageType = DamageClass.MeleeNoSpeed;
-            proj.timeLeft = 80;
+            proj.timeLeft = 25;
         }
         return false;
     }
