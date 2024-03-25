@@ -3,6 +3,8 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
+using Mono.Cecil;
+
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class UltimateArrowSword : ModItem
@@ -32,7 +34,7 @@ public class UltimateArrowSword : ModItem
 	public override void SetDefaults()
 	{
 		Item.damage = 120;
-		Item.DamageType = DamageClass.MeleeNoSpeed; 
+		Item.DamageType = DamageClass.Melee; 
 
 		Item.ResearchUnlockCount = 1;
 
@@ -40,32 +42,28 @@ public class UltimateArrowSword : ModItem
 		Item.height = 64;
 
 		Item.useTime = 8;
-		Item.useAnimation = 30;
+		Item.useAnimation = 20;
 
         Item.autoReuse = true;
-        Item.noUseGraphic = true;
-        Item.noMelee = true;
+        Item.noUseGraphic = false;
+        Item.noMelee = false;
 
 		Item.UseSound = SoundID.Item15;
+		Item.useStyle = ItemUseStyleID.Swing;
 
-		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.knockBack = 8f;
+        Item.shoot = ProjectileID.None;
+        Item.knockBack = 8f;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.rare = ItemRarityID.Lime;
-		Item.shoot = ProjectileID.WoodenArrowFriendly;
+		Item.scale = 1.3f;
+		
 
-        Item.noUseGraphic = true;
 	}
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-		//Vector2 newVelocity = Main.rand.NextVector2CircularEdge(1f, 1f) * (12f + Main.rand.NextFloat() * 2f);
-		//Vector2 newPosition = (Main.MouseWorld - Item.Center) + -Vector2.Zero;
-		//newPosition += Main.rand.NextVector2Circular(24f, 24f);
-		int i = 0;
-		while (i < 2)
-		{
-			i++;
+        for (int i = 0; i < 8; i++)
+        {
             Vector2 v = Main.rand.NextVector2CircularEdge(200f, 200f);
             if (v.Y < 0f)
             {
@@ -73,9 +71,11 @@ public class UltimateArrowSword : ModItem
             }
             v.Y += 100f;
             Vector2 newVelocity = v.SafeNormalize(Vector2.UnitY) * (12f + Main.rand.NextFloat() * 2f);
-            Projectile.NewProjectile(source, Main.MouseWorld + -Vector2.Zero - newVelocity * 20f, newVelocity, shootList[Main.rand.Next(0, shootList.Length)], (int)(damage * 0.75), 0f, player.whoAmI, 0f, Main.MouseWorld.Y - 0f);			
+            Projectile arrowProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center + -Vector2.Zero - newVelocity * 20f, newVelocity, shootList[Main.rand.Next(0, shootList.Length)], (int)(Item.damage * 0.75), 0f, player.whoAmI, 0f);
+            arrowProj.penetrate = 1;
+            arrowProj.extraUpdates = 3;
+			arrowProj.timeLeft = 40;
         }
-        return false;
     }
 
     /*public override void AddRecipes()

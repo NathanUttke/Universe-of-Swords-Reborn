@@ -32,7 +32,7 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.rare = ItemRarityID.Red;
 
         Item.useTime = 7;
-        Item.useAnimation = 25;
+        Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item169;
 

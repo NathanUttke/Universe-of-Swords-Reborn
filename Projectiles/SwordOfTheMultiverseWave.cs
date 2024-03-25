@@ -24,12 +24,13 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate = -1;
             Projectile.friendly = true;            
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
-            Projectile.usesLocalNPCImmunity = true;
+            //Projectile.usesLocalNPCImmunity = true;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.localNPCHitCooldown = 11;
+            //Projectile.localNPCHitCooldown = 11;
             Projectile.alpha = 0;        
             Projectile.extraUpdates = 1;
+            Projectile.stopsDealingDamageAfterPenetrateHits = true;
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -42,18 +43,18 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-
-            if (Projectile.alpha < 255)
-            {
-                Projectile.alpha += 2;
-            }
-            else if (Projectile.alpha > 255)
+            Projectile.alpha += 2;
+            if (Projectile.alpha > 255)
             {
                 Projectile.alpha = 255;
                 Projectile.Kill();
-            }
+            }            
             
-            Projectile.velocity *= 0.96f;
+            Projectile.velocity *= 0.97f;
+            if (Projectile.velocity.Length() < 10f && Projectile.scale > 0f)
+            {
+                Projectile.scale -= 0.01f;
+            }
         }
 
         public override Color? GetAlpha(Color lightColor) => Color.White * Projectile.Opacity;
@@ -73,23 +74,13 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Projectile.spriteDirection == -1)
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
-            }            
+            }          
+           
 
-            for (int i = 0; i < Projectile.oldPos.Length; i++)
-            {
-                if (i % 4 != 0)
-                {
-                    continue;
-                }
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor2, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.LightPink with { A = 0 } * 0.25f, Projectile.rotation, drawOrigin, Projectile.scale * 1.1f, spriteEffects, 0);
+            Main.EntitySpriteDraw(texture, Projectile.oldPos[2] + Projectile.Size / 2 - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor2 with { A = 0 } * 0.125f, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
 
-                Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);                
-
-                projColor *= 0.6f;
-                
-                Main.spriteBatch.Draw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);                
-            }                  
-
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), texture.Frame(), projColor2, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             return false;
         }
     }

@@ -38,6 +38,7 @@ public class FrostburnArrowSword : ModItem
         Projectile frostArrow = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
         frostArrow.timeLeft = 30;
         frostArrow.DamageType = DamageClass.MeleeNoSpeed;
+		frostArrow.extraUpdates = 1;
         return false;
     }
 

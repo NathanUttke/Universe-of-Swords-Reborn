@@ -4,6 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -19,13 +20,14 @@ public class OnyxSword : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 20;
         Item.useAnimation = 20;
-        Item.damage = 40;
+        Item.damage = 35;
         Item.knockBack = 6f;
         Item.shoot = ProjectileID.BlackBolt;
-        Item.shootSpeed = 15f;
+        Item.shootSpeed = 10f;
         Item.UseSound = SoundID.Item1 with { Pitch = 0.35f };
         Item.value = 70500;
         Item.autoReuse = true;
+        Item.noMelee = true;
         Item.DamageType = DamageClass.Melee; 
         Item.ResearchUnlockCount = 1;
     }
@@ -49,7 +51,13 @@ public class OnyxSword : ModItem
             swingCounter = 0;
             Projectile blackBolt = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
             blackBolt.DamageType = DamageClass.MeleeNoSpeed;
+            blackBolt.extraUpdates = 3;
         }
+
+        float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
+        Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), ModContent.ProjectileType<OnyxEnergyProj>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale + 0.2f);
+        NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI); // Sync the changes in multiplayer.
+
         return false;
     }
 

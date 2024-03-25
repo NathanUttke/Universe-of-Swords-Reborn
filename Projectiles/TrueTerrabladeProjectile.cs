@@ -90,7 +90,7 @@ public class TrueTerrabladeProjectile : ModProjectile
             for (int i = 0; i < 20; i++)
             {
                 Vector2 newVelocity = new Vector2(8f, 0f).RotatedBy(i + MathHelper.TwoPi / 20f);
-                Projectile newProj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.position, newVelocity, ModContent.ProjectileType<TrueTerrabladeProjectile>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, 0f, 1f);
+                Projectile newProj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.position, newVelocity, ModContent.ProjectileType<TrueTerrabladeProjectile>(), Projectile.damage / 10, Projectile.knockBack, Projectile.owner, 0f, 1f);
                 newProj.penetrate = 1;            
             }
         }

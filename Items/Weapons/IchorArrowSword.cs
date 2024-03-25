@@ -38,6 +38,7 @@ public class IchorArrowSword : ModItem
 		Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
 		proj.timeLeft = 30;
 		proj.DamageType = DamageClass.MeleeNoSpeed;
+		proj.extraUpdates = 1;
 		return false;
     }
 
