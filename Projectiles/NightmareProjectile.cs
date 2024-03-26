@@ -15,17 +15,16 @@ internal class NightmareProjectile : ModProjectile
     public override void SetStaticDefaults()
     {
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-        ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+        ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
     }
     public override void SetDefaults()
     {
-        Projectile.width = 54;
-        Projectile.height = 58;
+        Projectile.Size = new(40);
         Projectile.scale = 1f;
         Projectile.friendly = true;
         Projectile.penetrate = 2;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
-        Projectile.tileCollide = false;
+        Projectile.tileCollide = true;
         Projectile.ignoreWater = true;
         Projectile.timeLeft = 30;        
         Projectile.light = 0.25f;
@@ -74,14 +73,16 @@ internal class NightmareProjectile : ModProjectile
             float num = 10 - i;
             Color drawColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
             drawColor *= num / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-            spriteBatch.Draw(voidTextureExtra, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + Main.GlobalTimeWrappedHourly * 2f, drawOrigin, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
-            spriteBatch.Draw(texture, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, (Projectile.scale) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
+            spriteBatch.Draw(voidTextureExtra, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + (float)Main.timeForVisualEffects * 0.1f, drawOrigin, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
+            spriteBatch.Draw(texture, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
         }
 
+        spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White * 0.25f , Projectile.rotation, drawOrigin, Projectile.scale * 1.125f, spriteEffects, 0);
         spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
 
         return false;
     }
+
 
     public override void OnKill(int timeLeft)
     {
