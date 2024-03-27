@@ -83,7 +83,8 @@ public class SwordOfTheMultiverseNew : ModItem
 
             currentMode++;
             Item.NetStateChanged();
-            Main.NewText($"[c/6508CF:Sword Of The Multiverse: Mode {currentMode} has been selected.]");
+            //Main.NewText($"[c/6508CF:Mode {currentMode} has been selected.]");
+            CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), Colors.RarityPurple, $"Mode {currentMode} has been selected.");
             player.SetItemTime(15);
         }
 

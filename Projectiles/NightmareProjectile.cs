@@ -19,25 +19,32 @@ internal class NightmareProjectile : ModProjectile
     }
     public override void SetDefaults()
     {
-        Projectile.Size = new(40);
+        Projectile.Size = new(30);
         Projectile.scale = 1f;
         Projectile.friendly = true;
         Projectile.penetrate = 2;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
-        Projectile.tileCollide = true;
+        Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
-        Projectile.timeLeft = 30;        
+        Projectile.timeLeft = 80;        
         Projectile.light = 0.25f;
         Projectile.extraUpdates = 1;
         Projectile.aiStyle = -1;
+        Projectile.usesLocalNPCImmunity = true;
     }
 
     public override void AI()
     {       
-        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple with { A = 0 }, 1.5f);        
+        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple with { A = 0 }, 1.5f);
 
+        Projectile.velocity *= 0.97f;
         Projectile.rotation = Projectile.velocity.ToRotation();
         Projectile.spriteDirection = Projectile.direction;     
+    }
+
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+    {
+        target.AddBuff(BuffID.ShadowFlame, 300);
     }
 
     public override Color? GetAlpha(Color lightColor) => new Color(195, 82, 255, 127);

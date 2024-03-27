@@ -24,7 +24,7 @@ public class CorruptCrystallus : ModItem
         Item.knockBack = 5f;
 
         Item.shoot = ModContent.ProjectileType<CorruptCrystallusProj>();
-        Item.shootSpeed = 8f;
+        Item.shootSpeed = 6f;
 
         Item.value = Item.sellPrice(0, 1, 0, 0);
         Item.autoReuse = true;
@@ -36,7 +36,7 @@ public class CorruptCrystallus : ModItem
 	{	
 		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.MediumOrchid, 2f);
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.MediumOrchid, 1.25f);
 		}
 	}
     public override void AddRecipes()

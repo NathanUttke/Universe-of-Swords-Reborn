@@ -63,7 +63,6 @@ public class GreatswordOfTheCosmos : ModItem
 			.AddIngredient(ItemID.StarWrath, 1)
 			.AddIngredient(ModContent.ItemType<LunarOrb>(), 2)
 			.AddIngredient(ItemID.MeteoriteBar, 30)
-			.AddIngredient(ItemID.HellstoneBar, 30)
 			.AddIngredient(ModContent.ItemType<Orichalcon>(), 15)
 			.AddIngredient(ItemID.LunarBar, 25)
 			.AddIngredient(ModContent.ItemType<SwordMatter>(), 50)

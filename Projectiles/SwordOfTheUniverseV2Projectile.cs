@@ -17,6 +17,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.height = 42;
             Projectile.tileCollide = false;
             Projectile.friendly = true;
+            Projectile.ignoreWater = true;
             Projectile.aiStyle = -1;
             Projectile.penetrate = 2;
             Projectile.alpha = 0;
@@ -69,7 +70,8 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 drawOrigin = texture.Size() / 2f;
             Vector2 drawnOriginGlow = glowSphere.Size() / 2f;
             
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor * 0.75f, Projectile.rotation, drawnOriginGlow, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, defaultColor * 0.5f, Projectile.rotation, drawnOriginGlow, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor * 0.25f, Projectile.rotation + (float)Main.timeForVisualEffects * 0.5f * Projectile.direction, drawOrigin, Projectile.scale * 1.25f, SpriteEffects.None, 0);  
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, defaultColor, Projectile.rotation + (float)Main.timeForVisualEffects * 0.5f * Projectile.direction, drawOrigin, Projectile.scale, SpriteEffects.None, 0);  
 
             return false;

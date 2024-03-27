@@ -32,7 +32,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 20;
-            ProjectileID.Sets.TrailingMode[Type] = 2;
+            ProjectileID.Sets.TrailingMode[Type] = 4;
         }
         public override void SetDefaults()
         {
@@ -130,6 +130,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.soundDelay = 30;
                 SoundEngine.PlaySound(SoundID.Item1, Projectile.position);
             }
+            Projectile.scale = MathHelper.SmoothStep(0.75f, 1.25f, MathF.Sin(SwingTimer / 4f));
 
             Projectile.rotation = MathHelper.Lerp(-MathF.Sin(SwingTimer / 4f) * Owner.direction, 4f * Owner.direction, MathF.Sin(SwingTimer / 4f));
             if (Owner.direction < 0)
@@ -143,6 +144,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 CurrentAIState = AIState.Throwing;
                 SwingTimer = 0f;
                 Projectile.velocity = unitVectorTowardsMouse * 14f + Owner.velocity;
+                Projectile.scale = 1f;
                 Projectile.netUpdate = true;                           
             }
             Projectile.Center = Owner.MountedCenter;

@@ -39,14 +39,10 @@ public class CrystalVineSword : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        float spread = 1.75f;
-        float baseSpeed = velocity.Length();
-        double startAngle = velocity.ToRotation() - (double)(spread / 2f);
-        double deltaAngle = spread / 2f;
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < 20; i++)
         {
-            double offsetAngle = startAngle + deltaAngle * i;
-            Projectile vileProj = Projectile.NewProjectileDirect(source, position, new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle)), type, damage, knockback, player.whoAmI, 0f, 0f);
+            Vector2 newVelocity = new Vector2(velocity.X, 0).RotatedBy(i + MathHelper.TwoPi / 20);
+            Projectile vileProj = Projectile.NewProjectileDirect(source, position, newVelocity, type, damage, knockback, player.whoAmI, 0f, 0f);
             vileProj.ArmorPenetration = 12;
         }
         return false;
@@ -63,6 +59,6 @@ public class CrystalVineSword : ModItem
     }
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
-        player.itemLocation.Y -= 1f * player.gravDir;
+        player.itemLocation.Y = player.Center.Y;
     }
 }

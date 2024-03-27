@@ -13,6 +13,13 @@ namespace UniverseOfSwordsMod.Projectiles
     internal class SuperInflationHoldoutProj : ModProjectile
     {
         public override string Texture => ModContent.GetInstance<SuperInflation>().Texture;
+
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Type] = 20;
+            ProjectileID.Sets.TrailingMode[Type] = 2;
+        }
+
         public override void SetDefaults()
         {
             Projectile.Size = new(128);
@@ -24,7 +31,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.ignoreWater = true;
             Projectile.ownerHitCheck = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 20;
+            Projectile.localNPCHitCooldown = 23;
         }
 
         Player Owner => Main.player[Projectile.owner];
@@ -154,8 +161,15 @@ namespace UniverseOfSwordsMod.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             Color color = Projectile.GetAlpha(lightColor);
+            Color colorTrail = Color.Gold;
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
+
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                colorTrail *= 0.75f;
+                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + texture.Size() / 2f, null, colorTrail with { A = 0 } * 0.125f, Projectile.oldRot[i] - MathHelper.TwoPi, new Vector2(0f * Owner.direction, texture.Height), Projectile.scale, SpriteEffects.None, 0);
+            }
 
             spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, color, Projectile.rotation, new Vector2(0f * Owner.direction, texture.Height), Projectile.scale, SpriteEffects.None, 0);
             return false;

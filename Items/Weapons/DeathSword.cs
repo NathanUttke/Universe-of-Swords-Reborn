@@ -33,7 +33,7 @@ public class DeathSword : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.MediumOrchid, 2f);
+            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.MediumOrchid, 1f);
         }
     }
 }

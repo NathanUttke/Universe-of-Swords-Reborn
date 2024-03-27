@@ -49,8 +49,9 @@ public class OnyxSword : ModItem
         if (swingCounter == 3)
         {
             swingCounter = 0;
-            Projectile blackBolt = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+            Projectile blackBolt = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * 1.25f), knockback, player.whoAmI);
             blackBolt.DamageType = DamageClass.MeleeNoSpeed;
+            blackBolt.usesLocalNPCImmunity = true;
             blackBolt.extraUpdates = 3;
         }
 

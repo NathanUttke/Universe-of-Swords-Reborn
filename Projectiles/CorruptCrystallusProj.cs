@@ -37,16 +37,15 @@ public class CorruptCrystallusProj : ModProjectile
 		base.AI();
 		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.MediumOrchid, 1f);
+			Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.MediumOrchid, 1.25f);
 		}
 	}
 
-	public override void Kill(int timeLeft)
+	public override void OnKill(int timeLeft)
 	{
-
 		for (int i = 0; i < 10; i++)
 		{
-			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.MediumOrchid, 1f);
+			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.MediumOrchid, 1.25f);
 		}
 		SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
 	}

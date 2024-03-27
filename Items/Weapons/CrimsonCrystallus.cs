@@ -20,7 +20,7 @@ public class CrimsonCrystallus : ModItem
 		Item.damage = 18;
 		Item.knockBack = 5f;
 		Item.shoot = ModContent.ProjectileType<Tier2CProjectile>();
-		Item.shootSpeed = 8f;
+		Item.shootSpeed = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
@@ -32,7 +32,7 @@ public class CrimsonCrystallus : ModItem
 	{					
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Red, 2f);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Salmon, 1.25f);
 			Main.dust[dust].noGravity = true;
 		}
 	}

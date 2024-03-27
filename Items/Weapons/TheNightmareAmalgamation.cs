@@ -21,31 +21,27 @@ public class TheNightmareAmalgamation : ModItem
 		Item.width = 90;
 		Item.height = 90;
 		Item.rare = ItemRarityID.Purple;
-		Item.useStyle = ItemUseStyleID.Swing;
+		Item.ArmorPenetration = 20;
+		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 120;
+		Item.damage = 140;
 		Item.knockBack = 8f;
-		Item.UseSound = SoundID.Item71;
-		Item.shoot = ModContent.ProjectileType<NightmareProjectile>();
-		Item.shootSpeed = 15f;
+		Item.shoot = ModContent.ProjectileType<NightmareHoldoutProj>();
+		Item.shootSpeed = 1f;
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; 
+		Item.DamageType = DamageClass.MeleeNoSpeed; 
 		Item.ResearchUnlockCount = 1;
+		Item.noMelee = true;
+		Item.noUseGraphic = true;
 	}
 
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+	/*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-        /*for (int i = 0; i < 2; i++)
-        {
-            Vector2 newVelocity = velocity * Main.rand.NextFloat(0.9f, 1.25f);
-            newVelocity = newVelocity.RotatedByRandom(0.3f);
-            Projectile.NewProjectileDirect(source, position, newVelocity, type, damage * 3, knockback, player.whoAmI);
-        }*/
-        Projectile.NewProjectileDirect(source, position, velocity, type, damage * 2, knockback, player.whoAmI);
+        Projectile.NewProjectileDirect(source, position - Vector2.One * 30f, velocity, type, damage * 2, knockback, player.whoAmI);
         return false;
-    }
+    }*/
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
