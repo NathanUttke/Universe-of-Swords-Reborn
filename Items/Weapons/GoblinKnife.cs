@@ -30,6 +30,7 @@ public class GoblinKnife : ModItem
         Item.DamageType = DamageClass.Melee; 
         Item.ResearchUnlockCount = 1;
     }
+
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (!target.HasBuff(BuffID.Bleeding))

@@ -17,8 +17,7 @@ public class LisztLasher : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 128;
-		Item.height = 128;
+		Item.Size = new(128);
 		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;

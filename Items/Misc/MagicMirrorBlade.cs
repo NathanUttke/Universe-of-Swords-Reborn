@@ -57,15 +57,15 @@ public class MagicMirrorBlade : ModItem
             }
 			player.grappling[0] = -1;
 			player.grapCount = 0;
-			for (int p = 0; p < Main.maxProjectiles; p++)
+			for (int i = 0; i < Main.maxProjectiles; i++)
 			{
-				if (Main.projectile[p].active && Main.projectile[p].owner == player.whoAmI && Main.projectile[p].aiStyle == 7)
+				if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == 7)
 				{
-					Main.projectile[p].Kill();
+					Main.projectile[i].Kill();
 				}
 			}
 			player.Spawn(PlayerSpawnContext.RecallFromItem);
-			for (int d2 = 0; d2 < 30; d2++)
+			for (int j = 0; j < 30; j++)
 			{
                 ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.StardustPunch, new ParticleOrchestraSettings
                 {

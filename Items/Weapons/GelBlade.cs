@@ -9,8 +9,7 @@ public class GelBlade : ModItem
 {
     public override void SetDefaults()
     {
-        Item.width = 54;
-        Item.height = 54;
+        Item.Size = new(54);
         Item.rare = ItemRarityID.White;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 30;
@@ -35,9 +34,6 @@ public class GelBlade : ModItem
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         target.AddBuff(BuffID.Slimed, 400, false);
-        if (!target.HasBuff(BuffID.Slow))
-        {
-            target.AddBuff(BuffID.Slow, 400, false);
-        }
+        target.AddBuff(BuffID.Slow, 400, false);
     }
 }
