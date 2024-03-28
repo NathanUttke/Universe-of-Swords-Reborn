@@ -52,7 +52,7 @@ public class Horrormageddon : ModItem
 		for (int i = -1; i <= 1; i++)
 		{
 			Vector2 newVelocity = velocity.RotatedBy(MathHelper.ToRadians(15 * i));
-			Projectile.NewProjectileDirect(source, position + velocity, newVelocity, type, (int)(damage * 1.15f), knockback / 2f, player.whoAmI);
+			Projectile.NewProjectileDirect(source, position + velocity, newVelocity, type, damage, knockback / 2f, player.whoAmI);
         }
         return false;
     }

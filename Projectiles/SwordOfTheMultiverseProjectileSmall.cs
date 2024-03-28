@@ -30,7 +30,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.alpha = 0;           
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 6;
+            Projectile.localNPCHitCooldown = 8;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             AIType = ProjectileID.Bullet;

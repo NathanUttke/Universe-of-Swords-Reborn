@@ -135,7 +135,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 return;
             }
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Vector2 offsetPosition = new(target.position.X + Main.rand.Next(-400, 400), target.position.Y - Main.rand.Next(500, 800));
                 Vector2 spawnVelocity = new(target.Center.X - offsetPosition.X, target.Center.Y - offsetPosition.Y);
@@ -146,7 +146,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 spawnVelocity.X *= spawnDistance;
                 spawnVelocity.Y *= spawnDistance;
 
-                Projectile summonProjectile = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), offsetPosition, spawnVelocity, ProjectileID.RubyBolt, Projectile.damage / 3, 5f, Projectile.owner, 0f, 0f);
+                Projectile summonProjectile = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), offsetPosition, spawnVelocity, ProjectileID.RubyBolt, Projectile.damage / 2, 5f, Projectile.owner, 0f, 0f);
                 summonProjectile.penetrate = 1;
                 summonProjectile.tileCollide = false;
                 summonProjectile.DamageType = DamageClass.MeleeNoSpeed;

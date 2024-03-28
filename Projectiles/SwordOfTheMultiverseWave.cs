@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using System;
+using Terraria.GameContent.Drawing;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -38,6 +39,17 @@ namespace UniverseOfSwordsMod.Projectiles
             float _ = 0f;
             Vector2 projVelocity = Projectile.velocity.SafeNormalize(Vector2.UnitY).RotatedBy(-MathHelper.PiOver2) * Projectile.scale;            
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - projVelocity * 80f, Projectile.Center + projVelocity * 80f, 16f * Projectile.scale, ref _);
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.Weak, 300);
+            target.AddBuff(BuffID.Bleeding, 300);
+
+            ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.PrincessWeapon, new ParticleOrchestraSettings
+            {
+                PositionInWorld = target.Center,
+            }, Projectile.owner);
         }
 
         public override void AI()

@@ -29,7 +29,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.aiStyle = -1;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 2;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;            
         }
@@ -59,7 +59,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.position = Projectile.Center;
             Projectile.velocity = Vector2.Zero;
             Projectile.Center = Main.MouseWorld;
-            Projectile.rotation += 0.15f;            
+            Projectile.rotation += Projectile.direction * 0.11f;            
         }      
         
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

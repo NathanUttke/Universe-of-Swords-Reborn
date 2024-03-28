@@ -31,7 +31,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate = -1;
             Projectile.timeLeft = 30;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 15;
         }
         public override void AI()
         {            
@@ -68,7 +67,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
             for (int i = 0; i < 14; i++)

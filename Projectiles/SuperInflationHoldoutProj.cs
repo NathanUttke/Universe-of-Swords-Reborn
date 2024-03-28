@@ -115,7 +115,7 @@ namespace UniverseOfSwordsMod.Projectiles
                     Vector2 vector52 = new Vector2(mousePosX, mousePosY).SafeNormalize(Vector2.UnitY) * 9f;
                     v5 = v5.SafeNormalize(vector52) * 9f;
                     v5 = Vector2.Lerp(v5, vector52, 0.25f);
-                    Projectile coinProj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), vector51, v5, ProjectileID.GoldCoin, Projectile.damage / 3, Projectile.knockBack, Projectile.owner);
+                    Projectile coinProj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), vector51, v5, ProjectileID.GoldCoin, Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     coinProj.timeLeft = 40;
                 }
                 Timer++;
