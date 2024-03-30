@@ -16,7 +16,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
         public override void SetDefaults()
@@ -30,7 +30,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.ownerHitCheck = true;
-            Projectile.scale = 1f;
+            Projectile.scale = 1.25f;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 18;
         }
@@ -39,7 +39,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             float projRotation = Projectile.rotation - MathHelper.PiOver4 + MathHelper.Pi * Math.Sign(Projectile.velocity.X);
             float collisionPoint = 0f;
-            float boxSize = 160f;
+            float boxSize = 160f * Projectile.scale;
 
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint);
         }
@@ -157,12 +157,12 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 drawOrigin = new(0f * Owner.direction, texture.Height);
             SpriteBatch spriteBatch = Main.spriteBatch;
-            Color projColor = new(255, 255, 255, 0);
+            Color projColor = Color.Salmon with { A = 0 };
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                projColor *= 0.6f;
-                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f, null, projColor, Projectile.oldRot[i], drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+                projColor *= 0.75f;
+                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f, null, projColor * 2f, Projectile.oldRot[i], drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             }
 
             spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
