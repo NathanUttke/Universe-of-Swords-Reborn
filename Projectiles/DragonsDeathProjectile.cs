@@ -30,6 +30,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.ownerHitCheck = true;
+            Projectile.scale = 1.25f;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 20;
         }
@@ -38,9 +39,9 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             float projRotation = Projectile.rotation - MathHelper.PiOver4 + MathHelper.Pi * Math.Sign(Projectile.velocity.X);
             float collisionPoint = 0f;
-            float boxSize = 160f;
+            float boxSize = 160f * Projectile.scale;
 
-            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint);
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f, ref collisionPoint);
         }
 
         private const float UseTime = 50f;
@@ -101,7 +102,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Owner.heldProj = Projectile.whoAmI;
             Owner.SetDummyItemTime(2);
             Owner.itemRotation = MathHelper.WrapAngle(Projectile.rotation);
-            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
+            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.Pi + MathHelper.PiOver4);
         }
 
         public override bool PreDraw(ref Color lightColor)
