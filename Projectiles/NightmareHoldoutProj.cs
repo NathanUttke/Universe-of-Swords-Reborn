@@ -100,6 +100,8 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Weak, 300);
+            target.AddBuff(BuffID.Bleeding, 300);
+            target.AddBuff(BuffID.ShadowFlame, 800);
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -107,7 +109,6 @@ namespace UniverseOfSwordsMod.Projectiles
             float collisionPoint = 0f;
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Owner.Center, Owner.Center + Projectile.rotation.ToRotationVector2() * 110f * Projectile.scale, 20, ref collisionPoint);
         }
-
 
         public override bool PreDraw(ref Color lightColor)
         {
