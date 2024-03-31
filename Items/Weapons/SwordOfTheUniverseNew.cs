@@ -44,7 +44,9 @@ public class SwordOfTheUniverseNew : ModItem
 
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
-	}
+
+        Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
+    }
 
     public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
     {

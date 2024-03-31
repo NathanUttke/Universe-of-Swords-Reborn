@@ -33,7 +33,8 @@ public class EdgeLord : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
-	}
+        Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
+    }
 
 	public override void AddRecipes()
 	{

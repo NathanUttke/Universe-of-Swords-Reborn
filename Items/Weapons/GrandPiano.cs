@@ -25,12 +25,14 @@ public class GrandPiano : ModItem
 		Item.useTime = 20;
 		Item.useAnimation = 20;
 		Item.damage = 75;
-		Item.knockBack = 8f;
+		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item169;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
+		Item.ArmorPenetration = 20;
 		Item.DamageType = DamageClass.Melee; 
 		Item.ResearchUnlockCount = 1;
+		Item.holdStyle = ItemHoldStyleID.HoldGuitar;
 	}
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -68,17 +70,8 @@ public class GrandPiano : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-        if (!target.HasBuff(BuffID.Bleeding))
-        {
-            target.AddBuff(BuffID.Bleeding, 400);
-        }
-        if (!target.HasBuff(BuffID.Weak))
-        {
-            target.AddBuff(BuffID.Weak, 400);
-        }
-        if (!target.HasBuff(BuffID.Confused))
-		{
-			target.AddBuff(BuffID.Confused, 400);
-		}
-	}
+        target.AddBuff(BuffID.Bleeding, 400);
+        target.AddBuff(BuffID.Weak, 400);
+        target.AddBuff(BuffID.Confused, 400);
+    }
 }

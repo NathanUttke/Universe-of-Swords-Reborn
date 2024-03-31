@@ -54,6 +54,8 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.ResearchUnlockCount = 1;
         Item.reuseDelay = 0;
         Item.ArmorPenetration = 40;
+
+        Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
     }
 
     public override void NetSend(BinaryWriter writer)

@@ -9,8 +9,7 @@ public class FingerOfDoom : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
+		Item.Size = new(64);
 		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 13;
@@ -23,7 +22,8 @@ public class FingerOfDoom : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
 		Item.ResearchUnlockCount = 1;
-	}
+        Item.holdStyle = ItemHoldStyleID.HoldUp;
+    }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {

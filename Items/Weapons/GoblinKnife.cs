@@ -29,6 +29,7 @@ public class GoblinKnife : ModItem
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
         Item.ResearchUnlockCount = 1;
+        Item.holdStyle = ItemHoldStyleID.HoldUp;
     }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

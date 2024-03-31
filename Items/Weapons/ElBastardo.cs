@@ -14,8 +14,7 @@ public class ElBastardo : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 86;
-		Item.height = 86;
+		Item.Size = new(86);
 		Item.scale = 1.1f;
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
