@@ -18,14 +18,13 @@ public class TheNightmareAmalgamation : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 90;
-		Item.height = 90;
+		Item.Size = new(90);
 		Item.rare = ItemRarityID.Purple;
 		Item.ArmorPenetration = 20;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 140;
+		Item.damage = 150;
 		Item.knockBack = 8f;
 		Item.shoot = ModContent.ProjectileType<NightmareHoldoutProj>();
 		Item.shootSpeed = 1f;
@@ -36,12 +35,6 @@ public class TheNightmareAmalgamation : ModItem
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 	}
-
-	/*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-        Projectile.NewProjectileDirect(source, position - Vector2.One * 30f, velocity, type, damage * 2, knockback, player.whoAmI);
-        return false;
-    }*/
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
@@ -57,21 +50,6 @@ public class TheNightmareAmalgamation : ModItem
 			dust2.noGravity = true;
 		}
 	}
-
-    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-    {      
-
-        if (!target.HasBuff(BuffID.ShadowFlame))
-        {
-            target.AddBuff(BuffID.ShadowFlame, 800);
-        }
-
-        if (Main.rand.NextBool(3) && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type])
-        {
-            player.statLife += 3;
-            player.HealEffect(3, true);
-        }
-    }
 
     public override void AddRecipes()
 	{
