@@ -36,7 +36,7 @@ public class DoubleBladedLightsaber : ModItem
 
 		Item.UseSound = SoundID.Item15;
 
-		Item.useStyle = ItemUseStyleID.Shoot;
+		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 8f;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.rare = ItemRarityID.Lime;
@@ -47,7 +47,17 @@ public class DoubleBladedLightsaber : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		return player.ownedProjectileCounts[Item.shoot] <= 6;
+		if (player.ownedProjectileCounts[Item.shoot] >= 6)
+		{
+			return false;
+		}
+
+        for (int i = 1; i <= 6; i++)
+        {
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, i - 1, i * 12f);
+        }
+
+        return false;
     }
     public override void AddRecipes()
 	{
