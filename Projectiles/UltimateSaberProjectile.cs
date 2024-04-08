@@ -19,43 +19,41 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void SetDefaults()
         {            
-            Projectile.width = 56;
-            Projectile.height = 56;
+            Projectile.Size = new(56);
             Projectile.aiStyle = -1;
             Projectile.alpha = 0;
-            Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
+            Projectile.friendly = true;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
         }
 
         private bool _initialized;
         Player Owner => Main.player[Projectile.owner];
+
+        public float AITimer
+        {
+            get => Projectile.ai[1];
+            set => Projectile.ai[1] = value;
+        }
+
         public override void AI()
         {
-            base.AI();          
-
-            float rad = MathHelper.ToRadians(Projectile.ai[1] * 5f);            
-            float distance = 90;
-            Projectile.ai[1] += 1f;
-
-            float posX = Owner.Center.X - (int)(Math.Cos(rad) * distance) - Projectile.width / 2;
-            float posY = Owner.Center.Y - (int)(Math.Sin(rad) * distance) - Projectile.height / 2;            
-
-            Projectile.rotation = Owner.Center.AngleTo(Projectile.Center) + MathHelper.PiOver4;
-            Projectile.position = new Vector2(posX, posY);
-
             if (Main.myPlayer == Projectile.owner && (!Owner.channel || !Owner.controlUseItem || Owner.noItems || Owner.CCed))
             {
                 Projectile.Kill();
             }
 
-            if (!_initialized)
-            {                 
-                Projectile.frame = Owner.ownedProjectileCounts[Type];                
-                _initialized = true;
-            }
+            Projectile.frame = (int)Projectile.ai[0];
+            float rad = MathHelper.ToRadians(AITimer * 5f) * Owner.direction;
+            Vector2 position = Owner.Center - rad.ToRotationVector2() * 90f - Projectile.Size / 2;
+
+            AITimer++;            
+
+            // Point to the player's center
+            Projectile.rotation = Owner.Center.AngleTo(Projectile.Center) + MathHelper.PiOver4;
+            Projectile.position = position;
         }
 
         public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
@@ -72,12 +70,14 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + sourceRectangle.Size() / 2f;
+                Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f;
                 projColor *= 0.75f;
                 spriteBatch.Draw(texture, drawPos, sourceRectangle, projColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             }
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);            
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White with { A = 0 } * 0.25f, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale * 1.125f, SpriteEffects.None, 0);
+
             return false;
         }
     }
