@@ -75,7 +75,7 @@ public class SwordOfTheMultiverseNew : ModItem
 
     public override void HoldItem(Player player)
     {        
-        if (player.whoAmI == Main.myPlayer && PlayerInput.Triggers.Current.MouseRight && !Main.mapFullscreen && !player.controlUseItem && player.ItemTimeIsZero)
+        if (player.whoAmI == Main.myPlayer && player.controlUseTile && !Main.mapFullscreen && !player.controlUseItem && player.ItemTimeIsZero)
         {
 
             if (currentMode > MaxModes)
