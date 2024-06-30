@@ -32,7 +32,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             {
                 npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<SwordMatter>(), 8, 3, 8));               
             }
-            if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
+            if (npc.boss && System.Array.IndexOf([NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail], npc.type) > -1)
             {
                 npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<TheEater>()));
             }
@@ -64,9 +64,6 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
                 case NPCID.TheDestroyer:
                     npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<DestroyerSword>(), 1, 1, 1));
                     break;   
-                case NPCID.Plantera:
-                    npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<Executioner>(), 1, 1, 1));
-                    break;
                 case NPCID.CultistBoss:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Doomsday>(), 1));
                     break;
