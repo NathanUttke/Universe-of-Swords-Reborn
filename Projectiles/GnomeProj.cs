@@ -64,14 +64,11 @@ namespace UniverseOfSwordsMod.Projectiles
                     screenPos.X += Main.screenWidth;
                 }
                 screenPos.Y += Main.rand.Next(Main.screenHeight);
-                //Vector2 screenPosition = new(screenPos.X, screenPos.Y);
-                Vector2 targetPos = new(target.Center.X - screenPos.X, target.Center.Y - screenPos.Y);
-                targetPos.X += Main.rand.Next(-50, 51) * 0.1f;
-                targetPos.Y += Main.rand.Next(-50, 51) * 0.1f;
-                float targetDist = targetPos.Length();
-                targetDist = 24f / targetDist;
-                targetPos.X *= targetDist;
-                targetPos.Y *= targetDist;
+                Vector2 targetPos = target.Center - screenPos;
+                targetPos.X += Main.rand.Next(-5, 6);
+                targetPos.Y += Main.rand.Next(-5, 6);
+                targetPos.Normalize();
+                targetPos *= 24f;
                 Projectile gnomProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), screenPos, targetPos, Type, (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner, 0f, 1f);
                 gnomProj.timeLeft = 100;
                 gnomProj.penetrate = -1;
@@ -105,7 +102,7 @@ namespace UniverseOfSwordsMod.Projectiles
             return false;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.position);
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(Projectile.damage * 0.95f), 4f, Projectile.owner, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);

@@ -22,7 +22,7 @@ public class FlareCore : ModProjectile
     public override void SetDefaults()
     {
         Projectile.width = 22;
-        Projectile.height = 46;
+        Projectile.height = 22;
 
         Projectile.scale = 1.15f;
         Projectile.aiStyle = -1;
@@ -39,11 +39,15 @@ public class FlareCore : ModProjectile
 
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 13;
+        Projectile.noEnchantmentVisuals = true;
     }
     public override void AI()
     {        
         Lighting.AddLight(Projectile.position, 0.5f, 0.1f, 0.1f);
-        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Red, 1.5f);
+        for (int i = 0; i < 5; i++)
+        {
+            Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), -Projectile.velocity.X * 0.1f, -Projectile.velocity.Y * 0.1f, 0, new Color(255, 64, 64, 0), 0.75f);
+        }
     }
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
@@ -69,11 +73,11 @@ public class FlareCore : ModProjectile
 
         Texture2D texture = TextureAssets.Projectile[Type].Value;
         Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
-        Color drawColor = new(255, 0, 0, 0);
+        Color drawColor = new(255, 127, 127, 0);
         Color glowColor = new(255, 64, 64, 0);
 
         //Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
-        //Vector2 origin = sourceRectangle.Size() / 2;       
+        Vector2 origin = Vector2.UnitX * texture.Width / 2;       
 
         for (int j = 0; j < Projectile.oldPos.Length; j++)
         {
@@ -83,10 +87,10 @@ public class FlareCore : ModProjectile
             glowColor *= 0.75f;
 
             spriteBatch.Draw(glowTexture, drawPos, null, glowColor, Projectile.rotation, glowTexture.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
-            spriteBatch.Draw(texture, drawPos, null, drawColor, Projectile.velocity.ToRotation() + MathHelper.PiOver2, Projectile.Size / 2f, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);            
+            spriteBatch.Draw(texture, drawPos, null, drawColor, Projectile.velocity.ToRotation() + MathHelper.PiOver2, origin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);            
         }
 
-        spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White with { A = 127 }, Projectile.velocity.ToRotation() + MathHelper.PiOver2, Projectile.Size / 2f, Projectile.scale, SpriteEffects.None, 0);
+        spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White with { A = 127 }, Projectile.velocity.ToRotation() + MathHelper.PiOver2, origin, Projectile.scale, SpriteEffects.None, 0);
 
         return false;
     }
@@ -95,10 +99,11 @@ public class FlareCore : ModProjectile
     {
         SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
         Projectile.Damage();
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 20; i++)
         {
-            Dust explodeDust = Dust.NewDustDirect(Projectile.position, 25, 50, ModContent.DustType<GlowDust>(), 0f, 0f, 100, new Color(255, 64, 64, 0), 2f);
-            explodeDust.velocity = Main.rand.NextVector2Circular(7f, 7f).SafeNormalize(Vector2.Zero);
+            Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<GlowDust>(), 0, 0, 100, new Color(200, 94, 94, 0), 1.5f);
+            Dust explodeDust = Dust.NewDustPerfect(Projectile.Center, ModContent.DustType<GlowDust>(), Projectile.velocity, 100, new Color(255, 64, 64, 0), 1f);
+            explodeDust.velocity = Main.rand.NextVector2Circular(7f, 7f).SafeNormalize(Vector2.Zero) * 4f;
         }
     }    
 }

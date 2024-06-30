@@ -11,8 +11,7 @@ public class Tier2CProjectile : ModProjectile
 {
 	public override void SetDefaults()
 	{
-		Projectile.width = 10;
-		Projectile.height = 10;
+		Projectile.Size = new(10);
 		Projectile.scale = 1f;
 		Projectile.aiStyle = ProjAIStyleID.Arrow;
 		Projectile.DamageType = DamageClass.MeleeNoSpeed;
@@ -21,25 +20,23 @@ public class Tier2CProjectile : ModProjectile
         Projectile.friendly = true;
         Projectile.ignoreWater = false;
 		Projectile.tileCollide = true;
-		Projectile.timeLeft = 50;
+		Projectile.timeLeft = 80;
 		Projectile.extraUpdates = 1;
+		Projectile.noEnchantmentVisuals = true;
 		AIType = ProjectileID.Bullet;
 	}
 
 	public override void AI()
 	{
-		if (Main.rand.NextBool(2))
-		{
-			Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Salmon, 1.25f);
-		}
-	}
+        Dust.NewDustDirect(Projectile.oldPosition, 1, 1, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.2f, Projectile.oldVelocity.Y * 0.2f, 0, Color.Salmon, 0.5f);
+    }
 
 	public override void OnKill(int timeLeft)
 	{
         SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         for (int i = 0; i < 10; i++)
 		{
-			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.Salmon, 1.25f);
+			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.Salmon, 0.5f);
 		}
 	}
 }

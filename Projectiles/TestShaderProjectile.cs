@@ -36,7 +36,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         private static readonly VertexStrip vertexStrip = new();
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
             for (int i = 0; i < 12; i++)

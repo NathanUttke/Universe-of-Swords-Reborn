@@ -71,8 +71,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 for (int i = -1; i <= 1; i++)
                 {
                     Vector2 playerCenter = Owner.RotatedRelativePoint(Owner.Center);
-                    Vector2 velocity = new(Main.mouseX + Main.screenPosition.X - playerCenter.X, Main.mouseY + Main.screenPosition.Y - playerCenter.Y);
-                    velocity.Normalize();
+                    Vector2 velocity = Vector2.Normalize(Main.MouseWorld  - playerCenter);
                     velocity = velocity.RotatedBy(MathHelper.ToRadians(15 * i));
                     Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, velocity * 15f, ModContent.ProjectileType<NightmareProjectile>(), Projectile.damage, 4f, Projectile.owner);
                 }

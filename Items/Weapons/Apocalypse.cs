@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using UniverseOfSwordsMod.Dusts;
+using UniverseOfSwordsMod.Utilities;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -12,8 +13,7 @@ public class Apocalypse : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 60;
-        Item.height = 60;
+        Item.Size = new(60);
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 45;
@@ -33,7 +33,7 @@ public class Apocalypse : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 1f);
+            Dust.NewDustDirect(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.OrangeTorch, 0f, 0f, 0, Color.Orange, 1f);
         }
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

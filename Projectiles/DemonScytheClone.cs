@@ -8,6 +8,7 @@ using UniverseOfSwordsMod.Utilities;
 using Terraria.GameContent.Drawing;
 using UniverseOfSwordsMod.Dusts;
 using Terraria.Audio;
+using UniverseOfSwordsMod.Particles;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -59,7 +60,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Main.netMode != NetmodeID.Server)
             {
-                UniverseUtils.Spawn_CyanParticle(new ParticleOrchestraSettings
+                CyanParticle.Spawn_CyanParticle(new ParticleOrchestraSettings
                 {
                     PositionInWorld = target.Center,
                     IndexOfPlayerWhoInvokedThis = (byte)Main.myPlayer

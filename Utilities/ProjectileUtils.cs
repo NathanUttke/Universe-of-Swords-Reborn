@@ -5,8 +5,9 @@ using Terraria.ID;
 
 namespace UniverseOfSwordsMod.Utilities
 {
-    public partial class UniverseUtils
+    public static partial class UniverseUtils
     {
+
         public static void SummonSuperStarSlash(Vector2 targetPosition, IEntitySource source, int damage, int owner, int type)
         {
             Vector2 v = Main.rand.NextVector2CircularEdge(200f, 200f);
@@ -16,9 +17,10 @@ namespace UniverseOfSwordsMod.Utilities
             }
             v.Y += 100f;
             Vector2 vector = v.SafeNormalize(Vector2.UnitY) * 6f;
-            Projectile.NewProjectile(source, targetPosition - vector * 20f, vector, type, (int)(damage * 0.75), 0f, owner, 0f, targetPosition.Y);
+            Projectile.NewProjectile(source, targetPosition - vector * 20f, vector, type, (int)(damage * 0.75), 0f, owner, 0f);
         }
-        public static void EmitHammushProjectiles(Player player, int i, Item item, Rectangle hitbox, int damage, int projectileId)
+
+        public static void EmitHammushProjectiles(Player player, int ai0, Item item, Rectangle hitbox, int damage, int projectileID)
         {            
             int playerMaxAnimation = player.itemAnimationMax;
             if (player.itemAnimation != (int)(playerMaxAnimation * 0.1) && player.itemAnimation != (int)(playerMaxAnimation * 0.3) && player.itemAnimation != (int)(playerMaxAnimation * 0.5) && player.itemAnimation != (int)(playerMaxAnimation * 0.7) && player.itemAnimation != (int)(playerMaxAnimation * 0.9))
@@ -80,7 +82,7 @@ namespace UniverseOfSwordsMod.Utilities
             num3 *= 1.5f;
             num5 *= player.direction;
             num4 *= player.gravDir;
-            Projectile.NewProjectile(player.GetSource_ItemUse(item), (hitbox.X + hitbox.Width / 2) + num5, (hitbox.Y + hitbox.Height / 2) + num4, player.direction * num3, num2 * player.gravDir, projectileId, damage / 2, 0f, i);
+            Projectile.NewProjectile(player.GetSource_ItemUse(item), hitbox.X + hitbox.Width / 2 + num5, hitbox.Y + hitbox.Height / 2 + num4, player.direction * num3, num2 * player.gravDir, projectileID, damage / 2, 0f, ai0);
         }
 
         public static NPC FindClosestNPC(float maxDetectDistance, Vector2 position)

@@ -26,6 +26,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate = 1;
             Projectile.timeLeft = 20;
             Projectile.ArmorPenetration = 10;
+            Projectile.noEnchantmentVisuals = true;
         }
         
         public override void AI()
@@ -37,10 +38,13 @@ namespace UniverseOfSwordsMod.Projectiles
                 SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
             }
 
-            int RedDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(250, 100, 100, 0), 1f);
-            Dust dust2 = Main.dust[RedDust];
-            dust2.velocity *= -0.25f;
-            Main.dust[RedDust].noGravity = true;
+            for (int i = 0; i < 5; i++)
+            {
+                int RedDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(250, 100, 100, 0), 0.5f);
+                Dust dust2 = Main.dust[RedDust];
+                dust2.velocity *= -0.25f;
+                Main.dust[RedDust].noGravity = true;
+            }
 
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
         }
@@ -73,7 +77,7 @@ namespace UniverseOfSwordsMod.Projectiles
             spriteBatch.Draw(texture, Projectile.position - Main.screenPosition + (Projectile.Size / 2f), sourceRectangle, drawColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
 

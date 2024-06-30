@@ -11,23 +11,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 
-namespace UniverseOfSwordsMod.Utilities
+namespace UniverseOfSwordsMod.Particles
 {
-    public partial class UniverseUtils
+    public class CyanParticle
     {
-        private static ParticlePool<FadingParticle> _poolFading = new(200, GetNewFadingParticle);
-
         private static ParticlePool<PrettySparkleParticle> _poolPrettySparkle = new(200, GetNewPrettySparkleParticle);
 
-        private static PrettySparkleParticle GetNewPrettySparkleParticle()
-        {
-            return new PrettySparkleParticle();
-        }
+        private static PrettySparkleParticle GetNewPrettySparkleParticle() => new();
 
-        private static FadingParticle GetNewFadingParticle()
-        {
-            return new FadingParticle();
-        }
         public static void Spawn_CyanParticle(ParticleOrchestraSettings settings)
         {
             float num = 30f;
@@ -35,8 +26,8 @@ namespace UniverseOfSwordsMod.Utilities
             for (float i = 0f; i < 3f; i += 2f)
             {
                 PrettySparkleParticle prettySparkleParticle = _poolPrettySparkle.RequestParticle();
-                Vector2 vector = (MathHelper.PiOver4 + MathHelper.PiOver4 * i + num2).ToRotationVector2() * 4f;                
-                prettySparkleParticle.ColorTint = new Color(114, 224, 184, 127);                
+                Vector2 vector = (MathHelper.PiOver4 + MathHelper.PiOver4 * i + num2).ToRotationVector2() * 4f;
+                prettySparkleParticle.ColorTint = new Color(114, 224, 184, 127);
                 prettySparkleParticle.LocalPosition = settings.PositionInWorld;
                 prettySparkleParticle.Rotation = vector.ToRotation();
                 prettySparkleParticle.Scale = new Vector2(4f, 1f) * 1.1f;
@@ -62,7 +53,7 @@ namespace UniverseOfSwordsMod.Utilities
             {
                 PrettySparkleParticle prettySparkleParticle2 = _poolPrettySparkle.RequestParticle();
                 Vector2 vector2 = (MathHelper.PiOver4 + MathHelper.PiOver4 * j + num2).ToRotationVector2() * 4f;
-                prettySparkleParticle2.ColorTint = new Color(141, 255, 255);               
+                prettySparkleParticle2.ColorTint = new Color(141, 255, 255);
                 prettySparkleParticle2.LocalPosition = settings.PositionInWorld;
                 prettySparkleParticle2.Rotation = vector2.ToRotation();
                 prettySparkleParticle2.Scale = new Vector2(4f, 1f) * 0.7f;

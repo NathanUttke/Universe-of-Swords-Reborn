@@ -105,7 +105,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Owner.itemRotation = 0f;
         }
 
-        private float offsetPosition = 70f;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.TrueNightsEdge, new ParticleOrchestraSettings

@@ -29,7 +29,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
         }
 
-        private bool _initialized;
         Player Owner => Main.player[Projectile.owner];
 
         public float AITimer

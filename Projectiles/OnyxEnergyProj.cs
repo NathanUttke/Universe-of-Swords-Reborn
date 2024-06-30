@@ -20,7 +20,6 @@ namespace UniverseOfSwordsMod.Projectiles
         public override float ScaleAdder => 0.75f;
         public override float ScaleMulti => base.ScaleMulti;
 
-
         public override void AI()
         {
             base.AI();

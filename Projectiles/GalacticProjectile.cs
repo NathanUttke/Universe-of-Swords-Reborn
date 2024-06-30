@@ -36,7 +36,8 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.DamageType = DamageClass.Melee;
-            Projectile.timeLeft = 90;            
+            Projectile.timeLeft = 90;
+            Projectile.noEnchantmentVisuals = true;
         }
 
         public override void AI()

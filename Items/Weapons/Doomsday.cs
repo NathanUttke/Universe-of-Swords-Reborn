@@ -49,15 +49,8 @@ public class Doomsday : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 1.25f);
-            Main.dust[dust].noGravity = true;
+            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 1f);
+            dust.noGravity = true;
         }
     }
-
-    /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {
-        position += Vector2.UnitY * -70f;
-        Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.5f), knockback, player.whoAmI);
-        return false;
-    }*/
 }

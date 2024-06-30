@@ -10,7 +10,7 @@ using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    internal class ScarletGreatswordProjectile : DragonsDeathProjectile
+    public class ScarletGreatswordProjectile : DragonsDeathProjectile
     {
         public override string Texture => ModContent.GetInstance<ScarletFlareGreatsword>().Texture;
 
@@ -41,7 +41,7 @@ namespace UniverseOfSwordsMod.Projectiles
             float collisionPoint = 0f;
             float boxSize = 160f * Projectile.scale;
 
-            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f * Projectile.scale, ref collisionPoint);
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f, ref collisionPoint);
         }
 
         private const float shootSpeed = 25f;
@@ -60,8 +60,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             // Get the cursor's position
 
-            Vector2 velocity = new(Main.mouseX + Main.screenPosition.X - playerCenter.X, Main.mouseY + Main.screenPosition.Y - playerCenter.Y);
-            velocity.Normalize();
+            Vector2 velocity = Vector2.Normalize(Main.MouseWorld - playerCenter);
 
             Lighting.AddLight(Owner.Center, 0.8f, 0.45f, 0.1f);
 
@@ -107,9 +106,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 }
             }
 
-            //Projectile.position = playerCenter - Projectile.Size / 2f;
             Projectile.Center = Owner.MountedCenter;
-
             Projectile.timeLeft = 2;
             SetPlayerValues();
         }
@@ -138,18 +135,9 @@ namespace UniverseOfSwordsMod.Projectiles
             for (int i = 0; i < 4; i++)
             {
                 Vector2 offsetPosition = new(target.position.X + Main.rand.Next(-400, 400), target.position.Y - Main.rand.Next(500, 800));
-                Vector2 spawnVelocity = new(target.Center.X - offsetPosition.X, target.Center.Y - offsetPosition.Y);
-                //spawnVelocity.X += Main.rand.Next(-100, 101);
+                Vector2 spawnVelocity = Vector2.Normalize(target.Center - offsetPosition) * 30f;
 
-                float spawnDistance = spawnVelocity.Length();
-                spawnDistance = 30f / spawnDistance;
-                spawnVelocity.X *= spawnDistance;
-                spawnVelocity.Y *= spawnDistance;
-
-                Projectile summonProjectile = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), offsetPosition, spawnVelocity, ProjectileID.RubyBolt, Projectile.damage / 2, 5f, Projectile.owner, 0f, 0f);
-                summonProjectile.penetrate = 1;
-                summonProjectile.tileCollide = false;
-                summonProjectile.DamageType = DamageClass.MeleeNoSpeed;
+                Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), offsetPosition, spawnVelocity, ModContent.ProjectileType<ScarletRedBolt>(), Projectile.damage / 2, 5f, Projectile.owner, 0f, 0f);
             }
         }
         public override bool PreDraw(ref Color lightColor)

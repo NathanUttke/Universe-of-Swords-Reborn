@@ -10,7 +10,7 @@ using Terraria;
 
 namespace UniverseOfSwordsMod.Utilities
 {
-    public partial class UniverseUtils
+    public static partial class UniverseUtils
     {
         public static void DrawPrettyStarSparkle(float opacity, SpriteEffects dir, Vector2 drawpos, Color drawColor, Color shineColor, float flareCounter, float fadeInStart, float fadeInEnd, float fadeOutStart, float fadeOutEnd, float rotation, Vector2 scale, Vector2 fatness)
         {

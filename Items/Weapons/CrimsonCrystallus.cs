@@ -1,5 +1,7 @@
+using Microsoft.Extensions.Options;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
@@ -20,7 +22,7 @@ public class CrimsonCrystallus : ModItem
 		Item.damage = 18;
 		Item.knockBack = 5f;
 		Item.shoot = ModContent.ProjectileType<Tier2CProjectile>();
-		Item.shootSpeed = 6f;
+		Item.shootSpeed = 2f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
@@ -32,10 +34,21 @@ public class CrimsonCrystallus : ModItem
 	{					
 		if (Main.rand.NextBool(2))
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Salmon, 1.25f);
-			Main.dust[dust].noGravity = true;
+			Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Salmon, 1f);
 		}
 	}
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		for (int i = 0 ; i < 3; i++)
+		{
+			Vector2 newVelocity = velocity.RotatedByRandom(0.5f);
+			Projectile.NewProjectile(source, position, newVelocity, type, damage, knockback, player.whoAmI);
+		}
+		return false;
+    }
+
+
     public override void AddRecipes()
 	{		
 		CreateRecipe()

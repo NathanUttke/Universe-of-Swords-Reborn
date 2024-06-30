@@ -9,7 +9,7 @@ using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    internal class DragonsDeathProjectile : ModProjectile
+    public class DragonsDeathProjectile : ModProjectile
     {
         public override string Texture => ModContent.GetInstance<DragonsDeath>().Texture;
 
@@ -87,8 +87,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 }
             }
 
-            //Projectile.position = vector - Projectile.Size / 2f;
-            //Projectile.Center = Owner.Center;
             Projectile.Center = Owner.MountedCenter;
             Projectile.timeLeft = 2;
 
