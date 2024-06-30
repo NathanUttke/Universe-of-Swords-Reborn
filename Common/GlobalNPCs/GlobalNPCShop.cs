@@ -15,6 +15,10 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             {
                 shop[nextSlot++] = ModContent.ItemType<Apocalypse>();
             }
+            if (NPC.downedPlantBoss)
+            {
+                shop[nextSlot++] = ModContent.ItemType<Executioner>();
+            }
         }
     }
 }
