@@ -39,7 +39,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
             }
             if (Main.rand.Next(8) < 6)
             {
-                int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, ModContent.DustType<EmperorBlaze>(), 0f, 0f, 100, default(Color), 3.5f);
+                int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, ModContent.DustType<EmperorBlaze>(), 0f, 0f, 100, default, 3.5f);
                 Main.dust[dust].noGravity = true;
                 Dust obj = Main.dust[dust];
                 obj.velocity.X = 0;
