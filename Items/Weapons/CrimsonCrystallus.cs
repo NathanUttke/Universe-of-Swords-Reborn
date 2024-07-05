@@ -22,7 +22,7 @@ public class CrimsonCrystallus : ModItem
 		Item.damage = 18;
 		Item.knockBack = 5f;
 		Item.shoot = ModContent.ProjectileType<Tier2CProjectile>();
-		Item.shootSpeed = 2f;
+		Item.shootSpeed = 4f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
@@ -43,7 +43,7 @@ public class CrimsonCrystallus : ModItem
 		for (int i = 0 ; i < 3; i++)
 		{
 			Vector2 newVelocity = velocity.RotatedByRandom(0.5f);
-			Projectile.NewProjectile(source, position, newVelocity, type, damage, knockback, player.whoAmI);
+			Projectile.NewProjectile(source, position, newVelocity, type, damage / 2, knockback, player.whoAmI);
 		}
 		return false;
     }

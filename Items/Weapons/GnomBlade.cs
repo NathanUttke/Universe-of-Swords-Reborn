@@ -13,23 +13,18 @@ public class GnomBlade : ModItem
 		Item.width = 64;
 		Item.height = 64;
 		Item.rare = ItemRarityID.Red;
-
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
 		Item.useAnimation = 15;
-
 		Item.damage = 150;
 		Item.knockBack = 9f;
 		Item.UseSound = SoundID.Item1;
-		Item.value = Item.sellPrice(0, 5, 0, 0);
-		
+		Item.value = Item.sellPrice(0, 5, 0, 0);		
 		Item.DamageType = DamageClass.MeleeNoSpeed;
 		Item.crit = 8;
         Item.autoReuse = true;
-
         Item.shoot = ModContent.ProjectileType<GnomeProj>();
 		Item.shootSpeed = 11f;
-
 		Item.ResearchUnlockCount = 1;
 	}
 
@@ -49,25 +44,10 @@ public class GnomBlade : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-        if (!target.HasBuff(BuffID.Weak))
-        {
-            target.AddBuff(BuffID.Weak, 400, true);
-        }
-        if (!target.HasBuff(BuffID.Ichor))
-        {
-            target.AddBuff(BuffID.Ichor, 400, true);
-        }
-        if (!target.HasBuff(BuffID.Venom))
-        {
-            target.AddBuff(BuffID.Venom, 400, true);
-        }
-        if (!target.HasBuff(BuffID.Slow))
-        {
-            target.AddBuff(BuffID.Slow, 400, true);
-        }
-        if (!target.HasBuff(BuffID.CursedInferno))
-        {
-            target.AddBuff(BuffID.CursedInferno, 400, true);
-        }
+        target.AddBuff(BuffID.Weak, 400, true);
+        target.AddBuff(BuffID.Ichor, 400, true);
+        target.AddBuff(BuffID.Venom, 400, true);
+        target.AddBuff(BuffID.Slow, 400, true);
+        target.AddBuff(BuffID.CursedInferno, 400, true);
     }
 }

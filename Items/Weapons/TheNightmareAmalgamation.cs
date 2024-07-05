@@ -40,16 +40,8 @@ public class TheNightmareAmalgamation : ModItem
     {
         player.itemLocation = player.Center;
     }
-    public override void MeleeEffects(Player player, Rectangle hitbox)
-	{
-		if (Main.rand.NextBool(2))
-		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<SkullDust>(), 0f, 0f, 100, default, 2f);
-			Main.dust[dust].noGravity = true;
-			Dust dust2 = Main.dust[dust];
-			dust2.noGravity = true;
-		}
-	}
+
+	public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
 
     public override void AddRecipes()
 	{

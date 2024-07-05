@@ -10,7 +10,6 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class Apocalypse : ModItem
 {
-
     public override void SetDefaults()
     {
         Item.Size = new(60);

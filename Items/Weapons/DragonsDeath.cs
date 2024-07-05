@@ -11,14 +11,12 @@ public class DragonsDeath : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 128;
-		Item.height = 128;
+		Item.Size = new(128);
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
         Item.UseSound = SoundID.Item169;
-
         if (ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod) && CalamityMod.TryFind("TrueMeleeDamageClass", out DamageClass TrueMeleeDamageClass))
         {
             Item.DamageType = TrueMeleeDamageClass;
@@ -27,7 +25,6 @@ public class DragonsDeath : ModItem
         {
             Item.DamageType = DamageClass.MeleeNoSpeed;
         }
-
         Item.damage = 150;
 		Item.knockBack = 10f;
         Item.shoot = ModContent.ProjectileType<DragonsDeathProjectile>();

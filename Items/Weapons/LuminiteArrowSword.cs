@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using UniverseOfSwordsMod.Items.Materials;
 using Terraria.GameContent.Drawing;
 using UniverseOfSwordsMod.Utilities;
+using UniverseOfSwordsMod.Particles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -38,7 +39,7 @@ public class LuminiteArrowSword : ModItem
     {
         if (Main.netMode != NetmodeID.Server)
         {
-            UniverseUtils.Spawn_CyanParticle(new ParticleOrchestraSettings
+            CyanParticle.Spawn_CyanParticle(new ParticleOrchestraSettings
             {
                 PositionInWorld = target.Center,
                 IndexOfPlayerWhoInvokedThis = (byte)Main.myPlayer

@@ -42,7 +42,7 @@ public class CosmoStorm : ModItem
     {
         if (ModLoader.TryGetMod("CalamityMod", out _))
         {
-            scale *= 2.25f;
+            scale *= 1.75f;
         }
         return;
     }

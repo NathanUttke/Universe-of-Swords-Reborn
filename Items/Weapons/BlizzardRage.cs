@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -27,6 +28,7 @@ public class BlizzardRage : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
 		Item.ResearchUnlockCount = 1;
+		Item.alpha = 100;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

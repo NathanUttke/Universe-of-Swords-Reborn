@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
@@ -21,7 +22,7 @@ public class CorruptCrystallus : ModItem
         Item.damage = 18;
         Item.knockBack = 5f;
         Item.shoot = ModContent.ProjectileType<CorruptCrystallusProj>();
-        Item.shootSpeed = 2f;
+        Item.shootSpeed = 4f;
         Item.value = Item.sellPrice(0, 1, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee;
@@ -35,6 +36,16 @@ public class CorruptCrystallus : ModItem
 			Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.MediumOrchid, 1.25f);
 		}
 	}
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Vector2 newVelocity = velocity.RotatedByRandom(0.5f);
+            Projectile.NewProjectile(source, position, newVelocity, type, damage / 2, knockback, player.whoAmI);
+        }
+        return false;
+    }
+
     public override void AddRecipes()
 	{		
 		CreateRecipe()
