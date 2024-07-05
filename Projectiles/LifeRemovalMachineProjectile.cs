@@ -59,6 +59,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 return;
             }
 
+
             Vector2 velocity = Vector2.Normalize(Main.MouseWorld - playerCenter);
 
             Lighting.AddLight(Owner.Center, 0.8f, 0.45f, 0.1f);

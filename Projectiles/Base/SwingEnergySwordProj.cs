@@ -12,6 +12,8 @@ namespace UniverseOfSwordsMod.Projectiles.Base
 {
     public class SwingEnergySwordProj : ModProjectile
     {
+        // From ExampleSwingingEnergySwordProjectile
+
         public override string Texture => "UniverseofSwordsMod/Projectiles/BetterShroomiteProj";
         public override void SetStaticDefaults()
         {

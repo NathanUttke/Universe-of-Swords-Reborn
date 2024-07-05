@@ -13,8 +13,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void SetDefaults()
         {
-            Projectile.width = 40;
-            Projectile.height = 40;
+            Projectile.Size = new(40);
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
@@ -23,23 +22,18 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 25;
+            Projectile.timeLeft = 180;
         }
 
         public override void AI()
         {
-            base.AI();
-
             Projectile.velocity *= 0.95f;
-            Projectile.ai[0] += 1f;
-
-            if (Projectile.ai[0] == 180f) 
-            { 
-                Projectile.Kill();
-            }
 
             for (int i = 0; i < 2; i++)
             {
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X * 0.8f, Projectile.velocity.Y * 0.8f, 0, Color.MediumOrchid, 2f);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.MediumOrchid, 1.25f);
+                dust.velocity *= 0.5f;
+                dust.velocity += Projectile.velocity * 0.2f;
             }
         }
 

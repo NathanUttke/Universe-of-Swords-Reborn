@@ -22,13 +22,14 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void SetDefaults()
         {
-            Projectile.Size = new(128);
+            Projectile.Size = new(16);
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.alpha = 0;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
+            Projectile.hide = true;
             Projectile.ownerHitCheck = true;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 23;
@@ -45,15 +46,14 @@ namespace UniverseOfSwordsMod.Projectiles
             float c3 = c1 + 1;
 
             return c3 * value * value * value - c1 * value * value;
-
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            Vector2 projRotation = (Projectile.rotation * MathF.Sign(Projectile.velocity.X)).ToRotationVector2();
+            float projRotation = Projectile.rotation - MathHelper.PiOver4;
             float _ = 0f;
 
-            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, Projectile.Center + projRotation * Projectile.height * Projectile.scale, 23f * Projectile.scale, ref _);
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, Projectile.Center - projRotation.ToRotationVector2() * 178f * -Projectile.scale, 20f, ref _);
         }
 
         public override void AI()
@@ -68,26 +68,9 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 Projectile.Kill();
             }
-
-            Vector2 pointPosition = Owner.RotatedRelativePoint(Owner.MountedCenter);
-            float mousePosX = Main.mouseX + Main.screenPosition.X - pointPosition.X;
-            float mousePosY = Main.mouseY + Main.screenPosition.Y - pointPosition.Y;
             
-            int velocityXSign = Math.Sign(Projectile.velocity.X);
-            
-            Projectile.velocity = new Vector2(velocityXSign, 0f);
-
-            SetPlayerValues();
-            CreateDust();
-
-            if (Timer == 0f)
-            {                
-                Projectile.rotation = new Vector2(velocityXSign, 0f - Owner.gravDir).ToRotation() + -MathHelper.PiOver4 + MathHelper.Pi;
-                if (Projectile.velocity.X < 0f)
-                {
-                    Projectile.rotation += MathHelper.PiOver4;
-                }
-            }
+            //int velocityXSign = Math.Sign(Projectile.velocity.X);            
+            //Projectile.velocity = new Vector2(velocityXSign, 0f);
 
             if (Timer == MaxTime && !Owner.controlUseItem)
             {
@@ -95,27 +78,16 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             Projectile.spriteDirection = Projectile.direction;
-            Projectile.position = Owner.RotatedRelativePoint(Owner.Center, true) - Projectile.Size / 2 + Vector2.UnitX * Owner.direction;
-            if (Owner.direction < 0)
-            {
-                Projectile.position = Owner.RotatedRelativePoint(Owner.Center, true) - Projectile.Size / 2 + new Vector2(4f, 0f);
-            } 
+            Projectile.Center = Owner.RotatedRelativePoint(Owner.Center, true);
+            Projectile.rotation = Projectile.velocity.ToRotation() + (-1.75f * Owner.direction) + EaseInBack(RotationTimer / 8f) * Owner.direction;
             
-            Projectile.rotation = -1f + EaseInBack(RotationTimer / 8f) * velocityXSign;
-            
-            if (Timer == MaxTime * 0.8f)
+            if (Timer == MaxTime * 0.8f && Main.myPlayer == Projectile.owner)
             {                
                 for (int i = 0; i < 3; i++)
                 {
-                    float f = 0.25f * i * MathHelper.TwoPi;
-                    Vector2 vector51 = Owner.RotatedRelativePoint(Owner.Center) + f.ToRotationVector2() * MathHelper.Lerp(20f, 60f, 0.25f * i);
-                    vector51.Y -= Owner.height / 2f;
-
-                    Vector2 v5 = Main.MouseWorld - vector51;
-                    Vector2 vector52 = new Vector2(mousePosX, mousePosY).SafeNormalize(Vector2.UnitY) * 9f;
-                    v5 = v5.SafeNormalize(vector52) * 9f;
-                    v5 = Vector2.Lerp(v5, vector52, 0.25f);
-                    Projectile coinProj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), vector51, v5, ProjectileID.GoldCoin, Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                    Vector2 newPosition = Owner.RotatedRelativePoint(Owner.Center);
+                    Vector2 newVelocity = Vector2.Normalize(newPosition - Main.MouseWorld) * -9f + (0.25f * i * MathHelper.TwoPi).ToRotationVector2();
+                    Projectile coinProj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), newPosition, newVelocity, ProjectileID.GoldCoin, Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     coinProj.timeLeft = 40;
                 }
                 Timer++;
@@ -140,6 +112,9 @@ namespace UniverseOfSwordsMod.Projectiles
             
             Timer++;
             RotationTimer += MathHelper.PiOver4 / 2f;
+
+            SetPlayerValues();
+            CreateDust();
         }
 
         private void CreateDust()
@@ -155,7 +130,12 @@ namespace UniverseOfSwordsMod.Projectiles
             Owner.heldProj = Projectile.whoAmI;           
             Owner.itemRotation = Projectile.rotation;
             Owner.SetDummyItemTime(2);
-            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + MathHelper.ToRadians(240));
+            float rotation = Projectile.rotation - MathHelper.PiOver4 - 0.4f;
+            if (Owner.direction == -1)
+            {
+                rotation -= MathHelper.PiOver2 - 0.8f;
+            }
+            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -164,14 +144,19 @@ namespace UniverseOfSwordsMod.Projectiles
             Color colorTrail = Color.Gold;
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
+            SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            float rotation = Projectile.rotation + MathHelper.PiOver4;
+
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
+                float oldRotation = Projectile.oldRot[i] + MathHelper.PiOver4;
+
                 colorTrail *= 0.75f;
-                spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + texture.Size() / 2f, null, colorTrail with { A = 0 } * 0.125f, Projectile.oldRot[i] - MathHelper.TwoPi, new Vector2(0f * Owner.direction, texture.Height), Projectile.scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, Projectile.oldPos[i] + Projectile.Size / 2f - Main.screenPosition, null, colorTrail with { A = 0 }, oldRotation, new(0f, texture.Height), Projectile.scale, SpriteEffects.None, 0);
             }
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, color, Projectile.rotation, new Vector2(0f * Owner.direction, texture.Height), Projectile.scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, color, rotation, new(0f, texture.Height), Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
     }

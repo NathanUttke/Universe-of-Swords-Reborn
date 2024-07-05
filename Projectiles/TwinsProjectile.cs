@@ -33,14 +33,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.ai[1] = 1f;
                 Projectile.localAI[0] = -Main.rand.Next(48);
             }
-            if (Projectile.ai[1] >= 1f && Projectile.ai[1] < 5f)
-            {
-                Projectile.ai[1] += 1f;
-                if (Projectile.ai[1] == 5f)
-                {
-                    Projectile.ai[1] = 1f;
-                }
-            }
 
             Projectile.rotation = Projectile.velocity.ToRotation();
             Projectile.localAI[0] += 1f;
@@ -64,21 +56,15 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
-            for (int i = 4; i < 31; i++)
+            for (int i = 0; i < 15; i++)
             {
-                float oldVelocityX = Projectile.oldVelocity.X * (30f / i);
-                float oldVelocityY = Projectile.oldVelocity.Y * (30f / i);
+                Dust terraDust = Dust.NewDustDirect(Projectile.position, 8, 8, DustID.Clentaminator_Green, Projectile.oldVelocity.X * 0.8f, Projectile.oldVelocity.Y * 0.8f, 100, default, 1.25f);                
+                terraDust.noGravity = true;
+                terraDust.velocity *= 0.5f;
 
-                int terraDust = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.Clentaminator_Green, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.25f);                
-                Dust dust = Main.dust[terraDust];
-                dust.noGravity = true;
-                dust.velocity *= 0.5f;
-
-                int terraDust2 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - oldVelocityX, Projectile.oldPosition.Y - oldVelocityY), 8, 8, DustID.Clentaminator_Red, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.25f);
-                Dust dust2 = Main.dust[terraDust2];
-                dust2.noGravity = true;
-                dust2.velocity *= 0.5f;
+                Dust terraDust2 = Dust.NewDustDirect(Projectile.position, 8, 8, DustID.Clentaminator_Red, Projectile.oldVelocity.X * 0.8f, Projectile.oldVelocity.Y * 0.8f, 100, default, 1.25f);
+                terraDust2.noGravity = true;
+                terraDust2.velocity *= 0.5f;
             }
         }
     }

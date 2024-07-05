@@ -20,7 +20,7 @@ public class Tier2CProjectile : ModProjectile
         Projectile.friendly = true;
         Projectile.ignoreWater = false;
 		Projectile.tileCollide = true;
-		Projectile.timeLeft = 80;
+		Projectile.timeLeft = 60;
 		Projectile.extraUpdates = 1;
 		Projectile.noEnchantmentVisuals = true;
 		AIType = ProjectileID.Bullet;

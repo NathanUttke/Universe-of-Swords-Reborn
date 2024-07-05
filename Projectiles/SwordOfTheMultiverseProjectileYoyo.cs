@@ -21,8 +21,7 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void SetDefaults()
         {
-            Projectile.width = 94;
-            Projectile.height = 94;
+            Projectile.Size = new(94);
             Projectile.scale = 2f;
             Projectile.alpha = 0;
             Projectile.penetrate = -1;
@@ -38,8 +37,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, 1.5f, 1f, 1.5f);
-            
+            Lighting.AddLight(Projectile.Center, 1.5f, 1f, 1.5f);            
 
             if (Projectile.owner == Main.myPlayer && (!Player.controlUseItem))
             {
@@ -87,53 +85,21 @@ namespace UniverseOfSwordsMod.Projectiles
 
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
             Color drawColorGlow = Color.Purple with { A = 0 };
-            Color drawColorTrail = Color.White with { A = 127 };
-
-
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
-
-            DrawTrail(Projectile);
-
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
+            Color drawColorTrail = Color.Magenta with { A = 0 };
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
 
-                drawColorTrail *= 0.6f;
+                drawColorTrail *= 0.75f;
 
                 Main.EntitySpriteDraw(texture, drawPos, null, drawColorTrail, Projectile.oldRot[j] - MathHelper.PiOver4, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation - MathHelper.PiOver4, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
-           
             Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f + Projectile.scale, SpriteEffects.None, 0);
             
             return false;
-        }
-
-        public void DrawTrail(Projectile proj)
-        {
-            MiscShaderData miscShaderData = GameShaders.Misc["EmpressBlade"];
-            miscShaderData.UseShaderSpecificData(new Vector4(1, 0, 0, 0.75f));            
-            miscShaderData.Apply();
-            _vertexStrip.PrepareStrip(proj.oldPos, proj.oldRot, StripColors, StripWidth, -Main.screenPosition + proj.Size / 2f, proj.oldPos.Length, includeBacksides: false);
-            _vertexStrip.DrawTrail();
-            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
-        }
-
-        private Color StripColors(float progressOnStrip)
-        {
-            Color result = Color.Lerp(Color.HotPink with { A = 64 }, Color.Purple, Utils.GetLerpValue(0f, 0.75f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.75f, progressOnStrip, clamped: true));
-            result.A /= 2;
-            return result;
-        }
-
-        private float StripWidth(float progressOnStrip)
-        {
-            return 58f * Projectile.scale;
         }
     }
 }

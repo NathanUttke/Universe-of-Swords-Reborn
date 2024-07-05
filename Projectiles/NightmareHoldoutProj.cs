@@ -57,12 +57,14 @@ namespace UniverseOfSwordsMod.Projectiles
 
             if (Projectile.soundDelay <= 0)
             {
-                Projectile.soundDelay = 43;
+                Projectile.soundDelay = 41;
                 SoundEngine.PlaySound(SoundID.DD2_JavelinThrowersAttack with { Pitch = -0.5f }, Projectile.position);
             }
 
             Vector2 unitVectorTowardsMouse = Owner.MountedCenter.DirectionTo(Main.MouseWorld).SafeNormalize(Vector2.UnitX * Owner.direction);
             Owner.ChangeDir((unitVectorTowardsMouse.X > 0f).ToDirectionInt());
+
+            Lighting.AddLight(Projectile.Center, 1f, 0.5f, 1f);
 
             AITimer++;
 
@@ -78,11 +80,11 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             Projectile.scale = MathHelper.SmoothStep(1.15f, 0.75f, MathF.Sin(AITimer * 0.13f));
-            Projectile.Center = Owner.MountedCenter;
-            Projectile.rotation = 0.1f + MathHelper.Lerp(1.5f * Owner.direction, -1.5f * Owner.direction, MathF.Sin(AITimer * 0.13f)) - MathHelper.PiOver2;
+            Projectile.Center = Owner.Center;
+            Projectile.rotation = MathHelper.Lerp(1.5f * Owner.direction, -1.5f * Owner.direction, MathF.Sin(AITimer * 0.15f)) - MathHelper.PiOver2;
             if (Owner.direction == -1)
             {
-                Projectile.rotation += MathHelper.TwoPi;
+                Projectile.rotation -= MathHelper.TwoPi;
             }
             Projectile.spriteDirection = Projectile.direction;
             SetPlayerValues();
@@ -92,7 +94,6 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             Owner.heldProj = Projectile.whoAmI;
             Owner.itemRotation = Projectile.rotation;
-            Owner.SetDummyItemTime(2);
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
         }
 

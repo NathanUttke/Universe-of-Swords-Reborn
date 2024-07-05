@@ -52,24 +52,19 @@ namespace UniverseOfSwordsMod.Projectiles
         public ref float SwingTimer => ref Projectile.ai[1];
         public int SwingDirection => MathF.Sign(Projectile.velocity.X);
         private const float MaxTime = 12.5f;
-        private float EaseInBack(float value)
-        {
-            float c1 = 1.70158f;            
-            float c3 = c1 + 1;
 
-            return c3 * value * value * value - c1 * value * value;
-
-        }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            float projRotation = Projectile.rotation - MathHelper.PiOver4 * MathF.Sign(Projectile.velocity.X);
-            float collisionPoint7 = 0f;
-            float num20 = 110f;
+            float projRotation = Projectile.rotation - MathHelper.Pi + MathHelper.PiOver4;
+            float collisionPoint = 0f;
+            float bladeWidth = 110f;
+
             if (CurrentAIState != AIState.SwingingLeft)
             {
-                num20 = 80f;
+                return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - projRotation.ToRotationVector2() * 80f, Projectile.Center + projRotation.ToRotationVector2() * 80f, 24f, ref collisionPoint);
             }
-            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - num20), Projectile.Center + projRotation.ToRotationVector2() * num20, 23f * Projectile.scale, ref collisionPoint7);
+
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2(), Projectile.Center + projRotation.ToRotationVector2() * bladeWidth * Projectile.scale, 24f, ref collisionPoint);
         }
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -87,7 +82,7 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Owner.dead || Owner.noItems || Owner.CCed || !Owner.active)
             {
                 Projectile.Kill();
-            }        
+            }
 
             if (SwingTimer == 11f && !Owner.controlUseItem && CurrentAIState == AIState.SwingingLeft)
             {
@@ -180,8 +175,9 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Projectile.Distance(Owner.MountedCenter) <= 10f || Projectile.Distance(Owner.MountedCenter) > 500f)
             {                
                 Projectile.Kill();
-            }         
+            }
 
+            Projectile.timeLeft = 100;
             Projectile.velocity *= 0.98f;
             Projectile.velocity = Projectile.velocity.MoveTowards(vecTowardsPlayer * 11f, 3f);            
         }

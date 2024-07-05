@@ -28,8 +28,9 @@ public class CorruptCrystallusProj : ModProjectile
 		Projectile.ignoreWater = false;
 		Projectile.tileCollide = true;
 		Projectile.extraUpdates = 1;
-		Projectile.timeLeft = 40;
+		Projectile.timeLeft = 60;
         AIType = ProjectileID.Bullet;
+		Projectile.noEnchantmentVisuals = true;
 	}
 
 	public override void AI()
@@ -37,7 +38,7 @@ public class CorruptCrystallusProj : ModProjectile
 		base.AI();
 		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.MediumOrchid, 1.25f);
+			Dust.NewDustDirect(Projectile.oldPosition, 1, 1, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.2f, Projectile.oldVelocity.Y * 0.2f, 0, Color.MediumOrchid, 0.5f);
 		}
 	}
 
@@ -45,7 +46,7 @@ public class CorruptCrystallusProj : ModProjectile
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.MediumOrchid, 1.25f);
+			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.MediumOrchid, 0.5f);
 		}
 		SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
 	}
