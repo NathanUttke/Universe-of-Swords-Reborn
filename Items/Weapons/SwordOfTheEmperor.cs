@@ -1,35 +1,37 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Buffs;
 using UniverseOfSwordsMod.Items.Materials;
+using static Terraria.Player;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class SwordOfTheEmperor : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
     public override void SetDefaults()
     {
-        Item.width = 100;
-        Item.height = 100;        
+        Item.Size = new(100);  
         Item.rare = ItemRarityID.Red;
-
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 22;
         Item.useAnimation = 22;
         Item.UseSound = SoundID.Item169;
-
         Item.damage = 90;
         Item.knockBack = 4.5f;
         Item.scale = 1.25f;
-        Item.crit = 8;
-        
+        Item.crit = 8;        
         Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-        Item.ResearchUnlockCount = 1;
         Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
     }
     public override void AddRecipes()

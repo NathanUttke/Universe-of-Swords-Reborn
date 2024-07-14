@@ -9,12 +9,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class WoodenArrowSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Shoots Wooden Arrows");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 64;
 		Item.height = 64;
@@ -30,7 +30,6 @@ public class WoodenArrowSword : ModItem
 		Item.value = 3500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

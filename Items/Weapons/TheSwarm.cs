@@ -10,7 +10,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TheSwarm : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 64;
 		Item.height = 64;
@@ -27,7 +32,6 @@ public class TheSwarm : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
 		Item.scale = 1.1f;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void AddRecipes()
@@ -48,19 +52,18 @@ public class TheSwarm : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		int newDamage = player.strongBees ? (int)(damage * 0.90f) : (int)(damage * 0.75f);
-		if(Main.rand.NextBool(3))
-		{
-            float spread = 0.174f;
-            float baseSpeed = velocity.Length();
-            double startAngle = velocity.ToRotation() - (double)(spread / 2f);
-            double deltaAngle = spread / 2f;
-            for (int i = 0; i < Main.rand.Next(1, 3); i++)
-            {
-                double offsetAngle = startAngle + deltaAngle * i;
-                Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, newDamage, knockback, Item.playerIndexTheItemIsReservedFor, 0f, 0f);
-            }
+		int beeAmount = Main.rand.Next(1, 3);
+
+        float spread = 0.174f;
+        float baseSpeed = velocity.Length();
+        double startAngle = velocity.ToRotation() - (double)(spread / 2f);
+        double deltaAngle = spread / 2f;
+        for (int i = 0; i < beeAmount; i++)
+        {
+            double offsetAngle = startAngle + deltaAngle * i;
+            Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, newDamage / i, knockback, player.whoAmI, 0f, 0f);
         }
 
-		return false;
+        return false;
 	}
 }

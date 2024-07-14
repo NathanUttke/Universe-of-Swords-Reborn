@@ -24,7 +24,6 @@ namespace UniverseOfSwordsMod.Projectiles
         }
         public override void AI()
         {
-            base.AI();
             Vector2 vector9 = new(8f, 10f);
             float dustScale = 1.25f;
 

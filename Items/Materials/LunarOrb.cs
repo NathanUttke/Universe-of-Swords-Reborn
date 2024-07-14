@@ -6,19 +6,18 @@ namespace UniverseOfSwordsMod.Items.Materials;
 
 public class LunarOrb : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Essence of Lunar Towers");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 10;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 40;
 		Item.height = 40;
 		Item.maxStack = 999;
 		Item.value = Item.sellPrice(0, 14, 0, 0);		
 		Item.rare = ItemRarityID.Cyan;
-		Item.ResearchUnlockCount = 10;
 	}
 
 	public override void AddRecipes()

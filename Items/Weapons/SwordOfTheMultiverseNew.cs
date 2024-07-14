@@ -12,17 +12,14 @@ using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-[LegacyName(new string[] { "SwordOfTheMultiverse" })]
+[LegacyName(["SwordOfTheMultiverse"])]
 public class SwordOfTheMultiverseNew : ModItem
 {
     private readonly int MaxModes = 2;
     private int currentMode = 1;
     public override void SetStaticDefaults()
     {
-        // DisplayName.SetDefault("Sword of the Multiverse");
-        /* Tooltip.SetDefault("'You only get what you give'\nPress left or right click for a alternate attack" +
-            "\nHold up or down for a alternate attack"
-            ); */
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void SetDefaults()
@@ -30,31 +27,23 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.width = 84;
         Item.height = 98;
         Item.rare = ItemRarityID.Red;
-
         Item.useTime = 7;
         Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item169;
-
         Item.damage = 220;
         Item.DamageType = DamageClass.Melee;
         Item.knockBack = 2.25f;
         Item.crit = 30;
-
         Item.scale = 1.25f;
         Item.value = Item.sellPrice(0, 12, 0, 0);
-
         Item.autoReuse = true;
         Item.noMelee = false;
-        Item.noUseGraphic = false;
-        
+        Item.noUseGraphic = false;        
         Item.shoot = ProjectileID.LunarFlare;
         Item.shootSpeed = 30f;
-
-        Item.ResearchUnlockCount = 1;
         Item.reuseDelay = 0;
         Item.ArmorPenetration = 40;
-
         Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
     }
 
@@ -90,6 +79,7 @@ public class SwordOfTheMultiverseNew : ModItem
             player.SetItemTime(15);
         }
 
+
         if (currentMode == 1)
         {
             Item.useTime = Item.useAnimation;
@@ -121,13 +111,13 @@ public class SwordOfTheMultiverseNew : ModItem
         }
         if (currentMode == 2)
         {
-            Vector2 targetPos = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
+            Vector2 targetPos = Main.MouseWorld;
             float heightLimit = targetPos.Y;
             if (heightLimit > player.Center.Y - 200f)
             {
                 heightLimit = player.Center.Y - 200f;
             }
-            for (int j = 0; j < 6; j++)
+            for (int j = 0; j < 3; j++)
             {
                 position = player.Center + new Vector2(-Main.rand.Next(0, 401) * (float)player.direction, -600f);
                 position.Y -= 100 * j;

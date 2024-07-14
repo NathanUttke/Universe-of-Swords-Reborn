@@ -10,15 +10,14 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class FixedSwordOfPower : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Sword Of Power");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
+		Item.Size = new(64);
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 38;
@@ -32,7 +31,6 @@ public class FixedSwordOfPower : ModItem
 		Item.scale = 1.25f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void AddRecipes()

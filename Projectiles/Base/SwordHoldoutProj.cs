@@ -10,8 +10,10 @@ using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    internal class SuperInflationHoldoutProj : ModProjectile
+    public class SwordHoldoutProj : ModProjectile
     {
+        public virtual float SwordSize => 32f;
+        public virtual int ProjectileToShoot => ProjectileID.Bullet;
         public override string Texture => ModContent.GetInstance<SuperInflation>().Texture;
 
         public override void SetStaticDefaults()
@@ -53,7 +55,7 @@ namespace UniverseOfSwordsMod.Projectiles
             float projRotation = Projectile.rotation - MathHelper.PiOver4;
             float _ = 0f;
 
-            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, Projectile.Center - projRotation.ToRotationVector2() * 178f * -Projectile.scale, 20f, ref _);
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, Projectile.Center - projRotation.ToRotationVector2() * SwordSize * -Projectile.scale, 20f, ref _);
         }
 
         public override void AI()
@@ -76,24 +78,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             Projectile.spriteDirection = Projectile.direction;
             Projectile.Center = Owner.RotatedRelativePoint(Owner.Center, true);
-            Projectile.rotation = Projectile.velocity.ToRotation() + (-1.75f * Owner.direction) + EaseInBack(RotationTimer / 8f) * Owner.direction;
-            
-            if (Timer == MaxTime * 0.8f && Main.myPlayer == Projectile.owner)
-            {                
-                for (int i = 0; i < 3; i++)
-                {
-                    Vector2 newPosition = Owner.RotatedRelativePoint(Owner.Center);
-                    Vector2 newVelocity = Vector2.Normalize(newPosition - Main.MouseWorld) * -9f + (0.25f * i * MathHelper.TwoPi).ToRotationVector2();
-                    Projectile coinProj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), newPosition, newVelocity, ProjectileID.GoldCoin, Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
-                    coinProj.timeLeft = 40;
-                }
-                Timer++;
-            }
-
-            if (Timer == 8f)
-            {
-                SoundEngine.PlaySound(SoundID.Item169, Projectile.position);                
-            }
+            Projectile.rotation = Projectile.velocity.ToRotation() + (-1.75f * Owner.direction) + EaseInBack(RotationTimer / 8f) * Owner.direction;         
 
             if (Timer >= MaxTime)
             {                
@@ -110,11 +95,23 @@ namespace UniverseOfSwordsMod.Projectiles
             Timer++;
             RotationTimer += MathHelper.PiOver4 / 2f;
 
+            Shoot();
             SetPlayerValues();
             CreateDust();
         }
 
-        private void CreateDust()
+        public virtual void Shoot()
+        {
+            if (Timer == 12f && Main.myPlayer == Projectile.owner)
+            {
+                Vector2 newPosition = Owner.RotatedRelativePoint(Owner.Center);
+                Vector2 newVelocity = Vector2.Normalize(Main.MouseWorld - newPosition) * 11f;
+                Projectile.NewProjectile(Projectile.GetSource_FromAI(), newPosition, newVelocity, ProjectileToShoot, Projectile.damage, Projectile.knockBack, Owner.whoAmI);
+                Timer++;
+            }
+        }
+
+        public virtual void CreateDust()
         {
             if (Main.rand.NextBool(3))
             {
@@ -122,7 +119,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
-        private void SetPlayerValues()
+        public virtual void SetPlayerValues()
         {            
             Owner.heldProj = Projectile.whoAmI;           
             Owner.itemRotation = Projectile.rotation;
@@ -135,13 +132,14 @@ namespace UniverseOfSwordsMod.Projectiles
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
         }
 
+        public virtual Color TrailColor => Color.White;
+
         public override bool PreDraw(ref Color lightColor)
         {
-            Color color = Projectile.GetAlpha(lightColor);
-            Color colorTrail = Color.Gold;
+            Color drawColor = Projectile.GetAlpha(lightColor);
+            Color trailColor = TrailColor;
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
-            SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             float rotation = Projectile.rotation + MathHelper.PiOver4;
 
 
@@ -149,11 +147,11 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 float oldRotation = Projectile.oldRot[i] + MathHelper.PiOver4;
 
-                colorTrail *= 0.75f;
-                spriteBatch.Draw(texture, Projectile.oldPos[i] + Projectile.Size / 2f - Main.screenPosition, null, colorTrail with { A = 0 }, oldRotation, new(0f, texture.Height), Projectile.scale, SpriteEffects.None, 0);
+                trailColor *= 0.75f;
+                spriteBatch.Draw(texture, Projectile.oldPos[i] + Projectile.Size / 2f - Main.screenPosition, null, trailColor with { A = 0 }, oldRotation, new(0f, texture.Height), Projectile.scale, SpriteEffects.None, 0);
             }
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, color, rotation, new(0f, texture.Height), Projectile.scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColor, rotation, new(0f, texture.Height), Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
     }

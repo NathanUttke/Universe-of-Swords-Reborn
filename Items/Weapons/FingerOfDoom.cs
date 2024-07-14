@@ -7,7 +7,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class FingerOfDoom : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.Size = new(64);
 		Item.rare = ItemRarityID.Yellow;
@@ -21,7 +26,6 @@ public class FingerOfDoom : ModItem
 		Item.value = 470100;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
-		Item.ResearchUnlockCount = 1;
         Item.holdStyle = ItemHoldStyleID.HoldUp;
     }
 

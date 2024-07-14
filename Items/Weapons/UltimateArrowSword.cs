@@ -11,13 +11,13 @@ public class UltimateArrowSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Ultimate Arrow Sword");
+		Item.ResearchUnlockCount = 1;
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(55, 13, false));
 		ItemID.Sets.AnimatesAsSoul[Type] = true;
 	}
 
-	private int[] shootList = { 
-		ProjectileID.WoodenArrowFriendly,
+    private readonly int[] shootList = [
+        ProjectileID.WoodenArrowFriendly,
         ProjectileID.UnholyArrow,
         ProjectileID.JestersArrow,
         ProjectileID.HellfireArrow, 
@@ -29,35 +29,26 @@ public class UltimateArrowSword : ModItem
 		ProjectileID.ChlorophyteArrow,		
 		ProjectileID.IchorArrow,	
 		ProjectileID.VenomArrow
-	};
+	];
 
 	public override void SetDefaults()
 	{
 		Item.damage = 120;
 		Item.DamageType = DamageClass.Melee; 
-
-		Item.ResearchUnlockCount = 1;
-
 		Item.width = 64;
 		Item.height = 64;
-
 		Item.useTime = 8;
 		Item.useAnimation = 20;
-
         Item.autoReuse = true;
         Item.noUseGraphic = false;
         Item.noMelee = false;
-
 		Item.UseSound = SoundID.Item15;
 		Item.useStyle = ItemUseStyleID.Swing;
-
         Item.shoot = ProjectileID.None;
         Item.knockBack = 8f;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.rare = ItemRarityID.Lime;
 		Item.scale = 1.3f;
-		
-
 	}
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
@@ -78,7 +69,7 @@ public class UltimateArrowSword : ModItem
         }
     }
 
-    /*public override void AddRecipes()
+    public override void AddRecipes()
     {
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<WoodenArrowSword>())
@@ -96,5 +87,5 @@ public class UltimateArrowSword : ModItem
 			.AddIngredient(ModContent.ItemType<LuminiteArrowSword>())
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
-    }*/
+    }
 }

@@ -67,7 +67,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Lighting.AddLight(Projectile.Center, 1f, 0.5f, 1f);
 
             AITimer++;
-
             if (AITimer % 48f == 0f && Main.myPlayer == Projectile.owner)
             {
                 for (int i = -1; i <= 1; i++)
@@ -78,7 +77,6 @@ namespace UniverseOfSwordsMod.Projectiles
                     Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, velocity * 15f, ModContent.ProjectileType<NightmareProjectile>(), Projectile.damage, 4f, Projectile.owner);
                 }
             }
-
             Projectile.scale = MathHelper.SmoothStep(1.15f, 0.75f, MathF.Sin(AITimer * 0.13f));
             Projectile.Center = Owner.Center;
             Projectile.rotation = MathHelper.Lerp(1.5f * Owner.direction, -1.5f * Owner.direction, MathF.Sin(AITimer * 0.15f)) - MathHelper.PiOver2;

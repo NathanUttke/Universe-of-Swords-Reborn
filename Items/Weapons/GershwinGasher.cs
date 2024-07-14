@@ -11,8 +11,7 @@ public class GershwinGasher : ModItem
 {
     public override void SetStaticDefaults()
     {
-        // DisplayName.SetDefault("Gershwin Gasher");
-        // Tooltip.SetDefault("'Rhapsody in Blue - Gershwin'");
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void SetDefaults()
@@ -32,7 +31,6 @@ public class GershwinGasher : ModItem
         Item.value = 80000;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-        Item.ResearchUnlockCount = 1;
     }
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)

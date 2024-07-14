@@ -8,21 +8,18 @@ namespace UniverseOfSwordsMod.Items.Armor;
 [AutoloadEquip(EquipType.Head)]
 public class DamascusHelmet : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		
-		// DisplayName.SetDefault("Damascus Helmet");
-		// Tooltip.SetDefault("3% increased melee speed");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 18;
 		Item.height = 18;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 6;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateEquip(Player player)

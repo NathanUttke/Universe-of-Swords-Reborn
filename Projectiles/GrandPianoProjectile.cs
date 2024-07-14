@@ -15,13 +15,12 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Sword Of The Multiverse");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
         public override void SetDefaults()
         {
-            Projectile.Size = new (142);
+            Projectile.Size = new(142);
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;

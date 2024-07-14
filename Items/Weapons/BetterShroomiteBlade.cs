@@ -10,7 +10,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class BetterShroomiteBlade : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 68;
 		Item.height = 68;
@@ -28,7 +33,6 @@ public class BetterShroomiteBlade : ModItem
 		Item.noMelee = true;
 		Item.shootsEveryUse = true;
         Item.autoReuse = true;
-        Item.ResearchUnlockCount = 1;
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

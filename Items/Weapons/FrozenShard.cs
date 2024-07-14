@@ -14,33 +14,26 @@ namespace UniverseOfSwordsMod.Items.Weapons
     {
 		public override void SetStaticDefaults()
 		{
-            // DisplayName.SetDefault("Frozen Crystallus");
-			// Tooltip.SetDefault("Inflicts Frostburn debuff");
-		}
+            Item.ResearchUnlockCount = 1;
+        }
 		
         public override void SetDefaults()
         {
             Item.width = 48;
             Item.height = 56;
             Item.scale = 1f;
-
             Item.rare = ItemRarityID.Cyan;
-
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 30;
             Item.useAnimation = 20;
             Item.UseSound = SoundID.Item1;
-
             Item.damage = 63;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 8f;
-
             Item.shoot = ModContent.ProjectileType<FrozenCrystallusProj>();
             Item.shootSpeed = 6f;
-
             Item.value = Item.sellPrice(0, 4, 0, 0);
-            Item.autoReuse = true;
-            Item.ResearchUnlockCount = 1;
+            Item.autoReuse = true;            
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -54,7 +47,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            position += position.SafeNormalize(Vector2.Zero).RotatedBy(-MathHelper.PiOver2) * 30f;
+            position.Y -= 48f;
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             return false;
         }

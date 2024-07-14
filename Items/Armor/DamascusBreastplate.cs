@@ -8,14 +8,18 @@ namespace UniverseOfSwordsMod.Items.Armor;
 [AutoloadEquip(EquipType.Body)]
 public class DamascusBreastplate : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 18;
 		Item.height = 18;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 6;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)

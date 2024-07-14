@@ -1,22 +1,19 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameContent.RGB;
 using Terraria.ID;
 using Terraria.ModLoader;
-using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TheNightmareAmalgamation : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("'The source of your nightmares'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.Size = new(90);
 		Item.rare = ItemRarityID.Purple;

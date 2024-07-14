@@ -13,7 +13,6 @@ public class PurpleSolutionSpreader : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		// Tooltip.SetDefault("Infinite biome spreading? Awesome!\nRight click to choose between solutions");
         Item.ResearchUnlockCount = 1;
         Terraria.GameContent.Creative.On_ItemFilters.Tools.FitsFilter += Tools_FitsFilter;
     }
@@ -33,15 +32,12 @@ public class PurpleSolutionSpreader : ModItem
         Item.height = 58;
         Item.scale = 1.3f;
         Item.rare = ItemRarityID.Lime;
-
         Item.useTime = 20;
         Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item34;
-
         Item.value = 830000;
         Item.autoReuse = true;
-
         Item.shoot = ProjectileID.CorruptSpray;
         Item.shootSpeed = 15f;
     }

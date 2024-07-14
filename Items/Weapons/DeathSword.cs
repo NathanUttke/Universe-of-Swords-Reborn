@@ -9,6 +9,11 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class DeathSword : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
     public override void SetDefaults()
     {
         Item.width = 64;
@@ -26,7 +31,6 @@ public class DeathSword : ModItem
         Item.value = 160200;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

@@ -11,9 +11,8 @@ public class ScarletFlareCore : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Scarlet Flare Core");
-		// Tooltip.SetDefault("'From depths of hell'");
-        ItemID.Sets.ItemNoGravity[Item.type] = false;
+        Item.ResearchUnlockCount = 3;
+        ItemID.Sets.ItemNoGravity[Type] = false;
     }
 
 	public override void SetDefaults()

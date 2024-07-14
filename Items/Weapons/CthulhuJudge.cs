@@ -6,7 +6,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class CthulhuJudge : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 58;
 		Item.height = 60;
@@ -21,6 +26,5 @@ public class CthulhuJudge : ModItem
 		Item.value = Item.sellPrice(0, 0, 40, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 }

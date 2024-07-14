@@ -7,12 +7,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class ElBastardo : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("'The legendary El Bastardo'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.Size = new(86);
 		Item.scale = 1.1f;
@@ -26,7 +26,6 @@ public class ElBastardo : ModItem
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)

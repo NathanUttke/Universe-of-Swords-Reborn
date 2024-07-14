@@ -6,13 +6,12 @@ namespace UniverseOfSwordsMod.Items.Misc;
 
 public class SwordOfPower : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Broken Sword Of Power");
-		// Tooltip.SetDefault("Needs to be fixed");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 60;
 		Item.height = 62;
@@ -20,6 +19,5 @@ public class SwordOfPower : ModItem
 		Item.useStyle = ItemUseStyleID.None;
 		Item.value = 0;
 		Item.autoReuse = false;	
-		Item.ResearchUnlockCount = 1;
 	}
 }

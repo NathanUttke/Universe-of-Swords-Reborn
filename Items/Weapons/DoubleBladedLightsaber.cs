@@ -14,34 +14,27 @@ public class DoubleBladedLightsaber : ModItem
 	{		
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(55, 7, false));
 		ItemID.Sets.AnimatesAsSoul[Type] = true;
+		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void SetDefaults()
 	{
 		Item.damage = 72;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
-
-		Item.ResearchUnlockCount = 1;
-
 		Item.width = 138;
 		Item.height = 138;
-
 		Item.useTime = 10;
 		Item.useAnimation = 30;
-
 		Item.channel = true;
         Item.autoReuse = true;
         Item.noUseGraphic = true;
         Item.noMelee = true;
-
 		Item.UseSound = SoundID.Item15;
-
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 8f;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.rare = ItemRarityID.Lime;
         Item.shoot = ModContent.ProjectileType<UltimateSaberProjectile>();
-
         Item.noUseGraphic = true;
 	}
 

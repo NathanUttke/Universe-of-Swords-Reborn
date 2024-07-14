@@ -19,15 +19,12 @@ public class HumanBuzzSaw : ModProjectile
         Projectile.penetrate = -1;
         Projectile.tileCollide = false;
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
-
         Projectile.ignoreWater = true;
         Projectile.friendly = true;
         Projectile.ownerHitCheck = true;
         Projectile.hide = true;
-
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 15;
-
         Projectile.aiStyle = -1;
     }
 
@@ -51,7 +48,7 @@ public class HumanBuzzSaw : ModProjectile
         Vector2 unitVectorTowardsMouse = Owner.MountedCenter.DirectionTo(Main.MouseWorld);
         Owner.ChangeDir((unitVectorTowardsMouse.X > 0f).ToDirectionInt());
 
-        Projectile.Center = Owner.MountedCenter;
+        Projectile.Center = Owner.RotatedRelativePoint(Owner.Center, true);
         Projectile.velocity = unitVectorTowardsMouse;
         Projectile.position.X += Owner.width / 2 * Owner.direction;
         Projectile.spriteDirection = Owner.direction;

@@ -7,12 +7,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class BatSlayer : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Inflicts Confused debuff on enemies\nDeals 10% more damage to bat enemies");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 64;
 		Item.height = 64;
@@ -26,7 +26,6 @@ public class BatSlayer : ModItem
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

@@ -7,14 +7,18 @@ namespace UniverseOfSwordsMod.Items.Armor;
 [AutoloadEquip(EquipType.Head)]
 public class GreenDamascusHelmet : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 28;
 		Item.height = 20;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 20;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateEquip(Player player)
@@ -26,7 +30,7 @@ public class GreenDamascusHelmet : ModItem
 	{
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ItemID.ChlorophyteBar, 15);
-		val.AddIngredient(Mod, "DamascusHelmet", 1);
+		val.AddIngredient(ModContent.ItemType<DamascusHelmet>(), 1);
 		val.AddIngredient(ItemID.SoulofMight, 15);
 		val.AddIngredient(ItemID.SoulofSight, 15);
 		val.AddIngredient(ItemID.SoulofFright, 15);

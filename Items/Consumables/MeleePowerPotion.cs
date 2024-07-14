@@ -8,12 +8,13 @@ namespace UniverseOfSwordsMod.Items.Consumables;
 
 public class MeleePowerPotion : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Minor improvements to melee stats");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 30;
+    }
 
-	public override void SetDefaults()
+
+    public override void SetDefaults()
 	{
 		Item.UseSound = SoundID.Item3;
 		Item.useStyle = ItemUseStyleID.EatFood;
@@ -28,7 +29,6 @@ public class MeleePowerPotion : ModItem
 		Item.rare = ItemRarityID.Orange;
 		Item.buffType = ModContent.BuffType<MeleePower>();
 		Item.buffTime = 8000;
-		Item.ResearchUnlockCount = 30;
 	}
 
 	public override void AddRecipes()

@@ -11,30 +11,31 @@ namespace UniverseOfSwordsMod.Items.Weapons
 {
     public class MechanicalSoul : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 52;
             Item.height = 60;
             Item.scale = 1.1f;
-
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 26;
             Item.useAnimation = 21;
-
             Item.shoot = ModContent.ProjectileType<MechanicalProj>();
             Item.shootSpeed = 14f;
-
             Item.damage = 90;
             Item.DamageType = DamageClass.Melee;
-
             Item.crit = 6;
             Item.knockBack = 6.5f;
             Item.rare = ItemRarityID.Pink;
-
             Item.UseSound = SoundID.DD2_SonicBoomBladeSlash;
             Item.value = Item.sellPrice(0, 6, 0, 0);
             Item.autoReuse = true;           
         }
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(2))

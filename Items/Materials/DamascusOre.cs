@@ -1,17 +1,18 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using UniverseOfSwordsMod.Tiles;
 
 namespace UniverseOfSwordsMod.Items.Materials;
 
 public class DamascusOre : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Damascus Ore");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 100;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 16;
 		Item.height = 16;
@@ -22,8 +23,7 @@ public class DamascusOre : ModItem
 		Item.rare = ItemRarityID.Green;
 		Item.autoReuse = true;
 		Item.consumable = true;
-		Item.createTile = Mod.Find<ModTile>("DamascusOreTile").Type;
-		Item.maxStack = 9999;
-		Item.ResearchUnlockCount = 100;
+		Item.createTile = ModContent.TileType<DamascusOreTile>();
+		Item.maxStack = Item.CommonMaxStack;
 	}
 }

@@ -9,13 +9,12 @@ namespace UniverseOfSwordsMod.Items.Misc;
 
 public class MagicMirrorBlade : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Magic Mirror Blade");
-		// Tooltip.SetDefault("'Magic Mirror and sword fused together'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 58;
 		Item.height = 58;
@@ -27,7 +26,6 @@ public class MagicMirrorBlade : ModItem
         Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.noMelee = true;
 		Item.autoReuse = false;
-		Item.ResearchUnlockCount = 1;
     }
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

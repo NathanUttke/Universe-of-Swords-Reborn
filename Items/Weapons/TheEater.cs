@@ -4,12 +4,16 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TheEater : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
     public override void SetDefaults()
     {
         Item.width = 54;
@@ -24,7 +28,6 @@ public class TheEater : ModItem
         Item.value = Item.sellPrice(0, 0, 75, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-        Item.ResearchUnlockCount = 1;
     }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

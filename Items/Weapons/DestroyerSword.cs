@@ -9,12 +9,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class DestroyerSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Boom, Boom!");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 62;
 		Item.height = 62;
@@ -28,7 +28,6 @@ public class DestroyerSword : ModItem
 		Item.value = 160000;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

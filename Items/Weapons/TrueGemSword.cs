@@ -11,13 +11,13 @@ public class TrueGemSword : ModItem
 {
     public override void SetStaticDefaults()
     {
-		// DisplayName.SetDefault("True Gem Blade");
+        Item.ResearchUnlockCount = 1;
     }
+
     public override void SetDefaults()
 	{
-		Item.width = 58;
-		Item.height = 58;
-		Item.scale = 1.1f;
+        Item.Size = new(58);
+        Item.scale = 1.1f;
 		Item.rare = ItemRarityID.Lime;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
@@ -29,8 +29,7 @@ public class TrueGemSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
+		Item.DamageType = DamageClass.Melee; 		
 	}
 	
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -7,12 +7,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class StoneSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("'You Rock!'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 35;
 		Item.height = 35;
@@ -27,8 +27,8 @@ public class StoneSword : ModItem
 		Item.value = 100;
 		Item.autoReuse = false;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
+
 	public override void AddRecipes()
 	{			
 		CreateRecipe()

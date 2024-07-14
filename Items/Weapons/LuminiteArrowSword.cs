@@ -12,12 +12,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class LuminiteArrowSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Shoots Luminite arrows");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 64;
 		Item.height = 64;
@@ -33,7 +33,6 @@ public class LuminiteArrowSword : ModItem
 		Item.value = 220500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {

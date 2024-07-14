@@ -14,7 +14,6 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.StarCannonStar}";
 
-        public readonly int numOfBounces = 8;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 8;
@@ -25,7 +24,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.Size = new(30);
             Projectile.aiStyle = -1;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 8;
             Projectile.friendly = true;
             Projectile.hostile = false; 
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
@@ -55,25 +54,17 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
-            if (Projectile.tileCollide)
+            SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
+            Projectile.penetrate--;
+            if (Projectile.velocity.Y != Projectile.oldVelocity.Y)
             {
-                SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
-                Projectile.ai[0] += 1f;
-                if (Projectile.ai[0] >= (float)numOfBounces)
-                {
-                    Projectile.position += Projectile.velocity;
-                    Projectile.Kill();
-                }
-                if (Projectile.velocity.Y != Projectile.oldVelocity.Y)
-                {
-                    Projectile.velocity.Y = (0f - Projectile.oldVelocity.Y) * 0.8f;
-                }
-                if (Projectile.velocity.X != Projectile.oldVelocity.X)
-                {
-                    Projectile.velocity.X = 0f - Projectile.oldVelocity.X;
-                }
+                Projectile.velocity.Y = -oldVelocity.Y * 0.8f;
             }
+            if (Projectile.velocity.X != Projectile.oldVelocity.X)
+            {
+                Projectile.velocity.X = -oldVelocity.X;
+            }
+
             return false;
         }
    

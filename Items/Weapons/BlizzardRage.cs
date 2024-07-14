@@ -10,7 +10,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class BlizzardRage : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 32;
 		Item.height = 32;
@@ -27,40 +32,23 @@ public class BlizzardRage : ModItem
 		Item.value = 450500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
-		Item.ResearchUnlockCount = 1;
 		Item.alpha = 100;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		int numberProjectiles = Main.rand.Next(1, 4);
-		Vector2 vector2_1 = new();
-		for (int i = 0; i < numberProjectiles; i++)
+        Vector2 mousePos = Main.MouseWorld;
+        if (mousePos.Y > player.Center.Y - 200f)
+        {
+            mousePos.Y = player.Center.Y - 200f;
+        }
+        for (int i = 0; i < numberProjectiles; i++)
 		{
-			vector2_1.X = player.Center.X + (Main.rand.Next(100) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X);
-			vector2_1.Y = player.Center.Y - 600f;
-
-		    vector2_1.X = (float)((vector2_1.X + player.Center.X) / 2f) + Main.rand.Next(-100, 100);
-			vector2_1.Y -= 100 * i;
-			float num12 = Main.mouseX + Main.screenPosition.X - vector2_1.X;
-			float num13 = Main.mouseY + Main.screenPosition.Y - vector2_1.Y;
-
-			if (num13 < 0f)
-			{
-				num13 *= -1f;
-			}
-			if (num13 < 20f)
-			{
-				num13 = 20f;
-			}
-
-			float num14 = MathF.Sqrt(num12 * num12 + num13 * num13);
-			float num15 = Item.shootSpeed / num14;
-			num12 *= num15;
-			num13 *= num15;
-			velocity.X = num12 + Main.rand.Next(-12, 10) * 0.16f;
-			velocity.Y = num13 + Main.rand.Next(-12, 10) * 0.16f;
-			Projectile.NewProjectile(source, vector2_1, velocity, type, damage / 2, knockback, player.whoAmI, 0f, Main.rand.Next(5));
+			Vector2 newPosition = player.Center + new Vector2(-Main.rand.Next(400) * player.direction, -600);
+            newPosition.Y -= 100 * i;
+            Vector2 newVelocity = Vector2.Normalize(mousePos - newPosition) * Item.shootSpeed;
+			Projectile.NewProjectile(source, newPosition, newVelocity, type, damage / 2, knockback, player.whoAmI, 0f, Main.rand.Next(5));
 		}
 		return false;
 	}	

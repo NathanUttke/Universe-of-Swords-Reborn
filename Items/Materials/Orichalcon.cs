@@ -6,20 +6,18 @@ namespace UniverseOfSwordsMod.Items.Materials;
 
 public class Orichalcon : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Scintillo Bar");
-		// Tooltip.SetDefault("Most powerful and rarest ore for making swords");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 25;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 32;
 		Item.height = 32;
 		Item.maxStack = 999;
 		Item.value = 180000;
 		Item.rare = ItemRarityID.LightPurple;
-		Item.ResearchUnlockCount = 25;
 	}
 
 	public override void AddRecipes()

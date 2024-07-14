@@ -9,12 +9,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TwinsSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Whoosh, whoosh!");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 58;
 		Item.height = 58;
@@ -30,7 +30,6 @@ public class TwinsSword : ModItem
 		Item.shootSpeed = 6f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

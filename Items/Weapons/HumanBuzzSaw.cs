@@ -7,35 +7,27 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class HumanBuzzSaw : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Human Buzz Saw");
-		// Tooltip.SetDefault("'Cuts through hordes of Terraria like butter'");
-	}
-
-	public override void SetDefaults()
-	{
+    public override void SetStaticDefaults()
+    {
         Item.ResearchUnlockCount = 1;
+    }
 
+    public override void SetDefaults()
+	{
         Item.damage = 24;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
-
 		Item.width = 102;
 		Item.height = 102;
 		Item.crit = 8;
 		Item.scale = 1f;
-
 		Item.useStyle = ItemUseStyleID.Shoot;
-
 		Item.useTime = 4;
 		Item.useAnimation = 4;		
 		Item.UseSound = SoundID.Item1;
-
 		Item.knockBack = 4f;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.rare = ItemRarityID.LightRed;
 		Item.shoot = ModContent.ProjectileType<Projectiles.HumanBuzzSaw>();
-
         Item.channel = true;
         Item.autoReuse = true;
         Item.noUseGraphic = true;

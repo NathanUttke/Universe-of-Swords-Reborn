@@ -5,19 +5,23 @@ using Microsoft.Xna.Framework;
 using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Accessories;
-[LegacyName (new string[] { "BoxOfGrenades" })]
+[LegacyName (["BoxOfGrenades"])]
 public class VolatileKnives : ModItem
 {
     private int grenadeBoxCounter;
 
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 18;
 		Item.height = 32;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.rare = ItemRarityID.Purple;
 		Item.accessory = true; 
-		Item.ResearchUnlockCount = 1;
 	}
 	
 	public override void UpdateAccessory(Player player, bool hideVisual)

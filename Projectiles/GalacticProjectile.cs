@@ -76,10 +76,8 @@ namespace UniverseOfSwordsMod.Projectiles
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
             for (int i = 0; i < 14; i++)
             {
-                int deathDust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197, 0), 2f);
-                Main.dust[deathDust].noGravity = true;
-                Dust deathDust2 = Main.dust[deathDust];
-                deathDust2.velocity *= 4f;
+                Dust dust = Dust.NewDustDirect(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197, 0), 1f);
+                dust.velocity *= 4f;
             }
         }
 

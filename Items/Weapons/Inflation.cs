@@ -12,7 +12,7 @@ public class Inflation : ModItem
 {
     public override void SetStaticDefaults()
     {
-        // Tooltip.SetDefault("Congratulations, you made an overpriced sword!");
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void SetDefaults()

@@ -9,12 +9,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class PrimeSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Pew, pew!");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 62;
 		Item.height = 64;
@@ -26,14 +26,11 @@ public class PrimeSword : ModItem
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1 with { Pitch = -0.35f };
 		Item.value = 160000;
-
 		Item.shoot = ModContent.ProjectileType<PrimeSlashProj>();
-
 		Item.noMelee = true;
 		Item.shootsEveryUse = true;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

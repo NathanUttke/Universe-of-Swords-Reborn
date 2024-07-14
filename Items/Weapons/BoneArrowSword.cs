@@ -9,15 +9,14 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class BoneArrowSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Shoots Bone arrows");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
+		Item.Size = new(64);
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 50;
@@ -30,7 +29,6 @@ public class BoneArrowSword : ModItem
 		Item.value = 14800;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

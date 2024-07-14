@@ -8,12 +8,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class Crystallus : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Crystallus");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 40;
 		Item.height = 46;
@@ -27,7 +27,6 @@ public class Crystallus : ModItem
 		Item.value = Item.sellPrice(0, 0, 60, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)

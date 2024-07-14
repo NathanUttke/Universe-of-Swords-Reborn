@@ -15,7 +15,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
         }
         public override void SetDefaults()
         {
@@ -59,7 +59,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
 
             SpriteBatch spriteBatch = Main.spriteBatch;
-            Color drawColor = Color.White with { A = 0 };
+            Color drawColor = Color.LightCyan with { A = 0 };
             Color drawColorTrail = Color.Cyan with { A = 0 };
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
@@ -70,19 +70,21 @@ namespace UniverseOfSwordsMod.Projectiles
                 drawColor *= 0.7f;
 
                 spriteBatch.Draw(texture, drawPos, null, drawColor, Projectile.rotation, Projectile.Size / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
-                spriteBatch.Draw(glowTexture, drawPos, null, drawColorTrail, Projectile.rotation, glowTexture.Size() / 2f, (Projectile.scale * 0.75f) - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, drawPos, null, drawColor * 0.5f, Projectile.rotation, Projectile.Size / 2f, (Projectile.scale * 1.5f) - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                spriteBatch.Draw(glowTexture, drawPos, null, drawColorTrail * 0.75f, Projectile.rotation, glowTexture.Size() / 2f, (Projectile.scale * 0.75f) - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White with { A = 0 }, Projectile.rotation, Projectile.Size / 2f, Projectile.scale, SpriteEffects.None, 0);
+            //Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White with { A = 0 }, Projectile.rotation, Projectile.Size / 2f, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
 
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 1f);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 1.25f);
+                dust.velocity *= 4f;
             }
         }
     }

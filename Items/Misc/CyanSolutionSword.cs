@@ -1,7 +1,5 @@
-using Microsoft.Xna.Framework;
-using System;
 using Terraria;
-using Terraria.DataStructures;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -12,13 +10,11 @@ public class CyanSolutionSword : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-        // DisplayName.SetDefault("Hallow Solution Spreader");
-		// Tooltip.SetDefault("Infinite biome spreading? Awesome!\nRight click to choose between solutions");
         Item.ResearchUnlockCount = 1;
-        Terraria.GameContent.Creative.On_ItemFilters.Tools.FitsFilter += Tools_FitsFilter;
+        On_ItemFilters.Tools.FitsFilter += Tools_FitsFilter;
     }
 
-    private bool Tools_FitsFilter(Terraria.GameContent.Creative.On_ItemFilters.Tools.orig_FitsFilter orig, Terraria.GameContent.Creative.ItemFilters.Tools self, Item entry)
+    private bool Tools_FitsFilter(On_ItemFilters.Tools.orig_FitsFilter orig, ItemFilters.Tools self, Item entry)
     {
         if (Item.type == Type)
         {
@@ -32,13 +28,11 @@ public class CyanSolutionSword : ModItem
 		Item.width = 58;
 		Item.height = 58;
 		Item.scale = 1.3f;
-		Item.rare = ItemRarityID.Lime;	
-		
+		Item.rare = ItemRarityID.Lime;			
 		Item.useTime = 20;
 		Item.useAnimation = 20;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.UseSound = SoundID.Item34;	
-		
+		Item.UseSound = SoundID.Item34;			
 		Item.value = 830000;
 		Item.autoReuse = true;
         Item.shoot = ProjectileID.HallowSpray;

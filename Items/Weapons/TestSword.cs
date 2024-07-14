@@ -25,6 +25,5 @@ public class TestSword : ModItem
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = false;
         Item.DamageType = DamageClass.Melee;
-        Item.ResearchUnlockCount = 1;
     }
 }

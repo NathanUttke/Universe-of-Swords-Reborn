@@ -6,7 +6,12 @@ namespace UniverseOfSwordsMod.Items.Consumables;
 
 public class NordMead : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 20;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.UseSound = SoundID.Item3;
 		Item.useStyle = ItemUseStyleID.EatFood;
@@ -21,7 +26,6 @@ public class NordMead : ModItem
 		Item.rare = ItemRarityID.Orange;
 		Item.buffType = ModContent.BuffType<Buffs.NordMead>();
 		Item.buffTime = 14000;
-		Item.ResearchUnlockCount = 20;
 	}
 
 	public override void AddRecipes()

@@ -11,12 +11,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class EdgeLord : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("'Blood for the Blood God! Skulls for the skull throne! Milk for the Khorne flakes!'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 128;
 		Item.height = 128;
@@ -32,7 +32,6 @@ public class EdgeLord : ModItem
 		Item.value = 800000;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
         Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
     }
 
@@ -66,7 +65,7 @@ public class EdgeLord : ModItem
             {
                 Main.player[player.whoAmI].lifeSteal -= stealDamage;
                 int playerOwner = player.whoAmI;
-                Projectile.NewProjectile(Projectile.GetSource_None(), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, playerOwner, playerOwner, stealDamage);
+                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, playerOwner, playerOwner, stealDamage);
             }
         }
     }

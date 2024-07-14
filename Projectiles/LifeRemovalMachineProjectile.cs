@@ -13,7 +13,7 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override string Texture => ModContent.GetInstance<LifeRemovalMachine>().Texture;
 
-        const float ShootSpeed = 30f;
+        const float ShootSpeed = 14f;
         const float MaxTime = 50f;
 
         public override void SetStaticDefaults()

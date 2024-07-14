@@ -9,21 +9,18 @@ namespace UniverseOfSwordsMod.Items.Armor;
 [AutoloadEquip(EquipType.Body)]
 public class RedDamascusChestplate : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		
-		// DisplayName.SetDefault("Red Damascus Chestplate");
-		// Tooltip.SetDefault("'Armor for agressive warriors'\n10% increased melee damage\n10% increased melee critical chance");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 26;
 		Item.height = 20;
 		Item.value = Item.sellPrice(0, 7, 0, 0);
 		Item.rare = ItemRarityID.Orange;
 		Item.defense = 20;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -54,7 +51,7 @@ public class RedDamascusChestplate : ModItem
 	{		
 		Recipe val = CreateRecipe(1);
 		val.AddIngredient(ModContent.ItemType<ScarletFlareCore>(), 10);
-		val.AddIngredient(Mod, "DamascusBreastplate", 1);
+		val.AddIngredient(ModContent.ItemType<DamascusBreastplate>(), 1);
 		val.AddIngredient(ItemID.SoulofMight, 15);
 		val.AddIngredient(ItemID.SoulofSight, 15);
 		val.AddIngredient(ItemID.SoulofFright, 15);

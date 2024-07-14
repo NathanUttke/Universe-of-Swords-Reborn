@@ -4,44 +4,39 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TheStinger : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("33% chance of shooting a stinger");
-	}
-
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+    public override void SetDefaults()
 	{
 		Item.width = 62;
 		Item.height = 62;
-		Item.scale = 1.1f;
+		Item.scale = 1.125f;
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 40;
+		Item.useTime = 60;
 		Item.useAnimation = 20;
 		Item.damage = 17;
 		Item.knockBack = 5f;
 		Item.shoot = ProjectileID.HornetStinger;
-        Item.shootSpeed = 10f;
+        Item.shootSpeed = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		if (Main.rand.NextBool(2))
-		{
-            Projectile stingerProj = Projectile.NewProjectileDirect(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(5f)), ProjectileID.HornetStinger, damage / 2, knockback * 0.75f, player.whoAmI);
-			stingerProj.timeLeft = 40;
-        }
-		return false;
+        Projectile.NewProjectileDirect(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(1.5f)), ModContent.ProjectileType<StingerProj>(), damage / 2, knockback * 0.75f, player.whoAmI);
+        return false;
     }
 
     public override void AddRecipes()
@@ -58,7 +53,7 @@ public class TheStinger : ModItem
 	{
 		if (Main.rand.NextBool(4))
 		{
-			Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.JungleGrass, 0.5f, 0f, 100, default, 1.5f)];
+			Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.JungleGrass, 0.5f, 0f, 100, default, 1.5f);
 			dust.noGravity = true;
 		}
 	}

@@ -10,13 +10,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class GrandPiano : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Grand Piano");
-		// Tooltip.SetDefault("'Rage Quit - Horrior'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.Size = new(142);
 		Item.rare = ItemRarityID.Orange;
@@ -31,7 +30,6 @@ public class GrandPiano : ModItem
 		Item.autoReuse = true;
 		Item.ArmorPenetration = 20;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 		Item.holdStyle = ItemHoldStyleID.HoldGuitar;
 	}
 
@@ -51,13 +49,6 @@ public class GrandPiano : ModItem
 		.AddTile(TileID.Autohammer)
 		.Register();
 	}
-
-    /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-        Vector2 pointPosition = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
-        Projectile.NewProjectile(source, pointPosition, new Vector2(0f, 20f), ProjectileID.QuarterNote, damage / 2, knockback, player.whoAmI);
-        return false;
-	}*/
 
     public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
     {

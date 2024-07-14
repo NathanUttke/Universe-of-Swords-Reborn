@@ -15,15 +15,15 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {            
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
         }
         public override void SetDefaults()
         {
-            Projectile.width = 22;
-            Projectile.height = 30;
+            Projectile.width = 16;
+            Projectile.height = 16;
             Projectile.scale = 1.25f;
-            Projectile.aiStyle = ProjAIStyleID.Arrow;
+            Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = -1;
@@ -32,17 +32,20 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 8;
             Projectile.ignoreWater = true;
-            Projectile.tileCollide = false;
+            Projectile.tileCollide = true;
             Projectile.timeLeft = 300;
-            AIType = ProjectileID.Bullet;
+            //AIType = ProjectileID.Bullet;
         }
 
         public override void AI()
         {
             Lighting.AddLight(Projectile.position, 0.5f, 0.25f, 0.5f);
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             if (Main.rand.NextBool(2))
             {
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple with { A = 0 }, 2f);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple, 1.5f);
+                dust.velocity *= 0.5f;
+                dust.velocity -= Projectile.velocity * 0.2f;
             }
         }
 
@@ -54,28 +57,40 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
+        public override void OnKill(int timeLeft)
+        {
+            //SoundEngine.PlaySound(SoundID.DD2_GoblinBomberThrow with { Pitch = 0f, Volume = 0.5f }, Projectile.position);
+            for (int i = 0; i < 20; i++)
+            {
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple, 2f);
+                dust.velocity *= 8f;
+            }
+            Projectile.Damage();
+        }
+
         public override Color? GetAlpha(Color lightColor) => new Color(205, 143, 255, 0);
 
         public override bool PreDraw(ref Color lightColor)
         {            
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            Vector2 drawOrigin = new(texture.Width / 2, Projectile.height / 2);           
+            Vector2 drawOrigin = new(texture.Width / 2, 0f);           
             
             Texture2D glowStar = TextureAssets.Extra[ExtrasID.SharpTears].Value;
-            Color drawColorGlow = Color.HotPink with { A = 127 };
+            Color drawColorGlow = Color.Magenta with { A = 0 };
             Color color = Projectile.GetAlpha(lightColor);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);                
+                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + Projectile.Size / 2 + new Vector2(0f, Projectile.gfxOffY);                
                 
                 color *= 0.75f;
+                drawColorGlow *= 0.75f;
 
-                Main.EntitySpriteDraw(glowStar, drawPos, null, drawColorGlow * 0.75f, Projectile.rotation, glowStar.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
-                Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);               
-                Main.EntitySpriteDraw(texture, drawPos, null, color * 0.5f, Projectile.rotation, drawOrigin, (Projectile.scale * 1.25f) - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);               
+                Main.EntitySpriteDraw(glowStar, drawPos, null, drawColorGlow, Projectile.rotation, glowStar.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);               
+                Main.EntitySpriteDraw(texture, drawPos, null, color * 0.25f, Projectile.rotation, drawOrigin, (Projectile.scale * 1.5f) - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);               
             }
-            return true;
+            return false;
         }   
     }
 }

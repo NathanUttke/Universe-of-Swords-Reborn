@@ -11,13 +11,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class RedFlareLongsword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Scarlet Flare Longsword");
-		// Tooltip.SetDefault("Fires scarlet flare waves and ignites enemies with Scarlet flames\n'Ignite your foes in scarlet flames'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 60;
 		Item.height = 60;
@@ -34,7 +33,6 @@ public class RedFlareLongsword : ModItem
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override bool CanShoot(Player player) => !player.ItemAnimationJustStarted;

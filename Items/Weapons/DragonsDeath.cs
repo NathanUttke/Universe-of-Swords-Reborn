@@ -9,7 +9,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class DragonsDeath : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.Size = new(128);
 		Item.rare = ItemRarityID.Lime;
@@ -33,6 +38,5 @@ public class DragonsDeath : ModItem
 		Item.noUseGraphic = true;
 		Item.value = 490500;
 		Item.autoReuse = true;		
-		Item.ResearchUnlockCount = 1;
 	}		
 }

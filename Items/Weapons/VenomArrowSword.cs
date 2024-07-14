@@ -9,12 +9,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class VenomArrowSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Shoots Venom arrows");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 32;
 		Item.height = 32;
@@ -31,7 +31,6 @@ public class VenomArrowSword : ModItem
 		Item.value = 36500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UseStyle(Player player, Rectangle heldItemFrame)

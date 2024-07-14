@@ -9,8 +9,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class ChlorophyteArrowSword : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.Size = new(64);
 		Item.rare = ItemRarityID.Pink;
@@ -25,7 +29,6 @@ public class ChlorophyteArrowSword : ModItem
 		Item.value = 78500;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

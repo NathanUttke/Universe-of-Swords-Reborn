@@ -36,37 +36,35 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.alpha = 0;
             Projectile.penetrate = 1;
             Projectile.aiStyle = -1;
+            Projectile.noEnchantmentVisuals = true;
         }
 
         public override void AI()
         {
-            for (int i = 0; i < 2; i++)
-            {
-                Dust fireDust = Dust.NewDustDirect(Projectile.Center, Projectile.width, Projectile.height, DustID.InfernoFork, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, 100, default, 0.8f);
-                fireDust.velocity *= 0.6f;
-                fireDust.noGravity = true;
-            }
+            Dust fireDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, 100, Color.Yellow, 0.5f);
+            fireDust.velocity *= 0.6f;
+            fireDust.noGravity = true;
 
             //Projectile.velocity.Y += 0.25f;
             Projectile.ai[0]++;
-            if (Projectile.ai[0] % 5f == 0f && Projectile.owner == Main.myPlayer)
+            /*if (Projectile.ai[0] % 5f == 0f && Projectile.owner == Main.myPlayer)
             {
                 Projectile smallFire = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.position, Vector2.UnitY * 5f, ProjectileID.WandOfSparkingSpark, Projectile.damage / 2, 0f, Projectile.owner);
                 smallFire.timeLeft = 300;
                 smallFire.usesLocalNPCImmunity = true;
                 smallFire.localNPCHitCooldown = 17;
-            }
+            }*/
 
             if (Projectile.ai[1] == 0f)
             {
                 Projectile.ai[1] = 1f;
                 for (int i = 0; i < 40; i++)
                 {
-                    Dust fireDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.InfernoFork, 0f, 0f, 100, default, 0.8f);
-                    fireDust.velocity *= 3f;
-                    fireDust.velocity += Projectile.velocity * 0.75f;
-                    fireDust.scale *= 1.2f;
-                    fireDust.noGravity = true;
+                    Dust fireDust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Yellow, 1f);
+                    fireDust2.velocity *= 3f;
+                    fireDust2.velocity += Projectile.velocity * 0.75f;
+                    fireDust2.scale *= 1.2f;
+                    fireDust2.noGravity = true;
                 }
             }
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;

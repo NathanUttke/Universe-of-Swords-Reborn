@@ -9,7 +9,7 @@ public class GoblinKnife : ModItem
 {
     public override void SetStaticDefaults()
     {
-        // Tooltip.SetDefault("Fast and small knife of Goblins");
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void SetDefaults()
@@ -28,12 +28,12 @@ public class GoblinKnife : ModItem
         Item.crit = 25;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
-        Item.ResearchUnlockCount = 1;
         Item.holdStyle = ItemHoldStyleID.HoldUp;
     }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
+        target.bloodButchered = true;
         if (!target.HasBuff(BuffID.Bleeding))
         {
             target.AddBuff(BuffID.Bleeding, 400);

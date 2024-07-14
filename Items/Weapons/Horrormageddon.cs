@@ -11,12 +11,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class Horrormageddon : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("'Where you see an army, I see a graveyard'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 82;
 		Item.height = 82;
@@ -32,7 +32,6 @@ public class Horrormageddon : ModItem
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void AddRecipes()

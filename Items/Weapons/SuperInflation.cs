@@ -13,11 +13,11 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 public class SuperInflation : ModItem
 {
     public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("'Throw money at ALL your problems'\n15% more damage if the player has a gold coin.");
-	}
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 128;
 		Item.height = 128;
@@ -28,11 +28,10 @@ public class SuperInflation : ModItem
 		Item.useAnimation = 20;
 		Item.damage = 130;
         Item.shoot = ModContent.ProjectileType<SuperInflationHoldoutProj>();
-        Item.shootSpeed = 9f;
+        Item.shootSpeed = 1f;
 		Item.value = 0;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
         Item.noMelee = true;
         Item.noUseGraphic = true;
 	}

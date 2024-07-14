@@ -7,29 +7,25 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class TheBrain : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("'Sword of Crimson'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
-		Item.width = 58;
-		Item.height = 58;
+		Item.Size = new(58);
 		Item.rare = ItemRarityID.Orange;
-		Item.useStyle = ItemUseStyleID.Swing;
-		
+		Item.useStyle = ItemUseStyleID.Swing;		
 		Item.useTime = 40;
 		Item.useAnimation = 20;
-		Item.UseSound = SoundID.Item1;
-		
+		Item.UseSound = SoundID.Item1;		
 		Item.damage = 15;
 		Item.knockBack = 3f;
 		Item.scale = 1.25f;
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)

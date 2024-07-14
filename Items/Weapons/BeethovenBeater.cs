@@ -9,13 +9,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class BeethovenBeater : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Beethoven Beater");
-		// Tooltip.SetDefault("'Moonlight Sonata - Beethoven'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 122;
 		Item.height = 122;
@@ -31,7 +30,6 @@ public class BeethovenBeater : ModItem
 		Item.value = 40000;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)

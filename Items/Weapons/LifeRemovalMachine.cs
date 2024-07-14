@@ -7,16 +7,15 @@ using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
-[LegacyName (new string[] { "UltraMachine" })]
+[LegacyName (["UltraMachine"])]
 public class LifeRemovalMachine : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Life Removal Machine");
-		// Tooltip.SetDefault("'Insert Hollywood computer generated special effects here'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 116;
 		Item.height = 116;
@@ -35,7 +34,6 @@ public class LifeRemovalMachine : ModItem
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 	public override void AddRecipes()
 	{		

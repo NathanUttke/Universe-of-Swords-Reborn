@@ -7,13 +7,12 @@ namespace UniverseOfSwordsMod.Items.Consumables;
 
 public class Skooma : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Skooma");
-		// Tooltip.SetDefault("Increases movement speed and jump height");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 30;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.UseSound = SoundID.Item3;
 		Item.useStyle = ItemUseStyleID.EatFood;
@@ -28,8 +27,6 @@ public class Skooma : ModItem
 		Item.rare = ItemRarityID.Purple;
 		Item.buffType = ModContent.BuffType<Buffs.Skooma>();
 		Item.buffTime = 8000;
-		Item.ResearchUnlockCount = 30;
-
 	}
 
 	public override void AddRecipes()

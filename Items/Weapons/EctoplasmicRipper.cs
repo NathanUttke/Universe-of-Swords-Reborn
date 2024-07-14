@@ -8,34 +8,29 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class EctoplasmicRipper : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Steals mana upon hitt");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{		
 		Item.crit = 2;		
 		Item.width = 52;
 		Item.height = 52;
-
 		Item.useTime = 15;
 		Item.useAnimation = 15;
 		Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item103;
-
         Item.damage = 75;
         Item.DamageType = DamageClass.Magic;
-
         Item.knockBack = 6f;
 		Item.value = Item.sellPrice(0, 1, 40, 0);
 		Item.rare = ItemRarityID.Cyan;
 		Item.scale = 1.5f;		
 		Item.autoReuse = true;
 		Item.useTurn = false;
-
 		Item.mana = 10;
-        Item.ResearchUnlockCount = 1;
     }
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)

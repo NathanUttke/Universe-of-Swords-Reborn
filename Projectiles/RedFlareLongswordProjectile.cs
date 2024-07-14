@@ -12,7 +12,8 @@ namespace UniverseOfSwordsMod.Projectiles
     public class RedFlareLongswordProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
-        {            
+        {
+            ProjectileID.Sets.TrailCacheLength[Type] = 5;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
         public override void SetDefaults()
@@ -31,7 +32,6 @@ namespace UniverseOfSwordsMod.Projectiles
         
         public override void AI()
         {
-            base.AI();
             if (Projectile.ai[1] == 0f)
             {
                 Projectile.ai[1] = 1f;                     
@@ -62,11 +62,6 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                if (j % 2 != 0)
-                {
-                    continue;
-                }
-
                 Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + (Projectile.Size / 2f);                
                 drawColorTrail *= 0.75f;
 

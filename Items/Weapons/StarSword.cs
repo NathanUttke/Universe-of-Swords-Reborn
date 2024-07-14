@@ -11,7 +11,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class StarSword : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 60;
 		Item.height = 64;
@@ -27,8 +32,8 @@ public class StarSword : ModItem
 		Item.value = Item.sellPrice(0, 1, 20, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 		
-		Item.ResearchUnlockCount = 1;
 	}
+
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
         if (Main.rand.NextBool(2))

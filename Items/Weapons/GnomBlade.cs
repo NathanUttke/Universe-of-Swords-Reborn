@@ -8,7 +8,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class GnomBlade : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 64;
 		Item.height = 64;
@@ -23,12 +28,15 @@ public class GnomBlade : ModItem
 		Item.DamageType = DamageClass.MeleeNoSpeed;
 		Item.crit = 8;
         Item.autoReuse = true;
-        Item.shoot = ModContent.ProjectileType<GnomeProj>();
-		Item.shootSpeed = 11f;
-		Item.ResearchUnlockCount = 1;
+		Item.noUseGraphic = true;
+		Item.noMelee = true;
+        Item.shoot = ModContent.ProjectileType<GnomBladeHoldoutProj>();
+		Item.shootSpeed = 1f;
 	}
 
-	public override void AddRecipes()
+	public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
+
+    public override void AddRecipes()
 	{
 		CreateRecipe()	
 			.AddIngredient(ItemID.LunarBar, 10)

@@ -13,27 +13,25 @@ public class SwordMatter : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Sword Matter");
-		// Tooltip.SetDefault("'Matter of all swords'");
-		ItemID.Sets.ItemIconPulse[Item.type] = true;
-		ItemID.Sets.ItemNoGravity[Item.type] = true;
+        Item.ResearchUnlockCount = 25;
+        ItemID.Sets.ItemIconPulse[Type] = true;
+		ItemID.Sets.ItemNoGravity[Type] = true;
 	}
 
 	public override void SetDefaults()
 	{
 		Item.width = 20;
 		Item.height = 20;
-		Item.maxStack = 9999;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.value = 0;
 		Item.rare = ItemRarityID.Orange;
-		Item.ResearchUnlockCount = 25;
 	}
 
     public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
     {
         float globalTimeWrapped = Main.GlobalTimeWrappedHourly;
         Texture2D texture = TextureAssets.Item[Type].Value;
-		Texture2D pinkExtra = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowThing"); 
+		Texture2D pinkExtra = (Texture2D)ModContent.Request<Texture2D>($"{nameof(UniverseOfSwordsMod)}/Assets/GlowThing"); 
 
         var frame = texture.Frame();
 		var pinkExtraFrame = pinkExtra.Frame();
@@ -49,6 +47,7 @@ public class SwordMatter : ModItem
 
         spriteBatch.Draw(pinkExtra, vectorPosition, pinkExtraFrame, glowColor, rotation + globalTimeWrapped * 0.75f, pinkOrigin, scale + MathF.Sin(scale / 4f), SpriteEffects.None, 0f);
         spriteBatch.Draw(texture, vectorPosition, frame, Color.White, rotation, origin, scale + MathF.Sin(scale / 4f), SpriteEffects.None, 0f);
+        spriteBatch.Draw(texture, vectorPosition, frame, Color.White with { A = 0 } * 0.25f, rotation, origin, scale * 1.5f + MathF.Sin(scale / 4f), SpriteEffects.None, 0f);
         return false;
     }
 }

@@ -12,7 +12,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class GreatswordOfTheCosmos : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 100;
 		Item.height = 100;
@@ -29,7 +34,6 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

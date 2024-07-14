@@ -9,24 +9,22 @@ using static Terraria.ModLoader.ModContent;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-[LegacyName(new string[] { "ScarledFlareGreatsword" })]
+[LegacyName(["ScarledFlareGreatsword"])]
 public class ScarletFlareGreatsword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Scarlet Flare Greatsword");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 120;
 		Item.height = 120;
 		Item.rare = ItemRarityID.Red;
-
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 25;
 		Item.useAnimation = 20;
-
 		Item.damage = 110;
 		Item.knockBack = 6f;
 		Item.scale = 1f;
@@ -39,7 +37,6 @@ public class ScarletFlareGreatsword : ModItem
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 	public override void AddRecipes()
 	{

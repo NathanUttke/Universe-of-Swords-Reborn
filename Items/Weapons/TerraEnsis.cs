@@ -7,33 +7,29 @@ using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
-[LegacyName (new string[] {"TrueTerrablade"})]
+[LegacyName (["TrueTerrablade"])]
 public class TerraEnsis : ModItem
 {
     public override void SetStaticDefaults()
     {
-        // DisplayName.SetDefault("Terra Ensis");
+        Item.ResearchUnlockCount = 1;
     }
+
     public override void SetDefaults()
     {
         Item.damage = 120;
         Item.DamageType = DamageClass.Melee; 
         Item.width = 62;
         Item.height = 68;
-
         Item.useTime = 20;
         Item.useAnimation = 16;
         Item.useStyle = ItemUseStyleID.Swing;
-
         Item.knockBack = 10f;
         Item.value = Item.sellPrice(0, 5, 0, 0);
-
         Item.shoot = ModContent.ProjectileType<TrueTerrabladeProjectile>();
         Item.shootSpeed = 15f;
-
         Item.shootsEveryUse = true;
         Item.noMelee = true;
-
         Item.rare = ItemRarityID.Purple;
         Item.UseSound = SoundID.DD2_SonicBoomBladeSlash;
         Item.autoReuse = true;

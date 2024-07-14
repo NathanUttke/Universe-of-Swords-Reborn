@@ -6,13 +6,13 @@ namespace UniverseOfSwordsMod.Items.Accessories;
 
 public class HaloOfHorrors : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Skull of Insanity");
-		// Tooltip.SetDefault("Level 1 \n5 defense\n5% increased armor penetration\nIncreased health regeneration\n5% increased damage\nCurses the wearer with Feral bite\n30% decreased melee speed");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+
+    public override void SetDefaults()
 	{
 		Item.width = 38;
 		Item.height = 40;
@@ -20,7 +20,6 @@ public class HaloOfHorrors : ModItem
 		Item.rare = ItemRarityID.Purple;
 		Item.expert = true;
 		Item.accessory = true; 
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)

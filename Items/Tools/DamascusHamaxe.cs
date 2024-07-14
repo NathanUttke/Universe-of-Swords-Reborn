@@ -7,7 +7,12 @@ namespace UniverseOfSwordsMod.Items.Tools;
 
 public class DamascusHamaxe : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.damage = 23;
 		Item.DamageType = DamageClass.Melee; 
@@ -23,7 +28,6 @@ public class DamascusHamaxe : ModItem
 		Item.rare = ItemRarityID.Green;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void AddRecipes()

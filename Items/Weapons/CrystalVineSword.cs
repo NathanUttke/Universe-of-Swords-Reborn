@@ -12,8 +12,7 @@ public class CrystalVineSword : ModItem
 {
     public override void SetStaticDefaults()
     {
-        // DisplayName.SetDefault("Crystal Vile Sword");
-        // Tooltip.SetDefault("Ignores 12 points of enemy defense");
+        Item.ResearchUnlockCount = 1;
     }
 
     public override void SetDefaults()
@@ -33,7 +32,6 @@ public class CrystalVineSword : ModItem
         Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Magic; 
-        Item.ResearchUnlockCount = 1;
         Item.mana = 12;
     }
 
@@ -41,7 +39,7 @@ public class CrystalVineSword : ModItem
     {
         for (int i = 0; i < 20; i++)
         {
-            Vector2 newVelocity = new Vector2(velocity.X, 0).RotatedBy(i + MathHelper.TwoPi / 20);
+            Vector2 newVelocity = new Vector2(velocity.X, 0).RotatedBy(i + MathHelper.TwoPi / 20f);
             Projectile vileProj = Projectile.NewProjectileDirect(source, position, newVelocity, type, damage, knockback, player.whoAmI, 0f, 0f);
             vileProj.ArmorPenetration = 12;
         }

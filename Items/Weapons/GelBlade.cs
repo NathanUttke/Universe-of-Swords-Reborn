@@ -7,6 +7,11 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class GelBlade : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
     public override void SetDefaults()
     {
         Item.Size = new(54);
@@ -20,7 +25,6 @@ public class GelBlade : ModItem
         Item.value = 1500;
         Item.autoReuse = false;
         Item.DamageType = DamageClass.Melee; 
-        Item.ResearchUnlockCount = 1;
     }
 
     public override void AddRecipes()

@@ -10,26 +10,27 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class PurpleRuneBlade : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 52;
 		Item.height = 52;
 		Item.rare = ItemRarityID.Purple;
-
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 17;
 		Item.useAnimation = 17;
-
 		Item.damage = 45;
 		Item.shoot = ModContent.ProjectileType<PurpleRuneProjectile>();
 		Item.shootSpeed = 10f;
-
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void MeleeEffects(Player player, Rectangle hitbox)

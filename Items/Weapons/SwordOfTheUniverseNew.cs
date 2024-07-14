@@ -11,40 +11,32 @@ using UniverseOfSwordsMod;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-[LegacyName (new string[] { "SwordOfTheUniverse" })]
+[LegacyName (["SwordOfTheUniverse"])]
 public class SwordOfTheUniverseNew : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Sword of the Universe");
-		// Tooltip.SetDefault("'This sword doesn't swing. It lifts the Universe towards the blade'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 140;
 		Item.height = 140;
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 20;
-
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-
 		Item.damage = 190;
-		Item.knockBack = 20f;
+		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item169;
-
 		Item.shoot = ModContent.ProjectileType<SwordOfTheUniverseV2Projectile>();
-		Item.shootSpeed = 10f;
+		Item.shootSpeed = 5f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
-
         Item.rare = ItemRarityID.Red;
         Item.autoReuse = true;
-
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
-
         Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
     }
 
@@ -69,9 +61,6 @@ public class SwordOfTheUniverseNew : ModItem
         if (CalamityMod is not null)
         {
             newRecipe.AddIngredient(CalamityMod.Find<ModItem>("AuricBar"), 5);
-        }
-        if (CalamityMod is not null)
-        {
             newRecipe.AddTile(CalamityMod.Find<ModTile>("CosmicAnvil"));
         }
         else

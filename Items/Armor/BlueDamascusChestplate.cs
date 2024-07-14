@@ -2,26 +2,25 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Localization;
+using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Armor;
 
 [AutoloadEquip(EquipType.Body)]
 public class BlueDamascusChestplate : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Blue Damascus Chestplate");
-		// Tooltip.SetDefault("'Armor for durable warriors'\n7% increased melee damage\n10% increased movement speed");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 26;
 		Item.height = 20;
 		Item.value = Item.sellPrice(0, 5, 0, 0);
 		Item.rare = ItemRarityID.Cyan;
 		Item.defense = 20;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -50,8 +49,8 @@ public class BlueDamascusChestplate : ModItem
 	public override void AddRecipes()
 	{
 		Recipe val = CreateRecipe(1);
-		val.AddIngredient(Mod, "DamascusBar", 15);
-		val.AddIngredient(Mod, "DamascusBreastplate", 1);
+		val.AddIngredient(ModContent.ItemType<DamascusBar>(), 15);
+		val.AddIngredient(ModContent.ItemType<DamascusBreastplate>(), 1);
 		val.AddIngredient(ItemID.SoulofMight, 15);
 		val.AddIngredient(ItemID.SoulofSight, 15);
 		val.AddIngredient(ItemID.SoulofFright, 15);

@@ -7,7 +7,12 @@ namespace UniverseOfSwordsMod.Items.Tools;
 
 public class DamascusPickaxe : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.damage = 10;
 		Item.DamageType = DamageClass.Melee; 
@@ -22,7 +27,6 @@ public class DamascusPickaxe : ModItem
 		Item.rare = ItemRarityID.Green;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override void AddRecipes()

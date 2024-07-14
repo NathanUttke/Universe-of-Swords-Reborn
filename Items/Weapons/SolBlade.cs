@@ -11,22 +11,20 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class SolBlade : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Unleashes small spread of meteors");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 82;
 		Item.height = 86;
 		Item.scale = 1.1f;
 		Item.rare = ItemRarityID.Yellow;
 		Item.useStyle = ItemUseStyleID.Swing;
-
 		Item.useTime = 30;
 		Item.useAnimation = 20;
-
 		Item.damage = 85;
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item70;
@@ -35,8 +33,8 @@ public class SolBlade : ModItem
 		Item.value = Item.sellPrice(0, 3, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
+
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         player.itemLocation = player.Center;

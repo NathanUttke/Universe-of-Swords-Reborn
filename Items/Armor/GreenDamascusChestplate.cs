@@ -9,21 +9,18 @@ namespace UniverseOfSwordsMod.Items.Armor;
 [AutoloadEquip(EquipType.Body)]
 public class GreenDamascusChestplate : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		
-		// DisplayName.SetDefault("Green Damascus Chestplate");
-		// Tooltip.SetDefault("'Armor for fast warriors'\n15% increased melee damage\n10% increased melee speed");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 26;
 		Item.height = 20;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 18;
-		Item.ResearchUnlockCount = 1;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)

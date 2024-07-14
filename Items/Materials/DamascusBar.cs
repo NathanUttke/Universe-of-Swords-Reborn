@@ -7,7 +7,12 @@ namespace UniverseOfSwordsMod.Items.Materials;
 
 public class DamascusBar : ModItem
 {
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 25;
+    }
+
+    public override void SetDefaults()
 	{
 		Item.width = 24;
 		Item.height = 24;
@@ -20,15 +25,14 @@ public class DamascusBar : ModItem
 		Item.autoReuse = true;
 		Item.consumable = true;
 		Item.createTile = ModContent.TileType<DamascusBarTile>();
-		Item.maxStack = 9999;
-		Item.ResearchUnlockCount = 25;
+		Item.maxStack = Item.CommonMaxStack;
 	}
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe();
-        val.AddIngredient(ModContent.ItemType<DamascusOre>(), 4);
-		val.AddTile(TileID.Furnaces);
-		val.Register();
+		CreateRecipe()
+        .AddIngredient(ModContent.ItemType<DamascusOre>(), 4)
+		.AddTile(TileID.Furnaces)
+		.Register();
 	}
 }

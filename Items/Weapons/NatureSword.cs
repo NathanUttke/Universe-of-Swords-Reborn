@@ -10,12 +10,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class NatureSword : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("'Sword made out of only pure ingredients given from Mother Nature'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.width = 58;
 		Item.height = 70;
@@ -30,7 +30,6 @@ public class NatureSword : ModItem
 		Item.value = Item.sellPrice(0, 0, 50, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

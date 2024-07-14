@@ -9,13 +9,12 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class LisztLasher : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Liszt Lasher");
-		// Tooltip.SetDefault("'Piano sonata in B minor - Liszt'");
-	}
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
 
-	public override void SetDefaults()
+    public override void SetDefaults()
 	{
 		Item.Size = new(128);
 		Item.rare = ItemRarityID.Yellow;
@@ -30,7 +29,6 @@ public class LisztLasher : ModItem
 		Item.value = Item.sellPrice(0, 12, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
-		Item.ResearchUnlockCount = 1;
 	}
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)

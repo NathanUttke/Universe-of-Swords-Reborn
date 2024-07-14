@@ -9,24 +9,25 @@ namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class CosmoStorm : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+    }
+
     public override void SetDefaults()
     {
         Item.width = 86;
         Item.height = 86;
         Item.rare = ItemRarityID.Red;
         Item.knockBack = 3f;
-
         Item.useTime = 20;
         Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item15;
-
         Item.damage = 150;
         Item.DamageType = DamageClass.Melee;
-
         Item.value = 650000;
         Item.autoReuse = true;
-        Item.ResearchUnlockCount = 1;
     }
 
     public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
