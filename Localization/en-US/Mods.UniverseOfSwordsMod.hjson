@@ -46,6 +46,14 @@ Projectiles: {
 	ClingerSlashProj.DisplayName: Clinger
 	NightmareProjectile.DisplayName: Nightmare Projectile
 	CosmoStarProjectile.DisplayName: Cosmo Star Projectile
+	DoomsdayProj.DisplayName: Doomsday Proj
+	SwingEnergySwordProj.DisplayName: Swing Energy Sword Proj
+	OnyxEnergyProj.DisplayName: Onyx Energy Proj
+	NightmareHoldoutProj.DisplayName: Nightmare Holdout Proj
+	ScarletRedBolt.DisplayName: Scarlet Red Bolt
+	GnomBladeHoldoutProj.DisplayName: Gnom Blade Holdout Proj
+	SwordHoldoutProj.DisplayName: Sword Holdout Proj
+	StingerProj.DisplayName: Stinger Proj
 }
 
 NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
@@ -490,7 +498,7 @@ Items: {
 
 	EctoplasmicRipper: {
 		DisplayName: Ectoplasmic Ripper
-		Tooltip: Steals mana upon hitt
+		Tooltip: Steals mana upon hit
 	}
 
 	EdgeLord: {
