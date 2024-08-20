@@ -39,21 +39,31 @@ Projectiles: {
 	SwordOfTheMultiverseProjectileYoyo.DisplayName: Sword Of The Multiverse
 	SwordOfTheMultiverseWave.DisplayName: Sword Of The Multiverse
 	SuperInflationHoldoutProj.DisplayName: Super Inflation
-	ClingerWallProj.DisplayName: Clinger Wall Proj
+	ClingerWallProj.DisplayName: Clinger Wall
 	GalacticProjectile.DisplayName: Galactic
 	CorruptCrystallusProj.DisplayName: Corrupt Crystallus
 	TestShaderProjectile.DisplayName: Test
 	ClingerSlashProj.DisplayName: Clinger
-	NightmareProjectile.DisplayName: Nightmare Projectile
-	CosmoStarProjectile.DisplayName: Cosmo Star Projectile
-	DoomsdayProj.DisplayName: Doomsday Proj
-	SwingEnergySwordProj.DisplayName: Swing Energy Sword Proj
-	OnyxEnergyProj.DisplayName: Onyx Energy Proj
-	NightmareHoldoutProj.DisplayName: Nightmare Holdout Proj
+	NightmareProjectile.DisplayName: Nightmare
+	CosmoStarProjectile.DisplayName: Cosmo Star
+	DoomsdayProj.DisplayName: Doomsday
+	SwingEnergySwordProj.DisplayName: Energy
+	OnyxEnergyProj.DisplayName: Onyx Energy
+	NightmareHoldoutProj.DisplayName: Nightmare
 	ScarletRedBolt.DisplayName: Scarlet Red Bolt
-	GnomBladeHoldoutProj.DisplayName: Gnom Blade Holdout Proj
-	SwordHoldoutProj.DisplayName: Sword Holdout Proj
-	StingerProj.DisplayName: Stinger Proj
+	GnomBladeHoldoutProj.DisplayName: Gnom Blade
+	SwordHoldoutProj.DisplayName: Sword
+	StingerProj.DisplayName: Stinger
+	MechanicalSoulProj.DisplayName: Mechanical Soul
+	MultiverseEnergyProj.DisplayName: Multiverse Energy
+	RedFlareEnergy.DisplayName: Red Flare Energy
+	RedFlareInferno.DisplayName: Red Flare Inferno
+	SoulLaser.DisplayName: Soul Laser
+	SwordOfTheUniverseHoldoutProj.DisplayName: Sword Of The Universe
+	SwordOfTheUniverseProjectile.DisplayName: Sword Of The Universe
+	BoomeBone.DisplayName: Boome Bone
+	BaseSpinningProj.DisplayName: Base Spinning
+	GoldCoin.DisplayName: Gold Coin
 }
 
 NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
@@ -375,15 +385,11 @@ Items: {
 
 	BatSlayer: {
 		DisplayName: Bat Slayer
-		Tooltip:
-			'''
-			Inflicts Confused debuff on enemies
-			Deals 10% more damage to bat enemies
-			'''
+		Tooltip: Inflicts Confused debuff on enemies
 	}
 
 	BetterShroomiteBlade: {
-		DisplayName: Better Shroomite Blade
+		DisplayName: True Shroomite Blade
 		Tooltip: Bigger and better!
 	}
 
@@ -476,11 +482,6 @@ Items: {
 		Tooltip: Boom, Boom!
 	}
 
-	DirtSword: {
-		DisplayName: Dirt Sword
-		Tooltip: ""
-	}
-
 	Doomsday: {
 		DisplayName: Doomsday
 		Tooltip: ""
@@ -553,7 +554,7 @@ Items: {
 
 	GnomBlade: {
 		DisplayName: Gnom Blade
-		Tooltip: ""
+		Tooltip: Shoots explosive gnomes
 	}
 
 	GoblinKnife: {
@@ -591,16 +592,6 @@ Items: {
 		Tooltip: "'Cuts through hordes of Terraria like butter'"
 	}
 
-	IceBreaker: {
-		DisplayName: Ice Breaker
-		Tooltip: "'Freezing to the touch'"
-	}
-
-	IceSword: {
-		DisplayName: Ice Sword
-		Tooltip: ""
-	}
-
 	IchorArrowSword: {
 		DisplayName: Ichor Arrow Sword
 		Tooltip: Shoots Ichor arrows
@@ -608,7 +599,11 @@ Items: {
 
 	Inflation: {
 		DisplayName: Inflation
-		Tooltip: Congratulations, you made an overpriced sword!
+		Tooltip:
+			'''
+			'Congratulations, you made an overpriced sword!'
+			Inflicts midas
+			'''
 	}
 
 	JesterArrowSword: {
@@ -622,7 +617,6 @@ Items: {
 			'''
 			'You shouldn't have this'
 			Legacy Item
-			Trash
 			'''
 	}
 
@@ -633,7 +627,7 @@ Items: {
 
 	LuminiteArrowSword: {
 		DisplayName: Luminite Arrow Sword
-		Tooltip: Shoots Luminite arrows
+		Tooltip: Shoots luminite arrows
 	}
 
 	MechanicalSoul: {
@@ -653,7 +647,7 @@ Items: {
 
 	OnyxSword: {
 		DisplayName: Onyx Sword
-		Tooltip: Shoots Onyx
+		Tooltip: Shoots onyx bolts
 	}
 
 	PianoSword1: {
@@ -688,7 +682,7 @@ Items: {
 
 	PumpkinBoom: {
 		DisplayName: Pumpkin Boom
-		Tooltip: Creates explosions on hit
+		Tooltip: Creates explosions upon hitting an enemy
 	}
 
 	PumpkinSword: {
@@ -722,7 +716,7 @@ Items: {
 
 	SolBlade: {
 		DisplayName: Sol Blade
-		Tooltip: Unleashes small spread of meteors
+		Tooltip: Shoots a big meteor
 	}
 
 	StarSword: {
@@ -737,7 +731,11 @@ Items: {
 
 	SuperInflation: {
 		DisplayName: Super Inflation
-		Tooltip: Throw money at ALL your problems
+		Tooltip:
+			'''
+			'Throw money at ALL your problems'
+			Deals 15% more damage if a gold coin is in the inventory
+			'''
 	}
 
 	SwordOfTheEmperor: {
@@ -745,17 +743,21 @@ Items: {
 		Tooltip: "'Grant them the Emperor's mercy. Let the heretics burn!'"
 	}
 
-	SwordOfTheMultiverseNew: {
+	SwordOfTheMultiverse: {
 		DisplayName: Sword of the Multiverse
 		Tooltip:
 			'''
 			'You only get what you give'
 			Press right click to cycle between modes.
+			Mode 1 Shoots a big wave
+			Mode 2 Shoots a lot of projectiles from the sky
+			Mode 3 Summons a sword that moves along with your mouse's position
+			Ignores 40 points of enemy defense
 			'''
 	}
 
-	SwordOfTheUniverseNew: {
-		DisplayName: Sword of the Universe
+	SwordOfTheUniverse: {
+		DisplayName: Sword Of The Universe
 		Tooltip: "'This sword doesn't swing. It lifts the Universe towards the blade'"
 	}
 
@@ -781,12 +783,12 @@ Items: {
 
 	TheStinger: {
 		DisplayName: The Stinger
-		Tooltip: 50% chance of shooting a stinger
+		Tooltip: Shoots a stinger
 	}
 
 	TheSwarm: {
 		DisplayName: The Swarm
-		Tooltip: ""
+		Tooltip: Shoots some bees
 	}
 
 	TrueGemSword: {
@@ -796,17 +798,21 @@ Items: {
 
 	TwinsSword: {
 		DisplayName: Twins Sword
-		Tooltip: Whoosh, whoosh!
+		Tooltip:
+			'''
+			Whoosh, whoosh!
+			Inflicts Cursed Inferno and Bleeding
+			'''
 	}
 
 	UltimateArrowSword: {
 		DisplayName: Ultimate Arrow Sword
-		Tooltip: Shoots a lot of arrows
+		Tooltip: Shoots a lot of arrows upon hitting an enemy
 	}
 
 	UnholyArrowSword: {
 		DisplayName: Unholy Arrow Sword
-		Tooltip: Shoots Unholy arrows
+		Tooltip: Shoots unholy arrows
 	}
 
 	UselessWeapon: {
@@ -816,7 +822,7 @@ Items: {
 
 	VenomArrowSword: {
 		DisplayName: Venom Arrow Sword
-		Tooltip: Shoots Venom arrows
+		Tooltip: Shoots venom arrows
 	}
 
 	WaterBoltSword: {
@@ -826,7 +832,7 @@ Items: {
 
 	WoodenArrowSword: {
 		DisplayName: Wooden Arrow Sword
-		Tooltip: Shoots Wooden Arrows
+		Tooltip: Shoots wooden arrows
 	}
 
 	ScarletFlareGreatsword: {
