@@ -50,7 +50,7 @@ public class NatureSword : ModItem
 
         for (int i = 0; i < 3; i++)
 		{
-			UniverseUtils.SummonSuperStarSlash(target.position, target.GetSource_OnHit(target), (int)(damageDone * 0.5f), player.whoAmI, ProjectileID.SeedlerThorn);
+			UniverseUtils.SummonSuperStarSlash(target.Center, target.GetSource_OnHit(target), (int)(damageDone * 0.5f), player.whoAmI, ProjectileID.SeedlerThorn);
 		}
     }
 
@@ -58,7 +58,7 @@ public class NatureSword : ModItem
 	{	
 		if (Main.rand.NextBool(3))
 		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<NatureBlade>(), 0f, 0f, 100, default, 1f);
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<NatureBlade>());
 		}
 	}
 

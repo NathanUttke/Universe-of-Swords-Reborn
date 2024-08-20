@@ -35,6 +35,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.scale = 1.25f;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 17;
+            Projectile.timeLeft = 50;
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -43,7 +44,7 @@ namespace UniverseOfSwordsMod.Projectiles
             float collisionPoint = 0f;
             float boxSize = 160f * Projectile.scale;
 
-            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f, ref collisionPoint);
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * -boxSize, Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f, ref collisionPoint);
         }
 
         Player Owner => Main.player[Projectile.owner];
@@ -59,7 +60,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 return;
             }
 
-
             Vector2 velocity = Vector2.Normalize(Main.MouseWorld - playerCenter);
 
             Lighting.AddLight(Owner.Center, 0.8f, 0.45f, 0.1f);
@@ -68,7 +68,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.velocity = Vector2.UnitX * velocityXSign;
             if (Projectile.ai[0] == 0f)
             {
-                Projectile.rotation = new Vector2(velocityXSign, 0f - Owner.gravDir).ToRotation() - MathHelper.PiOver4 + MathHelper.Pi;
+                Projectile.rotation = new Vector2(velocityXSign, -Owner.gravDir).ToRotation() - MathHelper.PiOver4 + MathHelper.Pi;
                 if (Projectile.velocity.X < 0f)
                 {
                     Projectile.rotation -= MathHelper.PiOver2;
@@ -89,26 +89,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             Projectile.rotation += MathHelper.TwoPi * 2f / MaxTime * velocityXSign;            
-            if (Projectile.ai[0] >= MaxTime || (isInHalfMaxTime && !Owner.controlUseItem))
-            {
-                Projectile.Kill();
-            }
-            if (isInHalfMaxTime)
-            {
-                Vector2 mousePosition = Main.MouseWorld;
-                int mouseDirection = ((Owner.DirectionTo(mousePosition).X > 0f) ? 1 : (-1));
-                if (mouseDirection != Projectile.velocity.X)
-                {
-                    Owner.ChangeDir(mouseDirection);
-                    Projectile.velocity = new Vector2(mouseDirection, 0f);
-                    Projectile.netUpdate = true;
-                    Projectile.rotation -= MathHelper.Pi;
-                }
-            }
-
-            Projectile.position = playerCenter - Projectile.Size / 2f;
             Projectile.Center = Owner.Center;
-            Projectile.timeLeft = 2;
             SetPlayerValues();
         }
         public void SetPlayerValues()
@@ -116,7 +97,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.spriteDirection = Projectile.direction;
             Owner.ChangeDir(Projectile.direction);
             Owner.heldProj = Projectile.whoAmI;
-            Owner.SetDummyItemTime(2);
             Owner.itemRotation = MathHelper.WrapAngle(Projectile.rotation);
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.Pi + MathHelper.PiOver4);
         }

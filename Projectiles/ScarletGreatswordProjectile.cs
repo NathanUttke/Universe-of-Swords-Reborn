@@ -10,15 +10,17 @@ using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    public class ScarletGreatswordProjectile : DragonsDeathProjectile
+    public class ScarletGreatswordProjectile : BaseSpinningProj
     {
         public override string Texture => ModContent.GetInstance<ScarletFlareGreatsword>().Texture;
+        public override float UseTime => 40f;
 
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+            ProjectileID.Sets.TrailCacheLength[Type] = 60;
+            ProjectileID.Sets.TrailingMode[Type] = 2;
         }
+
         public override void SetDefaults()
         {
             Projectile.Size = new(120);
@@ -33,6 +35,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.scale = 1.25f;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 18;
+            Projectile.timeLeft = 40;
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -41,73 +44,29 @@ namespace UniverseOfSwordsMod.Projectiles
             float collisionPoint = 0f;
             float boxSize = 160f * Projectile.scale;
 
-            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f, ref collisionPoint);
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * -boxSize, Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f, ref collisionPoint);
         }
 
-        private const float shootSpeed = 25f;
-        private const float maxTime = 40f;
         Player Owner => Main.player[Projectile.owner];
         public override void AI()
-        {
-            
-            Vector2 playerCenter = Owner.RotatedRelativePoint(Owner.MountedCenter);
-
-            if (!Owner.active || Owner.dead || Owner.noItems || Owner.CCed)
-            {
-                Projectile.Kill();
-                return;
-            }          
+        {      
+            base.AI();
+            Vector2 playerCenter = Owner.RotatedRelativePoint(Owner.MountedCenter);        
 
             // Get the cursor's position
-
             Vector2 velocity = Vector2.Normalize(Main.MouseWorld - playerCenter);
 
             Lighting.AddLight(Owner.Center, 0.8f, 0.45f, 0.1f);
 
-            int velocityXSign = Math.Sign(Projectile.velocity.X);
-            Projectile.velocity = new Vector2(velocityXSign, 0f);
-
-            if (Projectile.ai[0] == 0f)
-            {
-                Projectile.rotation = new Vector2(velocityXSign, 0f - Owner.gravDir).ToRotation() + -MathHelper.PiOver4 + MathHelper.Pi;
-                if (Projectile.velocity.X < 0f)
-                {
-                    Projectile.rotation -= MathHelper.PiOver2;
-                }
-            }            
-            Projectile.ai[0] += 1f;
-
             // Spawn a projectile every 8 ticks
-
+            Projectile.ai[0] += 1f;
             if (Projectile.ai[0] == 8f && Main.myPlayer == Projectile.owner)
             {
                 Projectile.netUpdate = true;
-                Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, velocity * shootSpeed, ModContent.ProjectileType<FlareCore>(), (int)(Projectile.damage * 2f), Projectile.knockBack, Owner.whoAmI);
+                Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, velocity * Owner.inventory[Owner.selectedItem].shootSpeed, ModContent.ProjectileType<FlareCore>(), (int)(Projectile.damage * 2f), Projectile.knockBack, Owner.whoAmI);
                 Projectile.ai[0] += 1f;
             }
 
-            Projectile.rotation += MathHelper.TwoPi * 2f / maxTime * velocityXSign;
-            bool halfUseTime = Projectile.ai[0] == (int)(maxTime / 2f);
-            
-            if (Projectile.ai[0] >= maxTime || (halfUseTime && !Owner.controlUseItem))
-            {
-                Projectile.Kill();
-            }
-            else if (halfUseTime)
-            {
-                Vector2 mousePosition = Main.MouseWorld;
-                int mouseDirection = ((Owner.DirectionTo(mousePosition).X > 0f) ? 1 : (-1));
-                if (mouseDirection != Projectile.velocity.X)
-                {
-                    Owner.ChangeDir(mouseDirection);
-                    Projectile.velocity = new Vector2(mouseDirection, 0f);
-                    Projectile.netUpdate = true;
-                    Projectile.rotation -= MathHelper.Pi;
-                }
-            }
-
-            Projectile.Center = Owner.MountedCenter;
-            Projectile.timeLeft = 2;
             SetPlayerValues();
         }
 
@@ -134,12 +93,13 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < 4; i++)
             {
-                Vector2 offsetPosition = new(target.position.X + Main.rand.Next(-400, 400), target.position.Y - Main.rand.Next(500, 800));
+                Vector2 offsetPosition = new(target.position.X + Main.rand.Next(-800, 800), target.position.Y + Main.rand.Next(600, 900));
                 Vector2 spawnVelocity = Vector2.Normalize(target.Center - offsetPosition) * 30f;
 
                 Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), offsetPosition, spawnVelocity, ModContent.ProjectileType<ScarletRedBolt>(), Projectile.damage / 2, 5f, Projectile.owner, 0f, 0f);
             }
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;

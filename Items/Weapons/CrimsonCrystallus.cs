@@ -27,7 +27,7 @@ public class CrimsonCrystallus : ModItem
 		Item.damage = 18;
 		Item.knockBack = 5f;
 		Item.shoot = ModContent.ProjectileType<Tier2CProjectile>();
-		Item.shootSpeed = 4f;
+		Item.shootSpeed = 3f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.autoReuse = true;
@@ -35,12 +35,17 @@ public class CrimsonCrystallus : ModItem
 	}
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{					
-		if (Main.rand.NextBool(2))
-		{
-			Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Salmon, 1f);
-		}
-	}
+	{
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+        for (int i = 0; i < 2; i++)
+        {
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust dust = Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 0, Color.Red);
+            dust.noGravity = true;
+        }
+    }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {

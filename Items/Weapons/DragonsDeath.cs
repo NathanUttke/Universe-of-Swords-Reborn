@@ -38,5 +38,7 @@ public class DragonsDeath : ModItem
 		Item.noUseGraphic = true;
 		Item.value = 490500;
 		Item.autoReuse = true;		
-	}		
+	}
+
+    public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
 }

@@ -21,15 +21,12 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
             Projectile.ArmorPenetration = 20;
-
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 10;
-
             Projectile.alpha = 0;
         }
         public override void AI()
         {           
-            
             Projectile.rotation += Projectile.direction * 0.5f * (Projectile.timeLeft / 180f);
             Projectile.velocity *= 0.96f;
             Projectile.alpha += 1;
@@ -42,19 +39,15 @@ namespace UniverseOfSwordsMod.Projectiles
 
             if (Main.rand.NextBool(2))
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Red with { A = 0 });
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Alpha: 100, newColor: Color.Red);
             }
         }
-
-        public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
 
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-            Color drawColorGlow = Color.Red;
-            drawColorGlow.A = 0;
-            Color drawColorEdge = Projectile.GetAlpha(lightColor);
-            drawColorEdge.A = 0;
+            Color drawColorGlow = Color.Red with { A = 0 } * Projectile.Opacity;
+            Color drawColorEdge = Color.White with { A = 0 } * Projectile.Opacity;
 
             Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f, SpriteEffects.None, 0);
 

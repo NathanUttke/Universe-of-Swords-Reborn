@@ -25,7 +25,7 @@ public class LisztLasher : ModItem
 		Item.knockBack = 3f;
 		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/PianoYellow");
 		Item.shoot = ProjectileID.HolyArrow;
-		Item.shootSpeed = 17f;
+		Item.shootSpeed = 10f;
 		Item.value = Item.sellPrice(0, 12, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 

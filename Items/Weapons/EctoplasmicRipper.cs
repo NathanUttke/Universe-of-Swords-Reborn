@@ -34,12 +34,17 @@ public class EctoplasmicRipper : ModItem
     }
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
-	{				
-		if (Main.rand.NextBool(2))
-		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 1f);
-		}
-	}
+	{
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+        for (int i = 0; i < 4; i++)
+        {
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust dust = Dust.NewDustPerfect(location, DustID.DungeonSpirit, velocity);
+            dust.noGravity = true;
+        }
+    }
 
     public override void AddRecipes()
 	{		

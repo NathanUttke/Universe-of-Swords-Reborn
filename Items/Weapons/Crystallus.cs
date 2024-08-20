@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -31,11 +32,15 @@ public class Crystallus : ModItem
 
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
-		if (Main.rand.NextBool(2))
-		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PurificationPowder, 0f, 0f, 100, default, 2f);
-			Main.dust[dust].noGravity = true;
-		}
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+        for (int i = 0; i < 2; i++)
+        {
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust dust = Dust.NewDustPerfect(location, DustID.PurificationPowder, velocity, Scale: 1.25f);
+            dust.noGravity = true;
+        }
 	}
 
 	public override void AddRecipes()

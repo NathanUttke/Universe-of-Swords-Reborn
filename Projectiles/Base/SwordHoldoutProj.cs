@@ -113,10 +113,6 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public virtual void CreateDust()
         {
-            if (Main.rand.NextBool(3))
-            {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GoldCoin, 0f, 0f, 0, default, 1f);
-            }
         }
 
         public virtual void SetPlayerValues()

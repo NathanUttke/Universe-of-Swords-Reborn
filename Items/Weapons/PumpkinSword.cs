@@ -28,6 +28,15 @@ public class PumpkinSword : ModItem
         Item.DamageType = DamageClass.Melee; 
     }
 
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        if (Main.rand.NextBool(2))
+        {
+            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Pumpkin);
+            dust.noGravity = true;
+        }
+    }
+
     public override void AddRecipes()
     {
         CreateRecipe()

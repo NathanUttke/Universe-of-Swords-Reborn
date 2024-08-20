@@ -26,16 +26,20 @@ public class ShroomiteBlade : ModItem
         Item.value = 280000;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee;
-        Item.scale = 1.1f;
+        Item.scale = 1.125f;
     }
 
-    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (ModLoader.TryGetMod("CalamityMod", out _))
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+        for (int i = 0; i < 4; i++)
         {
-            damage *= 1.05f;
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust dust = Dust.NewDustPerfect(location, DustID.MushroomSpray, velocity);
+            dust.noGravity = true;
         }
-        return;
     }
 
     public override void AddRecipes()

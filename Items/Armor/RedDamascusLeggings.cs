@@ -30,15 +30,15 @@ public class RedDamascusLeggings : ModItem
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ModContent.ItemType<ScarletFlareCore>(), 5);
-		val.AddIngredient(ModContent.ItemType<DamascusLeggings>(), 1);
-		val.AddIngredient(ItemID.SoulofMight, 15);
-		val.AddIngredient(ItemID.SoulofSight, 15);
-		val.AddIngredient(ItemID.SoulofFright, 15);
-		val.AddIngredient(ItemID.WrathPotion, 15);
-		val.AddIngredient(ItemID.HallowedBar, 16);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ModContent.ItemType<ScarletFlareCore>(), 5)
+		.AddIngredient(ModContent.ItemType<DamascusLeggings>(), 1)
+		.AddIngredient(ItemID.SoulofMight, 15)
+		.AddIngredient(ItemID.SoulofSight, 15)
+		.AddIngredient(ItemID.SoulofFright, 15)
+		.AddIngredient(ItemID.WrathPotion, 15)
+		.AddIngredient(ItemID.HallowedBar, 16)
+		.AddTile(TileID.MythrilAnvil)
+		.Register();
 	}
 }

@@ -14,22 +14,26 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Type] = 8;
+            ProjectileID.Sets.TrailCacheLength[Type] = 10;
             ProjectileID.Sets.TrailingMode[Type] = 3;
         }
+
         public override void SetDefaults()
         {
-            Projectile.width = 24;
-            Projectile.height = 24;
-            Projectile.scale = 1f;
+            Projectile.Size = new(16);
             Projectile.aiStyle = -1;
             Projectile.penetrate = 2;
-            Projectile.alpha = 255;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
-            Projectile.tileCollide = true;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 50;
+        }
+
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            float _ = 0f;
+            Vector2 projVelocity = Projectile.velocity.SafeNormalize(Vector2.UnitY).RotatedBy(-MathHelper.PiOver2) * Projectile.scale;            
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - projVelocity * 80f, Projectile.Center + projVelocity * 80f, 16f * Projectile.scale, ref _);
         }
 
         public override void AI()
@@ -39,52 +43,55 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Projectile.ai[0] >= 18f)
             {
                 Projectile.scale *= 0.98f;
-                Projectile.alpha += 16;
+                Projectile.alpha++;
                 Projectile.velocity *= 0.9f;
+            }
+            if (Projectile.ai[1] == 1f)
+            {
+                Projectile.tileCollide = false;
+                Projectile.velocity *= 0.9f;
+                Projectile.alpha += 16;
             }
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(0, 162, 232, 40) * Projectile.Opacity;
-
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
 
-            Color projColor = Projectile.GetAlpha(lightColor);
+            Color projColor = Color.White * Projectile.Opacity;
+            Color trailColor = projColor;
             Vector2 drawOrigin = texture.Size() / 2f;
-
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (Projectile.spriteDirection == -1)
-            {
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            }
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
-                projColor *= 0.75f;
-                Main.EntitySpriteDraw(texture, drawPos, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+                Vector2 drawPos = Projectile.oldPos[i] + Projectile.Size / 2f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+                trailColor *= 0.8f;
+                Main.EntitySpriteDraw(texture, drawPos, null, trailColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             }
 
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            return false;
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Projectile.velocity = oldVelocity / 2f;
+            Projectile.ai[1] = 1f;
+            Projectile.netUpdate = true;
             return false;
         }
 
         public override void OnKill(int timeLeft)
         {
-            for (int k = 0; k < 10; k++)
+            /*for (int k = 0; k < 20; k++)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 0, Color.SkyBlue, 1f);
-				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.10f, Projectile.oldVelocity.Y * 0.10f, 0, Color.SkyBlue, 1f);
-            }
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor: Color.SkyBlue, Scale: 0.5f);
+            }*/
         }
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (!target.HasBuff(BuffID.Frostburn))
-            {
-                target.AddBuff(BuffID.Frostburn, 400);
-            }
+            target.AddBuff(BuffID.Frostburn, 400);
         }
     }
 }

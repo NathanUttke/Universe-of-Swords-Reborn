@@ -26,7 +26,7 @@ public class MozartMauler : ModItem
 		Item.knockBack = 3f;
 		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/PianoRed");
 		Item.shoot = ProjectileID.FallingStar;
-		Item.shootSpeed = 15f;
+		Item.shootSpeed = 10f;
 		Item.value = Item.sellPrice(0, 10, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -54,7 +54,7 @@ public class MozartMauler : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         int projToShoot = Main.rand.Next(ProjectileID.QuarterNote, ProjectileID.TiedEighthNote);
-        Projectile noteProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI, 0f, 0f);
+        Projectile noteProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI);
         noteProj.timeLeft = 100;
         noteProj.penetrate = 3;
         noteProj.DamageType = DamageClass.MeleeNoSpeed;

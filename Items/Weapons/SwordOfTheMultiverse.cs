@@ -12,8 +12,8 @@ using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-[LegacyName(["SwordOfTheMultiverse"])]
-public class SwordOfTheMultiverseNew : ModItem
+[LegacyName(["SwordOfTheMultiverseNew"])]
+public class SwordOfTheMultiverse : ModItem
 {
     private readonly int MaxModes = 2;
     private int currentMode = 1;
@@ -42,7 +42,6 @@ public class SwordOfTheMultiverseNew : ModItem
         Item.noUseGraphic = false;        
         Item.shoot = ProjectileID.LunarFlare;
         Item.shootSpeed = 30f;
-        Item.reuseDelay = 0;
         Item.ArmorPenetration = 40;
         Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
     }
@@ -79,44 +78,38 @@ public class SwordOfTheMultiverseNew : ModItem
             player.SetItemTime(15);
         }
 
-
-        if (currentMode == 1)
+        switch (currentMode)
         {
-            Item.useTime = Item.useAnimation;
-            Item.shootSpeed = 25f;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.noMelee = false;
-            Item.noUseGraphic = false;
-        }
-        else if (currentMode == 2)
-        {
-            Item.useTime = 7;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.noMelee = false;
-            Item.noUseGraphic = false;            
-        }
-        else if (currentMode == 3)
-        {
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
-            Item.useStyle = ItemUseStyleID.Swing;
+            case 1:
+                Item.useTime = Item.useAnimation;
+                Item.shootSpeed = 25f;
+                Item.useStyle = ItemUseStyleID.Swing;
+                Item.noMelee = false;
+                Item.noUseGraphic = false;
+                break;
+            case 2:
+                Item.useTime = 7;
+                Item.useStyle = ItemUseStyleID.Swing;
+                Item.noMelee = false;
+                Item.noUseGraphic = false;
+                break;
+            case 3:
+                Item.noUseGraphic = true;
+                Item.noMelee = true;
+                Item.useStyle = ItemUseStyleID.Swing;
+                break;
         }
     }    
     
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     { 
         if (currentMode == 1)
-        {            
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseWave>(), (int)(damage * 2f), knockback, player.whoAmI, 0f, 0f);
+        {
+            Projectile.NewProjectile(source, player.MountedCenter, velocity, ModContent.ProjectileType<SwordOfTheMultiverseWave>(), damage * 2, knockback, player.whoAmI);
         }
         if (currentMode == 2)
         {
             Vector2 targetPos = Main.MouseWorld;
-            float heightLimit = targetPos.Y;
-            if (heightLimit > player.Center.Y - 200f)
-            {
-                heightLimit = player.Center.Y - 200f;
-            }
             for (int j = 0; j < 3; j++)
             {
                 position = player.Center + new Vector2(-Main.rand.Next(0, 401) * (float)player.direction, -600f);
@@ -130,16 +123,14 @@ public class SwordOfTheMultiverseNew : ModItem
                 {
                     heading.Y = 20f;
                 }
-                heading.Normalize();
-                heading *= velocity.Length();
-                velocity.X = heading.X;
-                velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.025f;
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>(), damage, knockback, player.whoAmI, 0f, heightLimit);
+                heading = Vector2.Normalize(heading) * velocity.Length();
+                velocity = heading + Vector2.UnitY * Main.rand.Next(-40, 41) * 0.025f;
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>(), damage, knockback, player.whoAmI);
             }
         }
         else if (currentMode == 3)
         {
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseProjectileYoyo>(), (int)(damage * 2f), knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<SwordOfTheMultiverseProjectileYoyo>(), damage * 2, knockback, player.whoAmI);
         }
 
         return false;
@@ -149,8 +140,7 @@ public class SwordOfTheMultiverseNew : ModItem
     {
         if (Main.rand.NextBool(2) && currentMode != 3)
         {
-            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), 0f, 0f, 100, Color.Violet with { A = 0 }, 2f);
-            dust.noGravity = true;
+            Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), Alpha:100, newColor:Color.Violet, Scale:2f);
         }
     }
 
@@ -168,7 +158,7 @@ public class SwordOfTheMultiverseNew : ModItem
         Mod CalamityMod = UniverseOfSwordsMod.Instance.CalamityMod;
         Recipe newRecipe = CreateRecipe();
         newRecipe.AddIngredient(ModContent.ItemType<GreatswordOfTheCosmos>(), 1);
-        newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheUniverseNew>(), 1);
+        newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheUniverse>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<SwordOfTheEmperor>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<ScarletFlareGreatsword>(), 1);
         newRecipe.AddIngredient(ModContent.ItemType<GnomBlade>(), 1);

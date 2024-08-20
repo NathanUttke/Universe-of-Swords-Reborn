@@ -27,18 +27,20 @@ public class ScarletFlareGreatsword : ModItem
 		Item.useAnimation = 20;
 		Item.damage = 110;
 		Item.knockBack = 6f;
-		Item.scale = 1f;
 		Item.crit = 6;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
-		Item.shootSpeed = 20f;
+		Item.shootSpeed = 25f;
 		Item.shoot = ProjectileType<ScarletGreatswordProjectile>();
 		Item.UseSound = SoundID.Item169;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 	}
-	public override void AddRecipes()
+
+    public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
+
+    public override void AddRecipes()
 	{
 		CreateRecipe()
 		.AddIngredient(ItemType<SwordMatter>(), 50)

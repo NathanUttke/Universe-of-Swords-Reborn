@@ -52,16 +52,12 @@ public class TheSwarm : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		int newDamage = player.strongBees ? (int)(damage * 0.90f) : (int)(damage * 0.75f);
-		int beeAmount = Main.rand.Next(1, 3);
+		int beeAmount = Main.rand.Next(2, 4);
 
-        float spread = 0.174f;
-        float baseSpeed = velocity.Length();
-        double startAngle = velocity.ToRotation() - (double)(spread / 2f);
-        double deltaAngle = spread / 2f;
         for (int i = 0; i < beeAmount; i++)
         {
-            double offsetAngle = startAngle + deltaAngle * i;
-            Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, newDamage / i, knockback, player.whoAmI, 0f, 0f);
+            Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(45));
+            Projectile.NewProjectileDirect(source, position, newVelocity, type, newDamage, knockback, player.whoAmI, 0f, 0f);
         }
 
         return false;

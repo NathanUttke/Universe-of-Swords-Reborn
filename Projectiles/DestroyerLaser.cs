@@ -37,10 +37,10 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 20; i++)
             {
-                Dust laserDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0, 0, 100, Color.OrangeRed, 0.75f);
-                laserDust.position = Projectile.Center;
+                Dust laserDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0, 0, 100, Color.OrangeRed, 0.5f);
+                laserDust.position = Projectile.Center - Projectile.velocity / 20f * i;
                 laserDust.velocity *= 0.1f;
             }
         }

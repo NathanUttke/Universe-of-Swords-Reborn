@@ -21,7 +21,7 @@ public class PurpleRuneBlade : ModItem
 		Item.height = 52;
 		Item.rare = ItemRarityID.Purple;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 17;
+		Item.useTime = 34;
 		Item.useAnimation = 17;
 		Item.damage = 45;
 		Item.shoot = ModContent.ProjectileType<PurpleRuneProjectile>();
@@ -37,7 +37,7 @@ public class PurpleRuneBlade : ModItem
 	{											
 		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.MediumOrchid, 2f);
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), newColor:Color.MediumOrchid, Scale:2f);
 		}
 	}
 
@@ -52,9 +52,6 @@ public class PurpleRuneBlade : ModItem
 
 	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		if (!target.HasBuff(BuffID.ShadowFlame) && Main.rand.NextBool(2))
-		{
-            target.AddBuff(BuffID.ShadowFlame, 300, false);
-        }
-	}
+        target.AddBuff(BuffID.ShadowFlame, 300, false);
+    }
 }

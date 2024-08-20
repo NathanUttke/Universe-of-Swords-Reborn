@@ -16,7 +16,6 @@ public class OceanRoar : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.scale = 1f;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 75;

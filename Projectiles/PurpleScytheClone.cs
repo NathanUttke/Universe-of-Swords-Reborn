@@ -28,6 +28,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.alpha = 127;
             Projectile.timeLeft = 40;
         }
+
         public override void AI()
         {
             base.AI();
@@ -50,8 +51,8 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < 4; i++)
             {
-                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, new Color (174, 74, 255, 0), 1f);
-                newDust.rotation += 0.05f;
+                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Alpha:100, newColor:new Color(174, 74, 255, 0));
+                newDust.velocity *= 0.1f;
             }
         }
 
@@ -85,9 +86,8 @@ namespace UniverseOfSwordsMod.Projectiles
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
             for (int z = 0; z < 30; z++)
             {
-                int purpleDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, new Color(174, 74, 255, 0), 1f);
+                int purpleDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 0, new Color(174, 74, 255, 0), 1f);
                 Main.dust[purpleDust].noGravity = true;
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, new Color(174, 74, 255, 0), 1f);
             }
         }
     }

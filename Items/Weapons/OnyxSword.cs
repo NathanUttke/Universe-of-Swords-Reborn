@@ -65,9 +65,4 @@ public class OnyxSword : ModItem
 
         return false;
     }
-
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation.Y -= 1f * player.gravDir;
-    }
 }

@@ -30,12 +30,12 @@ public class RedDamascusHelmet : ModItem
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ModContent.ItemType<ScarletFlareCore>(), 5);
-		val.AddIngredient(ModContent.ItemType<DamascusHelmet>(), 1);
-		val.AddIngredient(ItemID.WrathPotion, 15);
-		val.AddIngredient(ItemID.HallowedBar, 16);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ModContent.ItemType<ScarletFlareCore>(), 5)
+		.AddIngredient(ModContent.ItemType<DamascusHelmet>(), 1)
+		.AddIngredient(ItemID.WrathPotion, 15)
+		.AddIngredient(ItemID.HallowedBar, 16)
+		.AddTile(TileID.MythrilAnvil)
+		.Register();
 	}
 }

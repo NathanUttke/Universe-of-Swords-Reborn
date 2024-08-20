@@ -48,7 +48,6 @@ namespace UniverseOfSwordsMod.Projectiles.Base
         // From ExampleSwingingEnergySwordProjectile
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, 1f, 0.5f, 0.5f);
             Projectile.localAI[0]++;
             float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1];            
             float velocityRotation = Projectile.velocity.ToRotation();
@@ -86,7 +85,7 @@ namespace UniverseOfSwordsMod.Projectiles.Base
             if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
             {
                 Color dustColor = Color.Lerp(DustColor1, DustColor2, Main.rand.NextFloat() * 0.3f);
-                Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), ModContent.DustType<GlowDust>(), dustVelocity * 1f, 100, dustColor with { A = 0}, 1f);
+                Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), ModContent.DustType<GlowDust>(), dustVelocity * 1f, 100, dustColor, 1f);
                 coloredDust.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
                 coloredDust.noGravity = true;
             }

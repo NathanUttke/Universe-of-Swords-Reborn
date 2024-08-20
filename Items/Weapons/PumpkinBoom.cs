@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -31,7 +32,16 @@ public class PumpkinBoom : ModItem
 		Item.DamageType = DamageClass.Melee;
 	}
 
-	public override void AddRecipes()
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        if (Main.rand.NextBool(2))
+        {
+            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.OrangeTorch, Scale: 2f);
+            dust.noGravity = true;
+        }
+    }
+
+    public override void AddRecipes()
 	{		
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<PumpkinSword>(), 1)
@@ -49,17 +59,13 @@ public class PumpkinBoom : ModItem
         return;
     }
 
-
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.Excalibur, new ParticleOrchestraSettings
         {
-            PositionInWorld = target.Center,
-            MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
-
+            PositionInWorld = target.Center + Main.rand.NextVector2Circular(24f, 24f)
         }, player.whoAmI);
 
-        Projectile boomProj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(damageDone / 2f), Item.knockBack / 2f, player.whoAmI, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
-		boomProj.DamageType = DamageClass.MeleeNoSpeed;
+        Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, (int)(damageDone / 2f), Item.knockBack / 2f, player.whoAmI, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
     }
 }

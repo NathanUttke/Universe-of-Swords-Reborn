@@ -14,7 +14,7 @@ public class TrueTerrabladeProjectile : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
+        ProjectileID.Sets.TrailingMode[Type] = 3;
     }
     public override void SetDefaults()
 	{

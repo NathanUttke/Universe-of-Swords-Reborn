@@ -20,12 +20,13 @@ namespace UniverseOfSwordsMod.Items.Weapons
         {
             Item.width = 52;
             Item.height = 60;
-            Item.scale = 1.1f;
+            Item.scale = 1.125f;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 26;
-            Item.useAnimation = 21;
-            Item.shoot = ModContent.ProjectileType<MechanicalProj>();
-            Item.shootSpeed = 14f;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
+            //Item.shoot = ModContent.ProjectileType<MechanicalProj>();
+            //Item.shootSpeed = 14f;
+            Item.shoot = ModContent.ProjectileType<MechanicalSoulProj>();
             Item.damage = 90;
             Item.DamageType = DamageClass.Melee;
             Item.crit = 6;
@@ -33,7 +34,9 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.rare = ItemRarityID.Pink;
             Item.UseSound = SoundID.DD2_SonicBoomBladeSlash;
             Item.value = Item.sellPrice(0, 6, 0, 0);
-            Item.autoReuse = true;           
+            Item.autoReuse = true;
+            Item.noMelee = true;
+            Item.shootsEveryUse = true;
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -46,10 +49,18 @@ namespace UniverseOfSwordsMod.Items.Weapons
             }
         }
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             position.Y -= 48f;
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            return false;
+        }*/
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
+            Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale);
+            NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI); // Sync the changes in multiplayer.	
             return false;
         }
 

@@ -29,15 +29,15 @@ public class GreenDamascusLeggings : ModItem
 
 	public override void AddRecipes()
 	{
-		Recipe val = CreateRecipe(1);
-		val.AddIngredient(ItemID.ChlorophyteBar, 15);
-		val.AddIngredient(ModContent.ItemType<DamascusLeggings>(), 1);
-		val.AddIngredient(ItemID.SoulofMight, 15);
-		val.AddIngredient(ItemID.SoulofSight, 15);
-		val.AddIngredient(ItemID.SoulofFright, 15);
-		val.AddIngredient(ItemID.SwiftnessPotion, 15);
-		val.AddIngredient(ItemID.HallowedBar, 16);
-		val.AddTile(TileID.MythrilAnvil);
-		val.Register();
+		CreateRecipe()
+		.AddIngredient(ItemID.ChlorophyteBar, 15)
+		.AddIngredient(ModContent.ItemType<DamascusLeggings>(), 1)
+		.AddIngredient(ItemID.SoulofMight, 15)
+		.AddIngredient(ItemID.SoulofSight, 15)
+		.AddIngredient(ItemID.SoulofFright, 15)
+		.AddIngredient(ItemID.SwiftnessPotion, 15)
+		.AddIngredient(ItemID.HallowedBar, 16)
+		.AddTile(TileID.MythrilAnvil)
+		.Register();
 	}
 }

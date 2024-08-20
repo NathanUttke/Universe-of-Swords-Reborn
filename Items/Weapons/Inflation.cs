@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
-using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
@@ -17,8 +16,7 @@ public class Inflation : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 64;
-        Item.height = 64;
+        Item.Size = new(64);
         Item.rare = ItemRarityID.Orange;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 4f;
@@ -32,6 +30,7 @@ public class Inflation : ModItem
         Item.value = 0;
         Item.autoReuse = true;
     }
+
     public override void AddRecipes()
     {
         CreateRecipe()
@@ -54,9 +53,14 @@ public class Inflation : ModItem
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.NextBool(3))
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+        for (int i = 0; i < 2; i++)
         {
-            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.GoldCoin, 0f, 0f, 0, default, 1f);
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust dust = Dust.NewDustPerfect(location, DustID.GoldCoin, velocity);
+            dust.noGravity = true;
         }
     }
 
@@ -64,9 +68,7 @@ public class Inflation : ModItem
     {
         ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.Keybrand, new ParticleOrchestraSettings
         {
-            PositionInWorld = target.Center,
-            MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
-
+            PositionInWorld = target.Center + Main.rand.NextVector2Circular(24f, 24f)
         }, player.whoAmI);
 
         if (!target.HasBuff(BuffID.Midas))

@@ -27,20 +27,19 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void AI()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
-                Dust redDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.IndianRed, 0.5f);
-                redDust.velocity *= 0.25f;
-                //redDust.position = Projectile.Center;
-                redDust.velocity += Projectile.velocity * 0.2f;
+                Dust redDust = Dust.NewDustDirect(Projectile.position + Projectile.velocity / 20f * i, 8, 8, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Red, 0.75f);
+                redDust.velocity *= 0.1f;
             }
         }
 
         public override void OnKill(int timeLeft)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.2f, Projectile.oldVelocity.Y * 0.2f, 0, Color.IndianRed, 0.5f);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Red, 0.5f);
+                dust.velocity *= 4f;
             }
         }
     }

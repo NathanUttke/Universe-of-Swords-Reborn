@@ -19,6 +19,7 @@ namespace UniverseOfSwordsMod.Projectiles
             ProjectileID.Sets.TrailCacheLength[Type] = 8;
             ProjectileID.Sets.TrailingMode[Type] = 0;
         }
+
         public override void SetDefaults()
         {
             Projectile.Size = new(30);
@@ -39,18 +40,13 @@ namespace UniverseOfSwordsMod.Projectiles
 
             if (Projectile.soundDelay == 0)
             {
-                Projectile.soundDelay = 40;
+                Projectile.soundDelay = 80;
                 SoundEngine.PlaySound(SoundID.Item9, Projectile.Center);  
             }
 
-            if (MathF.Abs(Projectile.velocity.Y) > 16f)
-            {
-                Projectile.velocity.Y = 16f;
-            }      
-
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.Yellow, 0.5f);
+            Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Yellow, 0.5f);
+            dust.velocity *= 0.5f;
         }
-        public override Color? GetAlpha(Color lightColor) => new Color(205, 201, 14, 40) * Projectile.Opacity;
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -58,7 +54,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate--;
             if (Projectile.velocity.Y != Projectile.oldVelocity.Y)
             {
-                Projectile.velocity.Y = -oldVelocity.Y * 0.8f;
+                Projectile.velocity.Y = -8f;
             }
             if (Projectile.velocity.X != Projectile.oldVelocity.X)
             {
@@ -77,20 +73,20 @@ namespace UniverseOfSwordsMod.Projectiles
                 Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity * 0.2f, randomStar);
             }
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
 
-            Color projColor = Color.White with { A = 0 };
+            Color projColor = Color.White with { A = 0 } * Projectile.Opacity;
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 Vector2 drawPos = Projectile.oldPos[i] + texture.Size() / 2 - Main.screenPosition;
-                //projColor *= (8 - i) / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);              
                 projColor *= 0.8f;
                 Main.EntitySpriteDraw(texture, drawPos, texture.Frame(), projColor, Projectile.rotation, texture.Frame().Size() / 2, Projectile.scale - i / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, texture.Frame(), Color.LightYellow with { A = 127 }, Projectile.rotation, texture.Frame().Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, texture.Frame(), new Color(205, 201, 14, 40) * Projectile.Opacity, Projectile.rotation, texture.Frame().Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 
             return false;
         }

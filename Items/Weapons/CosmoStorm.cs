@@ -4,7 +4,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
 
-
 namespace UniverseOfSwordsMod.Items.Weapons;
 
 public class CosmoStorm : ModItem
@@ -28,6 +27,7 @@ public class CosmoStorm : ModItem
         Item.DamageType = DamageClass.Melee;
         Item.value = 650000;
         Item.autoReuse = true;
+        Item.scale = 1.25f;
     }
 
     public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
@@ -67,6 +67,7 @@ public class CosmoStorm : ModItem
         }
         newRecipe.Register();
     }
+
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         player.itemLocation = player.Center;
@@ -88,17 +89,12 @@ public class CosmoStorm : ModItem
             return;
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
-            Vector2 offsetPosition = new(target.position.X + Main.rand.Next(-400, 400), target.position.Y - Main.rand.Next(500, 800));
-            Vector2 spawnVelocity = new(target.Center.X - offsetPosition.X, target.Center.Y - offsetPosition.Y);
+            Vector2 offsetPosition = target.position + new Vector2(Main.rand.Next(-1000, 1000), -Main.rand.Next(500, 800));
+            Vector2 spawnVelocity = Vector2.Normalize(target.Center - offsetPosition) * 12f;
 
-            float spawnDistance = spawnVelocity.Length();
-            spawnDistance = 11f / spawnDistance;
-            spawnVelocity.X *= spawnDistance;
-            spawnVelocity.Y *= spawnDistance;
-
-            Projectile summonProjectile = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), offsetPosition, spawnVelocity, ProjectileID.NebulaArcanum, damageDone, 5f, player.whoAmI, 0f, 0f);
+            Projectile summonProjectile = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), offsetPosition, spawnVelocity, ProjectileID.NebulaArcanum, Item.damage, 5f, player.whoAmI);
             summonProjectile.extraUpdates = 2;
             summonProjectile.penetrate = 2;
             summonProjectile.timeLeft = 250;

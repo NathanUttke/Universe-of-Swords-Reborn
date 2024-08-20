@@ -21,7 +21,6 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 15;
             ProjectileID.Sets.TrailingMode[Type] = 3;
-
         }
 
         public override void SetDefaults()
@@ -32,7 +31,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.ignoreWater = true;
             Projectile.tileCollide = true;
             Projectile.timeLeft = 50;
-            Projectile.extraUpdates = 1;
+            //Projectile.extraUpdates = 1;
             Projectile.alpha = 0;
             Projectile.penetrate = 1;
             Projectile.aiStyle = -1;
@@ -41,11 +40,11 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void AI()
         {
-            Dust fireDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, 100, Color.Yellow, 0.5f);
+            Dust fireDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, 100, Color.Orange, 0.5f);
             fireDust.velocity *= 0.6f;
             fireDust.noGravity = true;
 
-            //Projectile.velocity.Y += 0.25f;
+            Projectile.velocity.Y += 0.4f;
             Projectile.ai[0]++;
             /*if (Projectile.ai[0] % 5f == 0f && Projectile.owner == Main.myPlayer)
             {
@@ -60,10 +59,9 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.ai[1] = 1f;
                 for (int i = 0; i < 40; i++)
                 {
-                    Dust fireDust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Yellow, 1f);
-                    fireDust2.velocity *= 3f;
-                    fireDust2.velocity += Projectile.velocity * 0.75f;
-                    fireDust2.scale *= 1.2f;
+                    Dust fireDust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Alpha:100, newColor:Color.Orange);
+                    fireDust2.velocity *= 4f;
+                    fireDust2.scale *= 1.25f;
                     fireDust2.noGravity = true;
                 }
             }
@@ -80,9 +78,8 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             for (int i = 0; i < 40; i++)
             {
-                Dust fireDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.InfernoFork, 0f, 0f, 100, default, 0.8f);
-                fireDust.velocity *= 3f;
-                fireDust.velocity += Projectile.velocity * 0.75f;
+                Dust fireDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.Orange, 1f);
+                fireDust.velocity *= 4f;
                 fireDust.scale *= 1.5f;
                 fireDust.noGravity = true;
             }
@@ -102,7 +99,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 drawColorTrail *= 0.8f;
 
                 Main.EntitySpriteDraw(texture, drawPos, null, drawColorTrail, Projectile.rotation, Projectile.Size / 2, Projectile.scale, SpriteEffects.None, 0);
-                Main.EntitySpriteDraw(texture, drawPos, null, drawColorTrail with { A = 0 } * 0.25f, Projectile.rotation, Projectile.Size / 2, Projectile.scale * 1.5f, SpriteEffects.None, 0);
+                Main.EntitySpriteDraw(texture, drawPos, null, drawColorTrail with { A = 0 } * 0.25f, Projectile.rotation, Projectile.Size / 2, Projectile.scale * 1.25f, SpriteEffects.None, 0);
             }
 
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White with { A = 0 } * 0.25f, Projectile.rotation, Projectile.Size / 2, Projectile.scale, SpriteEffects.None, 0);

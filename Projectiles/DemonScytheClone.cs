@@ -52,7 +52,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < 4; i++)
             {
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197, 0), 1f);
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor: new Color(58, 211, 197, 0), Scale: 0.75f);
             }
         }
 
@@ -79,17 +79,15 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
-
         public override bool PreDraw(ref Color lightColor)
         {
             SpriteBatch spriteBatch = Main.spriteBatch;
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
             Vector2 drawOrigin = texture.Size() / 2f;
 
-            Texture2D glowSphereTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-            Color drawColorGlow = new Color(58, 211, 197, 0);
-            Color drawColor = Projectile.GetAlpha(lightColor);
+            Texture2D glowSphereTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
+            Color drawColorGlow = new(58, 211, 197, 0);
+            Color drawColor = Color.White with { A = 0 } * Projectile.Opacity;
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {

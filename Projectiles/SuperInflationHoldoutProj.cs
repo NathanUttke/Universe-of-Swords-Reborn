@@ -75,7 +75,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             Projectile.spriteDirection = Projectile.direction;
-            Projectile.Center = Owner.RotatedRelativePoint(Owner.Center, true);
+            Projectile.Center = Owner.RotatedRelativePoint(Owner.Center, reverseRotation:true);
             Projectile.rotation = Projectile.velocity.ToRotation() + (-1.75f * Owner.direction) + EaseInBack(RotationTimer / 8f) * Owner.direction;
             
             if (Timer == MaxTime * 0.8f && Main.myPlayer == Projectile.owner)
@@ -84,8 +84,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 {
                     Vector2 newPosition = Owner.RotatedRelativePoint(Owner.Center);
                     Vector2 newVelocity = Vector2.Normalize(newPosition - Main.MouseWorld) * -9f + (0.25f * i * MathHelper.TwoPi).ToRotationVector2();
-                    Projectile coinProj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), newPosition, newVelocity, ProjectileID.GoldCoin, Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
-                    coinProj.timeLeft = 40;
+                    Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), newPosition, newVelocity, ModContent.ProjectileType<GoldCoin>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                 }
                 Timer++;
             }
@@ -118,7 +117,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Main.rand.NextBool(3))
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GoldCoin, 0f, 0f, 0, default, 1f);
+                Dust.NewDustPerfect(Projectile.position + Projectile.rotation.ToRotationVector2() * 170f, DustID.GoldCoin);
             }
         }
 
@@ -141,9 +140,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Color colorTrail = Color.Gold;
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
-            SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             float rotation = Projectile.rotation + MathHelper.PiOver4;
-
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {

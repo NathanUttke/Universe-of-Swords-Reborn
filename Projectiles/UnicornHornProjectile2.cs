@@ -11,10 +11,9 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate = -1;
             Projectile.friendly = true;
             Projectile.tileCollide = true;
-            Projectile.aiStyle = 1;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.aiStyle = -1;
+            Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.extraUpdates = 1;
-            AIType = ProjectileID.Bullet;
         }
         public override void AI()
         {         

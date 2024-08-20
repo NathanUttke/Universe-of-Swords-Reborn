@@ -15,20 +15,17 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
+            ProjectileID.Sets.TrailingMode[Type] = 3;
         }
         public override void SetDefaults()
         {
             Projectile.width = 22;
             Projectile.height = 24;
-            Projectile.scale = 1f;
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.penetrate = -1;
             Projectile.alpha = 255;
-            Projectile.ignoreWater = false;
-            Projectile.tileCollide = true;
             Projectile.timeLeft = 100;
             Projectile.localNPCHitCooldown = 20;
             Projectile.usesLocalNPCImmunity = true;
@@ -45,7 +42,7 @@ namespace UniverseOfSwordsMod.Projectiles
                     Vector2 spinPoint = Vector2.Zero;
                     spinPoint += -Vector2.UnitY.RotatedBy(i * MathHelper.TwoPi / 10);
                     spinPoint = spinPoint.RotatedBy(Projectile.velocity.ToRotation());
-                    Dust ringDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 100, Color.LightCyan, 0.5f);
+                    Dust ringDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Alpha: 100, newColor: Color.LightCyan, Scale: 0.5f);
                     ringDust.position = Projectile.Center + spinPoint;
                     ringDust.velocity = spinPoint.SafeNormalize(Vector2.UnitY) * 2f;                  
                 }
@@ -81,9 +78,9 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 10; i++)
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 1.25f);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 0.75f);
                 dust.velocity *= 4f;
             }
         }

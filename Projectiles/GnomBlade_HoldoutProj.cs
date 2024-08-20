@@ -1,14 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Weapons;
@@ -36,7 +28,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void AI()
         {
             base.AI();
-            Projectile.scale = 0.5f + MathF.Sin(Timer * 0.1f);
+            //Projectile.scale = 0.5f + MathF.Sin(Timer * 0.1f);
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.SmoothStep(-1.75f, 1.75f, RotationTimer / 8f) * Owner.direction;
         }
 
@@ -50,10 +42,11 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Main.rand.NextBool(3))
             {
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan, 1f);
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Red, 1f);
+                Dust.NewDustDirect(Projectile.position + Projectile.rotation.ToRotationVector2() * SwordSize * Projectile.scale, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor:Color.Cyan);
+                Dust.NewDustDirect(Projectile.position + Projectile.rotation.ToRotationVector2() * SwordSize * Projectile.scale, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor:Color.Red);
             }
         }
+
         public override void SetPlayerValues()
         {
             Owner.heldProj = Projectile.whoAmI;

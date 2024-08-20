@@ -11,8 +11,8 @@ using UniverseOfSwordsMod;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
-[LegacyName (["SwordOfTheUniverse"])]
-public class SwordOfTheUniverseNew : ModItem
+[LegacyName (["SwordOfTheUniverseNew"])]
+public class SwordOfTheUniverse : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -31,13 +31,15 @@ public class SwordOfTheUniverseNew : ModItem
 		Item.damage = 190;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item169;
-		Item.shoot = ModContent.ProjectileType<SwordOfTheUniverseV2Projectile>();
-		Item.shootSpeed = 5f;
+		Item.shoot = ModContent.ProjectileType<SwordOfTheUniverseHoldoutProj>();
+		Item.shootSpeed = 7f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
         Item.rare = ItemRarityID.Red;
         Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; 
-        Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
+		Item.DamageType = DamageClass.Melee;
+        Item.noMelee = true;
+        Item.noUseGraphic = true;
+        //Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
     }
 
     public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
@@ -69,23 +71,23 @@ public class SwordOfTheUniverseNew : ModItem
         }
         newRecipe.Register();
     }
+    public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
 
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
+
+    /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        player.itemLocation = player.Center;
-    }
-
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {   
-        for (int i = 0; i < 4; i++)
+        Vector2 newVelocity = Vector2.Normalize(velocity) * 40f;
+        int projAmount = 4;
+        for (int i = 0; i < projAmount; i++)
         {
-            Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(15 * i));
-            newVelocity *= Main.rand.NextFloat(1f, 1.5f);
-            Projectile.NewProjectile(source, position, newVelocity, type, damage / 2, knockback, player.whoAmI);
+            float spread = i - (projAmount - 1f) / 2f;
+            Vector2 offset = newVelocity.RotatedBy(MathHelper.TwoPi / 7.5f * spread);
+
+            Projectile.NewProjectile(source, position + offset, velocity, type, damage / 2, knockback, player.whoAmI);
         }
         
         return false;
-    }
+    }*/
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {

@@ -33,9 +33,11 @@ public class LifeRemovalMachine : ModItem
 		Item.noUseGraphic = true;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; 
+		Item.DamageType = DamageClass.Melee;
 	}
-	public override void AddRecipes()
+    public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
+
+    public override void AddRecipes()
 	{		
 		CreateRecipe()
             .AddIngredient(ItemID.BrokenHeroSword, 1)

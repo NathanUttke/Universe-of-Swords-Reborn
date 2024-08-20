@@ -38,19 +38,26 @@ public class GreatswordOfTheCosmos : ModItem
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.NextBool(3))
-		{
-            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Utils.SelectRandom(Main.rand, Color.MediumVioletRed, Color.Cyan, Color.HotPink), 1f);
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+        for (int i = 0; i < 4; i++)
+        {
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust dust = Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 0, Utils.SelectRandom(Main.rand, Color.MediumVioletRed, Color.Cyan, Color.Magenta, Color.SkyBlue));
+            dust.noGravity = true;
         }
     }
+
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         player.itemLocation = player.Center;
     }
+
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		int numberProjectiles = 3;		
-		for (int index = 0; index < numberProjectiles; index++)
+		for (int i = 0; i < numberProjectiles; i++)
 		{
             Vector2 offsetPosition = new(position.X, player.Top.Y - Main.rand.Next(200, 400));
 			Vector2 newVelocity = new(velocity.X, Item.shootSpeed);

@@ -5,6 +5,7 @@ using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Buffs;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Materials;
 using static Terraria.Player;
 
@@ -28,7 +29,7 @@ public class SwordOfTheEmperor : ModItem
         Item.damage = 90;
         Item.knockBack = 4.5f;
         Item.scale = 1.25f;
-        Item.crit = 8;        
+        Item.crit = 10;        
         Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
@@ -51,40 +52,35 @@ public class SwordOfTheEmperor : ModItem
         player.itemLocation = player.Center;
     }
 
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+        for (int i = 0; i < 2; i++)
+        {
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 0, new Color(255, 232, 174));
+        }
+    }
+
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.Keybrand, new ParticleOrchestraSettings
         {
-            PositionInWorld = target.Center,
-            MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
-
+            PositionInWorld = target.Center + Main.rand.NextVector2Circular(24f, 24f)
         }, player.whoAmI);
 
-        if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
-        {
-            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 400, true);
-        }
+        target.AddBuff(ModContent.BuffType<Buffs.EmperorBlaze>(), 400, true);
+        target.AddBuff(BuffID.Ichor, 400, true);
 
-        if (!target.HasBuff(BuffID.Weak))
-        {
-            target.AddBuff(BuffID.Weak, 400, true);
-        }
-
-        if (!target.HasBuff(BuffID.Ichor))
-        {
-            target.AddBuff(BuffID.Ichor, 400, true);
-        }
-
-        if (hit.Crit && Main.rand.NextBool(5) && !target.HasBuff(BuffID.Midas))
+        if (hit.Crit && Main.rand.NextBool(5))
         {
             target.AddBuff(BuffID.Midas, 200, true);
         }
     }
     public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
     {
-        if (!target.HasBuff(BuffID.Weak))
-        {
-            target.AddBuff(BuffID.Weak, 300, true);
-        }
+        target.AddBuff(BuffID.Weak, 300, true);
     }
 }

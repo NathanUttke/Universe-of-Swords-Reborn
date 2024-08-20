@@ -13,11 +13,11 @@ namespace UniverseOfSwordsMod.Projectiles
 {    
     public class SwordOfTheMultiverseProjectileYoyo : ModProjectile
     {
-        public override string Texture => ModContent.GetInstance<SwordOfTheMultiverseNew>().Texture;
+        public override string Texture => ModContent.GetInstance<SwordOfTheMultiverse>().Texture;
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 4;
+            ProjectileID.Sets.TrailCacheLength[Type] = 20;
+            ProjectileID.Sets.TrailingMode[Type] = 4;
         }
         public override void SetDefaults()
         {
@@ -26,6 +26,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.alpha = 0;
             Projectile.penetrate = -1;
             Projectile.friendly = true;
+            Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.aiStyle = -1;
             Projectile.extraUpdates = 2;
@@ -54,10 +55,9 @@ namespace UniverseOfSwordsMod.Projectiles
             Player.heldProj = Projectile.whoAmI;
             Player.itemTime = Player.itemAnimation = 2;
 
-            Projectile.position = Projectile.Center;
             Projectile.velocity = Vector2.Zero;
             Projectile.Center = Main.MouseWorld;
-            Projectile.rotation += Projectile.direction * 0.11f;            
+            Projectile.rotation += Projectile.direction * 0.13f;            
         }      
         
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -68,36 +68,27 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
-        public const int TotalIllusions = 1;
-
-        public const int FramesPerImportantTrail = 60;
-
-        private static readonly VertexStrip _vertexStrip = new();
-
-        public Color ColorStart;
-
-        public Color ColorEnd;
-
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 drawOrigin = texture.Size() / 2f;
 
             Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
             Color drawColorGlow = Color.Purple with { A = 0 };
             Color drawColorTrail = Color.Magenta with { A = 0 };
+            Vector2 drawPos = Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
+                Vector2 trailPos = Projectile.oldPos[j] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
 
                 drawColorTrail *= 0.75f;
 
                 Main.EntitySpriteDraw(texture, drawPos, null, drawColorTrail, Projectile.oldRot[j] - MathHelper.PiOver4, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation - MathHelper.PiOver4, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f + Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, drawPos, null, Color.White, Projectile.rotation - MathHelper.PiOver4, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(glowSphere, drawPos, null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f + Projectile.scale, SpriteEffects.None, 0);
             
             return false;
         }

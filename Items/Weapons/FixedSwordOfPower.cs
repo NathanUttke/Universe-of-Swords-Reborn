@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
 using UniverseOfSwordsMod.Items.Misc;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -20,18 +21,20 @@ public class FixedSwordOfPower : ModItem
 		Item.Size = new(64);
 		Item.rare = ItemRarityID.Orange;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 38;
+		Item.useTime = 19;
 		Item.useAnimation = 19;
 		Item.damage = 36;
 		Item.knockBack = 5f;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 18000;
-		Item.shoot = ProjectileID.BoneGloveProj;
-		Item.shootSpeed = 7f;
+		Item.shoot = ModContent.ProjectileType<BoomeBone>();
+		Item.shootSpeed = 9f;
 		Item.scale = 1.25f;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 	}
+
+    public override bool CanShoot(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
 
     public override void AddRecipes()
 	{		
@@ -54,10 +57,7 @@ public class FixedSwordOfPower : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		Projectile boneProj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * 0.50f), knockback, player.whoAmI);
-		boneProj.DamageType = DamageClass.Melee;
-		boneProj.penetrate = 2;
-		boneProj.scale = 1.25f;
+		Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * 0.50f), knockback, player.whoAmI);
 		return false;
     }
 }

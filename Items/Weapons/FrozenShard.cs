@@ -31,17 +31,21 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 8f;
             Item.shoot = ModContent.ProjectileType<FrozenCrystallusProj>();
-            Item.shootSpeed = 6f;
+            Item.shootSpeed = 8f;
             Item.value = Item.sellPrice(0, 4, 0, 0);
             Item.autoReuse = true;            
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            if (Main.rand.NextBool(2))
+            UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+            for (int i = 0; i < 2; i++)
             {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.SkyBlue, 1.25f);
-                Main.dust[dust].noGravity = true;
+                modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+                Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+                Dust dust = Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 0, Color.SkyBlue, 0.5f);
+                dust.noGravity = true;
             }
         }
 
@@ -70,10 +74,7 @@ namespace UniverseOfSwordsMod.Items.Weapons
 		
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-           if (!target.HasBuff(BuffID.Frostburn))
-           {
-                target.AddBuff(BuffID.Frostburn, 500);
-           }
+            target.AddBuff(BuffID.Frostburn, 500);
         }
     }
 }

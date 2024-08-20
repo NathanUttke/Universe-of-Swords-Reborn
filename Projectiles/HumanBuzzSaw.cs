@@ -54,6 +54,8 @@ public class HumanBuzzSaw : ModProjectile
         Projectile.spriteDirection = Owner.direction;
 
         Projectile.rotation += 0.3f * Owner.direction;
+
+        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Smoke, 8f * Projectile.direction, Alpha: 100);
     }
 
     private void SetPlayerValues()
@@ -63,9 +65,10 @@ public class HumanBuzzSaw : ModProjectile
         Owner.itemTime = Owner.itemAnimation = 2;
         Owner.itemRotation = Projectile.rotation;
     }
+
     public override bool PreDraw(ref Color lightColor)
     {
-        Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+        Texture2D texture = TextureAssets.Projectile[Type].Value;
         Color drawColor = Projectile.GetAlpha(lightColor);
         Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, drawColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);
         return false;

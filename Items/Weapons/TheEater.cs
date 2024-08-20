@@ -32,13 +32,11 @@ public class TheEater : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        Vector2 hitPosition = Main.rand.NextVector2Circular(50f, 50f);
-        hitPosition = hitPosition.SafeNormalize(Vector2.UnitY);
+        Vector2 hitPosition = Main.rand.NextVector2Circular(50f, 50f).SafeNormalize(Vector2.UnitY) * 6f;
 
         if (target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
         {
-            Projectile proj = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 5f, hitPosition / 8, ProjectileID.TinyEater, damageDone, 4f, player.whoAmI, 0f, 0f);
-            proj.DamageType = DamageClass.Melee;
+            Projectile.NewProjectileDirect(target.GetSource_OnHit(target), target.Center - hitPosition * 5f, hitPosition, ProjectileID.TinyEater, damageDone, 0f, player.whoAmI);
         }
     }
 
@@ -46,7 +44,7 @@ public class TheEater : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.CorruptPlants, 0f, 0f, 127, default, 1.25f);
+            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.CorruptPlants, Alpha: 127, Scale:1.25f);
             Main.dust[dust].noGravity = true;
         }
     }

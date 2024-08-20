@@ -23,7 +23,7 @@ public class Doomsday : ModItem
 		Item.scale = 1f;
 		Item.rare = ItemRarityID.Cyan;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 20;
+		Item.useTime = 40;
 		Item.useAnimation = 20;
 		Item.damage = 130;
 		Item.knockBack = 10f;
@@ -40,11 +40,11 @@ public class Doomsday : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         position += Vector2.UnitY * -70f;
-        for (int i = 0; i < 3; i++)
+        for (int i = 1; i <= 3; i++)
 		{
 			Vector2 newVelocity = velocity * Main.rand.NextFloat(0.9f, 1.25f);
 			newVelocity = newVelocity.RotatedByRandom(0.3f);
-            Projectile.NewProjectileDirect(source, position, newVelocity, type, damage / 3, knockback, player.whoAmI);
+            Projectile.NewProjectileDirect(source, position, newVelocity, type, damage / i, knockback, player.whoAmI);
         }
         return false;
     }
@@ -53,7 +53,7 @@ public class Doomsday : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 1f);
+            Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Orange, 0.75f);
             dust.noGravity = true;
         }
     }

@@ -45,12 +45,6 @@ public class TerraEnsis : ModItem
         return true;
     }
 
-    public override void MeleeEffects(Player player, Rectangle hitbox)
-    {            
-        int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade, 0f, 0f, 100, default, 2f);
-        Main.dust[dust].noGravity = true;    
-    }
-
     public override void AddRecipes()
     {
         CreateRecipe()

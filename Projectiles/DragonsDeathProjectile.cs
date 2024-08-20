@@ -1,107 +1,20 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using Terraria;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
-using UniverseOfSwordsMod.Items.Weapons;
+using Microsoft.Xna.Framework;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    public class DragonsDeathProjectile : ModProjectile
+    public class DragonsDeathProjectile : BaseSpinningProj
     {
-        public override string Texture => ModContent.GetInstance<DragonsDeath>().Texture;
-
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 20;
             ProjectileID.Sets.TrailingMode[Type] = 2;
         }
 
-        public override void SetDefaults()
-        {
-            Projectile.Size = new(128);
-            Projectile.aiStyle = -1;
-            Projectile.friendly = true;
-            Projectile.penetrate = -1;
-            Projectile.alpha = 255;
-            Projectile.hide = true;
-            Projectile.tileCollide = false;
-            Projectile.ignoreWater = true;
-            Projectile.ownerHitCheck = true;
-            Projectile.scale = 1.25f;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 20;
-        }
-
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-        {
-            float projRotation = Projectile.rotation - MathHelper.PiOver4 + MathHelper.Pi * Math.Sign(Projectile.velocity.X);
-            float collisionPoint = 0f;
-            float boxSize = 160f * Projectile.scale;
-
-            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + projRotation.ToRotationVector2() * (0f - boxSize), Projectile.Center + projRotation.ToRotationVector2() * boxSize, 40f, ref collisionPoint);
-        }
-
-        private const float UseTime = 50f;
         Player Owner => Main.player[Projectile.owner];
-        public override void AI()
-        {            
-            if (Owner.dead || Owner.CCed || Owner.noItems || !Owner.active)
-            {
-                Projectile.Kill();
-                return;
-            }
-            Lighting.AddLight(Owner.Center, 0.75f, 0.9f, 1.15f);
-
-            int velocityXSign = Math.Sign(Projectile.velocity.X);            
-            
-            Projectile.velocity = new Vector2(velocityXSign, 0f);
-            if (Projectile.ai[0] == 0f)
-            {
-                Projectile.rotation = new Vector2(velocityXSign, 0f - Owner.gravDir).ToRotation() + -MathHelper.PiOver4 + MathHelper.Pi;
-                if (Projectile.velocity.X < 0f)
-                {
-                    Projectile.rotation -= MathHelper.PiOver2;
-                }
-            }
-            
-            Projectile.ai[0] += 1f;
-            Projectile.rotation += MathHelper.TwoPi * 2f / UseTime * velocityXSign;
-            bool halfUseTime = Projectile.ai[0] == (int)(UseTime / 2f);
-            if (Projectile.ai[0] >= UseTime || (halfUseTime && !Owner.controlUseItem))
-            {
-                Projectile.Kill();                
-            }
-            else if (halfUseTime)
-            {
-                Vector2 mousePosition = Main.MouseWorld;
-                int mouseDirection = (Owner.DirectionTo(mousePosition).X > 0f) ? 1 : (-1);
-                if (mouseDirection != Projectile.velocity.X)
-                {
-                    Owner.ChangeDir(mouseDirection);
-                    Projectile.velocity = new Vector2(mouseDirection, 0f);
-                    Projectile.netUpdate = true;
-                    Projectile.rotation -= MathHelper.Pi;
-                }
-            }
-
-            Projectile.Center = Owner.MountedCenter;
-            Projectile.timeLeft = 2;
-
-            SetPlayerValues();
-        }
-
-        public void SetPlayerValues()
-        {
-            Projectile.spriteDirection = Projectile.direction;
-            Owner.ChangeDir(Projectile.direction);
-            Owner.heldProj = Projectile.whoAmI;
-            Owner.SetDummyItemTime(2);
-            Owner.itemRotation = MathHelper.WrapAngle(Projectile.rotation);
-            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.Pi + MathHelper.PiOver4);
-        }
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -112,7 +25,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                projColor *= 0.7f;
+                projColor *= 0.75f;
                 spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f, null, projColor, Projectile.oldRot[i], drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             }
 

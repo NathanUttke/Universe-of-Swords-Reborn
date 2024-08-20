@@ -29,7 +29,15 @@ public class StoneSword : ModItem
 		Item.DamageType = DamageClass.Melee; 
 	}
 
-	public override void AddRecipes()
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        if (Main.rand.NextBool(2))
+        {
+            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Stone);
+        }
+    }
+
+    public override void AddRecipes()
 	{			
 		CreateRecipe()
             .AddIngredient(ItemID.StoneBlock, 20)

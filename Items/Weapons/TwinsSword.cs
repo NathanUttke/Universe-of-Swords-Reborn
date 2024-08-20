@@ -1,6 +1,4 @@
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Projectiles;
@@ -34,13 +32,7 @@ public class TwinsSword : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (!target.HasBuff(BuffID.CursedInferno))
-		{
-			target.AddBuff(BuffID.CursedInferno, 300);
-		}        
-		if (!target.HasBuff(BuffID.Bleeding))
-		{
-			target.AddBuff(BuffID.Bleeding, 300);
-		}
+		target.AddBuff(BuffID.CursedInferno, 300);
+		target.AddBuff(BuffID.Bleeding, 300);
     }
 }

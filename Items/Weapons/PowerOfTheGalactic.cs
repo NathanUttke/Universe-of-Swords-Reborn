@@ -18,17 +18,16 @@ public class PowerOfTheGalactic : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 64;
-        Item.height = 64;
+        Item.Size = new(64);
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 22;
+        Item.useTime = 44;
         Item.useAnimation = 22;
         Item.damage = 125;
-        Item.knockBack = 7f;
+        Item.knockBack = 4f;
         Item.scale = 1.25f;
         Item.shoot = ModContent.ProjectileType<GalacticProjectile>();
-        Item.shootSpeed = 15f;
+        Item.shootSpeed = 9f;
         Item.UseSound = SoundID.Item1;
         Item.value = 650500;
         Item.autoReuse = true;
@@ -52,17 +51,20 @@ public class PowerOfTheGalactic : ModItem
     {
         for (int i = 0; i < 2; i++)
         {
-            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(40)) * Main.rand.NextFloat(0.9f, 1.3f), type, damage * 2, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(40f)) * Main.rand.NextFloat(0.9f, 1.3f), type, damage * 2, knockback, player.whoAmI);
         }
         return false;
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        if (Main.rand.NextBool(2))
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+        for (int i = 0; i < 2; i++)
         {
-            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Cyan with { A = 0 }, 1.5f);
-            Main.dust[dust].noGravity = true;
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust dust = Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 0, Color.Cyan, 0.75f);
+            dust.noGravity = true;
         }
     }
 

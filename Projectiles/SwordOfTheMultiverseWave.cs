@@ -13,22 +13,19 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[Type] = 10;
+            ProjectileID.Sets.TrailingMode[Type] = 0;
         }
         public override void SetDefaults()
         {
-            Projectile.width = 168;
-            Projectile.height = 64;
+            Projectile.width = 8;
+            Projectile.height = 8;
             Projectile.scale = 1.5f;
             Projectile.aiStyle = -1;
             Projectile.penetrate = -1;
             Projectile.friendly = true;            
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
-            //Projectile.usesLocalNPCImmunity = true;
-            Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            //Projectile.localNPCHitCooldown = 11;
             Projectile.alpha = 0;        
             Projectile.extraUpdates = 1;
             Projectile.stopsDealingDamageAfterPenetrateHits = true;
@@ -48,7 +45,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.PrincessWeapon, new ParticleOrchestraSettings
             {
-                PositionInWorld = target.Center,
+                PositionInWorld = target.Center + Main.rand.NextVector2Circular(24f, 24f)
             }, Projectile.owner);
         }
 
@@ -60,8 +57,9 @@ namespace UniverseOfSwordsMod.Projectiles
             {
                 Projectile.alpha = 255;
                 Projectile.Kill();
-            }            
-            
+            }
+            Lighting.AddLight(Projectile.Center + Projectile.rotation.ToRotationVector2() * 64f * Projectile.scale, Color.Magenta.ToVector3());
+
             Projectile.velocity *= 0.97f;
             if (Projectile.velocity.Length() < 10f && Projectile.scale > 0f)
             {
@@ -69,16 +67,20 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
-        public override Color? GetAlpha(Color lightColor) => Color.White * Projectile.Opacity;
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Projectile.velocity = oldVelocity;
+            Projectile.velocity *= 0.01f;
+            Projectile.timeLeft = 50;
+            return false;
+        }
 
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;            
-            Texture2D textureExtra = TextureAssets.Extra[27].Value;            
+            Texture2D texture = TextureAssets.Projectile[Type].Value;            
 
-            Color projColor = Color.White;            
-            Color projColor2 = Projectile.GetAlpha(lightColor);            
+            Color projColor = Color.White * Projectile.Opacity;            
 
             Vector2 drawOrigin = texture.Size() / 2f;            
 
@@ -86,12 +88,11 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Projectile.spriteDirection == -1)
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
-            }          
-           
+            }         
 
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor2, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.LightPink with { A = 0 } * 0.25f, Projectile.rotation, drawOrigin, Projectile.scale * 1.1f, spriteEffects, 0);
-            Main.EntitySpriteDraw(texture, Projectile.oldPos[2] + Projectile.Size / 2 - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor2 with { A = 0 } * 0.125f, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+            Main.EntitySpriteDraw(texture, Projectile.oldPos[2] + Projectile.Size / 2 - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor with { A = 0 } * 0.125f, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
 
             return false;
         }

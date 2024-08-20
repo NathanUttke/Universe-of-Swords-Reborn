@@ -21,8 +21,8 @@ public class DoubleBladedLightsaber : ModItem
 	{
 		Item.damage = 72;
 		Item.DamageType = DamageClass.MeleeNoSpeed; 
-		Item.width = 138;
-		Item.height = 138;
+		Item.width = 90;
+		Item.height = 90;
 		Item.useTime = 10;
 		Item.useAnimation = 30;
 		Item.channel = true;

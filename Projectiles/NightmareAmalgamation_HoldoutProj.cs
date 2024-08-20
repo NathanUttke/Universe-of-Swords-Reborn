@@ -72,12 +72,11 @@ namespace UniverseOfSwordsMod.Projectiles
                 for (int i = -1; i <= 1; i++)
                 {
                     Vector2 playerCenter = Owner.RotatedRelativePoint(Owner.Center);
-                    Vector2 velocity = Vector2.Normalize(Main.MouseWorld  - playerCenter);
-                    velocity = velocity.RotatedBy(MathHelper.ToRadians(15 * i));
+                    Vector2 velocity = Vector2.Normalize(Main.MouseWorld  - playerCenter).RotatedBy(MathHelper.ToRadians(15 * i));
                     Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, velocity * 15f, ModContent.ProjectileType<NightmareProjectile>(), Projectile.damage, 4f, Projectile.owner);
                 }
             }
-            Projectile.scale = MathHelper.SmoothStep(1.15f, 0.75f, MathF.Sin(AITimer * 0.13f));
+
             Projectile.Center = Owner.Center;
             Projectile.rotation = MathHelper.Lerp(1.5f * Owner.direction, -1.5f * Owner.direction, MathF.Sin(AITimer * 0.15f)) - MathHelper.PiOver2;
             if (Owner.direction == -1)
@@ -125,7 +124,6 @@ namespace UniverseOfSwordsMod.Projectiles
                 projColor *= 0.3f;
                 Main.spriteBatch.Draw(texture, Owner.Center + Projectile.rotation.ToRotationVector2() * 70f - Main.screenPosition, texture.Frame(), projColor , Projectile.oldRot[i] + MathHelper.PiOver4, texture.Size() / 2, Projectile.scale - i / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
-
 
             Main.spriteBatch.Draw(texture, Owner.Center + Projectile.rotation.ToRotationVector2() * 70f - Main.screenPosition, texture.Frame(), Color.Magenta with { A = 0 } * 0.5f, projRotation, texture.Size() / 2f, Projectile.scale * 1.2f, spriteEffects, 0);
             Main.spriteBatch.Draw(texture, Owner.Center + Projectile.rotation.ToRotationVector2() * 70f - Main.screenPosition, texture.Frame(), Color.White, projRotation, texture.Size() / 2f, Projectile.scale, spriteEffects, 0);

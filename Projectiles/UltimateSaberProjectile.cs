@@ -55,8 +55,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.position = position;
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
-
         public override bool PreDraw(ref Color lightColor)
         {
             Color projColor = Projectile.GetAlpha(lightColor);

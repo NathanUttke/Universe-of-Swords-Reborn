@@ -27,29 +27,22 @@ public class RedFlareLongsword : ModItem
 		Item.useAnimation = 20;
 		Item.damage = 75;
 		Item.knockBack = 5f;
-		Item.shoot = ModContent.ProjectileType<RedFlareLongswordProjectile>();
-		Item.shootSpeed = 20f;
+		Item.shoot = ModContent.ProjectileType<RedFlareEnergy>();
+		Item.scale = 1.25f;
 		Item.UseSound = SoundID.Item45;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.autoReuse = true;
+		Item.noMelee = true;
+		Item.shootsEveryUse = true;
 		Item.DamageType = DamageClass.Melee; 
-	}
-
-	public override bool CanShoot(Player player) => !player.ItemAnimationJustStarted;
-
-    public override void MeleeEffects(Player player, Rectangle hitbox)
-	{	
-		if (Main.rand.NextBool(2))
-		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(250, 100, 100, 0), 1.5f);
-		}
 	}
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		position += position.SafeNormalize(Vector2.Zero).RotatedBy(-MathHelper.PiOver2) * 24f; 
-		Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-		return false;
+        float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
+        Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale);
+        NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI); // Sync the changes in multiplayer.	
+        return false;
     }
 
     public override void AddRecipes()
@@ -63,12 +56,4 @@ public class RedFlareLongsword : ModItem
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
 	}
-
-	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-	{
-        if (!target.HasBuff(BuffID.OnFire))
-        {
-            target.AddBuff(BuffID.OnFire, 600, false);
-        }
-    }
 }

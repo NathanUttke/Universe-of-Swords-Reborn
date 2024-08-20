@@ -38,7 +38,7 @@ public class StarSword : ModItem
     {
         if (Main.rand.NextBool(2))
         {
-            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), 0f, 0f, 0, Color.SkyBlue with { A = 0 }, 1f);
+            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<StarDust>(), 0f, 0f, 0, Color.SkyBlue, 1f);
         }
     }
 

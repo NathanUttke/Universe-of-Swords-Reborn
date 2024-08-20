@@ -19,8 +19,7 @@ public class SuperInflation : ModItem
 
     public override void SetDefaults()
 	{
-		Item.width = 128;
-		Item.height = 128;
+		Item.Size = new(128);
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 10f;
@@ -31,10 +30,11 @@ public class SuperInflation : ModItem
         Item.shootSpeed = 1f;
 		Item.value = 0;
 		Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee; 
+		Item.DamageType = DamageClass.MeleeNoSpeed; 
         Item.noMelee = true;
         Item.noUseGraphic = true;
 	}
+
     public override void AddRecipes()
 	{		
 		CreateRecipe()
@@ -63,14 +63,8 @@ public class SuperInflation : ModItem
 	{
         ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.Keybrand, new ParticleOrchestraSettings
         {
-            PositionInWorld = target.Center,
-            MovementVector = player.itemRotation.ToRotationVector2() * 5f * 0.1f + Main.rand.NextVector2Circular(2f, 2f)
-
+            PositionInWorld = target.Center + Main.rand.NextVector2Circular(24f, 24f)
         }, player.whoAmI);
-
-        if (!target.HasBuff(BuffID.Midas))
-        {
-            target.AddBuff(BuffID.Midas, 500);
-        }
+        target.AddBuff(BuffID.Midas, 500);
     }
 }

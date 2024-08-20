@@ -27,7 +27,7 @@ public class GershwinGasher : ModItem
         Item.knockBack = 8f;
         Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/PianoBlue");
         Item.shoot = ProjectileID.Mushroom;
-        Item.shootSpeed = 15f;
+        Item.shootSpeed = 10f;
         Item.value = 80000;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 

@@ -16,8 +16,8 @@ public class BeethovenBeater : ModItem
 
     public override void SetDefaults()
 	{
-		Item.width = 122;
-		Item.height = 122;
+		Item.width = 128;
+		Item.height = 128;
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 30;
@@ -26,7 +26,7 @@ public class BeethovenBeater : ModItem
 		Item.knockBack = 3f;
 		Item.UseSound = new SoundStyle($"{nameof(UniverseOfSwordsMod)}/Sounds/Item/PianoGreen");
 		Item.shoot = ProjectileID.WoodenArrowFriendly;
-		Item.shootSpeed = 12f;
+		Item.shootSpeed = 8f;
 		Item.value = 40000;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
@@ -54,7 +54,7 @@ public class BeethovenBeater : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         int projToShoot = Main.rand.Next(ProjectileID.QuarterNote, ProjectileID.TiedEighthNote);
-        Projectile noteProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI, 0f, 0f);
+        Projectile noteProj = Projectile.NewProjectileDirect(source, position, velocity, projToShoot, damage, knockback, player.whoAmI);
         noteProj.timeLeft = 100;
         noteProj.penetrate = 3;
         noteProj.DamageType = DamageClass.MeleeNoSpeed;
@@ -63,6 +63,6 @@ public class BeethovenBeater : ModItem
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.AddBuff(20, 360, false);
+		target.AddBuff(BuffID.Poisoned, 360, false);
 	}
 }

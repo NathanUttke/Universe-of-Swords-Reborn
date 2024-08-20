@@ -32,8 +32,9 @@ public class BatSlayer : ModItem
 	{
 		player.itemLocation.Y -= 1f * player.gravDir;
 	}
+
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.AddBuff(31, 360, false);		
+		target.AddBuff(BuffID.Confused, 360, false);		
 	}
 }

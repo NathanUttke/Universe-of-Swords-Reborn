@@ -14,8 +14,8 @@ internal class NightmareProjectile : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-        ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
+        ProjectileID.Sets.TrailCacheLength[Type] = 10;
+        ProjectileID.Sets.TrailingMode[Type] = 3;
     }
     public override void SetDefaults()
     {
@@ -35,7 +35,7 @@ internal class NightmareProjectile : ModProjectile
 
     public override void AI()
     {       
-        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Purple with { A = 0 }, 1.5f);
+        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor: Color.Purple, Scale: 1.5f);
 
         Projectile.velocity *= 0.97f;
         Projectile.rotation = Projectile.velocity.ToRotation();
@@ -98,15 +98,6 @@ internal class NightmareProjectile : ModProjectile
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, 0, Color.Purple with { A = 0 }, 1.5f);
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.oldVelocity.X * 0.25f, Projectile.oldVelocity.Y * 0.25f, 0, Color.Purple with { A = 0 }, 1.5f);
         }
-
-        /*for (int i = 0; i < 20; i++)
-        {
-            Vector2 newVelocity = new Vector2(8f, 0f).RotatedBy(i + MathHelper.TwoPi / 20f);     
-            Projectile deathProj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.position, newVelocity, ProjectileID.ClothiersCurse, Projectile.damage / 2, 0f, Projectile.owner);
-            deathProj.timeLeft = 40;
-            deathProj.penetrate = 1;
-            deathProj.extraUpdates = 1;
-        }*/
         
         SoundEngine.PlaySound(SoundID.DD2_SkeletonDeath, Projectile.position);
     }
