@@ -40,18 +40,23 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void AI()
         {
-            Projectile.velocity *= 0.97f;
+            Projectile.ai[0]++;
+            Projectile.velocity *= 0.96f;
             Projectile.rotation += 0.2f * Projectile.direction;
 
-            Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197), 1f);
-            dust.velocity *= 0.3f;
+            for (int i = 0; i < 10; i++)
+            {
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor: new Color(80, 200, 255));
+                dust.position = Projectile.Center - Projectile.velocity / 10f * i;
+                dust.velocity *= 0f;
+            }
 
             NPC closestNPC = UniverseUtils.FindClosestNPC(400f, Projectile.position);
-            if (closestNPC == null) 
+            if (closestNPC == null || Projectile.ai[0] < 20f) 
             {
                 return;
             }
-            Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 8f, 0.15f);
+            Projectile.velocity = Vector2.Lerp(Projectile.velocity, (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 8f, 0.05f);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -65,7 +70,7 @@ namespace UniverseOfSwordsMod.Projectiles
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
             for (int i = 0; i < 30; i++)
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(58, 211, 197), 1f);
+                Dust dust = Dust.NewDustDirect(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor: new Color(80, 200, 255));
                 dust.velocity *= 4f;
             }
         }
@@ -75,13 +80,13 @@ namespace UniverseOfSwordsMod.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             SpriteBatch spriteBatch = Main.spriteBatch;
-            Texture2D galacTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowThing_Cyan");
-            Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
+            Texture2D galacTexture = (Texture2D)ModContent.Request<Texture2D>($"{nameof(UniverseOfSwordsMod)}/Assets/GlowThing_Cyan");
+            Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>($"{nameof(UniverseOfSwordsMod)}/Assets/GlowSphere");
 
             Vector2 drawOriginGlow = glowTexture.Size() / 2f;
             Vector2 drawOriginThing = galacTexture.Size() / 2f;
 
-            Color drawColorExtra = new(58, 211, 197, 0);
+            Color drawColorExtra = new(0, 150, 255, 0);
             Color drawColor = Projectile.GetAlpha(lightColor);
             Color drawColorGalac = drawColor;
 
@@ -93,15 +98,16 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + (Projectile.Size / 2f);
+                Vector2 drawPos = Projectile.oldPos[j] - Main.screenPosition + (Projectile.Size / 2f);
 
-                drawColorExtra *= 0.75f;
-                drawColorGalac *= 0.75f;
+                drawColorExtra *= 0.5f;
+                drawColorGalac *= 0.5f;
 
                 spriteBatch.Draw(galacTexture, drawPos, null, drawColorGalac, Projectile.rotation, drawOriginThing, Projectile.scale - j / (float) Projectile.oldPos.Length, spriteEffects, 0);
                 spriteBatch.Draw(glowTexture, drawPos, null, drawColorExtra, Projectile.rotation, drawOriginGlow, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
             }
 
+            spriteBatch.Draw(galacTexture, Projectile.Center - Main.screenPosition, null, drawColorGalac * 0.1f, Projectile.rotation, drawOriginThing, 2f, spriteEffects, 0);
             spriteBatch.Draw(galacTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOriginThing, 1.25f, spriteEffects, 1);
             return false;
         }

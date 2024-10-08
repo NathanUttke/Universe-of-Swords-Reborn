@@ -34,13 +34,7 @@ public class GoblinKnife : ModItem
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         target.bloodButchered = true;
-        if (!target.HasBuff(BuffID.Bleeding))
-        {
-            target.AddBuff(BuffID.Bleeding, 400);
-        }
-        if (!target.HasBuff(BuffID.Weak))
-        {
-            target.AddBuff(BuffID.Weak, 400);
-        }
+        target.AddBuff(BuffID.Bleeding, 400);
+        target.AddBuff(BuffID.Weak, 400);
     }
 }

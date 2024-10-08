@@ -24,48 +24,35 @@ public class GreatswordOfTheCosmos : ModItem
 		Item.rare = ItemRarityID.Red;
 		Item.crit = 10;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 10;
+		Item.useTime = 20;
 		Item.useAnimation = 20;
 		Item.damage = 145;
 		Item.knockBack = 6f;
 		Item.UseSound = SoundID.Item169;
-		Item.shoot = ModContent.ProjectileType<CosmoStarProjectile>();
-		Item.shootSpeed = 12f;
+		Item.noMelee = true;
+		Item.noUseGraphic = true;
+		Item.shoot = ModContent.ProjectileType<GreatswordOfTheCosmosProj>();
+		Item.shootSpeed = 1f;
 		Item.value = Item.sellPrice(0, 8, 0, 0);
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 	}
 
-    public override void MeleeEffects(Player player, Rectangle hitbox)
-    {
-        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+    public override bool MeleePrefix() => true;
 
-        for (int i = 0; i < 4; i++)
-        {
-            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
-            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
-            Dust dust = Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 0, Utils.SelectRandom(Main.rand, Color.MediumVioletRed, Color.Cyan, Color.Magenta, Color.SkyBlue));
-            dust.noGravity = true;
-        }
-    }
+    public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
 
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation = player.Center;
-    }
-
+    int swingDir = 0;
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-	{
-		int numberProjectiles = 3;		
-		for (int i = 0; i < numberProjectiles; i++)
-		{
-            Vector2 offsetPosition = new(position.X, player.Top.Y - Main.rand.Next(200, 400));
-			Vector2 newVelocity = new(velocity.X, Item.shootSpeed);
-
-            Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), offsetPosition, newVelocity, type, damage, 5f, player.whoAmI, 0f, 0f);
+    {
+        if (swingDir > 1)
+        {
+            swingDir = 0;
         }
-		return false;
-	}
+        Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, swingDir);
+        swingDir++;
+        return false;
+    }
 
     public override void AddRecipes()
 	{

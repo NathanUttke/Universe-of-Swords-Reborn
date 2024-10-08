@@ -50,9 +50,12 @@ namespace UniverseOfSwordsMod.Projectiles
                 }
             }
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 16; i++)
             {
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor: new Color(58, 211, 197, 0), Scale: 0.75f);
+                Vector2 newVelocity = Vector2.UnitY.RotatedBy(i * MathHelper.TwoPi / 16f);
+                Dust dust = Dust.NewDustPerfect(Projectile.position, ModContent.DustType<GlowDust>(), newColor: new Color(58, 211, 197, 0), Scale: 0.75f);
+                dust.position = Projectile.Center;
+                dust.velocity = newVelocity;
             }
         }
 
@@ -91,18 +94,16 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-
+                Vector2 drawPos = Projectile.oldPos[j] - Main.screenPosition + Projectile.Size / 2;
                 
-                drawColorGlow *= 0.5f;
+                drawColorGlow *= 0.4f;
                 drawColor *= 0.6f;
 
                 spriteBatch.Draw(glowSphereTexture, drawPos, null, drawColorGlow, Projectile.rotation, glowSphereTexture.Size() / 2f, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
                 spriteBatch.Draw(texture, drawPos, null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
-
             }            
 
-            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White with { A = 0 }, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White with { A = 0 }, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 
             return false;
         }

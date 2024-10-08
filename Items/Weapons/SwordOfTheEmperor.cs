@@ -56,11 +56,11 @@ public class SwordOfTheEmperor : ModItem
     {
         UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 4; i++)
         {
             modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
             Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
-            Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 0, new Color(255, 232, 174));
+            Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 100, new Color(255, 232, 174));
         }
     }
 

@@ -62,7 +62,8 @@ public class NatureSword : ModItem
 		}
 	}
 
-	public override void AddRecipes()
+
+    public override void AddRecipes()
 	{					
 		CreateRecipe()
 		.AddIngredient(ItemID.Vilethorn, 1)

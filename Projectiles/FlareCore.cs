@@ -38,7 +38,7 @@ public class FlareCore : ModProjectile
         Lighting.AddLight(Projectile.position, 0.5f, 0.1f, 0.1f);
         for (int i = 0; i < 10; i++)
         {
-            Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Red, 0.75f);
+            Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor:Color.Red, Scale:0.75f);
             dust.velocity *= 0.3f;
         }
     }
@@ -52,13 +52,6 @@ public class FlareCore : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        /*var mainType = typeof(Main); 
-        // Reflection stuff
-        MethodInfo methodInfo = mainType.GetMethod("DrawPrettyStarSparkle", BindingFlags.NonPublic | BindingFlags.Static);
-        if (methodInfo != null)
-        {
-            methodInfo.Invoke(this, new object[] {Projectile, SpriteEffects.None, Projectile.Center + Vector2.Zero - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY) + (Projectile.rotation - MathHelper.PiOver2).ToRotationVector2(), Color.Yellow, Color.Red});
-        }*/
 
         SpriteBatch spriteBatch = Main.spriteBatch;
 
@@ -71,7 +64,7 @@ public class FlareCore : ModProjectile
 
         for (int j = 0; j < Projectile.oldPos.Length; j++)
         {
-            Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
+            Vector2 drawPos = Projectile.oldPos[j] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
             
             drawColor *= 0.75f;
             glowColor *= 0.75f;
@@ -90,11 +83,10 @@ public class FlareCore : ModProjectile
         Projectile.Resize(144, 144);
         SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
         Projectile.Damage();
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
-            Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<GlowDust>(), 0, 0, 100, Color.Red, 1.5f);
-            Dust explodeDust = Dust.NewDustPerfect(Projectile.Center, ModContent.DustType<GlowDust>(), Projectile.velocity, 100, Color.Red, 1f);
-            explodeDust.velocity = Main.rand.NextVector2Circular(7f, 7f).SafeNormalize(Vector2.Zero) * 4f;
+            Dust explodeDust = Dust.NewDustPerfect(Projectile.Center, ModContent.DustType<GlowDust>(), Projectile.velocity, 100, Color.Red, 6f);
+            explodeDust.velocity = Vector2.UnitY.RotatedBy(i * MathHelper.TwoPi / 20f * 16f) * 8f;
         }
     }    
 }

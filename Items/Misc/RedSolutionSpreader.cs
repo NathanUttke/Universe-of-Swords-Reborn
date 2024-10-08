@@ -22,7 +22,7 @@ public class RedSolutionSpreader : ModItem
 
     private bool Tools_FitsFilter(Terraria.GameContent.Creative.On_ItemFilters.Tools.orig_FitsFilter orig, Terraria.GameContent.Creative.ItemFilters.Tools self, Item entry)
     {       
-        if (Item.type == Type)
+        if (entry.type == Type)
         {
             return true;
         }

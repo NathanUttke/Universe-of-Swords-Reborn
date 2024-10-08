@@ -16,7 +16,7 @@ public class CyanSolutionSword : ModItem
 
     private bool Tools_FitsFilter(On_ItemFilters.Tools.orig_FitsFilter orig, ItemFilters.Tools self, Item entry)
     {
-        if (Item.type == Type)
+        if (entry.type == Type)
         {
             return true;
         }

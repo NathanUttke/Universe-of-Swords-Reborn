@@ -29,8 +29,8 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             for (int i = 0; i < 20; i++)
             {
-                Dust redDust = Dust.NewDustDirect(Projectile.position + Projectile.velocity / 20f * i, 8, 8, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Red, 0.75f);
-                redDust.velocity *= 0.1f;
+                Dust redDust = Dust.NewDustDirect(Projectile.position + Projectile.velocity / 10f * i, 8, 8, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Red, 0.75f);
+                redDust.velocity *= 0.125f;
             }
         }
 

@@ -53,15 +53,7 @@ public class MagicMirrorBlade : ModItem
 
                 }, player.whoAmI);
             }
-			player.grappling[0] = -1;
-			player.grapCount = 0;
-			for (int i = 0; i < Main.maxProjectiles; i++)
-			{
-				if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == 7)
-				{
-					Main.projectile[i].Kill();
-				}
-			}
+			player.RemoveAllGrapplingHooks();
 			player.Spawn(PlayerSpawnContext.RecallFromItem);
 			for (int j = 0; j < 30; j++)
 			{

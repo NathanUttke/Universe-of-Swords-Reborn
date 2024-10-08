@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,10 +33,12 @@ namespace UniverseOfSwordsMod.Dusts
             return false;
         }
 
-        public override Color? GetAlpha(Dust dust, Color lightColor)
+        public override bool PreDraw(Dust dust)
         {
-            dust.color.A = 0;
-            return dust.color;
+            float opacity = 1f - dust.alpha / 255f;
+            Color drawColor = Lighting.GetColor((int)(dust.position.X + 4) / 16, (int)(dust.position.Y + 4) / 16);
+            Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, dust.color with { A = 0 } * opacity, dust.rotation, dust.frame.Size() / 2, 0.5f * dust.scale, SpriteEffects.None, 0);
+            return false;
         }
     }
 }

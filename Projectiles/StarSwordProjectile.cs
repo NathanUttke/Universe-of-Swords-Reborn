@@ -45,6 +45,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Yellow, 0.5f);
+            dust.position = Projectile.Center - Projectile.velocity / 10f * 5f;
             dust.velocity *= 0.5f;
         }
 

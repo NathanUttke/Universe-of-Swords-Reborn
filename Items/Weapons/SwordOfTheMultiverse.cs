@@ -65,7 +65,6 @@ public class SwordOfTheMultiverse : ModItem
     {        
         if (player.whoAmI == Main.myPlayer && player.controlUseTile && !Main.mapFullscreen && !player.controlUseItem && player.ItemTimeIsZero)
         {
-
             if (currentMode > MaxModes)
             {
                 currentMode = 0;
@@ -124,16 +123,28 @@ public class SwordOfTheMultiverse : ModItem
                     heading.Y = 20f;
                 }
                 heading = Vector2.Normalize(heading) * velocity.Length();
-                velocity = heading + Vector2.UnitY * Main.rand.Next(-40, 41) * 0.025f;
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SwordOfTheMultiverseProjectileSmall>(), damage, knockback, player.whoAmI);
+                velocity = heading + Vector2.UnitY * Main.rand.NextFloat(-41, 40) * 0.025f;
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<MultiverseProjectileSmall>(), damage, knockback, player.whoAmI);
             }
         }
         else if (currentMode == 3)
         {
-            Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<SwordOfTheMultiverseProjectileYoyo>(), damage * 2, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<MultiverseProjectileYoyo>(), damage * 2, knockback, player.whoAmI);
         }
 
         return false;
+    }
+
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+    {
+        target.AddBuff(ModContent.BuffType<Buffs.EmperorBlaze>(), 700, true);
+        target.AddBuff(BuffID.Weak, 400, true);
+        target.AddBuff(BuffID.Venom, 400, true);
+
+        if (!NPCID.Sets.CountsAsCritter[target.type] && !target.immortal)
+        {
+            Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<MultiverseExplosion>(), Item.damage, Item.knockBack, player.whoAmI);
+        }
     }
 
     public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -176,11 +187,4 @@ public class SwordOfTheMultiverse : ModItem
         }        
         newRecipe.Register();
 	}
-
-	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-	{
-        target.AddBuff(ModContent.BuffType<Buffs.EmperorBlaze>(), 700, true);
-        target.AddBuff(BuffID.Weak, 400, true);
-        target.AddBuff(BuffID.Venom, 400, true);
-    }
 }

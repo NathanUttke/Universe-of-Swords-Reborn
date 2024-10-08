@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
@@ -37,18 +38,24 @@ public class PurpleRuneBlade : ModItem
 	{											
 		if (Main.rand.NextBool(2))
 		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), newColor:Color.MediumOrchid, Scale:2f);
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), newColor:Color.MediumOrchid, Scale:1.5f);
 		}
 	}
 
-	public override void AddRecipes()
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, Utils.SelectRandom(Main.rand, -1, 1), Main.rand.Next(1, 4));	
+		return false;
+    }
+
+    public override void AddRecipes()
 	{		
 		CreateRecipe()
 		.AddIngredient(ItemID.ShadowFlameKnife, 1)
 		.AddIngredient(ModContent.ItemType<SwordMatter>(), 25)
 		.AddTile(TileID.Anvils)
 		.Register();
-	}
+	}	
 
 	public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 	{

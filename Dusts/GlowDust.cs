@@ -6,12 +6,12 @@ using Terraria.ModLoader;
 namespace UniverseOfSwordsMod.Dusts;
 
 public class GlowDust : ModDust
-{   
+{
+
     public override void OnSpawn(Dust dust)
     {
         dust.velocity *= 0.5f;
         dust.noGravity = true;        
-        //dust.scale *= 0.5f;
         dust.frame = new Rectangle(0, 0, 128, 128);
         dust.noLightEmittence = false;
     }
@@ -19,26 +19,21 @@ public class GlowDust : ModDust
     public override bool Update(Dust dust)
     {
         dust.position += dust.velocity;
-        //dust.rotation += dust.velocity.X * 0.2f;
         dust.scale *= 0.9f;
         if (dust.scale < 0.01f)
         {
             dust.active = false;
         }
+        dust.alpha += 10;
         return false;
-    }
-
-    public override Color? GetAlpha(Dust dust, Color lightColor)
-    {
-        dust.color.A = 0;
-        return dust.color;
     }
 
     public override bool PreDraw(Dust dust)
     {
+        float opacity = 1f - dust.alpha / 255f;
         Color drawColor = Lighting.GetColor((int)(dust.position.X + 4) / 16, (int)(dust.position.Y + 4) / 16);
-        Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, dust.GetAlpha(drawColor), dust.rotation, new Vector2(64f, 64f), 0.5f * dust.scale, SpriteEffects.None, 0);
-        Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, Color.White with { A = 0 }, dust.rotation, new Vector2(64f, 64f), 0.125f * dust.scale, SpriteEffects.None, 0);
+        Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, dust.color with { A = 0 } * opacity, dust.rotation, dust.frame.Size() / 2, 0.5f * dust.scale, SpriteEffects.None, 0);
+        Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, Color.White with { A = 0 } * opacity, dust.rotation, dust.frame.Size() / 2, 0.125f * dust.scale, SpriteEffects.None, 0);
         return false;
     }
 }

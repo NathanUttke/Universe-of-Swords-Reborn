@@ -60,41 +60,6 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void AI()
         {
-            if (Main.myPlayer == Projectile.owner && (Owner.dead || Owner.noItems || Owner.CCed || !Owner.active))
-            {
-                Projectile.Kill();
-                return;
-            }
-
-            if (Main.myPlayer == Projectile.owner && Main.mapFullscreen)
-            {
-                Projectile.Kill();
-            }            
-
-            if (Timer == MaxTime && !Owner.controlUseItem)
-            {
-                Projectile.Kill();
-            }
-
-            Projectile.spriteDirection = Projectile.direction;
-            Projectile.Center = Owner.RotatedRelativePoint(Owner.Center, true);
-            Projectile.rotation = Projectile.velocity.ToRotation() + (-1.75f * Owner.direction) + EaseInBack(RotationTimer / 8f) * Owner.direction;         
-
-            if (Timer >= MaxTime)
-            {                
-                Projectile.alpha += 16;               
-            }
-
-            if (Projectile.alpha > 255)
-            {
-                Projectile.scale -= 0.1f;
-                Projectile.alpha = 255;
-                Projectile.Kill();
-            }
-            
-            Timer++;
-            RotationTimer += MathHelper.PiOver4 / 2f;
-
             Shoot();
             SetPlayerValues();
             CreateDust();
@@ -102,13 +67,6 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public virtual void Shoot()
         {
-            if (Timer == 12f && Main.myPlayer == Projectile.owner)
-            {
-                Vector2 newPosition = Owner.RotatedRelativePoint(Owner.Center);
-                Vector2 newVelocity = Vector2.Normalize(Main.MouseWorld - newPosition) * 11f;
-                Projectile.NewProjectile(Projectile.GetSource_FromAI(), newPosition, newVelocity, ProjectileToShoot, Projectile.damage, Projectile.knockBack, Owner.whoAmI);
-                Timer++;
-            }
         }
 
         public virtual void CreateDust()
@@ -119,11 +77,10 @@ namespace UniverseOfSwordsMod.Projectiles
         {            
             Owner.heldProj = Projectile.whoAmI;           
             Owner.itemRotation = Projectile.rotation;
-            Owner.SetDummyItemTime(2);
-            float rotation = Projectile.rotation - MathHelper.PiOver4 - 0.4f;
+            float rotation = Projectile.rotation - MathHelper.PiOver2;
             if (Owner.direction == -1)
             {
-                rotation -= MathHelper.PiOver2 - 0.8f;
+                rotation -= MathHelper.PiOver4 / 4;
             }
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
         }
@@ -133,7 +90,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             Color drawColor = Projectile.GetAlpha(lightColor);
-            Color trailColor = TrailColor;
+            Color trailColor = TrailColor with { A = 0 } * Projectile.Opacity;
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
             float rotation = Projectile.rotation + MathHelper.PiOver4;
@@ -144,7 +101,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 float oldRotation = Projectile.oldRot[i] + MathHelper.PiOver4;
 
                 trailColor *= 0.75f;
-                spriteBatch.Draw(texture, Projectile.oldPos[i] + Projectile.Size / 2f - Main.screenPosition, null, trailColor with { A = 0 }, oldRotation, new(0f, texture.Height), Projectile.scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, Projectile.oldPos[i] + Projectile.Size / 2f - Main.screenPosition, null, trailColor, oldRotation, new(0f, texture.Height), Projectile.scale, SpriteEffects.None, 0);
             }
 
             spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColor, rotation, new(0f, texture.Height), Projectile.scale, SpriteEffects.None, 0);

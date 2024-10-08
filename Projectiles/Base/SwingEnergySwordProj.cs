@@ -12,9 +12,7 @@ namespace UniverseOfSwordsMod.Projectiles.Base
 {
     public class SwingEnergySwordProj : ModProjectile
     {
-        // From ExampleSwingingEnergySwordProjectile
-
-        public override string Texture => "UniverseofSwordsMod/Projectiles/BetterShroomiteProj";
+        public override string Texture => "UniverseOfSwordsMod/Projectiles/BetterShroomiteProj";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.AllowsContactDamageFromJellyfish[Type] = true;
@@ -23,8 +21,7 @@ namespace UniverseOfSwordsMod.Projectiles.Base
 
         public override void SetDefaults()
         {
-            Projectile.width = 16;
-            Projectile.height = 16;
+            Projectile.Size = new(16);
             Projectile.friendly = true;
             Projectile.penetrate = 3;
             Projectile.usesLocalNPCImmunity = true;
@@ -133,12 +130,11 @@ namespace UniverseOfSwordsMod.Projectiles.Base
             Rectangle sourceRectangle = texture.Frame(1, 4); // The sourceRectangle says which frame to use.
             Vector2 origin = sourceRectangle.Size() / 2f;
             float scale = Projectile.scale * 1.1f;
-            SpriteEffects spriteEffects = ((!(Projectile.ai[0] >= 0f)) ? SpriteEffects.FlipVertically : SpriteEffects.None); // Flip the sprite based on the direction it is facing.
+            SpriteEffects spriteEffects = (!(Projectile.ai[0] >= 0f)) ? SpriteEffects.FlipVertically : SpriteEffects.None; // Flip the sprite based on the direction it is facing.
             float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1]; // The current time over the max time.
             float lerpTime = Utils.Remap(percentageOfLife, 0f, 0.6f, 0f, 1f) * Utils.Remap(percentageOfLife, 0.6f, 1f, 1f, 0f);
             float lightingColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates()).ToVector3().Length() / (float)Math.Sqrt(3.0);
             lightingColor = Utils.Remap(lightingColor, 0.2f, 1f, 0f, 1f);
-
 
             Color whiteTimesLerpTime = Color.White * lerpTime * 0.5f;
             whiteTimesLerpTime.A = (byte)(whiteTimesLerpTime.A * (1f - lightingColor));
@@ -166,12 +162,12 @@ namespace UniverseOfSwordsMod.Projectiles.Base
             {
                 float edgeRotation = Projectile.rotation + Projectile.ai[0] * i * (MathHelper.Pi * -2f) * 0.025f + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0];
                 Vector2 drawpos = position + edgeRotation.ToRotationVector2() * (texture.Width / 2f - 6f) * scale;
-                UniverseUtils.DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos, new Color(255, 255, 255, 0) * lerpTime * (i / 9f), MiddleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, edgeRotation, new Vector2(0f, Utils.Remap(percentageOfLife, 0f, 1f, 3f, 0f)) * scale, Vector2.One * scale);
+                UniverseUtils.DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos, Color.White with { A = 0 } * lerpTime * (i / 9f), MiddleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, edgeRotation, new Vector2(0f, Utils.Remap(percentageOfLife, 0f, 1f, 3f, 0f)) * scale, Vector2.One * scale);
             }
 
             // This draws a large star sparkle at the front of the projectile.
             Vector2 drawpos2 = position + (Projectile.rotation + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0]).ToRotationVector2() * ((float)texture.Width * 0.5f - 4f) * scale;
-            UniverseUtils.DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos2, new Color(255, 255, 255, 0) * lerpTime * 0.5f, MiddleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(percentageOfLife, 0f, 1f, 4f, 1f)) * scale, Vector2.One * scale);
+            UniverseUtils.DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos2, Color.White with { A = 0 } * lerpTime * 0.5f, MiddleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(percentageOfLife, 0f, 1f, 4f, 1f)) * scale, Vector2.One * scale);
 
             return false;
         }      

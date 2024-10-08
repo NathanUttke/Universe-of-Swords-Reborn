@@ -21,14 +21,13 @@ public class SwordOfTheUniverse : ModItem
 
     public override void SetDefaults()
 	{
-		Item.width = 140;
-		Item.height = 140;
+		Item.Size = new(100);
 		Item.rare = ItemRarityID.Purple;
 		Item.crit = 20;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;
 		Item.useAnimation = 20;
-		Item.damage = 190;
+		Item.damage = 200;
 		Item.knockBack = 10f;
 		Item.UseSound = SoundID.Item169;
 		Item.shoot = ModContent.ProjectileType<SwordOfTheUniverseHoldoutProj>();
@@ -36,10 +35,9 @@ public class SwordOfTheUniverse : ModItem
 		Item.value = Item.sellPrice(0, 8, 0, 0);
         Item.rare = ItemRarityID.Red;
         Item.autoReuse = true;
-		Item.DamageType = DamageClass.Melee;
+		Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.noMelee = true;
         Item.noUseGraphic = true;
-        //Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
     }
 
     public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
@@ -88,13 +86,4 @@ public class SwordOfTheUniverse : ModItem
         
         return false;
     }*/
-
-    public override void MeleeEffects(Player player, Rectangle hitbox)
-    {
-        if (Main.rand.NextBool(2))
-        {
-            Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PortalBoltTrail, 0f, 0f, 100, Utils.SelectRandom(Main.rand, Color.Aqua, Color.Red, Color.Pink, Color.Yellow, Color.Blue), 1.5f)];
-            dust.noGravity = true;
-        }
-    }
 }

@@ -78,7 +78,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.Center = Owner.RotatedRelativePoint(Owner.Center, reverseRotation:true);
             Projectile.rotation = Projectile.velocity.ToRotation() + (-1.75f * Owner.direction) + EaseInBack(RotationTimer / 8f) * Owner.direction;
             
-            if (Timer == MaxTime * 0.8f && Main.myPlayer == Projectile.owner)
+            if (Timer == MaxTime * 0.8 && Main.myPlayer == Projectile.owner)
             {                
                 for (int i = 0; i < 3; i++)
                 {

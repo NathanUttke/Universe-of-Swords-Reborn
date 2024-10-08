@@ -59,7 +59,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D texture = TextureAssets.Projectile[Type].Value;
 
             Color projColor = Color.White * Projectile.Opacity;
-            Color trailColor = projColor;
+            Color trailColor = projColor with { A = 0 };
             Vector2 drawOrigin = texture.Size() / 2f;
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)

@@ -19,8 +19,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void SetDefaults()
         {
-            Projectile.width = 42;
-            Projectile.height = 42;
+            Projectile.Size = new(42);
             Projectile.tileCollide = false;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
@@ -55,6 +54,12 @@ namespace UniverseOfSwordsMod.Projectiles
             }
 
             Lighting.AddLight(Projectile.Center, Main.DiscoColor.ToVector3());
+
+            for (int i = 0; i < 2; i++)
+            {
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor: Main.DiscoColor with { A = 0 }, Scale: 0.5f);
+                dust.velocity *= 0.5f;
+            }
 
             float detectRadiusMax = 300f;
             float projSpeed = 16f;

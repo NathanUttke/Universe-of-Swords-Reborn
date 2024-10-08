@@ -36,7 +36,8 @@ public class CorruptCrystallusProj : ModProjectile
 	public override void AI()
 	{
         Dust dust = Dust.NewDustDirect(Projectile.position, 1, 1, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.MediumOrchid, 0.5f);
-        dust.velocity *= 0.3f;
+		dust.velocity *= 0.2f;
+        dust.position = Projectile.Center - Projectile.velocity / 10f;
     }
 
     public override void OnKill(int timeLeft)

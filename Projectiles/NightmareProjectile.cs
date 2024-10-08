@@ -31,6 +31,7 @@ internal class NightmareProjectile : ModProjectile
         Projectile.extraUpdates = 1;
         Projectile.aiStyle = -1;
         Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 23;
     }
 
     public override void AI()
@@ -57,7 +58,7 @@ internal class NightmareProjectile : ModProjectile
         Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
         Vector2 drawOrigin = texture.Size() / 2f;
 
-        Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
+        Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
         Color drawColorGlow = Color.Purple with { A = 0 };
 
         if (Projectile.spriteDirection == -1)
@@ -72,7 +73,7 @@ internal class NightmareProjectile : ModProjectile
             float num = 10 - i;
             Color drawColor = drawColorGlow * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
             drawColor *= num / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-            spriteBatch.Draw(glowSphere, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, glowSphere.Size() / 2f, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+            spriteBatch.Draw(glowSphere, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, glowSphere.Size() / 2f, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
         }
 
         for (int i = 0; i < Projectile.oldPos.Length; i++)
@@ -80,8 +81,8 @@ internal class NightmareProjectile : ModProjectile
             float num = 10 - i;
             Color drawColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
             drawColor *= num / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
-            spriteBatch.Draw(voidTextureExtra, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + (float)Main.timeForVisualEffects * 0.1f, drawOrigin, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
-            spriteBatch.Draw(texture, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
+            spriteBatch.Draw(voidTextureExtra, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation + (float)Main.timeForVisualEffects * 0.1f, drawOrigin, (Projectile.scale * 1.5f) - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
+            spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
         }
 
         spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White * 0.25f , Projectile.rotation, drawOrigin, Projectile.scale * 1.125f, spriteEffects, 0);
@@ -89,7 +90,6 @@ internal class NightmareProjectile : ModProjectile
 
         return false;
     }
-
 
     public override void OnKill(int timeLeft)
     {

@@ -34,7 +34,7 @@ public class DestroyerSword : ModItem
     {
         if (target.active && !target.immortal && !NPCID.Sets.CountsAsCritter[target.type] && !target.SpawnedFromStatue)
         {
-			UniverseUtils.SummonSuperStarSlash(target.position, target.GetSource_OnHit(target), damageDone, player.whoAmI, ModContent.ProjectileType<DestroyerLaser>());
+			UniverseUtils.SummonSuperStarSlash(target.Center, target.GetSource_OnHit(target), damageDone, player.whoAmI, ModContent.ProjectileType<DestroyerLaser>());
         }
     }
 

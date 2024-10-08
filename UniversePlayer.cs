@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
 using Terraria.ID;
 using UniverseOfSwordsMod.Buffs;
+using System;
 
 namespace UniverseOfSwordsMod;
 
@@ -40,13 +41,13 @@ public class UniversePlayer : ModPlayer
 		{
 			if (Main.rand.NextBool(8) && drawInfo.shadow == 0f)
 			{
-				int dust = Dust.NewDust(drawInfo.Position - new Vector2(2f, 2f), Player.width + 4, Player.height + 4, ModContent.DustType<Dusts.EmperorBlaze>(), 0f, Player.velocity.Y * 0.4f, 0, new Color(255, 255, 255, 0), 3f);
-				Main.dust[dust].noGravity = true;
-				Dust obj = Main.dust[dust];
+				Dust dust = Dust.NewDustDirect(drawInfo.Position - Vector2.One * 2f, Player.width + 4, Player.height + 4, ModContent.DustType<Dusts.EmperorBlaze>(), 0f, Player.velocity.Y * 0.4f, 0, new Color(255, 255, 255, 0), 3f);
+				dust.noGravity = true;
+				Dust obj = dust;
 				obj.velocity.X = 0;
 				obj.velocity.Y *= 0.8f;
-				Main.dust[dust].velocity.Y -= 0.5f;				
-				Main.dust[dust].noGravity = false;	
+				dust.velocity.Y -= 0.5f;				
+				dust.noGravity = false;	
 			}
 			r *= 1f;
 			g *= 0.5f;
@@ -55,8 +56,17 @@ public class UniversePlayer : ModPlayer
 		}
 	}
 
-	public virtual bool ConsumeAmmo(Item weapon, Item ammo)
-	{
-		return true;
-	}
+    public void GetPointOnSwungItemPath(float spriteWidth, float spriteHeight, float normalizedPointOnPath, float itemScale, out Vector2 location, out Vector2 outwardDirection)
+    {
+        float sqrtItemSize = MathF.Sqrt(spriteWidth * spriteWidth + spriteHeight * spriteHeight);
+        float num2 = (Player.direction == 1).ToInt() * MathHelper.PiOver2;
+        if (Player.gravDir == -1f)
+        {
+            num2 += MathHelper.PiOver2 * Player.direction;
+        }
+        outwardDirection = Player.itemRotation.ToRotationVector2().RotatedBy(MathHelper.Pi + MathHelper.PiOver4 + num2);
+        location = Player.RotatedRelativePoint(Player.itemLocation + outwardDirection * sqrtItemSize * normalizedPointOnPath * itemScale);
+    }
+
+    public virtual bool ConsumeAmmo(Item weapon, Item ammo) => true;
 }

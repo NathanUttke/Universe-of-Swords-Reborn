@@ -39,10 +39,11 @@ public class TerraEnsis : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
-        Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), ProjectileID.TerraBlade2, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale + 0.2f);
+        Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), ProjectileID.TerraBlade2, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale + 0.4f);
         NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI); // Sync the changes in multiplayer.
 
-        return true;
+        Projectile.NewProjectile(source, position + velocity * 4f, velocity, type, damage, knockback, player.whoAmI);
+        return false;
     }
 
     public override void AddRecipes()

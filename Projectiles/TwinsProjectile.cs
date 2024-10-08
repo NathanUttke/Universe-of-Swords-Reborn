@@ -24,7 +24,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void AI()
         {
-            Vector2 vector9 = new(8f, 10f);
+            Vector2 offset = new(8f, 10f);
 
             if (Projectile.ai[1] == 0f)
             {
@@ -39,15 +39,14 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.localAI[0] = 0f;
             }
 
-            Vector2 dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + MathHelper.Pi) * vector9 - Projectile.rotation.ToRotationVector2() * 10f;
-            Dust redDust = Dust.NewDustDirect(Projectile.Center, 0, 0, DustID.Clentaminator_Green, Alpha: 160, newColor: Color.White with { A = 0 });
-            redDust.scale = 1.25f;
+            Vector2 dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + MathHelper.Pi) * offset - Projectile.rotation.ToRotationVector2() * 10f;
+            Dust redDust = Dust.NewDustDirect(Projectile.Center, 0, 0, DustID.Clentaminator_Green, Alpha: 160, newColor: Color.White with { A = 0 }, Scale: 1.25f);
             redDust.noGravity = true;
             redDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
             redDust.velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 16f - redDust.position) * 2f + Projectile.velocity * 2f;
 
             Dust greenDust = Dust.NewDustDirect(Projectile.Center, 0, 0, DustID.Clentaminator_Red, Alpha:160, newColor:Color.White with { A = 0 }, Scale:1.25f);
-            dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + MathHelper.TwoPi) * vector9 - Projectile.rotation.ToRotationVector2() * 10f;
+            dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + MathHelper.TwoPi) * offset - Projectile.rotation.ToRotationVector2() * 10f;
             greenDust.noGravity = true;
             greenDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
             greenDust.velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 16f - greenDust.position) * 2f + Projectile.velocity * 2f;

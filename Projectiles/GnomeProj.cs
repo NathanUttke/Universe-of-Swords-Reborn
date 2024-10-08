@@ -32,7 +32,6 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.scale = 1.125f;
             Projectile.light = 0.25f;           
             Projectile.extraUpdates = 1;
-            Projectile.ArmorPenetration = 10;
             Projectile.timeLeft = 40;
         }
 
@@ -75,25 +74,37 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             SpriteBatch spriteBatch = Main.spriteBatch;            
             Texture2D texture = TextureAssets.Projectile[Type].Value;
-            Texture2D glowTexture = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
+            Texture2D glowTexture = TextureAssets.Extra[ExtrasID.FallingStar].Value;
             Vector2 drawOriginGlow = glowTexture.Size() / 2f;
-
             Vector2 drawOrigin = texture.Size() / 2f;
+            float timer = (float)Main.timeForVisualEffects / 60f;
 
-            spriteBatch.Draw(texture, (Projectile.Center - Main.screenPosition) + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+                Vector2 drawPos = Projectile.oldPos[j] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 
-                Color gnomTrailColor = new(15 + j * 16, 127, 255 - j * 16, 0);                
-                Color trailColorGlow = new(15 + j * 16, 127, 255 - j * 16, 0);
+                Color gnomTrailColor = Color.Lerp(Color.DeepSkyBlue, Color.OrangeRed, j * 0.1f) * Utils.GetLerpValue(1f, 0f, j * 0.05f);
+                gnomTrailColor.A = 0;
                 gnomTrailColor *= 0.5f;
-                trailColorGlow *= 0.5f;
 
-                spriteBatch.Draw(glowTexture, drawPos, null, trailColorGlow, Projectile.rotation, drawOriginGlow, 1f - j / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
-                spriteBatch.Draw(texture, drawPos, null, gnomTrailColor, Projectile.rotation, drawOrigin, Projectile.scale - j / (float) Projectile.oldPos.Length, SpriteEffects.None, 0);                
-            }            
+                for (float i = 0f; i < 1f; i += 0.5f)
+                {
+                    float newTimer = timer % 0.5f / 0.5f;
+                    newTimer = (newTimer + i) % 1f;
+                    float doubleTimer = newTimer * 2f;
+                    if (doubleTimer > 1f)
+                    {
+                        doubleTimer = 2f - doubleTimer;
+                    }
+                    spriteBatch.Draw(texture, drawPos, null, gnomTrailColor * doubleTimer, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+                    spriteBatch.Draw(glowTexture, drawPos, null, gnomTrailColor * 0.35f * doubleTimer, Projectile.rotation, drawOriginGlow, 0.75f + newTimer * 0.3f, SpriteEffects.None, 0);
+                }
+            }
+            spriteBatch.Draw(glowTexture, Projectile.Center - Main.screenPosition + Vector2.UnitY.RotatedBy(MathHelper.TwoPi * timer * 4f + MathHelper.TwoPi / 3f), null, Color.DeepSkyBlue with { A = 0 } * 0.125f, Projectile.rotation, drawOriginGlow, Projectile.scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(glowTexture, Projectile.Center - Main.screenPosition + Vector2.UnitY.RotatedBy(MathHelper.TwoPi * timer * 2f + MathHelper.Pi + MathHelper.PiOver4), null, Color.DeepSkyBlue with { A = 0 } * 0.125f, Projectile.rotation, drawOriginGlow, Projectile.scale, SpriteEffects.None, 0);
+
 
             return false;
         }
@@ -103,7 +114,7 @@ namespace UniverseOfSwordsMod.Projectiles
             SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.position);
             if (Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, Projectile.damage, 4f, Projectile.owner, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
+                Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, Projectile.damage, 4f, Projectile.owner, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
             }
         }
     }

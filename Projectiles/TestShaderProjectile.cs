@@ -85,7 +85,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + (Projectile.Size / 2f);
+                Vector2 drawPos = Projectile.oldPos[j] - Main.screenPosition + (Projectile.Size / 2f);
 
                 drawColorExtra *= 0.75f;
                 

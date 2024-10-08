@@ -17,9 +17,9 @@ public class GreenSolutionSpreader : ModItem
         On_ItemFilters.Tools.FitsFilter += Tools_FitsFilter;
     }
 
-    private bool Tools_FitsFilter(Terraria.GameContent.Creative.On_ItemFilters.Tools.orig_FitsFilter orig, Terraria.GameContent.Creative.ItemFilters.Tools self, Item entry)
+    private bool Tools_FitsFilter(On_ItemFilters.Tools.orig_FitsFilter orig, ItemFilters.Tools self, Item entry)
     {
-        if (Item.type == Type)
+        if (entry.type == Type)
         {
             return true;
         }

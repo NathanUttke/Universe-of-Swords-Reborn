@@ -59,12 +59,12 @@ namespace UniverseOfSwordsMod.Projectiles
             Lighting.AddLight(Owner.Center, 0.8f, 0.45f, 0.1f);
 
             // Spawn a projectile every 8 ticks
-            Projectile.ai[0] += 1f;
+            Projectile.ai[0]++;
             if (Projectile.ai[0] == 8f && Main.myPlayer == Projectile.owner)
             {
                 Projectile.netUpdate = true;
                 Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, velocity * Owner.inventory[Owner.selectedItem].shootSpeed, ModContent.ProjectileType<FlareCore>(), (int)(Projectile.damage * 2f), Projectile.knockBack, Owner.whoAmI);
-                Projectile.ai[0] += 1f;
+                Projectile.ai[0]++;
             }
 
             SetPlayerValues();

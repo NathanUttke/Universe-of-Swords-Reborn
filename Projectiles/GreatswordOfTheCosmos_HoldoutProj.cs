@@ -1,20 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using Terraria;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria.ModLoader;
+using Terraria;
 using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    public class GnomBladeHoldoutProj : SwordHoldoutProj
+    internal class GreatswordOfTheCosmosProj : SwordHoldoutProj
     {
-        public override string Texture => ModContent.GetInstance<GnomBlade>().Texture;
-        public override float SwordSize => 90f;
+        public override string Texture => ModContent.GetInstance<GreatswordOfTheCosmos>().Texture;
+        public override float SwordSize => 100f;
 
-        public override int ProjectileToShoot => ModContent.ProjectileType<GnomeProj>(); 
+        public override int ProjectileToShoot => ModContent.ProjectileType<CosmoStarProjectile>();
 
-        public override Color TrailColor => Color.Cyan;
+        public override Color TrailColor => Color.Violet;
 
         public override void SetDefaults()
         {
@@ -32,7 +36,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             get => (SwordState)Projectile.ai[0];
             set => Projectile.ai[0] = (float)value;
-        }           
+        }
 
         Player Owner => Main.player[Projectile.owner];
 
@@ -65,11 +69,19 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void Shoot()
         {
-            if (Owner.ItemAnimationJustStarted && Main.myPlayer == Projectile.owner)
+            if (Owner.itemAnimation < Owner.itemAnimationMax * 0.333 && Main.myPlayer == Projectile.owner)
             {
                 Vector2 newPosition = Owner.RotatedRelativePoint(Owner.Center);
-                Vector2 newVelocity = Vector2.Normalize(Main.MouseWorld - newPosition) * 11f;
-                Projectile.NewProjectile(Projectile.GetSource_FromAI(), newPosition, newVelocity, ProjectileToShoot, Projectile.damage, Projectile.knockBack, Owner.whoAmI);
+                Vector2 mousVel = Vector2.Normalize(Main.MouseWorld - newPosition) * 12f;
+
+                for (int i = 0; i < 3; i++)
+                {
+                }
+                Vector2 offsetPosition = new(newPosition.X, Owner.Top.Y - Main.rand.Next(200, 400));
+                Vector2 newVelocity = new(mousVel.X, Owner.HeldItem.shootSpeed * 12f);
+
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), offsetPosition, newVelocity, ProjectileToShoot, Projectile.damage, 5f, Projectile.owner);
+
             }
         }
 
@@ -81,19 +93,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void CreateDust()
         {
-        }
 
-
-        public override void SetPlayerValues()
-        {
-            Owner.heldProj = Projectile.whoAmI;
-            Owner.itemRotation = Projectile.rotation;
-            float rotation = Projectile.rotation - MathHelper.PiOver2 + MathHelper.PiOver4 / 4;
-            if (Owner.direction == -1)
-            {
-                rotation -= MathHelper.PiOver4 / 4;
-            }
-            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
         }
     }
 }

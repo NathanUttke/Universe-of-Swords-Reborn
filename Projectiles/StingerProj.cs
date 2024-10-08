@@ -28,7 +28,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-            Dust dust = Dust.NewDustDirect(Projectile.position, 8, 8, DustID.JungleGrass, 0, 0, 150);
+            Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.JungleGrass, Alpha:150);
             dust.velocity *= 0.5f;
             dust.noGravity = true;
 
@@ -44,7 +44,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             for (int i = 0; i < 30; i++)
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, 8, 8, DustID.JungleGrass, 0, 0, 150);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.JungleGrass, Alpha: 150);
                 dust.velocity *= 2f;
                 dust.noGravity = true;
             }
@@ -62,7 +62,7 @@ namespace UniverseOfSwordsMod.Projectiles
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
 
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + (Projectile.Size / 2f);
+                Vector2 drawPos = Projectile.oldPos[j] - Main.screenPosition + (Projectile.Size / 2f);
                 drawColorTrail *= 0.65f;
 
                 spriteBatch.Draw(texture, drawPos, null, drawColorTrail, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);

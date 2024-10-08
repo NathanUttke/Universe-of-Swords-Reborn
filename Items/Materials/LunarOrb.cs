@@ -15,7 +15,7 @@ public class LunarOrb : ModItem
 	{
 		Item.width = 40;
 		Item.height = 40;
-		Item.maxStack = 999;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.value = Item.sellPrice(0, 14, 0, 0);		
 		Item.rare = ItemRarityID.Cyan;
 	}

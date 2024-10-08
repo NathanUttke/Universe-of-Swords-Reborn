@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using log4net.Appender;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.ownerHitCheck = true;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.aiStyle = -1;
-            Projectile.localNPCHitCooldown = 23;
+            Projectile.localNPCHitCooldown = 20;
             Projectile.penetrate = -1;
         }
 
@@ -44,6 +45,8 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void AI()
         {
+            float direction = MathF.Sign(Projectile.velocity.X);
+
             if (Owner.dead || Owner.noItems || Owner.CCed || !Owner.active)
             {
                 Projectile.Kill();
@@ -64,7 +67,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Vector2 unitVectorTowardsMouse = Owner.MountedCenter.DirectionTo(Main.MouseWorld).SafeNormalize(Vector2.UnitX * Owner.direction);
             Owner.ChangeDir((unitVectorTowardsMouse.X > 0f).ToDirectionInt());
 
-            Lighting.AddLight(Projectile.Center, 1f, 0.5f, 1f);
+            Lighting.AddLight(Projectile.Center, Color.Magenta.ToVector3());
 
             AITimer++;
             if (AITimer % 48f == 0f && Main.myPlayer == Projectile.owner)
@@ -76,13 +79,13 @@ namespace UniverseOfSwordsMod.Projectiles
                     Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, velocity * 15f, ModContent.ProjectileType<NightmareProjectile>(), Projectile.damage, 4f, Projectile.owner);
                 }
             }
-
             Projectile.Center = Owner.Center;
             Projectile.rotation = MathHelper.Lerp(1.5f * Owner.direction, -1.5f * Owner.direction, MathF.Sin(AITimer * 0.15f)) - MathHelper.PiOver2;
             if (Owner.direction == -1)
             {
                 Projectile.rotation -= MathHelper.TwoPi;
             }
+
             Projectile.spriteDirection = Projectile.direction;
             SetPlayerValues();
         }
@@ -104,7 +107,7 @@ namespace UniverseOfSwordsMod.Projectiles
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float collisionPoint = 0f;
-            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Owner.Center, Owner.Center + Projectile.rotation.ToRotationVector2() * 110f * Projectile.scale, 20, ref collisionPoint);
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Owner.Center, Owner.Center + Projectile.rotation.ToRotationVector2() * 128f * Projectile.scale, 20, ref collisionPoint);
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -121,12 +124,18 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                projColor *= 0.3f;
-                Main.spriteBatch.Draw(texture, Owner.Center + Projectile.rotation.ToRotationVector2() * 70f - Main.screenPosition, texture.Frame(), projColor , Projectile.oldRot[i] + MathHelper.PiOver4, texture.Size() / 2, Projectile.scale - i / (float)Projectile.oldPos.Length, SpriteEffects.None, 0);
+                projColor *= 0.4f;
+                float oldRotation = Projectile.oldRot[i] - MathHelper.PiOver4 + MathHelper.PiOver2;
+
+                if (Owner.direction == -1)
+                {
+                    oldRotation += MathHelper.Pi - MathHelper.PiOver2;
+                }
+                Main.spriteBatch.Draw(texture, Projectile.oldPos[i] + Projectile.Size / 2 + Projectile.rotation.ToRotationVector2() * 70f - Main.screenPosition, null, projColor, oldRotation, texture.Size() / 2, Projectile.scale, spriteEffects, 0);
             }
 
-            Main.spriteBatch.Draw(texture, Owner.Center + Projectile.rotation.ToRotationVector2() * 70f - Main.screenPosition, texture.Frame(), Color.Magenta with { A = 0 } * 0.5f, projRotation, texture.Size() / 2f, Projectile.scale * 1.2f, spriteEffects, 0);
-            Main.spriteBatch.Draw(texture, Owner.Center + Projectile.rotation.ToRotationVector2() * 70f - Main.screenPosition, texture.Frame(), Color.White, projRotation, texture.Size() / 2f, Projectile.scale, spriteEffects, 0);
+            Main.spriteBatch.Draw(texture, Owner.Center + Projectile.rotation.ToRotationVector2() * 70f - Main.screenPosition, null, Color.Magenta with { A = 0 } * 0.5f, projRotation, texture.Size() / 2f, Projectile.scale * 1.2f, spriteEffects, 0);
+            Main.spriteBatch.Draw(texture, Owner.Center + Projectile.rotation.ToRotationVector2() * 70f - Main.screenPosition, null, Color.White, projRotation, texture.Size() / 2f, Projectile.scale, spriteEffects, 0);
             return false;
         }
     }

@@ -20,7 +20,7 @@ public class SkullDust : ModDust
     public override bool Update(Dust dust)
     {
         dust.position += dust.velocity;
-        dust.rotation += dust.velocity.X * 0.1f;
+        dust.rotation += 0.25f;
         dust.scale *= 0.9f;
         if (dust.scale < 0.125f)
         {
@@ -31,9 +31,8 @@ public class SkullDust : ModDust
 
     public override bool PreDraw(Dust dust)
     {
-        Color skullColor = Color.White;
-        skullColor.A = 0;
-        Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, skullColor, dust.rotation, new Vector2(4f, 4f), dust.scale, SpriteEffects.None, 0);
+        Color skullColor = Color.White with { A = 0 };
+        Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, skullColor, dust.rotation, dust.frame.Size() / 2, dust.scale, SpriteEffects.None, 0);
         return false;
     }
 }

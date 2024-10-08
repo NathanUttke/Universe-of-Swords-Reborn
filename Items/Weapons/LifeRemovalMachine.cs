@@ -28,7 +28,7 @@ public class LifeRemovalMachine : ModItem
 		Item.knockBack = 8f;
 		Item.UseSound = SoundID.Item1;
 		Item.shoot = ModContent.ProjectileType<LifeRemovalMachineProjectile>();
-		Item.shootSpeed = 1f;
+		Item.shootSpeed = 10f;
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 		Item.value = Item.sellPrice(0, 8, 0, 0);

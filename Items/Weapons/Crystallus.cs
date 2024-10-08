@@ -43,7 +43,8 @@ public class Crystallus : ModItem
         }
 	}
 
-	public override void AddRecipes()
+
+    public override void AddRecipes()
 	{
 		CreateRecipe()
 		.AddIngredient(ItemID.ManaCrystal, 3)

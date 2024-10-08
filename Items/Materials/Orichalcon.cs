@@ -15,7 +15,7 @@ public class Orichalcon : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.maxStack = 999;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.value = 180000;
 		Item.rare = ItemRarityID.LightPurple;
 	}

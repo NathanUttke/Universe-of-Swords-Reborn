@@ -14,17 +14,14 @@ public class TrueTerrabladeProjectile : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        ProjectileID.Sets.TrailingMode[Type] = 3;
+        ProjectileID.Sets.TrailingMode[Type] = 2;
     }
     public override void SetDefaults()
 	{
-		Projectile.width = 31;
-		Projectile.height = 34;
+		Projectile.Size = new(16);
 		Projectile.friendly = true;
 		Projectile.penetrate = 1;		
 		Projectile.DamageType = DamageClass.Melee;
-		Projectile.scale = 1f;
-		Projectile.tileCollide = true;
 		Projectile.ignoreWater = true;
 		Projectile.timeLeft = 30;
 		Projectile.aiStyle = -1;
@@ -35,10 +32,10 @@ public class TrueTerrabladeProjectile : ModProjectile
 
     public override void AI()
 	{        
-        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(98, 242, 128, 45), 0.5f);
+        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor:new Color(98, 242, 128, 45), Scale:1.25f);
         
         Projectile.spriteDirection = Projectile.direction;
-        Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 - MathHelper.PiOver4 * Projectile.spriteDirection;
+        Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 - MathHelper.PiOver4;
 	}
     public override bool PreDraw(ref Color lightColor)
     {
@@ -47,22 +44,22 @@ public class TrueTerrabladeProjectile : ModProjectile
         Texture2D terraTexture = TextureAssets.Projectile[Type].Value;
 
         Color drawColorGlowSecond = new(255, 242, 14, 42);
-        Vector2 drawOrigin = glowTexture.Size() / 2;
-        Vector2 terraOrigin = terraTexture.Size() / 2;
+        Vector2 drawOrigin = Vector2.UnitX * glowTexture.Width;
+        Vector2 terraOrigin = Vector2.UnitX * terraTexture.Width;
 
         SpriteEffects spriteEffects = SpriteEffects.None;
         if (Projectile.spriteDirection == -1)
         {
-            spriteEffects = SpriteEffects.FlipHorizontally;
+           // spriteEffects = SpriteEffects.FlipVertically | SpriteEffects.FlipHorizontally;
         }
 
         for (int i = 0; i < Projectile.oldPos.Length; i++)
         {
             float num = 10 - i;
             Color drawColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
-            drawColor *= num / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f);
+            drawColor *= 0.75f;
 
-            spriteBatch.Draw(glowTexture, (Projectile.oldPos[i] - Main.screenPosition) + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
+            spriteBatch.Draw(glowTexture, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
             spriteBatch.Draw(terraTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, terraOrigin, Projectile.scale, spriteEffects, 0);
         }
 
@@ -74,14 +71,8 @@ public class TrueTerrabladeProjectile : ModProjectile
         SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         for (int i = 0; i < 20; i++)
         {
-
-            int terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 1f);
-            Dust dust = Main.dust[terraDust];
-            dust.velocity *= 0.75f;
-
-            terraDust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(98, 242, 128, 0), 1f);
-            Dust dust2 = Main.dust[terraDust];
-            dust2.velocity *= 0.25f;
+            Dust terraDust = Dust.NewDustDirect(Projectile.Center, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor:new Color(98, 242, 128, 0));
+            terraDust.velocity *= 2f;
         }
         if (Projectile.ai[1] == 0f && Projectile.owner == Main.myPlayer)
         {
@@ -89,7 +80,7 @@ public class TrueTerrabladeProjectile : ModProjectile
             Projectile.netUpdate = true;
             for (int i = 0; i < 20; i++)
             {
-                Vector2 newVelocity = new Vector2(8f, 0f).RotatedBy(i + MathHelper.TwoPi / 20f);
+                Vector2 newVelocity = (Vector2.UnitX * 8f).RotatedBy(i * MathHelper.TwoPi / 20f);
                 Projectile newProj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.position, newVelocity, ModContent.ProjectileType<TrueTerrabladeProjectile>(), Projectile.damage / 10, Projectile.knockBack, Projectile.owner, 0f, 1f);
                 newProj.penetrate = 1;            
             }

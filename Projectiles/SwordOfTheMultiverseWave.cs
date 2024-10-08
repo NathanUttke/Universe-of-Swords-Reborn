@@ -60,6 +60,7 @@ namespace UniverseOfSwordsMod.Projectiles
             }
             Lighting.AddLight(Projectile.Center + Projectile.rotation.ToRotationVector2() * 64f * Projectile.scale, Color.Magenta.ToVector3());
 
+
             Projectile.velocity *= 0.97f;
             if (Projectile.velocity.Length() < 10f && Projectile.scale > 0f)
             {
@@ -81,18 +82,22 @@ namespace UniverseOfSwordsMod.Projectiles
             Texture2D texture = TextureAssets.Projectile[Type].Value;            
 
             Color projColor = Color.White * Projectile.Opacity;            
+            Color trailColor = projColor;            
 
             Vector2 drawOrigin = texture.Size() / 2f;            
 
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (Projectile.spriteDirection == -1)
-            {
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            }         
+            SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+     
 
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.LightPink with { A = 0 } * 0.25f, Projectile.rotation, drawOrigin, Projectile.scale * 1.1f, spriteEffects, 0);
-            Main.EntitySpriteDraw(texture, Projectile.oldPos[2] + Projectile.Size / 2 - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, projColor with { A = 0 } * 0.125f, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                trailColor *= 0.85f;
+                Main.EntitySpriteDraw(texture, Projectile.oldPos[i] + Projectile.Size / 2 - Main.screenPosition, null, trailColor * 0.125f, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+            }
+
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, projColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.LightPink with { A = 0 } * 0.25f, Projectile.rotation, drawOrigin, Projectile.scale * 1.1f, spriteEffects, 0);
+            Main.EntitySpriteDraw(texture, Projectile.oldPos[2] + Projectile.Size / 2 - Main.screenPosition, null, projColor with { A = 0 } * 0.125f, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
 
             return false;
         }

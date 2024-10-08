@@ -29,24 +29,18 @@ public class ScarletFlareCore : ModItem
     {
         float globalTimeWrapped = Main.GlobalTimeWrappedHourly;
         float itemTime = Item.timeSinceItemSpawned / 240f + globalTimeWrapped * 0.04f;
-        Texture2D texture = TextureAssets.Item[Item.type].Value;
+        Texture2D texture = TextureAssets.Item[Type].Value;
 
         var frame = texture.Frame();
 
-        Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
-        Color drawColorGlow = Color.Red;
+        Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
+        Color drawColorGlow = Color.Red with { A = 0 };
 
         Vector2 origin = frame.Size() / 2f;
         Vector2 vector2 = new(Item.width / 2 - origin.X, Item.height - frame.Height);
         Vector2 vectorPosition = Item.position - Main.screenPosition + origin + vector2;
 
-        spriteBatch.End();
-        spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
-
-        spriteBatch.Draw(glowSphere, vectorPosition, null, drawColorGlow, Item.velocity.X, new Vector2(glowSphere.Width / 2, glowSphere.Height / 2), 1f, SpriteEffects.None, 0);
-
-        spriteBatch.End();
-        spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+        spriteBatch.Draw(glowSphere, vectorPosition, null, drawColorGlow, Item.velocity.X, glowSphere.Size() / 2, Item.scale, SpriteEffects.None, 0);
 
         globalTimeWrapped %= 4f;
         globalTimeWrapped /= 2f;

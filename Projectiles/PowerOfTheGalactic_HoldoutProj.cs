@@ -1,18 +1,23 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Items.Weapons;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
-    public class GnomBladeHoldoutProj : SwordHoldoutProj
+    public class PowerOfTheGalacticProj : SwordHoldoutProj
     {
-        public override string Texture => ModContent.GetInstance<GnomBlade>().Texture;
+        public override string Texture => ModContent.GetInstance<PowerOfTheGalactic>().Texture;
         public override float SwordSize => 90f;
 
-        public override int ProjectileToShoot => ModContent.ProjectileType<GnomeProj>(); 
+        public override int ProjectileToShoot => ModContent.ProjectileType<GalacticProjectile>();
 
         public override Color TrailColor => Color.Cyan;
 
@@ -32,7 +37,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             get => (SwordState)Projectile.ai[0];
             set => Projectile.ai[0] = (float)value;
-        }           
+        }
 
         Player Owner => Main.player[Projectile.owner];
 
@@ -42,7 +47,7 @@ namespace UniverseOfSwordsMod.Projectiles
             float swingDir = SwingDirection == SwordState.SwingDownwards ? 1f : -1f;
             Projectile.Center = Owner.Center;
             Projectile.timeLeft = Owner.itemAnimation;
-            Projectile.scale = 1.5f + MathF.Sin(1f - Owner.itemAnimation / (float)Owner.itemAnimationMax - 0.5f);
+            Projectile.scale = 1.5f - MathF.Sin(1f - Owner.itemAnimation / (float)Owner.itemAnimationMax - 0.5f);
             Projectile.rotation = Projectile.velocity.ToRotation() + (Owner.itemAnimation / (float)Owner.itemAnimationMax - 0.5f) * (swingDir * -Owner.direction * 4f - Owner.direction * 0.3f) + MathHelper.PiOver4;
             if (SwingDirection == SwordState.SwingUpwards)
             {
@@ -63,13 +68,22 @@ namespace UniverseOfSwordsMod.Projectiles
             }
         }
 
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.Frostburn, 300);
+        }
+
         public override void Shoot()
         {
-            if (Owner.ItemAnimationJustStarted && Main.myPlayer == Projectile.owner)
+            if (Owner.ItemAnimationEndingOrEnded && Main.myPlayer == Projectile.owner && Projectile.ai[1] == 0f)
             {
-                Vector2 newPosition = Owner.RotatedRelativePoint(Owner.Center);
-                Vector2 newVelocity = Vector2.Normalize(Main.MouseWorld - newPosition) * 11f;
-                Projectile.NewProjectile(Projectile.GetSource_FromAI(), newPosition, newVelocity, ProjectileToShoot, Projectile.damage, Projectile.knockBack, Owner.whoAmI);
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector2 newPosition = Owner.RotatedRelativePoint(Owner.Center);
+                    Vector2 newVelocity = Vector2.Normalize(Main.MouseWorld - newPosition) * 12f * Main.rand.NextFloat(1f, 1.5f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), newPosition + newVelocity * 4f, newVelocity.RotatedByRandom(MathHelper.ToRadians(45f)), ProjectileToShoot, Projectile.damage / 2, Projectile.knockBack, Owner.whoAmI);
+                }
+                Projectile.ai[1] = 1f;
             }
         }
 
@@ -81,19 +95,6 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void CreateDust()
         {
-        }
-
-
-        public override void SetPlayerValues()
-        {
-            Owner.heldProj = Projectile.whoAmI;
-            Owner.itemRotation = Projectile.rotation;
-            float rotation = Projectile.rotation - MathHelper.PiOver2 + MathHelper.PiOver4 / 4;
-            if (Owner.direction == -1)
-            {
-                rotation -= MathHelper.PiOver4 / 4;
-            }
-            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
         }
     }
 }

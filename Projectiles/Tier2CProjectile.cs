@@ -27,7 +27,8 @@ public class Tier2CProjectile : ModProjectile
 	public override void AI()
 	{
         Dust dust = Dust.NewDustDirect(Projectile.oldPosition, 1, 1, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.Red, 0.5f);
-		dust.velocity *= 0.3f;
+        dust.velocity *= 0.2f;
+        dust.position = Projectile.Center - Projectile.velocity / 20f;
     }
 
 	public override void OnKill(int timeLeft)

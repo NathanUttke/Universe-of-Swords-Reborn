@@ -38,12 +38,12 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void AI()
         {
             base.AI();
-            if (Projectile.ai[0] % 8f == 0f && Projectile.owner == Main.myPlayer)
+            if (Projectile.ai[0] % 7f == 0f && Projectile.owner == Main.myPlayer)
             {
                 Vector2 spawnPos = Owner.RotatedRelativePoint(Owner.MountedCenter);
-                Vector2 spawnVelocity = Main.rand.NextVector2Unit() * 10f;
+                Vector2 spawnVelocity = Vector2.Normalize(Main.rand.NextVector2Unit()) * 10f;
 
-                Projectile.NewProjectile(Projectile.GetSource_FromAI(), spawnPos, spawnVelocity, ModContent.ProjectileType<SwordOfTheUniverseProjectile>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 3));
+                Projectile.NewProjectile(Projectile.GetSource_FromAI(), spawnPos, spawnVelocity, ModContent.ProjectileType<SwordOfTheUniverseProjectile>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 3));
             }
 
             Lighting.AddLight(Projectile.Center, Main.DiscoColor.ToVector3());

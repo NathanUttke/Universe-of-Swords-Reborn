@@ -35,6 +35,12 @@ public class Apocalypse : ModItem
             Dust.NewDustDirect(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.OrangeTorch, 0f, 0f, 0, Color.Orange, 1f);
         }
     }
+
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        base.UseStyle(player, heldItemFrame);
+    }
+
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         for (int i = -1; i <= 1; i++)

@@ -1,4 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
@@ -17,6 +19,7 @@ public class GnomBlade : ModItem
 	{
 		Item.width = 64;
 		Item.height = 64;
+		Item.ArmorPenetration = 10;
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
@@ -33,21 +36,40 @@ public class GnomBlade : ModItem
         Item.shoot = ModContent.ProjectileType<GnomBladeHoldoutProj>();
 		Item.shootSpeed = 1f;
 	}
+	
+    public override bool MeleePrefix() => true;
 
-	public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
+    public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
+
+	int swingDir = 0;
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+		if (swingDir > 1)
+		{
+			swingDir = 0;
+		}
+		Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, swingDir);
+		swingDir++;
+		return false;
+    }
 
     public override void AddRecipes()
 	{
-		CreateRecipe()	
-			.AddIngredient(ItemID.LunarBar, 10)
-			.AddIngredient(ItemID.GardenGnome, 1)
-			.AddIngredient(ModContent.ItemType<Doomsday>(), 1)
-			.AddIngredient(ModContent.ItemType<LunarOrb>(), 1)
-			.AddIngredient(ModContent.ItemType<Orichalcon>(), 5)
-			.AddIngredient(ModContent.ItemType<SwordMatter>(), 100)
-            .AddIngredient(ModContent.ItemType<PumpkinBoom>(), 1)
-            .AddTile(TileID.LunarCraftingStation)
-			.Register();
+        Mod CalamityMod = UniverseOfSwordsMod.Instance.CalamityMod;
+		Recipe newRecipe = CreateRecipe();
+		newRecipe.AddIngredient(ItemID.LunarBar, 10);
+		newRecipe.AddIngredient(ItemID.GardenGnome, 1);
+		newRecipe.AddIngredient(ModContent.ItemType<Doomsday>(), 1);
+		newRecipe.AddIngredient(ModContent.ItemType<LunarOrb>(), 1);
+		newRecipe.AddIngredient(ModContent.ItemType<Orichalcon>(), 5);
+		newRecipe.AddIngredient(ModContent.ItemType<SwordMatter>(), 100);
+		newRecipe.AddIngredient(ModContent.ItemType<PumpkinBoom>(), 1);
+        if (CalamityMod is not null)
+        {
+            newRecipe.AddIngredient(CalamityMod.Find<ModItem>("UelibloomBar"), 5);
+        }
+        newRecipe.AddTile(TileID.LunarCraftingStation);
+        newRecipe.Register();
 	}
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

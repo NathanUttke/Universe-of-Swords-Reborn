@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -48,6 +49,24 @@ public class CosmoStorm : ModItem
         return;
     }
 
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
+    {
+        player.itemLocation = player.Center;
+    }
+
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+        for (int i = 0; i < 2; i++)
+        {
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust dust = Dust.NewDustPerfect(location, DustID.WitherLightning, velocity, Scale: 1.25f);
+            dust.noGravity = true;
+        }
+    }
+
     public override void AddRecipes()
     {
         Recipe newRecipe = CreateRecipe();
@@ -68,11 +87,6 @@ public class CosmoStorm : ModItem
         newRecipe.Register();
     }
 
-    public override void UseStyle(Player player, Rectangle heldItemFrame)
-    {
-        player.itemLocation = player.Center;
-    }
-
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (!target.active || target.immortal || NPCID.Sets.CountsAsCritter[target.type] || target.SpawnedFromStatue)
@@ -89,17 +103,12 @@ public class CosmoStorm : ModItem
             return;
         }
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 12; i++)
         {
-            Vector2 offsetPosition = target.position + new Vector2(Main.rand.Next(-1000, 1000), -Main.rand.Next(500, 800));
+            Vector2 offsetPosition = target.position + new Vector2(Main.rand.Next(-2000, 1000), -Main.rand.Next(500, 800));
             Vector2 spawnVelocity = Vector2.Normalize(target.Center - offsetPosition) * 12f;
 
-            Projectile summonProjectile = Projectile.NewProjectileDirect(target.GetSource_OnHit(target), offsetPosition, spawnVelocity, ProjectileID.NebulaArcanum, Item.damage, 5f, player.whoAmI);
-            summonProjectile.extraUpdates = 2;
-            summonProjectile.penetrate = 2;
-            summonProjectile.timeLeft = 250;
-            summonProjectile.DamageType = DamageClass.Melee;
-            summonProjectile.tileCollide = false;            
+            Projectile.NewProjectileDirect(target.GetSource_OnHit(target), offsetPosition, spawnVelocity, ModContent.ProjectileType<CosmoStormProj>(), Item.damage, 5f, player.whoAmI);         
         }
     }
 }

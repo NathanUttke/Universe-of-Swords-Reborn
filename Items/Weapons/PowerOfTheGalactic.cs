@@ -21,15 +21,18 @@ public class PowerOfTheGalactic : ModItem
         Item.Size = new(64);
         Item.rare = ItemRarityID.Red;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.useTime = 44;
-        Item.useAnimation = 22;
+        Item.useTime = 30;
+        Item.useAnimation = 30;
+        Item.reuseDelay = 10;
         Item.damage = 125;
         Item.knockBack = 4f;
         Item.scale = 1.25f;
-        Item.shoot = ModContent.ProjectileType<GalacticProjectile>();
-        Item.shootSpeed = 9f;
+        Item.shoot = ModContent.ProjectileType<PowerOfTheGalacticProj>();
+        Item.shootSpeed = 1f;
         Item.UseSound = SoundID.Item1;
         Item.value = 650500;
+        Item.noMelee = true;
+        Item.noUseGraphic = true;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee; 
     }
@@ -47,33 +50,19 @@ public class PowerOfTheGalactic : ModItem
         .Register();
     }
 
+    public override bool MeleePrefix() => true;
+
+    public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
+
+    int swingDir = 0;
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        for (int i = 0; i < 2; i++)
+        if (swingDir > 1)
         {
-            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(40f)) * Main.rand.NextFloat(0.9f, 1.3f), type, damage * 2, knockback, player.whoAmI);
+            swingDir = 0;
         }
+        Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, swingDir);
+        swingDir++;
         return false;
-    }
-
-    public override void MeleeEffects(Player player, Rectangle hitbox)
-    {
-        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
-        for (int i = 0; i < 2; i++)
-        {
-            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
-            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
-            Dust dust = Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 0, Color.Cyan, 0.75f);
-            dust.noGravity = true;
-        }
-    }
-
-    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-    {
-        if (!target.HasBuff(BuffID.Frostburn))
-        {
-            target.AddBuff(BuffID.Frostburn, 400, false);
-
-        }
     }
 }

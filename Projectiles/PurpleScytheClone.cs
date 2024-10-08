@@ -49,14 +49,16 @@ namespace UniverseOfSwordsMod.Projectiles
                 }
             }
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 16; i++)
             {
-                Dust newDust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Alpha:100, newColor:new Color(174, 74, 255, 0));
-                newDust.velocity *= 0.1f;
+                Vector2 newVelocity = Vector2.UnitY.RotatedBy(i * MathHelper.TwoPi / 16f);
+                Dust dust = Dust.NewDustPerfect(Projectile.position, ModContent.DustType<GlowDust>(), newColor: new Color(174, 74, 255, 0), Scale: 0.75f);
+                dust.position = Projectile.Center;
+                dust.velocity = newVelocity;
             }
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
+        public override Color? GetAlpha(Color lightColor) => Color.White with { A = 0 } * Projectile.Opacity;
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -69,7 +71,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int j = 0; j < Projectile.oldPos.Length; j++)
             {
-                Vector2 drawPos = (Projectile.oldPos[j] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);                
+                Vector2 drawPos = Projectile.oldPos[j] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);                
 
                 Color color = Projectile.GetAlpha(lightColor);
                 color *= 0.5f;
@@ -86,8 +88,7 @@ namespace UniverseOfSwordsMod.Projectiles
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
             for (int z = 0; z < 30; z++)
             {
-                int purpleDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 0, new Color(174, 74, 255, 0), 1f);
-                Main.dust[purpleDust].noGravity = true;
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 0, new Color(174, 74, 255));
             }
         }
     }

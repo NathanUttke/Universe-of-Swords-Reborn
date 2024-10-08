@@ -51,7 +51,6 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override void AI()
         {
-            bool isInHalfMaxTime = Projectile.ai[0] == (int)(MaxTime / 2f);
             Vector2 playerCenter = Owner.RotatedRelativePoint(Owner.MountedCenter);
 
             if (!Owner.active || Owner.dead || Owner.noItems || Owner.CCed)
@@ -83,7 +82,7 @@ namespace UniverseOfSwordsMod.Projectiles
                 for (int i = -1; i <= 1; i++)
                 {
                     Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.ToRadians(i * 5f));
-                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter, perturbedSpeed * ShootSpeed, ModContent.ProjectileType<DestroyerLaser>(), (int)(Projectile.damage * 1.5f), Projectile.knockBack, Owner.whoAmI);
+                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), playerCenter + perturbedSpeed * 32f, perturbedSpeed * ShootSpeed, ModContent.ProjectileType<DestroyerLaser>(), (int)(Projectile.damage * 1.5f), Projectile.knockBack, Owner.whoAmI);
                 }                
                 Projectile.ai[0] += 1f;
             }
@@ -92,6 +91,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.Center = Owner.Center;
             SetPlayerValues();
         }
+
         public void SetPlayerValues()
         {
             Projectile.spriteDirection = Projectile.direction;
@@ -100,6 +100,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Owner.itemRotation = MathHelper.WrapAngle(Projectile.rotation);
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.Pi + MathHelper.PiOver4);
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
@@ -109,7 +110,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
-                projColor *= 0.7f;
+                projColor *= 0.75f;
                 spriteBatch.Draw(texture, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f, null, projColor, Projectile.oldRot[i], drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             }
 

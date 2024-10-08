@@ -1,15 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
-{    
-   
+{       
     public class PurpleRuneProjectile : ModProjectile
     {
-        public override string Texture => $"UniverseofSwordsMod/Projectiles/InvisibleProj";
+        public override string Texture => "UniverseOfSwordsMod/Projectiles/InvisibleProj";
 
         public override void SetDefaults()
         {
@@ -21,28 +21,26 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.alpha = 255;
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 25;
-            Projectile.timeLeft = 180;
+            Projectile.localNPCHitCooldown = 28;
+            Projectile.timeLeft = 200;
         }
 
         public override void AI()
         {
             Projectile.velocity *= 0.95f;
-
-            for (int i = 0; i < 2; i++)
+            Lighting.AddLight(Projectile.Center, Color.BlueViolet.ToVector3() * 2f);
+            for (int i = 0; i < 16; i++)
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), 0, 0, 0, Color.MediumOrchid, 1.25f);
-                dust.velocity *= 0.5f;
-                dust.velocity += Projectile.velocity * 0.2f;
+                Vector2 spinPoint = Vector2.UnitX.RotatedBy(i * Projectile.ai[1] * MathHelper.TwoPi / 16f * i * Projectile.ai[0]);
+                Dust dust = Dust.NewDustPerfect(Projectile.position, ModContent.DustType<GlowDust>(), Vector2.Zero, newColor:Color.BlueViolet, Scale:1f);
+                dust.velocity = spinPoint * 2f;
+                dust.position = Projectile.Center - Projectile.velocity / 10f * i;
             }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (!target.HasBuff(BuffID.ShadowFlame))
-            {
-                target.AddBuff(BuffID.ShadowFlame, 300);
-            }
+            target.AddBuff(BuffID.ShadowFlame, 300);
         }
     }
 }

@@ -14,8 +14,7 @@ public class BatSlayer : ModItem
 
     public override void SetDefaults()
 	{
-		Item.width = 64;
-		Item.height = 64;
+		Item.Size = new(64);
 		Item.rare = ItemRarityID.LightPurple;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 20;

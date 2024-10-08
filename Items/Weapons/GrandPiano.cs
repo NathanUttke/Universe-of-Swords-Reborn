@@ -64,5 +64,9 @@ public class GrandPiano : ModItem
         target.AddBuff(BuffID.Bleeding, 400);
         target.AddBuff(BuffID.Weak, 400);
         target.AddBuff(BuffID.Confused, 400);
+		/*for (int i = 0; i < 6; i++)
+		{
+			Projectile.NewProjectile(target.GetSource_OnHit(target), target.Center - Vector2.UnitY * 50f, -(Vector2.UnitY * Main.rand.Next(2, 8)).RotatedByRandom(MathHelper.ToRadians(45f)), ProjectileID.PewMaticHornShot, Item.damage / 5, Item.knockBack, player.whoAmI);
+		}*/
     }
 }

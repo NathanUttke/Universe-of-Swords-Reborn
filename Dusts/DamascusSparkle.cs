@@ -30,10 +30,12 @@ public class DamascusSparkle : ModDust
 	}
     public override bool PreDraw(Dust dust)
     {
-		Texture2D texture = TextureAssets.Extra[ExtrasID.SharpTears].Value;
+        float opacity = 1f - dust.alpha / 255f;
+
+        Texture2D texture = TextureAssets.Extra[ExtrasID.SharpTears].Value;
 
         Color drawColor = Lighting.GetColor((int)(dust.position.X + 4) / 16, (int)(dust.position.Y + 4) / 16);
-        Main.spriteBatch.Draw(texture, dust.position - Main.screenPosition, null, new Color(103, 165, 216, 0), dust.rotation, new Vector2(36f, 36f), dust.scale, SpriteEffects.None, 0);
+        Main.spriteBatch.Draw(texture, dust.position - Main.screenPosition, null, new Color(103, 165, 216, 0) * opacity, dust.rotation, new Vector2(36f, 36f), dust.scale, SpriteEffects.None, 0);
 
         Main.spriteBatch.Draw(Texture2D.Value, dust.position - Main.screenPosition, dust.frame, Color.White with { A = 0 }, dust.rotation, new Vector2(11f, 11f), dust.scale, SpriteEffects.None, 0);
         return false;

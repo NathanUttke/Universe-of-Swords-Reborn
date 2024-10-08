@@ -12,8 +12,7 @@ namespace UniverseOfSwordsMod.Projectiles
     {
         public override void SetDefaults()
         {
-            Projectile.width = 128;
-            Projectile.height = 128;
+            Projectile.Size = new(128);
             Projectile.friendly = true;
             Projectile.aiStyle = -1;
             Projectile.timeLeft = 200;
@@ -25,6 +24,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.idStaticNPCHitCooldown = 10;
             Projectile.alpha = 0;
         }
+
         public override void AI()
         {           
             Projectile.rotation += Projectile.direction * 0.5f * (Projectile.timeLeft / 180f);
@@ -45,17 +45,16 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseofSwordsMod/Assets/GlowSphere");
+            Texture2D glowSphere = (Texture2D)ModContent.Request<Texture2D>("UniverseOfSwordsMod/Assets/GlowSphere");
             Color drawColorGlow = Color.Red with { A = 0 } * Projectile.Opacity;
             Color drawColorEdge = Color.White with { A = 0 } * Projectile.Opacity;
 
-            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f, SpriteEffects.None, 0);
-
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Rectangle sourceRectangle = new(0, 0, texture.Width, texture.Height);
-            Vector2 origin = sourceRectangle.Size() / 2f;            
-            
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), sourceRectangle, drawColorEdge, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+
+            Main.EntitySpriteDraw(glowSphere, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlow, Projectile.rotation, glowSphere.Size() / 2f, 2f, SpriteEffects.None, 0);    
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), sourceRectangle, drawColorEdge, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
     }
