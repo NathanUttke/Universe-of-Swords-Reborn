@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Utilities;
 using UniverseOfSwordsMod.Items.Materials;
+using UniverseOfSwordsMod.Projectiles;
 
 namespace UniverseOfSwordsMod.Items.Weapons;
 
@@ -50,7 +51,7 @@ public class NatureSword : ModItem
 
         for (int i = 0; i < 3; i++)
 		{
-			UniverseUtils.SummonSuperStarSlash(target.Center, target.GetSource_OnHit(target), (int)(damageDone * 0.5f), player.whoAmI, ProjectileID.SeedlerThorn);
+			UniverseUtils.SummonSuperStarSlash(target.Center, target.GetSource_OnHit(target), (int)(damageDone * 0.5f), player.whoAmI, ModContent.ProjectileType<NatureProj>());
 		}
     }
 
@@ -58,7 +59,7 @@ public class NatureSword : ModItem
 	{	
 		if (Main.rand.NextBool(3))
 		{
-			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<NatureBlade>());
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<NatureBlade>(), Scale:1.25f);
 		}
 	}
 

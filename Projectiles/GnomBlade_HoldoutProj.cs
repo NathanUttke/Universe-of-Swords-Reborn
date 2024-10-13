@@ -40,6 +40,8 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             base.AI();
             float swingDir = SwingDirection == SwordState.SwingDownwards ? 1f : -1f;
+            Lighting.AddLight(Projectile.position, Color.Cyan.ToVector3());
+
             Projectile.Center = Owner.Center;
             Projectile.timeLeft = Owner.itemAnimation;
             Projectile.scale = 1.5f + MathF.Sin(1f - Owner.itemAnimation / (float)Owner.itemAnimationMax - 0.5f);

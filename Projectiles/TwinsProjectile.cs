@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -19,7 +20,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.extraUpdates = 2;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.light = 0.4f;
-            Projectile.timeLeft = 60;
+            Projectile.timeLeft = 120;
         }
 
         public override void AI()
@@ -39,25 +40,29 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.localAI[0] = 0f;
             }
 
-            Vector2 dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + MathHelper.Pi) * offset - Projectile.rotation.ToRotationVector2() * 10f;
-            Dust redDust = Dust.NewDustDirect(Projectile.Center, 0, 0, DustID.Clentaminator_Green, Alpha: 160, newColor: Color.White with { A = 0 }, Scale: 1.25f);
-            redDust.noGravity = true;
-            redDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
-            redDust.velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 16f - redDust.position) * 2f + Projectile.velocity * 2f;
+            for (int i = 0; i < 2; i++)
+            {
+                Vector2 dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + MathHelper.Pi) * offset - Projectile.rotation.ToRotationVector2() * 10f;
+                Dust redDust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<GlowDust>(), Alpha: 0, newColor: Color.Red, Scale: 1.25f);
+                redDust.noGravity = true;
+                redDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
+                redDust.velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 16f - redDust.position) * 2f - Projectile.velocity / 2;
 
-            Dust greenDust = Dust.NewDustDirect(Projectile.Center, 0, 0, DustID.Clentaminator_Red, Alpha:160, newColor:Color.White with { A = 0 }, Scale:1.25f);
-            dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + MathHelper.TwoPi) * offset - Projectile.rotation.ToRotationVector2() * 10f;
-            greenDust.noGravity = true;
-            greenDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
-            greenDust.velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 16f - greenDust.position) * 2f + Projectile.velocity * 2f;
+                Dust greenDust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<GlowDust>(), Alpha: 0, newColor: Color.Green, Scale: 1.25f);
+                dustRotationWave = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * (MathHelper.PiOver4 / 6f) + MathHelper.TwoPi) * offset - Projectile.rotation.ToRotationVector2() * 10f;
+                greenDust.noGravity = true;
+                greenDust.position = Projectile.Center + dustRotationWave + Projectile.velocity * 2f;
+                greenDust.velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 16f - greenDust.position) * 2f - Projectile.velocity / 2;
+            }
         }
+
         public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 15; i++)
             {
-                Dust deathDust = Dust.NewDustDirect(Projectile.position + Projectile.velocity, 0, 0, DustID.Clentaminator_Green, Projectile.velocity.X, Projectile.velocity.Y, 100, Scale:1.25f);                
+                Dust deathDust = Dust.NewDustDirect(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Alpha: 0, newColor: Color.Green, Scale:1.25f);                
                 deathDust.noGravity = true;
-                Dust deathDust2 = Dust.NewDustDirect(Projectile.position + Projectile.velocity, 0, 0, DustID.Clentaminator_Red, Projectile.velocity.X, Projectile.velocity.Y, 100, Scale:1.25f);
+                Dust deathDust2 = Dust.NewDustDirect(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), Alpha: 0, newColor: Color.Red, Scale:1.25f);
                 deathDust2.noGravity = true;
             }
         }

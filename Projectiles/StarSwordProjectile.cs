@@ -55,7 +55,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.penetrate--;
             if (Projectile.velocity.Y != Projectile.oldVelocity.Y)
             {
-                Projectile.velocity.Y = -8f;
+                Projectile.velocity.Y = 8f * -MathF.Sign(oldVelocity.Y);
             }
             if (Projectile.velocity.X != Projectile.oldVelocity.X)
             {

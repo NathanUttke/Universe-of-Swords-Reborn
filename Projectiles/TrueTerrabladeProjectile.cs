@@ -44,6 +44,8 @@ public class TrueTerrabladeProjectile : ModProjectile
         Texture2D terraTexture = TextureAssets.Projectile[Type].Value;
 
         Color drawColorGlowSecond = new(255, 242, 14, 42);
+        Color drawColor = Projectile.GetAlpha(lightColor);
+
         Vector2 drawOrigin = Vector2.UnitX * glowTexture.Width;
         Vector2 terraOrigin = Vector2.UnitX * terraTexture.Width;
 
@@ -55,12 +57,11 @@ public class TrueTerrabladeProjectile : ModProjectile
 
         for (int i = 0; i < Projectile.oldPos.Length; i++)
         {
-            float num = 10 - i;
-            Color drawColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
-            drawColor *= 0.75f;
+            Vector2 oldDrawPos = Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY);
+            drawColor *= 0.6f;
 
-            spriteBatch.Draw(glowTexture, Projectile.oldPos[i] - Main.screenPosition + Projectile.Size / 2f + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale - i / (float)Projectile.oldPos.Length, spriteEffects, 0);
-            spriteBatch.Draw(terraTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColor, Projectile.rotation, terraOrigin, Projectile.scale, spriteEffects, 0);
+            spriteBatch.Draw(glowTexture, oldDrawPos, null, drawColor, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
+            spriteBatch.Draw(terraTexture, oldDrawPos, null, drawColor, Projectile.rotation, terraOrigin, Projectile.scale, spriteEffects, 0);
         }
 
         spriteBatch.Draw(terraTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, drawColorGlowSecond, Projectile.rotation, terraOrigin, Projectile.scale, spriteEffects, 0);

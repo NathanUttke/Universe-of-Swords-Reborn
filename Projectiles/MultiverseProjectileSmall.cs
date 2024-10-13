@@ -18,6 +18,7 @@ namespace UniverseOfSwordsMod.Projectiles
             ProjectileID.Sets.TrailCacheLength[Type] = 20;
             ProjectileID.Sets.TrailingMode[Type] = 3;
         }
+
         public override void SetDefaults()
         {
             Projectile.Size = new(16);
@@ -51,6 +52,9 @@ namespace UniverseOfSwordsMod.Projectiles
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<Buffs.EmperorBlaze>(), 800, true);
+            target.AddBuff(BuffID.ShadowFlame, 800, true);
+            target.AddBuff(BuffID.Venom, 800, true);
+            target.defense = 0;
         }
 
         public override void OnKill(int timeLeft)
@@ -58,9 +62,9 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.Resize(144, 144);
             for (int i = 0; i < 20; i++)
             {
-                Vector2 newVelocity = Vector2.UnitY.RotatedBy(i * MathHelper.TwoPi / 20f) * 10f;
+                Vector2 newVelocity = Vector2.UnitY.RotatedBy(i * MathHelper.TwoPi / 20f) * 5f;
                 Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<GlowDust>(), newColor:Color.Purple, Scale:1.5f);
-                dust.position = Projectile.Center - Projectile.velocity / 10f * i;
+                dust.position = Projectile.Center;
                 dust.velocity = newVelocity;
             }
             Projectile.Damage();

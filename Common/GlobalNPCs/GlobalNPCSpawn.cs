@@ -10,7 +10,7 @@ namespace UniverseOfSwordsMod.Common.GlobalNPCs
     {
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
-            if (Main.hardMode && spawnInfo.Player.ZoneForest)
+            if (Main.hardMode && spawnInfo.Player.ZoneForest && !Main.IsItDay())
             {
                 pool[NPCID.EnchantedSword] = SpawnCondition.OverworldDay.Chance * 0.25f;
             }

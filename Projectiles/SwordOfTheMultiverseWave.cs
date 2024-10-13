@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using System;
 using Terraria.GameContent.Drawing;
+using UniverseOfSwordsMod.Utilities;
+using UniverseOfSwordsMod.Buffs;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
@@ -42,6 +44,10 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             target.AddBuff(BuffID.Weak, 300);
             target.AddBuff(BuffID.Bleeding, 300);
+            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 800, true);
+            target.AddBuff(BuffID.ShadowFlame, 800, true);
+            target.AddBuff(BuffID.Venom, 800, true);
+
 
             ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.PrincessWeapon, new ParticleOrchestraSettings
             {
@@ -65,6 +71,11 @@ namespace UniverseOfSwordsMod.Projectiles
             if (Projectile.velocity.Length() < 10f && Projectile.scale > 0f)
             {
                 Projectile.scale -= 0.01f;
+            }
+
+            if (Main.rand.NextBool(25))
+            {
+                UniverseUtils.ReflectProjectile(Projectile);
             }
         }
 

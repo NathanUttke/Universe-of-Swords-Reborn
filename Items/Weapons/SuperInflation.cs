@@ -23,7 +23,7 @@ public class SuperInflation : ModItem
 		Item.rare = ItemRarityID.Red;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 10f;
-		Item.useTime = 48;
+		Item.useTime = 20;
 		Item.useAnimation = 20;
 		Item.damage = 130;
         Item.shoot = ModContent.ProjectileType<SuperInflationHoldoutProj>();

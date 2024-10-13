@@ -15,6 +15,7 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             ProjectileID.Sets.TrailingMode[Type] = 0;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 30;

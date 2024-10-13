@@ -57,7 +57,7 @@ namespace UniverseOfSwordsMod.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Color projColor = Projectile.GetAlpha(lightColor);
+            Color projColor = Projectile.GetAlpha(lightColor) with { A = 0 };
             Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
             SpriteBatch spriteBatch = Main.spriteBatch;
 

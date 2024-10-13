@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using UniverseOfSwordsMod.Dusts;
 using UniverseOfSwordsMod.Projectiles;
 using UniverseOfSwordsMod.Utilities;
 
@@ -29,6 +30,19 @@ public class DestroyerSword : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 	}
+
+    public override void MeleeEffects(Player player, Rectangle hitbox)
+    {
+        UniversePlayer modPlayer = player.GetModPlayer<UniversePlayer>();
+
+        for (int i = 0; i < 2; i++)
+        {
+            modPlayer.GetPointOnSwungItemPath(Item.width, Item.height, 1f * Main.rand.NextFloat(), player.GetAdjustedItemScale(Item), out var location, out var outwardDirection);
+            Vector2 velocity = outwardDirection.RotatedBy(MathHelper.PiOver2 * player.direction * player.gravDir);
+            Dust dust = Dust.NewDustPerfect(location, ModContent.DustType<GlowDust>(), velocity, 0, Color.Red);
+            dust.noGravity = true;
+        }
+    }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {

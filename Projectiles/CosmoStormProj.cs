@@ -55,10 +55,15 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             for (int i = 0; i < 30; i++)
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SpectreStaff, newColor:Color.LightCyan, Scale: 1.25f);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SpectreStaff, newColor:Color.LightCyan, Scale:1.25f);
                 dust.noGravity = true;
                 dust.velocity *= 2f;
             }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.defense = 0;
         }
 
         public override bool PreDraw(ref Color lightColor)

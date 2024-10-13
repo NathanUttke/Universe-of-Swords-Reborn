@@ -13,6 +13,10 @@ namespace UniverseOfSwordsMod.Common.GlobalProjectiles
                 entity.timeLeft = 40;
                 entity.penetrate = 2;
             }
+            if (entity.type == ProjectileID.ChlorophyteOrb)
+            {
+                entity.scale = 1.5f;
+            }
         }
     }
 }

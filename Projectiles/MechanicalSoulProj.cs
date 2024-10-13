@@ -1,21 +1,15 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.Drawing;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria;
-using UniverseOfSwordsMod.Particles;
-using UniverseOfSwordsMod.Projectiles.Base;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Terraria.GameContent.Drawing;
+using UniverseOfSwordsMod.Projectiles.Base;
 
 namespace UniverseOfSwordsMod.Projectiles
 {
     public class MechanicalSoulProj : SwingEnergySwordProj
     {
-        public override float ScaleAdder => 1.2f;
+        public override float ScaleAdder => 1.3f;
         public override float ScaleMulti => base.ScaleMulti;
 
         public override Color DustColor1 => Color.OrangeRed;

@@ -71,17 +71,15 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             if (Owner.itemAnimation < Owner.itemAnimationMax * 0.333 && Main.myPlayer == Projectile.owner)
             {
-                Vector2 newPosition = Owner.RotatedRelativePoint(Owner.Center);
-                Vector2 mousVel = Vector2.Normalize(Main.MouseWorld - newPosition) * 12f;
-
-                for (int i = 0; i < 3; i++)
-                {
-                }
+                Vector2 newPosition = Owner.RotatedRelativePoint(Owner.MountedCenter);
                 Vector2 offsetPosition = new(newPosition.X, Owner.Top.Y - Main.rand.Next(200, 400));
-                Vector2 newVelocity = new(mousVel.X, Owner.HeldItem.shootSpeed * 12f);
-
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), offsetPosition, newVelocity, ProjectileToShoot, Projectile.damage, 5f, Projectile.owner);
-
+                Vector2 mousVel = Vector2.Normalize(Main.MouseWorld - offsetPosition) * 12f;
+                mousVel.Y = 16f * MathF.Sign(mousVel.Y);
+                if (mousVel.Y < 0f)
+                {
+                    mousVel.Y *= -1f;
+                }
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), offsetPosition, mousVel, ProjectileToShoot, Projectile.damage, 5f, Projectile.owner);
             }
         }
 
@@ -89,11 +87,6 @@ namespace UniverseOfSwordsMod.Projectiles
         {
             float _ = 0f;
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, Projectile.Center + Projectile.rotation.ToRotationVector2() * SwordSize * Projectile.scale, 20f, ref _);
-        }
-
-        public override void CreateDust()
-        {
-
         }
     }
 }

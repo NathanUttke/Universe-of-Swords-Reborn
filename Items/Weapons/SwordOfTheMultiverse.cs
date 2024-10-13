@@ -35,7 +35,7 @@ public class SwordOfTheMultiverse : ModItem
         Item.DamageType = DamageClass.Melee;
         Item.knockBack = 2.25f;
         Item.crit = 30;
-        Item.scale = 1.25f;
+        Item.scale = 1.5f;
         Item.value = Item.sellPrice(0, 12, 0, 0);
         Item.autoReuse = true;
         Item.noMelee = false;
@@ -72,7 +72,6 @@ public class SwordOfTheMultiverse : ModItem
 
             currentMode++;
             Item.NetStateChanged();
-            //Main.NewText($"[c/6508CF:Mode {currentMode} has been selected.]");
             CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), Colors.RarityPurple, $"Mode {currentMode} has been selected.");
             player.SetItemTime(15);
         }
@@ -85,17 +84,20 @@ public class SwordOfTheMultiverse : ModItem
                 Item.useStyle = ItemUseStyleID.Swing;
                 Item.noMelee = false;
                 Item.noUseGraphic = false;
+                Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
                 break;
             case 2:
                 Item.useTime = 7;
                 Item.useStyle = ItemUseStyleID.Swing;
                 Item.noMelee = false;
                 Item.noUseGraphic = false;
+                Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
                 break;
             case 3:
                 Item.noUseGraphic = true;
                 Item.noMelee = true;
                 Item.useStyle = ItemUseStyleID.Swing;
+                Item.holdStyle = ItemHoldStyleID.None;
                 break;
         }
     }    
@@ -104,7 +106,7 @@ public class SwordOfTheMultiverse : ModItem
     { 
         if (currentMode == 1)
         {
-            Projectile.NewProjectile(source, player.MountedCenter, velocity, ModContent.ProjectileType<SwordOfTheMultiverseWave>(), damage * 2, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, player.MountedCenter + velocity - Vector2.UnitY * 32f, velocity, ModContent.ProjectileType<SwordOfTheMultiverseWave>(), damage * 3, knockback, player.whoAmI);
         }
         if (currentMode == 2)
         {
@@ -143,7 +145,7 @@ public class SwordOfTheMultiverse : ModItem
 
         if (!NPCID.Sets.CountsAsCritter[target.type] && !target.immortal)
         {
-            Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<MultiverseExplosion>(), Item.damage, Item.knockBack, player.whoAmI);
+            Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<MultiverseExplosion>(), Item.damage * 4, Item.knockBack, player.whoAmI);
         }
     }
 

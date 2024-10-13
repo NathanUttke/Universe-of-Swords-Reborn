@@ -10,7 +10,6 @@ Projectiles: {
 	GnomeProj.DisplayName: Gnome
 	GrandPianoProjectile.DisplayName: Grand Piano
 	HumanBuzzSaw.DisplayName: Human Buzz Saw
-	IceBreakerProjectile.DisplayName: Ice Breaker
 	LifeRemovalMachineProjectile.DisplayName: Life Removal Machine
 	MechanicalProj.DisplayName: Mechanical Soul
 	SwordMinion.DisplayName: Flying Blade
@@ -21,8 +20,8 @@ Projectiles: {
 	ScarledGreatswordProjectile.DisplayName: Scarled Greatsword
 	ShaderProjectile.DisplayName: Power Of The Galactic
 	StarSwordProjectile.DisplayName: Star
-	SwordOfTheMultiverseProjectile.DisplayName: Sword Of The Multiverse
-	SwordOfTheMultiverseProjectileSmall.DisplayName: Sword Of The Multiverse
+	MultiverseProjectile.DisplayName: Sword Of The Multiverse
+	MultiverseProjectileSmall.DisplayName: Sword Of The Multiverse
 	SwordOfTheUniverseV2Projectile.DisplayName: Sword Of The Universe
 	Tier2CProjectile.DisplayName: Crimson Stinger
 	TrueTerrabladeProjectile.DisplayName: Terra Ensis
@@ -36,8 +35,8 @@ Projectiles: {
 	DestroyerLaser.DisplayName: Destroyer Laser
 	ScarletGreatswordProjectile.DisplayName: Scarlet Flare Greatsword
 	SwordLegendHoldoutProj.DisplayName: Sword Of The Legend
-	SwordOfTheMultiverseProjectileYoyo.DisplayName: Sword Of The Multiverse
-	SwordOfTheMultiverseWave.DisplayName: Sword Of The Multiverse
+	MultiverseProjectileYoyo.DisplayName: Sword Of The Multiverse
+	MultiverseWave.DisplayName: Sword Of The Multiverse
 	SuperInflationHoldoutProj.DisplayName: Super Inflation
 	ClingerWallProj.DisplayName: Clinger Wall
 	GalacticProjectile.DisplayName: Galactic
@@ -62,11 +61,25 @@ Projectiles: {
 	SwordOfTheUniverseHoldoutProj.DisplayName: Sword Of The Universe
 	SwordOfTheUniverseProjectile.DisplayName: Sword Of The Universe
 	BoomeBone.DisplayName: Boome Bone
-	BaseSpinningProj.DisplayName: Base Spinning
+	BaseSpinningProj.DisplayName: Spin
 	GoldCoin.DisplayName: Gold Coin
+	SwordOfTheMultiverseWave.DisplayName: Sword Of The Multiverse Wave
+	MultiverseExplosion.DisplayName: Multiverse Explosion
+	CosmoStormProj.DisplayName: Cosmo Storm
+	BaseShortsword.DisplayName: Base Shortsword
+	PowerOfTheGalacticProj.DisplayName: Power Of The Galactic
+	GreatswordOfTheCosmosProj.DisplayName: Greatsword Of The Cosmos
+	WaterBoltProj.DisplayName: Water Bolt
+	NatureProj.DisplayName: Nature Proj
+	ExecutionerProj.DisplayName: Executioner Proj
+	ExecutionerHoldoutProj.DisplayName: Executioner Holdout Proj
 }
 
-NPCs.SwordBossNPC.DisplayName: Evil Flying Blade
+NPCs: {
+	SwordBossNPC.DisplayName: Evil Flying Blade
+	OmegaSword.DisplayName: Omega Sword
+}
+
 RedDamascus.SetBonus: Grants Titan potion effect, 10% increased melee damage, 10% increased melee critical chance, increases maximum life by 20
 GreenDamascus.SetBonus: 20% increased melee speed, 7% increased melee critical chance, 50% increased movement speed, increases maximum life by 20
 BlueDamascus.SetBonus: 10% endurance, 7% increased melee critical chance, increases maximum life by 60
@@ -305,7 +318,7 @@ Items: {
 
 	ScarletFlareCore: {
 		DisplayName: Scarlet Flare Core
-		Tooltip: "'From depths of hell'"
+		Tooltip: From the depths of hell
 	}
 
 	SwordMatter: {
@@ -389,7 +402,7 @@ Items: {
 	}
 
 	BetterShroomiteBlade: {
-		DisplayName: True Shroomite Blade
+		DisplayName: True Fungal Infection
 		Tooltip: Bigger and better!
 	}
 
@@ -608,7 +621,7 @@ Items: {
 
 	JesterArrowSword: {
 		DisplayName: Jester's Arrow Sword
-		Tooltip: ""
+		Tooltip: Shoots Jesters' arrows
 	}
 
 	Stick: {
@@ -632,7 +645,7 @@ Items: {
 
 	MechanicalSoul: {
 		DisplayName: Mechanical Soul
-		Tooltip: ""
+		Tooltip: Summons lasers uppon hitting an enemy
 	}
 
 	NatureSword: {
@@ -706,11 +719,11 @@ Items: {
 
 	ScarledFlareGreatsword: {
 		DisplayName: Scarlet Flare Greatsword
-		Tooltip: ""
+		Tooltip: Summons red beams uppon hitting an enemy
 	}
 
 	ShroomiteBlade: {
-		DisplayName: Shroomite Blade
+		DisplayName: Fungal Infection
 		Tooltip: ""
 	}
 
@@ -837,7 +850,7 @@ Items: {
 
 	ScarletFlareGreatsword: {
 		DisplayName: Scarlet Flare Greatsword
-		Tooltip: ""
+		Tooltip: Shoots a flare core and summons red beams uppon hitting an enemy
 	}
 
 	MozartMauler: {
@@ -862,6 +875,11 @@ Items: {
 
 	TestSword: {
 		DisplayName: Test Sword
+		Tooltip: ""
+	}
+
+	OmegaSummon: {
+		DisplayName: Omega Summon
 		Tooltip: ""
 	}
 }

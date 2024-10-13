@@ -18,7 +18,7 @@ public class CaesarSword : ModItem
         Item.UseSound = SoundID.Item1;
         Item.useTime = 15;
         Item.useAnimation = 15;
-        Item.damage = 45;
+        Item.damage = 15;
         Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.knockBack = 3f;
         Item.crit = 8;

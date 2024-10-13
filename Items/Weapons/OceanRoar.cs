@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,8 +15,7 @@ public class OceanRoar : ModItem
 
     public override void SetDefaults()
 	{
-		Item.width = 32;
-		Item.height = 32;
+		Item.Size = new(54);
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 75;
@@ -28,4 +28,10 @@ public class OceanRoar : ModItem
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee; 
 	}
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile.NewProjectileDirect(source, position + velocity * 4f, velocity, type, damage, knockback, player.whoAmI);
+        return false;
+    }
 }

@@ -38,18 +38,14 @@ public class DoubleBladedLightsaber : ModItem
         Item.noUseGraphic = true;
 	}
 
+	public override bool CanShoot(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
+
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-		if (player.ownedProjectileCounts[Item.shoot] >= 6)
-		{
-			return false;
-		}
-
         for (int i = 1; i <= 6; i++)
         {
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, i - 1, i * 12f);
         }
-
         return false;
     }
     public override void AddRecipes()

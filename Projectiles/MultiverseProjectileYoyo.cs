@@ -8,6 +8,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using UniverseOfSwordsMod.Buffs;
 using UniverseOfSwordsMod.Items.Weapons;
+using Terraria.Audio;
+using UniverseOfSwordsMod.Utilities;
 
 namespace UniverseOfSwordsMod.Projectiles
 {    
@@ -31,7 +33,7 @@ namespace UniverseOfSwordsMod.Projectiles
             Projectile.aiStyle = -1;
             Projectile.extraUpdates = 2;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 12;            
+            Projectile.localNPCHitCooldown = 8;            
         }
 
         Player Player => Main.player[Projectile.owner];
@@ -51,23 +53,26 @@ namespace UniverseOfSwordsMod.Projectiles
                 Projectile.Kill();
                 return;
             }
-
             Player.heldProj = Projectile.whoAmI;
             Player.itemTime = Player.itemAnimation = 2;
             Player.ChangeDir((Projectile.Center.X > Player.Center.X).ToDirectionInt());
             Player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Player.AngleTo(Projectile.Center) - MathHelper.PiOver2);
             Projectile.velocity = Vector2.Zero;
             Projectile.Center = Main.MouseWorld;
-            
+
+            if (Main.rand.NextBool(200))
+            {
+                UniverseUtils.ReflectProjectile(Projectile);
+            }
+
             Projectile.rotation += Projectile.direction * 0.13f;            
         }      
         
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (!target.HasBuff(ModContent.BuffType<EmperorBlaze>()))
-            {
-                target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 800, true);
-            }
+            target.AddBuff(ModContent.BuffType<EmperorBlaze>(), 800, true);
+            target.AddBuff(BuffID.ShadowFlame, 800, true);
+            target.AddBuff(BuffID.Venom, 800, true);
         }
 
         public override bool PreDraw(ref Color lightColor)

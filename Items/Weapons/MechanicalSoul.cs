@@ -19,13 +19,11 @@ namespace UniverseOfSwordsMod.Items.Weapons
         public override void SetDefaults()
         {
             Item.width = 52;
-            Item.height = 60;
+            Item.height = 64;
             Item.scale = 1.125f;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 20;
             Item.useAnimation = 20;
-            //Item.shoot = ModContent.ProjectileType<MechanicalProj>();
-            //Item.shootSpeed = 14f;
             Item.shoot = ModContent.ProjectileType<MechanicalSoulProj>();
             Item.damage = 90;
             Item.DamageType = DamageClass.Melee;
@@ -38,23 +36,6 @@ namespace UniverseOfSwordsMod.Items.Weapons
             Item.noMelee = true;
             Item.shootsEveryUse = true;
         }
-
-        public override void MeleeEffects(Player player, Rectangle hitbox)
-        {
-            if (Main.rand.NextBool(2))
-            {
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Blue, 1f);
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, new Color(230, 100, 50), 1f);
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<GlowDust>(), 0f, 0f, 0, Color.Green, 1f);
-            }
-        }
-
-        /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            position.Y -= 48f;
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            return false;
-        }*/
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
