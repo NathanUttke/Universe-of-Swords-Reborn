@@ -26,29 +26,29 @@ public class DoubleBladedLightsaber : ModItem
 		Item.useTime = 10;
 		Item.useAnimation = 30;
 		Item.channel = true;
-        Item.autoReuse = true;
-        Item.noUseGraphic = true;
-        Item.noMelee = true;
+		Item.autoReuse = true;
+		Item.noUseGraphic = true;
+		Item.noMelee = true;
 		Item.UseSound = SoundID.Item15;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.knockBack = 8f;
 		Item.value = Item.sellPrice(0, 4, 0, 0);
 		Item.rare = ItemRarityID.Lime;
-        Item.shoot = ModContent.ProjectileType<UltimateSaberProjectile>();
-        Item.noUseGraphic = true;
+		Item.shoot = ModContent.ProjectileType<UltimateSaberProjectile>();
+		Item.noUseGraphic = true;
 	}
 
 	public override bool CanShoot(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {
-        for (int i = 1; i <= 6; i++)
-        {
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, i - 1, i * 12f);
-        }
-        return false;
-    }
-    public override void AddRecipes()
+	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+	{
+		for (int i = 1; i <= 6; i++)
+		{
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, i - 1, i * 12f);
+		}
+		return false;
+	}
+	public override void AddRecipes()
 	{
 		CreateRecipe()
 		.AddIngredient(ItemID.YellowPhasesaber, 1)
