@@ -42,11 +42,17 @@ namespace UniverseOfSwordsMod.Projectiles.Base
         public virtual float ScaleMulti => 1f;
         public virtual float ScaleAdder => 1f;
 
-        // From ExampleSwingingEnergySwordProjectile
+        /*
+            Copyright 2019 tModLoader Team
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        */
+
         public override void AI()
         {
             Projectile.localAI[0]++;
-            float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1];            
+            float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1];
             float velocityRotation = Projectile.velocity.ToRotation();
             float adjustedRotation = MathHelper.Pi * Direction * percentageOfLife + velocityRotation + Direction * MathHelper.Pi + Player.fullRotation;
             Projectile.rotation = adjustedRotation;
@@ -64,8 +70,8 @@ namespace UniverseOfSwordsMod.Projectiles.Base
                 Projectile.Kill();
             }
 
-            for (float i = -MathHelper.PiOver4; i <= MathHelper.PiOver4; i += MathHelper.PiOver2) 
-            { 
+            for (float i = -MathHelper.PiOver4; i <= MathHelper.PiOver4; i += MathHelper.PiOver2)
+            {
                 Rectangle rectangle = Utils.CenteredRectangle(Projectile.Center + (Projectile.rotation + i).ToRotationVector2() * 70f * Projectile.scale, Vector2.One * 60f * Projectile.scale);
                 Projectile.EmitEnchantmentVisualsAt(rectangle.TopLeft(), rectangle.Width, rectangle.Height);
             }
@@ -119,9 +125,9 @@ namespace UniverseOfSwordsMod.Projectiles.Base
             return false;
         }
 
-        public virtual Color BackDarkColor => new (128, 0, 0, 128);
+        public virtual Color BackDarkColor => new(128, 0, 0, 128);
         public virtual Color MiddleMediumColor => new(232, 60, 162);
-        public virtual Color FrontLightColor => new (255, 128, 128);
+        public virtual Color FrontLightColor => new(255, 128, 128);
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -170,6 +176,6 @@ namespace UniverseOfSwordsMod.Projectiles.Base
             UniverseUtils.DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos2, Color.White with { A = 0 } * lerpTime * 0.5f, MiddleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(percentageOfLife, 0f, 1f, 4f, 1f)) * scale, Vector2.One * scale);
 
             return false;
-        }      
+        }
     }
 }
